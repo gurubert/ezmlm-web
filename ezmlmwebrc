@@ -1,0 +1,80 @@
+# $Id: ezmlmwebrc,v 1.5 2000/09/25 18:25:26 guy Exp $
+# Configuration file for ezmlm-web 2.2
+# ===========================================================================
+
+# This file is not just an ordinary configuration file - it contains valid
+# perl statements that are executed just like any other perl script. When
+# editing this file, be careful that it is still valid perl when you have
+# finished (perl -w ezmlmwebrc ;-)
+
+# ---------------------------------------------------------------------------
+
+# Where do we store lists on this server ... Try "$HOME_DIR/lists". 
+# This directory will automatically be created if needed.
+$LIST_DIR = "$HOME_DIR/lists";
+
+# Where is the webusers file for access-permissions
+# defaults to "$LIST_DIR/webusers"
+$WEBUSERS_FILE = "$LIST_DIR/webusers";
+
+# Safe list deletion? 
+# 0 = move list to .list and the .qmails to deleted.qmail/. Recoverable :)
+# 1 = allow user to delete list completely. No backup, therefore no recovery.
+$UNSAFE_RM = 0;
+
+# Who is the alias user on this system (usually alias ;)
+$ALIAS_USER = 'alias';
+
+# Where do the qmail control files live on this system ...
+$QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
+
+# The url to our web interface - so we can use ezmlm-cgi if necessary
+$EZMLM_CGI_URL = 'http://some.server.that.has/cgi-bin/ezmlm-cgi';
+
+# Where our ezcgirc file lives (probably /etc/ezmlm/ezcgirc)
+$EZMLM_CGI_RC = '/etc/ezmlm/ezcgirc';
+
+# Do we want to allow ``pretty'' names - ie more human readable ones
+# This will slow ezmlm-web down a bit for large lists
+$PRETTY_NAMES = 1;
+
+# Do we want to allow the users to be allowed to upload a file containing
+# lists of email addresses to subscribe?
+$FILE_UPLOAD = 1;
+
+# What switches to we want ezmlm-web to have on as default. The ezmlm-make
+# defaults are aBDFGHIJKLMNOpQRSTUWX (small means enabled, CAPITALS mean
+# disabled). The defaults below should be reasonable - I use them ;)
+$DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx';
+
+# Where do we find the nice little help icon - by default HELP_ICON_URL
+# points to resources on http://rucus.ru.ac.za/. This will work, but we
+# would appreciate it if you changed this to a local site.
+$HELP_ICON_URL = 'http://rucus.ru.ac.za/icons/small/unknown.gif';
+
+# Header for every page (.= concatinates)
+$HTML_HEADER = '<TABLE BORDER="3" ALIGN="CENTER" CELLPADDING="5"><TR><TD BGCOLOR="#e0e0ff"><FONT SIZE=+3 COLOR=#000080><STRONG>E Z Mailing List Manager</STRONG></FONT></TD></TR></TABLE></CENTER><P>';
+$HTML_HEADER .= '<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="5" ALIGN="CENTER" WIDTH="99%"><TR><TD BGCOLOR="#e0e0ff">';
+
+# Footer for every page (.= concatinates)
+$HTML_FOOTER = '</TD></TR></TABLE>';
+$HTML_FOOTER .= '<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="5" ALIGN="CENTER" WIDTH="99%"><TR><TD BGCOLOR="#e0e0ff">';
+$HTML_FOOTER .= '<FONT SIZE="-1"><A HREF="https://systemausfall.org/toolforge/ezmlm-web" TARGET="_blank">ezmlm-web</A> (v2.2) A web interface to <A HREF="http://www.ezmlm.org/" TARGET="_blank">ezmlm</A></FONT></TD></TR></TABLE>';
+
+# NEW:
+# html properties (e.g. color, background-color) can be defined in a
+# stylesheet (see HTML_CSS_FILE) since version 2.3
+
+# What is the title of this document?
+$HTML_TITLE = 'E Z Mailing List Manager';
+
+# Optional: use a cascading style sheet (css)
+$HTML_CSS_FILE = "css/default.css";
+
+# choose a language (en|de)
+$HTML_LANGUAGE = 'en';
+
+# ---------------------------------------------------------------------------
+# include language-specific definitions
+require('./lang/' . $HTML_LANGUAGE . '.pm'); 
+

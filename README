@@ -1,0 +1,270 @@
+$Id: README,v 1.2 2000/09/25 17:57:21 guy Exp $
+
+=================
+| ezmlm-web-2.2 |
+=================
+
+If you only want to know how to install ezmlm-web, then you should
+read INSTALL.
+
+Contents
+========
+   I.   Copyright Stuff
+  II.   Some Background
+ III.   Requirements
+  IV.   Files
+   V.   Notes
+  VI.   Multi-level list access
+ VII.   Language Portability
+VIII.   Bugs && Bug Reports
+  XI.   Acknowledgements
+   X.   Availability
+
+
+I. Copyright Stuff - essentially the FreeBSD licence ...
+==================
+ezmlm-web - version 2.2 - 26/01/02005
+
+Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
+Please send bug reports and comments to guy-ezmlm@rucus.ru.ac.za
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.
+
+Redistributions in binary form must reproduce the above copyright notice,
+this list of conditions and the following disclaimer in the documentation
+and/or other materials provided with the distribution.
+
+Neither name Guy Antony Halse nor the names of any contributors may be used
+to endorse or promote products derived from this software without specific
+prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+II. Some Background
+===================
+The need for ezmlm-web arose from the fact that we host many student
+societies on our system. These societies usually have a virtual host for web
+and email, which is administered by a computer rep from the society. These
+computer reps often have little or no knowledge of Unix and so we needed a
+user friendly system that would let the create and maintain mailing lists
+(such as members@foo.soc.ru.ac.za, committee@foo.soc.ru.ac.za, etc).
+
+Since I am never keen to re-invent the wheel, I had a look at Steve Peterson's
+script (http://virtation.com/qmail/ml-sub), which allows people to subscribe 
+and unsubscribe from mailing lists using a form->email gateway. This is fine 
+for putting on a web page saying "here come and join our mailing list", but
+doesn't really allow you to administrate a list.
+
+Security of mailing lists was a concern, as we really didn't want
+unauthorised people to be able to alter some users list. Ezmlm-web itself
+implements no security checks (apart from un-tainting input) and so relies
+on the web server to do this (re-inventing the wheel again :). We use an
+Apache webserver, so one can control access to a directory using a .htaccess
+file or in the access.conf file. ApacheWeek have a good article on doing
+this at http://www.apacheweek.com/features/userauth. I also give examples
+later in this document.
+
+This version of ezmlm-web is based to a large extent on previous
+versions that I have developed. It has however been totally re-written to
+make use of the Mail::Ezmlm perl module I wrote. At the same time it was
+updated and extended to include the new features of ezmlm-idx. It includes 
+many new features that have been suggested to me over the last few months,
+and hopefully is now useful to a much larger group of people.
+
+Since 02005 ezmlm-web is maintained by Lars Kruse (ezmlm-web@sumpfralle.de).
+Only minor improvements had to be implemented to keep the already fully
+functional ezmlm-web up to date.
+
+III. Requirements
+=================
+This version of ezmlm-web requires the following;
+
+* qmail v1.03
+* ezmlm v0.53 (idx v0.40)
+* Perl v5.004 and the following modules;
+  + Mail::Ezmlm v0.03 
+  + Mail::Address v1.15
+  + CGI v2.6 
+  + CGI::Carp v1.06
+  + DB_File v1.65
+  + Getopt::Std v4.1
+  + File::Find v?
+  + File::Copy v2.02
+
+The version number indicates the version of the module that ezmlm-web was
+developed with. Earlier versions may work, but then they haven't been
+tested. Have a look on http://www.CPAN.org/, http://www.qmail.org/, and
+http://www.ezmlm.org/ for anything you are missing.
+
+IV. Files
+=========
+In this distribution you should find 8 files;
+
+README            This file. Provides some background information.
+		  Not needed to run ezmlm-web.
+
+INSTALL		  Notes on installation. Not needed to run ezmlm-web.
+
+CHANGES           The change history. Not needed to run ezmlm-web
+
+TODO              This file is a list of things I intend doing in future
+                  versions of ezmlm-web. Not needed to run ezmlm-web.
+
+ezmlm-web.cgi     The ezmlm-web script proper. This program requires that
+                  you have perl5 installed on your machine and that your web
+                  server is capable of running CGI scripts.
+
+index.c           A C wrapper to allow ezmlm-web.cgi to run suid. Not
+                  strictly necessary if your setup allows perl scripts to
+                  run suid, but I prefer using wrappers anyway. It needs to
+                  be edited and compiled to suit your system. Not needed to
+                  run ezmlm-web.
+
+ezmlmwebrc	  This is the configuration file for ezmlm-web. All options
+		  are explained in this example file. You will need this
+		  file to run ezmlm-web.
+
+htaccess.sample   A sample Apache .htaccess file for controlling access to
+                  the mailing lists. If you use another web server, you will
+                  have to work this bit out for yourself.
+
+webusers.sample   A sample webusers file for multi-level access control.
+
+The directory "lang" contains the language files. You will need at least the 
+one, that you have choosen in "ezmlmwebrc" by the option "HTML_LANGUAGE".
+
+V. Notes
+=========
+* There is a function to delete mailing lists, but I really don't like the
+  idea. The only reason I put it in is that bvi@rucus asked for it.
+  If you set $UNSAFE_RD = 0 (the default) in the config section, the
+  ezmlm-web won't actually delete the list. In this case it moves the <list> 
+  to .<list> and all the associated .qmail files to a sub-directory called 
+  deleted.qmail/ (In the users home directory. This is by far a safer way 
+  (since you can restore lists) and therefore I recommend it.
+
+* The HTML interface has been tested using Nutscrape, Internet Exploder, and
+  Lynx. If anyone uses anything else and has problems, please let me know.
+
+* I suggest that you make use of custom ezmlmwebrc files rather than using
+  the -d command line switches - it makes fault diagnosis easier ...
+
+* Please see the section on languages below.
+
+VI. Multi-Level Access
+=======================
+Ezmlm-web has a multi-level access system. This depends on a file called
+webusers being present in $LIST_DIR. If the file is not present, then any
+valid user has access to all lists.  If, however, this file exists a number
+of constraints come into place.
+
+- The webusers file is scanned for either the list name (case insensitive) or
+  an ALL (case sensitive) entry.
+- The list entry (or ALL) is scanned for the current user (as set in
+  $REMOTE_USER) or an ALL entry.
+- If any valid match is made, then the user is allowed to edit the list.
+  Otherwise the user is politely told to go away ;-)
+
+If list creation is allowed and the webusers file exists, then the person who
+creates the list is the default owner. As of yet there is no way to create users
+through the web interface, but I intend to do this eventually.
+
+The format of a webusers file is as follows;
+
+list1: user1, user2, user3
+ALL: user1, user2
+list2: ALL
+
+ie; listname colon (:) and a comma (,) separated list of users. Spaces are
+ignored but each list must appear on a new line.
+
+Once this file exists, the ezmlm-web script will allow the list users to
+configure their access lists along with any other options.
+
+You can permit some users to create lists by adding a line similar to the 
+following to your webusers file:
+
+ALLOW_CREATE: user2, user3
+
+If there is no line starting with "ALLOW_CREATE:" in the webusers file, then
+no one will be allowed to create lists. This behaviour is new for ezmlm-web
+since version 2.2. To stay compatible to old installations, the commandline
+option "-c" for ezmlm-web.cgi will still allow everyone to create lists. The
+use of this option is deprecated, since the line "ALLOW_CREATE: ALL" provides
+the same effect in a cleaner way.
+
+VII. Language Portablity
+=========================
+One of the great new features of version 2.0 is that it is essentially
+language independant (okay, not quite, but is 99% of the way there). Most of
+the fixed strings, help, etc is defined in the files of lang directory.
+Of course you can change them or create a new translation.
+
+The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
+
+If anyone gets round to writing full templates for languages I would
+appreciate it if you would do two things;
+
+Firstly, make them public and announce them on the ezmlm@lists.cr.yp.to
+mailing list so that others may benefit.
+
+Secondly, please mail me a copy (ezmlm-web@sumpfralle.de) so that I may use
+them in any future releases of ezmlm-web.
+
+
+VIII. Bugs && Bug Reports
+=======================
+I don't know of any bugs, but then this is a rewrite and a first release. It
+has been tested reasonably well, but not exhaustively. I know it works on
+FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1 and Redhat 6.0 all using
+an Apache web server, but I would be interested to know whether it works on
+other OSs and with other web servers. This version is far less dependent on
+the OS than previous versions so I don't see any reason why it shouldn't.
+
+Please mail bug reports and comments to ezmlm-web@sumpfralle.de.
+
+IX. Acknowledgements
+===================
+*  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - He created ezmlm-web,
+   maintained it till 02005 and wrote nearly every line of code!
+*  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me and
+   ensuring that I actually got round to writing some code :)
+*  Bryan Kilian (bryan@rucus.ru.ac.za) and the administrators of the
+   Litestep mailing list - For helping beta test and putting up with me
+   pestering them.
+*  Several societies at Rhodes. For switching to my web interface and so
+   unknowingly helping to beta test it.
+*  Barry Irwin (bvi@moria.org) - For trusting me and moving the Grahamstown
+   Foundation over to qmail and ezmlm - yet another beta tester :-)
+*  David Summers (david@summersoft.fay.ar.us) - For some ideas. And for
+   offering to make up an RPM version. I hope the offer still exists for
+   version 2.0 :-)
+*  Glen Stewart (glen_stewart@associate.com) - For a multitude of ideas.
+*  Fred Lindberg (lindberg@id.wustl.edu) for his useful posts to the 
+   mailing list, suggestions, help, etc
+*  Galen Johnson (gjohnson@totalsports.net) - For some ideas on bugfixes.
+
+X. Availability
+=================
+More information on ezmlm-web and developments to ezmlm-web can be found at:
+https://systemausfall.org/toolforge/ezmlm-web
+
+The website of Guy Antony Halse (the author of ezmlm-web) is still at:
+http://rucus.ru.ac.za/~guy/ezmlm/
+
+The old ftp-archive of ezmlm-web is still available on:
+ftp://rucus.ru.ac.za/pub/mail/ezmlm/

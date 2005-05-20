@@ -1,0 +1,28 @@
+$Id: TODO,v 1.3 2000/09/25 19:58:02 guy Exp $
+
+TODO - ezmlm-web 2.3
+
+DOKU:
+- mention in INSTALL, that a missing webusers-file deactivates access control
+- more documentation
+- webusers is not mentioned in INSTALL
+
+ORG:
+- change ./lang/ to /usr/local/share/ezmlm-web/lang
+- move unknown.gif to systemausfall.org
+- some nice install method
+- easy-mode? - maybe with typical profiles - or: separation basic / expert
+
+CODE:
+- check and improve DEFAULT_HOST
+- check virtual user testing
+- implement ldap authorisation
+- check: the textfields for paths are filled with the first set value
+- line 472 - replace "return" by "if"-construct
+- check: safe removal of list (.qmail-* are left and dir is renamed to .dir)
+
+LAYOUT:
+- option for a css-stylesheet
+- migrate header and footer in ezmlmwebrc to css
+- improve css-design
+- "prefix"-option should be next to its text field (as with all paths)

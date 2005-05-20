@@ -1,0 +1,202 @@
+body	{
+	background-color: #000080;
+	color: #000000;
+	}
+
+h1	{
+	text-align: center;
+	}
+
+h2	{
+	text-align: center;
+	}
+
+a	{
+	color: #3333ff;
+	}
+
+a:visited {
+	color: #8888ff;
+	}
+
+
+/*********************** general **************************
+
+used classes for containers:
+	title		- heading of most pages (except main)
+	list		- list of subscribers/mailinglists/moderators/...
+	add_remove	- buttons and fields to manipulate such lists
+	info		- explanations
+	question	- buttons to answer a question
+	options		- various possibilities (buttons)
+	input		- group of form fields
+	container	- includes all other containers on a page
+
+low-level classes (for "span"):
+	button
+	formfield
+	checkbox
+	help
+
+and a special div:
+	error
+
+************************************************************/
+
+div.container {
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+div.add_remove span.button {
+	width: auto;
+	margin-top: 0px;
+	margin-right: auto;
+	}
+
+div.add_remove span.formfield {
+	width: auto;
+	margin: 0px;
+	margin-right: auto;
+	padding: 0px;
+	}
+
+div.add_remove span.formfield:before {
+	content: attr("<br>");
+	}
+
+div.list {
+	margin: 1%;
+	margin-right: 3%;
+	text-align: center;
+	float: left;
+	margin-bottom: auto;
+	}
+
+div.question {
+	text-align: center;
+	}
+
+p.warning {
+	text-decoration: blink;
+	color: #ff0000;
+	text-align: center;
+	}
+
+span.help {
+	font-size: small;
+	}
+
+span.button {
+	margin-left: 3px;
+	margin-right: 3px;
+	}
+
+span.formfield {
+	margin-right: auto;
+	}
+
+/************************ main page ***********************
+name of container:	main
+available classes:	list info add_remove
+**********************************************************/
+
+
+
+
+
+/******************* confirm delete page *******************
+name of container:	delete
+available classes:	title button
+***********************************************************/
+
+
+
+
+
+/************************* edit page ***********************
+name of container:	edit
+availbale classes:	title list add_remove options
+***********************************************************/
+
+
+
+
+
+/********* allow/deny/moderators/digests page **************
+name of container:	parts
+available classes:	title info list add_remove
+***********************************************************/
+
+
+
+
+
+/******************* create list page **********************
+name of container:	create
+available classes:	title input question
+***********************************************************/
+
+#create div.input span.formfield {
+	font-weight: bold;
+	font-size: large;
+	margin-left: 0px;
+	margin-right: auto;
+	}
+
+
+
+/********************* config page *************************
+name of container:	config
+available classes:	title info input question
+***********************************************************/
+
+#config div.info {
+	font-size: large;
+	font-weight: bold;
+	}
+
+#config div.input span.formfield {
+	font-weight: bold;
+	margin-left: 0px;
+	margin-right: auto;
+	}
+
+
+/******************** textfiles ****************************
+name of container:	textfiles
+available classes:	list info question
+***********************************************************/
+
+
+
+
+
+/******************** edittext *****************************
+name of container:	edittext
+available classes:	title input info question
+***********************************************************/
+
+#edittext div.input {
+	float:left;
+	}
+
+
+
+/**************** error messages **************************/
+
+div.error {
+	width: 99%;
+	padding: 5px;
+	text-align: center;
+	background-color: #e0e0ff;
+	}
+
+div.error h2 {
+	color: #ff0000;
+	}
+
+div.error p.msg {
+	font-weight: bold;
+	}
+

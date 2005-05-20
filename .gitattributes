@@ -1,0 +1,14 @@
+* text=auto !eol
+/CHANGES -text
+/INSTALL -text
+/README -text
+/TODO -text
+/UPGRADING -text
+css/default.css -text
+/ezmlm-web.cgi -text
+/ezmlmwebrc -text
+/htaccess.sample -text
+/index.c -text
+lang/de.pm -text
+lang/en.pm -text
+/webusers.sample -text

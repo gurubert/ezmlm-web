@@ -1,0 +1,39 @@
+$Id: UPGRADING,v 1.1 2000/09/25 19:24:20 guy Exp $
+
+UPGRADING ezmlm-web 2.1 to ezmlm-web 2.2
+
+1) Creating of new lists is now controlled by a line in the webusers file instead
+of a commandline switch for ezmlm-web.cgi.
+
+necessary changes:
+ - optional: remove switch "-c" when calling ezmlm-web.cgi (take a look at index.c)
+ - optional: add a line like "ALLOW_CREATE: john, myra" to the webusers file
+
+2) The location of the webusers file is now defined in ezmlmwebrc. (default: $LIST_DIR/webusers)
+
+necessary changes:
+ - optional: add a line like "$WEBUSERS_FILE = /home/ml/webusers" to ezmlmwebrc
+
+3) A german translation is available.
+
+ - optional: include "lang/de.pm" in ezmlmwebrc (there you can also remove the english definitions)
+	     or copy the new ezmlmwebrc :)
+
+------------------------------------------------------------------------------
+
+UPGRADING ezmlm-web 2.0 to ezmlm-web 2.1
+
+There are no major changes that need to be made in order to upgrade. All
+that is necessary is to add two new lines to your ezmlmwebrc ... In the top
+section of the file add
+
+$FILE_UPLOAD = 1;
+
+and in the %HELPER section, you need to add
+
+addaddressfile   => 'or you may enter the filename of a plain text file containing multiple RFC822 email addresses, one per line',
+
+(or just copy the new ezmlmwebrc :)
+
+Have a look for these two lines in the new ezmlmwebrc included in this
+distribution if you are unsure of how/where to put these.
