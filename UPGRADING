@@ -1,4 +1,12 @@
-$Id: UPGRADING,v 1.1 2000/09/25 19:24:20 guy Exp $
+This file contains some useful hints for upgrading from a previous version of ezmlm-web.
+
+##############################################################################
+
+UPGRADING ezmlm-web 2.2 to ezmlm-web 2.3
+
+there are no known issues
+
+------------------------------------------------------------------------------
 
 UPGRADING ezmlm-web 2.1 to ezmlm-web 2.2
 
