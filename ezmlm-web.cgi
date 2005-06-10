@@ -1,7 +1,6 @@
 #!/usr/bin/perl 
 #===========================================================================
-# ezmlm-web.cgi - version 2.2 - 26/01/02005
-# $Id: ezmlm-web.cgi,v 1.3 2000/09/25 19:58:07 guy Exp $
+# ezmlm-web.cgi - version 2.3 - 10/06/02005
 #
 # Copyright (C) 1999/2000, Guy Antony Halse, All Rights Reserved.
 # Please send bug reports and comments to guy-ezmlm@rucus.ru.ac.za
@@ -1186,7 +1185,7 @@ EOM
 }
                                                                                                                  
 # ------------------------------------------------------------------------
-# End of ezmlm-web.cgi v2.2
+# End of ezmlm-web.cgi v2.3
 # ------------------------------------------------------------------------
 __END__
 

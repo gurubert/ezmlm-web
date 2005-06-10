@@ -75,6 +75,15 @@ OVERVIEW:
      access controlled (here I mean both web and user access) by some method
      (eg .htaccess, access.conf for Apache).
 
+     You should also copy the stylesheet file (css/default.css) to a location
+     of your choice. Now you may have to change the "HTML_CSS_FILE" setting
+     in your ezmlmwebrc file.
+
+     Optional: it would be nice if you could download the small picture
+     whose URL you can find in the ezmlmwebrc file as "HELP_ICON_URL".
+     Then you should change this URL.
+     This helps to reduce the load on our server.
+
 
 6.   Install some method of securing access to the page. The following
      information is applicable to Apache web servers ... Detailed

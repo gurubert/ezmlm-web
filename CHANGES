@@ -1,5 +1,3 @@
-$Id: CHANGES,v 1.2 2000/09/25 17:54:06 guy Exp $
-
 REVISION HISTORY - ezmlm-web.cgi
 ================================
 
@@ -90,7 +88,7 @@ Version 2.2 - 26/01/02005 (not officially released)
 * user-based permission for creating lists (can be set in webusersrc)
 * the location of the webusers file is now an option in ezmlmwebrc
 
-Version 2.3 - 21/06/02005
+Version 2.3 - 10/06/02005
 * css styles are used instead of tables
 * permission check for upload of files fixed
 * removed some taint errors

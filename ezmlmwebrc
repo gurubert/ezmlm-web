@@ -1,5 +1,4 @@
-# $Id: ezmlmwebrc,v 1.5 2000/09/25 18:25:26 guy Exp $
-# Configuration file for ezmlm-web 2.2
+# Configuration file for ezmlm-web 2.3
 # ===========================================================================
 
 # This file is not just an ordinary configuration file - it contains valid
@@ -59,7 +58,7 @@ $HTML_HEADER .= '<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="5" ALIGN="CENTER
 # Footer for every page (.= concatinates)
 $HTML_FOOTER = '</TD></TR></TABLE>';
 $HTML_FOOTER .= '<TABLE BORDER="0" CELLPADDING="5" CELLSPACING="5" ALIGN="CENTER" WIDTH="99%"><TR><TD BGCOLOR="#e0e0ff">';
-$HTML_FOOTER .= '<FONT SIZE="-1"><A HREF="https://systemausfall.org/toolforge/ezmlm-web" TARGET="_blank">ezmlm-web</A> (v2.2) A web interface to <A HREF="http://www.ezmlm.org/" TARGET="_blank">ezmlm</A></FONT></TD></TR></TABLE>';
+$HTML_FOOTER .= '<FONT SIZE="-1"><A HREF="https://systemausfall.org/toolforge/ezmlm-web" TARGET="_blank">ezmlm-web</A> (v2.3) A web interface to <A HREF="http://www.ezmlm.org/" TARGET="_blank">ezmlm</A></FONT></TD></TR></TABLE>';
 
 # NEW:
 # html properties (e.g. color, background-color) can be defined in a
