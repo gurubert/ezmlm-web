@@ -16,6 +16,10 @@ $LIST_DIR = "$HOME_DIR/lists";
 # defaults to "$LIST_DIR/webusers"
 $WEBUSERS_FILE = "$LIST_DIR/webusers";
 
+# Where are the language files
+# usually something like /usr/local/share/ezmlm-web/lang
+$LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
+
 # Safe list deletion? 
 # 0 = move list to .list and the .qmails to deleted.qmail/. Recoverable :)
 # 1 = allow user to delete list completely. No backup, therefore no recovery.
@@ -75,5 +79,5 @@ $HTML_LANGUAGE = 'en';
 
 # ---------------------------------------------------------------------------
 # include language-specific definitions
-require('./lang/' . $HTML_LANGUAGE . '.pm'); 
+require($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.pm'); 
 

@@ -48,7 +48,13 @@ OVERVIEW:
      supply to a minimum and also make reasonable guesses about default
      values.
 
-     Finally, copy the ezmlmwebrc file and the "lang" directory to one of
+     The directory containing ezmlm-web's language files should be something
+     like '/usr/local/share/ezmlm-web/lang':
+     		mkdir -p /usr/local/share/ezmlm-web
+		cp -r lang /usr/local/share/ezmlm-web
+     You can change this default location in the ezmlmwebrc file.
+
+     Finally, copy the ezmlmwebrc file to one of
      the following places:
 	- /etc/ezmlm
 	- the home directory of the user that runs ezmlm-web.cgi
