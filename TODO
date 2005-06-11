@@ -4,8 +4,6 @@ DOKU:
 - more documentation
 
 ORG:
-- change ./lang/ to /usr/local/share/ezmlm-web/lang
-- move unknown.gif to systemausfall.org
 - some nice install method
 - easy-mode? - maybe with typical profiles - or: separation basic / expert
 

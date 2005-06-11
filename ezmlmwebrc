@@ -53,7 +53,7 @@ $DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx';
 # Where do we find the nice little help icon - by default HELP_ICON_URL
 # points to resources on http://rucus.ru.ac.za/. This will work, but we
 # would appreciate it if you changed this to a local site.
-$HELP_ICON_URL = 'http://rucus.ru.ac.za/icons/small/unknown.gif';
+$HELP_ICON_URL = 'http://systemausfall.org/misc/ezmlm-web-unknown.gif';
 
 # Header for every page (.= concatinates)
 $HTML_HEADER = '<TABLE BORDER="3" ALIGN="CENTER" CELLPADDING="5"><TR><TD BGCOLOR="#e0e0ff"><FONT SIZE=+3 COLOR=#000080><STRONG>E Z Mailing List Manager</STRONG></FONT></TD></TR></TABLE></CENTER><P>';
