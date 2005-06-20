@@ -2,6 +2,7 @@
 /CHANGES -text
 /INSTALL -text
 /README -text
+/TODO -text
 /UPGRADING -text
 css/default.css -text
 /ezmlm-web.cgi -text
@@ -9,5 +10,19 @@ css/default.css -text
 /htaccess.sample -text
 /index.c -text
 lang/de.pm -text
+lang/en.hdf -text
 lang/en.pm -text
+template/config_list.cs -text
+template/confirm_delete.cs -text
+template/create_list.cs -text
+template/display_list.cs -text
+template/display_options.cs -text
+template/edit_text.cs -text
+template/footer.cs -text
+template/header.cs -text
+template/list_config.cs -text
+template/list_textfiles.cs -text
+template/macros.cs -text
+template/modpath_info.cs -text
+template/select_list.cs -text
 /webusers.sample -text

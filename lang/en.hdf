@@ -1,0 +1,168 @@
+Language = en
+
+PageTitle = ezmlm-web - a mailinglists' administration interface
+
+
+Lang {
+    Buttons {
+	Create		= [Create List]
+	Edit		= [Edit]
+	Delete		= [Delete]
+	Yes		= [Yes]
+	No		= [No]
+	Cancel		= [Cancel]
+	DeleteAddress	= [Delete Address]
+	AddAddress	= [Add Address]
+	Moderators	= [Moderators]
+	DenyList	= [Deny List]
+	AllowList	= [Allow List]
+	DigestSubscribers = [Digest Subscribers]
+	Configuration	= [Configuration]
+	UpdateConfiguration = [Update Configuration]
+	EditTexts	= [Edit Texts]
+	EditFile	= [Edit File]
+	SaveFile	= [Save File]
+	WebArchive	= [Web Archive]
+	SelectList	= [Select List]
+	Subscribers	= [Subscribers]
+	ResetForm	= [Reset Form]
+      }
+
+
+    Options {
+	a.short		= Archived
+	a.long		= Ezmlm will archive new messages
+	b.short		= Block archive 
+	b.long		= Only moderators are allowed to access the archive
+#	c => config. This is implicity called, so is not defined here
+	d.short		= Digest
+	d.long		= Set up a digest list to disseminate digest of the list messages
+#	e => edit. Also implicity called, so not defined here
+	f.short		= Prefix
+	f.long		= Outgoing subject will be prefixed with the list name
+	g.short		= Guard Archive
+	g.long		= Archive access requests from unrecognized SENDERs will be rejected
+	h.short		= Help subscription
+	h.long		= Subscriptions do not require confirmation
+	i.short		= Indexed
+	i.long		= Indexed for WWW archive access
+	j.short		= Jump off
+	j.long		= Unsubscribe does not require  confirmation
+	k.short		= Kill
+	k.long		= Posts from addresses in dir/deny/ are rejected
+	l.short		= Subscriber List
+	l.long		= Remote administrators can request a subscriber list
+	m.short		= Message Moderation
+	m.long		= All incoming messages are moderated
+	n.short		= Text Editing
+	n.long		= Allow remote administrators to edit files in dir/text/
+	o.short		= Others  rejected
+	o.long		= Posts from addresses other than moderators are rejected
+	p.short		= Public
+	p.long		= List will respond to administrative requests and archive retrieval
+	q.short		= Service Request Address
+	q.long		= Process commands sent in the subject to local-request@host
+	r.short		= Remote Admin
+	r.long		= Enable remote adminstration of the list
+	s.short		= Subscription Moderation
+	s.long		= Subscriptions to the main list and digest will be moderated
+	t.short		= Trailer
+	t.long		= Add a trailer to outgoing messages
+	u.short		= User Posts Only
+	u.long		= Posts from unrecognized SENDER addresses will be rejected
+#	v => version. I doubt you will really need this ;-)
+	w.short		= Remove Warn
+	w.long		= Remove the ezmlm-warn(1) invocations from the list setup. It is assumed that ezmlm-warn(1) is run by other means
+	x.short		= Extra
+	x.long		= Strip certain mimetypes, etc
+#	y => not used
+#	z => not used
+     }
+
+     Settings {
+	0.short 	= Sublist
+	0.long		= Make the list a sublist of list mainlist@host
+	0.default	= mainlist@host
+#	1 => not used
+#	2 => not used
+	3.short		= From Address
+	3.long		= Replace the &quot;From:&quot; header of the message with &quot;From: fromarg&quot;
+	3.default	= fromarg
+	4.short		= Digest Options
+	4.long		= Switches for ezmlm-tstdig(1)
+	4.default	= -t24 -m30 -k64
+	5.short		= List Owner
+	5.default	= The email address of the list owner
+	6.short		= SQL Database
+	6.long		= SQL database connect information. Requires SQL support
+	6.default	= host:port:user:password:datab:table
+	7.short		= Message Moderation Path
+	7.long		= Make /path the path to the database for message moderators, if the list is set up for message moderation
+	7.default	= /some/full/path
+	8.short		= Subscription Moderation Path
+	8.long		= Make /path the path to the database for message moderators, if the list is set up for message moderation
+	8.default	= /some/full/path
+	9.short		= Remote Admin Path
+	9.long		= Make /path the path to the database for message moderators, if the list is set up for message moderation
+	9.default	= /some/full/path
+      }
+
+
+    Helper {
+	AddAddress	= You may enter any RFC822 compliant email address here, including the comment part. For example; 'J Random User <jru@on.web.za>'
+	AddAddressFile	= or you may enter the filename of a plain text file containing multiple RFC822 email addresses, one per line
+	Moderator	= Moderators: people who control who may subscribe or post to a list
+	Deny		= Deny: A list of addresses that are _never_ allowed to mail the list
+	Allow		= Allow: A list of address that are allowed to mail the list even if the configuration otherwise restricts it
+	Digest		= Digest: People who will recieve a digest of all messages on the list
+	WebArch		= View the web based archive of this list
+	Config		= This lets you alter the way the list is set up
+	ListName	= This is the name of the list as displayed on the Select Lists screen. It is also the name of the subdirectory that contains the list
+	ListAdd		= This is the email address of the list. Note that the defaults come from your qmail config. You should just update the local part (before the @)
+	WebUsers	= NB! At this stage, any users specified here must exist. User creation may be added in future versions
+	Prefix		= Text to add to the subject line of all outgoing messages
+	HeaderRemove	= This is a list of headers to remove from all outgoing mail
+	HeaderAdd	= This is a list of headers to add to all outging mail
+	MimeRemove	= All messages whose Content-Type matches these mime types will be bounced back to sender
+	AllowEdit	= Comma separated list of usernames, or 'ALL' (all valid users)
+	MysqlCreate	= This will create the necessary MySQL tables if the list configuration above requires it
+	SelectList	= Go back to list selection
+      }
+
+
+    Misc {
+	ListSelectDescription {
+		1	= choose a mailing list from the selection box or click on [Create List]
+		2	= click on the [Edit] button if you want to edit the selected list
+		3	= click on the [Delete] button if you want to delete the selected list
+	  }
+	UnknownAction	= Action not yet implemented
+	ConfirmDelete	= Confirm deletion of
+	SubscribersTo	= Subscribers to
+	Subscribers	= subscribers
+	AdditionalParts = Additional list parts
+	Posting		= Posting
+	Subscription	= Subscription
+	RemoteAdmin	= Remote Admin
+	For		= for
+	  # as in; "moderators for ..."
+	CreateNew	= Create a New List
+	ListName	= List Name
+	ListAddress	= List Address
+	ListOptions	= List Options
+	AllowedToEdit	= Users allowed to edit this list
+	EditConfiguration = Edit the List Configuration
+	Prefix		= Subject prefex for outgoing messages
+	HeaderRemove	= Headers to strip from all outgoing mail
+	HeaderAdd	= Headers to add to all outgoing mail
+	MimeRemove	= Mime types to strip from all outgoing mail
+	EditTextInfo	= The box on the left contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user request, or as part of all outgoing messages<br/>To edit a file, select its name from the box. Then click on the [Edit File] button. Press [cancel] when you have finished editing.
+	EditingFile	= Editing File
+	EditFileInfo	= <big><strong>ezmlm-manage</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br><tt><strong>&lt;#A#&gt;</strong></tt>The subscription address<br><tt><strong>&lt;#R#&gt;</strong></tt> The address a subscriber must reply to<p/><big><strong>ezmlm-store</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br/><tt><strong>&lt;#A#&gt;</strong></tt>The acceptance address<br/><tt><strong>&lt;#R#&gt;</strong></tt> The rejection address</ul>
+	mysqlCreate	= Create the MySQL database tables if necessary
+	SuggestEdit	= You will have to edit them manually.
+	PostModPathWarn = Posting Moderators are stored in a non-standard location
+	SubModPathWarn	= Subscriber Moderators are stored in a non-standard location
+	RemotePathWarn	= Remote Administrators are stored in a non-standard location
+      }
+}
