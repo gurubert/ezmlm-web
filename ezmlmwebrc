@@ -20,6 +20,10 @@ $WEBUSERS_FILE = "$LIST_DIR/webusers";
 # usually something like /usr/local/share/ezmlm-web/lang
 $LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
 
+# Where are the template files
+# usually something like /usr/local/share/ezmlm-web/template
+$TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
+
 # Safe list deletion? 
 # 0 = move list to .list and the .qmails to deleted.qmail/. Recoverable :)
 # 1 = allow user to delete list completely. No backup, therefore no recovery.

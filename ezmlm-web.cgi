@@ -71,9 +71,6 @@ use vars qw[%HELPER $HELP_ICON_URL $HTML_HEADER $HTML_FOOTER $HTML_TEXT $HTML_LI
 use vars qw[%BUTTON %LANGUAGE $HTML_VLINK $HTML_TITLE $FILE_UPLOAD $WEBUSERS_FILE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR];
 
-#TODO: interim
-$TEMPLATE_DIR = "/root/clearsilver/template";
-
 # pagedata contains the hdf tree for clearsilver
 # pagename refers to the template file that should be used
 use vars qw[$pagedata $pagename];

@@ -19,6 +19,7 @@
 	      <?cs else ?>
 		<?cs set:Data.ScrollSize = Data.SubscribersCount ?>
 	    <?cs /if ?>
+	    <!-- TODO: this div should float to left - the buttons should be at the right -->
 	    <select name="delsubscriber" tabindex="1" size="<?cs var:Data.ScrollSize ?>" multiple="yes">
 		<?cs each:item = Data.Subscribers ?>
 		    <option><?cs var:item ?></option>
@@ -31,13 +32,14 @@
 		    <span class="button"><input type="submit" name="action" tabindex="2"
 			value="<?cs var:Lang.Buttons.DeleteAddress ?>"></span>
 		<?cs /if ?>
-		<span class="formfield"><input type="text" name="addsubscriber"
-			tabindex="3" size="40"/><?cs call:help_icon("AddAddress") ?></span>
+		<!-- TODO: das helper icon ist erst in der naechsten Zeile -->
+		<p class="formfield"><input type="text" name="addsubscriber"
+			tabindex="3" size="40"/><?cs call:help_icon("AddAddress") ?></p>
 		<!-- TODO: eventuell ein BR einfuegen -->
-		<span class="formfield"><input type="file" name="addfile" size="20"
-			maxlength="100" tabindex="4"/><?cs call:help_icon("AddAddressFile") ?></span>
-		<span class="button"><input type="submit" tabindex="5" name="action"
-		      value="<?cs var:Lang.Buttons.AddAddress ?>"/></span>
+		<p class="formfield"><input type="file" name="addfile" size="20"
+			maxlength="100" tabindex="4"/><?cs call:help_icon("AddAddressFile") ?></p>
+		<p class="button"><input type="submit" tabindex="5" name="action"
+		      value="<?cs var:Lang.Buttons.AddAddress ?>"/></p>
 	    </div>
 	    <div class="options">
 		<?cs if:Data.ConfigAvail.Extras ?>

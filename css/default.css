@@ -61,13 +61,10 @@ div.add_remove span.formfield {
 	padding: 0px;
 	}
 
-div.add_remove span.formfield:before {
-	content: attr("<br>");
-	}
-
 div.list {
 	margin: 1%;
 	margin-right: 3%;
+	width: 30%;
 	text-align: center;
 	float: left;
 	margin-bottom: auto;
