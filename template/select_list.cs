@@ -43,15 +43,15 @@
 	    <div class="add_remove">
 		<?cs if:(Data.Permissions.Create == 1) ?>
 	    	<!-- button "create" -->
-		    <span class="button"><input type="submit" tabindex="2" name="action"
-			value="<?cs var:Lang.Buttons.Create ?>" /></span>
+		    <button type="submit" tabindex="2" name="action"
+			value="create_list"><?cs var:Lang.Buttons.Create ?></button>
 		<?cs /if ?>
 		<?cs if:(Data.ListsCount > 0) ?>
 		<!-- buttons: "edit" and "delete" -->
-		    <span class="button"><input type="submit" tabindex="3" name="action"
-			value="<?cs var:Lang.Buttons.Edit ?>" /></span>
-		    <span class="button"><input type="submit" tabindex="4" name="action"
-			value="<?cs var:Lang.Buttons.Delete ?>" /></span>
+		    <button type="submit" tabindex="3" name="action"
+			value="edit_list"><?cs var:Lang.Buttons.Edit ?></button>
+		    <button type="submit" tabindex="4" name="action"
+			value="delete_list"><?cs var:Lang.Buttons.Delete ?></button>
 		<?cs /if ?>
 	    </div>
 	</form>

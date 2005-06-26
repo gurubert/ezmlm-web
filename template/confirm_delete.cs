@@ -10,10 +10,8 @@
 	<div class="title">
 	    <h2><?cs var:Lang.Misc.ConfirmDelete ?> <i><?cs var:Data.List.Name ?></i></h2>
 	    <div class="question">
-		<span class="button"><input type="submit" name="confirm"
-			value="<?cs var:Lang.Buttons.Yes ?>" tabindex="1"></span>
-		<span class="button"><input type="submit" name="confirm"
-			value="<?cs var:Lang.Buttons.No ?>" tabindex="2"></span>
+		<button type="submit" name="confirm" tabindex="1" value="yes"><?cs var:Lang.Buttons.Yes ?></button>
+		<button type="submit" name="confirm" tabindex="2" value="no"><?cs var:Lang.Buttons.No ?></button>
 	    </div>
 	</div>
     </form>

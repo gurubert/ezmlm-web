@@ -19,12 +19,9 @@
 	</div>
 
 	<div class="question">
-	    <span class="button"><input type="submit" name="action"
-	      value="<?cs var:Lang.Buttons.SaveFile ?>"></span>
-	    <span class="button"><input type="reset" name="action"
-	      value="<?cs var:Lang.Buttons.ResetForm ?>"></span>
-	    <span class="button"><input type="submit" name="action"
-	      value="<?cs var:Lang.Buttons.Cancel ?>"></span>
+	    <button type="submit" name="action" value="save_file"><?cs var:Lang.Buttons.SaveFile ?></button>
+	    <button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
+	    <button type="submit" name="action" value="cancel"><?cs var:Lang.Buttons.Cancel ?></button>
 	</div>
 
     </form>

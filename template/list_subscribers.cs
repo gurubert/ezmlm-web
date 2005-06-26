@@ -38,8 +38,7 @@
 	    <div class="add_remove">
 		<?cs if:(Data.List.SubscribersCount > 0) ?> 
 		    <p><?cs var:Data.List.SubscribersCount ?> <?cs var:Lang.Misc.Subscribers ?></p>
-		    <span class="button"><input type="submit" name="action" tabindex="2"
-			value="<?cs var:Lang.Buttons.DeleteAddress ?>"></span>
+		    <button type="submit" name="action" tabindex="2" value="delete_address"><?cs var:Lang.Buttons.DeleteAddress ?></button>
 		<?cs /if ?>
 		<!-- TODO: das helper icon ist erst in der naechsten Zeile -->
 		<p class="formfield"><input type="text" name="addsubscriber"
@@ -49,14 +48,13 @@
 		    <p class="formfield"><input type="file" name="addfile" size="20"
 			maxlength="100" tabindex="4"/><?cs call:help_icon("AddAddressFile") ?></p>
 		<?cs /if ?>
-		<p class="button"><input type="submit" tabindex="5" name="action"
-		      value="<?cs var:Lang.Buttons.AddAddress ?>"/></p>
+		<button type="submit" tabindex="5" name="action" value="add_address"><?cs var:Lang.Buttons.AddAddress ?></button>
 	    </div>
 
 	    <?cs if:Data.List.PartType ?>
-		    <span class="button"><input type="submit" tabindex="11" name="action"
-			value="<?cs var:Lang.Buttons.Configuration ?>"/>
-			<?cs call:help_icon("Config") ?></span>
+		<button type="submit" tabindex="11" name="action"
+		    value="list_config"><?cs var:Lang.Buttons.Configuration ?></button>
+		    <?cs call:help_icon("Config") ?>
 	    <?cs else ?>
 		<div class="options">
 		    <?cs if:Data.ConfigAvail.Extras ?>
@@ -66,49 +64,49 @@
 		    <p>
 		    <?cs if:Data.ConfigAvail.Moderation ?>
 		    <!-- moderation -->
-			<span class="button"><input type="submit" tabindex="6" name="action"
-			    value="<?cs var:Lang.Buttons.Moderators ?>"/>
-			    <?cs call:help_icon("Moderator") ?></span>
+			<button type="submit" tabindex="6" name="action"
+			    value="part_mod"><?cs var:Lang.Buttons.Moderators ?></button>
+			    <?cs call:help_icon("Moderator") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.DenyList ?>
 		    <!-- deny lists -->
-			<span class="button"><input type="submit" tabindex="7" name="action"
-			    value="<?cs var:Lang.Buttons.DenyList ?>"/>
-			    <?cs call:help_icon("Deny") ?></span>
+			<button type="submit" tabindex="7" name="action"
+			    value="part_deny"><?cs var:Lang.Buttons.DenyList ?></button>
+			    <?cs call:help_icon("Deny") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.AllowList ?>
 		    <!-- allow lists -->
-			<span class="button"><input type="submit" tabindex="8" name="action"
-			    value="<?cs var:Lang.Buttons.AllowList ?>"/>
-			    <?cs call:help_icon("Allow") ?></span>
+			<button type="submit" tabindex="8" name="action"
+			    value="part_allow"><?cs var:Lang.Buttons.AllowList ?></button>
+			    <?cs call:help_icon("Allow") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.Digest ?>
 		    <!-- digest subscribers -->
-			<span class="button"><input type="submit" tabindex="9" name="action"
-			    value="<?cs var:Lang.Buttons.DigestSubscribers ?>"/>
-			    <?cs call:help_icon("Digest") ?></span>
+			<button type="submit" tabindex="9" name="action"
+			    value="part_digest"><?cs var:Lang.Buttons.DigestSubscribers ?></button>
+			    <?cs call:help_icon("Digest") ?>
 		    <?cs /if ?>
 		    </p>
 
 		    <p>
 		    <!-- web archive -->
 		    <?cs if:Data.ConfigAvail.WebArch ?>
-			<span class="button"><input type="submit" tabindex="10" name="action"
-			    value="<?cs var:Lang.Buttons.WebArchive ?>"/>
-			    <?cs call:help_icon("WebArch") ?></span>
+			<button type="submit" tabindex="10" name="action"
+			    value="web_archive"><?cs var:Lang.Buttons.WebArchive ?></button>
+			    <?cs call:help_icon("WebArchive") ?>
 		    <?cs /if ?>
 
 		    <!-- extra config options -->
-		    <span class="button"><input type="submit" tabindex="11" name="action"
-			value="<?cs var:Lang.Buttons.Configuration ?>"/>
-			<?cs call:help_icon("Config") ?></span>
+		    <button type="submit" tabindex="11" name="action"
+			value="list_config"><?cs var:Lang.Buttons.Configuration ?></button>
+			<?cs call:help_icon("Config") ?>
 
-		    <span class="button"><input type="submit" tabindex="12" name="action"
-			value="<?cs var:Lang.Buttons.SelectList ?>"/>
-			<?cs call:help_icon("SelectList") ?></span>
+		    <button type="submit" tabindex="12" name="action"
+			value="select_list"><?cs var:Lang.Buttons.SelectList ?></button>
+			<?cs call:help_icon("SelectList") ?>
 		    </p>
 		
 		</div>

@@ -109,7 +109,7 @@ close GETHOST;
 &untaint;
 
 # redirect must come before headers are printed
-if(defined($q->param('action')) && $q->param('action') eq '[Web Archive]') {
+if(defined($q->param('action')) && $q->param('action') eq 'web_archive') {
    print $q->redirect(&ezmlmcgirc);
    exit;
 }
@@ -130,12 +130,12 @@ unless (defined($q->param('state'))) {
 } elsif ($q->param('state') eq 'select') {
    # User selects an action to perform on a list ...
    
-   if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.Create","unknown button")) { # Create a new list ...
+   if ($q->param('action') eq 'create_list') { # Create a new list ...
       $pagename = 'create_list';
    } elsif (defined($q->param('list'))) {
-      if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.Edit","unknown button")) { # Edit an existing list ...
+      if ($q->param('action') eq 'edit_list') { # Edit an existing list ...
          $pagename = 'list_subscribers';
-      } elsif ($q->param('action') eq $pagedata->getValue("Lang.Buttons.Delete","unknown button")) { # Delete a list ...
+      } elsif ($q->param('action') eq 'delete_list') { # Delete a list ...
 	$pagename = 'confirm_delete';
       }
    } else {
@@ -147,30 +147,30 @@ unless (defined($q->param('state'))) {
 
    $pagename = 'list_subscribers';
    
-   if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.DeleteAddress","unknown button")) { # Delete a subscriber ...
+   if ($q->param('action') eq 'delete_address') { # Delete a subscriber ...
       &delete_address();
    
-   } elsif ($q->param('action') eq $pagedata->getValue("Lang.Buttons.AddAddress","unknown button")) { # Add a subscriber ...
+   } elsif ($q->param('action') eq 'add_address') { # Add a subscriber ...
       &add_address();
    
-   } elsif ($q->param('action') eq $pagedata->getValue("Lang.Buttons.Configuration","unknown button")) { # Edit the config ...
+   } elsif ($q->param('action') eq 'list_config') { # Edit the config ...
       $pagename = 'list_config';
 
-   } elsif ($q->param('action') eq $pagedata->getValue("Lang.Buttons.Cancel","unknown button")) { # Cancel - Return a screen ...
+   } elsif ($q->param('action') eq 'cancel') { # Cancel - Return a screen ...
       $pagename = 'select_list';
    }
 
 } elsif ($q->param('state') eq 'confirm_delete') {
    # User wants to delete a list ...
    
-   &delete_list if($q->param('confirm') eq $pagedata->getValue("Lang.Buttons.Yes","unknown button")); # Do it ...
+   &delete_list if($q->param('confirm') eq 'yes'); # Do it ...
    $q->delete_all;
    $pagename = 'select_list';
 
 } elsif ($q->param('state') eq 'create') {
    # User wants to create a list ...
 
-   if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.CreateList","unknown button")) {
+   if ($q->param('action') eq 'create_list') {
       if (&create_list) { # Return if list creation is unsuccessful ...
          $pagename = 'create_list';
       } else {
@@ -184,11 +184,11 @@ unless (defined($q->param('state'))) {
 } elsif ($q->param('state') eq 'configuration') {
    # User updates configuration ...
    
-   if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.UpdateConfiguration","unknown button")) { # Save current settings ...
+   if ($q->param('action') eq 'update_config') { # Save current settings ...
       &update_config;
       $pagename = 'list_subscribers';
       
-   } elsif ($q->param('action') eq $pagedata->getValue("Lang.Buttons.EditTexts","unknown button")) { # Edit DIR/text ...
+   } elsif ($q->param('action') eq 'list_textfiles') { # Edit DIR/text ...
       $pagename = 'list_textfiles';
    
    } else { # Cancel - Return to list editing screen ...
@@ -198,7 +198,7 @@ unless (defined($q->param('state'))) {
 } elsif ($q->param('state') eq 'list_text') {
    # User wants to edit texts associated with the list ...
    
-   if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.EditFile","unknown button")) {
+   if ($q->param('action') eq 'edit_file') {
       $pagename = 'edit_text';
    } else {
       $pagename = 'list_config'; # Cancel ...
@@ -207,12 +207,10 @@ unless (defined($q->param('state'))) {
 } elsif ($q->param('state') eq 'edit_text') {   
    # User wants to save a new version of something in DIR/text ...
    
-   &save_text if ($q->param('action') eq $pagedata->getValue("Lang.Buttons.SaveFile","unknown button"));
+   &save_text if ($q->param('action') eq 'save_file');
    $pagename = 'list_textfiles';
    
 } else {
-   $pagedata->setValue("Data.Action", $q->param('action'));
-   $pagedata->setValue("Data.Status", "unknown action");
    $pagename = 'select_list';
 } 
 
@@ -452,16 +450,16 @@ sub get_list_part
 	my $action = $q->param('action');
 
 	# moderators list?
-	return 'mod' if ($action eq $pagedata->getValue("Lang.Buttons.Moderators","unknown button"));
+	return 'mod' if ($action eq 'part_mod');
 
 	# deny list?
-	return 'deny' if ($action eq $pagedata->getValue("Lang.Buttons.DenyList","unknown button"));
+	return 'deny' if ($action eq 'part_deny');
 
 	# allow list?
-	return 'allow' if ($action eq $pagedata->getValue("Lang.Buttons.AllowList","unknown button"));
+	return 'allow' if ($action eq 'part_allow');
 
 	# digest list?
-	return 'digest' if ($action eq $pagedata->getValue("Lang.Buttons.DigestSubscribers","unknown button"));
+	return 'digest' if ($action eq 'part_digest');
 }
 
 # ---------------------------------------------------------------------------
@@ -803,7 +801,7 @@ sub update_webusers {
       while(<TMP>) {
 		print WU unless (/^$Q::list\s*:/);
 	}
-	print WU $q->param('list') . ': ' $q->param('webusers') . "\n";
+	print WU $q->param('list') . ': ' . $q->param('webusers') . "\n";
       close TMP; close WU;
       unlink "/tmp/ezmlm-web.$$";
    }

@@ -31,12 +31,9 @@
     </div>
 
     <div class="question">
-	<span class="button"><input type="submit" name="action"
-	  value="<?cs var:Lang.Buttons.Create ?>"></span>
-	<span class="button"><input type="reset" name="action"
-	  value="<?cs var:Lang.Buttons.ResetForm ?>"></span>
-	<span class="button"><input type="submit" name="action"
-	  value="<?cs var:Lang.Buttons.Cancel ?>"></span>
+	<button type="submit" name="action" value="create_list"><?cs var:Lang.Buttons.Create ?></button>
+	<button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
+	<button type="submit" name="action" value="cancel"><?cs var:Lang.Buttons.Cancel ?></button>
     </div>
   </form>
 
