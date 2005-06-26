@@ -242,6 +242,8 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
+	&error_die("invalid action - ask the administrator for help") if ($pagename eq '');
+
 	my $pagefile = $TEMPLATE_DIR . "/" . $pagename . ".cs";
 	die "template ($pagefile) not found!" unless (-e "$pagefile");
 
@@ -925,7 +927,7 @@ sub rmtree {
 # ------------------------------------------------------------------------
 
 sub error_die {
-	my $msg = @_;
+	my $msg = shift;
 	$pagedata->setValue("Data.ErrorMessage", "$msg");
 	# TODO: besser waere eine Warnung in header.cs
 	$pagename = 'error';

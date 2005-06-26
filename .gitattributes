@@ -17,6 +17,7 @@ template/confirm_delete.cs -text
 template/create_list.cs -text
 template/display_options.cs -text
 template/edit_text.cs -text
+template/error.cs -text
 template/footer.cs -text
 template/header.cs -text
 template/list_config.cs -text
