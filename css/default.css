@@ -54,7 +54,7 @@ div.add_remove span.button {
 	margin-right: auto;
 	}
 
-div.add_remove span.formfield {
+div.add_remove div.formfield {
 	width: auto;
 	margin: 0px;
 	margin-right: auto;
@@ -64,7 +64,6 @@ div.add_remove span.formfield {
 div.list {
 	margin: 1%;
 	margin-right: 3%;
-	width: 30%;
 	text-align: center;
 	float: left;
 	margin-bottom: auto;

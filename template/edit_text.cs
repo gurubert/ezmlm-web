@@ -6,7 +6,7 @@
 
     <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 	<input type="hidden" name="state" value="edit_text">
-	<input type="hidden" name="list" value="<?cs var:Data.ListName ?>">
+	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 	<input type="hidden" name="file" value="<?cs var:Data.File.Name ?>">
 	
 	<div class="input">

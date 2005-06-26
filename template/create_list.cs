@@ -16,7 +16,7 @@
 
 	<?cs include:TemplateDir + "display_options.cs" ?>
 
-	<?cs if:Data.mysqlModule ?>
+	<?cs if:Data.Modules.mySQL ?>
 	<!-- Allow creation of mysql table if the module allows it -->
 		<span class="formfield"><input type="checkbox" name="sql"label="<?cs var:Lang.Misc.mysqlCreate ?>" on="1"><?cs call:help_icon("mysqlCreate") ?></span>
 	<?cs /if ?>

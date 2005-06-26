@@ -29,6 +29,24 @@ Lang {
       }
 
 
+    ErrorMessages {
+    	Forbidden			= Error: you are not allowed to do this!
+	# this message will be followed by the directory
+	ListDirAccessDenied		= Unable to access the list's directory:
+	# this message will be followed by the directory
+	TextDirAccessDenied		= Unable to access the list's directory of text files:
+	# this message will be followed by the source and destination directory: (SRC -> DEST)
+	SafeRemoveRenameDirFailed	= Unable to rename list for safe removal:
+	# this message will be followed by the directory
+	DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files:
+	# this message will be followed by the source and destination directory: (SRC -> DEST)
+	SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files:
+	# this message will be followed by the directory
+	UnsafeRemoveListDirFailed	= Unable to delete list:
+	# this message will be followed by the directory
+	UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files:
+      }
+
     Options {
 	a.short		= Archived
 	a.long		= Ezmlm will archive new messages

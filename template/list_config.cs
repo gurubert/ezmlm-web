@@ -7,10 +7,10 @@
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="state" value="configuration">
-    <input type="hidden" name="list" value="<?cs var:Data.ListName ?>">
+    <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
     <div class="info">
-	<p><?cs var:Lang.Misc.ListName ?>: <em><?cs var:Data.ListName ?></em></p>
-	<p><?cs var:Lang.Misc.ListAddress ?>: <em><?cs var:Data.ListAddress ?></em></p>
+	<p><?cs var:Lang.Misc.ListName ?>: <em><?cs var:Data.List.Name ?></em></p>
+	<p><?cs var:Lang.Misc.ListAddress ?>: <em><?cs var:Data.List.Address ?></em></p>
     </div>
 
     <div class="input">
