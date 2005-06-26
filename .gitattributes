@@ -5,6 +5,7 @@
 /TODO -text
 /UPGRADING -text
 css/default.css -text
+css/ezmlm-web-help.gif -text
 /ezmlm-web.cgi -text
 /ezmlmwebrc -text
 /htaccess.sample -text

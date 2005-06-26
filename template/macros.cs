@@ -3,9 +3,17 @@
 	if:(name(item) == helpname)
 	    ?>&nbsp<img src="<?cs var:HelpIconURL ?>" title="<?cs var:item ?>"/><?cs
 	/if ?><?cs
-    /each ?>
-<?cs /def ?>
+    /each ?><?cs
+ /def ?>
+
+<?cs def:help_title(helpname) ?><?cs
+    each:item = Lang.Helper ?><?cs 
+	if:(name(item) == helpname)
+	    ?>title="<?cs var:item ?>"<?cs
+	/if ?><?cs
+    /each ?><?cs
+ /def ?>
 
 <?cs def:generic_icon(helptext)
-	?>&nbsp<img src="<?cs var:HelpIconURL ?>" title="<?cs var:helptext ?>"/>
-<?cs /def ?>
+	?>&nbsp<img src="<?cs var:HelpIconURL ?>" title="<?cs var:helptext ?>"/><?cs
+ /def ?>

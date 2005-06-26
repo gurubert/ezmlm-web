@@ -133,10 +133,10 @@ Lang {
 	Deny		= Deny: A list of addresses that are _never_ allowed to mail the list
 	Allow		= Allow: A list of address that are allowed to mail the list even if the configuration otherwise restricts it
 	Digest		= Digest: People who will recieve a digest of all messages on the list
-	WebArch		= View the web based archive of this list
+	WebArchive	= View the web based archive of this list
 	Config		= This lets you alter the way the list is set up
 	ListName	= This is the name of the list as displayed on the Select Lists screen. It is also the name of the subdirectory that contains the list
-	ListAdd		= This is the email address of the list. Note that the defaults come from your qmail config. You should just update the local part (before the @)
+	ListAdddress	= This is the email address of the list. Note that the defaults come from your qmail config. You should just update the local part (before the @)
 	WebUsers	= NB! At this stage, any users specified here must exist. User creation may be added in future versions
 	Prefix		= Text to add to the subject line of all outgoing messages
 	HeaderRemove	= This is a list of headers to remove from all outgoing mail

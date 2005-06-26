@@ -20,21 +20,25 @@
 
 	<?cs if:Data.List.Prefix ?>
 	  <div class="formfield"><?cs var:Lang.Misc.Prefix ?>: <input type="text" name="prefix"
-	    value="<?cs var:Data.List.Prefix ?>" size="12"><?cs call:help_icon("Prefix") ?></div>
+	    value="<?cs var:Data.List.Prefix ?>" <?cs call:help_title("Prefix") ?> size="12"><?cs call:help_icon("Prefix") ?></div>
 	<?cs /if ?>
 	<div class="formfield"><?cs var:Lang.Misc.HeaderRemove ?>:<?cs call:help_icon("HeaderRemove") ?>
-	  <br/><textarea name="headerremove" rows="5" cols="70"><?cs var:Data.List.HeaderRemove ?></textarea></div>
+	  <br/><textarea name="headerremove" <?cs call:help_title("HeaderRemove") ?>
+	  rows="5" cols="70"><?cs var:Data.List.HeaderRemove ?></textarea></div>
 	<div class="formfield"><?cs var:Lang.Misc.HeaderAdd ?>:<?cs call:help_icon("HeaderAdd") ?>
-	  <br/><textarea name="headeradd" rows="5" cols="70"><?cs var:Data.List.HeaderAdd ?></textarea></div>
+	  <br/><textarea name="headeradd" <?cs call:help_title("HeaderAdd") ?>
+	  rows="5" cols="70"><?cs var:Data.List.HeaderAdd ?></textarea></div>
 	<?cs if:Data.List.MimeRemove ?>
 	  <div class="formfield"><?cs var:Lang.Misc.MimeRemove ?>:<?cs call:help_icon("MimeRemove") ?>
-	    <br/><textarea name="mimeremove" rows="5" cols="70"><?cs var:Data.List.MimeRemove ?></textarea></div>
+	    <br/><textarea name="mimeremove" <?cs call:help_title("MimeRemove") ?>
+	    rows="5" cols="70"><?cs var:Data.List.MimeRemove ?></textarea></div>
 	<?cs /if ?>
 
 	<?cs if:Data.List.WebUsers ?>
 	  <div>
 	    <span class="formfield"><?cs var:Lang.Misc.AllowedToEdit ?>: <input type="text"
-	      name="webusers" value="<?cs var:Data.List.WebUsers ?>" size="30">
+	      name="webusers" value="<?cs var:Data.List.WebUsers ?>"
+	      <?cs call:help_title("WebUsers") ?> size="30">
 	      <cs call:help_icon("WebUsers") ?></span>
 	    <span class="help"><?cs var:Lang.Helper.AllowEdit ?></span>
 	  </div>

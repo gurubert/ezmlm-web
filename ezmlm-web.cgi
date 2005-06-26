@@ -352,7 +352,7 @@ sub set_pagedata4list
 	$pagedata->setValue("Data.ConfigAvail.DenyList", 1) if ($list->isdeny);
 	$pagedata->setValue("Data.ConfigAvail.AllowList", 1) if ($list->isallow);
 	$pagedata->setValue("Data.ConfigAvail.Digest", 1) if ($list->isdigest);
-	$pagedata->setValue("Data.ConfigAvail.WebArch", 1) if(&ezmlmcgirc);
+	$pagedata->setValue("Data.ConfigAvail.WebArchive", 1) if(&ezmlmcgirc);
 
 	# Get the contents of the headeradd, headerremove, mimeremove and prefix files
 	$pagedata->setValue("Data.List.Prefix", $list->getpart('prefix'));

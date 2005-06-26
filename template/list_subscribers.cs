@@ -42,10 +42,12 @@
 		<?cs /if ?>
 		<!-- TODO: das helper icon ist erst in der naechsten Zeile -->
 		<p class="formfield"><input type="text" name="addsubscriber"
+			<?cs call:help_title("AddAddress") ?>
 			tabindex="3" size="40"/><?cs call:help_icon("AddAddress") ?></p>
 		<!-- TODO: eventuell ein BR einfuegen -->
 		<?cs if:Data.Permissions.FileUpload ?>
 		    <p class="formfield"><input type="file" name="addfile" size="20"
+			<?cs call:help_title("AddAddressFile") ?>
 			maxlength="100" tabindex="4"/><?cs call:help_icon("AddAddressFile") ?></p>
 		<?cs /if ?>
 		<button type="submit" tabindex="5" name="action" value="add_address"><?cs var:Lang.Buttons.AddAddress ?></button>
@@ -53,8 +55,8 @@
 
 	    <?cs if:Data.List.PartType ?>
 		<button type="submit" tabindex="11" name="action"
-		    value="list_config"><?cs var:Lang.Buttons.Configuration ?></button>
-		    <?cs call:help_icon("Config") ?>
+		    <?cs call:help_title("Config") ?> value="list_config">
+		    <?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
 	    <?cs else ?>
 		<div class="options">
 		    <?cs if:Data.ConfigAvail.Extras ?>
@@ -65,48 +67,48 @@
 		    <?cs if:Data.ConfigAvail.Moderation ?>
 		    <!-- moderation -->
 			<button type="submit" tabindex="6" name="action"
-			    value="part_mod"><?cs var:Lang.Buttons.Moderators ?></button>
-			    <?cs call:help_icon("Moderator") ?>
+			    <?cs call:help_title("Moderator") ?> value="part_mod">
+			    <?cs var:Lang.Buttons.Moderators ?></button><?cs call:help_icon("Moderator") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.DenyList ?>
 		    <!-- deny lists -->
 			<button type="submit" tabindex="7" name="action"
-			    value="part_deny"><?cs var:Lang.Buttons.DenyList ?></button>
-			    <?cs call:help_icon("Deny") ?>
+			    <?cs call:help_title("DenyList") ?> value="part_deny">
+			    <?cs var:Lang.Buttons.DenyList ?></button><?cs call:help_icon("Deny") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.AllowList ?>
 		    <!-- allow lists -->
 			<button type="submit" tabindex="8" name="action"
-			    value="part_allow"><?cs var:Lang.Buttons.AllowList ?></button>
-			    <?cs call:help_icon("Allow") ?>
+			    <?cs call:help_title("Allow" ?> value="part_allow">
+			    <?cs var:Lang.Buttons.AllowList ?></button><?cs call:help_icon("Allow") ?>
 		    <?cs /if ?>
 
 		    <?cs if:Data.ConfigAvail.Digest ?>
 		    <!-- digest subscribers -->
 			<button type="submit" tabindex="9" name="action"
-			    value="part_digest"><?cs var:Lang.Buttons.DigestSubscribers ?></button>
-			    <?cs call:help_icon("Digest") ?>
+			    <?cs call:help_title("Digest") ?> value="part_digest">
+			    <?cs var:Lang.Buttons.DigestSubscribers ?></button><?cs call:help_icon("Digest") ?>
 		    <?cs /if ?>
 		    </p>
 
 		    <p>
 		    <!-- web archive -->
-		    <?cs if:Data.ConfigAvail.WebArch ?>
+		    <?cs if:Data.ConfigAvail.WebArchive ?>
 			<button type="submit" tabindex="10" name="action"
-			    value="web_archive"><?cs var:Lang.Buttons.WebArchive ?></button>
-			    <?cs call:help_icon("WebArchive") ?>
+			    <?cs call:help_title("WebArchive") ?> value="web_archive">
+			    <?cs var:Lang.Buttons.WebArchive ?></button><?cs call:help_icon("WebArchive") ?>
 		    <?cs /if ?>
 
 		    <!-- extra config options -->
 		    <button type="submit" tabindex="11" name="action"
-			value="list_config"><?cs var:Lang.Buttons.Configuration ?></button>
-			<?cs call:help_icon("Config") ?>
+		        <?cs call:help_title("Config") ?> value="list_config">
+			<?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
 
 		    <button type="submit" tabindex="12" name="action"
-			value="select_list"><?cs var:Lang.Buttons.SelectList ?></button>
-			<?cs call:help_icon("SelectList") ?>
+		        <?cs call:help_title("SelectList") ?> value="select_list">
+			<?cs var:Lang.Buttons.SelectList ?></button><?cs call:help_icon("SelectList") ?>
 		    </p>
 		
 		</div>
