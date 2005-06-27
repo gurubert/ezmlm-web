@@ -7,7 +7,6 @@
 
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="state" value="create">
     <div class="input">
 	<span class="formfield"><?cs var:Lang.Misc.ListName ?>: <input type="text" name="list"
 		<?cs call:help_title("ListName") ?> size="20"><?cs call:help_icon("ListName") ?></span>
@@ -35,9 +34,8 @@
     </div>
 
     <div class="question">
-	<button type="submit" name="action" value="create_list"><?cs var:Lang.Buttons.Create ?></button>
+	<button type="submit" name="action" value="create_list_do"><?cs var:Lang.Buttons.Create ?></button>
 	<button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
-	<button type="submit" name="action" value="cancel"><?cs var:Lang.Buttons.Cancel ?></button>
     </div>
   </form>
 

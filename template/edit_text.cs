@@ -5,7 +5,6 @@
     </div>
 
     <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-	<input type="hidden" name="state" value="edit_text">
 	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 	<input type="hidden" name="file" value="<?cs var:Data.File.Name ?>">
 	
@@ -19,9 +18,8 @@
 	</div>
 
 	<div class="question">
-	    <button type="submit" name="action" value="save_file"><?cs var:Lang.Buttons.SaveFile ?></button>
+	    <button type="submit" name="action" value="edit_text_do"><?cs var:Lang.Buttons.SaveFile ?></button>
 	    <button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
-	    <button type="submit" name="action" value="cancel"><?cs var:Lang.Buttons.Cancel ?></button>
 	</div>
 
     </form>

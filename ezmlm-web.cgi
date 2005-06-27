@@ -121,98 +121,69 @@ my $pagedata = load_hdf();
 
 &set_pagedata();
 
+my $action = $q->param('action');
+
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
-unless (defined($q->param('state'))) {
-   # Default action. Present a list of available lists to the user ...
-   $pagename = 'select_list';
-
-} elsif ($q->param('state') eq 'select') {
-   # User selects an action to perform on a list ...
-   
-   if ($q->param('action') eq 'create_list') { # Create a new list ...
-      $pagename = 'create_list';
-   } elsif (defined($q->param('list'))) {
-      if ($q->param('action') eq 'edit_list') { # Edit an existing list ...
-         $pagename = 'list_subscribers';
-      } elsif ($q->param('action') eq 'delete_list') { # Delete a list ...
+if ($action eq '' || $action eq 'select_list') {
+	# Default action. Present a list of available lists to the user ...
+	$pagename = 'select_list';
+} elsif ($action eq 'create_list') {
+	# Create a new list ...
+	$pagename = 'create_list';
+} elsif ($action eq 'list_subscribers') {
+	# display list (or part list) subscribers
+	&error_die("no list selected") unless (defined($q->param('list')));
+	$pagename = 'list_subscribers';
+} elsif ($action eq 'delete_address') {
+	# Delete a subscriber ...
+	&delete_address();
+	$pagename = 'list_subscribers';
+} elsif ($action eq 'add_address') {
+	# Add a subscriber ...
+	&add_address();
+	$pagename = 'list_subscribers';
+} elsif ($action eq 'list_config') {
+	# Edit the config ...
+	$pagename = 'list_config';
+} elsif ($action eq 'list_delete_ask') {
+	# Confirm list removal
 	$pagename = 'confirm_delete';
-      }
-   } else {
-      $pagename = 'select_list'; # NOP - blank input
-   }
-   
-} elsif ($q->param('state') eq 'edit') {
-   # User chooses to edit a list
-
-   $pagename = 'list_subscribers';
-   
-   if ($q->param('action') eq 'delete_address') { # Delete a subscriber ...
-      &delete_address();
-   
-   } elsif ($q->param('action') eq 'add_address') { # Add a subscriber ...
-      &add_address();
-   
-   } elsif ($q->param('action') eq 'list_config') { # Edit the config ...
-      $pagename = 'list_config';
-
-   } elsif ($q->param('action') eq 'cancel') { # Cancel - Return a screen ...
-      $pagename = 'select_list';
-   }
-
-} elsif ($q->param('state') eq 'confirm_delete') {
-   # User wants to delete a list ...
-   
-   &delete_list if($q->param('confirm') eq 'yes'); # Do it ...
-   $q->delete_all;
-   $pagename = 'select_list';
-
-} elsif ($q->param('state') eq 'create') {
-   # User wants to create a list ...
-
-   if ($q->param('action') eq 'create_list') {
-      if (&create_list) { # Return if list creation is unsuccessful ...
+} elsif ($action eq 'list_delete_do') {
+	# User really wants to delete a list ...
+	&delete_list if($q->param('confirm') eq 'yes'); # Do it ...
+	$pagename = 'select_list';
+} elsif ($action eq 'list_create_ask') {
+	# User wants to create a list ...
          $pagename = 'create_list';
-      } else {
-         $pagename = 'select_list'; # Else choose a list ...
-      }
-   
-   } else { # Cancel ...
-      $pagename = 'select_list';
-   }
-   
-} elsif ($q->param('state') eq 'configuration') {
-   # User updates configuration ...
-   
-   if ($q->param('action') eq 'update_config') { # Save current settings ...
-      &update_config;
-      $pagename = 'list_subscribers';
-      
-   } elsif ($q->param('action') eq 'list_textfiles') { # Edit DIR/text ...
-      $pagename = 'list_textfiles';
-   
-   } else { # Cancel - Return to list editing screen ...
-      $pagename = 'list_subscribers';
-   }
-
-} elsif ($q->param('state') eq 'list_text') {
-   # User wants to edit texts associated with the list ...
-   
-   if ($q->param('action') eq 'edit_file') {
-      $pagename = 'edit_text';
-   } else {
-      $pagename = 'list_config'; # Cancel ...
-   }
-
-} elsif ($q->param('state') eq 'edit_text') {   
-   # User wants to save a new version of something in DIR/text ...
-   
-   &save_text if ($q->param('action') eq 'save_file');
-   $pagename = 'list_textfiles';
-   
+} elsif ($action eq 'create_list_do') {
+	# create the new list
+	if (&create_list) {
+		# Return if list creation is unsuccessful ...
+		$pagename = 'create_list';
+	} else {
+		# Else choose a list ...
+		$pagename = 'select_list';
+	}
+} elsif ($action eq 'list_config_ask') {
+	# User updates configuration ...
+	$pagename = 'list_config';
+} elsif ($action eq 'list_config_do') {
+	# Save current settings ...
+	&update_config;
+	$pagename = 'list_subscribers';
+} elsif ($action eq 'list_textfiles') {
+	# Edit DIR/text ...
+	$pagename = 'list_textfiles';
+} elsif ($action eq 'edit_file_ask') {
+	$pagename = 'edit_text';
+} elsif ($action eq 'edit_text_do') {   
+	# User wants to save a new version of something in DIR/text ...
+	&save_text();
+	$pagename = 'list_textfiles';
 } else {
-   $pagename = 'select_list';
-} 
+	&error_die('unknown_action');
+}
 
 # Print page and exit :) ...
 &output_page;
@@ -550,7 +521,7 @@ sub check_permission_for_action {
    # but the final creation is omitted
 
    my $ret;
-   if ($q->param('state') eq 'create') {
+   if ($action eq 'list_create_ask' || $action eq 'list_create_do') {
 	$ret = &webauth_create_allowed();
    } elsif (defined($q->param('list'))) {
 	$ret = &webauth($q->param('list'));

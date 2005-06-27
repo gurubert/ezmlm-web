@@ -15,7 +15,6 @@
 
     <div class="list">
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-	    <input type="hidden" name="state" value="edit">
 	    <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 	    <?cs if:Data.List.PartType ?>
 		    <input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>">
@@ -55,7 +54,7 @@
 
 	    <?cs if:Data.List.PartType ?>
 		<button type="submit" tabindex="11" name="action"
-		    <?cs call:help_title("Config") ?> value="list_config">
+		    <?cs call:help_title("Config") ?> value="list_config_ask">
 		    <?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
 	    <?cs else ?>
 		<div class="options">
@@ -103,7 +102,7 @@
 
 		    <!-- extra config options -->
 		    <button type="submit" tabindex="11" name="action"
-		        <?cs call:help_title("Config") ?> value="list_config">
+		        <?cs call:help_title("Config") ?> value="list_config_ask">
 			<?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
 
 		    <button type="submit" tabindex="12" name="action"

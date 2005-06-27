@@ -11,7 +11,6 @@
 
     <div id="main" class="container">
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-	    <input type="hidden" name="state" value="select">
 
 	    <?cs if:(Data.ListsCount > 0) ?>
 	    <!-- scrollbox for available lists -->
@@ -44,14 +43,14 @@
 		<?cs if:(Data.Permissions.Create == 1) ?>
 	    	<!-- button "create" -->
 		    <button type="submit" tabindex="2" name="action"
-			value="create_list"><?cs var:Lang.Buttons.Create ?></button>
+			value="list_create_ask"><?cs var:Lang.Buttons.Create ?></button>
 		<?cs /if ?>
 		<?cs if:(Data.ListsCount > 0) ?>
 		<!-- buttons: "edit" and "delete" -->
 		    <button type="submit" tabindex="3" name="action"
-			value="edit_list"><?cs var:Lang.Buttons.Edit ?></button>
+			value="list_subscribers"><?cs var:Lang.Buttons.Edit ?></button>
 		    <button type="submit" tabindex="4" name="action"
-			value="delete_list"><?cs var:Lang.Buttons.Delete ?></button>
+			value="list_delete_ask"><?cs var:Lang.Buttons.Delete ?></button>
 		<?cs /if ?>
 	    </div>
 	</form>

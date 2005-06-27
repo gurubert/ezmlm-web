@@ -6,7 +6,6 @@
     </div>
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-    <input type="hidden" name="state" value="configuration">
     <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
     <div class="info">
 	<p><?cs var:Lang.Misc.ListName ?>: <em><?cs var:Data.List.Name ?></em></p>
@@ -46,9 +45,8 @@
     </div>
 
     <div class="question">
-	<button type="submit" name="action" value="update_config"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+	<button type="submit" name="action" value="list_config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
 	<button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
-	<button type="submit" name="action" value="cancel"><?cs var:Lang.Buttons.Cancel ?></button>
 	<button type="submit" name="action" value="list_textfiles"><?cs var:Lang.Buttons.EditTexts ?></button>
     </div>
 

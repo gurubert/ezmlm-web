@@ -23,3 +23,14 @@
 
 <table border="0" cellpadding="5" cellspacing="5" align="center" width="99%"><tr><td bgcolor="#e0e0ff">
 
+
+<div class="nav">
+	<a href="<?cs var:Data.ScriptName ?>?action=select_list">All lists</a>
+
+	<?cs if:Data.List.Name ?>
+		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers">Subscribers</a>
+		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_config_ask">Configuration</a>
+		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_textfiles">Textfiles</a>
+	<?cs /if ?>
+
+</div>
