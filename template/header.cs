@@ -24,13 +24,50 @@
 <table border="0" cellpadding="5" cellspacing="5" align="center" width="99%"><tr><td bgcolor="#e0e0ff">
 
 
-<div class="nav">
-	<a href="<?cs var:Data.ScriptName ?>?action=select_list">All lists</a>
+
+<div id="nav"><p><span>
+	<a <?cs if:((Data.Action == "list_create_ask")  || (Data.Action == "list_create_do") || (Data.Action == "select_list") || (Date.Action == "list_delete_ask") || (Data.Action == "list_delete_do") || (!Data.Action)) ?>class="active"<?cs /if ?> 
+	href="<?cs var:Data.ScriptName ?>?action=select_list">All lists</a>
 
 	<?cs if:Data.List.Name ?>
-		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers">Subscribers</a>
-		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_config_ask">Configuration</a>
-		| <a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_textfiles">Textfiles</a>
+		<a <?cs if:(Data.Action == "list_subscribers") ?>class="active"<?cs /if ?>
+		href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers">Subscribers</a>
+		<a <?cs if:((Data.Action == "list_config_ask") || (Data.Action == "list_config_do")) ?>class="active"<?cs /if ?>
+		href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_config_ask">Configuration</a>
+		<a <?cs if:((Data.Action == "list_textfiles") || (Data.Action == "edit_text_ask") || (Data.Action == "edit_text_do")) ?>class="active"<?cs /if ?>
+		href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_textfiles">Textfiles</a>
 	<?cs /if ?>
+	
+</span></p></div>
 
-</div>
+<div id="subnav"><p><span>
+<?cs if:((Data.Action == "select_list") || (Data.Action == "list_create_ask") || (Data.Action == "list_create_do") || (Data.Action == "list_delete_ask") || (Data.Action == "list_delete_do" ) || (!Data.Action)) ?>
+	<a <?cs if:((!Data.Action) || (Data.Action == "select_list")) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=select_list">Select</a> |
+	<a <?cs if:((Data.Action == "list_create_do" ) || (Data.Action == "list_create_ask")) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_create_ask">Create</a> |
+	<a <?cs if:((Data.Action == "list_delete_do" ) || (Data.Action == "list_delete_ask")) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_delete_select">Delete</a>
+<?cs /if ?>
+
+<?cs if:(Data.Action == "list_subscribers") ?>
+	<a <?cs if:(!Data.List.PartType) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers">Recipients</a> |
+	<a <?cs if:(Data.List.PartType == "allow") ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers&part=allow">Allow</a> |
+	<a <?cs if:(Data.List.PartType == "deny") ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers&part=deny">Deny</a> |
+	<a <?cs if:(Data.List.PartType == "mod") ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers&part=mod">Moderators</a> |
+	<a <?cs if:(Data.List.PartType == "digest") ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_subscribers&part=digest">Digest</a>
+<?cs /if ?>
+
+<?cs if:((Data.Action == "list_config_ask") || (Data.Action == "list_config_do") || (Data.Action == "edit_text_do")) ?>
+	<a <?cs if:((Data.Action == "list_config_do" ) || (Data.Action == "list_config_ask") || (Data.Action == "list_config_basic_ask")) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_config">Basic</a> |
+	<a <?cs if:((Data.Action == "list_config_do" ) || (Data.Action == "list_config_expert_ask")) ?>class="active"<?cs /if ?>
+	href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=list_config_expert">Expert</a>
+<?cs /if ?>
+
+</span></p></div>

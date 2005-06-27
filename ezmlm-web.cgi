@@ -128,9 +128,6 @@ my $action = $q->param('action');
 if ($action eq '' || $action eq 'select_list') {
 	# Default action. Present a list of available lists to the user ...
 	$pagename = 'select_list';
-} elsif ($action eq 'create_list') {
-	# Create a new list ...
-	$pagename = 'create_list';
 } elsif ($action eq 'list_subscribers') {
 	# display list (or part list) subscribers
 	&error_die("no list selected") unless (defined($q->param('list')));
@@ -156,7 +153,7 @@ if ($action eq '' || $action eq 'select_list') {
 } elsif ($action eq 'list_create_ask') {
 	# User wants to create a list ...
          $pagename = 'create_list';
-} elsif ($action eq 'create_list_do') {
+} elsif ($action eq 'list_create_do') {
 	# create the new list
 	if (&create_list) {
 		# Return if list creation is unsuccessful ...
@@ -234,6 +231,9 @@ sub output_page {
 sub set_pagedata()
 {
    my (@lists, @files, $i, $item);
+
+   my $tmp = $q->param('action');
+   $pagedata->setValue("Data.Action", "$tmp");
 
    # Read the list directory for mailing lists.
    opendir DIR, $LIST_DIR || &error_die($pagedata->getValue("Lang.ErrorMessages.ListDirAccessDenied", "Unable to read") . " $LIST_DIR");

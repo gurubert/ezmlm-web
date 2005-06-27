@@ -34,7 +34,7 @@
     </div>
 
     <div class="question">
-	<button type="submit" name="action" value="create_list_do"><?cs var:Lang.Buttons.Create ?></button>
+	<button type="submit" name="action" value="list_create_do"><?cs var:Lang.Buttons.Create ?></button>
 	<button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
     </div>
   </form>
