@@ -80,7 +80,7 @@
 		    <?cs if:Data.ConfigAvail.AllowList ?>
 		    <!-- allow lists -->
 			<button type="submit" tabindex="8" name="action"
-			    <?cs call:help_title("Allow" ?> value="part_allow">
+			    <?cs call:help_title("Allow") ?> value="part_allow">
 			    <?cs var:Lang.Buttons.AllowList ?></button><?cs call:help_icon("Allow") ?>
 		    <?cs /if ?>
 
