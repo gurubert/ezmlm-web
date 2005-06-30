@@ -140,9 +140,6 @@ if ($action eq '' || $action eq 'select_list') {
 	# Add a subscriber ...
 	&add_address();
 	$pagename = 'list_subscribers';
-} elsif ($action eq 'list_config') {
-	# Edit the config ...
-	$pagename = 'list_config';
 } elsif ($action eq 'list_delete_ask') {
 	# Confirm list removal
 	$pagename = 'confirm_delete';
@@ -179,8 +176,10 @@ if ($action eq '' || $action eq 'select_list') {
 	&save_text();
 	$pagename = 'list_textfiles';
 } else {
-	&error_die('unknown_action');
+	#&error_die('unknown_action');
 }
+
+$pagename = "main";
 
 # Print page and exit :) ...
 &output_page;
@@ -219,10 +218,10 @@ sub output_page {
 	print "Content-Type: text/html\n\n";
 
 	my $cs = ClearSilver::CS->new($pagedata);
-	$cs->parseFile($TEMPLATE_DIR . '/macros.cs');
-	$cs->parseFile($TEMPLATE_DIR . '/header.cs');
+	#$cs->parseFile($TEMPLATE_DIR . '/macros.cs');
+	#$cs->parseFile($TEMPLATE_DIR . '/header.cs');
 	$cs->parseFile($TEMPLATE_DIR . '/' . $pagename . '.cs');
-	$cs->parseFile($TEMPLATE_DIR . '/footer.cs');
+	#$cs->parseFile($TEMPLATE_DIR . '/footer.cs');
 
 	print $cs->render();
 }

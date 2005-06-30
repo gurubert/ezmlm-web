@@ -69,3 +69,14 @@ div.error {
 	font-size: large;
 	color: red;
 	}
+
+div.list_lists {
+	margin-left: 40%;
+	}
+
+div.list_lists a {
+	}
+
+div.list_lists li {
+	list-style: none;
+	}
