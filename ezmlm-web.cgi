@@ -74,7 +74,7 @@ use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR];
 
 # pagedata contains the hdf tree for clearsilver
 # pagename refers to the template file that should be used
-use vars qw[$pagedata $pagename];
+use vars qw[$pagedata];
 
 # Get user configuration stuff
 if(defined($opt_C)) {
@@ -127,59 +127,40 @@ my $action = $q->param('action');
 # users chosen course of action ...
 if ($action eq '' || $action eq 'select_list') {
 	# Default action. Present a list of available lists to the user ...
-	$pagename = 'select_list';
 } elsif ($action eq 'list_subscribers') {
 	# display list (or part list) subscribers
 	&error_die("no list selected") unless (defined($q->param('list')));
-	$pagename = 'list_subscribers';
 } elsif ($action eq 'delete_address') {
 	# Delete a subscriber ...
 	&delete_address();
-	$pagename = 'list_subscribers';
 } elsif ($action eq 'add_address') {
 	# Add a subscriber ...
 	&add_address();
-	$pagename = 'list_subscribers';
 } elsif ($action eq 'list_delete_ask') {
 	# Confirm list removal
-	$pagename = 'confirm_delete';
 } elsif ($action eq 'list_delete_do') {
 	# User really wants to delete a list ...
 	&delete_list if($q->param('confirm') eq 'yes'); # Do it ...
-	$pagename = 'select_list';
 } elsif ($action eq 'list_create_ask') {
 	# User wants to create a list ...
-         $pagename = 'create_list';
 } elsif ($action eq 'list_create_do') {
 	# create the new list
-	if (&create_list) {
-		# Return if list creation is unsuccessful ...
-		$pagename = 'create_list';
-	} else {
-		# Else choose a list ...
-		$pagename = 'select_list';
-	}
+	# Message if list creation is unsuccessful ...
+	&error_die("Error during creation of list") if (&create_list);
 } elsif ($action eq 'list_config_ask') {
 	# User updates configuration ...
-	$pagename = 'list_config';
 } elsif ($action eq 'list_config_do') {
 	# Save current settings ...
 	&update_config;
-	$pagename = 'list_subscribers';
 } elsif ($action eq 'list_textfiles') {
 	# Edit DIR/text ...
-	$pagename = 'list_textfiles';
 } elsif ($action eq 'edit_file_ask') {
-	$pagename = 'edit_text';
 } elsif ($action eq 'edit_text_do') {   
 	# User wants to save a new version of something in DIR/text ...
 	&save_text();
-	$pagename = 'list_textfiles';
 } else {
 	#&error_die('unknown_action');
 }
-
-$pagename = "main";
 
 # Print page and exit :) ...
 &output_page;
@@ -209,7 +190,7 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
-	&error_die("invalid action - ask the administrator for help") if ($pagename eq '');
+	my $pagename = "main.cs";
 
 	my $pagefile = $TEMPLATE_DIR . "/" . $pagename . ".cs";
 	die "template ($pagefile) not found!" unless (-e "$pagefile");
@@ -218,10 +199,8 @@ sub output_page {
 	print "Content-Type: text/html\n\n";
 
 	my $cs = ClearSilver::CS->new($pagedata);
-	#$cs->parseFile($TEMPLATE_DIR . '/macros.cs');
-	#$cs->parseFile($TEMPLATE_DIR . '/header.cs');
-	$cs->parseFile($TEMPLATE_DIR . '/' . $pagename . '.cs');
-	#$cs->parseFile($TEMPLATE_DIR . '/footer.cs');
+
+	$cs->parseFile($pagefile);
 
 	print $cs->render();
 }
@@ -627,8 +606,6 @@ sub set_pagedata4part_list {
 
    my ($i, $list, $listaddress,);
    
-   $pagename = "list_subscribers";
-   
    # Work out the address of this list ...
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
    $listaddress = &this_listaddress();
@@ -900,7 +877,6 @@ sub error_die {
 	my $msg = shift;
 	$pagedata->setValue("Data.ErrorMessage", "$msg");
 	# TODO: besser waere eine Warnung in header.cs
-	$pagename = 'error';
 	&output_page;
 	die $msg;
 }
