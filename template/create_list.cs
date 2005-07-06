@@ -2,7 +2,7 @@
 
     <div class="title">
 	<h2><?cs var:Lang.Misc.CreateNew ?></h2>
-	<hr>
+	<hr/>
     </div>
 
 

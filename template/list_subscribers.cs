@@ -1,10 +1,10 @@
-<div id="edit" class="container">
+<div class="subscribers">
 
     <div class="title">
 
         <h2><?cs var:Lang.Misc.SubscribersTo ?> <i><?cs var:Data.List.Name ?></i></h2>
         <h3><?cs var:Data.List.Address ?></h3>
-	<hr>
+	<hr/>
     </div>
 
     <?cs if:Data.isModerated ?>
@@ -15,9 +15,9 @@
 
     <div class="list">
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
-	    <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
+	    <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 	    <?cs if:Data.List.PartType ?>
-		    <input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>">
+		    <input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 	    <?cs /if ?>
 
 	    <!-- scrollbox for list's subscribers -->
@@ -28,7 +28,7 @@
 		<?cs set:Data.ScrollSize = Data.List.SubscribersCount ?>
 	    <?cs /if ?>
 	    <!-- TODO: this div should float to left - the buttons should be at the right -->
-	    <select name="delsubscriber" tabindex="1" size="<?cs var:Data.ScrollSize ?>" multiple="yes">
+	    <select name="delsubscriber" tabindex="1" size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
 		<?cs each:item = Data.List.Subscribers ?>
 		    <option><?cs var:item ?></option>
 		<?cs /each ?>
@@ -42,12 +42,12 @@
 		<!-- TODO: das helper icon ist erst in der naechsten Zeile -->
 		<p class="formfield"><input type="text" name="addsubscriber"
 			<?cs call:help_title("AddAddress") ?>
-			tabindex="3" size="40"/><?cs call:help_icon("AddAddress") ?></p>
+			tabindex="3" size="40" /><?cs call:help_icon("AddAddress") ?></p>
 		<!-- TODO: eventuell ein BR einfuegen -->
 		<?cs if:Data.Permissions.FileUpload ?>
 		    <p class="formfield"><input type="file" name="addfile" size="20"
 			<?cs call:help_title("AddAddressFile") ?>
-			maxlength="100" tabindex="4"/><?cs call:help_icon("AddAddressFile") ?></p>
+			maxlength="100" tabindex="4" /><?cs call:help_icon("AddAddressFile") ?></p>
 		<?cs /if ?>
 		<button type="submit" tabindex="5" name="action" value="add_address"><?cs var:Lang.Buttons.AddAddress ?></button>
 	    </div>

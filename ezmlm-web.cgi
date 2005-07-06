@@ -190,7 +190,7 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
-	my $pagename = "main.cs";
+	my $pagename = "main";
 
 	my $pagefile = $TEMPLATE_DIR . "/" . $pagename . ".cs";
 	die "template ($pagefile) not found!" unless (-e "$pagefile");

@@ -13,7 +13,7 @@
     <?cs /if ?>
     <ul>
 	<?cs each:item = Data.Lists ?>
-	    <li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:item ?>&action=list_subscribers"><?cs var:item ?></a></li>
+	    <li><a href="<?cs var:ScriptName ?>?list=<?cs var:item ?>&action=list_subscribers"><?cs var:item ?></a></li>
 	<?cs /each ?>
     </ul>
 </div>

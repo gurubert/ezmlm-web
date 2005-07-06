@@ -25,6 +25,7 @@ template/list_subscribers.cs -text
 template/list_textfiles.cs -text
 template/macros.cs -text
 template/modpath_info.cs -text
+template/nav.cs -text
 template/select_list.cs -text
 test-suite/cases.d/confirm_delete.conf -text
 test-suite/cases.d/create_list.conf -text

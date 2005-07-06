@@ -2,7 +2,7 @@
 
     <div class="title">
 	<h2><?cs var:Lang.Misc.EditConfiguration ?></h2>
-	<hr>
+	<hr/>
     </div>
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
