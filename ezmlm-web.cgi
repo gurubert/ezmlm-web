@@ -46,6 +46,7 @@ use Mail::Address;
 use File::Copy;
 use DB_File;
 use CGI;
+use Encode qw/ from_to /;	# add by ooyama for char convert
 
 # These two are actually included later and are put here so we remember them.
 #use File::Find if ($UNSAFE_RM == 1);
@@ -61,7 +62,7 @@ $ENV{'PATH'} = '/bin';
 
 # We run suid so we can't use $ENV{'HOME'} and $ENV{'USER'} to determine the
 # user. :( Don't alter this line unless you are _sure_ you have to.
-my @tmp = getpwuid($>); my $USER=$tmp[0]; 
+my @tmp = getpwuid($>); use vars qw[$USER]; $USER=$tmp[0];
 
 # use strict is a good thing++
 
@@ -72,13 +73,17 @@ use vars qw[%HELPER $HELP_ICON_URL $HTML_HEADER $HTML_FOOTER $HTML_TEXT $HTML_LI
 use vars qw[%BUTTON %LANGUAGE $HTML_VLINK $HTML_TITLE $FILE_UPLOAD $WEBUSERS_FILE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR];
 
+# set default TEXT_ENCODE
+use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte convert support
+
 # pagedata contains the hdf tree for clearsilver
 # pagename refers to the template file that should be used
 use vars qw[$pagedata];
 
 # Get user configuration stuff
 if(defined($opt_C)) {
-   require "$opt_C"; # Command Line
+   $opt_C =~ /^([-\w.\/]+)$/;	# security check by ooyama
+   require "$1"; # Command Line
 } elsif(-e "$HOME_DIR/.ezmlmwebrc") {
    require "$HOME_DIR/.ezmlmwebrc"; # User
 } elsif(-e "/etc/ezmlm/ezmlmwebrc") {
@@ -104,6 +109,16 @@ my($DEFAULT_HOST);
 open (GETHOST, "<$QMAIL_BASE/me") || open (GETHOST, "<$QMAIL_BASE/defaultdomain") || die "Unable to read $QMAIL_BASE/me: $!";
 chomp($DEFAULT_HOST = <GETHOST>);
 close GETHOST;
+
+# DEFAULT_DOMAIN added by ooyama
+my($DEFAULT_DOMAIN);
+if(open (GETDOMAIN, "<$QMAIL_BASE/defaultdomain")){
+   chomp($DEFAULT_DOMAIN = <GETDOMAIN>);
+   close GETDOMAIN;
+} else {
+   $DEFAULT_DOMAIN = $DEFAULT_HOST;
+}
+
 
 # Untaint form input ...
 &untaint;
@@ -239,7 +254,7 @@ sub set_pagedata()
 
 
    # username and hostname
-   my ($hostname, $username);
+   my ($hostname, $username, $domain);
    # Work out if this user has a virtual host and set input accordingly ...
    if(-e "$QMAIL_BASE/virtualdomains") {
       open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
@@ -252,6 +267,9 @@ sub set_pagedata()
    if(!defined($hostname)) {
       $username = "$USER-" if ($USER ne $ALIAS_USER);
       $hostname = $DEFAULT_HOST;
+      $domain = $DEFAULT_DOMAIN; # by ooyama add domain
+   } else {
+      $domain = $hostname;
    }
 
    $pagedata->setValue("Data.UserName", "$username");
@@ -350,6 +368,7 @@ sub set_pagedata4list
 		{
 			my ($content);
 			$content = $list->getpart("text/" . $q->param('file'));
+			from_to($content,$TEXT_ENCODE,'utf8');	# by ooyama for multibyte
 			$pagedata->setValue("Data.File.Name", $q->param('file'));
 			$pagedata->setValue("Data.File.Content", "$content");
 		}
@@ -701,13 +720,17 @@ sub create_list {
 sub update_config {
    # Save the new user entered config ...
    
-   my ($list, $options, $i, @inlocal, @inhost);
+   my ($list, $options, $i, @inlocal, @inhost, $opt_mime, $opt_prefix);
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 
    # Work out the command line options ...
    foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
       if (defined($q->param($i))) {
          $options .= $i;
+		 # TODO: check if the following lines were not covered yet
+		 $opt_mime = 1 if($i eq 'x'); # add by ooyama
+		 $opt_prefix = 1 if($i eq 'f'); # add by ooyama
+
       } else {
          $options .= uc($i);
       }
@@ -727,8 +750,17 @@ sub update_config {
    # Update headeradd, headerremove, mimeremove and prefix ...
    $list->setpart('headeradd', $q->param('headeradd'));
    $list->setpart('headerremove', $q->param('headerremove'));
-   $list->setpart('mimeremove', $q->param('mimeremove')) if defined($q->param('mimeremove'));
-   $list->setpart('prefix', $q->param('prefix')) if defined($q->param('prefix'));
+   # TODO: check the following
+   if($opt_mime){
+       $list->setpart('mimeremove', $q->param('mimeremove')) if defined($q->param('mimeremove'));
+   } else { # add by ooyama to delete option f
+       unlink "$LIST_DIR/$Q::list/mimeremove" if(-f "$LIST_DIR/$Q::list/mimeremove");
+   }
+   if($opt_prefix){
+       $list->setpart('prefix', $q->param('prefix')) if defined($q->param('prefix'));
+   } else { # add by ooyama to delete option f
+       unlink "$LIST_DIR/$Q::list/prefix" if(-f "$LIST_DIR/$Q::list/prefix");
+   }
 
    &update_webusers();
 }
@@ -776,7 +808,10 @@ sub save_text {
    # Save new text in DIR/text ...
 
    my ($list) = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
-   $list->setpart("text/" . $q->param('list'), $q->param('content'));
+   my ($content) = $q->param('content');
+   # TODO: is "utf8" instead of "utf-8" correct?
+   from_to($content,'utf8',$TEXT_ENCODE);	# by ooyama for multibyte
+   $list->setpart("text/" . $q->param('file'), $content);
    
 }   
 

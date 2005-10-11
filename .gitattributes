@@ -13,6 +13,7 @@ css/ezmlm-web-help.gif -text
 lang/de.pm -text
 lang/en.hdf -text
 lang/en.pm -text
+lang/jp.pm -text
 template/confirm_delete.cs -text
 template/create_list.cs -text
 template/display_options.cs -text
