@@ -1,7 +1,7 @@
 <!-- $opts -->
 <p>
 <!-- TODO: das sollte so etwas, wie eine Tabelle werden -->
-	<?cs each:item = Data.ListOptions ?>
+	<?cs each:item = Data.List.Options ?>
 	    <div class="checkbox"><input type="checkbox"
 	      name="<?cs var:item.name ?>" value="<?cs var:item.name ?>"
 	      <?cs if:item.state ?> checked="checked"<?cs /if ?>>
@@ -10,7 +10,7 @@
 </p>
 
 <p>
-	<?cs each:item = Data.ListSettings ?>
+	<?cs each:item = Data.List.Settings ?>
 	    <div class="checkbox"><input type="checkbox" name="<?cs var:item.name ?>"
 	      value="<?cs var:item.name ?>"<?cs if:item.state ?> checked="checked"<?cs /if ?>>
 	      <?cs var:item.short ?>

@@ -7,7 +7,7 @@
 	<hr/>
     </div>
 
-    <?cs if:Data.isModerated ?>
+    <?cs if:(Data.List.hasPostMod || Data.List.hasSubMod || Data.List.hasRemoteAdmin) ?>
 		<!-- show warnings for wrong moderation paths -->
 		<?cs include:TemplateDir + "modpath_info.cs" ?>
     <?cs /if ?>
@@ -58,33 +58,31 @@
 		    <?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
 	    <?cs else ?>
 		<div class="options">
-		    <?cs if:Data.ConfigAvail.Extras ?>
 		    <!-- at least one extra config option is available -->
 			<h3><?cs var:Lang.Misc.AdditionalParts ?>:</h3>
-		    <?cs /if ?>
 		    <p>
-		    <?cs if:Data.ConfigAvail.Moderation ?>
+		    <?cs if:(Data.List.hasPostMod || Data.List.hasSubMod || Data.List.has.RemoteAdmin) ?>
 		    <!-- moderation -->
 			<button type="submit" tabindex="6" name="action"
 			    <?cs call:help_title("Moderator") ?> value="part_mod">
 			    <?cs var:Lang.Buttons.Moderators ?></button><?cs call:help_icon("Moderator") ?>
 		    <?cs /if ?>
 
-		    <?cs if:Data.ConfigAvail.DenyList ?>
+		    <?cs if:Data.List.hasDenyList ?>
 		    <!-- deny lists -->
 			<button type="submit" tabindex="7" name="action"
 			    <?cs call:help_title("DenyList") ?> value="part_deny">
 			    <?cs var:Lang.Buttons.DenyList ?></button><?cs call:help_icon("Deny") ?>
 		    <?cs /if ?>
 
-		    <?cs if:Data.ConfigAvail.AllowList ?>
+		    <?cs if:Data.list.hasAllowList ?>
 		    <!-- allow lists -->
 			<button type="submit" tabindex="8" name="action"
 			    <?cs call:help_title("Allow") ?> value="part_allow">
 			    <?cs var:Lang.Buttons.AllowList ?></button><?cs call:help_icon("Allow") ?>
 		    <?cs /if ?>
 
-		    <?cs if:Data.ConfigAvail.Digest ?>
+		    <?cs if:Data.List.hasDigestList ?>
 		    <!-- digest subscribers -->
 			<button type="submit" tabindex="9" name="action"
 			    <?cs call:help_title("Digest") ?> value="part_digest">
@@ -94,7 +92,7 @@
 
 		    <p>
 		    <!-- web archive -->
-		    <?cs if:Data.ConfigAvail.WebArchive ?>
+		    <?cs if:Data.List.hasWebArchive ?>
 			<button type="submit" tabindex="10" name="action"
 			    <?cs call:help_title("WebArchive") ?> value="web_archive">
 			    <?cs var:Lang.Buttons.WebArchive ?></button><?cs call:help_icon("WebArchive") ?>

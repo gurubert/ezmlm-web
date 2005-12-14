@@ -5,7 +5,7 @@
 
     <div class="list">
 	<select name="file" tabindex="1" size="25">
-		<?cs each:item = Data.Files ?>
+		<?cs each:item = Data.List.Files ?>
 		    <option><?cs var:item ?></option>
 		<?cs /each ?>
 	</select>

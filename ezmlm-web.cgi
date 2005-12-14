@@ -48,6 +48,7 @@ use DB_File;
 use CGI;
 use Encode qw/ from_to /;	# add by ooyama for char convert
 
+
 # These two are actually included later and are put here so we remember them.
 #use File::Find if ($UNSAFE_RM == 1);
 #use File::Copy if ($UNSAFE_RM == 0);
@@ -124,6 +125,7 @@ if(open (GETDOMAIN, "<$QMAIL_BASE/defaultdomain")){
 &untaint;
 
 # redirect must come before headers are printed
+# TODO: not migrated to clearsilver - this will not work!
 if(defined($q->param('action')) && $q->param('action') eq 'web_archive') {
    print $q->redirect(&ezmlmcgirc);
    exit;
@@ -316,12 +318,10 @@ sub set_pagedata4list
 	}
 	$pagedata->setValue("Data.List.SubscribersCount", "$i");
 
-	$pagedata->setValue("Data.ConfigAvail.Extras", 1) if($list->ismodpost || $list->ismodsub || $list->isremote || $list->isdeny || $list->isallow || $list->isdigest);
-	$pagedata->setValue("Data.ConfigAvail.Moderation", 1) if ($list->ismodpost || $list->ismodsub || $list->isremote);
-	$pagedata->setValue("Data.ConfigAvail.DenyList", 1) if ($list->isdeny);
-	$pagedata->setValue("Data.ConfigAvail.AllowList", 1) if ($list->isallow);
-	$pagedata->setValue("Data.ConfigAvail.Digest", 1) if ($list->isdigest);
-	$pagedata->setValue("Data.ConfigAvail.WebArchive", 1) if(&ezmlmcgirc);
+	$pagedata->setValue("Data.List.hasDenyList", 1) if ($list->isdeny);
+	$pagedata->setValue("Data.List.hasAllowList", 1) if ($list->isallow);
+	$pagedata->setValue("Data.List.hasDigestList", 1) if ($list->isdigest);
+	$pagedata->setValue("Data.List.hasWebArchive", 1) if(&ezmlmcgirc);
 
 	# Get the contents of the headeradd, headerremove, mimeremove and prefix files
 	$pagedata->setValue("Data.List.Prefix", $list->getpart('prefix'));
@@ -386,28 +386,28 @@ sub set_pagedata4options {
    $j = 0;
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
-	$pagedata->setValue("Data.ListOptions." . $i . ".name", "$i");
-	$pagedata->setValue("Data.ListOptions." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
-	$pagedata->setValue("Data.ListOptions." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
-	$pagedata->setValue("Data.ListOptions." . $i . ".state", ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
+	$pagedata->setValue("Data.List.Options." . $i . ".name", "$i");
+	$pagedata->setValue("Data.List.Options." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
+	$pagedata->setValue("Data.List.Options." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
+	$pagedata->setValue("Data.List.Options." . $i . ".state", ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
 	$j++;
    }
-   $pagedata->setValue("Data.ListOptionsCount", "$j");
+   $pagedata->setValue("Data.List.OptionsCount", "$j");
 
    $j = 0;
    my $state;
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-	$pagedata->setValue("Data.ListSettings." . $i . ".name", "$i");
-	$pagedata->setValue("Data.ListSettings." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
-	$pagedata->setValue("Data.ListSettings." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
-	#$pagedata->setValue("Data.ListSettings." . $i . ".state", ($opts =~ /$i (?:'(.+?)')/)? 1 : 0);
+	$pagedata->setValue("Data.List.Settings." . $i . ".name", "$i");
+	$pagedata->setValue("Data.List.Settings." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
+	$pagedata->setValue("Data.List.Settings." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
+	#$pagedata->setValue("Data.List.Settings." . $i . ".state", ($opts =~ /$i (?:'(.+?)')/)? 1 : 0);
 	$state = ($opts =~ /$i (?:'(.+?)')/);
-	$pagedata->setValue("Data.ListSettings." . $i . ".state", $state ? 1 : 0);
-	$pagedata->setValue("Data.ListSettings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
+	$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);
+	$pagedata->setValue("Data.List.Settings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
 	$j++;
    }
-   $pagedata->setValue("Data.ListSettingsCount", "$j");
+   $pagedata->setValue("Data.List.SettingsCount", "$j");
 }
 
 # ---------------------------------------------------------------------------
@@ -632,24 +632,21 @@ sub set_pagedata4part_list {
    $pagedata->setValue("Data.List.PartType", "$part");
 
    if($part eq 'mod') {
-      # Lets know what is moderated :)
-
-      $pagedata->setValue("Data.isModerated",1);
-      
       # do we store things in different directories?
       my $config = $list->getconfig;
+	  # empty values represent default settings - everything else is considered as evil :)
       my($postpath) = $config =~ m{7\s*'([^']+)'};
       my($subpath) = $config =~ m{8\s*'([^']+)'};
       my($remotepath) = $config =~ m{9\s*'([^']+)'};
       
-      $pagedata->setValue("Data.isPostMod", ($list->ismodpost)? 1 : 0);
-      $pagedata->setValue("Data.PostModPathWarn", "$postpath");
+      $pagedata->setValue("Data.List.hasPostMod", ($list->ismodpost)? 1 : 0);
+      $pagedata->setValue("Data.List.PostModPath", "$postpath");
 
-      $pagedata->setValue("Data.isSubMod", ($list->ismodsub)? 1 : 0);
-      $pagedata->setValue("Data.SubModPathWarn", "$subpath");
+      $pagedata->setValue("Data.List.hasSubMod", ($list->ismodsub)? 1 : 0);
+      $pagedata->setValue("Data.List.SubModPath", "$subpath");
 
-      $pagedata->setValue("Data.isRemote", ($list->isremote)? 1 : 0);
-      $pagedata->setValue("Data.RemotePathWarn", "$remotepath");
+      $pagedata->setValue("Data.List.hasRemoteAdmin", ($list->isremote)? 1 : 0);
+      $pagedata->setValue("Data.List.RemoteAdminPath", "$remotepath");
    }
 }
 

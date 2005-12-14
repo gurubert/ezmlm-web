@@ -8,6 +8,7 @@ css/default.css -text
 css/ezmlm-web-help.gif -text
 /ezmlm-web.cgi -text
 /ezmlmwebrc -text
+/hdf-spec.txt -text
 /htaccess.sample -text
 /index.c -text
 lang/de.pm -text

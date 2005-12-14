@@ -13,7 +13,7 @@
     </div>
 
     <div class="input">
-	<h2><?cs var:Lang.Misc.ListOptions ?> :</h2>
+	<h2><?cs var:Lang.Misc.List.Options ?> :</h2>
 
 	<?cs include:TemplateDir + "display_options.cs" ?>
 

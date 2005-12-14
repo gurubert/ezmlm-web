@@ -1,5 +1,5 @@
 # language-specific definitions for ezmlm-web
-# in english
+# in german
 
 # The meanings of the various ezmlm-make command line switches. The default
 # ones match the ezmlm-idx 0.4 default ezmlmrc ... Alter them to suit your
@@ -130,7 +130,7 @@
    edit                  => 'Bearbeiten',
    delete                => 'Entfernen',
    deleteaddress         => 'Entferne Adresse',
-   addaddress            => 'Fuege Adresse hinzu',
+   addaddress            => 'Füge Adresse hinzu',
    moderators            => 'ModeratorInnen',
    denylist              => 'Ausschlussliste',
    allowlist             => 'Zulassungsliste',
@@ -157,27 +157,27 @@
 # future releases of ezmlm-web.
 
 %LANGUAGE = (
-   nop                   => 'Diese Funktionalitaet ist noch nicht umgesetzt worden',
+   nop                   => 'Diese Funktionalität ist noch nicht umgesetzt worden',
    chooselistinfo        => "<UL><LI>Markiere eine Liste in der Auswahlbox oder klicke auf [$BUTTON{'create'}].<LI>Klicke auf den [$BUTTON{'edit'}]-Schalter, falls du die markierte Liste bearbeiten moechtest.<LI>Klicke auf den [$BUTTON{'delete'}]-Schalter, falls du die markierte Liste loeschen moechtest.</UL>",
-   confirmdelete         => 'Bestaetige die Loeschung von ', # list name
+   confirmdelete         => 'Bestätige die Löschung von ', # list name
    subscribersto         => 'AbonnentInnen von', # list name
    subscribers           => 'AbonnentInnen',
    additionalparts       => 'Weitere Optionen',
    posting               => 'Einsendungen',
    subscription          => 'Einschreibung',
    remoteadmin           => 'Entfernte AdministratorIn',
-   for                   => 'fuer', # as in; moderators for blahlist
+   for                   => 'für', # as in; moderators for blahlist
    createnew             => 'Lege eine neue Liste an',
    listname              => 'Name der Liste',
    listaddress           => 'Adresse der Liste',
    listoptions           => 'Einstellungen der Liste',
-   allowedtoedit         => 'NutzerInnen, die diese Liste bearbeiten duerfen',
-   editconfiguration     => 'Einstellungen aendern',
-   prefix                => 'Praefix der Betreff-Zeile ausgehender Nachrichten',
+   allowedtoedit         => 'NutzerInnen, die diese Liste bearbeiten dürfen',
+   editconfiguration     => 'Einstellungen ändern',
+   prefix                => 'Präfix der Betreff-Zeile ausgehender Nachrichten',
    headerremove          => 'zu entfernende Kopfzeilen',
-   headeradd             => 'einzufuegende Kopfzeilen',
+   headeradd             => 'einzufügende Kopfzeilen',
    mimeremove            => 'abzuweisende Anhangs-Typen',
-   edittextinfo          => "Das Auswahlfeld links enthaelt die Dateien des <BR>Verzeichnisses DIR/text/. Diese Dateien werden als Antwort auf spezifische Nutzer-Anfragen oder als Teil aller ausgehenden Nachrichten versandt.<P>Um diese Dateien zu veraendern, waehle ihren Namen im Auswahlfeld an. Anschliessend klicke auf den [$BUTTON{'editfile'}] Schalter.<P>BetäAege [$BUTTON{'cancel'}] um die Veraenderung zu beenden.",
+   edittextinfo          => "Das Auswahlfeld am linken Rand enthält die Dateien des <BR>Verzeichnisses DIR/text/. Diese Dateien werden als Antwort auf spezifische Nutzer-Anfragen oder als Teil aller ausgehenden Nachrichten versandt.<P>Um diese Dateien zu verändern, wähle ihren Namen im Auswahlfeld an. Anschließend klicke auf den [$BUTTON{'editfile'}] Schalter.<P>Betätige [$BUTTON{'cancel'}] um die Veränderung abzuschließen.",
    editingfile           => 'Bearbeite Datei',
    editfileinfo          => '<BIG><STRONG>ezmlm-manage</STRONG></BIG><BR><TT><STRONG>&lt;#l#&gt;</STRONG></TT> Der Name der Liste<BR><TT><STRONG>&lt;#A#&gt;</STRONG></TT> Die Anmeldungs-Adresse<BR><TT><STRONG>&lt;#R#&gt;</STRONG></TT> Die Bestaetigungs-Adresse<P><BIG><STRONG>ezmlm-store</STRONG></BIG><BR><TT><STRONG>&lt;#l#&gt</STRONG></TT> Der Name der Liste<BR><TT><STRONG>&lt;#A#&gt;</STRONG></TT> Die Zusage-Adresse<BR><TT><STRONG>&lt;#R#&gt;</STRONG></TT> Die Ablehungs-Adresse</UL>',
    mysqlcreate           => 'Lege die MySQL-Datenbank an, falls erforderlich',

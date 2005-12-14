@@ -181,6 +181,6 @@ Lang {
 	SuggestEdit	= You will have to edit them manually.
 	PostModPathWarn = Posting Moderators are stored in a non-standard location
 	SubModPathWarn	= Subscriber Moderators are stored in a non-standard location
-	RemotePathWarn	= Remote Administrators are stored in a non-standard location
+	RemoteAdminPathWarn	= Remote Administrators are stored in a non-standard location
       }
 }
