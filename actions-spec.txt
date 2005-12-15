@@ -1,0 +1,38 @@
+intro
+list_subscribers
+	list
+	[part]
+list_address_add
+	list
+	[part]
+	[mailaddress_add]
+	[mailaddressfile]
+list_address_del
+	list
+	[part]
+	mailaddress_del
+list_delete_ask
+	list
+list_delete_do
+	list
+list_create_ask
+list_create_do
+	list
+	inlocal
+	inhost
+	[options]
+	[sql]
+list_config_main_ask
+	list
+list_config_main_do
+	list
+	[options]
+list_textfiles
+	list
+list_textfile_edit
+	list
+	file
+list_textfile_save
+	list
+	file
+	content

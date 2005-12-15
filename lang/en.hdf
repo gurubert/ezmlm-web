@@ -2,50 +2,81 @@ Language = en
 
 PageTitle = ezmlm-web - a mailinglists' administration interface
 
+	
 
 Lang {
-    Buttons {
-	Create		= [Create List]
-	Edit		= [Edit]
-	Delete		= [Delete]
-	Yes		= [Yes]
-	No		= [No]
-	Cancel		= [Cancel]
-	DeleteAddress	= [Delete Address]
-	AddAddress	= [Add Address]
-	Moderators	= [Moderators]
-	DenyList	= [Deny List]
-	AllowList	= [Allow List]
-	DigestSubscribers = [Digest Subscribers]
-	Configuration	= [Configuration]
-	UpdateConfiguration = [Update Configuration]
-	EditTexts	= [Edit Texts]
-	EditFile	= [Edit File]
-	SaveFile	= [Save File]
-	WebArchive	= [Web Archive]
-	SelectList	= [Select List]
-	Subscribers	= [Subscribers]
-	ResetForm	= [Reset Form]
-      }
+	Menue {
+		Create		= Create new list
+		Delete		= Delete list
+		Subscribers	= Subscribers
+		AllowList	= allow list
+		DenyList	= deny list
+		DigestList	= digest list
+		ConfigMain	= Configuration
+		ConfigSub	= subscribing
+		ConfigPost	= posting
+		ConfigAdmin	= remote admin
+		TextFiles	= Text files
+		AvailableLists	= Available lists:
+	  }
+
+	Buttons {
+		Create		= [Create List]
+		Edit		= [Edit]
+		Delete		= [Delete]
+		Yes		= [Yes]
+		No		= [No]
+		Cancel		= [Cancel]
+		DeleteAddress	= [Delete Address]
+		AddAddress	= [Add Address]
+		Moderators	= [Moderators]
+		DenyList	= [Deny List]
+		AllowList	= [Allow List]
+		DigestSubscribers = [Digest Subscribers]
+		Configuration	= [Configuration]
+		UpdateConfiguration = [Update Configuration]
+		EditTexts	= [Edit Texts]
+		EditFile	= [Edit File]
+		SaveFile	= [Save File]
+		WebArchive	= [Web Archive]
+		SelectList	= [Select List]
+		Subscribers	= [Subscribers]
+		ResetForm	= [Reset Form]
+	  }
 
 
-    ErrorMessages {
+	ErrorMessage {
+		UnknownAction		= this action is undefined
+		ParameterMissing	= this action needs one or more parameters
     	Forbidden			= Error: you are not allowed to do this!
-	# this message will be followed by the directory
-	ListDirAccessDenied		= Unable to access the list's directory:
-	# this message will be followed by the directory
-	TextDirAccessDenied		= Unable to access the list's directory of text files:
-	# this message will be followed by the source and destination directory: (SRC -> DEST)
-	SafeRemoveRenameDirFailed	= Unable to rename list for safe removal:
-	# this message will be followed by the directory
-	DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files:
-	# this message will be followed by the source and destination directory: (SRC -> DEST)
-	SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files:
-	# this message will be followed by the directory
-	UnsafeRemoveListDirFailed	= Unable to delete list:
-	# this message will be followed by the directory
-	UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files:
-      }
+	  }
+
+	WarningMessage {
+		AddAddress		= Adding of mail address failed!
+		DeleteAddress	= Removal of mail address failed!
+		CreateList		= Creation of new mailing list failed!
+		DeleteList		= Removal of mailing list failed!
+		UpdateConfig	= Update of configuration failed!
+		SaveFile		= The file could not be saved!
+		ListAlreadyExists	= There is already a list with this name!
+		ListDirAccessDenied		= Unable to access the list's directory:
+		TextDirAccessDenied		= Unable to access the list's directory of text files:
+		SafeRemoveRenameDirFailed	= Unable to rename list for safe removal:
+		DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files:
+		SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files:
+		UnsafeRemoveListDirFailed	= Unable to delete list:
+		UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files:
+		InvalidFileFormat	= The uploaded file must be a text file.
+	  }
+	
+	SuccessMessage {
+		AddAddress		= The address was added to the list.
+		DeleteAddress	= The address was removed from the list.
+		CreateList		= The new mailing list was successfully created.
+		DeleteList		= The mailing list was successfully removed.
+		UpdateConfig	= The mailing list's options were successfully updated.
+		SaveFile		= The file was saved.
+	  }
 
     Options {
 	a.short		= Archived

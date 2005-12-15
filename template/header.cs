@@ -12,13 +12,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
 	<meta http-equiv="Author" content="guy-ezmlm[at]rucus.ru.ac.za" />
 	<meta http-equiv="expire" content="-1d" />
-	<link rel="stylesheet" type="text/css" href="<?cs var:Stylesheet ?>" />
+<!--	<link rel="stylesheet" type="text/css" href="<?cs var:Stylesheet ?>" /> -->
 </head>
 
 <body>
 
 <div align="center"><table border="3" align="center" cellpadding="5"><tr><td bgcolor="#e0e0ff"><font size="+3" color="#000080"><strong>E Z Mailing List Manager</strong></font></td></tr></table>
 </div>
-
-<table border="0" cellpadding="5" cellspacing="5" align="center" width="99%"><tr><td bgcolor="#e0e0ff">
 

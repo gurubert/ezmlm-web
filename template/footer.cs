@@ -1,4 +1,3 @@
-</td></tr></table>
 
 <table border="0" cellpadding="5" cellspacing="5" align="center" width="99%">
 <tr><td bgcolor="#e0e0ff"><font size="-1">

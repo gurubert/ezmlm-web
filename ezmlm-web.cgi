@@ -37,6 +37,8 @@
 # POD documentation is at the end of this file
 # ==========================================================================
 
+package ezmlm_web;
+
 # Modules to include
 use strict;
 use Getopt::Std;
@@ -48,10 +50,10 @@ use DB_File;
 use CGI;
 use Encode qw/ from_to /;	# add by ooyama for char convert
 
-
 # These two are actually included later and are put here so we remember them.
 #use File::Find if ($UNSAFE_RM == 1);
 #use File::Copy if ($UNSAFE_RM == 0);
+
 
 my $q = new CGI;
 $q->import_names('Q');
@@ -79,7 +81,7 @@ use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte co
 
 # pagedata contains the hdf tree for clearsilver
 # pagename refers to the template file that should be used
-use vars qw[$pagedata];
+use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
 
 # Get user configuration stuff
 if(defined($opt_C)) {
@@ -134,50 +136,133 @@ if(defined($q->param('action')) && $q->param('action') eq 'web_archive') {
 my $pagedata = load_hdf();
 
 # check permissions
-&check_permission_for_action == 0 || &error_die($pagedata->getValue("Lang.ErrorMessages.Forbidden", "Error: you are not allowed to do this!"));
-
-&set_pagedata();
+unless (&check_permission_for_action == 0) {
+	$pagename = 'intro';
+	$error = 'Forbidden';
+	&output_page();
+	exit;
+}
 
 my $action = $q->param('action');
 
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
-if ($action eq '' || $action eq 'select_list') {
+# TODO: unify all these "is list param set?" checks ...
+if ($action eq '' || $action eq 'intro') {
 	# Default action. Present a list of available lists to the user ...
-} elsif ($action eq 'list_subscribers') {
+	$pagename = 'intro';
+} elsif ($action eq 'subscribers') {
 	# display list (or part list) subscribers
-	&error_die("no list selected") unless (defined($q->param('list')));
-} elsif ($action eq 'delete_address') {
+	if (defined($q->param('list'))) {
+		$pagename = 'subscribers';
+	} else {
+		$pagename = 'intro';
+		$error = 'ParameterMissing';
+	}
+} elsif ($action eq 'address_del') {
 	# Delete a subscriber ...
-	&delete_address();
-} elsif ($action eq 'add_address') {
+	if (defined($q->param('list'))) {
+		$success = 'DeleteAddress' if (&delete_address());
+		$pagename = 'subscribers';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'address_add') {
 	# Add a subscriber ...
-	&add_address();
-} elsif ($action eq 'list_delete_ask') {
+	# no selected addresses -> no error
+	if (defined($q->param('list'))) {
+		$success = 'AddAddress' if (&add_address());
+		$pagename = 'subscribers';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'delete_ask') {
 	# Confirm list removal
+	if (defined($q->param('list'))) {
+		$pagename = 'list_delete';
+	} else {
+		$pagename = 'intro';
+		$error = 'ParameterMissing';
+	}
 } elsif ($action eq 'list_delete_do') {
 	# User really wants to delete a list ...
-	&delete_list if($q->param('confirm') eq 'yes'); # Do it ...
+	if (defined($q->param('list'))) {
+		$success = 'DeleteList' if (&delete_list());
+	} else {
+		$error = 'ParameterMissing';
+	}
+	$pagename = 'intro';
 } elsif ($action eq 'list_create_ask') {
 	# User wants to create a list ...
+	$pagename = 'list_create';
 } elsif ($action eq 'list_create_do') {
 	# create the new list
 	# Message if list creation is unsuccessful ...
-	&error_die("Error during creation of list") if (&create_list);
-} elsif ($action eq 'list_config_ask') {
+	if (&create_list()) {
+		$success = 'CreateList';
+		$pagename = 'subscribers';
+	} else {
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'config_main_ask') {
 	# User updates configuration ...
-} elsif ($action eq 'list_config_do') {
+	if (defined($q->param('list'))) {
+		$pagename = 'config_main';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'config_main_do') {
 	# Save current settings ...
-	&update_config;
-} elsif ($action eq 'list_textfiles') {
+	if (defined($q->param('list'))) {
+		$success = 'UpdateConfig' if &update_config();
+		$pagename = 'config_main';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'textfiles') {
 	# Edit DIR/text ...
-} elsif ($action eq 'edit_file_ask') {
-} elsif ($action eq 'edit_text_do') {   
+	if (defined($q->param('list'))) {
+		$pagename = 'textfiles';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'textfile_edit') {
+	# edit the content of a text file
+	if (defined($q->param('list')) && defined($q->param('file'))) {
+		$pagename = 'textfile_edit';
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'intro';
+	}
+} elsif ($action eq 'textfile_save') {   
 	# User wants to save a new version of something in DIR/text ...
-	&save_text();
+	if (defined($q->param('list')) && defined($q->param('file')) && defined($q->param('content'))) {
+		if (&save_text()) {
+			$pagename = 'textfiles';
+			$success = 'SaveFile';
+		} else {
+			$pagename = 'textfile_edit';
+		}
+	} else {
+		$error = 'ParameterMissing';
+		if ($q->param('list')) {
+			$pagename = 'textfiles';
+		} else {
+			$pagename = 'intro';
+		}
+	}
 } else {
-	#&error_die('unknown_action');
+	$pagename = 'intro';
+	$error = 'UnknownAction';
 }
+
+# read the current state
+&set_pagedata();
 
 # Print page and exit :) ...
 &output_page;
@@ -207,9 +292,15 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
-	my $pagename = "main";
+	$pagedata->setValue('Data.Success', "$success") if (defined($success));
+	$pagedata->setValue('Data.Error', "$error") if (defined($error));
+	$pagedata->setValue('Data.Warning', "$warning") if (defined($warning));
+	$pagedata->setValue('Data.CustomError', "$customError") if (defined($customError));
+	$pagedata->setValue('Data.CustomWarning', "$customWarning") if (defined($customWarning));
 
-	my $pagefile = $TEMPLATE_DIR . "/" . $pagename . ".cs";
+	$pagedata->setValue('Data.Action', "$pagename");
+
+	my $pagefile = $TEMPLATE_DIR . "/main.cs";
 	die "template ($pagefile) not found!" unless (-e "$pagefile");
 
 	# print http header
@@ -227,11 +318,12 @@ sub set_pagedata()
 {
    my (@lists, @files, $i, $item);
 
-   my $tmp = $q->param('action');
-   $pagedata->setValue("Data.Action", "$tmp");
-
    # Read the list directory for mailing lists.
-   opendir DIR, $LIST_DIR || &error_die($pagedata->getValue("Lang.ErrorMessages.ListDirAccessDenied", "Unable to read") . " $LIST_DIR");
+   unless (opendir DIR, $LIST_DIR) {
+		$warning = 'ListDirAccessDenied';
+		return (1==0);
+	}
+
    @files = grep !/^\./, readdir DIR; 
    closedir DIR;
 
@@ -350,7 +442,10 @@ sub set_pagedata4list
 		$listDir = $LIST_DIR . '/' . $q->param('list');
 
 		# Read the list directory for text ...
-		opendir DIR, "$listDir/text" || &error_die($pagedata->getValue("Lang.ErrorMessages.TextDirAccessDenied","Unable to read DIR/text:") . " $listDir/text");
+		unless (opendir DIR, "$listDir/text") {
+			$warning = 'TextDirAccessDenied';
+			return (1==0);
+		}
 		@files = grep !/^\./, readdir DIR; 
 		closedir DIR;
 
@@ -358,10 +453,10 @@ sub set_pagedata4list
 		$i = 0;
 		my $item;
 		foreach $item (@files) {
-			$pagedata->setValue("Data.Files." . $i, "$item");
+			$pagedata->setValue("Data.List.Files." . $i, "$item");
 			$i++;
 		}
-		$pagedata->setValue("Data.FilesCount", "$i");
+		$pagedata->setValue("Data.List.FilesCount", "$i");
 
 		# text file specified?
 		if ($q->param('file') ne '')
@@ -415,21 +510,8 @@ sub set_pagedata4options {
 sub get_list_part
 # return the name of the part list (deny, allow, mod, digest or '')
 {
-	return $q->param('part') if (defined($q->param('part')));
-
-	my $action = $q->param('action');
-
-	# moderators list?
-	return 'mod' if ($action eq 'part_mod');
-
-	# deny list?
-	return 'deny' if ($action eq 'part_deny');
-
-	# allow list?
-	return 'allow' if ($action eq 'part_allow');
-
-	# digest list?
-	return 'digest' if ($action eq 'part_digest');
+	$q->param('part') =~ m/^(allow|deny|digest|mod)$/;
+	return $1;
 }
 
 # ---------------------------------------------------------------------------
@@ -455,29 +537,38 @@ sub delete_list {
 
       my ($oldfile); $oldfile = "$LIST_DIR/" . $q->param('list');
       my ($newfile); $newfile = "$LIST_DIR/." . $q->param('list'); 
-      move($oldfile, $newfile) or error_die($pagedata->getValue("Lang.ErrorMessages.SafeRemoveRenameDirFailed","Unable to rename list:") . " ($oldfile -> $newfile)");
+      unless (move($oldfile, $newfile)) {
+			$warning = 'SafeRemoveRenameDirFailed';
+			return (1==0);
+		}
       mkdir "$HOME_DIR/deleted.qmail", 0700 if(!-e "$HOME_DIR/deleted.qmail");
 
-      opendir(DIR, "$HOME_DIR") or &error_die($pagedata->getValue("Lang.ErrorMessages.DotQmailDirAccessDenied","Unable to get directory listing:") . " $HOME_DIR");
+      unless (opendir(DIR, "$HOME_DIR")) {
+			$warning = 'DotQmailDirAccessDenied';
+			return (1==0);
+		}
       my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
       closedir DIR;
       foreach (@files) {
          unless (move($_, "$HOME_DIR/deleted.qmail/")) {
-            &error_die($pagedata->getValue("Lang.ErrorMessages.SafeRemoveMoveDotQmailFailed", "Unable to move .qmail files:") . " ($_ -> $HOME_DIR/deleted.qmail)"); 
+            $warning = 'SafeRemoveMoveDotQmailFailed';
+			return (1==0); 
          }
       }
       warn "List '$oldfile' moved (deleted)";   
    } else {
       # This, however, does DELETE the list. I don't like the idea, but I was
       # asked to include support for it so ...
-      if (!rmtree("$LIST_DIR/" . $q->param('list'))) {
-         &error_die($pagedata->getValue("Lang.ErrorMessages.UnsafeRemoveListDirFailed", "Unable to delete list:"). " $LIST_DIR/" . $q->param('list'));
+      unless (rmtree("$LIST_DIR/" . $q->param('list'))) {
+         $warning = 'UnsafeRemoveListDirFailed';
+		 return (1==0);
       }
       opendir(DIR, "$HOME_DIR") or die "Unable to get directory listing: $!";
       my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
       closedir DIR;
       if (unlink(@files) <= 0) {
-         &error_die($pagedata->getValue("Lang.ErrorMessages.UnsafeRemoveDotQmailFailed", "Unable to delete .qmail files:") . " $HOME_DIR");
+			$warning = 'UnsafeRemoveDotQmailFailed';
+			return (1==0);
       }
       warn "List '$list->thislist()' deleted";
    }   
@@ -537,14 +628,16 @@ sub add_address {
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
    $part = &get_list_part();
 
-   if (($q->param('addfile')) && ($FILE_UPLOAD)) {
+   if (($q->param('mailaddressfile')) && ($FILE_UPLOAD)) {
 
       # Sanity check
-      &error_die("File upload must be of type text/*") unless($q->uploadInfo($q->param('addfile'))->{'Content-Type'} =~ m{^text/});
+      unless($q->uploadInfo($q->param('mailaddressfile'))->{'Content-Type'} =~ m{^text/}) {
+			$warning = 'InvalidFileFormat';
+			return (1==0);
+		}
 
       # Handle file uploads of addresses
-      my($fh) = $q->param('addfile');
-      return unless (defined($fh));
+      my($fh) = $q->param('mailaddressfile');
       while (<$fh>) {
 	next if (/^\s*$/ or /^#/); # blank, comments
 	next unless ( /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/ ); # email address ...
@@ -555,16 +648,18 @@ sub add_address {
    }
       
 	# User typed in an address
-	if ($q->param('addsubscriber') ne '') {
+	if ($q->param('mailaddress_add') ne '') {
 
-		$address = $q->param('addsubscriber');
-		$address .= $DEFAULT_HOST if ($q->param('addsubscriber') =~ /\@$/);
+		$address = $q->param('mailaddress_add');
+		$address .= $DEFAULT_HOST if ($q->param('mailaddress_add') =~ /\@$/);
 
 		# untaint
 		if ($address =~ /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/) {
 			push @addresses, "$1\@$2";
 		  } else {
-			warn "this address ($address) is not valid!";
+			warn "dunno: $address to $part";
+			$warning = 'AddAddress';
+			return (1==0);
 		  }
 
 	}
@@ -581,12 +676,12 @@ sub add_address {
       }
    
       if ($list->sub($add->address(), $part) != 1) {
-         &error_die("Unable to subscribe to list: $!");
+		 warn "failed: $add->address() to $part";
+		 $warning = 'AddAddress';
+         return (1==0);
       }
       $count++;
    }
-
-   $q->delete('addsubscriber');
 }
 
 # ------------------------------------------------------------------------
@@ -597,12 +692,13 @@ sub delete_address {
    my ($list, @address);
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
    my $part = &get_list_part();
-   return if ($q->param('delsubscriber') eq '');
+   return (1==9) if ($q->param('mailaddress_del') eq '');
 
-   @address = $q->param('delsubscriber');
+   @address = $q->param('mailaddress_del');
 
    if ($list->unsub(@address, $part) != 1) {
-      &error_die("Unable to unsubscribe from list $list: $!");
+      $warning = 'DeleteAddress';
+	  return (1==0);
    }
    
    if($PRETTY_NAMES) {
@@ -614,7 +710,6 @@ sub delete_address {
       untie %pretty;
    }
 
-   $q->delete('delsubscriber');
 }
 
 # ------------------------------------------------------------------------
@@ -667,10 +762,10 @@ sub create_list {
    $listname = $q->param('list'); $listname =~ s/ /_/g; # In case some git tries to put a space in the file name
 
    # Sanity Checks ...
-   return 1 if ($listname eq '' || $qmail eq '');
+   return (1==0) if ($listname eq '' || $qmail eq '');
    if(-e ("$LIST_DIR/$listname/lock") || -e ("$HOME_DIR/.qmail-$qmail")) {
-      &error_die("Can't create list '$listname', as it already exists");
-      return 1;
+      $error = 'ListAlreadyExists';
+      return (1==0);
    }
   
    # Work out the command line options
@@ -697,13 +792,15 @@ sub create_list {
                -switches=>$options,
                -user=>$USER)
    ) {
-      &error_die('List creation failed' , $list->errmsg());
+	  # fatal error
+      $customError = $list->errmsg();
+	  return (1==0);
    }
 
    # handle MySQL stuff
    if($q->param('sql') && $options =~ m/-6\s+/) {
       unless($list->createsql()) {
-         error_die('SQL table creation failed: ' , $list->errmsg());
+         $customWarning = $list->errmsg();
       }
    }
    
@@ -741,24 +838,29 @@ sub update_config {
 
    # Actually update the list ...
    unless($list->update($options)) {
-      die "List update failed";
+      $warning = 'UpdateConfig';
+	  return (1==0);
    }
 
    # Update headeradd, headerremove, mimeremove and prefix ...
    $list->setpart('headeradd', $q->param('headeradd'));
    $list->setpart('headerremove', $q->param('headerremove'));
-   # TODO: check the following
+   # TODO: check if empty setting removes the file
+   # TODO: the opt_??? should not be considered - or what?
    if($opt_mime){
-       $list->setpart('mimeremove', $q->param('mimeremove')) if defined($q->param('mimeremove'));
-   } else { # add by ooyama to delete option f
-       unlink "$LIST_DIR/$Q::list/mimeremove" if(-f "$LIST_DIR/$Q::list/mimeremove");
-   }
+        if (defined($q->param('mimeremove'))) {
+			$list->setpart('mimeremove', $q->param('mimeremove'));
+		} else {
+			$list->setpart('mimeremove', '');
+		}
+	}
    if($opt_prefix){
-       $list->setpart('prefix', $q->param('prefix')) if defined($q->param('prefix'));
-   } else { # add by ooyama to delete option f
-       unlink "$LIST_DIR/$Q::list/prefix" if(-f "$LIST_DIR/$Q::list/prefix");
-   }
-
+        if (defined($q->param('prefix'))) {
+			$list->setpart('prefix', $q->param('prefix'));
+		} else {
+			$list->setpart('prefix', '');
+		}
+	}
    &update_webusers();
 }
 
@@ -808,8 +910,10 @@ sub save_text {
    my ($content) = $q->param('content');
    # TODO: is "utf8" instead of "utf-8" correct?
    from_to($content,'utf8',$TEXT_ENCODE);	# by ooyama for multibyte
-   $list->setpart("text/" . $q->param('file'), $content);
-   
+   unless ($list->setpart("text/" . $q->param('file'), $content)) {
+		$warning = 'SaveFile';
+		return (1==0);
+   }
 }   
 
 # ------------------------------------------------------------------------
@@ -905,14 +1009,6 @@ sub rmtree {
 
 # ------------------------------------------------------------------------
 
-sub error_die {
-	my $msg = shift;
-	$pagedata->setValue("Data.ErrorMessage", "$msg");
-	# TODO: besser waere eine Warnung in header.cs
-	&output_page;
-	die $msg;
-}
-                                                                                                                 
 # ------------------------------------------------------------------------
 # End of ezmlm-web.cgi v2.3
 # ------------------------------------------------------------------------

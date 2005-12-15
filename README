@@ -94,12 +94,13 @@ III. Requirements
 This version of ezmlm-web requires the following;
 
 * qmail v1.03
-* ezmlm v0.53 (idx v0.40)
+* ezmlm v0.53 (or ezmlm-idx v0.40)
 * Perl v5.004 and the following modules;
   + Mail::Ezmlm v0.03 
   + Mail::Address v1.15
   + CGI v2.6 
   + CGI::Carp v1.06
+  + CGI::Dispatcher::Simple v0.01
   + DB_File v1.65
   + Getopt::Std v4.1
   + File::Find v?
@@ -108,7 +109,8 @@ This version of ezmlm-web requires the following;
 The version number indicates the version of the module that ezmlm-web was
 developed with. Earlier versions may work, but then they haven't been
 tested. Have a look on http://www.CPAN.org/, http://www.qmail.org/, and
-http://www.ezmlm.org/ for anything you are missing.
+http://www.ezmlm.org/ for anything you are missing. Of course, newer 
+versions are expected to work as well.
 
 To install perl modules you may use the cpan command line interface.
 Just run "cpan" and type something like "install Mail::Ezmlm".

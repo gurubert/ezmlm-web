@@ -45,7 +45,7 @@
     </div>
 
     <div class="question">
-	<button type="submit" name="action" value="list_config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+	<button type="submit" name="action" value="config_main_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
 	<button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
 	<button type="submit" name="action" value="list_textfiles"><?cs var:Lang.Buttons.EditTexts ?></button>
     </div>
