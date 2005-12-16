@@ -2,10 +2,33 @@
 
     <div class="title">
 
-        <h2><?cs var:Lang.Misc.SubscribersTo ?> <i><?cs var:Data.List.Name ?></i></h2>
+		<h1><?cs var:Data.List.Name ?></h1>
+        <h2>
+			<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:Lang.Title.AllowList ?>
+			<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:Lang.Title.DenyList ?>
+			<?cs elif:(Data.List.PartTyoe == "digest") ?><?cs var:Lang.Title.DigestList ?>
+			<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:Lang.Title.ModList ?>
+			<?cs else ?> 								<?cs var:Lang.Title.SubscriberList ?>
+			<?cs /if ?>
+		</h2>
         <h3><?cs var:Data.List.Address ?></h3>
 	<hr/>
     </div>
+
+	<?cs if:((Data.List.PartType == "digest") || (Data.List.PartType == "deny")) ?>
+	  <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+
+		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
+		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
+		<?cs if:(Data.List.PartType == "digest") ?>
+			<input type="checkbox" name="option_d" value="option_d" <?cs if:Data.List.Options.d ?>checked="checked"<?cs /if ?>><?cs var:Lang.Options.d ?></input>
+		<?cs elif:(Data.List.PartType == "deny") ?>
+			<input type="checkbox" name="option_k" value="option_k" <?cs if:Data.List.Options.k ?>checked="checked"<?cs /if ?>><?cs var:Lang.Options.k ?></input>
+		<?cs /if ?>
+
+		<button type="submit" name="action" value="config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+	<?cs /if ?>
+		
 
     <?cs if:(Data.List.hasPostMod || Data.List.hasSubMod || Data.List.hasRemoteAdmin) ?>
 		<!-- show warnings for wrong moderation paths -->
@@ -22,10 +45,10 @@
 
 	    <!-- scrollbox for list's subscribers -->
 	    <!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
-	    <?cs if:(Data.List.SubscribersCount > 25) ?>
+	    <?cs if:subcount(Data.List.Subscribers) > 25 ?>
 		<?cs set:Data.ScrollSize = 25 ?>
 	      <?cs else ?>
-		<?cs set:Data.ScrollSize = Data.List.SubscribersCount ?>
+		<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
 	    <?cs /if ?>
 	    <!-- TODO: this div should float to left - the buttons should be at the right -->
 	    <select name="mailaddress_del" tabindex="1" size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
@@ -35,8 +58,8 @@
 	    </select>
 	
 	    <div class="add_remove">
-		<?cs if:(Data.List.SubscribersCount > 0) ?> 
-		    <p><?cs var:Data.List.SubscribersCount ?> <?cs var:Lang.Misc.Subscribers ?></p>
+		<?cs if:subcount(Data.List.Subscribers) > 0 ?> 
+		    <p><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:Lang.Misc.Subscribers ?></p>
 		    <button type="submit" name="action" tabindex="2" value="address_del"><?cs var:Lang.Buttons.DeleteAddress ?></button>
 		<?cs /if ?>
 		<!-- TODO: das helper icon ist erst in der naechsten Zeile -->
@@ -51,66 +74,6 @@
 		<?cs /if ?>
 		<button type="submit" tabindex="5" name="action" value="address_add"><?cs var:Lang.Buttons.AddAddress ?></button>
 	    </div>
-
-	    <?cs if:Data.List.PartType ?>
-		<button type="submit" tabindex="11" name="action"
-		    <?cs call:help_title("Config") ?> value="list_config_ask">
-		    <?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
-	    <?cs else ?>
-		<div class="options">
-		    <!-- at least one extra config option is available -->
-			<h3><?cs var:Lang.Misc.AdditionalParts ?>:</h3>
-		    <p>
-		    <?cs if:(Data.List.hasPostMod || Data.List.hasSubMod || Data.List.has.RemoteAdmin) ?>
-		    <!-- moderation -->
-			<button type="submit" tabindex="6" name="action"
-			    <?cs call:help_title("Moderator") ?> value="part_mod">
-			    <?cs var:Lang.Buttons.Moderators ?></button><?cs call:help_icon("Moderator") ?>
-		    <?cs /if ?>
-
-		    <?cs if:Data.List.hasDenyList ?>
-		    <!-- deny lists -->
-			<button type="submit" tabindex="7" name="action"
-			    <?cs call:help_title("DenyList") ?> value="part_deny">
-			    <?cs var:Lang.Buttons.DenyList ?></button><?cs call:help_icon("Deny") ?>
-		    <?cs /if ?>
-
-		    <?cs if:Data.list.hasAllowList ?>
-		    <!-- allow lists -->
-			<button type="submit" tabindex="8" name="action"
-			    <?cs call:help_title("Allow") ?> value="part_allow">
-			    <?cs var:Lang.Buttons.AllowList ?></button><?cs call:help_icon("Allow") ?>
-		    <?cs /if ?>
-
-		    <?cs if:Data.List.hasDigestList ?>
-		    <!-- digest subscribers -->
-			<button type="submit" tabindex="9" name="action"
-			    <?cs call:help_title("Digest") ?> value="part_digest">
-			    <?cs var:Lang.Buttons.DigestSubscribers ?></button><?cs call:help_icon("Digest") ?>
-		    <?cs /if ?>
-		    </p>
-
-		    <p>
-		    <!-- web archive -->
-		    <?cs if:Data.List.hasWebArchive ?>
-			<button type="submit" tabindex="10" name="action"
-			    <?cs call:help_title("WebArchive") ?> value="web_archive">
-			    <?cs var:Lang.Buttons.WebArchive ?></button><?cs call:help_icon("WebArchive") ?>
-		    <?cs /if ?>
-
-		    <!-- extra config options -->
-		    <button type="submit" tabindex="11" name="action"
-		        <?cs call:help_title("Config") ?> value="list_config_ask">
-			<?cs var:Lang.Buttons.Configuration ?></button><?cs call:help_icon("Config") ?>
-
-		    <button type="submit" tabindex="12" name="action"
-		        <?cs call:help_title("SelectList") ?> value="select_list">
-			<?cs var:Lang.Buttons.SelectList ?></button><?cs call:help_icon("SelectList") ?>
-		    </p>
-		
-		</div>
-		<!-- end of list options block -->
-	    <?cs /if ?>
 
 	</form>
 

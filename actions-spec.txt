@@ -1,13 +1,13 @@
 intro
-list_subscribers
+subscribers
 	list
 	[part]
-list_address_add
+address_add
 	list
 	[part]
 	[mailaddress_add]
 	[mailaddressfile]
-list_address_del
+address_del
 	list
 	[part]
 	mailaddress_del
@@ -22,17 +22,19 @@ list_create_do
 	inhost
 	[options]
 	[sql]
-list_config_main_ask
+config_ask
 	list
-list_config_main_do
+	[config_subset]
+config_do
 	list
+	[config_subset]
 	[options]
-list_textfiles
+textfiles
 	list
-list_textfile_edit
+textfile_edit
 	list
 	file
-list_textfile_save
+textfile_save
 	list
 	file
 	content

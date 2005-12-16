@@ -11,15 +11,17 @@
 					<li><a href="<?cs var:ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=subscribers&part=allow" name="<?cs var:Lang.Menue.AllowList ?>"><?cs var:Lang.Menue.AllowList ?></a></li>
 					<li><a href="<?cs var:ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=subscribers&part=deny" name="<?cs var:Lang.Menue.DenyList ?>"><?cs var:Lang.Menue.DenyList ?></a></li>
 					<li><a href="<?cs var:ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=subscribers&part=digest" name="<?cs var:Lang.Menue.DigestList ?>"><?cs var:Lang.Menue.DigestList ?></a></li>
+					<li><a href="<?cs var:ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=subscribers&part=mod" name="<?cs var:Lang.Menue.ModList ?>"><?cs var:Lang.Menue.ModList ?></a></li>
 				</ul>
 			<?cs /if ?>
 		</li>
 
-		<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_main_ask" name="<?cs var:Lang.Menue.ConfigMain ?>"><?cs var:Lang.Menue.ConfigMain ?></a></li>
+		<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_ask&config_subset=main" name="<?cs var:Lang.Menue.ConfigMain ?>"><?cs var:Lang.Menue.ConfigMain ?></a></li>
 		<ul>
-			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_subscription_ask" name="<?cs var:Lang.Menue.ConfigSub ?>"><?cs var:Lang.Menue.ConfigSub ?></a></li>
-			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_posting_ask" name="<?cs var:Lang.Menue.ConfigPost ?>"><?cs var:Lang.Menue.ConfigPost ?></a></li>
-			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_admin_ask" name="<?cs var:Lang.Menue.ConfigAdmin ?>"><?cs var:Lang.Menue.ConfigAdmin ?></a></li>
+			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_ask&config_subset=subscription" name="<?cs var:Lang.Menue.ConfigSub ?>"><?cs var:Lang.Menue.ConfigSub ?></a></li>
+			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_ask&config_subset=posting" name="<?cs var:Lang.Menue.ConfigPost ?>"><?cs var:Lang.Menue.ConfigPost ?></a></li>
+			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_ask&config_subset=archive" name="<?cs var:Lang.Menue.ConfigArchive ?>"><?cs var:Lang.Menue.ConfigArchive ?></a></li>
+			<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=config_ask&config_subset=admin" name="<?cs var:Lang.Menue.ConfigAdmin ?>"><?cs var:Lang.Menue.ConfigAdmin ?></a></li>
 		</ul>
 
 		<li><a href="<?cs var:Data.ScriptName ?>?list=<?cs var:Data.List.Name ?>&action=textfiles" name="<?cs var:Lang.Menue.TextFiles ?>"><?cs var:Lang.Menue.TextFiles ?></a></li>
@@ -36,7 +38,7 @@
 	<?cs if:Data.Permissions.Create ?>
 		<li><a href="<?cs var:ScriptName ?>?action=list_create_ask" name="<?cs var:Lang.Menue.Create ?>"><?cs var:Lang.Menue.Create ?></a></li>
 	<?cs /if ?>
-	<?cs if:Data.ListsCount > 0 ?>
+	<?cs if:subcount(Data.Lists) > 0 ?>
 		<li><?cs var:Lang.Menue.AvailableLists ?>
 			<ul>
 				<?cs each:item = Data.Lists ?>

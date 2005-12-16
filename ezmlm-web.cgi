@@ -206,15 +206,28 @@ if ($action eq '' || $action eq 'intro') {
 	} else {
 		$pagename = 'intro';
 	}
-} elsif ($action eq 'config_main_ask') {
+} elsif ($action eq 'config_ask') {
 	# User updates configuration ...
 	if (defined($q->param('list'))) {
-		$pagename = 'config_main';
+		if ($q->param('config_subset') eq 'subscription') {
+			$pagename = 'config_subscription';
+		} elsif ($q->param('config_subset') eq 'posting') {
+			$pagename = 'config_posting';
+		} elsif ($q->param('config_subset') eq 'archive') {
+			$pagename = 'config_archive';
+		} elsif ($q->param('config_subset') eq 'admin') {
+			$pagename = 'config_admin';
+		} elsif ($q->param('config_subset') eq 'main') {
+			$pagename = 'config_main';
+		} else {
+			$error = 'ParameterMissing';
+			$pagename = 'intro';
+		}
 	} else {
 		$error = 'ParameterMissing';
 		$pagename = 'intro';
 	}
-} elsif ($action eq 'config_main_do') {
+} elsif ($action eq 'config_do') {
 	# Save current settings ...
 	if (defined($q->param('list'))) {
 		$success = 'UpdateConfig' if &update_config();
@@ -335,7 +348,6 @@ sub set_pagedata()
          $pagedata->setValue("Data.Lists." . $num, "$files[$i]");
       }
    }
-   $pagedata->setValue("Data.ListsCount", "$num");
 
 
    # list specific configuration
@@ -408,7 +420,6 @@ sub set_pagedata4list
 		$pagedata->setValue("Data.List.Subscribers." . $i, "$item");
 		$i++;
 	}
-	$pagedata->setValue("Data.List.SubscribersCount", "$i");
 
 	$pagedata->setValue("Data.List.hasDenyList", 1) if ($list->isdeny);
 	$pagedata->setValue("Data.List.hasAllowList", 1) if ($list->isallow);
@@ -456,7 +467,6 @@ sub set_pagedata4list
 			$pagedata->setValue("Data.List.Files." . $i, "$item");
 			$i++;
 		}
-		$pagedata->setValue("Data.List.FilesCount", "$i");
 
 		# text file specified?
 		if ($q->param('file') ne '')
@@ -475,21 +485,17 @@ sub set_pagedata4list
 
 sub set_pagedata4options {
    my($opts) = shift;
-   my($i, $j);
+   my($i);
  
    # TODO: remove when migration to cs is done
-   $j = 0;
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
 	$pagedata->setValue("Data.List.Options." . $i . ".name", "$i");
 	$pagedata->setValue("Data.List.Options." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
 	$pagedata->setValue("Data.List.Options." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
 	$pagedata->setValue("Data.List.Options." . $i . ".state", ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
-	$j++;
    }
-   $pagedata->setValue("Data.List.OptionsCount", "$j");
 
-   $j = 0;
    my $state;
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
@@ -500,9 +506,7 @@ sub set_pagedata4options {
 	$state = ($opts =~ /$i (?:'(.+?)')/);
 	$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);
 	$pagedata->setValue("Data.List.Settings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
-	$j++;
    }
-   $pagedata->setValue("Data.List.SettingsCount", "$j");
 }
 
 # ---------------------------------------------------------------------------

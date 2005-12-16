@@ -16,7 +16,11 @@ lang/de.pm -text
 lang/en.hdf -text
 lang/en.pm -text
 lang/jp.pm -text
+template/config_admin.cs -text
+template/config_archive.cs -text
 template/config_main.cs -text
+template/config_posting.cs -text
+template/config_subscription.cs -text
 template/display_options.cs -text
 template/footer.cs -text
 template/header.cs -text
