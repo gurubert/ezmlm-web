@@ -178,7 +178,7 @@ if ($action eq '' || $action eq 'intro') {
 		$error = 'ParameterMissing';
 		$pagename = 'intro';
 	}
-} elsif ($action eq 'delete_ask') {
+} elsif ($action eq 'list_delete_ask') {
 	# Confirm list removal
 	if (defined($q->param('list'))) {
 		$pagename = 'list_delete';
@@ -206,9 +206,10 @@ if ($action eq '' || $action eq 'intro') {
 	} else {
 		$pagename = 'intro';
 	}
-} elsif ($action eq 'config_ask') {
-	# User updates configuration ...
+} elsif (($action eq 'config_ask') || ($action eq 'config_do')) {
+	# User wants to see/change the configuration ...
 	if (defined($q->param('list'))) {
+		$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
 		if ($q->param('config_subset') eq 'subscription') {
 			$pagename = 'config_subscription';
 		} elsif ($q->param('config_subset') eq 'posting') {
@@ -217,21 +218,14 @@ if ($action eq '' || $action eq 'intro') {
 			$pagename = 'config_archive';
 		} elsif ($q->param('config_subset') eq 'admin') {
 			$pagename = 'config_admin';
+		} elsif ($q->param('config_subset') eq 'filter') {
+			$pagename = 'config_filter';
 		} elsif ($q->param('config_subset') eq 'main') {
 			$pagename = 'config_main';
 		} else {
 			$error = 'ParameterMissing';
 			$pagename = 'intro';
 		}
-	} else {
-		$error = 'ParameterMissing';
-		$pagename = 'intro';
-	}
-} elsif ($action eq 'config_do') {
-	# Save current settings ...
-	if (defined($q->param('list'))) {
-		$success = 'UpdateConfig' if &update_config();
-		$pagename = 'config_main';
 	} else {
 		$error = 'ParameterMissing';
 		$pagename = 'intro';
@@ -490,23 +484,17 @@ sub set_pagedata4options {
    # TODO: remove when migration to cs is done
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
-	$pagedata->setValue("Data.List.Options." . $i . ".name", "$i");
-	$pagedata->setValue("Data.List.Options." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
-	$pagedata->setValue("Data.List.Options." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
-	$pagedata->setValue("Data.List.Options." . $i . ".state", ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
+	$pagedata->setValue("Data.List.Options." . $i , ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
    }
 
    my $state;
    # convert EZMLM_LABELS to hdf-language values
    foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-	$pagedata->setValue("Data.List.Settings." . $i . ".name", "$i");
-	$pagedata->setValue("Data.List.Settings." . $i . ".short", "$EZMLM_LABELS{$i}[0]");
-	$pagedata->setValue("Data.List.Settings." . $i . ".long", "$EZMLM_LABELS{$i}[1]");
-	#$pagedata->setValue("Data.List.Settings." . $i . ".state", ($opts =~ /$i (?:'(.+?)')/)? 1 : 0);
+	# TODO: fix this!
+	$pagedata->setValue("Data.List.Settings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
 	$state = ($opts =~ /$i (?:'(.+?)')/);
 	$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);
-	$pagedata->setValue("Data.List.Settings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
-   }
+	}
 }
 
 # ---------------------------------------------------------------------------
@@ -822,18 +810,20 @@ sub update_config {
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 
    # Work out the command line options ...
-   foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
-      if (defined($q->param($i))) {
-         $options .= $i;
-		 # TODO: check if the following lines were not covered yet
-		 $opt_mime = 1 if($i eq 'x'); # add by ooyama
-		 $opt_prefix = 1 if($i eq 'f'); # add by ooyama
-
+   my $options = $q->param('options_available');
+   for ($i = length "$options"; $i>0; $i--) {
+	  my $key = substr($options,$i-1,1);
+      if (defined($q->param("option_$key"))) {
+         $options .= lc($key);
+		 # TODO: check, if the following is necessary
+		 $opt_mime = 1 if($key eq 'x'); # add by ooyama
+		 $opt_prefix = 1 if($key eq 'f'); # add by ooyama
       } else {
-         $options .= uc($i);
+         $options .= uc($key);
       }
    }
 
+	# TODO: migrate it away from EZML_LABELS
    foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
       if (defined($q->param($i))) {
          $options .= " -$i '" . $q->param("$i-value") . "'";

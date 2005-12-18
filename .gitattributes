@@ -18,6 +18,7 @@ lang/en.pm -text
 lang/jp.pm -text
 template/config_admin.cs -text
 template/config_archive.cs -text
+template/config_filter.cs -text
 template/config_main.cs -text
 template/config_posting.cs -text
 template/config_subscription.cs -text

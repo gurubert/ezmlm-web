@@ -9,7 +9,7 @@
 	<meta http-equiv="pragma" content="no-cache" />	<!-- for browsers -->
 	<meta http-equiv="cache-control" content="no-cache" />	<!-- for proxys -->
 	<meta http-equiv="content-language" content="<?cs var:Language ?>" />
-	<meta http-equiv="Content-Type" content="text/html; charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Author" content="guy-ezmlm[at]rucus.ru.ac.za" />
 	<meta http-equiv="expire" content="-1d" />
 <!--	<link rel="stylesheet" type="text/css" href="<?cs var:Stylesheet ?>" /> -->

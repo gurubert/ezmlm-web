@@ -21,11 +21,14 @@
 		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		<?cs if:(Data.List.PartType == "digest") ?>
-			<input type="checkbox" name="option_d" value="option_d" <?cs if:Data.List.Options.d ?>checked="checked"<?cs /if ?>><?cs var:Lang.Options.d ?></input>
+			<?cs call:checkbox("d") ?>
 		<?cs elif:(Data.List.PartType == "deny") ?>
-			<input type="checkbox" name="option_k" value="option_k" <?cs if:Data.List.Options.k ?>checked="checked"<?cs /if ?>><?cs var:Lang.Options.k ?></input>
+			<?cs call:checkbox("k") ?>
 		<?cs /if ?>
 
+		<!-- "available_options" is filled by the checkbox macro -->
+		<input type="hidden" name="options_available" value="<?cs var:available_options ?>" />
+	
 		<button type="submit" name="action" value="config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
 	<?cs /if ?>
 		
@@ -72,6 +75,7 @@
 			<?cs call:help_title("AddAddressFile") ?>
 			maxlength="100" tabindex="4" /><?cs call:help_icon("AddAddressFile") ?></p>
 		<?cs /if ?>
+
 		<button type="submit" tabindex="5" name="action" value="address_add"><?cs var:Lang.Buttons.AddAddress ?></button>
 	    </div>
 

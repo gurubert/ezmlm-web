@@ -1,4 +1,9 @@
 remove old language file dependencies
-part list should have a title regarding its type
+
+Create-List-Formular (reparieren und minimieren)
+Max:Min - msgsize
+trailing text in normales textarea? (auch ausserhalb von 'textfiles')
 
 prevent lists called 'ALL' or 'ALLOW_CREATE' from being created
+
+eindeutige Listenamen? - local-part? - url-escape (voller Name - domain ausblenden falls DEFAULTDOMAINT)? -> mapping ins Dateisystem?

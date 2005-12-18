@@ -17,6 +17,7 @@ Lang {
 		ConfigPost	= posting
 		ConfigAdmin	= administration
 		ConfigArchive	= archive
+		ConfigFilter	= filtering
 		TextFiles	= Text files
 		AvailableLists	= Available lists:
 	  }
@@ -28,6 +29,7 @@ Lang {
 		ConfigPosting	= Posting configuration
 		ConfigAdmin	= Remote administration
 		ConfigArchive	= Archive configuration
+		ConfigFilter	= Message filtering configuration
 		SubscriberList	= Subscribers of the list
 		AllowList		= Allowed users
 		DenyList		= Blocked users
@@ -110,11 +112,11 @@ Lang {
 		p	= Allow subscription and archive retrieval for everyone
 		q	= Process mailman-style requests (to local-request@domain)
 		r	= Enable remote administration of the list (for moderators)
-		s	= Subscriptions to the main list and digest will be moderated
+		s	= Subscriptions to the main list and the digest list will be moderated
 		t	= Add a trailing text (see the appropriate text file) to every message
 		o	= Only moderators may post
 		u	= Users have to be subscribed to be allowed to post
-		w	= Remove the ezmlm-warn invocations from the list setup.
+		w	= Remove the ezmlm-warn invocations from the list setup
 		x	= Filter header lines and mime attachement types
      }
 
