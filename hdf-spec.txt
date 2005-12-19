@@ -3,6 +3,7 @@ TemplateDir
 LanguageDir
 Stylesheet
 HelpIconURL
+Config.Title
 
 Data.Action
 Data.ErrorMessage

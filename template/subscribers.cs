@@ -1,18 +1,16 @@
 <div class="subscribers">
 
-    <div class="title">
+	<p id="listinfo"><?cs var:Data.List.Address ?></p>
 
-		<h1><?cs var:Data.List.Name ?></h1>
-        <h2>
+    <div class="title">
+        <h1>
 			<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:Lang.Title.AllowList ?>
 			<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:Lang.Title.DenyList ?>
 			<?cs elif:(Data.List.PartTyoe == "digest") ?><?cs var:Lang.Title.DigestList ?>
 			<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:Lang.Title.ModList ?>
 			<?cs else ?> 								<?cs var:Lang.Title.SubscriberList ?>
 			<?cs /if ?>
-		</h2>
-        <h3><?cs var:Data.List.Address ?></h3>
-	<hr/>
+		</h1>
     </div>
 
 	<?cs if:((Data.List.PartType == "digest") || (Data.List.PartType == "deny")) ?>
@@ -46,19 +44,22 @@
 		    <input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 	    <?cs /if ?>
 
-	    <!-- scrollbox for list's subscribers -->
-	    <!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
-	    <?cs if:subcount(Data.List.Subscribers) > 25 ?>
-		<?cs set:Data.ScrollSize = 25 ?>
-	      <?cs else ?>
-		<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
-	    <?cs /if ?>
-	    <!-- TODO: this div should float to left - the buttons should be at the right -->
-	    <select name="mailaddress_del" tabindex="1" size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
-		<?cs each:item = Data.List.Subscribers ?>
-		    <option><?cs var:item ?></option>
-		<?cs /each ?>
-	    </select>
+		<?cs if:subcount(Data.List.Subscribers) > 0 ?>
+			<!-- scrollbox for list's subscribers -->
+			<!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
+			<?cs if:subcount(Data.List.Subscribers) > 25 ?>
+				<?cs set:Data.ScrollSize = 25 ?>
+			  <?cs else ?>
+				<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
+			<?cs /if ?>
+			<!-- TODO: this div should float to left - the buttons should be at the right -->
+			<select name="mailaddress_del" tabindex="1"
+					size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
+				<?cs each:item = Data.List.Subscribers ?>
+					<option><?cs var:item ?></option>
+				<?cs /each ?>
+			</select>
+		<?cs /if ?>
 	
 	    <div class="add_remove">
 		<?cs if:subcount(Data.List.Subscribers) > 0 ?> 

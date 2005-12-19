@@ -1,19 +1,20 @@
 <div id="create" class="container">
 
     <div class="title">
-	<h2><?cs var:Lang.Misc.CreateNew ?></h2>
-	<hr/>
+		<h1><?cs var:Lang.Title.ListCreate ?></h1>
     </div>
 
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
     <div class="input">
-	<span class="formfield"><?cs var:Lang.Misc.ListName ?>: <input type="text" name="list"
-		<?cs call:help_title("ListName") ?> size="20"><?cs call:help_icon("ListName") ?></span>
-	<span class="formfield"><?cs var:Lang.Misc.ListAddress ?>: <input type="text" name="inlocal"
-		size="10" <?cs call:help_title("ListAddress") ?> value="<?cs var:Data.UserName ?>">
-		<?cs call:help_icon("ListAddress") ?> @ <input type="text" name="inhost" size="30"
-	  	value="<?cs var:Data.HostName ?>" <?cs call:help_title("ListAddress") ?>><?cs call:help_icon("ListAddress") ?></span>
+		<p class="formfield"><?cs var:Lang.Misc.ListName ?>: <input type="text" name="list"
+		<?cs call:help_title("ListName") ?> size="20"><?cs call:help_icon("ListName") ?></p>
+		
+		<p class="formfield"><?cs var:Lang.Misc.ListAddress ?>: <input type="text"
+			name="inlocal" size="10" <?cs call:help_title("ListAddress") ?>
+			value="<?cs var:Data.UserName ?>"><?cs call:help_icon("ListAddress")
+			?> @ <input type="text" name="inhost" size="30" value="<?cs var:Data.HostName ?>"
+			<?cs call:help_title("ListAddress") ?>><?cs call:help_icon("ListAddress") ?></p>
 	<span class="formfield"><?cs var:Lang.Misc.ListOptions ?>:</span>
 
 	<?cs include:TemplateDir + "display_options.cs" ?>

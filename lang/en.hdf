@@ -1,7 +1,5 @@
 Language = en
 
-PageTitle = ezmlm-web - a mailinglists' administration interface
-
 
 Lang {
 	Menue {
@@ -12,29 +10,33 @@ Lang {
 		DenyList	= deny list
 		DigestList	= digest list
 		ModList	= moderators
-		ConfigMain	= Configuration
+		ConfigMain	= Options
 		ConfigSub	= subscription
 		ConfigPost	= posting
 		ConfigAdmin	= administration
 		ConfigArchive	= archive
 		ConfigFilter	= filtering
 		TextFiles	= Text files
-		AvailableLists	= Available lists:
+		ListSelect	= Choose a list
+		Properties	= Properties of
+		Help		= Help (external)
 	  }
 
 
 	Title {
 		ConfigMain	= List configuration
-		ConfigSub	= Subscription configuration
-		ConfigPosting	= Posting configuration
+		ConfigSub	= Subscription options
+		ConfigPosting	= Posting options
 		ConfigAdmin	= Remote administration
-		ConfigArchive	= Archive configuration
-		ConfigFilter	= Message filtering configuration
+		ConfigArchive	= Archive options
+		ConfigFilter	= Message filtering options
 		SubscriberList	= Subscribers of the list
 		AllowList		= Allowed users
 		DenyList		= Blocked users
 		DigestList		= Digest subscribers
 		ModList			= Moderators of the list
+		ListCreate		= Create a new list
+		ListSelect		= Choose a list
 	  }
 
 
@@ -172,6 +174,7 @@ Lang {
 
 
 	Misc {
+		HelpLink	= The manual page of ezmlm-idx
 		ListSelectDescription {
 			1	= choose a mailing list from the selection box or click on [Create List]
 			2	= click on the [Edit] button if you want to edit the selected list

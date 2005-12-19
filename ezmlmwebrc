@@ -73,7 +73,7 @@ $HTML_FOOTER .= '<FONT SIZE="-1"><A HREF="https://systemausfall.org/toolforge/ez
 # stylesheet (see HTML_CSS_FILE) since version 2.3
 
 # What is the title of this document?
-$HTML_TITLE = 'E Z Mailing List Manager';
+$HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
 
 # Optional: use a cascading style sheet (css)
 $HTML_CSS_FILE = "css/default.css";

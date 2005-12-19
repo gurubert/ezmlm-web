@@ -1,16 +1,12 @@
 <div id="config" class="container">
 
     <div class="title">
-	<h2><?cs var:Lang.Title.ConfigSub ?></h2>
+		<h1><?cs var:Lang.Title.ConfigSub ?></h1>
     </div>
 
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
     <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
     <input type="hidden" name="config_subset" value="subscription" />
-    <div class="info">
-	<p><?cs var:Lang.Misc.ListName ?>: <em><?cs var:Data.List.Name ?></em></p>
-	<p><?cs var:Lang.Misc.ListAddress ?>: <em><?cs var:Data.List.Address ?></em></p>
-    </div>
 
     <div class="input"><ul>
 

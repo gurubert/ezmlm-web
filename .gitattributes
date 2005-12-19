@@ -28,12 +28,13 @@ template/header.cs -text
 template/intro.cs -text
 template/list_create.cs -text
 template/list_delete.cs -text
+template/list_select.cs -text
 template/macros.cs -text
 template/main.cs -text
 template/modpath_info.cs -text
 template/nav.cs -text
 template/subscribers.cs -text
-template/text_edit.cs -text
+template/textfile_edit.cs -text
 template/textfiles.cs -text
 test-suite/cases.d/confirm_delete.conf -text
 test-suite/cases.d/create_list.conf -text

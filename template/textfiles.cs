@@ -4,7 +4,7 @@
     <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 
     <div class="list">
-	<select name="file" tabindex="1" size="25">
+	<select name="file" tabindex="1" size="30">
 		<?cs each:item = Data.List.Files ?>
 		    <option><?cs var:item ?></option>
 		<?cs /each ?>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="question">
-	<button type="submit" name="action" value="edit_file_ask"><?cs var:Lang.Buttons.EditFile ?></button>
+	<button type="submit" name="action" value="textfile_edit"><?cs var:Lang.Buttons.EditFile ?></button>
     </div>
 
   </form>

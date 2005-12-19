@@ -11,6 +11,7 @@ address_del
 	list
 	[part]
 	mailaddress_del
+list_select
 list_delete_ask
 	list
 list_delete_do

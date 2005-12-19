@@ -151,6 +151,9 @@ my $action = $q->param('action');
 if ($action eq '' || $action eq 'intro') {
 	# Default action. Present a list of available lists to the user ...
 	$pagename = 'intro';
+} elsif ($action eq 'list_select') {
+	# display all lists
+	$pagename = 'list_select';
 } elsif ($action eq 'subscribers') {
 	# display list (or part list) subscribers
 	if (defined($q->param('list'))) {
@@ -291,6 +294,7 @@ sub load_hdf {
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
 	$hdf->setValue("HelpIconURL", "$HELP_ICON_URL");
+	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
 
 	return $hdf;
 }
@@ -308,7 +312,8 @@ sub output_page {
 	$pagedata->setValue('Data.Action', "$pagename");
 
 	my $pagefile = $TEMPLATE_DIR . "/main.cs";
-	die "template ($pagefile) not found!" unless (-e "$pagefile");
+	die "main template ($pagefile) not found!" unless (-e "$pagefile");
+	die "sub template ($TEMPLATE_DIR/$pagename.cs) not found!" unless (-e "$TEMPLATE_DIR/$pagename.cs");
 
 	# print http header
 	print "Content-Type: text/html\n\n";
