@@ -21,8 +21,8 @@
 
 <?cs def:warning(warnname)
     ?><div class="warning">
-		<?cs alt:Lang.WarningMessage[warname] ?>unknown warning message (?cs
-		var:warname ?>)<?cs /alt ?>
+		<?cs alt:Lang.WarningMessage[warnname] ?>unknown warning message (<?cs
+		var:warnname ?>)<?cs /alt ?>
 	</div><?cs
 /def ?>
 

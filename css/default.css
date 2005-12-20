@@ -25,7 +25,8 @@ font.feature {
 	margin: 1%;
 	margin-top: 5px;
 	padding: 0.5%;
-	padding-top: 4%;
+	padding-top: 1.5%;
+	padding-bottom: 1.5%;
 	background-color: #c0c0b0;
 }
 
@@ -46,8 +47,7 @@ font.feature {
 	}
 
 #nav_bar li a.nav_active {
-	color: #1f3850;
-	background-color: #c8c8c8;
+	color: #fff;
 	}
 
 #nav_bar font.no_link {
@@ -69,6 +69,12 @@ font.feature {
 	margin-left: 22%;
 	padding-left: 5px;
 	min-height: 400px;
+	list-style: none;
+	}
+
+#list_select ul li {
+	padding-left: 6%;
+	text-align: left;
 	list-style: none;
 	}
 
@@ -131,7 +137,7 @@ h1.oben {
 	float: right;
 	padding-right: 5px;
 	font-size: 100%;
-	color: #006760;
+	color: #ffd7f0;
 	background-color: inherit;
 	}
 

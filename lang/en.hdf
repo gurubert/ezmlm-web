@@ -69,6 +69,7 @@ Lang {
 		UnknownAction		= this action is undefined
 		ParameterMissing	= this action needs one or more parameters
     	Forbidden			= Error: you are not allowed to do this!
+		ListDirUnavailable	= Could not create the list directory!
 	  }
 
 	WarningMessage {
@@ -87,6 +88,11 @@ Lang {
 		UnsafeRemoveListDirFailed	= Unable to delete list:
 		UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files:
 		InvalidFileFormat	= The uploaded file must be a text file.
+		WebUsersUpdate		= Could not update the webusers file
+		WebUsersRead		= Could not read the webusers file
+		InvalidListName		= The name of the list contains invalid characters
+		EmptyListName		= The name of the list may not be empty
+		InvalidLocalPart	= The local part of the list address is not valid
 	  }
 	
 	SuccessMessage {
@@ -202,7 +208,7 @@ Lang {
 		EditTextInfo	= The box on the left contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user request, or as part of all outgoing messages<br/>To edit a file, select its name from the box. Then click on the [Edit File] button. Press [cancel] when you have finished editing.
 		EditingFile	= Editing File
 		EditFileInfo	= <big><strong>ezmlm-manage</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br><tt><strong>&lt;#A#&gt;</strong></tt>The subscription address<br><tt><strong>&lt;#R#&gt;</strong></tt> The address a subscriber must reply to<p/><big><strong>ezmlm-store</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br/><tt><strong>&lt;#A#&gt;</strong></tt>The acceptance address<br/><tt><strong>&lt;#R#&gt;</strong></tt> The rejection address</ul>
-		mysqlCreate	= Create the MySQL database tables if necessary
+		MysqlCreate	= Create the MySQL database tables if necessary
 		SuggestEdit	= You will have to edit them manually.
 		PostModPathWarn = Posting Moderators are stored in a non-standard location
 		SubModPathWarn	= Subscriber Moderators are stored in a non-standard location

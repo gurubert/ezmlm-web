@@ -95,3 +95,7 @@ Version 2.3 - 10/06/02005
 * file upload typo fixed
 * update of webusers file fixed
 * moderator unsubscribe fixed
+
+Version 2.4 - 01/01/02006
+* fixed insecure writing of webusers data
+* commas are not necessary anymore in webusers file

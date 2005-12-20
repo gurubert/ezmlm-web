@@ -48,6 +48,8 @@ use Mail::Address;
 use File::Copy;
 use DB_File;
 use CGI;
+use IO::File;
+use POSIX qw(tmpnam);
 use Encode qw/ from_to /;	# add by ooyama for char convert
 
 # These two are actually included later and are put here so we remember them.
@@ -134,21 +136,17 @@ if(defined($q->param('action')) && $q->param('action') eq 'web_archive') {
 }
 
 my $pagedata = load_hdf();
-
-# check permissions
-unless (&check_permission_for_action == 0) {
-	$pagename = 'intro';
-	$error = 'Forbidden';
-	&output_page();
-	exit;
-}
-
 my $action = $q->param('action');
 
+# check permissions
+unless (&check_permission_for_action) {
+	$pagename = 'intro';
+	$error = 'Forbidden';
+}
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
 # TODO: unify all these "is list param set?" checks ...
-if ($action eq '' || $action eq 'intro') {
+elsif ($action eq '' || $action eq 'intro') {
 	# Default action. Present a list of available lists to the user ...
 	$pagename = 'intro';
 } elsif ($action eq 'list_select') {
@@ -207,7 +205,7 @@ if ($action eq '' || $action eq 'intro') {
 		$success = 'CreateList';
 		$pagename = 'subscribers';
 	} else {
-		$pagename = 'intro';
+		$pagename = 'list_create';
 	}
 } elsif (($action eq 'config_ask') || ($action eq 'config_do')) {
 	# User wants to see/change the configuration ...
@@ -336,13 +334,13 @@ sub set_pagedata()
 		return (1==0);
 	}
 
-   @files = grep !/^\./, readdir DIR; 
+   @files = sort grep !/^\./, readdir DIR; 
    closedir DIR;
 
    # Check that they actually are lists and add good ones to pagedata ...
    my $num = 0;
    foreach $i (0 .. $#files) {
-      if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]) == 0)) {
+      if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]))) {
          $num++;
          $pagedata->setValue("Data.Lists." . $num, "$files[$i]");
       }
@@ -386,7 +384,7 @@ sub set_pagedata()
    
 
    # permissions
-   $pagedata->setValue("Data.Permissions.Create", (&webauth_create_allowed == 0)? 1 : 0 );
+   $pagedata->setValue("Data.Permissions.Create", (&webauth_create_allowed)? 1 : 0 );
    $pagedata->setValue("Data.Permissions.FileUpload", ($FILE_UPLOAD)? 1 : 0);
 
 
@@ -400,7 +398,7 @@ sub set_pagedata()
 sub set_pagedata4list
 {
 	my $part_type = shift;
-	my ($list, $listname);
+	my ($list, $listname, $webusers);
 	my ($i, $item, @files);
 
 	$listname = $q->param('list');
@@ -436,15 +434,15 @@ sub set_pagedata4list
 
 	# TODO: this is definitely ugly - create a new sub!
 	if(open(WEBUSER, "<$WEBUSERS_FILE")) {
-	      my($webusers);
-	      while(<WEBUSER>) {
-		 last if (($webusers) = m{^$listname\s*\:\s*(.+)$});
-	      }
-	      close WEBUSER;
-	      $webusers ||= $ENV{'REMOTE_USER'} || 'ALL';
-
-	      $pagedata->setValue("Data.List.WebUsers", "$webusers");
+		while(<WEBUSER>) {
+			last if (($webusers) = m{^$listname\s*\:\s*(.+)$});
+		}
+		close WEBUSER;
 	}
+	# set default if there was no list definition
+	$webusers ||= $ENV{'REMOTE_USER'} || 'ALL';
+
+    $pagedata->setValue("Data.List.WebUsers", "$webusers");
 
 	# get the names of the textfiles of this list
 	{
@@ -452,12 +450,12 @@ sub set_pagedata4list
 		$listDir = $LIST_DIR . '/' . $q->param('list');
 
 		# Read the list directory for text ...
-		unless (opendir DIR, "$listDir/text") {
-			$warning = 'TextDirAccessDenied';
-			return (1==0);
+		if (opendir DIR, "$listDir/text") {
+			@files = grep !/^\./, readdir DIR; 
+			closedir DIR;
+		} else {
+			$warning = 'TextDirAccessDenied' if ($warning eq '')
 		}
-		@files = grep !/^\./, readdir DIR; 
-		closedir DIR;
 
 		# TODO: find a better way to set a list ...
 		$i = 0;
@@ -611,7 +609,7 @@ sub check_permission_for_action {
    } elsif (defined($q->param('list'))) {
 	$ret = &webauth($q->param('list'));
    } else {
-	$ret = 0;
+	$ret = (0==0);
    }
    return $ret;
 }
@@ -745,146 +743,176 @@ sub set_pagedata4part_list {
 # ------------------------------------------------------------------------
 
 sub create_list {
-   # Create a list according to user selections ...
+	# Create a list according to user selections ...
 
-   # Check the list directory exists and create if necessary ...
-   if(!-e $LIST_DIR) {
-      die "Unable to create directory ($LIST_DIR): $!" unless mkdir $LIST_DIR, 0700;
-   }
+	# Check if the list directory exists and create if necessary ...
+	unless ((-e $LIST_DIR) || (mkdir $LIST_DIR, 0700)) {
+		warn "Unable to create directory ($LIST_DIR): $!";
+		$error = 'ListDirUnavailable';
+		return (1==0);
+	}
+
+	my ($qmail, $listname, $options, $i);
+
+	# Some taint checking ...
+	$qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
+	$listname = $q->param('list');
+	if ($listname =~ m/[^\w\.-]/) {
+		$warning = 'InvalidListName';
+		return (1==0);
+   	}
+
+	# Sanity Checks ...
+	if ($listname eq '') {
+		$warning = 'EmptyListName';
+		return (1==0);
+   	}
+	if ($qmail eq '') {
+		$warning = 'InvalidLocalPart';
+		return (1==0);
+   	}
+	if(-e ("$LIST_DIR/$listname/lock") || -e ("$HOME_DIR/.qmail-$qmail")) {
+		$warning = 'ListAlreadyExists';
+		return (1==0);
+	}
+
+	$options = &extract_options_from_params();
+
+	my($list) = new Mail::Ezmlm;
+
+	unless ($list->make(-dir=>"$LIST_DIR/$listname",
+				-qmail=>"$HOME_DIR/.qmail-$qmail",
+				-name=>$q->param('inlocal'),
+				-host=>$q->param('inhost'),
+				-switches=>$options,
+				-user=>$USER)
+	) {
+		# fatal error
+		$customWarning = $list->errmsg();
+		return (1==0);
+	}
+
+	# handle MySQL stuff
+	if($q->param('sql') && $options =~ m/-6\s+/) {
+		$customWarning = $list->errmsg() unless($list->createsql());
+	}
    
-   my ($qmail, $listname, $options, $i);
-   
-   # Some taint checking ...
-   $qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
-   $listname = $q->param('list'); $listname =~ s/ /_/g; # In case some git tries to put a space in the file name
+	# no error returned - just a warning
+	$warning = 'WebUsersUpdate' unless (&update_webusers());
 
-   # Sanity Checks ...
-   return (1==0) if ($listname eq '' || $qmail eq '');
-   if(-e ("$LIST_DIR/$listname/lock") || -e ("$HOME_DIR/.qmail-$qmail")) {
-      $error = 'ListAlreadyExists';
-      return (1==0);
-   }
-  
-   # Work out the command line options
-   foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
-      if (defined($q->param($i))) {
-         $options .= $i;
-      } else {
-         $options .= uc($i);
-      }
-   }
+	return (0==0);
+}
 
-   foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-      if (defined($q->param($i))) {
-         $options .= " -$i '" . $q->param("$i-value") . "'";
-      }
-   }
+# ------------------------------------------------------------------------
 
-   my($list) = new Mail::Ezmlm;
+sub extract_options_from_params()
+{
+	# Work out the command line options ...
+	my ($options, $avail_options, $i);
 
-   unless ($list->make(-dir=>"$LIST_DIR/$listname",
-               -qmail=>"$HOME_DIR/.qmail-$qmail",
-               -name=>$q->param('inlocal'),
-               -host=>$q->param('inhost'),
-               -switches=>$options,
-               -user=>$USER)
-   ) {
-	  # fatal error
-      $customError = $list->errmsg();
-	  return (1==0);
-   }
+	$avail_options = $q->param('options_available');
+	for ($i = length "$avail_options"; $i>0; $i--) {
+		my $key = substr($avail_options,$i-1,1);
+		if (defined($q->param("option_$key"))) {
+			$options .= lc($key);
+		} else {
+			$options .= uc($key);
+		}
+	}
 
-   # handle MySQL stuff
-   if($q->param('sql') && $options =~ m/-6\s+/) {
-      unless($list->createsql()) {
-         $customWarning = $list->errmsg();
-      }
-   }
-   
-   &update_webusers();
+	# TODO: remove dependency of EZMLM_LABELS
+	foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
+		if (defined($q->param($i))) {
+			$options .= " -$i '" . $q->param("$i-value") . "'";
+		 }
+	}
 
-   return 0;
+	return $options;
 }
 
 # ------------------------------------------------------------------------
 
 sub update_config {
-   # Save the new user entered config ...
+	# Save the new user entered config ...
    
-   my ($list, $options, $i, @inlocal, @inhost, $opt_mime, $opt_prefix);
-   $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
+	my ($list, $options, @inlocal, @inhost, $opt_mime, $opt_prefix);
+	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 
-   # Work out the command line options ...
-   my $options = $q->param('options_available');
-   for ($i = length "$options"; $i>0; $i--) {
-	  my $key = substr($options,$i-1,1);
-      if (defined($q->param("option_$key"))) {
-         $options .= lc($key);
-		 # TODO: check, if the following is necessary
-		 $opt_mime = 1 if($key eq 'x'); # add by ooyama
-		 $opt_prefix = 1 if($key eq 'f'); # add by ooyama
-      } else {
-         $options .= uc($key);
-      }
-   }
+	$options = &extract_options_from_params();
 
-	# TODO: migrate it away from EZML_LABELS
-   foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-      if (defined($q->param($i))) {
-         $options .= " -$i '" . $q->param("$i-value") . "'";
-      }
-   }
-
-   # Actually update the list ...
-   unless($list->update($options)) {
-      $warning = 'UpdateConfig';
-	  return (1==0);
-   }
-
-   # Update headeradd, headerremove, mimeremove and prefix ...
-   $list->setpart('headeradd', $q->param('headeradd'));
-   $list->setpart('headerremove', $q->param('headerremove'));
-   # TODO: check if empty setting removes the file
-   # TODO: the opt_??? should not be considered - or what?
-   if($opt_mime){
-        if (defined($q->param('mimeremove'))) {
-			$list->setpart('mimeremove', $q->param('mimeremove'));
-		} else {
-			$list->setpart('mimeremove', '');
-		}
+	# Actually update the list ...
+	unless($list->update($options)) {
+		$warning = 'UpdateConfig';
+		return (1==0);
 	}
-   if($opt_prefix){
-        if (defined($q->param('prefix'))) {
-			$list->setpart('prefix', $q->param('prefix'));
-		} else {
-			$list->setpart('prefix', '');
-		}
+
+	# Update headeradd, headerremove, mimeremove and prefix ...
+	$list->setpart('headeradd', $q->param('headeradd'));
+	$list->setpart('headerremove', $q->param('headerremove'));
+
+	# TODO: check if empty setting removes the file
+	# TODO: the opt_??? should not be considered - or what?
+	
+	$list->setpart('mimeremove', $q->param('mimeremove'))
+		if (defined($q->param('mimeremove')));
+	
+	$list->setpart('prefix', $q->param('prefix'))
+		if (defined($q->param('prefix')));
+	
+	unless (&update_webusers()) {
+		$warning = 'WebUsersUpdate';
+		return (1==0);
 	}
-   &update_webusers();
+
+	return (0==0);
 }
 
 # ------------------------------------------------------------------------
 
 sub update_webusers {
-   # replace existing webusers-line or add a new one
+	# replace existing webusers-line or add a new one
 
-   if($q->param('webusers')) {
-      # Back up web users file
-      open(TMP, ">/tmp/ezmlm-web.$$");
-      open(WU, "<$WEBUSERS_FILE");
-      while(<WU>) { print TMP; }
-      close TMP; close WU;
-      
-      open(TMP, "</tmp/ezmlm-web.$$");
-      open(WU, ">$WEBUSERS_FILE");
-      while(<TMP>) {
-		print WU unless (/^$Q::list\s*:/);
+	# return if there is no webusers entry
+	return (0==0) unless defined($q->param('webusers'));
+
+	# Back up web users file
+	my $temp_file;
+	my $fh;
+	# generate a temporary filename (as suggested by the Perl Cookbook)
+	do { $temp_file = tmpnam() }
+	    until $fh = IO::File->new($temp_file, O_RDWR|O_CREAT|O_EXCL);
+	close $fh; 
+	unless (open(TMP, ">$temp_file")) {
+		warn "could not open a temporary file";
+		return (1==0);;
 	}
-	print WU $q->param('list') . ': ' . $q->param('webusers') . "\n";
-      close TMP; close WU;
-      unlink "/tmp/ezmlm-web.$$";
-   }
+	open(WU, "<$WEBUSERS_FILE");
+	while(<WU>) { print TMP; }
+	close WU;
 
+	my $matched = 0;
+	my $listname = $q->param('list');
+	my $webusers_filtered = $q->param('webusers');
+	# remove any insecure characters (e.g. a line break :))
+	$webusers_filtered =~ s/[^\w_,-]/ /gs;
+	open(TMP, "<$temp_file");
+	unless (open(WU, ">$WEBUSERS_FILE")) {
+		warn "the webusers file ($WEBUSERS_FILE) is not writable";
+		return (0==1);
+	}
+	while(<TMP>) {
+		if ($_ =~ m/^$listname\s*:/i) {
+			print WU $listname . ': ' . $webusers_filtered . "\n" if ($matched == 0);
+			$matched = 1;
+		} else {
+			print WU $_;
+		}
+	}
+	# append the line, if there was no matching line found before
+	print WU $listname . ': ' . $webusers_filtered . "\n" if ($matched == 0);
+	
+	close TMP; close WU;
+	unlink "$temp_file";
 }
 
 # ------------------------------------------------------------------------
@@ -919,46 +947,64 @@ sub save_text {
 
 sub webauth {
    
-   # Check if webusers file exists - if not, then access is granted
-   return 0 if (! -e "$WEBUSERS_FILE");
+	# Check if webusers file exists - if not, then access is granted
+	return (0==0) if (! -e "$WEBUSERS_FILE");
 
-   # Read authentication level from webusers file. Format of this file is
-   # somewhat similar to the unix groups file
-   my($listname) = @_;
-   open (USERS, "<$WEBUSERS_FILE") || die "Unable to read webusers file ($WEBUSERS_FILE): $!";
-   while(<USERS>) {
-      if (/^($listname|ALL)\:/i) {
-         if (/(\:\s*|,\s+)((?:$ENV{'REMOTE_USER'})|(?:ALL))\s*(,|$)/) {
-            close USERS; return 0;
-         }
-      }   
-   }
-   close USERS;
-   return 1;
+	# if there was no user authentication, then everything is allowed
+	return (0==0) if ($ENV{'REMOTE_USER'} eq '');
+
+	# Read authentication level from webusers file. Format of this file is
+	# somewhat similar to the unix groups file
+	my($listname) = @_;
+	unless (open (USERS, "<$WEBUSERS_FILE")) {
+		warn "Unable to read webusers file ($WEBUSERS_FILE): $!";
+		$warning = 'WebUsersRead';
+		return (1==0);
+	}
+	while(<USERS>) {
+		if (/^($listname|ALL)\:/i) {
+			# the following line should be synchronized with the webauth_create_allowed sub
+			if (/^[^:]*:(|.*[\s,])($ENV{'REMOTE_USER'}|ALL)(,|\s|$)/) {
+				close USERS;
+				return (0==0);
+			}
+		}   
+	}
+	close USERS;
+	return (1==0);
 }
 
 # ---------------------------------------------------------------------------
 
 sub webauth_create_allowed {
 
-   # Check if we were called with the deprecated argument "-c" (allow to create lists)
-   return 0 if (defined($opt_c));
+	# Check if we were called with the deprecated argument "-c" (allow to create lists)
+	return (0==0) if (defined($opt_c));
 
-   # Check if webusers file exists - if not, then access is granted
-   return 0 if (! -e "$WEBUSERS_FILE");
+	# if there was no user authentication, then everything is allowed
+	return (0==0) if ($ENV{'REMOTE_USER'} eq '');
 
-   # Read create-permission from webusers file.
-   # the special listname "ALLOW_CREATE" controls, who is allowed to do it
-   open (USERS, "<$WEBUSERS_FILE") || die "Unable to read webusers file ($WEBUSERS_FILE): $!";
-   while(<USERS>) {
-      if (/^ALLOW_CREATE:/i) {
-         if (/(\:\s*|,\s+)((?:$ENV{'REMOTE_USER'})|(?:ALL))\s*(,|$)/) {
-            close USERS; return 0;
-         }
-      }   
-   }
-   close USERS;
-   return 1;
+	# Check if webusers file exists - if not, then access is granted
+	return (0==0) if (! -e "$WEBUSERS_FILE");
+
+	# Read create-permission from webusers file.
+	# the special listname "ALLOW_CREATE" controls, who is allowed to do it
+	unless (open (USERS, "<$WEBUSERS_FILE")) {
+		warn "Unable to read webusers file ($WEBUSERS_FILE): $!";
+		$warning = 'WebUsersRead';
+		return (1==0);
+	}
+	while(<USERS>) {
+		if (/^ALLOW_CREATE:/i) {
+			# the following line should be synchronized with the webauth sub
+			if (/[:\s,]($ENV{'REMOTE_USER'}|(ALL))(,|\s|$)/) {
+				close USERS;
+				return (0==0);
+			}
+		}   
+	}
+	close USERS;
+	return (1==0);
 }
 
 # ---------------------------------------------------------------------------
