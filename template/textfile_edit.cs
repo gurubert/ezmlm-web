@@ -1,7 +1,7 @@
 <div id="edittext" class="container">
 
     <div class="title">
-	<h2><?cs var:Lang.Misc.EditingFile ?> <?cs var:Data.List.File.Name ?></h2>
+	<h2><?cs var:Lang.Misc.EditingFile ?> &quot;<?cs var:Data.List.File.Name ?>&quot;</h2>
     </div>
 
     <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
@@ -17,10 +17,7 @@
 	    <?cs var:Lang.Misc.EditFileInfo ?>
 	</div>
 
-	<div class="question">
-	    <button type="submit" name="action" value="edit_text_do"><?cs var:Lang.Buttons.SaveFile ?></button>
-	    <button type="reset" name="action" value="reset"><?cs var:Lang.Buttons.ResetForm ?></button>
-	</div>
+    <button type="submit" name="action" value="textfile_save"><?cs var:Lang.Buttons.SaveFile ?></button>
 
     </form>
 

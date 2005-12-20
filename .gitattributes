@@ -22,8 +22,8 @@ template/config_filter.cs -text
 template/config_main.cs -text
 template/config_posting.cs -text
 template/config_subscription.cs -text
-template/display_options.cs -text
 template/footer.cs -text
+template/form_common.cs -text
 template/header.cs -text
 template/intro.cs -text
 template/list_create.cs -text

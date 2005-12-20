@@ -8,13 +8,13 @@
   <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
     <div class="input"><ul>
 		<li class="formfield"><?cs var:Lang.Misc.ListName ?>: <input type="text" name="list"
-		<?cs call:help_title("ListName") ?> size="25"><?cs call:help_icon("ListName") ?></li>
+		<?cs call:help_title("ListName") ?> size="25"></li>
 		
 		<li class="formfield"><?cs var:Lang.Misc.ListAddress ?>: <input type="text"
 			name="inlocal" size="20" <?cs call:help_title("ListAddress") ?>
-			value="<?cs var:Data.UserName ?>"><?cs call:help_icon("ListAddress")
-			?> @ <input type="text" name="inhost" size="30" value="<?cs var:Data.HostName ?>"
-			<?cs call:help_title("ListAddress") ?>><?cs call:help_icon("ListAddress") ?></li>
+			value="<?cs var:Data.UserName ?>"> @ <input type="text" name="inhost"
+			size="30" value="<?cs var:Data.HostName ?>"
+			<?cs call:help_title("ListAddress") ?>></li>
 		<li><?cs var:Lang.Misc.ListOptions ?>:
 		<ul>
 
@@ -34,7 +34,7 @@
 		<?cs if:Data.WebUser.show ?>
 			<li class="formfield"><?cs var:Lang.Misc.AllowedToEdit ?>: <input type="text"
 			  name="webusers" size="30" value="<?cs var:Data.WebUser.UserName ?>"
-			  <?cs call:help_title("WebUsers") ?>><?cs call:help_icon("WebUsers") ?></li>
+			  <?cs call:help_title("WebUsers") ?>></li>
 		<?cs /if ?>
 
 	</ul></div>

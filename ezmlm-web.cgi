@@ -72,7 +72,7 @@ my @tmp = getpwuid($>); use vars qw[$USER]; $USER=$tmp[0];
 # use strict is a good thing++
 
 use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
-use vars qw[$DEFAULT_OPTIONS %EZMLM_LABELS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
+use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $EZMLM_CGI_RC $EZMLM_CGI_URL $HTML_BGCOLOR $PRETTY_NAMES];
 use vars qw[%HELPER $HELP_ICON_URL $HTML_HEADER $HTML_FOOTER $HTML_TEXT $HTML_LINK];
 use vars qw[%BUTTON %LANGUAGE $HTML_VLINK $HTML_TITLE $FILE_UPLOAD $WEBUSERS_FILE];
@@ -242,7 +242,12 @@ elsif ($action eq '' || $action eq 'intro') {
 } elsif ($action eq 'textfile_edit') {
 	# edit the content of a text file
 	if (defined($q->param('list')) && defined($q->param('file'))) {
-		$pagename = 'textfile_edit';
+		if (! &check_filename($q->param('file'))) {
+			$error = 'InvalidFileName';
+			$pagename = 'textfiles';
+		} else {
+			$pagename = 'textfile_edit';
+		}
 	} else {
 		$error = 'ParameterMissing';
 		$pagename = 'intro';
@@ -250,10 +255,14 @@ elsif ($action eq '' || $action eq 'intro') {
 } elsif ($action eq 'textfile_save') {   
 	# User wants to save a new version of something in DIR/text ...
 	if (defined($q->param('list')) && defined($q->param('file')) && defined($q->param('content'))) {
-		if (&save_text()) {
+		if (! &check_filename($q->param('file'))) {
+			$error = 'InvalidFileName';
+			$pagename = 'textfiles';
+		} elsif (&save_text()) {
 			$pagename = 'textfiles';
 			$success = 'SaveFile';
 		} else {
+			$warning = 'SaveFile';
 			$pagename = 'textfile_edit';
 		}
 	} else {
@@ -414,7 +423,7 @@ sub set_pagedata4list
 	my $item;
 	# TODO: use "pretty" output style for visible mail address
 	foreach $item ($list->subscribers($part_type)) {
-		$pagedata->setValue("Data.List.Subscribers." . $i, "$item");
+		$pagedata->setValue("Data.List.Subscribers." . $i, "$item") unless ($item eq '');
 		$i++;
 	}
 
@@ -431,6 +440,11 @@ sub set_pagedata4list
 	$pagedata->setValue("Data.List.HeaderRemove", "$item");
 	$item = $list->getpart('mimeremove');
 	$pagedata->setValue("Data.List.MimeRemove", "$item");
+	
+	# read message size limits
+	$list->getpart('msgsize') =~ m/^\s*(\d+)\s*:\s*(\d+)\s*$/;
+	$pagedata->setValue("Data.List.MsgSize.Max", "$1");
+	$pagedata->setValue("Data.List.MsgSize.Min", "$2");
 
 	# TODO: this is definitely ugly - create a new sub!
 	if(open(WEBUSER, "<$WEBUSERS_FILE")) {
@@ -457,7 +471,6 @@ sub set_pagedata4list
 			$warning = 'TextDirAccessDenied' if ($warning eq '')
 		}
 
-		# TODO: find a better way to set a list ...
 		$i = 0;
 		my $item;
 		foreach $item (@files) {
@@ -471,8 +484,8 @@ sub set_pagedata4list
 			my ($content);
 			$content = $list->getpart("text/" . $q->param('file'));
 			from_to($content,$TEXT_ENCODE,'utf8');	# by ooyama for multibyte
-			$pagedata->setValue("Data.File.Name", $q->param('file'));
-			$pagedata->setValue("Data.File.Content", "$content");
+			$pagedata->setValue("Data.List.File.Name", $q->param('file'));
+			$pagedata->setValue("Data.List.File.Content", "$content");
 		}
 	}
 	&set_pagedata4options($list->getconfig);   
@@ -481,23 +494,56 @@ sub set_pagedata4list
 # ---------------------------------------------------------------------------
 
 sub set_pagedata4options {
-   my($opts) = shift;
-   my($i);
- 
-   # TODO: remove when migration to cs is done
-   # convert EZMLM_LABELS to hdf-language values
-   foreach $i (grep {/\D/} keys %EZMLM_LABELS) {
-	$pagedata->setValue("Data.List.Options." . $i , ($opts =~ /^\w*$i\w*\s*/)? 1 : 0);
-   }
+	my($options) = shift;
+	my($i, $key, $state, $value, $dir_of_list);
 
-   my $state;
-   # convert EZMLM_LABELS to hdf-language values
-   foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-	# TODO: fix this!
-	$pagedata->setValue("Data.List.Settings." . $i . ".value", $state ? $1 : "$EZMLM_LABELS{$i}[2]");
-	$state = ($opts =~ /$i (?:'(.+?)')/);
-	$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);
+	$i = 0;
+	$key = lc(substr($options,$i,1));
+	# parse the first part of the options string
+	while ($key =~ m/\w/) {
+		# scan the first part of the options string for lower case letters
+		$state = ($options =~ /^\w*$key\w*\s*/);
+		$pagedata->setValue("Data.List.Options." . $key , ($state)? 1 : 0);
+		$i++;
+		$key = lc(substr($options,$i,1));
 	}
+
+	$dir_of_list = $LIST_DIR . '/' . $q->param('list');
+	for ($i=0; $i<9; $i++) {
+		unless (($i eq 1) || ($i eq 2)) {
+			$state = ($options =~ /$i (?:'(.+?)')/);
+			unless ($state) {
+				if ($i eq 0) {
+					$value = 'mainlist@' . $DEFAULT_HOST;
+				} elsif ($i eq 3) {
+					$value = 'from_address@domain.org';
+				} elsif ($i eq 4) {
+					$value = '-t24 -m30 -k64';
+				} elsif ($i eq 5) {
+					$value = 'owner_address@domain.org';
+				} elsif ($i eq 6) {
+					$value = 'host:port:user:password:database:table';
+				} elsif ($i eq 7) {
+					$value = "$dir_of_list/mod";
+				} elsif ($i eq 8) {
+					$value = "$dir_of_list/mod";
+				}
+			} else {
+				# use the configured value (extracted by the pattern matching for 'state')
+				$value = $1;
+			}
+			$pagedata->setValue("Data.List.Settings." . $i . ".value", $value);
+			$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------
+
+sub check_filename()
+{
+	my $filename = shift;
+	return ($filename =~ m/[^\w-]/) ? (1==0) : (0==0);
 }
 
 # ---------------------------------------------------------------------------
@@ -767,6 +813,10 @@ sub create_list {
 		$warning = 'EmptyListName';
 		return (1==0);
    	}
+	if (($listname =~ m/^ALL$/i) || ($listname =~ m/^ALLOW_CREATE$/i)) {
+		$warning = 'ReservedListName';
+		return (1==0);
+   	}
 	if ($qmail eq '') {
 		$warning = 'InvalidLocalPart';
 		return (1==0);
@@ -808,23 +858,54 @@ sub create_list {
 sub extract_options_from_params()
 {
 	# Work out the command line options ...
-	my ($options, $avail_options, $i);
+	my ($options, $avail_options, $settings, $avail_settings, $i);
+	my ($listname, $list, $old_options, $state, $old_key);
 
+	# NOTE: we have to define _every_ (even unchanged) setting
+	# as ezmlm-make removes any undefined value
+
+	$listname = $q->param('list');
+	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
+	$old_options = $list->getconfig();
+
+	################ options ################
+	$i = 0;
+	$old_key = substr($old_options,$i,1);
 	$avail_options = $q->param('options_available');
-	for ($i = length "$avail_options"; $i>0; $i--) {
-		my $key = substr($avail_options,$i-1,1);
-		if (defined($q->param("option_$key"))) {
-			$options .= lc($key);
+	# parse the first part of the options string
+	while ($old_key =~ m/\w/) {
+		# scan the first part of the options string for lower case letters
+		if ($avail_options =~ m/$old_key/i) {
+			my $form_var_name = "option_" . lc($old_key);
+			# this option was visible for the user
+			if (defined($q->param($form_var_name))) {
+				$options .= lc($old_key);
+			} else {
+				$options .= uc($old_key);
+			}
+		} elsif ("cevyz" =~ m/$old_key/i) {
+			# ignore invalid settings (the output of "getconfig" is really weird!)
 		} else {
-			$options .= uc($key);
+			# import the previous set option
+			$options .= $old_key;
 		}
+		$i++;
+		$old_key = substr($old_options,$i,1);
 	}
 
-	# TODO: remove dependency of EZMLM_LABELS
-	foreach $i (grep {/\d/} keys %EZMLM_LABELS) {
-		if (defined($q->param($i))) {
-			$options .= " -$i '" . $q->param("$i-value") . "'";
-		 }
+
+	############### settings ################
+	$avail_settings = $q->param('settings_available');
+	for ($i=0; $i<9; $i++) {
+		if ($avail_settings =~ m/$i/) {
+			# this setting was visible for the user
+			$options .= " -$i '" . $q->param("setting_value_$i") . "'"
+				if (defined($q->param("setting_state_$i")));
+		} else {
+			# import the previous setting
+			$state = ($old_options =~ /$i (?:'(.+?)')/);
+			$options .= " -$i '$1'" if ($state);
+		}
 	}
 
 	return $options;
@@ -835,7 +916,8 @@ sub extract_options_from_params()
 sub update_config {
 	# Save the new user entered config ...
    
-	my ($list, $options, @inlocal, @inhost, $opt_mime, $opt_prefix);
+	my ($list, $options, @inlocal, @inhost);
+
 	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 
 	$options = &extract_options_from_params();
@@ -846,15 +928,22 @@ sub update_config {
 		return (1==0);
 	}
 
-	# Update headeradd, headerremove, mimeremove and prefix ...
-	$list->setpart('headeradd', $q->param('headeradd'));
-	$list->setpart('headerremove', $q->param('headerremove'));
-
-	# TODO: check if empty setting removes the file
-	# TODO: the opt_??? should not be considered - or what?
-	
+	# Update headeradd, headerremove, mimeremove and prefix if these options were visible
+	$list->setpart('headeradd', $q->param('headeradd'))
+		if (defined($q->param('headeradd')));
+	$list->setpart('headerremove', $q->param('headerremove'))
+		if (defined($q->param('headerremove')));
 	$list->setpart('mimeremove', $q->param('mimeremove'))
 		if (defined($q->param('mimeremove')));
+	
+	if (defined($q->param('msgsize_max_value')) && defined($q->param('msgsize_min_value'))) {
+		my ($minsize, $maxsize);
+		$maxsize = (defined($q->param('msgsize_max_state'))) ?
+			$q->param('msgsize_max_value') : 0;
+		$minsize = (defined($q->param('msgsize_min_state'))) ?
+			$q->param('msgsize_min_value') : 0;
+		$list->setpart('msgsize', "$maxsize:$minsize");
+	}
 	
 	$list->setpart('prefix', $q->param('prefix'))
 		if (defined($q->param('prefix')));

@@ -1,14 +1,7 @@
-remove old language file dependencies
+css fuer warning/error/success
 
-Create-List-Formular (reparieren und minimieren)
-Max:Min - msgsize
 trailing text in normales textarea? (auch ausserhalb von 'textfiles')
-help_icon entfernen
 
 restore user input after failed list_create (especially options)
 
 custom[Error|Warning] implementieren (main.cs)
-
-prevent lists called 'ALL' or 'ALLOW_CREATE' from being created
-
-eindeutige Listenamen? - local-part? - url-escape (voller Name - domain ausblenden falls DEFAULTDOMAINT)? -> mapping ins Dateisystem?

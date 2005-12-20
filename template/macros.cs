@@ -1,22 +1,25 @@
-<?cs def:help_icon(helpname)
-	?>&nbsp;<img src="<?cs var:HelpIconURL ?>" title="<?cs alt:Lang.Helper[helpname]
-	?>unknown helpname (<?cs var:helpname ?><?cs /alt ?>"/><?cs
- /def ?>
-
 <?cs def:help_title(helpname)
 	?>title="<?cs alt:Lang.Helper[helpname] ?>TODO: unknown helpname (<?cs
 	var:helpname ?>)<?cs /alt ?>"<?cs
  /def ?>
 
-<?cs def:generic_icon(helptext)
-	?>&nbsp<img src="<?cs var:HelpIconURL ?>" title="<?cs var:helptext ?>"/><?cs
- /def ?>
-
 <?cs def:checkbox(option)
 	?><?cs if:Lang.Options[option]
-		?><input type="checkbox" name="option_<?cs var:option ?>" value="selected" <?cs if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs /if ?> />&nbsp; <?cs var:Lang.Options[option] ?><?cs
+		?><input type="checkbox" name="option_<?cs var:option ?>" value="selected" <?cs if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs /if ?> />&nbsp;<?cs var:html_escape(Lang.Options[option]) ?><?cs
 		set:available_options = available_options + option ?><?cs
-	else ?>unknown checkbox (<?cs var:option ?>)<?cs /if ?><?cs
+	else ?>unknown option (<?cs var:option ?>)<?cs /if ?><?cs
+ /def ?>
+
+<?cs def:setting(setting)
+	?><?cs if:Lang.Settings[setting]
+		?><input type="checkbox" name="setting_state_<?cs var:setting ?>"
+			value="selected" <?cs if:(Data.List.Settings[setting].state == 1)
+			?>checked="checked"<?cs
+			/if ?> />&nbsp;<?cs var:html_escape(Lang.Settings[setting]) ?>
+		<ul><li><input type="text" name="setting_value_<?cs var:setting ?>" value="<?cs
+			var:html_escape(Data.List.Settings[setting].value) ?>" size="30" /></li></ul><?cs
+		set:available_settings = available_settings + setting ?><?cs
+	else ?>unknown setting (<?cs var:setting ?>)<?cs /if ?><?cs
  /def ?>
 
 <?cs def:warning(warnname)

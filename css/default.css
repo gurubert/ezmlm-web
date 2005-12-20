@@ -69,25 +69,30 @@ font.feature {
 	margin-left: 22%;
 	padding-left: 5px;
 	min-height: 400px;
+	}
+
+#main_content li {
 	list-style: none;
 	}
 
 #list_select ul li {
 	padding-left: 6%;
 	text-align: left;
+	font-size: 140%;
+	line-height: 1.2em;
 	list-style: none;
 	}
 
-div.input button {
-	margin-top: 7px;
+#main_content button {
+	margin-top: 12px;
 	}
 
-div.input ul {
+#main_content ul {
 	line-height: 1.8em;
 	list-style: none;
 	}
 
-div.input ul li ul {
+#main_content ul li ul {
 	font-size: 85%;
 	}
 
