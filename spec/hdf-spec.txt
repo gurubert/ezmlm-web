@@ -41,11 +41,12 @@ Data.List.SettingsCount
 Data.List.SubModPath
 Data.List.Subscribers.[0-9]*
 Data.List.SubscribersCount
+Data.List.TrailingText
 Data.List.WebUsers
 Data.Lists.[0-9]+
 Data.ListsCount
 Data.HostName
-Data.Modules.mySQL
+Data.Modules.MySQL
 Data.Permissions.Create
 Data.Permissions.FileUpload
 Data.UserName

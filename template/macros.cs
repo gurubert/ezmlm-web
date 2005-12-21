@@ -5,41 +5,47 @@
 
 <?cs def:checkbox(option)
 	?><?cs if:Lang.Options[option]
-		?><input type="checkbox" name="option_<?cs var:option ?>" value="selected" <?cs if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs /if ?> />&nbsp;<?cs var:html_escape(Lang.Options[option]) ?><?cs
+		?><input type="checkbox" name="option_<?cs var:option ?>" 
+			id="option_<?cs var:option ?>" value="selected" <?cs
+			if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs /if ?> />
+			<label for="option_<?cs var:option ?>"><?cs var:html_escape(Lang.Options[option])
+			?></label><?cs
 		set:available_options = available_options + option ?><?cs
 	else ?>unknown option (<?cs var:option ?>)<?cs /if ?><?cs
  /def ?>
 
 <?cs def:setting(setting)
 	?><?cs if:Lang.Settings[setting]
-		?><input type="checkbox" name="setting_state_<?cs var:setting ?>"
-			value="selected" <?cs if:(Data.List.Settings[setting].state == 1)
-			?>checked="checked"<?cs
-			/if ?> />&nbsp;<?cs var:html_escape(Lang.Settings[setting]) ?>
-		<ul><li><input type="text" name="setting_value_<?cs var:setting ?>" value="<?cs
+		?><input type="checkbox" name="setting_state_<?cs var:setting
+			?>" id="setting_state_<?cs var:setting ?>" value="selected" <?cs
+			if:(Data.List.Settings[setting].state == 1) ?>checked="checked"<?cs /if ?> />
+			<label for="setting_state_<?cs var:setting ?>"><?cs
+			var:html_escape(Lang.Settings[setting]) ?></label>
+		<ul><li><input type="text" name="setting_value_<?cs var:setting
+			?>" id="setting_value_<?cs var:setting ?>" value="<?cs
 			var:html_escape(Data.List.Settings[setting].value) ?>" size="30" /></li></ul><?cs
 		set:available_settings = available_settings + setting ?><?cs
 	else ?>unknown setting (<?cs var:setting ?>)<?cs /if ?><?cs
  /def ?>
 
-<?cs def:warning(warnname)
+<?cs def:warning(warntext)
     ?><div class="warning">
-		<?cs alt:Lang.WarningMessage[warnname] ?>unknown warning message (<?cs
-		var:warnname ?>)<?cs /alt ?>
+		<?cs alt:warntext ?>unknown warning message (<?cs
+			var:Data.Warning ?>)<?cs /alt ?>
 	</div><?cs
-/def ?>
+ /def ?>
 
-<?cs def:error(errname)
+<?cs def:error(errtext)
     ?><div class="error">
-		<?cs alt:Lang.ErrorMessage[errname] ?>unknown error message (<?cs
-		var:errname ?>)<?cs /alt ?>
+		<?cs alt:errtext ?>unknown error message (<?cs
+			var:Data.Error ?>)<?cs /alt ?>
 	</div><?cs
-/def ?>
+ /def ?>
 
-<?cs def:success(succname)
+<?cs def:success(succtext)
     ?><div class="success">
-		<?cs alt:Lang.SuccessMessage[succname] ?>unknown success message (<?cs 
-		var:succname ?>)<?cs /alt ?>
+		<?cs alt:succtext ?>unknown success message (<?cs 
+		var:Data.Success ?>)<?cs /alt ?>
 	</div><?cs
-/def ?>
+ /def ?>
 

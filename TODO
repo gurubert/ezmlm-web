@@ -1,7 +1,16 @@
-css fuer warning/error/success
+test with IE
 
 trailing text in normales textarea? (auch ausserhalb von 'textfiles')
 
 restore user input after failed list_create (especially options)
 
-custom[Error|Warning] implementieren (main.cs)
+support for:
+	* mimereject
+	* charset
+	* show log
+	* sender confirmation
+
+split filter and manipulate
+
+allow dynamic addition of user-made config templates (seperate directory, ...)
+

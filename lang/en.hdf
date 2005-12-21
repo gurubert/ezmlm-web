@@ -2,6 +2,7 @@ Language = en
 
 
 Lang {
+
 	Menue {
 		Create		= Create new list
 		Delete		= Delete list
@@ -37,31 +38,21 @@ Lang {
 		ModList			= Moderators of the mailinglist
 		ListCreate		= Create a new list
 		ListSelect		= Choose a list
+		SelectFile		= Choose a file for editing
+		EditFile		= Editing file
 	  }
 
 
 	Buttons {
-		Create		= [Create List]
-		Edit		= [Edit]
-		Delete		= [Delete]
-		Yes		= [Yes]
-		No		= [No]
-		Cancel		= [Cancel]
-		DeleteAddress	= [Delete Address]
-		AddAddress	= [Add Address]
-		Moderators	= [Moderators]
-		DenyList	= [Deny List]
-		AllowList	= [Allow List]
-		DigestSubscribers = [Digest Subscribers]
-		Configuration	= [Configuration]
-		UpdateConfiguration = [Update Configuration]
-		EditTexts	= [Edit Texts]
-		EditFile	= [Edit File]
-		SaveFile	= [Save File]
-		WebArchive	= [Web Archive]
-		SelectList	= [Select List]
-		Subscribers	= [Subscribers]
-		ResetForm	= [Reset Form]
+		Create		= Create list
+		ConfirmDeletion		= Delete the list
+		No			= No
+		Cancel		= Cancel
+		DeleteAddress	= Delete address(es)
+		AddAddress	= Add address(es)
+		UpdateConfiguration = Update configuration
+		EditFile	= Edit file
+		SaveFile	= Save File
 	  }
 
 
@@ -75,21 +66,22 @@ Lang {
 
 
 	WarningMessage {
-		AddAddress		= Adding of mail address failed!
-		DeleteAddress	= Removal of mail address failed!
+		AddAddress		= Adding of at least one mail address failed!
+		DeleteAddress	= Removal of at least one mail address failed!
 		CreateList		= Creation of new mailing list failed!
 		DeleteList		= Removal of mailing list failed!
 		UpdateConfig	= Update of configuration failed!
 		SaveFile		= The file could not be saved!
 		ListAlreadyExists	= There is already a list with this name!
+		ListDoesNotExist	= A list with this name does not exist!
 		ListDirAccessDenied		= Unable to access the list's directory:
 		TextDirAccessDenied		= Unable to access the list's directory of text files:
 		SafeRemoveRenameDirFailed	= Unable to rename list for safe removal:
-		DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files:
-		SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files:
-		UnsafeRemoveListDirFailed	= Unable to delete list:
-		UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files:
-		InvalidFileFormat	= The uploaded file must be a text file.
+		DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files
+		SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files
+		UnsafeRemoveListDirFailed	= Unable to delete list
+		UnsafeRemoveDotQmailFailed	= Unable to delete .qmail files
+		InvalidFileFormat	= The uploaded file must be a text file
 		WebUsersUpdate		= Could not update the webusers file
 		WebUsersRead		= Could not read the webusers file
 		InvalidListName		= The name of the list contains invalid characters
@@ -104,7 +96,7 @@ Lang {
 		DeleteAddress	= The address was removed from the list.
 		CreateList		= The new mailing list was successfully created.
 		DeleteList		= The mailing list was successfully removed.
-		UpdateConfig	= The mailing list's options were successfully updated.
+		UpdateConfig	= The mailing list's configuration was successfully changed.
 		SaveFile		= The file was saved.
 	  }
 
@@ -127,18 +119,20 @@ Lang {
 		q	= Process mailman-style requests (to local-request@domain)
 		r	= Enable remote administration of the list (for moderators)
 		s	= Subscriptions to the main list and the digest list will be moderated
-		t	= Add a trailing text (see the appropriate text file) to every message
+		t	= Add a trailing text to every message
 		u	= Users have to be subscribed to be allowed to post
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
-		x	= Filter mime attachement types
-     }
+		x	= Remove specific mime attachement types
+		y	= Request a confirmation mail for every posted message
+	  }
 
-     Settings {
+
+    Settings {
 		0	= Make the list a sublist of list mainlist@host
 		3	= Set a custom "From:" header for outgoing messsages
 		4	= Define customized setting for digest creation (ezmlm-tstdig)
 		5	= Define the email address of the list owner
-		6	= SQL database connect information (requires SQL support)
+		6	= Use a SQL database
 		7	= Define a custom path to the database for posting moderators
 		8	= Define a custom path to the database for remote administrators and subscription moderators
 	#	9 => not used - it is only an alternative to (8)
@@ -158,8 +152,8 @@ Lang {
 		ListAdddress	= This is the email address of the list. Note that the defaults come from your qmail config. You should just update the local part (before the @)
 		WebUsers	= NB! At this stage, any users specified here must exist. User creation may be added in future versions
 		Prefix		= Text to add to the subject line of all outgoing messages
-		HeaderRemove	= This is a list of headers to remove from all outgoing mail
-		HeaderAdd	= This is a list of headers to add to all outging mail
+		HeaderRemove	= This is a list of headers to remove from all outgoing mails
+		HeaderAdd	= This is a list of headers to add to all outging mails
 		MimeRemove	= All messages whose Content-Type matches these mime types will be bounced back to sender
 		AllowEdit	= Space separated list of usernames or 'ALL' (all valid users)
 		MysqlCreate	= This will create the necessary MySQL tables if the list configuration above requires it
@@ -169,44 +163,70 @@ Lang {
 
 	Misc {
 		HelpLink	= The manual page of ezmlm-idx
-		ListSelectDescription {
-			1	= choose a mailing list from the selection box or click on [Create List]
-			2	= click on the [Edit] button if you want to edit the selected list
-			3	= click on the [Delete] button if you want to delete the selected list
-		  }
 		ConfirmDelete	= Confirm deletion of
-		SubscribersTo	= Subscribers to
-		Subscribers	= subscribers
-		AdditionalParts = Additional list parts
-		Posting		= Posting
 		Subscription	= Subscription
+		Subscribers	= subscribers
 		RemoteAdmin	= Remote Admin
-		For		= for
-		  # as in; "moderators for ..."
-		CreateNew	= Create a New List
 		ListName	= List Name
 		ListAddress	= List Address
 		ListOptions	= Basic List Options
 		AllowedToEdit	= Users allowed to edit this list
-		EditConfiguration = Edit the List Configuration
-		Prefix		= Subject prefex for outgoing messages
 		HeaderRemove	= Headers to strip from all outgoing mail
 		HeaderAdd	= Headers to add to all outgoing mail
 		MimeRemove	= Mime types to strip from all outgoing mail
-		EditTextInfo	= The selection bax contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user request, or as part of all outgoing messages.
-		EditingFile	= Editing File
-		EditFileInfo	= <big><strong>ezmlm-manage</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br><tt><strong>&lt;#A#&gt;</strong></tt>The subscription address<br><tt><strong>&lt;#R#&gt;</strong></tt> The address a subscriber must reply to<p/><big><strong>ezmlm-store</strong></big><br><tt><strong>&lt;#l#&gt;</strong></tt> The list name<br/><tt><strong>&lt;#A#&gt;</strong></tt>The acceptance address<br/><tt><strong>&lt;#R#&gt;</strong></tt> The rejection address</ul>
-		MysqlCreate	= Create the MySQL database tables if necessary
+		EditFileInfo {
+			CommonTags			= common tags
+			ListNameLocal		= The local part of the list name
+			ListNameHost		= The host name of the list name
+			MessageNumber		= Number of the respective message
+			SubAddress			= The subscription address
+			SubReplyAddress		= The address a subscriber must reply to
+			AcceptanceAddress	= The acceptance address
+			RejectionAddress	= The rejection address
+		}
 		SuggestEdit	= You will have to edit them manually.
-		PostModPathWarn = Posting Moderators are stored in a non-standard location
-		SubModPathWarn	= Subscriber Moderators are stored in a non-standard location
-		RemoteAdminPathWarn	= Remote Administrators are stored in a non-standard location
+		PostModPathWarn = Posting moderators are stored in a non-standard location
+		SubModPathWarn	= Subscription moderators are stored in a non-standard location
+		RemoteAdminPathWarn	= Remote administrators are stored in a non-standard location
 		MessageSize.Max	= Reject messages that are bigger than this maximum value
 		MessageSize.Min	= Reject messages that are smaller than this minimum value
 		MessageSize.Unit = bytes
-		NoSubscribers	= There are no subscribers for this list, yet.
+		NoSubscribers	= No one is subscribed to this list
 		NoFiles	= There are no files in the text directory of the mailinglist..
-		AddSubscriberAddress = Add a new subscriber:
-		AddSubscriberFile	 = Upload a file containing addresses of new subscribers:
+		AddSubscriberAddress	= Add a new subscriber:
+		AddSubscriberFile	= Upload a file containing addresses of new subscribers:
+		SuggestDefaultPath	= It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web.
+		FooterText		= a web interface to
 	  }
+
+
+	Introduction {
+		ConfigAdmin		= Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software.
+		ConfigArchive	= The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www).
+		ConfigFilter	= Filtering allows you to add or remove mail headers, to prefix the subject, to add a trailer to every message and to block mails according to their size or attached filetypes.
+		ConfigMain		= The basic properties of a list define some important settings (e.g. mail address) and the general behaviour (public or closed).
+		ConfigPosting	= The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed.
+		ConfigSub		= Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process.
+		AllowList		= Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers.
+		DenyList		= If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security.
+		DigestList		= Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway.
+		ModList			= Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list.
+		SubscriberList	= Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs.
+		EditTextFile	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
+	  }
+
+	Legend {
+		ConfigAdmin		= Remote administrator's permissions
+		ConfigArchve	= Archive configuration
+		ConfigPosting	= Posting rules
+		ConfigSub		= Subscription details
+		ConfigMain		= General list configuration
+		ConfigFilter	= Filtering and manipulation rules
+		ListCreate		= Properties of the new list
+		RelevantOptions	= Useful settings
+		Subscription	= Manage subscribers
+		TextFiles		= Available text files
+		TextFileEdit	= Edit content of text file
+		TextFileInfo	= Useful placeholders
+	}
 }
