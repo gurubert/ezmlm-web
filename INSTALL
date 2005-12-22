@@ -18,9 +18,21 @@ OVERVIEW:
      ezmlm-web! The file README contains the complete list of necessary
      modules.
 
+	 Additionally (since v3.0) you have to install clearsilver (a templating
+	 engine). You can download it from http://clearsilver.net.
+	 The following configure options should work well:
+        ./configure --enable-perl \
+                    --disable-python \
+                    --disable-ruby \
+                    --disable-java \
+                    --disable-csharp \
+                    --disable-apache \
+                    --disable-gettext \
+                    --disable-remote-debugger
+
 
 1.   Get ezmlm-web and extract the archive:
-	tar xzf ezmlm-web-2.x.tar.gz
+	tar xzf ezmlm-web-3.x.tar.gz
 
 
 2.   Copy ezmlm-web.cgi to some publically readable directory. It does not
@@ -53,12 +65,16 @@ OVERVIEW:
      		mkdir -p /usr/local/share/ezmlm-web
 		cp -r lang /usr/local/share/ezmlm-web
      You can change this default location in the ezmlmwebrc file.
+	 Do the same with the template directory (e.g copy it
+	 to /usr/local/share/ezmlm-web/template). Then you also have to
+	 set the appropriate location in the ezmlmwebrc file.
 
      Finally, copy the ezmlmwebrc file to one of
      the following places:
-	- /etc/ezmlm
-	- the home directory of the user that runs ezmlm-web.cgi
-	- the directory, that contains your ezmlm-web.cgi file
+	1) /etc/ezmlm
+	2) the home directory of the user that runs ezmlm-web.cgi
+	3) the directory, that contains your ezmlm-web.cgi file
+	 (ezmlm-web will look for it in these places in the given order)
 
 
 4.   Edit the index.c file and change the path to the path of your copy
@@ -84,11 +100,6 @@ OVERVIEW:
      You should also copy the stylesheet file (css/default.css) to a location
      of your choice. Now you may have to change the "HTML_CSS_FILE" setting
      in your ezmlmwebrc file.
-
-     Optional: it would be nice if you could download the small picture
-     whose URL you can find in the ezmlmwebrc file as "HELP_ICON_URL".
-     Then you should change this URL.
-     This helps to reduce the load on our server.
 
 
 6.   Install some method of securing access to the page. The following
@@ -125,12 +136,16 @@ OVERVIEW:
      Again, see the ApacheWeek article for details.
 
 
-7.   Test the installation through the web. You should be asked for a
-     username and password (supplied in 6.2) and then be presented with a
-     screen entitled "EZ Mailing List Manger". You can then try to create and
-     edit mailing lists ... Have Fun :)
+7.  Test the installation with your favourite web browser. You should be
+	asked for a username and password (supplied in 6.2) and then be presented
+	with a screen entitled "EZ Mailing List Manger". You can then try to
+	create and edit mailing lists ... Have Fun :)
+
+	If anything failes - take a look at the web server's error log
+	(e.g /var/log/apache/error.log).
 
 
 If you have any problems, then you can:
 - take a look at https://systemausfall.org/toolforge/ezmlm-web
 - send me an email: ezmlm-web@sumpfralle.de
+- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org

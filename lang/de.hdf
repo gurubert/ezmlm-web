@@ -1,0 +1,215 @@
+LanguageID = de
+
+LanguageName = Deutsch
+
+Lang {
+
+	Menue {
+		Create		= Neue Liste anlegen
+		Delete		= Liste löschen
+		Subscribers	= AbonnentInnen
+		AllowList	= Zulassungsliste
+		DenyList	= Ablehnungsliste
+		DigestList	= Übersichtsliste
+		ModList		= ModeratorInnen
+		ConfigMain	= Einstellungen
+		ConfigSub	= Einschreibung
+		ConfigPost	= Einsendung
+		ConfigAdmin	= Fern-Administration
+		ConfigArchive	= Archivierung
+		ConfigFilter	= Filterung
+		TextFiles	= Texte
+		ListSelect	= Auswahl einer Liste
+		Properties	= Eigenschaften von
+		Help		= Hilfe (extern)
+	  }
+
+
+	Title {
+		ConfigMain	= Listeneinstellungen
+		ConfigSub	= Einschreibungsregeln
+		ConfigPosting	= Einsendungsregeln
+		ConfigAdmin	= Fern-Administration der Liste
+		ConfigArchive	= Archivierung der Liste
+		ConfigFilter	= Nachrichtenfilterung
+		SubscriberList	= AbonnentInnen der Liste
+		AllowList		= Zugelassene Nutzer
+		DenyList		= Abzuweisende Nutzer
+		DigestList		= EmpfängerInnen von Zusammenfassungen
+		ModList			= ModeratorInnen der Liste
+		ListCreate		= Anlegen einer neuen Liste
+		ListSelect		= Auswählen einer Liste
+		FileSelect		= Auswählen eines Textbausteins
+		FileEdit		= Bearbeitung des Textbausteins
+		ConfirmDelete	= Bestätige die Löschung von
+	  }
+
+
+	Buttons {
+		Create		= Erzeuge die Liste
+		ConfirmDeletion		= Lösche die Liste
+		DeleteAddress	= Adresse(n) entfernen
+		AddAddress	= Adresse(n) hinzufügen
+		UpdateConfiguration = Einstellungen speichern
+		EditFile	= Datei bearbeiten
+		SaveFile	= Datei speichern
+	  }
+
+
+	ErrorMessage {
+		UnknownAction		= Diese Aktion ist undefiniert!
+		ParameterMissing	= Diese Aktion benätigt weitere Parameter!
+    	Forbidden			= Fehler: dir fehlen die notwendigen Rechte für diese Aktion
+		ListDirUnavailable	= Fehler beim Zugriff auf das Hauptverzeichnis der Listen!
+		InvalidFileName		= Der Dateiname ist nicht zulässig.
+	  }
+
+
+	WarningMessage {
+		AddAddress		= Mindestens eine Mailadresse konnte nicht hinzugefügt werden!
+		DeleteAddress	= Mindestens eine der angegebenen Adressen konnte nicht entfernt werden!
+		CreateList		= Fehler beim Anlegen der neuen Liste!
+		DeleteList		= Die Löschung der Mailingliste schlug fehl!
+		UpdateConfig	= Beim Speichern der Einstellungen trat ein Fehler auf!
+		SaveFile		= Die Datei konnte nicht gespeichert werden!
+		ListAlreadyExists	= Es gibt bereits eine Liste mit diesem Namen.
+		ListDoesNotExist	= Eine Liste dieses Namens existiert nicht.
+		ListDirAccessDenied		= Fehler beim Zugriff auf das Verzeichnis der Liste
+		TextDirAccessDenied		= Beim Zugriff auf das Text-Verzeichnis der Liste trat ein Fehler auf.
+		SafeRemoveRenameDirFailed	= Das Verschieben der Liste schlug fehl.
+		DotQmailDirAccessDenied		= Fehler beim Zugriff auf das Nutzerverzeichnis des Listenverwalters
+		SafeRemoveMoveDotQmailFailed	= Beim Verschieben der .qmail-Dateien trat ein Fehler auf!
+		UnsafeRemoveListDirFailed	= Fehler beim sicheren Löschen der Mailingliste
+		UnsafeRemoveDotQmailFailed	= Fehler beim Löschen der .qmail-Dateien
+		InvalidFileFormat	= Die gewählte Datei konnte nicht als Textdatei erkannt werden.
+		WebUsersUpdate		= Fehler beim Aktualisieren der Nutzerverwaltungsdatei
+		WebUsersRead		= Fehler beim Lesen der Nutzerverwaltungsdatei
+		InvalidListName		= Der gewählte Listenname enthält unzulässige Zeichen
+		ReservedListName	= Dieser Listenname ist ein reserviertes Wort und kann nicht benutzt werden
+		EmptyListName		= Es wurde kein Name für die Listen angegeben.
+		InvalidLocalPart	= Die gewählte untergeordnete Liste ist ungültig.
+	  }
+	
+
+	SuccessMessage {
+		AddAddress		= Einschreibung erfolgreich
+		DeleteAddress	= Löschung erfolgreich abgeschlossen
+		CreateList		= Die neue Liste wurde erfolgreich angelegt.
+		DeleteList		= Die Mailingliste wurde gelöscht.
+		UpdateConfig	= Die neuen Einstellungen wurden erfolgreich gespeichert.
+		SaveFile		= Die Datei wurde gespeichert.
+	  }
+
+
+	Options {
+		a	= Archiviere Mailinglisten-Mails
+		b	= Nur Moderatoren dürfen auf das Archiv zugreifen
+		d	= Aktiviere die Zusammenfassungsliste
+		f	= Füge einen Vorspann zum Betreff der ausgehenden Mails hinzu
+		g	= Verweigere unbekannten NutzerInnen den Zugriff auf das Archiv
+		h	= Bei der Einschreibung in die Liste ist keine Bestätigungsmail erforderlich
+		i	= Indiziere die Nachrichten zur Veröffentlichung im Internet (z.B. mit ezmlm-www)
+		j	= Beim Austragen aus der Liste ist keine Bestätigungsmail erforderlich
+		k	= Beachte die Ablehnungsliste bei der Verarbeitung von Mails
+		l	= Fern-AdministratorInnen (ModeratorInnen) dürfen eine Liste der AbonnentInnen anfordern
+		m	= Alle eingehenden Nachrichten werden moderiert
+		n	= Fern-AdministratorInnen (ModeratorInnen) dürfen Textbausteine per Mail verändern
+		o	= Nur ModeratorInnen dürfen Nachrichten einsenden
+		p	= Die Einschreibung und der Zugriff auf das Archiv sind öffentlich zugänglich
+		q	= Verarbeite auch Anfragen im Mailman-Stil (Kompatibilität)
+		r	= Erlaube die Fern-Administration der Liste (für ModeratorInnen)
+		s	= Die Einschreibung in die Liste und für die Zusammenfassungen wird moderiert
+		t	= Hänge eine Signatur an jede versandte Nachricht
+		u	= Einsendungen von AbonnentInnen werden immer akzeptiert (dies gilt auch für moderierte Listen)
+		w	= Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
+		x	= Prüfe die Mime-Typen der Bestandteile eingehender Nachrichten
+		y	= Fordere eine Bestätigung für jede eingesandte Nachricht an
+	  }
+
+
+    Settings {
+		0	= Diese Liste is nur eine Unterliste
+		3	= Definiere eine andere Absender-Adresse ausgehender Mails
+		4	= Eigene Einstellungen zum Versand von Zusammenfassungsmails (ezmlm-tstdig)
+		5	= Lege die Mailadresse des Verantwortlichen für diese Liste fest
+		6	= Verwende eine SQL-Datenbank
+		7	= Die Datenbank der Nachrichten-ModeratorInnen befindet sich in einem alternativen Verzeichnis
+		8	= Die Datenbank der Einschreibe--ModeratorInnen (und Fern-AdministratorInnen) befindet sich in einem alternativen Verzeichnis
+	#	9 => not used - it is only an alternative to (8)
+      }
+
+
+	Misc {
+		HelpLink	= Das online-Handbuch von ezmlm-idx
+		Subscription	= Einschreibung
+		Subscribers	= AbonnentInnen
+		RemoteAdmin	= Fern-AdministratorIn
+		ListName	= Name der Liste
+		ListAddress	= Addresse der Liste
+		ListOptions	= Grundlegende Einstellungen
+		AllowedToEdit	= Die Nutzer, die diese Liste per Web-Interface konfigurieren dürfen:
+		HeaderRemove	= zu entfernende Kopfzeilen
+		HeaderAdd	= hinzuzufügende Kopfzeilen
+		MimeRemove	= Nachrichtenbestandteile dieses Typs werden entfernt
+		MimeReject	= Nachrichten, die diese Datentype beinhalten, werden abgewiesen
+		EditFileInfo {
+			CommonTags			= allgemeine Platzhalter
+			ListNameLocal		= der lokale Teil (vor dem "@") der Listenadresse
+			ListNameHost		= die Domain der Mailadresse
+			MessageNumber		= die Nummer der jeweiligen Nachricht
+			SubAddress			= die Einschribe-Adresse
+			SubReplyAddress		= die Bestätigungsadresse
+			AcceptanceAddress	= die Zustimmungsadresse
+			RejectionAddress	= die Ablehnungsadresse
+		}
+		PostModPathWarn = Die Nachrichten-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+		SubModPathWarn = Die Einschreibe-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+		RemoteAdminPathWarn	= Die Fern-AdministratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+		MessageSize.Max	= Verweigere die Annahme von Nachrichten, die eine gewisse Größe überschreiten
+		MessageSize.Min	= Verweigere die Annahme von Nachrichten, die eine gewisse Größe unterschreiten
+		MessageSize.Unit = Bytes
+		NoFiles	= Es befinden sich keine Dateien im Text-Verzeichnis der Mailingliste.
+		AddSubscriberAddress	= Füge eine neue Mailadresse hinzu:
+		AddSubscriberFile	= Importiere eine Datei, die Mailadressen enthält:
+		SuggestDefaultPath	= Es wird empfohlen, das Standard-Verzeichnis zu verwenden. Andernfalls kannst du die ModeratorInnen-Liste nicht mit ezmlm-web verwalten.
+		FooterText		= eine Web-Oberfläche für
+		NoListsAvailable	= Es sind keine passenden Listen vorhanden.
+	  }
+
+
+	Introduction {
+		ConfigAdmin		= Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.
+		ConfigArchive	= Das Mailinglisten-Archiv ist per Mail verfügbar. Außerdem benötigst du ein Archiv, falls du vergangene Mails im Internet zur Verfügung stellen möchtest (z.B. mit ezmlm-www).
+		ConfigFilter	= Die Rubrik Filterung und Verarbeitung gestattet dir, viele Aspekte ausgehender Mails an deine Bedürfnisse anzupassen. Beipielsweise den Betreff, Kopfzeilen, eine Signatur sowie eine Filterung nach der Größe der Mail oder nach enthaltenen Datentypen.
+		ConfigMain		= Die allgemeinen Eigenschaften bestimmen einige wichtige Verhaltensweisen der Mailingliste.
+		ConfigPosting	= Die Einsende-Konfiguration bestimmt, wer Nachrichten einsenden darf und wie diese Mails verarbeitet werden sollen.
+		ConfigSub		= Hier kannst du festlegen, wer sich als Abonnent selbständig eintragen darf und wie der Einschreibungsprozess abläuft.
+		AllowList		= An die Adressen der Zulassungsliste werden keine Mails verschickt. Einsendungen durch diese Adressen werden so behandelt, als kämen sie von AbonnentInnen. Üblicherweise werden Aliase von AbonnentInnen in die Zulassungsliste eingetragen.
+		DenyList		= Falls du Mails von bestimmte Mailadressen verweigern möchtest, dann füge sie einfach zur (aktivierten) Ablehnungsliste hinzu Dies kann nützlich sein, um unbeliebte Nutzer auszuschließen oder um störende Abwesenheitsbenachrichtigungen zu verhindern.
+		DigestList		= Einige AbonnentInnen deiner Mailingliste sind möglicherweise nicht an jeder einzelnen Nachricht interessiert, sondern ziehen es vor, stattdessen regelmäßig automatisch erstellte Zusammenfassungen zu erhalten.
+		ModList			= ModeratorInnen (für die Einschreibung von AbonnentInnen und die Einsendungen an die Liste) und Fern-AdministratorInnen können die Kontrolle über viele wichtige Aspekte der Liste übernehmen (falls du sie dementsprechend konfigurierst).
+		SubscriberList	= Die AbonnentInnen der Mailingliste empfangen alle versandten Nachrigten der Liste. Zudem kann es ihnen gestattet sein, Nachrichten direkt oder indirekt zur weiteren Verteilung an die Liste zu senden. Oft ist es anonymen Nutzern gestattet, sich selbständig in die Mailingliste einzuschreiben, ohne die Hilfe eines Administrators in Anspruch nehmen zu müssen.
+		TextFiles	= Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbasuteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
+		EditTextFile	= Passe den Textbaustein an die Erfordernisse der Liste an. Eventuell möchtest du dafür auch einige der reservierten Platzhalter verwenden, die am Ende dieser Seite aufgeführt sind.
+	  }
+
+	Legend {
+		ConfigAdmin		= Fern-Administrations-Rechte
+		ConfigArchve	= Archivierungseinstellungen
+		ConfigPosting	= Einsende-Regeln
+		ConfigSub		= Einschreibungsdetails
+		ConfigMain		= Allgemeine Listen-Einstellungen
+		ConfigFilter	= Filterungs- und Anpassungsregeln
+		ListCreate		= Eigenschaften der neuen Liste
+		RelevantOptions	= Relevante Optionen
+		MembersList		= AbonnentInnen-Verwaltung
+		MembersAllow	= Verwaltung der zulässigen Adressen
+		MembersDeny		= Verwaltung der abzulehnenden Adressen
+		MembersDigest	= Verwaltung der AbonnentInnen der Zusammenfassungen
+		MembersMod		= Verwaltung der ModeratorInnen / AdministratorInnen
+		TextFiles		= Verfügbare Textbausteine
+		TextFileEdit	= Bearbeite einen Textbaustein
+		TextFileInfo	= Nützliche Platzhalter
+		AvailableLists	= Verfügbare Listen
+	}
+}

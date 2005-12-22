@@ -1,21 +1,21 @@
 <div class="title">
 	<h1>
-		<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:Lang.Title.AllowList ?>
-		<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:Lang.Title.DenyList ?>
-		<?cs elif:(Data.List.PartType == "digest") ?><?cs var:Lang.Title.DigestList ?>
-		<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:Lang.Title.ModList ?>
-		<?cs else ?> 								<?cs var:Lang.Title.SubscriberList ?>
+		<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Title.AllowList) ?>
+		<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Title.DenyList) ?>
+		<?cs elif:(Data.List.PartType == "digest") ?><?cs var:html_escape(Lang.Title.DigestList) ?>
+		<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:html_escape(Lang.Title.ModList) ?>
+		<?cs else ?> 								<?cs var:html_escape(Lang.Title.SubscriberList) ?>
 		<?cs /if ?>
 	</h1>
 </div>
 
 <div class="introduction">
 	<p>
-		<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:Lang.Introduction.AllowList ?>
-		<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:Lang.Introduction.DenyList ?>
-		<?cs elif:(Data.List.PartType == "digest") ?><?cs var:Lang.Introduction.DigestList ?>
-		<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:Lang.Introduction.ModList ?>
-		<?cs else ?> 							<?cs var:Lang.Introduction.SubscriberList ?>
+		<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Introduction.AllowList) ?>
+		<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Introduction.DenyList) ?>
+		<?cs elif:(Data.List.PartType == "digest") ?><?cs var:html_escape(Lang.Introduction.DigestList) ?>
+		<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:html_escape(Lang.Introduction.ModList) ?>
+		<?cs else ?> 							<?cs var:html_escape(Lang.Introduction.SubscriberList) ?>
 		<?cs /if ?>
 	</p>
 </div>
@@ -29,7 +29,7 @@
 <?cs if:((Data.List.PartType == "digest") || (Data.List.PartType == "deny") || (Data.List.PartType == 'mod')) ?>
 
 	<fieldset class="form">
-		<legend><?cs var:Lang.Legend.RelevantOptions ?></legend>
+		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
 
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 
@@ -46,20 +46,33 @@
 				<li><?cs call:setting("8") ?></li>
 			<?cs /if ?>
 
-			<!-- include default form values -->
+			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>
 
-			<button type="submit" name="action" value="config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+			<input type="hidden" name="action" value="config_do" />
+			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
 		</ul>
 	</form>
 	</fieldset>
 <?cs /if ?>
 	
 
-<div class="subscribers">
+<!-- check, if we should display a subscribers list -->
+<?cs if:!Data.List.PartType || (Data.List.PartType == '') ||
+	(Data.List.PartType == 'allow') ||
+	(Data.List.PartType == 'mod') ||
+	((Data.List.PartType == 'deny') && (Data.List.Options.k == 1)) ||
+	((Data.List.PartType == 'digest') && (Data.List.Options.d == 1)) ?>
 
 	<fieldset class="form">
-		<legend><?cs var:Lang.Legend.Subscription ?></legend>
+		<legend>
+			<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Legend.MembersAllow) ?>
+			<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Legend.MembersDeny) ?>
+			<?cs elif:(Data.List.PartType == "digest") ?><?cs var:html_escape(Lang.Legend.MembersDigest) ?>
+			<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:html_escape(Lang.Legend.MembersMod) ?>
+			<?cs else ?> 								<?cs var:html_escape(Lang.Legend.MembersList) ?>
+			<?cs /if ?>
+		</legend>
 
 	<!-- this form has to be "multipart/form-data" to make file upload work -->
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="multipart/form-data">
@@ -78,34 +91,36 @@
 				  <?cs else ?>
 					<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
 				<?cs /if ?>
-				<li><select name="mailaddress_del" tabindex="1"
+				<li><select name="mailaddress_del"
 						size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
 					<?cs each:item = Data.List.Subscribers ?>
 						<option><?cs var:item ?></option>
 					<?cs /each ?>
 				</select></li>
-				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:Lang.Misc.Subscribers ?></li>
-				<li><button class="add_remove" type="submit" name="action" tabindex="2" value="address_del"><?cs var:Lang.Buttons.DeleteAddress ?></button></li>
+				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
+				<li><input type="hidden" name="action" value="address_del" />
+				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
 			</ul></td>
 		<?cs /if ?>
 
 		<td><ul>
 
-			<li><?cs var:Lang.Misc.AddSubscriberAddress ?>
-				<ul><li><input type="text" name="mailaddress_add"
-					<?cs call:help_title("AddAddress") ?> tabindex="3" size="40" /></li>
+			<li><?cs var:html_escape(Lang.Misc.AddSubscriberAddress) ?>
+				<ul><li><input type="text" name="mailaddress_add" size="40" /></li>
 				</ul></li>
 			<?cs if:Data.Permissions.FileUpload ?>
-				<li><?cs var:Lang.Misc.AddSubscriberFile ?>
+				<li><?cs var:html_escape(Lang.Misc.AddSubscriberFile) ?>
 				<ul><li><input type="file" name="mailaddressfile" size="20"
-					<?cs call:help_title("AddAddressFile") ?> maxlength="100" tabindex="4" /></li>
+					maxlength="200" /></li>
 				</ul></li>
 			<?cs /if ?>
 
-			<button type="submit" tabindex="5" name="action" value="address_add"><?cs var:Lang.Buttons.AddAddress ?></button>
+			<li><input type="hidden" name="action" value="address_add" />
+			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.AddAddress) ?></button></li>
 		</ul></td></tr></table>
 
 	</form>
 	</fieldset>
-</div>
+
+<?cs /if ?>
 

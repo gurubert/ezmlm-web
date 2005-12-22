@@ -96,6 +96,10 @@ Version 2.3 - 10/06/02005
 * update of webusers file fixed
 * moderator unsubscribe fixed
 
-Version 2.4 - 01/01/02006
+Version 3.0 - 12/21/02005
+* complete interface is rewritten
 * fixed insecure writing of webusers data
 * commas are not necessary anymore in webusers file
+* support for MAIL_DOMAIN config setting
+* requires the clearsilver template engine
+

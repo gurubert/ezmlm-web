@@ -1,5 +1,6 @@
-Language = en
+LanguageID = en
 
+LanguageName = English
 
 Lang {
 
@@ -10,7 +11,7 @@ Lang {
 		AllowList	= allow list
 		DenyList	= deny list
 		DigestList	= digest list
-		ModList	= moderators
+		ModList		= moderators
 		ConfigMain	= Options
 		ConfigSub	= subscription
 		ConfigPost	= posting
@@ -20,17 +21,18 @@ Lang {
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
+		ConfirmDelete	= Confirm deletion of
 		Help		= Help (external)
 	  }
 
 
 	Title {
-		ConfigMain	= List configuration
-		ConfigSub	= Subscription options
+		ConfigMain		= List configuration
+		ConfigSub		= Subscription options
 		ConfigPosting	= Posting options
-		ConfigAdmin	= Remote administration
+		ConfigAdmin		= Remote administration
 		ConfigArchive	= Archive options
-		ConfigFilter	= Message filtering options
+		ConfigFilter	= Message filtering
 		SubscriberList	= Subscribers of the list
 		AllowList		= Allowed users
 		DenyList		= Blocked users
@@ -38,16 +40,14 @@ Lang {
 		ModList			= Moderators of the mailinglist
 		ListCreate		= Create a new list
 		ListSelect		= Choose a list
-		SelectFile		= Choose a file for editing
-		EditFile		= Editing file
+		FileSelect		= Choose a file for editing
+		FileEdit		= Editing file
 	  }
 
 
 	Buttons {
 		Create		= Create list
 		ConfirmDeletion		= Delete the list
-		No			= No
-		Cancel		= Cancel
 		DeleteAddress	= Delete address(es)
 		AddAddress	= Add address(es)
 		UpdateConfiguration = Update configuration
@@ -120,9 +120,9 @@ Lang {
 		r	= Enable remote administration of the list (for moderators)
 		s	= Subscriptions to the main list and the digest list will be moderated
 		t	= Add a trailing text to every message
-		u	= Users have to be subscribed to be allowed to post
+		u	= Subscribed users may always post messages (even ignoring moderation)
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
-		x	= Remove specific mime attachement types
+		x	= Remove or reject specific mime types in messages
 		y	= Request a confirmation mail for every posted message
 	  }
 
@@ -139,41 +139,19 @@ Lang {
       }
 
 
-	Helper {
-		AddAddress	= You may enter any RFC822 compliant email address here, including the comment part. For example; 'J Random User <jru@on.web.za>'
-		AddAddressFile	= or you may enter the filename of a plain text file containing multiple RFC822 email addresses, one per line
-		Moderator	= Moderators: people who control who may subscribe or post to a list
-		Deny		= Deny: A list of addresses that are _never_ allowed to mail the list
-		Allow		= Allow: A list of address that are allowed to mail the list even if the configuration otherwise restricts it
-		Digest		= Digest: People who will recieve a digest of all messages on the list
-		WebArchive	= View the web based archive of this list
-		Config		= This lets you alter the way the list is set up
-		ListName	= This is the name of the list as displayed on the Select Lists screen. It is also the name of the subdirectory that contains the list
-		ListAdddress	= This is the email address of the list. Note that the defaults come from your qmail config. You should just update the local part (before the @)
-		WebUsers	= NB! At this stage, any users specified here must exist. User creation may be added in future versions
-		Prefix		= Text to add to the subject line of all outgoing messages
-		HeaderRemove	= This is a list of headers to remove from all outgoing mails
-		HeaderAdd	= This is a list of headers to add to all outging mails
-		MimeRemove	= All messages whose Content-Type matches these mime types will be bounced back to sender
-		AllowEdit	= Space separated list of usernames or 'ALL' (all valid users)
-		MysqlCreate	= This will create the necessary MySQL tables if the list configuration above requires it
-		SelectList	= Go back to list selection
-	  }
-
-
 	Misc {
 		HelpLink	= The manual page of ezmlm-idx
-		ConfirmDelete	= Confirm deletion of
 		Subscription	= Subscription
 		Subscribers	= subscribers
 		RemoteAdmin	= Remote Admin
 		ListName	= List Name
 		ListAddress	= List Address
 		ListOptions	= Basic List Options
-		AllowedToEdit	= Users allowed to edit this list
+		AllowedToEdit	= Users allowed to edit this list via web interface
 		HeaderRemove	= Headers to strip from all outgoing mail
 		HeaderAdd	= Headers to add to all outgoing mail
 		MimeRemove	= Mime types to strip from all outgoing mail
+		MimeReject	= Messages containing any of these mime type will be rejected
 		EditFileInfo {
 			CommonTags			= common tags
 			ListNameLocal		= The local part of the list name
@@ -184,19 +162,19 @@ Lang {
 			AcceptanceAddress	= The acceptance address
 			RejectionAddress	= The rejection address
 		}
-		SuggestEdit	= You will have to edit them manually.
+		SuggestDefaultPath	= You will have to manage them manually.
 		PostModPathWarn = Posting moderators are stored in a non-standard location
 		SubModPathWarn	= Subscription moderators are stored in a non-standard location
 		RemoteAdminPathWarn	= Remote administrators are stored in a non-standard location
-		MessageSize.Max	= Reject messages that are bigger than this maximum value
-		MessageSize.Min	= Reject messages that are smaller than this minimum value
+		MessageSize.Max	= Reject messages exceeding a specified value
+		MessageSize.Min	= Reject messages smaller than a specified value
 		MessageSize.Unit = bytes
-		NoSubscribers	= No one is subscribed to this list
-		NoFiles	= There are no files in the text directory of the mailinglist..
-		AddSubscriberAddress	= Add a new subscriber:
-		AddSubscriberFile	= Upload a file containing addresses of new subscribers:
+		NoFiles	= There are no files in the text directory of the mailinglist.
+		AddSubscriberAddress	= Add a new mail address:
+		AddSubscriberFile	= Upload a file containing mail addresses to be added:
 		SuggestDefaultPath	= It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web.
-		FooterText		= a web interface to
+		FooterText		= a web interface for
+		NoListsAvailable	= I could not find any accessible list for you.
 	  }
 
 
@@ -212,7 +190,8 @@ Lang {
 		DigestList		= Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway.
 		ModList			= Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list.
 		SubscriberList	= Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs.
-		EditTextFile	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
+		TextFiles	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
+		EditTextFile	= Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page.
 	  }
 
 	Legend {
@@ -224,9 +203,14 @@ Lang {
 		ConfigFilter	= Filtering and manipulation rules
 		ListCreate		= Properties of the new list
 		RelevantOptions	= Useful settings
-		Subscription	= Manage subscribers
+		MembersList		= Manage subscribers
+		MembersAllow	= Manage allowed users
+		MembersDeny		= Manage blocked users
+		MembersDigest	= Manage digest subscribers
+		MembersMod		= Manage moderators and administrators
 		TextFiles		= Available text files
 		TextFileEdit	= Edit content of text file
 		TextFileInfo	= Useful placeholders
+		AvailableLists	= Available lists
 	}
 }

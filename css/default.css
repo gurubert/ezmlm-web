@@ -21,9 +21,12 @@ font.feature {
 #nav_bar {
 	float: left;
 	width: 20%;
-	margin: 1%;
+	margin-left: 1%;
+	margin-right: 1%;
+	margin-bottom: 1%;
 	margin-top: 5px;
-	padding: 0.5%;
+	padding-left: 0.5%;
+	padding-right: 0.5%;
 	padding-top: 1.5%;
 	padding-bottom: 1.5%;
 	background-color: #c0c0b0;
@@ -68,7 +71,7 @@ font.feature {
 	margin-left: 22%;
 	padding-left: 3%;
 	padding-right: 1%;
-	min-height: 400px;
+	min-height: 440px;
 	}
 
 #main_content li {
@@ -103,12 +106,14 @@ font.feature {
 	padding-left: 3%;
 	}
 
-#list_select ul li {
-	padding-left: 6%;
+#main_content table.list_select {
+	table-layout: fixed;
+	width: 100%;
 	text-align: left;
-	font-size: 140%;
 	line-height: 1.2em;
-	list-style: none;
+	border-width: 0px;
+	padding-left: 2%;
+	padding-right: 0px;
 	}
 
 div.formfield {
@@ -221,9 +226,9 @@ button:hover {
 	}
 
 #content h2 {
-	margin: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 	margin-top: 10px;
-	margin-left: 0;
 	font-weight: normal;
 	letter-spacing: -1px;
 	color: #2f4860;
@@ -277,11 +282,11 @@ button:hover {
 	color: #a0d0b0;
 	}
 
-div.introduction {
+#main_content div.introduction {
 	font-size: 80%;
 	}
 
-div.warning, div.error, div.success {
+#main_content div.warning, div.error, div.success {
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-top: 2%;
@@ -292,17 +297,17 @@ div.warning, div.error, div.success {
 	font-size: 90%;
 	}
 
-div.success {
+#main_content div.success {
 	background-color: #40d070;
 	color: #202020;
 	}
 
-div.warning {
+#main_content div.warning {
 	background-color: #e0a0a0;
 	color: #202020;
 	}
 
-div.error {
+#main_content div.error {
 	background-color: #d05050;
 	color: #202020;
 	}

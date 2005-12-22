@@ -1,13 +1,13 @@
 <div class="title">
-	<h1><?cs var:Lang.Title.EditFile ?> &quot;<?cs var:Data.List.File.Name ?>&quot;</h1>
+	<h1><?cs var:html_escape(Lang.Title.FileEdit) ?> &quot;<?cs var:Data.List.File.Name ?>&quot;</h1>
 </div>
 
 <div class="introduction">
-	<?cs var:Lang.Introduction.EditTextFile ?>
+	<?cs var:html_escape(Lang.Introduction.EditTextFile) ?>
 </div>
 
 <fieldset class="form">
-	<legend><?cs var:Lang.Legend.TextFileEdit ?></legend>
+	<legend><?cs var:html_escape(Lang.Legend.TextFileEdit) ?> </legend>
 
 <form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
@@ -16,7 +16,8 @@
 	<p><textarea name="content" rows="7"
 			cols="72"><?cs var:Data.List.File.Content ?></textarea></p>
 
-    <button type="submit" name="action" value="textfile_save"><?cs var:Lang.Buttons.SaveFile ?></button>
+    <input type="hidden" name="action" value="textfile_save" />
+    <button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.SaveFile) ?></button>
 </form>
 </fieldset>
 

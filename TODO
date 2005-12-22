@@ -1,14 +1,8 @@
-test with IE
-
-trailing text in normales textarea? (auch ausserhalb von 'textfiles')
-
 restore user input after failed list_create (especially options)
 
 support for:
-	* mimereject
 	* charset
 	* show log
-	* sender confirmation
 
 split filter and manipulate
 

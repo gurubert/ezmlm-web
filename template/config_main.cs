@@ -1,13 +1,13 @@
 <div class="title">
-	<h1><?cs var:Lang.Title.ConfigMain ?></h1>
+	<h1><?cs var:html_escape(Lang.Title.ConfigMain) ?></h1>
 </div>
 
 <div class="introduction">
-	<p><?cs var:Lang.Introduction.ConfigMain ?></p>
+	<p><?cs var:html_escape(Lang.Introduction.ConfigMain) ?></p>
 </div>
 
 <fieldset class="form">
-	<legend><?cs var:Lang.Legend.ConfigMain ?></legend>
+	<legend><?cs var:html_escape(Lang.Legend.ConfigMain) ?> </legend>
 
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="config_subset" value="main" />
@@ -22,17 +22,18 @@
 			<?cs if:Data.Modules.mySQL ?>
 				<li><?cs call:setting("6") ?></li><?cs /if ?>
 
-			<?cs if:Data.List.WebUsers ?><li>
-				<li> <?cs var:Lang.Misc.AllowedToEdit ?>: 
+			<?cs if:Data.List.WebUsers ?>
+				<li><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?>: 
 					<ul><li><input type="text"
-					name="webusers" value="<?cs var:Data.List.WebUsers ?>"
-					<?cs call:help_title("WebUsers") ?> size="30"><br/>
-					<?cs var:Lang.Helper.AllowEdit ?></li></ul></li><?cs /if ?>
+					name="webusers" value="<?cs var:html_escape(Data.List.WebUsers)
+					?>" size="40" /><br/>
+					</li></ul></li><?cs /if ?>
 
-			<!-- include default form values -->
+			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>
 
-			<button type="submit" name="action" value="config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+			<input type="hidden" name="action" value="config_do" />
+			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
 		</ul>
 
 	</form>

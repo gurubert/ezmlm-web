@@ -73,16 +73,16 @@ my @tmp = getpwuid($>); use vars qw[$USER]; $USER=$tmp[0];
 
 use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
-use vars qw[$QMAIL_BASE $EZMLM_CGI_RC $EZMLM_CGI_URL $HTML_BGCOLOR $PRETTY_NAMES];
-use vars qw[%HELPER $HELP_ICON_URL $HTML_HEADER $HTML_FOOTER $HTML_TEXT $HTML_LINK];
-use vars qw[%BUTTON %LANGUAGE $HTML_VLINK $HTML_TITLE $FILE_UPLOAD $WEBUSERS_FILE];
-use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR];
+use vars qw[$QMAIL_BASE $PRETTY_NAMES];
+use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
+use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 
 # set default TEXT_ENCODE
 use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte convert support
 
 # pagedata contains the hdf tree for clearsilver
 # pagename refers to the template file that should be used
+use vars qw[$DEFAULT_HOST];
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
 
 # Get user configuration stuff
@@ -109,31 +109,24 @@ if (!defined($WEBUSERS_FILE)) {
    $WEBUSERS_FILE = $LIST_DIR . '/webusers'
 }
 
-# Work out default domain name from qmail (for David Summers)
-my($DEFAULT_HOST);
-open (GETHOST, "<$QMAIL_BASE/me") || open (GETHOST, "<$QMAIL_BASE/defaultdomain") || die "Unable to read $QMAIL_BASE/me: $!";
-chomp($DEFAULT_HOST = <GETHOST>);
-close GETHOST;
+# check optional stylesheet
+$HTML_CSS_FILE = '' unless defined($HTML_CSS_FILE);
 
-# DEFAULT_DOMAIN added by ooyama
-my($DEFAULT_DOMAIN);
-if(open (GETDOMAIN, "<$QMAIL_BASE/defaultdomain")){
-   chomp($DEFAULT_DOMAIN = <GETDOMAIN>);
-   close GETDOMAIN;
+# check template directory
+$TEMPLATE_DIR = 'template' unless defined($TEMPLATE_DIR);
+
+if (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
+	$DEFAULT_HOST = $MAIL_DOMAIN;
 } else {
-   $DEFAULT_DOMAIN = $DEFAULT_HOST;
+	# Work out default domain name from qmail (for David Summers)
+	open (GETHOST, "<$QMAIL_BASE/defaultdomain") || open (GETHOST, "<$QMAIL_BASE/me") || die "Unable to read $QMAIL_BASE/me: $!";
+	chomp($DEFAULT_HOST = <GETHOST>);
+	close GETHOST;
 }
 
 
 # Untaint form input ...
 &untaint;
-
-# redirect must come before headers are printed
-# TODO: not migrated to clearsilver - this will not work!
-if(defined($q->param('action')) && $q->param('action') eq 'web_archive') {
-   print $q->redirect(&ezmlmcgirc);
-   exit;
-}
 
 my $pagedata = load_hdf();
 my $action = $q->param('action');
@@ -292,15 +285,13 @@ sub load_hdf {
 	# initialize the data for clearsilver
 	my $hdf = ClearSilver::HDF->new();
 
-	# TODO: respect LANGUAGE_DIR and LANGUAGE
-	$hdf->readFile($LANGUAGE_DIR . "/en.hdf");
+	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
 
 	# TODO: check for existence
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
-	$hdf->setValue("HelpIconURL", "$HELP_ICON_URL");
 	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
 
 	return $hdf;
@@ -350,8 +341,8 @@ sub set_pagedata()
    my $num = 0;
    foreach $i (0 .. $#files) {
 		if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]))) {
-		$num++;
 		$pagedata->setValue("Data.Lists." . $num, "$files[$i]");
+		$num++;
       }
    }
 
@@ -365,7 +356,7 @@ sub set_pagedata()
 
 
    # username and hostname
-   my ($hostname, $username, $domain);
+   my ($hostname, $username);
    # Work out if this user has a virtual host and set input accordingly ...
    if(-e "$QMAIL_BASE/virtualdomains") {
       open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
@@ -378,9 +369,6 @@ sub set_pagedata()
    if(!defined($hostname)) {
       $username = "$USER-" if ($USER ne $ALIAS_USER);
       $hostname = $DEFAULT_HOST;
-      $domain = $DEFAULT_DOMAIN; # by ooyama add domain
-   } else {
-      $domain = $hostname;
    }
 
    $pagedata->setValue("Data.UserName", "$username");
@@ -435,26 +423,26 @@ sub set_pagedata4list
 	$pagedata->setValue("Data.List.hasDenyList", 1) if ($list->isdeny);
 	$pagedata->setValue("Data.List.hasAllowList", 1) if ($list->isallow);
 	$pagedata->setValue("Data.List.hasDigestList", 1) if ($list->isdigest);
-	$pagedata->setValue("Data.List.hasWebArchive", 1) if(&ezmlmcgirc);
 
-	# Get the contents of the headeradd, headerremove, mimeremove and prefix files
-	$pagedata->setValue("Data.List.Prefix", $list->getpart('prefix'));
+	# Get the contents of some important files
+	$item = $list->getpart('prefix');
+	$pagedata->setValue("Data.List.Prefix", "$item");
 	$item = $list->getpart('headeradd');
 	$pagedata->setValue("Data.List.HeaderAdd", "$item");
 	$item = $list->getpart('headerremove');
 	$pagedata->setValue("Data.List.HeaderRemove", "$item");
 	$item = $list->getpart('mimeremove');
 	$pagedata->setValue("Data.List.MimeRemove", "$item");
+	$item = $list->getpart('mimereject');
+	$pagedata->setValue("Data.List.MimeReject", "$item");
+	$item = $list->getpart('text/trailer');
+	$pagedata->setValue("Data.List.TrailingText", "$item");
 	
 	# read message size limits
 	$list->getpart('msgsize') =~ m/^\s*(\d+)\s*:\s*(\d+)\s*$/;
 	$pagedata->setValue("Data.List.MsgSize.Max", "$1");
 	$pagedata->setValue("Data.List.MsgSize.Min", "$2");
 
-	# read trailing text
-	my $trailtext = $list->getpart('text/trailer');
-	$pagedata->setValue("Data.List.TrailingText", "$trailtext");
- 
 	# TODO: this is definitely ugly - create a new sub!
 	if(open(WEBUSER, "<$WEBUSERS_FILE")) {
 		while(<WEBUSER>) {
@@ -519,10 +507,14 @@ sub set_pagedata4options {
 		$key = lc(substr($options,$i,1));
 	}
 
-	# the option "t" is only used to create a default trailing text
-	# it has no meaning, so we should adapt it to reality
+	# the options "t", "p" and "x" are only used to create a default value
+	# they have no meaning, so we should adapt them to reality
 	$pagedata->setValue("Data.List.Options.t" , 1)
 		if (-e "$dir_of_list/text/trailer");
+	$pagedata->setValue("Data.List.Options.p" , 1)
+		if (-e "$dir_of_list/prefix");
+	$pagedata->setValue("Data.List.Options.x" , 1)
+		if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
 
 	for ($i=0; $i<9; $i++) {
 		unless (($i eq 1) || ($i eq 2)) {
@@ -942,11 +934,17 @@ sub update_config {
 	# Save the new user entered config ...
    
 	my ($list, $options, @inlocal, @inhost, $dir_of_list);
+	my ($old_msgsize);
 
 	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 	$dir_of_list = $LIST_DIR . '/' . $q->param('list');
 
 	$options = &extract_options_from_params();
+
+	# save the settings, that are generally overwritten by ezmlm-make :(((
+	# good candidates are: msgsize, inhost, inlocal and outhost
+	# maybe there are some others?
+	$old_msgsize = $list->getpart('msgsize');
 
 	# Actually update the list ...
 	unless($list->update($options)) {
@@ -984,7 +982,17 @@ sub update_config {
 		}
 	}
 
-	# Update headeradd, headerremove, mimeremove and prefix if these options were visible
+	# update mimereject
+	# remove old one if the checkbox was not active
+	if (defined($q->param('mimereject'))) {
+		if (defined($q->param('option_x'))) {
+			$list->setpart('mimereject', $q->param('mimereject'))
+		} else {
+			unlink("$dir_of_list/mimereject");
+		}
+	}
+
+	# Update headeradd and headerremove if these options were visible
 	$list->setpart('headeradd', $q->param('headeradd'))
 		if (defined($q->param('headeradd')));
 	$list->setpart('headerremove', $q->param('headerremove'))
@@ -997,6 +1005,9 @@ sub update_config {
 		$minsize = (defined($q->param('msgsize_min_state'))) ?
 			$q->param('msgsize_min_value') : 0;
 		$list->setpart('msgsize', "$maxsize:$minsize");
+	} else {
+		# restore the original value, as ezmlm-make always overrides these values :(((
+		$list->setpart('msgsize', "$old_msgsize");
 	}
 	
 	unless (&update_webusers()) {
@@ -1151,20 +1162,6 @@ sub webauth_create_allowed {
 	}
 	close USERS;
 	return (1==0);
-}
-
-# ---------------------------------------------------------------------------
-
-sub ezmlmcgirc {
-   my($listno);
-   if(open(WWW, "<$EZMLM_CGI_RC")) {
-      while(<WWW>) {
-         last if (($listno) = m{(\d+)(\D)\d+\2$LIST_DIR/$Q::list\2});
-      }
-      close WWW;
-      return "$EZMLM_CGI_URL/$listno" if(defined($listno));
-   } return undef;
-
 }
 
 # ---------------------------------------------------------------------------

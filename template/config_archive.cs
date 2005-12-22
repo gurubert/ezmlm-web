@@ -1,13 +1,13 @@
 <div class="title">
-	<h1><?cs var:Lang.Title.ConfigArchive ?></h1>
+	<h1><?cs var:html_escape(Lang.Title.ConfigArchive) ?></h1>
 </div>
 
 <div class="introduction">
-	<p><?cs var:Lang.Introduction.ConfigArchive ?></p>
+	<p><?cs var:html_escape(Lang.Introduction.ConfigArchive) ?></p>
 </div>
 
 <fieldset class="form">
-	<legend><?cs var:Lang.Legend.ConfigArchive ?></legend>
+	<legend><?cs var:html_escape(Lang.Legend.ConfigArchive) ?> </legend>
 
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="config_subset" value="archive" />
@@ -20,10 +20,11 @@
 			<li><?cs call:checkbox("g") ?></li>
 			<li><?cs call:checkbox("i") ?></li>
 		
-			<!-- include default form values -->
+			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>
 
-			<button type="submit" name="action" value="config_do"><?cs var:Lang.Buttons.UpdateConfiguration ?></button>
+			<input type="hidden" name="action" value="config_do" />
+			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
 		</ul>
 
 	</form>

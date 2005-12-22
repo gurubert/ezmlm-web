@@ -21,10 +21,11 @@ VIII.   Bugs && Bug Reports
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
 ==================
-ezmlm-web - version 2.3 - 10/06/02005
+ezmlm-web - version 3.0 - 12/22/02005
 
 Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
-Please send bug reports and comments to guy-ezmlm@rucus.ru.ac.za
+
+Please send bug reports and comments to ezmlm-web@sumpfralle.de
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -55,6 +56,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 II. Some Background
 ===================
+[this text was written by Guy Antony Halse - the original author of ezmlm-web]
 The need for ezmlm-web arose from the fact that we host many student
 societies on our system. These societies usually have a virtual host for web
 and email, which is administered by a computer rep from the society. These
@@ -95,12 +97,12 @@ This version of ezmlm-web requires the following;
 
 * qmail v1.03
 * ezmlm v0.53 (or ezmlm-idx v0.40)
+* clearsilver v0.9.14 (only perl support is necessary)
 * Perl v5.004 and the following modules;
   + Mail::Ezmlm v0.03 
   + Mail::Address v1.15
   + CGI v2.6 
   + CGI::Carp v1.06
-  + CGI::Dispatcher::Simple v0.01
   + DB_File v1.65
   + Getopt::Std v4.1
   + File::Find v?
@@ -114,6 +116,9 @@ versions are expected to work as well.
 
 To install perl modules you may use the cpan command line interface.
 Just run "cpan" and type something like "install Mail::Ezmlm".
+
+You can download clearsilver (a templating engine - it is required since
+ezmlm-web v3.0) from http://clearsilver.net.
 
 
 IV. Files
@@ -239,26 +244,27 @@ VIII. Bugs && Bug Reports
 =======================
 I don't know of any bugs, but then this is a rewrite and a first release. It
 has been tested reasonably well, but not exhaustively. I know it works on
-FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1 and Redhat 6.0 all using
-an Apache web server, but I would be interested to know whether it works on
-other OSs and with other web servers. This version is far less dependent on
-the OS than previous versions so I don't see any reason why it shouldn't.
+FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and Debian
+3.0 all using an Apache web server, but I would be interested to know whether
+it works on other OSs and with other web servers.
 
 Please mail bug reports and comments to ezmlm-web@sumpfralle.de.
+Or (even better) submit a bug report at https://systemausfall.org/trac/ezmlm-web.
+Or subscribe to the ezmlm-web mailinglist: ezmlm-web-subscribe@lists.systemausfall.org.
 
 
 IX. Acknowledgements
 ===================
-*  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - He created ezmlm-web,
-   maintained it till 02005 and wrote nearly every line of code!
-*  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me and
+*  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - he created ezmlm-web
+   and maintained it till 02005 
+*  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me (Guy) and
    ensuring that I actually got round to writing some code :)
 *  Bryan Kilian (bryan@rucus.ru.ac.za) and the administrators of the
-   Litestep mailing list - For helping beta test and putting up with me
+   Litestep mailing list - For helping beta test and putting up with me (Guy)
    pestering them.
 *  Several societies at Rhodes. For switching to my web interface and so
    unknowingly helping to beta test it.
-*  Barry Irwin (bvi@moria.org) - For trusting me and moving the Grahamstown
+*  Barry Irwin (bvi@moria.org) - For trusting me (Guy) and moving the Grahamstown
    Foundation over to qmail and ezmlm - yet another beta tester :-)
 *  David Summers (david@summersoft.fay.ar.us) - For some ideas. And for
    offering to make up an RPM version. I hope the offer still exists for
@@ -267,12 +273,18 @@ IX. Acknowledgements
 *  Fred Lindberg (lindberg@id.wustl.edu) for his useful posts to the 
    mailing list, suggestions, help, etc
 *  Galen Johnson (gjohnson@totalsports.net) - For some ideas on bugfixes.
+*  Reinin Ooyama (lenin@hasiru.net) - a japanese translation and bugixes for v2.3
+*  Henning Rieger (age@systemausfall.org) - he designed most of the new
+   interface for v3.0
 
 
 X. Availability
 =================
 More information on ezmlm-web and developments to ezmlm-web can be found at:
 https://systemausfall.org/toolforge/ezmlm-web
+
+The public subversion repository is at:
+https://svn.systemausfall.org/svn/ezmlm-web
 
 The website of Guy Antony Halse (the author of ezmlm-web) is still at:
 http://rucus.ru.ac.za/~guy/ezmlm/

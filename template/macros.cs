@@ -1,8 +1,3 @@
-<?cs def:help_title(helpname)
-	?>title="<?cs alt:Lang.Helper[helpname] ?>TODO: unknown helpname (<?cs
-	var:helpname ?>)<?cs /alt ?>"<?cs
- /def ?>
-
 <?cs def:checkbox(option)
 	?><?cs if:Lang.Options[option]
 		?><input type="checkbox" name="option_<?cs var:option ?>" 
@@ -49,3 +44,10 @@
 	</div><?cs
  /def ?>
 
+<?cs def:limit_string_len(text,limit)
+	?><?cs set:text2 = text ?><?cs set:len = string.length(text2) ?><?cs
+	if:len > limit ?><?cs 
+		var:string.slice(text,0,limit / #2 + limit % #2 - 1) ?>...<?cs
+		var:string.slice(text,len - limit / #2 + #3 - #1, len) ?><?cs 
+	else ?><?cs var:text ?><?cs /if ?><?cs
+ /def ?>

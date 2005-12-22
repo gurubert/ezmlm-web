@@ -10,9 +10,8 @@ css/ezmlm-web-help.gif -text
 /ezmlmwebrc -text
 /htaccess.sample -text
 /index.c -text
-lang/de.pm -text
+lang/de.hdf -text
 lang/en.hdf -text
-lang/en.pm -text
 lang/jp.pm -text
 spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
