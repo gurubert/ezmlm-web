@@ -5,7 +5,6 @@
 /TODO -text
 /UPGRADING -text
 css/default.css -text
-css/ezmlm-web-help.gif -text
 /ezmlm-web.cgi -text
 /ezmlmwebrc -text
 /htaccess.sample -text
@@ -35,13 +34,4 @@ template/nav.cs -text
 template/subscribers.cs -text
 template/textfile_edit.cs -text
 template/textfiles.cs -text
-test-suite/cases.d/confirm_delete.conf -text
-test-suite/cases.d/create_list.conf -text
-test-suite/cases.d/edit_file.conf -text
-test-suite/cases.d/info.txt -text
-test-suite/cases.d/list_config.conf -text
-test-suite/cases.d/list_subscribers.conf -text
-test-suite/cases.d/list_textfiles.conf -text
-test-suite/cases.d/start_page.conf -text
-test-suite/test-suite.sh -text
 /webusers.sample -text

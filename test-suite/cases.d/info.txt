@@ -1,6 +1,0 @@
-this directory contains test cases for ezmlm-web
-
-only files with a '.conf' prefix will be used
-
-still missing test cases:
-- part_subscribers

@@ -17,11 +17,12 @@ Data.List.hasDigestList
 Data.List.hasPostMod
 Data.List.hasRemoteAdmin
 Data.List.hasSubMod
-Data.List.hasWebArchive
 Data.List.HeaderAdd
 Data.List.HeaderRemove
 Data.List.MimeRemove
 Data.List.MimeReject
+Data.List.MsgSize.Max
+Data.List.MsgSize.Min
 Data.List.Name
 Data.List.PartType
 Data.List.PostModPath
