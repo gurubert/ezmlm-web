@@ -35,6 +35,9 @@ $ALIAS_USER = 'alias';
 # Where do the qmail control files live on this system ...
 $QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
 
+# default mailing list domain name (optional)
+#$MAIL_DOMAIN = 'lists.someserver.org';
+
 # Do we want to allow ``pretty'' names - ie more human readable ones
 # This will slow ezmlm-web down a bit for large lists
 $PRETTY_NAMES = 1;
