@@ -14,10 +14,12 @@
 
 		<ul>
 
-			<li><?cs call:checkbox("r") ?></li>
-			<li><?cs call:checkbox("l") ?></li>
-			<li><?cs call:checkbox("n") ?></li>
-			<li><?cs call:setting("8") ?></li>
+			<li><?cs call:checkbox("r") ?>
+				<ul>
+					<li><?cs call:checkbox("l") ?></li>
+					<li><?cs call:checkbox("n") ?></li>
+					<li><?cs call:setting("8") ?></li>
+				</ul></li>
 		
 			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>

@@ -1,3 +1,5 @@
+"cancel" button during text editing
+
 restore user input after failed list_create (especially options)
 
 support for:
@@ -8,3 +10,5 @@ split filter and manipulate
 
 allow dynamic addition of user-made config templates (seperate directory, ...)
 
+language switch support
+choose basic/expert to disable questions

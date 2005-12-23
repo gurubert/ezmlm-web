@@ -200,26 +200,11 @@ elsif ($action eq '' || $action eq 'list_select') {
 	}
 } elsif (($action eq 'config_ask') || ($action eq 'config_do')) {
 	# User wants to see/change the configuration ...
-	if (defined($q->param('list'))) {
+	my $subset = $q->param('config_subset');
+	if (defined($q->param('list')) && ($subset ne '')
+			&& ($subset =~ /^[\w]*$/) && (-e "$TEMPLATE_DIR/config_$subset" . ".cs")) {
 		$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
-		if ($q->param('config_subset') eq 'subscription') {
-			$pagename = 'config_subscription';
-		} elsif ($q->param('config_subset') eq 'posting') {
-			$pagename = 'config_posting';
-		} elsif ($q->param('config_subset') eq 'archive') {
-			$pagename = 'config_archive';
-		} elsif ($q->param('config_subset') eq 'admin') {
-			$pagename = 'config_admin';
-		} elsif ($q->param('config_subset') eq 'filter') {
-			$pagename = 'config_filter';
-		} elsif ($q->param('config_subset') eq 'main') {
-			$pagename = 'config_main';
-		} elsif (defined($q->param('part'))) {
-			$pagename = 'subscribers';
-		} else {
-			$error = 'ParameterMissing';
-			$pagename = 'list_select';
-		}
+		$pagename = 'config_' . $subset;
 	} else {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';

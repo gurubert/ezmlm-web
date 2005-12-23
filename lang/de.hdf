@@ -5,8 +5,8 @@ LanguageName = Deutsch
 Lang {
 
 	Menue {
-		Create		= Neue Liste anlegen
-		Delete		= Liste löschen
+		ListCreate	= Neue Liste anlegen
+		ListDelete	= Liste löschen
 		Subscribers	= AbonnentInnen
 		AllowList	= Zulassungsliste
 		DenyList	= Ablehnungsliste
@@ -15,9 +15,9 @@ Lang {
 		ConfigMain	= Einstellungen
 		ConfigSub	= Einschreibung
 		ConfigPost	= Einsendung
-		ConfigAdmin	= Fern-Administration
+		ConfigAdmin	= Administration
 		ConfigArchive	= Archivierung
-		ConfigFilter	= Filterung
+		ConfigProcess	= Verarbeitung
 		TextFiles	= Texte
 		ListSelect	= Auswahl einer Liste
 		Properties	= Eigenschaften von
@@ -31,7 +31,7 @@ Lang {
 		ConfigPosting	= Einsendungsregeln
 		ConfigAdmin	= Fern-Administration der Liste
 		ConfigArchive	= Archivierung der Liste
-		ConfigFilter	= Nachrichtenfilterung
+		ConfigProcess	= Nachrichtenverarbeitung
 		SubscriberList	= AbonnentInnen der Liste
 		AllowList		= Zugelassene Nutzer
 		DenyList		= Abzuweisende Nutzer
@@ -39,9 +39,9 @@ Lang {
 		ModList			= ModeratorInnen der Liste
 		ListCreate		= Anlegen einer neuen Liste
 		ListSelect		= Auswählen einer Liste
+		ListDelete		= Löschung von
 		FileSelect		= Auswählen eines Textbausteins
 		FileEdit		= Bearbeitung des Textbausteins
-		ConfirmDelete	= Bestätige die Löschung von
 	  }
 
 
@@ -105,7 +105,7 @@ Lang {
 		a	= Archiviere Mailinglisten-Mails
 		b	= Nur Moderatoren dürfen auf das Archiv zugreifen
 		d	= Aktiviere die Zusammenfassungsliste
-		f	= Füge einen Vorspann zum Betreff der ausgehenden Mails hinzu
+		f	= Füge ein Präfix zum Betreff der ausgehenden Mails hinzu
 		g	= Verweigere unbekannten NutzerInnen den Zugriff auf das Archiv
 		h	= Bei der Einschreibung in die Liste ist keine Bestätigungsmail erforderlich
 		i	= Indiziere die Nachrichten zur Veröffentlichung im Internet (z.B. mit ezmlm-www)
@@ -122,19 +122,19 @@ Lang {
 		t	= Hänge eine Signatur an jede versandte Nachricht
 		u	= Einsendungen von AbonnentInnen werden immer akzeptiert (dies gilt auch für moderierte Listen)
 		w	= Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
-		x	= Prüfe die Mime-Typen der Bestandteile eingehender Nachrichten
+		x	= Prüfe die MIME-Typen der Anhänge eingehender Nachrichten
 		y	= Fordere eine Bestätigung für jede eingesandte Nachricht an
 	  }
 
 
     Settings {
 		0	= Diese Liste is nur eine Unterliste
-		3	= Definiere eine andere Absender-Adresse ausgehender Mails
+		3	= Definiere die Absender-Adresse ausgehender Mails
 		4	= Eigene Einstellungen zum Versand von Zusammenfassungsmails (ezmlm-tstdig)
 		5	= Lege die Mailadresse des Verantwortlichen für diese Liste fest
 		6	= Verwende eine SQL-Datenbank
 		7	= Die Datenbank der Nachrichten-ModeratorInnen befindet sich in einem alternativen Verzeichnis
-		8	= Die Datenbank der Einschreibe--ModeratorInnen (und Fern-AdministratorInnen) befindet sich in einem alternativen Verzeichnis
+		8	= Die Datenbank der Einschreibe-ModeratorInnen (und Fern-AdministratorInnen) befindet sich in einem alternativen Verzeichnis
 	#	9 => not used - it is only an alternative to (8)
       }
 
@@ -151,7 +151,7 @@ Lang {
 		HeaderRemove	= zu entfernende Kopfzeilen
 		HeaderAdd	= hinzuzufügende Kopfzeilen
 		MimeRemove	= Nachrichtenbestandteile dieses Typs werden entfernt
-		MimeReject	= Nachrichten, die diese Datentype beinhalten, werden abgewiesen
+		MimeReject	= Nachrichten, die einen der folgenden Datentypen enthalten, werden abgewiesen
 		EditFileInfo {
 			CommonTags			= allgemeine Platzhalter
 			ListNameLocal		= der lokale Teil (vor dem "@") der Listenadresse
@@ -174,16 +174,18 @@ Lang {
 		SuggestDefaultPath	= Es wird empfohlen, das Standard-Verzeichnis zu verwenden. Andernfalls kannst du die ModeratorInnen-Liste nicht mit ezmlm-web verwalten.
 		FooterText		= eine Web-Oberfläche für
 		NoListsAvailable	= Es sind keine passenden Listen vorhanden.
+		ConfirmDelete	= Willst du wirklich diese Liste vollständig löschen?
 	  }
 
 
 	Introduction {
 		ConfigAdmin		= Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.
 		ConfigArchive	= Das Mailinglisten-Archiv ist per Mail verfügbar. Außerdem benötigst du ein Archiv, falls du vergangene Mails im Internet zur Verfügung stellen möchtest (z.B. mit ezmlm-www).
-		ConfigFilter	= Die Rubrik Filterung und Verarbeitung gestattet dir, viele Aspekte ausgehender Mails an deine Bedürfnisse anzupassen. Beipielsweise den Betreff, Kopfzeilen, eine Signatur sowie eine Filterung nach der Größe der Mail oder nach enthaltenen Datentypen.
+		ConfigProcess	= Die folgenden Regeln werden auf alle Mails angewandt, bevor sie an die AbonnentInnen verteilt werden.
 		ConfigMain		= Die allgemeinen Eigenschaften bestimmen einige wichtige Verhaltensweisen der Mailingliste.
 		ConfigPosting	= Die Einsende-Konfiguration bestimmt, wer Nachrichten einsenden darf und wie diese Mails verarbeitet werden sollen.
 		ConfigSub		= Hier kannst du festlegen, wer sich als Abonnent selbständig eintragen darf und wie der Einschreibungsprozess abläuft.
+		ListDelete		= Die Mailingliste und alle damit verbundenen Daten werden hiermit vollständig entfernt.
 		AllowList		= An die Adressen der Zulassungsliste werden keine Mails verschickt. Einsendungen durch diese Adressen werden so behandelt, als kämen sie von AbonnentInnen. Üblicherweise werden Aliase von AbonnentInnen in die Zulassungsliste eingetragen.
 		DenyList		= Falls du Mails von bestimmte Mailadressen verweigern möchtest, dann füge sie einfach zur (aktivierten) Ablehnungsliste hinzu Dies kann nützlich sein, um unbeliebte Nutzer auszuschließen oder um störende Abwesenheitsbenachrichtigungen zu verhindern.
 		DigestList		= Einige AbonnentInnen deiner Mailingliste sind möglicherweise nicht an jeder einzelnen Nachricht interessiert, sondern ziehen es vor, stattdessen regelmäßig automatisch erstellte Zusammenfassungen zu erhalten.
@@ -199,8 +201,9 @@ Lang {
 		ConfigPosting	= Einsende-Regeln
 		ConfigSub		= Einschreibungsdetails
 		ConfigMain		= Allgemeine Listen-Einstellungen
-		ConfigFilter	= Filterungs- und Anpassungsregeln
+		ConfigProcess	= Verarbeitungsregeln
 		ListCreate		= Eigenschaften der neuen Liste
+		ListDelete		= Löschung der Mailingliste
 		RelevantOptions	= Relevante Optionen
 		MembersList		= AbonnentInnen-Verwaltung
 		MembersAllow	= Verwaltung der zulässigen Adressen

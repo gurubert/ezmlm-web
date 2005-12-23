@@ -14,10 +14,20 @@
 
 		<ul>
 		
-			<li><?cs call:checkbox("a") ?></li>
-			<li><?cs call:checkbox("p") ?></li>
-			<li><?cs call:checkbox("b") ?></li>
-			<li><?cs call:checkbox("g") ?></li>
+			<!-- archive messages -->
+			<li><?cs call:checkbox("a") ?>
+				<ul>
+					<!-- subscripiton and archive are public -->
+					<li><?cs call:checkbox("p") ?></li>
+					
+					<!-- only moderators may access the archive -->
+					<li><?cs call:checkbox("b") ?></li>
+
+					<!-- block unknown users from archive -->
+					<li><?cs call:checkbox("g") ?></li>
+				</ul></li>
+
+			<!-- remove 'no-archive' header -->
 			<li><?cs call:checkbox("i") ?></li>
 		
 			<li><!-- include default form values -->

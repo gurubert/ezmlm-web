@@ -16,9 +16,9 @@ spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
 template/config_admin.cs -text
 template/config_archive.cs -text
-template/config_filter.cs -text
 template/config_main.cs -text
 template/config_posting.cs -text
+template/config_processing.cs -text
 template/config_subscription.cs -text
 template/footer.cs -text
 template/form_common.cs -text

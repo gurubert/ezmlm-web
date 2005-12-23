@@ -11,7 +11,7 @@
 	<?cs if:Data.Permissions.Create ?>
 		<li><a <?cs if:(Data.Action == "list_create") ?> class="nav_active"<?cs /if ?>
 			href="<?cs var:ScriptName ?>?action=list_create_ask"
-			title="<?cs var:html_escape(Lang.Menue.Create) ?>"><?cs var:html_escape(Lang.Menue.Create) ?></a>
+			title="<?cs var:html_escape(Lang.Menue.ListCreate) ?>"><?cs var:html_escape(Lang.Menue.ListCreate) ?></a>
 		</li>
 		<?cs /if ?>
 
@@ -44,8 +44,8 @@
 				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=subscription" title="<?cs var:html_escape(Lang.Menue.ConfigSub) ?>"><?cs var:html_escape(Lang.Menue.ConfigSub) ?></a></li>
 			<li><a <?cs if:(Data.Action == "config_posting") ?> class="nav_active"<?cs /if ?>
 				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=posting" title="<?cs var:html_escape(Lang.Menue.ConfigPost) ?>"><?cs var:html_escape(Lang.Menue.ConfigPost) ?></a></li>
-			<li><a <?cs if:(Data.Action == "config_filter") ?> class="nav_active"<?cs /if ?>
-				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=filter" title="<?cs var:html_escape(Lang.Menue.ConfigFilter) ?>"><?cs var:html_escape(Lang.Menue.ConfigFilter) ?></a></li>
+			<li><a <?cs if:(Data.Action == "config_processing") ?> class="nav_active"<?cs /if ?>
+				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=processing" title="<?cs var:html_escape(Lang.Menue.ConfigProcess) ?>"><?cs var:html_escape(Lang.Menue.ConfigProcess) ?></a></li>
 			<li><a <?cs if:(Data.Action == "config_archive") ?> class="nav_active"<?cs /if ?>
 				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=archive" title="<?cs var:html_escape(Lang.Menue.ConfigArchive) ?>"><?cs var:html_escape(Lang.Menue.ConfigArchive) ?></a></li>
 			<li><a <?cs if:(Data.Action == "config_admin") ?> class="nav_active"<?cs /if ?>
@@ -56,7 +56,7 @@
 			href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=textfiles" title="<?cs var:html_escape(Lang.Menue.TextFiles) ?>"><?cs var:html_escape(Lang.Menue.TextFiles) ?></a></li>
 
 		<li><a <?cs if:(Data.Action == "list_delete") ?> class="nav_active"<?cs /if ?>
-			href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=list_delete_ask" title="<?cs var:html_escape(Lang.Menue.Delete) ?>"><?cs var:html_escape(Lang.Menue.Delete) ?></a></li>
+			href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=list_delete_ask" title="<?cs var:html_escape(Lang.Menue.ListDelete) ?>"><?cs var:html_escape(Lang.Menue.ListDelete) ?></a></li>
 		
 	</ul></li>
 

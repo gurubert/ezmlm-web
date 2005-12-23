@@ -40,12 +40,19 @@ font.feature {
 #nav_bar ul {
 	color: #af8060;
 	margin: 0;
-	padding-left: 10px;
+	padding-left: 15px;
 	list-style: none;
 	}
 
-#nav_bar li {
+#nav_bar ul li {
 	margin-top: 0;
+	/* small space between highest level entries */
+	margin-bottom: 5px;
+	}
+
+#nav_bar ul li ul li {
+	/* no space between lower level entries */
+	margin-bottom: 0;
 	}
 
 #nav_bar li a.nav_active {

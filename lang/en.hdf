@@ -5,8 +5,8 @@ LanguageName = English
 Lang {
 
 	Menue {
-		Create		= Create new list
-		Delete		= Delete list
+		ListCreate	= Create new list
+		ListDelete	= Delete list
 		Subscribers	= Subscribers
 		AllowList	= allow list
 		DenyList	= deny list
@@ -17,11 +17,10 @@ Lang {
 		ConfigPost	= posting
 		ConfigAdmin	= administration
 		ConfigArchive	= archive
-		ConfigFilter	= filtering
+		ConfigProcess	= processing
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
-		ConfirmDelete	= Confirm deletion of
 		Help		= Help (external)
 	  }
 
@@ -32,7 +31,7 @@ Lang {
 		ConfigPosting	= Posting options
 		ConfigAdmin		= Remote administration
 		ConfigArchive	= Archive options
-		ConfigFilter	= Message filtering
+		ConfigProcess	= Message processing
 		SubscriberList	= Subscribers of the list
 		AllowList		= Allowed users
 		DenyList		= Blocked users
@@ -40,6 +39,7 @@ Lang {
 		ModList			= Moderators of the mailinglist
 		ListCreate		= Create a new list
 		ListSelect		= Choose a list
+		ListDelete		= Delete list
 		FileSelect		= Choose a file for editing
 		FileEdit		= Editing file
 	  }
@@ -175,16 +175,18 @@ Lang {
 		SuggestDefaultPath	= It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web.
 		FooterText		= a web interface for
 		NoListsAvailable	= I could not find any accessible list for you.
+		ConfirmDelete	= Do you really want to remove this list completely?
 	  }
 
 
 	Introduction {
 		ConfigAdmin		= Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software.
 		ConfigArchive	= The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www).
-		ConfigFilter	= Filtering allows you to add or remove mail headers, to prefix the subject, to add a trailer to every message and to block mails according to their size or attached filetypes.
+		ConfigProcess	= Modify some message properties, before they are distributed to the subscribers.
 		ConfigMain		= The basic properties of a list define some important settings (e.g. mail address) and the general behaviour (public or closed).
 		ConfigPosting	= The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed.
 		ConfigSub		= Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process.
+		ListDelete		= This mailinglist and everything inside of it will be removed completely.
 		AllowList		= Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers.
 		DenyList		= If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security.
 		DigestList		= Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway.
@@ -200,8 +202,9 @@ Lang {
 		ConfigPosting	= Posting rules
 		ConfigSub		= Subscription details
 		ConfigMain		= General list configuration
-		ConfigFilter	= Filtering and manipulation rules
+		ConfigProcess	= Processing rules
 		ListCreate		= Properties of the new list
+		ListDelete		= Remove this mailinglist
 		RelevantOptions	= Useful settings
 		MembersList		= Manage subscribers
 		MembersAllow	= Manage allowed users
