@@ -74,36 +74,41 @@
 			<?cs /if ?>
 		</legend>
 
-	<!-- this form has to be "multipart/form-data" to make file upload work -->
-	<form method="post" action="<?cs var:ScriptName ?>" enctype="multipart/form-data">
-	    <input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
-	    <?cs if:Data.List.PartType ?>
-		    <input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
-	    <?cs /if ?>
+	<table class="subscribers"><tr>
+	<?cs if:subcount(Data.List.Subscribers) > 0 ?>
+		<td><form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
+			<?cs if:Data.List.PartType ?>
+				<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
+			<?cs /if ?>
 
-		<table class="subscribers"><tr>
-		<?cs if:subcount(Data.List.Subscribers) > 0 ?>
-			<td><ul>
-			<!-- scrollbox for list's subscribers -->
-			<!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
-				<?cs if:subcount(Data.List.Subscribers) > 15 ?>
-					<?cs set:Data.ScrollSize = 15 ?>
-				  <?cs else ?>
-					<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
-				<?cs /if ?>
-				<li><select name="mailaddress_del"
-						size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
-					<?cs each:item = Data.List.Subscribers ?>
-						<option><?cs var:item ?></option>
-					<?cs /each ?>
-				</select></li>
-				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
-				<li><input type="hidden" name="action" value="address_del" />
-				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
-			</ul></td>
+			<ul>
+				<!-- scrollbox for list's subscribers -->
+				<!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
+					<?cs if:subcount(Data.List.Subscribers) > 15 ?>
+						<?cs set:Data.ScrollSize = 15 ?>
+					  <?cs else ?>
+						<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
+					<?cs /if ?>
+					<li><select name="mailaddress_del"
+							size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
+						<?cs each:item = Data.List.Subscribers ?>
+							<option><?cs var:item ?></option>
+						<?cs /each ?>
+					</select></li>
+					<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
+					<li><input type="hidden" name="action" value="address_del" />
+					<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
+		</ul></form></td>
+	<?cs /if ?>
+
+	<td><td><form method="post" action="<?cs var:ScriptName ?>" enctype="multipart/form-data">
+		<!-- this form has to be "multipart/form-data" to make file upload work -->
+		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
+		<?cs if:Data.List.PartType ?>
+			<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		<?cs /if ?>
-
-		<td><ul>
+		<ul>
 
 			<li><?cs var:html_escape(Lang.Misc.AddSubscriberAddress) ?>
 				<ul><li><input type="text" name="mailaddress_add" size="40" /></li>
@@ -117,9 +122,11 @@
 
 			<li><input type="hidden" name="action" value="address_add" />
 			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.AddAddress) ?></button></li>
-		</ul></td></tr></table>
+		</ul>
+		</form>
+	</td></tr>
+	</table>
 
-	</form>
 	</fieldset>
 
 <?cs /if ?>

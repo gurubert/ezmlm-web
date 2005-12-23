@@ -91,10 +91,10 @@ if(defined($opt_C)) {
    require "$1"; # Command Line
 } elsif(-e "$HOME_DIR/.ezmlmwebrc") {
    require "$HOME_DIR/.ezmlmwebrc"; # User
-} elsif(-e "/etc/ezmlm/ezmlmwebrc") {
-   require "/etc/ezmlm/ezmlmwebrc"; # System
 } elsif(-e "./ezmlmwebrc") {
    require "./ezmlmwebrc"; # Install
+} elsif(-e "/etc/ezmlm/ezmlmwebrc") {
+   require "/etc/ezmlm/ezmlmwebrc"; # System
 } else {
    die "Unable to read config file";
 }
@@ -651,7 +651,7 @@ sub untaint {
 	# special stuff
 
 	# check the list name
-	if (($q->param('list') =~ /[^\w-]/) && ($q->param('list') !~ /^list_create_(do|ask)$/)) {
+	if (($q->param('list') =~ /[^\w-]/) && ($q->param('action') !~ /^list_create_(do|ask)$/)) {
 		$warning = 'InvalidListName' if ($warning eq '');
 		$q->param(-name=>'list', -values=>'');
 	}

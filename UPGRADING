@@ -5,15 +5,22 @@ This file contains some useful hints for upgrading from a previous version of ez
 UPGRADING ezmlm-web 2.3 to ezmlm-web 3.0
 
 1) install clearsilver (see INSTALL for details)
+
 2) copy the "template" directory somewhere (see INSTALL again)
+
 3) set "TEMPLATE_DIR" in your ezmlmwebrc file to this directory
+
 4) maybe you want to define "MAIL_DOMAIN" in your ezmlmwebrc
+
+5) search order for ezmlmwebrc changed
+from	HOME->SYSTEM->CGI_DIR
+to	HOME->CGI_DIR->SYSTEM
 
 ------------------------------------------------------------------------------
 
 UPGRADING ezmlm-web 2.2 to ezmlm-web 2.3
 
-there are no known issues
+1) set location of css file in ezmlmwebrc
 
 ------------------------------------------------------------------------------
 

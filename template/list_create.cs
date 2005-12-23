@@ -15,19 +15,11 @@
 				value="<?cs var:html_escape(Data.UserName)
 				?>"> @ <input type="text" name="inhost" size="30" value="<?cs
 				var:html_escape(Data.HostName) ?>"></li>
-			<li><?cs var:html_escape(Lang.Misc.ListOptions) ?>:
-			<ul>
 
-				<li><?cs call:checkbox("p") ?></li>
-				<li><?cs call:checkbox("a") ?></li>
-				<li><?cs call:checkbox("u") ?></li>
-				<li><?cs call:checkbox("d") ?></li>
+			<?cs if:Data.Modules.MySQL ?>
+			<!-- Allow creation of mysql table if the module allows it -->
+				<li><?cs call:setting("6") ?></li><?cs /if ?>
 
-				<?cs if:Data.Modules.MySQL ?>
-				<!-- Allow creation of mysql table if the module allows it -->
-					<li><?cs call:setting("6") ?></li><?cs /if ?>
-
-			</ul>
 
 			<?cs if:Data.WebUser.show ?>
 				<li><label for="webusers"><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?>:</label>
