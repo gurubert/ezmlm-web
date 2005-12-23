@@ -14,11 +14,21 @@
 
 		<ul>
 
+			<!-- public subsccription and archive -->
 			<li><?cs call:checkbox("p") ?></li>
+
+			<!-- do not require confirmation for subscription -->
 			<li><?cs call:checkbox("h") ?></li>
+
+			<!-- do not require confirmation for unsubscribe -->
 			<li><?cs call:checkbox("j") ?></li>
-			<li><?cs call:checkbox("s") ?></li>
-			<li><?cs call:setting("8") ?></li>
+
+			<!-- moderate subscription -->
+			<li><?cs call:checkbox("s") ?>
+				<ul>
+				<!-- custom path to subscription moderators -->
+				<li><?cs call:setting("8") ?></li>
+				</ul></li>
 
 			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>

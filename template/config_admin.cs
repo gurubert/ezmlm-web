@@ -14,10 +14,16 @@
 
 		<ul>
 
+			<!-- enable remote administration -->
 			<li><?cs call:checkbox("r") ?>
 				<ul>
+					<!-- administrators may request subscribers list -->
 					<li><?cs call:checkbox("l") ?></li>
+
+					<!-- administrators may edit text files via mail -->
 					<li><?cs call:checkbox("n") ?></li>
+
+					<!-- custom path to administrators database -->
 					<li><?cs call:setting("8") ?></li>
 				</ul></li>
 		
