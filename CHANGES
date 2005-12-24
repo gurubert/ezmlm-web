@@ -102,4 +102,4 @@ Version 3.0 - 12/21/02005
 * commas are not necessary anymore in webusers file
 * support for MAIL_DOMAIN config setting
 * requires the clearsilver template engine
-
+* changed directory for safely removed mailinglists

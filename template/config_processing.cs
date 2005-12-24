@@ -22,7 +22,7 @@
 
 			<!-- trailing text -->
 			<li><?cs call:checkbox("t") ?>
-				<?cs if:(Data.List.Options.t == 1) ?><ul>
+				<?cs if:(Data.List.Options.t == 1) ?>
 				<!-- turn off mimermove, if "-x" is not activated, as it will be
 					removed during the next config_update -->
 					<ul><li><textarea name="trailing_text" rows="3" cols="72"><?cs

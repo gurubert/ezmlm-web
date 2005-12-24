@@ -50,6 +50,8 @@
 				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=archive" title="<?cs var:html_escape(Lang.Menue.ConfigArchive) ?>"><?cs var:html_escape(Lang.Menue.ConfigArchive) ?></a></li>
 			<li><a <?cs if:(Data.Action == "config_admin") ?> class="nav_active"<?cs /if ?>
 				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=admin" title="<?cs var:html_escape(Lang.Menue.ConfigAdmin) ?>"><?cs var:html_escape(Lang.Menue.ConfigAdmin) ?></a></li>
+			<li><a <?cs if:(Data.Action == "config_all") ?> class="nav_active"<?cs /if ?>
+				href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(Data.List.Name) ?>&amp;action=config_ask&amp;config_subset=all" title="<?cs var:html_escape(Lang.Menue.ConfigAll) ?>"><?cs var:html_escape(Lang.Menue.ConfigAll) ?></a></li>
 		</ul></li>
 
 		<li><a <?cs if:((Data.Action == "textfiles") || (Data.Action == "textfile_edit")) ?> class="nav_active"<?cs /if ?>

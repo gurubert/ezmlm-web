@@ -18,6 +18,7 @@ Lang {
 		ConfigAdmin	= administration
 		ConfigArchive	= archive
 		ConfigProcess	= processing
+		ConfigAll	= overview
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
@@ -32,6 +33,7 @@ Lang {
 		ConfigAdmin		= Remote administration
 		ConfigArchive	= Archive options
 		ConfigProcess	= Message processing
+		ConfigAll		= Complete configuration
 		SubscriberList	= Subscribers of the list
 		AllowList		= Allowed users
 		DenyList		= Blocked users
@@ -62,6 +64,7 @@ Lang {
     	Forbidden			= Error: you are not allowed to do this!
 		ListDirUnavailable	= Could not create the list directory!
 		InvalidFileName		= The name of the file is invalid!
+		UnknownConfigPage	= The chosen config page is invalid!
 	  }
 
 
@@ -72,7 +75,8 @@ Lang {
 		DeleteList		= Removal of mailing list failed!
 		UpdateConfig	= Update of configuration failed!
 		SaveFile		= The file could not be saved!
-		ListAlreadyExists	= There is already a list with this name!
+		ListNameAlreadyExists	= There is already a list with this name!
+		ListAddressAlreadyExists	= There is already a list with this address!
 		ListDoesNotExist	= A list with this name does not exist!
 		ListDirAccessDenied		= Unable to access the list's directory:
 		TextDirAccessDenied		= Unable to access the list's directory of text files:
@@ -147,7 +151,7 @@ Lang {
 		ListName	= List Name
 		ListAddress	= List Address
 		ListOptions	= Basic List Options
-		AllowedToEdit	= Users allowed to edit this list via web interface
+		AllowedToEdit	= Users allowed to edit this list via web interface:
 		HeaderRemove	= Headers to strip from all outgoing mail
 		HeaderAdd	= Headers to add to all outgoing mail
 		MimeRemove	= Mime types to strip from all outgoing mail
@@ -183,9 +187,10 @@ Lang {
 		ConfigAdmin		= Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software.
 		ConfigArchive	= The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www).
 		ConfigProcess	= Modify some message properties, before they are distributed to the subscribers.
-		ConfigMain		= The basic properties of a list define some important settings (e.g. mail address) and the general behaviour (public or closed).
+		ConfigMain		= Here you find some settings, that did not fit into any other category.
 		ConfigPosting	= The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed.
 		ConfigSub		= Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process.
+		ConfigAll		= This is the complete list of all available properties of the list. Usually it should be easier to use the topic-based configuration pages, but - of course - this is your choice.
 		ListDelete		= This mailinglist and everything inside of it will be removed completely.
 		AllowList		= Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers.
 		DenyList		= If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security.
@@ -203,6 +208,7 @@ Lang {
 		ConfigSub		= Subscription details
 		ConfigMain		= General list configuration
 		ConfigProcess	= Processing rules
+		ConfigAll		= Available properties
 		ListCreate		= Properties of the new list
 		ListDelete		= Remove this mailinglist
 		RelevantOptions	= Useful settings

@@ -22,7 +22,7 @@
 
 
 			<?cs if:Data.WebUser.show ?>
-				<li><label for="webusers"><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?>:</label>
+				<li><label for="webusers"><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?></label>
 					<ul><li><input type="text" id="webusers"
 						name="webusers" size="30" value="<?cs
 						var:html_escape(Data.WebUser.UserName) ?>"></li></ul></li>

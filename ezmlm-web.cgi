@@ -201,10 +201,21 @@ elsif ($action eq '' || $action eq 'list_select') {
 } elsif (($action eq 'config_ask') || ($action eq 'config_do')) {
 	# User wants to see/change the configuration ...
 	my $subset = $q->param('config_subset');
-	if (defined($q->param('list')) && ($subset ne '')
-			&& ($subset =~ /^[\w]*$/) && (-e "$TEMPLATE_DIR/config_$subset" . ".cs")) {
-		$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
-		$pagename = 'config_' . $subset;
+	if (defined($q->param('list')) && ($subset ne '')) {
+		if ($subset =~ m/^RESERVED-([\w_-]*)$/) {
+			$pagename = $1
+		} elsif (($subset =~ /^[\w]*$/) && (-e "$TEMPLATE_DIR/config_$subset" . ".cs")) {
+			$pagename = 'config_' . $subset;
+		} else {
+			$pagename = '';
+		}
+		if ($pagename ne '') {
+			$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
+		} else {
+			$error = 'UnknownConfigPage';
+			warn "missing config page: $subset";
+			$pagename = 'list_select';
+		}
 	} else {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
@@ -299,7 +310,7 @@ sub output_page {
 	die "sub template ($TEMPLATE_DIR/$pagename.cs) not found!" unless (-e "$TEMPLATE_DIR/$pagename.cs");
 
 	# print http header
-	print "Content-Type: text/html\n\n";
+	print "Content-Type: text/html; charset=utf-8\n\n";
 
 	my $cs = ClearSilver::CS->new($pagedata);
 
@@ -398,12 +409,20 @@ sub set_pagedata4list
 	&set_pagedata4part_list($part_type) if ($part_type ne '');
 
 	$i = 0;
-	my $item;
+	my $address;
+	my $addr_name;
+	my %pretty;
+	tie %pretty, "DB_File", "$LIST_DIR/$listname/webnames" if ($PRETTY_NAMES);
 	# TODO: use "pretty" output style for visible mail address
-	foreach $item ($list->subscribers($part_type)) {
-		$pagedata->setValue("Data.List.Subscribers." . $i, "$item") unless ($item eq '');
+	foreach $address (sort $list->subscribers($part_type)) {
+		if ($address ne '') {
+			$pagedata->setValue("Data.List.Subscribers." . $i . '.address', "$address");
+			$addr_name = ($PRETTY_NAMES)? $pretty{$address} : '';
+			$pagedata->setValue("Data.List.Subscribers." . $i . '.name', $addr_name);
+		}
 		$i++;
 	}
+	untie %pretty if ($PRETTY_NAMES);
 
 	$pagedata->setValue("Data.List.hasDenyList", 1) if ($list->isdeny);
 	$pagedata->setValue("Data.List.hasAllowList", 1) if ($list->isallow);
@@ -496,7 +515,7 @@ sub set_pagedata4options {
 	# they have no meaning, so we should adapt them to reality
 	$pagedata->setValue("Data.List.Options.t" , 1)
 		if (-e "$dir_of_list/text/trailer");
-	$pagedata->setValue("Data.List.Options.p" , 1)
+	$pagedata->setValue("Data.List.Options.f" , 1)
 		if (-e "$dir_of_list/prefix");
 	$pagedata->setValue("Data.List.Options.x" , 1)
 		if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
@@ -568,22 +587,30 @@ sub delete_list {
 		# they don't show up. That way they can always be recovered by a helpful
 		# sysadmin should he/she be in the mood :)
 
+		my $SAFE_DIR = "$LIST_DIR/_deleted_lists";
+		mkdir "$SAFE_DIR", 0700 if (! -e "$SAFE_DIR");
+
+		# look for an unused directory name
+		my $i = 0;
+		while (-e "$SAFE_DIR/" . $q->param('list') . "-$i") { $i++; }
+
+		$SAFE_DIR .= '/' . $q->param('list') . "-$i";
+
 		my ($oldfile); $oldfile = "$LIST_DIR/" . $q->param('list');
-		my ($newfile); $newfile = "$LIST_DIR/." . $q->param('list'); 
-		unless (move($oldfile, $newfile)) {
+		unless (move($oldfile, $SAFE_DIR)) {
 			$warning = 'SafeRemoveRenameDirFailed';
 			return (1==0);
 		}
-		mkdir "$HOME_DIR/deleted.qmail", 0700 if(!-e "$HOME_DIR/deleted.qmail");
 
 		unless (opendir(DIR, "$HOME_DIR")) {
 			$warning = 'DotQmailDirAccessDenied';
 			return (1==0);
 		}
+		# TODO: this could possibly move some qmail files of other lists - improve it!
 		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
 		closedir DIR;
 		foreach (@files) {
-			unless (move($_, "$HOME_DIR/deleted.qmail/")) {
+			unless (move($_, "$SAFE_DIR")) {
 				$warning = 'SafeRemoveMoveDotQmailFailed';
 				return (1==0); 
 			}
@@ -624,7 +651,7 @@ sub untaint {
       next if($params[$i] eq 'mailaddressfile');
       foreach $param ($q->param($params[$i])) {
          next if $param eq '';
-         if ($param =~ /^([#-\@\w\.\/\[\]\:\n\r\>\< _]+)$/) {
+         if ($param =~ /^([#-\@\w\.\/\[\]\:\n\r\>\< _"']+)$/) {
             push @values, $1;
          } else {
             warn "Tainted input in '$params[$i]': " . $q->param($params[$i]); 
@@ -666,10 +693,11 @@ sub check_permission_for_action {
 sub add_address {
 	# Add an address to a list ..
 
-	my ($address, $list, $part, @addresses, $count);
+	my ($address, $list, $part, @addresses, $fail_count);
 	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 	$part = &get_list_part();
 
+	$fail_count = 0;
 
 	if (($q->param('mailaddressfile')) && ($FILE_UPLOAD)) {
 		# Sanity check
@@ -684,9 +712,12 @@ sub add_address {
 		my($fh) = $q->param('mailaddressfile');
 		while (<$fh>) {
 			next if (/^\s*$/ or /^#/); # blank, comments
-			next unless ( /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/ ); # email address ...
-			chomp();
-			push @addresses, "$_";
+			if ( /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/ ) {
+					chomp();
+					push @addresses, "$_";
+				} else {
+				$fail_count++;
+			}
 		}
 	}
       
@@ -697,8 +728,8 @@ sub add_address {
 		$address .= $DEFAULT_HOST if ($q->param('mailaddress_add') =~ /\@$/);
 
 		# untaint
-		if ($address =~ /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/) {
-			push @addresses, "$1\@$2";
+		if ($address =~ m/(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/) {
+			push @addresses, "$address";
 		  } else {
 			warn "invalid address to add: $address to $part";
 			$warning = 'AddAddress';
@@ -707,23 +738,28 @@ sub add_address {
 
 	}
    
-   $count = 0;
-   foreach $address (@addresses) {
+	my %pretty;
+	my $add;
+	tie %pretty, "DB_File", "$LIST_DIR/" . $q->param('list') . "/webnames" if ($PRETTY_NAMES);
+	foreach $address (@addresses) {
 
-      my($add) = Mail::Address->parse($address);
-      if(defined($add->name()) && $PRETTY_NAMES) {
-         my(%pretty);
-         tie %pretty, "DB_File", "$LIST_DIR/" . $q->param('list') . "/webnames";
-         $pretty{$add->address()} = $add->name();
-         untie %pretty;
-      }
-
-		if ($list->issub($add->address(), $part)) {
-			$warning = 'AddAddress';
+		($add) = Mail::Address->parse($address);
+		if (($add->address() =~ /^\w[\w_-]*\@/) && !($list->issub($add->address(), $part))) {
+			# it seems, that we cannot trust the return value of "$list->sub"
+			$list->sub($add->address(), $part);
+			if(defined($add->name()) && $PRETTY_NAMES) {
+				$pretty{$add->address()} = $add->name();
+			}
 		} else {
-			$warning = 'AddAddress' unless ($list->sub($add->address(), $part));
+			$fail_count++;
 		}
-		$count++;
+	}
+	untie %pretty if ($PRETTY_NAMES);
+	if ($fail_count gt 0) {
+		$warning = 'AddAddress';
+		return (1==0);
+	} else {
+		return (0==0);
 	}
 }
 
@@ -823,8 +859,12 @@ sub create_list {
 		$warning = 'InvalidLocalPart';
 		return (1==0);
    	}
-	if(-e ("$LIST_DIR/$listname/lock") || -e ("$HOME_DIR/.qmail-$qmail")) {
-		$warning = 'ListAlreadyExists';
+	if (-e "$LIST_DIR/$listname/lock") {
+		$warning = 'ListNameAlreadyExists';
+		return (1==0);
+	}
+	if (-e "$HOME_DIR/.qmail-$qmail") {
+		$warning = 'ListAddressAlreadyExists';
 		return (1==0);
 	}
 
@@ -1151,17 +1191,6 @@ sub webauth_create_allowed {
 
 # ---------------------------------------------------------------------------
 
-sub pretty_names {
-   return undef unless($PRETTY_NAMES);
-   my (%pretty, %prettymem);
-   tie %pretty, "DB_File", "$LIST_DIR/" . $q->param('list') . '/webnames';
-   %prettymem = %pretty;
-   untie %pretty;   
-   
-   return \%prettymem;
-}
-
-# -------------------------------------------------------------------------
 sub rmtree {
    # A subroutine to recursively delete a directory (like rm -f).
    # Based on the one in the perl cookbook :)

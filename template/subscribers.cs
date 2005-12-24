@@ -49,6 +49,8 @@
 			<li><!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>
 
+			<input type="hidden" name="config_subset" value="RESERVED-subscribers" />
+			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 			<input type="hidden" name="action" value="config_do" />
 			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
 		</ul>
@@ -93,7 +95,7 @@
 					<li><select name="mailaddress_del"
 							size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
 						<?cs each:item = Data.List.Subscribers ?>
-							<option><?cs var:item ?></option>
+							<option value="<?cs var:item.address ?>"><?cs var:item.address ?><?cs if:item.name ?> (<?cs var:item.name ?>)<?cs /if ?></option>
 						<?cs /each ?>
 					</select></li>
 					<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>

@@ -14,8 +14,11 @@
 
 		<ul>
 
-			<!-- public subscription and archive -->
-			<li><?cs call:checkbox("p") ?></li>
+			<!-- list owner address -->
+			<li><?cs call:setting("5") ?></li>
+
+			<!-- set main list name -->
+			<li><?cs call:setting("0") ?></li>
 
 			<!-- process mailman-style requests -->
 			<li><?cs call:checkbox("q") ?></li>
@@ -23,19 +26,13 @@
 			<!-- remove ezmlm-warn -->
 			<li><?cs call:checkbox("w") ?></li>
 
-			<!-- list owner address -->
-			<li><?cs call:setting("5") ?></li>
-
-			<!-- set main list name -->
-			<li><?cs call:setting("0") ?></li>
-
 			<!-- mysql database -->
 			<?cs if:Data.Modules.mySQL ?>
 				<li><?cs call:setting("6") ?></li><?cs /if ?>
 
 			<!-- ezmlm-web administators -->
 			<?cs if:Data.List.WebUsers ?>
-				<li><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?>: 
+				<li><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?>
 					<ul><li><input type="text"
 					name="webusers" value="<?cs var:html_escape(Data.List.WebUsers)
 					?>" size="40" /><br/>

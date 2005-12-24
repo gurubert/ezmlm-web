@@ -6,8 +6,6 @@ support for:
 	* charset
 	* show log
 
-split filter and manipulate
-
 allow dynamic addition of user-made config templates (seperate directory, ...)
 
 language switch support
