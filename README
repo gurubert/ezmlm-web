@@ -97,7 +97,7 @@ This version of ezmlm-web requires the following;
 
 * qmail v1.03
 * ezmlm v0.53 (or ezmlm-idx v0.40)
-* clearsilver v0.9.14 (only perl support is necessary)
+* clearsilver v0.10.2 (only perl support is necessary)
 * Perl v5.004 and the following modules;
   + Mail::Ezmlm v0.03 
   + Mail::Address v1.15
@@ -224,9 +224,9 @@ the same effect in a cleaner way.
 VII. Language Portablity
 =========================
 One of the great new features of version 2.0 is that it is essentially
-language independant (okay, not quite, but is 99% of the way there). Most of
-the fixed strings, help, etc is defined in the files of lang directory.
-Of course you can change them or create a new translation.
+language independant. All of the fixed strings, help, etc is defined in the
+files of lang directory. Of course you can change them or create a new
+translation.
 
 The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
 

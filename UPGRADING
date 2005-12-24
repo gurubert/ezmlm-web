@@ -12,9 +12,9 @@ UPGRADING ezmlm-web 2.3 to ezmlm-web 3.0
 
 4) maybe you want to define "MAIL_DOMAIN" in your ezmlmwebrc
 
-5) search order for ezmlmwebrc changed
-from	HOME->SYSTEM->CGI_DIR
-to	HOME->CGI_DIR->SYSTEM
+5) the search order for ezmlmwebrc has changed
+from	HOME -> SYSTEM -> CGI_DIR
+to	HOME -> CGI_DIR -> SYSTEM
 
 ------------------------------------------------------------------------------
 

@@ -1,6 +1,7 @@
 * text=auto !eol
 /CHANGES -text
 /INSTALL -text
+/INSTALL.clearsilver -text
 /README -text
 /TODO -text
 /UPGRADING -text

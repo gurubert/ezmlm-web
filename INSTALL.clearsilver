@@ -1,0 +1,34 @@
+Short notes on how to install clearsilver for perl:
+(you should read it, as step 4 is quite unusual)
+
+1) download & untar
+	http://clearsilver.net
+
+
+2) configure
+
+The following configure options should be sufficient:
+   ./configure --enable-perl \
+               --disable-python \
+               --disable-ruby \
+               --disable-java \
+               --disable-csharp \
+               --disable-apache \
+               --disable-gettext \
+               --disable-remote-debugger
+
+3) make
+
+
+4) the tricky part :)
+
+As the installation directory of clearsilver-perl is configured incorrectly,
+you should replace the existing SITEPREFIX line in perl/Makefile with the following:
+	SITEPREFIX = $(PREFIX)
+(without the leading white space)
+
+
+5) make install
+
+
+6) done

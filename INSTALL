@@ -8,7 +8,8 @@ OVERVIEW:
   4 - compile cgi wrapper
   5 - install cgi wrapper
   6 - (optional) configure access control (http authentication)
-  7 - final test
+  7 - css stylesheet file
+  8 - final test
 
 
 ------------------------------------------------------------------------------
@@ -19,17 +20,7 @@ OVERVIEW:
      modules.
 
 	 Additionally (since v3.0) you have to install clearsilver (a templating
-	 engine). You can download it from http://clearsilver.net.
-	 The following configure options should work well:
-        ./configure --enable-perl \
-                    --disable-python \
-                    --disable-ruby \
-                    --disable-java \
-                    --disable-csharp \
-                    --disable-apache \
-                    --disable-gettext \
-                    --disable-remote-debugger
-
+	 engine). See INSTALL.clearsilver for details.
 
 1.   Get ezmlm-web and extract the archive:
 	tar xzf ezmlm-web-3.x.tar.gz
@@ -71,9 +62,9 @@ OVERVIEW:
 
      Finally, copy the ezmlmwebrc file to one of
      the following places:
-	1) /etc/ezmlm
-	2) the home directory of the user that runs ezmlm-web.cgi
-	3) the directory, that contains your ezmlm-web.cgi file
+	1) the home directory of the user that runs ezmlm-web.cgi
+	2) the directory, that contains your ezmlm-web.cgi file
+	3) /etc/ezmlm
 	 (ezmlm-web will look for it in these places in the given order)
 
 
@@ -96,10 +87,6 @@ OVERVIEW:
      directory you choose to put them can i: Execute CGI Scripts and ii: Be
      access controlled (here I mean both web and user access) by some method
      (eg .htaccess, access.conf for Apache).
-
-     You should also copy the stylesheet file (css/default.css) to a location
-     of your choice. Now you may have to change the "HTML_CSS_FILE" setting
-     in your ezmlmwebrc file.
 
 
 6.   Install some method of securing access to the page. The following
@@ -133,13 +120,23 @@ OVERVIEW:
 	AuthUserFile /path/to/passwordfile
 	require valid-user      # or require user username
 
-     Again, see the ApacheWeek article for details.
+	Again, see the ApacheWeek article for details.
 
 
-7.  Test the installation with your favourite web browser. You should be
+7.	You should copy the stylesheet file (css/default.css) to a location
+	of your choice. It has to be accessible by an URL - maybe a place like
+	"/var/www/ezmlm-web.css" could be appropriate.
+	Now you may have to change the "HTML_CSS_FILE" setting in your
+	ezmlmwebrc file. This value is a URL - not the local filename.
+
+
+8.  Test the installation with your favourite web browser. You should be
 	asked for a username and password (supplied in 6.2) and then be presented
 	with a screen entitled "EZ Mailing List Manger". You can then try to
 	create and edit mailing lists ... Have Fun :)
+
+	If you do not see a colorful screen, then you did not set the HTML_CSS_FILE
+	option correctly in ezmlmwebrc. Check it again.
 
 	If anything failes - take a look at the web server's error log
 	(e.g /var/log/apache/error.log).

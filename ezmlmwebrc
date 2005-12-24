@@ -25,7 +25,7 @@ $LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
 $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
 
 # Safe list deletion? 
-# 0 = move list to .list and the .qmails to deleted.qmail/. Recoverable :)
+# 0 = move list to $LIST_DIR/_deleted_lists -> recoverable :)
 # 1 = allow user to delete list completely. No backup, therefore no recovery.
 $UNSAFE_RM = 0;
 
@@ -55,7 +55,8 @@ $DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx';
 $HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
 
 # Optional: use a cascading style sheet (css)
-$HTML_CSS_FILE = "css/default.css";
+# this is a URL - you have to copy the css file to the right location before
+$HTML_CSS_FILE = "/ezmlm-web.css";
 
 # choose a language (en|de)
 $HTML_LANGUAGE = 'en';
