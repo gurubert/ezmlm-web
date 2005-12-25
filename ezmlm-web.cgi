@@ -96,7 +96,7 @@ if(defined($opt_C)) {
 } elsif(-e "/etc/ezmlm/ezmlmwebrc") {
    require "/etc/ezmlm/ezmlmwebrc"; # System
 } else {
-   die "Unable to read config file";
+   &fatal_error("Unable to read config file");
 }
 
 # Allow suid wrapper to over-ride default list directory ...
@@ -119,7 +119,7 @@ if (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
 	$DEFAULT_HOST = $MAIL_DOMAIN;
 } else {
 	# Work out default domain name from qmail (for David Summers)
-	open (GETHOST, "<$QMAIL_BASE/defaultdomain") || open (GETHOST, "<$QMAIL_BASE/me") || die "Unable to read $QMAIL_BASE/me: $!";
+	open (GETHOST, "<$QMAIL_BASE/defaultdomain") || open (GETHOST, "<$QMAIL_BASE/me") || &fatal_error("Unable to read $QMAIL_BASE/me: $!");
 	chomp($DEFAULT_HOST = <GETHOST>);
 	close GETHOST;
 }
@@ -267,8 +267,14 @@ elsif ($action eq '' || $action eq 'list_select') {
 	$error = 'UnknownAction';
 }
 
-# read the current state
+# read the current state (after the changes are done)
 &set_pagedata();
+
+# set default action, if there is no list available and the user is
+# allowed to create a new one
+if (($action eq '') && (&webauth_create_allowed()) && ($pagedata->getValue('Data.Lists.0','') eq '')) {
+	$pagename = 'list_create';
+}
 
 # Print page and exit :) ...
 &output_page;
@@ -284,7 +290,9 @@ sub load_hdf {
 	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
 
 	# TODO: check for existence
+	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
+	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
 	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
@@ -306,8 +314,8 @@ sub output_page {
 	$pagedata->setValue('Data.Action', "$pagename");
 
 	my $pagefile = $TEMPLATE_DIR . "/main.cs";
-	die "main template ($pagefile) not found!" unless (-e "$pagefile");
-	die "sub template ($TEMPLATE_DIR/$pagename.cs) not found!" unless (-e "$TEMPLATE_DIR/$pagename.cs");
+	&fatal_error("main template ($pagefile) not found!") unless (-e "$pagefile");
+	&fatal_error("sub template ($TEMPLATE_DIR/$pagename.cs) not found!") unless (-e "$TEMPLATE_DIR/$pagename.cs");
 
 	# print http header
 	print "Content-Type: text/html; charset=utf-8\n\n";
@@ -319,80 +327,86 @@ sub output_page {
 	print $cs->render();
 }
 
+# ---------------------------------------------------------------------------
+
+sub set_pagedata_list_of_lists()
+{
+	my (@files, $i, $num);
+
+	# Read the list directory for mailing lists.
+	return (0==0) unless (opendir DIR, $LIST_DIR);
+
+	@files = sort grep !/^\./, readdir DIR; 
+	closedir DIR;
+
+	$num = 0;
+	# Check that they actually are lists and add good ones to pagedata ...
+	foreach $i (0 .. $#files) {
+		if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]))) {
+			$pagedata->setValue("Data.Lists." . $num, "$files[$i]");
+			$num++;
+		}
+	}
+}
+
+# ---------------------------------------------------------------------------
 
 sub set_pagedata()
 {
-   my (@lists, @files, $i, $item);
+	my ($hostname, $username);
 
-   # Read the list directory for mailing lists.
-   unless (opendir DIR, $LIST_DIR) {
-		$warning = 'ListDirAccessDenied';
-		return (1==0);
+	# read available list of lists
+	&set_pagedata_list_of_lists();
+
+	# username and hostname
+	# Work out if this user has a virtual host and set input accordingly ...
+	if(-e "$QMAIL_BASE/virtualdomains") {
+		open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
+		while(<VD>) {
+			last if(($hostname) = /(.+?):$USER/);
+		}
+		close VD;
 	}
-
-   @files = sort grep !/^\./, readdir DIR; 
-   closedir DIR;
-
-   # Check that they actually are lists and add good ones to pagedata ...
-   my $num = 0;
-   foreach $i (0 .. $#files) {
-		if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]))) {
-		$pagedata->setValue("Data.Lists." . $num, "$files[$i]");
-		$num++;
-      }
-   }
-
-   # list specific configuration
-   if ($q->param('list') ne '' )
-   {
-   	&set_pagedata4list(&get_list_part());
-   } else {
-   	&set_pagedata4options($DEFAULT_OPTIONS);
-   }
+	if(!defined($hostname)) {
+		$username = "$USER-" if ($USER ne $ALIAS_USER);
+		$hostname = $DEFAULT_HOST;
+	}
+	$pagedata->setValue("Data.UserName", "$username");
+	$pagedata->setValue("Data.HostName", "$hostname");
 
 
-   # username and hostname
-   my ($hostname, $username);
-   # Work out if this user has a virtual host and set input accordingly ...
-   if(-e "$QMAIL_BASE/virtualdomains") {
-      open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
-      while(<VD>) {
-	 last if(($hostname) = /(.+?):$USER/);
-      }
-      close VD;
-   }
-   
-   if(!defined($hostname)) {
-      $username = "$USER-" if ($USER ne $ALIAS_USER);
-      $hostname = $DEFAULT_HOST;
-   }
-
-   $pagedata->setValue("Data.UserName", "$username");
-   $pagedata->setValue("Data.HostName", "$hostname");
-
-
-   # modules
-   # TODO: someone should test, if the mysql support works
-   $pagedata->setValue("Data.Modules.MySQL", ($Mail::Ezmlm::MYSQL_BASE)? 1 : 0);
+	# modules
+	# TODO: someone should test, if the mysql support works
+	$pagedata->setValue("Data.Modules.MySQL", ($Mail::Ezmlm::MYSQL_BASE)? 1 : 0);
    
 
-   # permissions
-   $pagedata->setValue("Data.Permissions.Create", (&webauth_create_allowed)? 1 : 0 );
-   $pagedata->setValue("Data.Permissions.FileUpload", ($FILE_UPLOAD)? 1 : 0);
+	# permissions
+	$pagedata->setValue("Data.Permissions.Create", (&webauth_create_allowed)? 1 : 0 );
+	$pagedata->setValue("Data.Permissions.FileUpload", ($FILE_UPLOAD)? 1 : 0);
 
 
-   # display webuser textfield?
-   $pagedata->setValue("Data.WebUser.show", (-e "$WEBUSERS_FILE")? 1 : 0);
-   # default username for webuser file
-   $pagedata->setValue("Data.WebUser.UserName", $ENV{'REMOTE_USER'}||'ALL');
+	# display webuser textfield?
+	$pagedata->setValue("Data.WebUser.show", (-e "$WEBUSERS_FILE")? 1 : 0);
+	# default username for webuser file
+	$pagedata->setValue("Data.WebUser.UserName", $ENV{'REMOTE_USER'}||'ALL');
+
+	# list specific configuration
+	if ($q->param('list') ne '' )
+	{
+		&set_pagedata4list(&get_list_part());
+	} else {
+		&set_pagedata4options($DEFAULT_OPTIONS);
+	}
 }
 
+# ---------------------------------------------------------------------------
 
 sub set_pagedata4list
 {
 	my $part_type = shift;
 	my ($list, $listname, $webusers);
 	my ($i, $item, @files);
+	my ($address, $addr_name, %pretty);
 
 	$listname = $q->param('list');
 	
@@ -406,14 +420,11 @@ sub set_pagedata4list
 
 	$pagedata->setValue("Data.List.Name", "$listname");
 	$pagedata->setValue("Data.List.Address", &this_listaddress);
+
 	&set_pagedata4part_list($part_type) if ($part_type ne '');
 
 	$i = 0;
-	my $address;
-	my $addr_name;
-	my %pretty;
 	tie %pretty, "DB_File", "$LIST_DIR/$listname/webnames" if ($PRETTY_NAMES);
-	# TODO: use "pretty" output style for visible mail address
 	foreach $address (sort $list->subscribers($part_type)) {
 		if ($address ne '') {
 			$pagedata->setValue("Data.List.Subscribers." . $i . '.address', "$address");
@@ -468,20 +479,17 @@ sub set_pagedata4list
 		if (opendir DIR, "$listDir/text") {
 			@files = grep !/^\./, readdir DIR; 
 			closedir DIR;
+			$i = 0;
+			foreach $item (@files) {
+				$pagedata->setValue("Data.List.Files." . $i, "$item");
+				$i++;
+			}
 		} else {
 			$warning = 'TextDirAccessDenied' if ($warning eq '')
 		}
 
-		$i = 0;
-		my $item;
-		foreach $item (@files) {
-			$pagedata->setValue("Data.List.Files." . $i, "$item");
-			$i++;
-		}
-
 		# text file specified?
-		if ($q->param('file') ne '')
-		{
+		if (($q->param('file') ne '') && ($q->param('file') =~ m/^[\w-]*$/)) {
 			my ($content);
 			$content = $list->getpart("text/" . $q->param('file'));
 			from_to($content,$TEXT_ENCODE,'utf8');	# by ooyama for multibyte
@@ -623,7 +631,7 @@ sub delete_list {
 			$warning = 'UnsafeRemoveListDirFailed';
 			return (1==0);
 		}
-		opendir(DIR, "$HOME_DIR") or die "Unable to get directory listing: $!";
+		opendir(DIR, "$HOME_DIR") or &fatal_error("Unable to get directory listing: $!");
 		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
 		closedir DIR;
 		if (unlink(@files) <= 0) {
@@ -832,7 +840,7 @@ sub create_list {
 	# Check if the list directory exists and create if necessary ...
 	unless ((-e $LIST_DIR) || (mkdir $LIST_DIR, 0700)) {
 		warn "Unable to create directory ($LIST_DIR): $!";
-		$error = 'ListDirUnavailable';
+		$warning = 'ListDirAccessDenied';
 		return (1==0);
 	}
 
@@ -1111,7 +1119,6 @@ sub save_text {
 
    my ($list) = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
    my ($content) = $q->param('content');
-   # TODO: is "utf8" instead of "utf-8" correct?
    from_to($content,'utf8',$TEXT_ENCODE);	# by ooyama for multibyte
    unless ($list->setpart("text/" . $q->param('file'), $content)) {
 		$warning = 'SaveFile';
@@ -1210,6 +1217,19 @@ sub rmtree {
 }
 
 # ------------------------------------------------------------------------
+
+sub fatal_error() {
+	my $text = shift;
+
+	print "Content-Type: text/html; charset=utf-8\n\n";
+	print "<html><head>\n";
+	print "<title>ezmlm-web</title></head>\n";
+	print "<body><h1>a fatal error occoured!</h1>\n";
+	print "<p><strong><big>$text</big></strong></p>\n";
+	print "<p>check the error log of your web server for details</p>\n";
+	print "</body></html>\n";
+	die "$text";
+}
 
 # ------------------------------------------------------------------------
 # End of ezmlm-web.cgi v2.3

@@ -123,40 +123,53 @@ ezmlm-web v3.0) from http://clearsilver.net.
 
 IV. Files
 =========
-In this distribution you should find eight files;
+In this distribution you should find the following files;
 
-README            This file. Provides some background information.
-		  Not needed to run ezmlm-web.
+README			(optional) This file. Provides some background information.
 
-INSTALL		  Notes on installation. Not needed to run ezmlm-web.
+INSTALL			(optional) Notes on installation.
 
-CHANGES           The change history. Not needed to run ezmlm-web
+INSTALL.clearsilver	(optional) Notes on the installation of clearsilver.
 
-TODO              This file is a list of things I intend doing in future
-                  versions of ezmlm-web. Not needed to run ezmlm-web.
+CHANGES			(optional) The change history.
 
-ezmlm-web.cgi     The ezmlm-web script proper. This program requires that
-                  you have perl5 installed on your machine and that your web
-                  server is capable of running CGI scripts.
+UPGRADING		(optional) Notes on upgrading ezmlm-web from a previous version.
 
-index.c           A C wrapper to allow ezmlm-web.cgi to run suid. Not
-                  strictly necessary if your setup allows perl scripts to
-                  run suid, but I prefer using wrappers anyway. It needs to
-                  be edited and compiled to suit your system. Not needed to
-                  run ezmlm-web.
+TODO			(optional) This file is a list of things I intend doing in future
+			versions of ezmlm-web.
 
-ezmlmwebrc	  This is the configuration file for ezmlm-web. All options
-		  are explained in this example file. You will need this
-		  file to run ezmlm-web.
+ezmlm-web.cgi		(required) The ezmlm-web cgi script in perl. You will need it :)
 
-htaccess.sample   A sample Apache .htaccess file for controlling access to
-                  the mailing lists. If you use another web server, you will
-                  have to work this bit out for yourself.
+index.c			(recommended) A C wrapper to allow ezmlm-web.cgi to run
+			suid. Not strictly necessary if your setup allows perl scripts
+			to run suid, but I prefer using wrappers anyway. It needs to
+			be edited and compiled to suit your system. Not needed to
+			run ezmlm-web.
 
-webusers.sample   A sample webusers file for multi-level access control.
+ezmlmwebrc		(required) This is the configuration file for ezmlm-web.
+			All options are explained in this example file. You will need
+			this file to run ezmlm-web.
 
-The directory "lang" contains the language files. You will need at least the 
-one, that you have choosen in "ezmlmwebrc" by the option "HTML_LANGUAGE".
+htaccess.sample		(recommended) A sample Apache .htaccess file for controlling access to
+			the mailing lists. If you use another web server, you will
+			have to work this bit out for yourself.
+
+webusers.sample		(recommended) A sample webusers file for multi-level access control.
+
+lang			(directory, required) It contains the language files. You will need
+			at least the one, that you have choosen in "ezmlmwebrc" by
+			the option "HTML_LANGUAGE".
+
+css			(directory, recommended) Here you find available css stylesheet files.
+			Pick the one you like (for now, there is only one choice :)) and
+			set it up by pointing the "HTML_CSS_FILE" setting in your
+			"ezmlmwebrc" to an appropriate URL.
+
+template		(directory, required) The clearsilver template files in this
+			directory defined the layout of the web interface. You should be able
+			to adapt them to your needs, if you like.
+
+spec			(directory, optional) Some development specific information.
 
 
 V. Notes
@@ -188,22 +201,19 @@ of constraints come into place.
 - The webusers file is scanned for either the list name (case insensitive) or
   an ALL (case sensitive) entry.
 - The list entry (or ALL) is scanned for the current user (as set in
-  $REMOTE_USER) or an ALL entry.
+  $REMOTE_USER) or an ALL (user) entry.
 - If any valid match is made, then the user is allowed to edit the list.
   Otherwise the user is politely told to go away ;-)
 
 If list creation is allowed and the webusers file exists, then the person who
-creates the list is the default owner. As of yet there is no way to create users
-through the web interface, but I intend to do this eventually.
+creates the list is the default owner. There is no way to create users
+through the web interface, as this depends on your authentication system.
 
 The format of a webusers file is as follows;
 
-list1: user1, user2, user3
-ALL: user1, user2
+list1: user1 user2 user3
+ALL: user1 user2
 list2: ALL
-
-ie; listname colon (:) and a comma (,) separated list of users. Spaces are
-ignored but each list must appear on a new line.
 
 Once this file exists, the ezmlm-web script will allow the list users to
 configure their access lists along with any other options.
@@ -211,7 +221,7 @@ configure their access lists along with any other options.
 You can permit some users to create lists by adding a line similar to the 
 following to your webusers file:
 
-ALLOW_CREATE: user2, user3
+ALLOW_CREATE: user2 user3
 
 If there is no line starting with "ALLOW_CREATE:" in the webusers file, then
 no one will be allowed to create lists. This behaviour is new for ezmlm-web

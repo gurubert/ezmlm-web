@@ -61,8 +61,7 @@ Lang {
 	ErrorMessage {
 		UnknownAction		= Diese Aktion ist undefiniert!
 		ParameterMissing	= Diese Aktion benätigt weitere Parameter!
-    	Forbidden			= Fehler: dir fehlen die notwendigen Rechte für diese Aktion
-		ListDirUnavailable	= Fehler beim Zugriff auf das Hauptverzeichnis der Listen!
+		Forbidden			= Fehler: dir fehlen die notwendigen Rechte für diese Aktion
 		InvalidFileName		= Der Dateiname ist nicht zulässig.
 		UnknownConfigPage	= Die gähle Konfigurations-Seite existiert nicht!
 	  }
@@ -166,6 +165,7 @@ Lang {
 			AcceptanceAddress	= die Zustimmungsadresse
 			RejectionAddress	= die Ablehnungsadresse
 		}
+		SuggestDefaultPath	= Ansonsten musst du diese Mitglieder per Hand verwalten.
 		PostModPathWarn = Die Nachrichten-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
 		SubModPathWarn = Die Einschreibe-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
 		RemoteAdminPathWarn	= Die Fern-AdministratorInnen werden nicht an ihrem üblichen Ort gespeichert.

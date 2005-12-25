@@ -61,8 +61,7 @@ Lang {
 	ErrorMessage {
 		UnknownAction		= this action is undefined
 		ParameterMissing	= this action needs one or more parameters
-    	Forbidden			= Error: you are not allowed to do this!
-		ListDirUnavailable	= Could not create the list directory!
+		Forbidden			= Error: you are not allowed to do this!
 		InvalidFileName		= The name of the file is invalid!
 		UnknownConfigPage	= The chosen config page is invalid!
 	  }
@@ -78,9 +77,9 @@ Lang {
 		ListNameAlreadyExists	= There is already a list with this name!
 		ListAddressAlreadyExists	= There is already a list with this address!
 		ListDoesNotExist	= A list with this name does not exist!
-		ListDirAccessDenied		= Unable to access the list's directory:
-		TextDirAccessDenied		= Unable to access the list's directory of text files:
-		SafeRemoveRenameDirFailed	= Unable to rename list for safe removal:
+		ListDirAccessDenied		= Unable to access the list's directory
+		TextDirAccessDenied		= Unable to access the list's directory of text files
+		SafeRemoveRenameDirFailed	= Unable to rename list for safe removal
 		DotQmailDirAccessDenied		= Unable to read the mail user's home directory for .qmail files
 		SafeRemoveMoveDotQmailFailed	= Unable to move .qmail files
 		UnsafeRemoveListDirFailed	= Unable to delete list
@@ -152,7 +151,7 @@ Lang {
 		ListAddress	= List Address
 		ListOptions	= Basic List Options
 		AllowedToEdit	= Users allowed to edit this list via web interface:
-		HeaderRemove	= Headers to strip from all outgoing mail
+		HeaderRemove	= Headers to strip from every outgoing mail
 		HeaderAdd	= Headers to add to all outgoing mail
 		MimeRemove	= Mime types to strip from all outgoing mail
 		MimeReject	= Messages containing any of these mime type will be rejected
