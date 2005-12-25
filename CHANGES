@@ -96,11 +96,11 @@ Version 2.3 - 10/06/02005
 * update of webusers file fixed
 * moderator unsubscribe fixed
 
-Version 3.0 - 12/21/02005
-* complete interface is rewritten for enhanced usability
+Version 3.0 - 12/25/02005
+* complete interface rewritten for enhanced usability
+* suppurt for msgsize, mimereject, trailer
 * fixed insecure writing of webusers data
-* commas are not necessary anymore in webusers file
-* support for MAIL_DOMAIN config setting
-* requires the clearsilver template engine
+* define a default MAIL_DOMAIN
 * changed directory for safely removed mailinglists
+* requires the clearsilver template engine
 
