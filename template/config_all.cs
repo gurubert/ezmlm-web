@@ -144,7 +144,7 @@
 				var:html_escape(Data.List.HeaderAdd) ?></textarea></li></ul></li>
 
 			<!-- ezmlm-web administators -->
-			<?cs if:Data.List.WebUsers ?>
+			<?cs if:Data.WebUser.show && Data.List.WebUsers ?>
 				<li><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?> 
 					<ul><li><input type="text"
 					name="webusers" value="<?cs var:html_escape(Data.List.WebUsers)

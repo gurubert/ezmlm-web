@@ -12,8 +12,8 @@
 
 <?cs if:listnum > 0 ?>
 
-	<?cs if:listnum < 20 ?><?cs set:columns=1 ?><?cs
-		elif:listnum < 40 ?><?cs set:columns=2 ?><?cs
+	<?cs if:listnum < 15 ?><?cs set:columns=1 ?><?cs
+		elif:listnum < 30 ?><?cs set:columns=2 ?><?cs
 		else ?><?cs set:columns=3 ?><?cs /if ?>
 	<?cs set:col_len=listnum / columns ?>
 	<?cs if:listnum % columns > 0 ?><?cs set:col_len = col_len + #1 ?><?cs /if ?>

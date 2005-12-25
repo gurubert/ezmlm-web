@@ -29,7 +29,7 @@ $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
 # 1 = allow user to delete list completely. No backup, therefore no recovery.
 $UNSAFE_RM = 0;
 
-# Who is the alias user on this system (usually alias ;)
+# Who is the qmail alias user on this system (usually alias ;)
 $ALIAS_USER = 'alias';
 
 # Where do the qmail control files live on this system ...
