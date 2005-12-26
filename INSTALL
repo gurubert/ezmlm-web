@@ -22,6 +22,7 @@ OVERVIEW:
 	 Additionally (since v3.0) you have to install clearsilver (a templating
 	 engine). See INSTALL.clearsilver for details.
 
+
 1.   Get ezmlm-web and extract the archive:
 	tar xzf ezmlm-web-3.x.tar.gz
 
@@ -31,8 +32,8 @@ OVERVIEW:
      mailing list must be able to run it (Check the read and execute rights
      on both the file and directory). We put our copy in "/usr/local/bin".
 
-     At the top of ezmlm-web.cgi you can will probably have to change the 
-     $ENV{'PATH'} variable. Be careful about what you set as the path. Too 
+     At the top of ezmlm-web.cgi you may have to change the $ENV{'PATH'}
+	 variable. Be careful about what you set as the path. Too 
      much is a security risk and too little will cause the script to 
      malfunction. Version 2.0 requires that the following programs be 
      accessible in your path: mv, rm
@@ -53,7 +54,7 @@ OVERVIEW:
 
      The directory containing ezmlm-web's language files should be something
      like '/usr/local/share/ezmlm-web/lang':
-     		mkdir -p /usr/local/share/ezmlm-web
+		mkdir -p /usr/local/share/ezmlm-web
 		cp -r lang /usr/local/share/ezmlm-web
      You can change this default location in the ezmlmwebrc file.
 	 Do the same with the template directory (e.g copy it
@@ -62,9 +63,9 @@ OVERVIEW:
 
      Finally, copy the ezmlmwebrc file to one of
      the following places:
-	1) the home directory of the user that runs ezmlm-web.cgi
-	2) the directory, that contains your ezmlm-web.cgi file
-	3) /etc/ezmlm
+	1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
+	2) the directory, that contains your cgi binary (index.cgi)
+	3) /etc/ezmlm/ezmlmwebrc
 	 (ezmlm-web will look for it in these places in the given order)
 
 
@@ -75,8 +76,8 @@ OVERVIEW:
 
 
 5.   For every user/virtual host that needs to manage mailing lists, you
-     need to create a SUID (user not root!!) copy of index.cgi (see
-     chmod(1) for details). These need to reside somewhere accessible by 
+     need to create a SUID (user not root!!) copy of index.cgi (e.g
+	 chmod 4755 index.cgi). These need to reside somewhere accessible by 
      the web server. I suggest that you put them in a sub directory (see 
      about security) of each user/virtual host's home directory (eg
      /home/luser/public_html/ezmlm for Apache on Redhat). 
@@ -84,9 +85,10 @@ OVERVIEW:
      The copies don't actually have to be called index.cgi, but it is nice
      for web servers that can resolve a cgi script as an index page (see the
      srm.conf file in Apache). It is important to make sure that whichever
-     directory you choose to put them can i: Execute CGI Scripts and ii: Be
-     access controlled (here I mean both web and user access) by some method
-     (eg .htaccess, access.conf for Apache).
+     directory you choose to put them can
+	 	i: Execute CGI Scripts and
+		ii: Be access controlled (here I mean both web and user access) by
+			some method (eg .htaccess, access.conf for Apache).
 
 
 6.   Install some method of securing access to the page. The following

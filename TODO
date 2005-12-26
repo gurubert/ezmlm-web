@@ -10,3 +10,5 @@ allow dynamic addition of user-made config templates (seperate directory, ...)
 
 language switch support
 choose basic/expert to disable questions
+
+export subscribers (oder lieber per Mail (ezmlm)?)
