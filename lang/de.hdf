@@ -55,6 +55,7 @@ Lang {
 		UpdateConfiguration = Einstellungen speichern
 		EditFile	= Datei bearbeiten
 		SaveFile	= Datei speichern
+		ResetFile	= Angepassten Textbaustein verwerfen
 	  }
 
 
@@ -91,6 +92,9 @@ Lang {
 		ReservedListName	= Dieser Listenname ist ein reserviertes Wort und kann nicht benutzt werden
 		EmptyListName		= Es wurde kein Name für die Listen angegeben.
 		InvalidLocalPart	= Die gewählte untergeordnete Liste ist ungültig.
+		RequiresIDX5		= Diese Aktion erfordert ezmlm-idx in der Version 5.0 oder höher.
+		ResetFileIsDefault	= Dieser Textbaustein ist keine angepasste Variante und kann somit nicht zurückgesetzt werden.
+		ResetFile			= Der angepasste Textbaustein konnte nicht entfernt werden.
 	  }
 	
 
@@ -101,6 +105,7 @@ Lang {
 		DeleteList		= Die Mailingliste wurde gelöscht.
 		UpdateConfig	= Die neuen Einstellungen wurden erfolgreich gespeichert.
 		SaveFile		= Die Datei wurde gespeichert.
+		ResetFile		= Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
 	  }
 
 
@@ -134,7 +139,7 @@ Lang {
 		0	= Diese Liste is nur eine Unterliste
 		3	= Definiere die Absender-Adresse ausgehender Mails
 		4	= Eigene Einstellungen zum Versand von Zusammenfassungsmails (ezmlm-tstdig)
-		5	= Lege die Mailadresse des Verantwortlichen für diese Liste fest
+		5	= Lege die Mailadresse der/des Verantwortlichen für diese Liste fest
 		6	= Verwende eine SQL-Datenbank
 		7	= Die Datenbank der Nachrichten-ModeratorInnen befindet sich in einem alternativen Verzeichnis
 		8	= Die Datenbank der Einschreibe-ModeratorInnen (und Fern-AdministratorInnen) befindet sich in einem alternativen Verzeichnis
@@ -179,6 +184,10 @@ Lang {
 		FooterText		= eine Web-Oberfläche für
 		NoListsAvailable	= Es sind keine passenden Listen vorhanden.
 		ConfirmDelete	= Willst du wirklich diese Liste vollständig löschen?
+		CustomizedFiles	= angepasste Dateien
+		DefaultFiles	= vorgegebene Dateien
+		ListLanguage	= Sprache der Liste
+		ListCharset		= Zeichensatz der Liste
 	  }
 
 
@@ -196,8 +205,9 @@ Lang {
 		DigestList		= Einige AbonnentInnen deiner Mailingliste sind möglicherweise nicht an jeder einzelnen Nachricht interessiert, sondern ziehen es vor, stattdessen regelmäßig automatisch erstellte Zusammenfassungen zu erhalten.
 		ModList			= ModeratorInnen (für die Einschreibung von AbonnentInnen und die Einsendungen an die Liste) und Fern-AdministratorInnen können die Kontrolle über viele wichtige Aspekte der Liste übernehmen (falls du sie dementsprechend konfigurierst).
 		SubscriberList	= Die AbonnentInnen der Mailingliste empfangen alle versandten Nachrigten der Liste. Zudem kann es ihnen gestattet sein, Nachrichten direkt oder indirekt zur weiteren Verteilung an die Liste zu senden. Oft ist es anonymen Nutzern gestattet, sich selbständig in die Mailingliste einzuschreiben, ohne die Hilfe eines Administrators in Anspruch nehmen zu müssen.
-		TextFiles	= Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbasuteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
+		TextFiles	= Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbausteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
 		EditTextFile	= Passe den Textbaustein an die Erfordernisse der Liste an. Eventuell möchtest du dafür auch einige der reservierten Platzhalter verwenden, die am Ende dieser Seite aufgeführt sind.
+		ResetTextFile	= Der Textbaustein wurde spezifisch an diese Liste angepasst. Um stattdessen den vorgegebenen Baustein der eingestellten Sprache zu verwenden, kannst du diesen listenspezifischen Baustein entfernen.
 	  }
 
 	Legend {
@@ -217,7 +227,8 @@ Lang {
 		MembersDigest	= Verwaltung der AbonnentInnen der Zusammenfassungen
 		MembersMod		= Verwaltung der ModeratorInnen / AdministratorInnen
 		TextFiles		= Verfügbare Textbausteine
-		TextFileEdit	= Bearbeite einen Textbaustein
+		TextFileEdit	= Bearbeite den Textbaustein
+		TextFileReset	= Auf die Vorgabe zurücksetzen
 		TextFileInfo	= Nützliche Platzhalter
 		AvailableLists	= Verfügbare Listen
 	}

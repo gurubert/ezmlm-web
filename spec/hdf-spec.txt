@@ -6,11 +6,15 @@ HelpIconURL
 Config.Title
 
 Data.Action
+Data.areDefaultTextsAvailable
 Data.ErrorMessage
 Data.List.Address
+Data.List.CharSet
+Data.List.CustomizedFiles.*
+Data.List.DefaultFiles.*
 Data.List.File.Name
 Data.List.File.Content
-Data.List.Files.*
+Data.List.File.isDefault
 Data.List.hasAllowList
 Data.List.hasDenyList
 Data.List.hasDigestList
@@ -43,5 +47,6 @@ Data.Modules.MySQL
 Data.Permissions.Create
 Data.Permissions.FileUpload
 Data.UserName
+Data.useCharSet
 Data.WebUser.show
 Data.WebUser.UserName

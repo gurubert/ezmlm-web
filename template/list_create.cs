@@ -16,6 +16,16 @@
 				?>"> @ <input type="text" name="inhost" size="30" value="<?cs
 				var:html_escape(Data.HostName) ?>"></li>
 
+			<?cs if:subcount(Data.AvailableLanguages) > 0 ?>
+				<li><label for="list_language"><?cs var:html_escape(Lang.Misc.ListLanguage)
+						?>:</label>
+					<select name="list_language" id="list_language">
+						<?cs each:item = Data.AvailableLanguages ?>
+							<option <?cs if:(item == 'default')
+								?>selected="selected"<?cs /if ?>><?cs var:item ?></option>
+						<?cs /each ?>
+					</select></li><?cs /if ?>
+
 			<?cs if:Data.Modules.MySQL ?>
 			<!-- Allow creation of mysql table if the module allows it -->
 				<li><?cs call:setting("6") ?></li><?cs /if ?>

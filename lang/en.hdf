@@ -54,7 +54,8 @@ Lang {
 		AddAddress	= Add address(es)
 		UpdateConfiguration = Update configuration
 		EditFile	= Edit file
-		SaveFile	= Save File
+		SaveFile	= Save file
+		ResetFile	= Remove customized file
 	  }
 
 
@@ -91,6 +92,9 @@ Lang {
 		ReservedListName	= This listname may not be used as it is reserved for internal purposes
 		EmptyListName		= The name of the list may not be empty
 		InvalidLocalPart	= The local part of the list address is not valid
+		RequiresIDX5		= This action requires ezmlm-idx v5.0 or higher.
+		ResetFileIsDefault	= There is no customized text file, that can be removed.
+		ResetFile			= Removal of custimized text file failed.
 	  }
 	
 
@@ -101,6 +105,7 @@ Lang {
 		DeleteList		= The mailing list was successfully removed.
 		UpdateConfig	= The mailing list's configuration was successfully changed.
 		SaveFile		= The file was saved.
+		ResetFile		= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
 	  }
 
 
@@ -179,6 +184,10 @@ Lang {
 		FooterText		= a web interface for
 		NoListsAvailable	= I could not find any accessible list for you.
 		ConfirmDelete	= Do you really want to remove this list completely?
+		CustomizedFiles	= customized files
+		DefaultFiles	= default files
+		ListLanguage	= Language of the list
+		ListCharset		= Charset of the list
 	  }
 
 
@@ -198,6 +207,7 @@ Lang {
 		SubscriberList	= Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs.
 		TextFiles	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
 		EditTextFile	= Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page.
+		ResetTextFile	= This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file.
 	  }
 
 	Legend {
@@ -218,6 +228,7 @@ Lang {
 		MembersMod		= Manage moderators and administrators
 		TextFiles		= Available text files
 		TextFileEdit	= Edit content of text file
+		TextFileReset	= Discard customized text
 		TextFileInfo	= Useful placeholders
 		AvailableLists	= Available lists
 	}

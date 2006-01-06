@@ -1,16 +1,20 @@
-"cancel" button during text editing
+ezmlm-idx5: modsub and modpost are ignored, if the flag is not set
+
+check relevance of "t", "f" and "x" flag for idx5
+
+"cancel" button during text editing (simple "reset" input button)
 
 restore user input after failed list_create (especially options)
 
 support for:
-	* charset
-	* show log
+	* show subscription log
+	* 'mailinglist' (maybe)
+	* config directory (maybe)
 
 allow dynamic addition of user-made config templates (seperate directory, ...)
 
-language switch support
+interface language switch support
 choose basic/expert to disable questions
 
-export subscribers (oder lieber per Mail (ezmlm)?)
+export subscribers
 
-use ezmlm-idx 5.0 text file style

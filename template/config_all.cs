@@ -143,6 +143,25 @@
 				<ul><li><textarea name="headeradd" rows="5" cols="70"><?cs
 				var:html_escape(Data.List.HeaderAdd) ?></textarea></li></ul></li>
 
+			<!-- language -->
+			<?cs if:subcount(Data.List.AvailableLanguages) > 0 ?>
+				<li><label for="list_language"><?cs var:html_escape(Lang.Misc.ListLanguage)
+						?>:</label>
+					<select name="list_language" id="list_language">
+						<?cs each:item = Data.List.AvailableLanguages ?>
+							<option <?cs if:(item == Data.List.Language)
+								?>selected="selected"<?cs /if ?>><?cs var:item ?></option>
+						<?cs /each ?>
+					</select></li><?cs /if ?>
+
+			<!-- charset -->
+			<?cs if:Data.useCharSet ?>
+				<li><label for="list_charset"><?cs var:html_escape(Lang.Misc.ListCharset)
+						?>:</label>
+					<input type="text" name="list_charset" id="list_charset" size="30"
+						value="<?cs var:Data.List.CharSet ?>" />
+					</li><?cs /if ?>
+
 			<!-- ezmlm-web administators -->
 			<?cs if:Data.WebUser.show && Data.List.WebUsers ?>
 				<li><?cs var:html_escape(Lang.Misc.AllowedToEdit) ?> 

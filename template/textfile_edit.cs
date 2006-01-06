@@ -6,6 +6,26 @@
 	<?cs var:html_escape(Lang.Introduction.EditTextFile) ?>
 </div>
 
+
+<!-- reset text file -->
+<?cs if:(Data.areDefaultTextsAvailable == 1) && (Data.List.File.isDefault == 0) ?>
+	<fieldset class="form">
+		<legend><?cs var:html_escape(Lang.Legend.TextFileReset) ?> </legend>
+
+		<div class="introduction">
+			<?cs var:html_escape(Lang.Introduction.ResetTextFile) ?>
+		</div>
+
+	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
+		<input type="hidden" name="file" value="<?cs var:Data.List.File.Name ?>">
+		<input type="hidden" name="action" value="textfile_reset" />
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.ResetFile) ?></button>
+	</form>
+	</fieldset>
+<?cs /if ?>
+
+<!-- edit text file -->
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.TextFileEdit) ?> </legend>
 

@@ -262,6 +262,34 @@ elsif ($action eq '' || $action eq 'list_select') {
 			$pagename = 'list_select';
 		}
 	}
+} elsif ($action eq 'textfile_reset') {   
+	# User wants to remove a customized text file (idx >= 5) ...
+	if (defined($q->param('list')) && defined($q->param('file'))) {
+		my $list = Mail::Ezmlm->new($LIST_DIR . '/' . $q->param('list'));
+		if (! &check_filename($q->param('file'))) {
+			$error = 'InvalidFileName';
+			$pagename = 'textfiles';
+		} elsif (Mail::Ezmlm->get_version() < 5) {
+			$warning = 'RequiresIDX5';
+			$pagename = 'textfile_edit';
+		} elsif ($list->is_text_default($q->param('file'))) {
+			$warning = 'ResetFileIsDefault';
+			$pagename = 'textfile_edit';
+		} elsif ($list->reset_text($q->param('file'))) {
+			$success = 'ResetFile';
+			$pagename = 'textfiles';
+		} else {
+			$warning = 'ResetFile';
+			$pagename = 'textfile_edit';
+		}
+	} else {
+		$error = 'ParameterMissing';
+		if ($q->param('list')) {
+			$pagename = 'textfiles';
+		} else {
+			$pagename = 'list_select';
+		}
+	}
 } else {
 	$pagename = 'list_select';
 	$error = 'UnknownAction';
@@ -385,6 +413,20 @@ sub set_pagedata()
 	$pagedata->setValue("Data.Permissions.FileUpload", ($FILE_UPLOAD)? 1 : 0);
 
 
+	# ezmlm-idx v5.0 stuff
+	$pagedata->setValue('Data.areDefaultTextsAvailable', 
+		(Mail::Ezmlm->get_version() >= 5)? 1 : 0);
+
+	# get available languages for all lists
+	# no results for ezmlm-idx < 5.0
+	my $i = 0;
+	my $item;
+	foreach $item (sort Mail::Ezmlm->get_available_languages()) {
+		$pagedata->setValue("Data.AvailableLanguages." . $i, $item);
+		$i++;
+	}
+
+
 	# display webuser textfield?
 	$pagedata->setValue("Data.WebUser.show", (-e "$WEBUSERS_FILE")? 1 : 0);
 	# default username for webuser file
@@ -450,7 +492,7 @@ sub set_pagedata4list
 	$pagedata->setValue("Data.List.MimeRemove", "$item");
 	$item = $list->getpart('mimereject');
 	$pagedata->setValue("Data.List.MimeReject", "$item");
-	$item = $list->getpart('text/trailer');
+	$item = $list->get_text_content('trailer');
 	$pagedata->setValue("Data.List.TrailingText", "$item");
 	
 	# read message size limits
@@ -472,31 +514,48 @@ sub set_pagedata4list
 
 	# get the names of the textfiles of this list
 	{
-		my($listDir);
-		$listDir = $LIST_DIR . '/' . $q->param('list');
+		@files = sort $list->get_available_text_files();
+		$i = 0;
 
-		# Read the list directory for text ...
-		if (opendir DIR, "$listDir/text") {
-			@files = grep !/^\./, readdir DIR; 
-			closedir DIR;
-			$i = 0;
-			foreach $item (@files) {
-				$pagedata->setValue("Data.List.Files." . $i, "$item");
-				$i++;
+		foreach $item (@files) {
+			if ($list->is_text_default($item)) {
+				$pagedata->setValue('Data.List.DefaultFiles.' . $i , "$item");
+			} else {
+				$pagedata->setValue('Data.List.CustomizedFiles.' . $i , "$item");
 			}
-		} else {
-			$warning = 'TextDirAccessDenied' if ($warning eq '')
+			$i++;
 		}
 
 		# text file specified?
 		if (($q->param('file') ne '') && ($q->param('file') =~ m/^[\w-]*$/)) {
 			my ($content);
-			$content = $list->getpart("text/" . $q->param('file'));
+			$content = $list->get_text_content($q->param('file'));
 			from_to($content,$TEXT_ENCODE,'utf8');	# by ooyama for multibyte
 			$pagedata->setValue("Data.List.File.Name", $q->param('file'));
 			$pagedata->setValue("Data.List.File.Content", "$content");
+			$pagedata->setValue("Data.List.File.isDefault",
+				$list->is_text_default($q->param('file')) ? 1 : 0);
 		}
 	}
+
+	# get available languages for this list
+	# no result for ezmlm-idx < 5
+	$i = 0;
+	foreach $item (sort $list->get_available_languages()) {
+		$pagedata->setValue("Data.List.AvailableLanguages." . $i, $item);
+		$i++;
+	}
+
+	# charset of the list
+	if (Mail::Ezmlm->get_version() >= 5) {
+		my $charset = $list->getpart('charset');
+		$charset =~ s/^#.*$//m;
+		$pagedata->setValue('Data.List.CharSet', "$charset") if ($charset);
+		$pagedata->setValue('Data.useCharSet', "1");
+	}
+
+	$pagedata->setValue('Data.List.Language', $list->get_lang());
+
 	&set_pagedata4options($list->getconfig);   
 }
 
@@ -504,9 +563,10 @@ sub set_pagedata4list
 
 sub set_pagedata4options {
 	my($options) = shift;
-	my($i, $key, $state, $value, $dir_of_list);
+	my($i, $list, $key, $state, $value, $dir_of_list);
 
 	$dir_of_list = $LIST_DIR . '/' . $q->param('list');
+	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 
 	$i = 0;
 	$key = lc(substr($options,$i,1));
@@ -519,14 +579,17 @@ sub set_pagedata4options {
 		$key = lc(substr($options,$i,1));
 	}
 
-	# the options "t", "p" and "x" are only used to create a default value
-	# they have no meaning, so we should adapt them to reality
-	$pagedata->setValue("Data.List.Options.t" , 1)
-		if (-e "$dir_of_list/text/trailer");
-	$pagedata->setValue("Data.List.Options.f" , 1)
-		if (-e "$dir_of_list/prefix");
-	$pagedata->setValue("Data.List.Options.x" , 1)
-		if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
+	if (Mail::Ezmlm->get_version() < 5) {
+		# for ezmlm-idx < 5.0 the options "t", "p" and "x" are only
+		# used to create a default value they have no meaning, so we
+		# should adapt them to reality
+		$pagedata->setValue("Data.List.Options.t" , 1)
+			if (defined($list->get_text_content('trailer')));
+		$pagedata->setValue("Data.List.Options.f" , 1)
+			if (-e "$dir_of_list/prefix");
+		$pagedata->setValue("Data.List.Options.x" , 1)
+			if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
+	}
 
 	for ($i=0; $i<9; $i++) {
 		unless (($i eq 1) || ($i eq 2)) {
@@ -720,7 +783,7 @@ sub add_address {
 		my($fh) = $q->param('mailaddressfile');
 		while (<$fh>) {
 			next if (/^\s*$/ or /^#/); # blank, comments
-			if ( /(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/ ) {
+			if ( /(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)/) {
 					chomp();
 					push @addresses, "$_";
 				} else {
@@ -736,7 +799,7 @@ sub add_address {
 		$address .= $DEFAULT_HOST if ($q->param('mailaddress_add') =~ /\@$/);
 
 		# untaint
-		if ($address =~ m/(\w[\-\w_\.]*)@(\w[\-\w_\.]+)/) {
+		if ($address =~ m/(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)/) {
 			push @addresses, "$address";
 		  } else {
 			warn "invalid address to add: $address to $part";
@@ -752,7 +815,8 @@ sub add_address {
 	foreach $address (@addresses) {
 
 		($add) = Mail::Address->parse($address);
-		if (($add->address() =~ /^\w[\w_-]*\@/) && !($list->issub($add->address(), $part))) {
+		if (($add->address() =~ m/^(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)$/)
+				&& !($list->issub($add->address(), $part))) {
 			# it seems, that we cannot trust the return value of "$list->sub"
 			$list->sub($add->address(), $part);
 			if(defined($add->name()) && $PRETTY_NAMES) {
@@ -892,6 +956,14 @@ sub create_list {
 		return (1==0);
 	}
 
+	if (defined($q->param('list_language')) && ($q->param('list_language') ne 'default')) {
+		if (&check_language($list, $q->param('list_language'))) {
+			$list->set_lang($q->param('list_language'));
+		} else {
+			$warning = 'InvalidListLanguage';
+		}
+	}
+	
 	# handle MySQL stuff
 	if(defined($q->param('setting_state_6')) && $options =~ m/-6\s+/) {
 		$customWarning = $list->errmsg() unless($list->createsql());
@@ -989,9 +1061,9 @@ sub update_config {
 	# remove old one if the checkbox was not active
 	if (defined($q->param('trailing_text'))) {
 		if (defined($q->param('option_t'))) {
-			$list->setpart('text/trailer', $q->param('trailing_text'));
+			$list->set_text_content('trailer', $q->param('trailing_text'));
 		} else {
-			unlink("$dir_of_list/text/trailer");
+			$list->reset_text('trailer');
 		}
 	}
 
@@ -1041,6 +1113,24 @@ sub update_config {
 	} else {
 		# restore the original value, as ezmlm-make always overrides these values :(((
 		$list->setpart('msgsize', "$old_msgsize");
+	}
+
+	# update language
+	if (defined($q->param('list_language'))) {
+		if (&check_language($list, $q->param('list_language'))) {
+			$list->set_lang($q->param('list_language'));
+		} else {
+			$warning = 'InvalidListLanguage';
+		}
+	}
+
+	# update charset
+	if (defined($q->param('list_charset'))) {
+		if ($q->param('list_charset') ne '') {
+			$list->setpart('charset', $q->param('list_charset'));
+		} else {
+			unlink "$list->{'LIST_NAME'}/charset" if (-e "$list->{'LIST_NAME'}/charset");
+		}
 	}
 	
 	unless (&update_webusers()) {
@@ -1120,7 +1210,7 @@ sub save_text {
    my ($list) = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
    my ($content) = $q->param('content');
    from_to($content,'utf8',$TEXT_ENCODE);	# by ooyama for multibyte
-   unless ($list->setpart("text/" . $q->param('file'), $content)) {
+   unless ($list->set_text_content($q->param('file'), $content)) {
 		$warning = 'SaveFile';
 		return (1==0);
    }
@@ -1194,6 +1284,18 @@ sub webauth_create_allowed {
 	}
 	close USERS;
 	return (1==0);
+}
+
+# ---------------------------------------------------------------------------
+
+sub check_language {
+	my ($list, $lang) = @_;
+	my $found = 0;
+	my $item;
+	foreach $item ($list->get_available_languages()) {
+		$found++ if ($item eq $q->param('list_language'));
+	}
+	return ($found > 0);
 }
 
 # ---------------------------------------------------------------------------
