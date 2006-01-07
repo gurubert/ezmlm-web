@@ -65,7 +65,8 @@ OVERVIEW:
      the following places:
 	1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
 	2) the directory, that contains your cgi binary (index.cgi)
-	3) /etc/ezmlm/ezmlmwebrc
+	3) /etc/ezmlm-web/ezmlmwebrc
+	4) /etc/ezmlm/ezmlmwebrc [deprecated]
 	 (ezmlm-web will look for it in these places in the given order)
 
 

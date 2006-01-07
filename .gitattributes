@@ -1,11 +1,23 @@
 * text=auto !eol
-/CHANGES -text
 /INSTALL -text
 /INSTALL.clearsilver -text
+/LICENSE -text
 /README -text
 /TODO -text
 /UPGRADING -text
+/changelog -text
+/copyright -text
 css/default.css -text
+debian-related/DEBIAN/conffiles -text
+debian-related/DEBIAN/control -text
+debian-related/DEBIAN/postinst -text
+debian-related/DEBIAN/postrm -text
+debian-related/DEBIAN/prerm -text
+debian-related/README.Debian -text
+debian-related/changelog.Debian -text
+debian-related/ezmlm-web-make-suid -text
+debian-related/index.c -text
+debian-related/man/ezmlm-web-make-suid.1 -text
 /ezmlm-web.cgi -text
 /ezmlmwebrc -text
 /htaccess.sample -text
@@ -13,8 +25,9 @@ css/default.css -text
 lang/de.hdf -text
 lang/en.hdf -text
 lang/jp.pm -text
+scripts/check_languages.sh -text
+scripts/debian.sh -text
 spec/actions-spec.txt -text
-spec/check_languages.sh -text
 spec/hdf-spec.txt -text
 template/config_admin.cs -text
 template/config_all.cs -text

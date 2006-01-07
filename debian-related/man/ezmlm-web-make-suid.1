@@ -1,0 +1,25 @@
+.TH ezmlm-web-make-suid 1 "January 02006" "ezmlm-web" "helper script"
+.SH NAME
+ezmlm-web-make-suid \- create user-specific suid wrappers for ezmlm-web
+.SH SYNOPSIS
+.B ezmlm-web-make-suid
+[\fIUSERNAME\fR] \fIDESTINATION_FILE\fR
+.SH DESCRIPTION
+.PP
+Create a user-specific suid wrapper for ezmlm-web. This is necessary, as
+the mailing lists are usually not owned by the webserver, that executes
+the cgi.
+.PP
+The destination file determines where to put the resulting binary.
+.PP
+Only root is allowed to choose a username.
+.SH EXAMPLES
+.PP
+ezmlm-web-make-suid john ~john/public_html/ezmlm-web
+.SH AUTHOR
+Written by Lars Kruse
+.SH "REPORTING BUGS"
+Report bugs to <devel@sumpfralle.de>
+.SH COPYRIGHT
+Copyright \(co 02006 Lars Kruse
+
