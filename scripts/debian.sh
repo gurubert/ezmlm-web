@@ -30,7 +30,7 @@ ACTION=build
 case "$ACTION" in
 	build )
 		mkdir -p "$BUILD_DIR/usr/share/ezmlm-web"
-		mkdir -p "$BUILD_DIR/usr/lib"
+		mkdir -p "$BUILD_DIR/usr/lib/ezmlm-web"
 		mkdir -p "$BUILD_DIR/usr/bin"
 		mkdir -p "$BUILD_DIR/usr/share/man/man1"
 		mkdir -p "$BUILD_DIR/usr/share/doc/ezmlm-web/examples"
@@ -40,7 +40,7 @@ case "$ACTION" in
 		svn export "$ROOT_DIR/css" "$BUILD_DIR/usr/share/ezmlm-web/css" >/dev/null
 		ln -s /usr/share/ezmlm-web/css/default.css "$BUILD_DIR/var/www/ezmlm-web.css"
 		svn export "$ROOT_DIR/lang" "$BUILD_DIR/usr/share/ezmlm-web/lang" >/dev/null
-		cp "$ROOT_DIR/ezmlm-web.cgi" "$BUILD_DIR/usr/lib"
+		cp "$ROOT_DIR/ezmlm-web.cgi" "$BUILD_DIR/usr/lib/ezmlm-web/ezmlm-web.pl"
 		cp "$ROOT_DIR/debian-related/index.c" "$BUILD_DIR/usr/share/ezmlm-web"
 		cp "$ROOT_DIR/htaccess.sample" "$BUILD_DIR/usr/share/doc/ezmlm-web/examples"
 		cp "$ROOT_DIR/webusers.sample" "$BUILD_DIR/usr/share/doc/ezmlm-web/examples"

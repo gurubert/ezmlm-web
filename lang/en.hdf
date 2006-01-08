@@ -128,7 +128,7 @@ Lang {
 		r	= Enable remote administration of the list (for moderators)
 		s	= Subscriptions to the main list and the digest list will be moderated
 		t	= Add a trailing text to every message
-		u	= Subscribed users may always post messages (even ignoring moderation)
+		u	= Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
 		x	= Remove or reject specific mime types in messages
 		y	= Request a confirmation mail for every posted message

@@ -1,10 +1,26 @@
-How to use ezmlm-web with debian:
+How to use ezmlm-web with debian
+
+Table of content
+1 - install the package
+2 - install required additional software
+3 - create user-sprecific suid binaries
+4 - create a user-specific configuration
+5 - access control
+6 - testing
+
+#################################################################
 
 1) install the package
 you surely did this already :)
 
 
-2) create user-specific suid binaries
+2) install required additional software
+Take a look at /usr/share/doc/ezmlm-web/README - section III (Requirements).
+If you are able to run /usr/lib/ezmlm-web/ezmlm-web.pl without problems, then
+you are ready for the next step.
+
+
+3) create user-specific suid binaries
 As perl-suid is considered deprecated, you have to compile a C-wrapper
 for every user of your debian system, who wants to manage his mailing
 lists with ezmlm-we.
@@ -16,12 +32,12 @@ to create a wrapper, type the following:
 e.g: ezmlm-web-make-suid john ~john/public_html/cgi-bin/ezmlm-web
 
 
-3) create a user-specific configuration file (optional)
+4) create a user-specific configuration file (optional)
 Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc to ~john/.ezmlmwebrc
 and change its content according to your setup.
 
 
-4) access control (optional)
+5) access control (optional)
 configure access control for the fresh cgi binary. Maybe you can
 use the htaccess.sample file in /usr/share/doc/ezmlm-web/examples as
 a template.
@@ -33,6 +49,6 @@ possible web users. An example webusers file can be found at
 See /usr/share/doc/ezmlm-web/README for details about access control.
 
 
-5) testing
+6) testing
 Now you can access the ezmlm-web interface by using your web browser.
 e.g. point it to http://localhost/~john/cgi-bin/ezmlm-web

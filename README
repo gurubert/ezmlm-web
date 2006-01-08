@@ -21,7 +21,7 @@ VIII.   Bugs && Bug Reports
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
 ==================
-ezmlm-web - version 3.0 - 12/22/02005
+ezmlm-web - version 3.1 - 12/22/02005
 
 Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
 
@@ -99,7 +99,7 @@ This version of ezmlm-web requires the following;
 * ezmlm v0.53 (or ezmlm-idx v0.40)
 * clearsilver v0.10.2 (only perl support is necessary)
 * Perl v5.004 and the following modules;
-  + Mail::Ezmlm v0.03 
+  + Mail::Ezmlm v0.07 (current version!)
   + Mail::Address v1.15
   + CGI v2.6 
   + CGI::Carp v1.06

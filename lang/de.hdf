@@ -128,7 +128,7 @@ Lang {
 		r	= Erlaube die Fern-Administration der Liste (für ModeratorInnen)
 		s	= Die Einschreibung in die Liste und für die Zusammenfassungen wird moderiert
 		t	= Hänge eine Signatur an jede versandte Nachricht
-		u	= Einsendungen von AbonnentInnen werden immer akzeptiert (dies gilt auch für moderierte Listen)
+		u	= Nur Einsendungen von AbonnentInnen werden akzeptiert (für moderierte Listen: akzeptiere alle Einsendungen von AbonnentInnen)
 		w	= Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
 		x	= Prüfe die MIME-Typen der Anhänge eingehender Nachrichten
 		y	= Fordere eine Bestätigung für jede eingesandte Nachricht an

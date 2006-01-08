@@ -6,5 +6,5 @@
 
 int main(void) {
    /* Change this path to wherever you decided to put ezmlm-web.cgi */
-   execv("/usr/lib/ezmlm-web.cgi"); 
+   execv("/usr/lib/ezmlm-web/ezmlm-web.pl"); 
 }
