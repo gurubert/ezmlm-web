@@ -24,7 +24,7 @@
 					<li><?cs call:checkbox("n") ?></li>
 
 					<!-- custom path to administrators database -->
-					<li><?cs call:setting("8") ?></li>
+					<li><?cs call:setting("9") ?><?cs if:(Data.List.Settings.8.state && Data.List.Settings.9.state) ?>(<?cs var:Lang.Misc.ModSubOverridesRemote ?>)<?cs /if ?></li>
 				</ul></li>
 		
 			<li><!-- include default form values -->

@@ -23,8 +23,17 @@ OVERVIEW:
 	 engine). See INSTALL.clearsilver for details.
 
 
-1.   Get ezmlm-web and extract the archive:
+1.   Choose a distribution form
+
+1a)  source installation
+     Get ezmlm-web and extract the archive:
 	tar xzf ezmlm-web-3.x.tar.gz
+     (for source installation continue with step 2)
+
+1b)  debian package
+     This is the (by far) most convenient way to install ezmlm-web.
+	 Read debian-releated/README.Debian for details.
+	 (debian users may stop reading here)
 
 
 2.   Copy ezmlm-web.cgi to some publically readable directory. It does not
@@ -145,7 +154,7 @@ OVERVIEW:
 	(e.g /var/log/apache/error.log).
 
 
-If you have any problems, then you can:
+If you have any problems:
 - take a look at https://systemausfall.org/toolforge/ezmlm-web
 - send me an email: ezmlm-web@sumpfralle.de
 - subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org

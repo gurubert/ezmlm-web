@@ -136,14 +136,14 @@ Lang {
 
 
     Settings {
-		0	= Make the list a sublist of list mainlist@host
+		0	= Make the list a sublist of another list
 		3	= Set a custom "From:" header for outgoing messsages
 		4	= Define customized setting for digest creation (ezmlm-tstdig)
 		5	= Define the email address of the list owner
 		6	= Use a SQL database
 		7	= Define a custom path to the database for posting moderators
-		8	= Define a custom path to the database for remote administrators and subscription moderators
-	#	9 => not used - it is only an alternative to (8)
+		8	= Define a custom path to the database for subscription moderators
+		9	= Define a custom path to the database for remote administators
       }
 
 
@@ -188,6 +188,7 @@ Lang {
 		DefaultFiles	= default files
 		ListLanguage	= Language of the list
 		ListCharset		= Charset of the list
+		ModSubOverridesRemote	= Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them
 	  }
 
 

@@ -288,7 +288,6 @@ sub load_hdf {
 
 	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
 
-	# TODO: check for existence
 	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
@@ -448,10 +447,6 @@ sub set_pagedata4list
 	}
 	untie %pretty if ($PRETTY_NAMES);
 
-	$pagedata->setValue("Data.List.hasDenyList", 1) if ($list->isdeny);
-	$pagedata->setValue("Data.List.hasAllowList", 1) if ($list->isallow);
-	$pagedata->setValue("Data.List.hasDigestList", 1) if ($list->isdigest);
-
 	# Get the contents of some important files
 	$item = $list->getpart('prefix');
 	$pagedata->setValue("Data.List.Prefix", "$item");
@@ -519,10 +514,9 @@ sub set_pagedata4list
 
 	# charset of the list
 	if (Mail::Ezmlm->get_version() >= 5) {
-		my $charset = $list->getpart('charset');
+		my $charset = $list->get_charset();
 		$charset =~ s/^#.*$//m;
-		$pagedata->setValue('Data.List.CharSet', "$charset") if ($charset);
-		$pagedata->setValue('Data.useCharSet', "1");
+		$pagedata->setValue('Data.List.CharSet', "$charset");
 	}
 
 	$pagedata->setValue('Data.List.Language', $list->get_lang());
@@ -550,22 +544,33 @@ sub set_pagedata4options {
 		$key = lc(substr($options,$i,1));
 	}
 
-	if (Mail::Ezmlm->get_version() < 5) {
-		# for ezmlm-idx < 5.0 the options "t", "p" and "x" are only
-		# used to create a default value they have no meaning, so we
-		# should adapt them to reality
-		$pagedata->setValue("Data.List.Options.t" , 1)
-			if (defined($list->get_text_content('trailer')));
-		$pagedata->setValue("Data.List.Options.f" , 1)
-			if (-e "$dir_of_list/prefix");
-		$pagedata->setValue("Data.List.Options.x" , 1)
-			if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
-	}
+	# the options "tpxmsr" are used to create a default value
+	# if they are unset, the next ezmlm-make will remove the appropriate files
+	# but: these files are used, if they exist - regardless of the flag
+	# we will look for the files, if someone created them without ezmlm-make
+	# this is easier for users, as the options now represent the current
+	# behaviour of the list and not the configured flag value
+	# this is especially necessary for "trailer", as this file can be created
+	# via ezmlm-web without touching the flag
+	$pagedata->setValue("Data.List.Options.t" , 1)
+		if (-e "$dir_of_list/trailer");
+	$pagedata->setValue("Data.List.Options.f" , 1)
+		if (-e "$dir_of_list/prefix");
+	$pagedata->setValue("Data.List.Options.x" , 1)
+		if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
+	$pagedata->setValue("Data.List.Options.m" , 1)
+		if (-e "$dir_of_list/modpost");
+	$pagedata->setValue("Data.List.Options.s" , 1)
+		if (-e "$dir_of_list/modsub");
+	$pagedata->setValue("Data.List.Options.r" , 1)
+		if (-e "$dir_of_list/remote");
 
-	for ($i=0; $i<9; $i++) {
+	for ($i=0; $i<=9; $i++) {
 		unless (($i eq 1) || ($i eq 2)) {
-			$state = ($options =~ /$i (?:'(.+?)')/);
+			# TODO: maybe add "-" to the pattern to avoid strange directory settings ending in a digit :)
+			$state = ($options =~ /\s-$i (?:'(.+?)')/);
 			unless ($state) {
+				# set default values
 				if ($i eq 0) {
 					$value = 'mainlist@' . $DEFAULT_HOST;
 				} elsif ($i eq 3) {
@@ -576,9 +581,7 @@ sub set_pagedata4options {
 					$value = 'owner_address@domain.org';
 				} elsif ($i eq 6) {
 					$value = 'host:port:user:password:database:table';
-				} elsif ($i eq 7) {
-					$value = "$dir_of_list/mod";
-				} elsif ($i eq 8) {
+				} elsif (($i >= 7) && ($i <= 9)) {
 					$value = "$dir_of_list/mod";
 				}
 			} else {
@@ -852,18 +855,13 @@ sub set_pagedata4part_list {
       # do we store things in different directories?
       my $config = $list->getconfig;
 	  # empty values represent default settings - everything else is considered as evil :)
-      my($postpath) = $config =~ m{7\s*'([^']+)'};
-      my($subpath) = $config =~ m{8\s*'([^']+)'};
-      my($remotepath) = $config =~ m{9\s*'([^']+)'};
-      
-      $pagedata->setValue("Data.List.hasPostMod", ($list->ismodpost)? 1 : 0);
-      $pagedata->setValue("Data.List.PostModPath", "$postpath");
+      my($postpath) = $config =~ m{-7\s*'([^']+)'};
+      my($subpath) = $config =~ m{-8\s*'([^']+)'};
+      my($remotepath) = $config =~ m{-9\s*'([^']+)'};
 
-      $pagedata->setValue("Data.List.hasSubMod", ($list->ismodsub)? 1 : 0);
-      $pagedata->setValue("Data.List.SubModPath", "$subpath");
-
-      $pagedata->setValue("Data.List.hasRemoteAdmin", ($list->isremote)? 1 : 0);
-      $pagedata->setValue("Data.List.RemoteAdminPath", "$remotepath");
+      $pagedata->setValue("Data.List.hasCustomizedPostModPath", ($postpath ne '')? 1 : 0);
+      $pagedata->setValue("Data.List.hasCustomizedSubModPath", ($subpath ne '')? 1 : 0);
+      $pagedata->setValue("Data.List.hasCustomizedAdminPath", ($remotepath ne '')? 1 : 0);
    }
 }
 
@@ -989,14 +987,17 @@ sub extract_options_from_params()
 
 	############### settings ################
 	$avail_settings = $q->param('settings_available');
-	for ($i=0; $i<9; $i++) {
+	for ($i=0; $i<=9; $i++) {
 		if ($avail_settings =~ m/$i/) {
 			# this setting was visible for the user
-			$options .= " -$i '" . $q->param("setting_value_$i") . "'"
-				if (defined($q->param("setting_state_$i")));
+			if (defined($q->param("setting_state_$i"))) {
+				$options .= " -$i '" . $q->param("setting_value_$i") . "'";
+			} else {
+				$options .= " -$i ''";
+			}
 		} else {
 			# import the previous setting
-			$state = ($old_options =~ /$i (?:'(.+?)')/);
+			$state = ($old_options =~ /\s-$i (?:'(.+?)')/);
 			$options .= " -$i '$1'" if ($state);
 		}
 	}
@@ -1029,42 +1030,38 @@ sub update_config {
 	}
 
 	# update trailing text
-	# remove old one if the checkbox was not active
 	if (defined($q->param('trailing_text'))) {
 		if (defined($q->param('option_t'))) {
 			$list->set_text_content('trailer', $q->param('trailing_text'));
 		} else {
-			$list->reset_text('trailer');
+			# ezmlm-make automatically removes this file
 		}
 	}
 
 	# update prefix text
-	# remove old one if the checkbox was not active
 	if (defined($q->param('prefix'))) {
 		if (defined($q->param('option_f'))) {
 			$list->setpart('prefix', $q->param('prefix'))
 		} else {
-			unlink("$dir_of_list/prefix");
+			# ezmlm-make automatically removes this file
 		}
 	}
 
 	# update mimeremove
-	# remove old one if the checkbox was not active
 	if (defined($q->param('mimeremove'))) {
 		if (defined($q->param('option_x'))) {
 			$list->setpart('mimeremove', $q->param('mimeremove'))
 		} else {
-			unlink("$dir_of_list/mimeremove");
+			# ezmlm-make automatically removes this file
 		}
 	}
 
 	# update mimereject
-	# remove old one if the checkbox was not active
 	if (defined($q->param('mimereject'))) {
 		if (defined($q->param('option_x'))) {
 			$list->setpart('mimereject', $q->param('mimereject'))
 		} else {
-			unlink("$dir_of_list/mimereject");
+			# ezmlm-make automatically removes this file
 		}
 	}
 
@@ -1086,7 +1083,20 @@ sub update_config {
 		$list->setpart('msgsize', "$old_msgsize");
 	}
 
+	# update charset
+	# only if it is different from the previous value and the language was NOT changed
+	# otherwise it could overwrite the default of a new selected language
+	# this has to be done before updating the language
+	if (defined($q->param('list_charset'))) {
+		if ((defined($q->param('list_language'))) && ($q->param('list_language') ne $list->get_lang()) && ($list->get_charset() eq $q->param('list_charset'))) {
+			$list->set_charset('');
+		} else {
+			$list->set_charset($q->param('list_charset'));
+		}
+	}
+	
 	# update language
+	# this _must_ happen after set_charset to avaoid accidently overriding default charset
 	if (defined($q->param('list_language'))) {
 		if (&check_language($list, $q->param('list_language'))) {
 			$list->set_lang($q->param('list_language'));
@@ -1095,15 +1105,6 @@ sub update_config {
 		}
 	}
 
-	# update charset
-	if (defined($q->param('list_charset'))) {
-		if ($q->param('list_charset') ne '') {
-			$list->setpart('charset', $q->param('list_charset'));
-		} else {
-			unlink "$list->{'LIST_NAME'}/charset" if (-e "$list->{'LIST_NAME'}/charset");
-		}
-	}
-	
 	unless (&update_webusers()) {
 		$warning = 'WebUsersUpdate';
 		return (1==0);

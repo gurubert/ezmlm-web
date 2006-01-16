@@ -1,5 +1,5 @@
 =================
-| ezmlm-web-3.0 |
+| ezmlm-web-3.1 |
 =================
 
 If you only want to know how to install ezmlm-web, then you should
@@ -107,6 +107,7 @@ This version of ezmlm-web requires the following;
   + Getopt::Std v4.1
   + File::Find v?
   + File::Copy v2.02
+  + Text::ParseWords v3.24
 
 The version number indicates the version of the module that ezmlm-web was
 developed with. Earlier versions may work, but then they haven't been

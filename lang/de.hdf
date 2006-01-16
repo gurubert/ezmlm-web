@@ -136,14 +136,14 @@ Lang {
 
 
     Settings {
-		0	= Diese Liste is nur eine Unterliste
+		0	= Diese Liste ist die Unterliste einer anderen
 		3	= Definiere die Absender-Adresse ausgehender Mails
 		4	= Eigene Einstellungen zum Versand von Zusammenfassungsmails (ezmlm-tstdig)
 		5	= Lege die Mailadresse der/des Verantwortlichen für diese Liste fest
 		6	= Verwende eine SQL-Datenbank
 		7	= Die Datenbank der Nachrichten-ModeratorInnen befindet sich in einem alternativen Verzeichnis
-		8	= Die Datenbank der Einschreibe-ModeratorInnen (und Fern-AdministratorInnen) befindet sich in einem alternativen Verzeichnis
-	#	9 => not used - it is only an alternative to (8)
+		8	= Die Datenbank der Einschreibe-ModeratorInnen befindet sich in einem alternativen Verzeichnis
+		9	= Die Datenbank der Fern-AdministratorInnen befindet sich in einem alternativen Verzeichnis
       }
 
 
@@ -188,6 +188,7 @@ Lang {
 		DefaultFiles	= vorgegebene Dateien
 		ListLanguage	= Sprache der Liste
 		ListCharset		= Zeichensatz der Liste
+		ModSubOverridesRemote	= Hinweis: falls sowohl die Datenbank der Einsende-ModeratorInnen als auch die der Fern-AdministratorInnen in einem nicht-Standard-Verzeichnis liegen, dann wird die Einsende-ModeratorInnen-Datenbank für beides verwendet
 	  }
 
 

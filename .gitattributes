@@ -28,6 +28,7 @@ scripts/check_languages.sh -text
 scripts/debian.sh -text
 spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
+spec/release-policy.txt -text
 template/config_admin.cs -text
 template/config_all.cs -text
 template/config_archive.cs -text

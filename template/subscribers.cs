@@ -42,8 +42,19 @@
 			<?cs elif:(Data.List.PartType == "deny") ?>
 				<li><?cs call:checkbox("k") ?></li>
 			<?cs elif:(Data.List.PartType == "mod") ?>
-				<li><?cs call:setting("7") ?></li>
-				<li><?cs call:setting("8") ?></li>
+				<li><?cs call:checkbox("m") ?>
+					<?cs if:Data.List.Options.m ?>
+						<ul><li><?cs call:setting("7") ?></li></ul><?cs /if ?>
+					</li>
+				<li><?cs call:checkbox("s") ?>
+					<?cs if:Data.List.Options.s ?>
+						<ul><li><?cs call:setting("8") ?></li></ul><?cs /if ?>
+					</li>
+				<li><?cs call:checkbox("r") ?>
+					<?cs if:Data.List.Options.r ?>
+						<ul><li><?cs call:setting("9") ?>
+							<?cs var:Lang.Misc.ModSubOverridesRemote ?></li></ul><?cs /if ?>
+					</li>
 			<?cs /if ?>
 
 			<li><!-- include default form values -->

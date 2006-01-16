@@ -26,7 +26,7 @@
 					</select></li><?cs /if ?>
 
 			<!-- charset -->
-			<?cs if:Data.useCharSet ?>
+			<?cs if:Data.List.CharSet ?>
 				<li><label for="list_charset"><?cs var:html_escape(Lang.Misc.ListCharset)
 						?>:</label>
 					<input type="text" name="list_charset" id="list_charset" size="30"

@@ -27,7 +27,7 @@
 			<li><?cs call:checkbox("s") ?>
 				<ul>
 				<!-- custom path to subscription moderators -->
-				<li><?cs call:setting("8") ?></li>
+				<li><?cs call:setting("8") ?><?cs if:(Data.List.Settings.8.state && Data.List.Settings.9.state) ?>(<?cs var:Lang.Misc.ModSubOverridesRemote ?>)<?cs /if ?></li>
 				</ul></li>
 
 			<li><!-- include default form values -->

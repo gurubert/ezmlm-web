@@ -1,0 +1,19 @@
+1) update version number
+ * README
+ * ezmlm-web.cgi
+ * UPGRADING
+ * template/footer.cs
+
+2) update changelog
+
+3) create tar.gz
+	./make-tar.sh X.Y.Z
+
+4) create debian package
+	scripts/debian
+	scripts/debian check
+
+5) upload debian package
+	scp XYZ.deb uml-bastelecke@systemausfall.org:/data/deb-repo/incoming/unstable
+
+6) update website

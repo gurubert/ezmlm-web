@@ -15,16 +15,9 @@ you surely did this already :)
 
 
 2) install required additional software
-2.1) clearsilver perl bindings
+clearsilver perl bindings:
 	* download clearsilver (http://clearsilver.net) v0.10.2 or higher
 	* compile and install it with perl enabled
-
-2.2) additional perl modules
-You can install the following modules via cpan:
-	+ Mail::Ezmlm v0.07 (current version!)
-	+ Mail::Address v1.15
-	+ DB_File v1.65
-(simply run "cpan" and enter "install Mail::Ezmlm" ... at the cpan prompt)
 
 
 3) create user-specific suid binaries

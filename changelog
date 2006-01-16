@@ -1,3 +1,14 @@
+Version 3.1 - 01/14/02006
+ * fully compatible with ezmlm-idx v5.0
+ * change language of list (idx >= 5.0)
+ * change charset of list (idx >= 5.0)
+ * 'modsub' and 'remote' can be changed independently
+ * improved configuration parsing
+ * requires Mail::Ezmlm v0.07
+
+Version 3.0.2 - 01/11/02006
+ * fixed two confusing description strings
+
 Version 3.0.1 - 01/06/02006
  * allow several special characters in local part of mail address (RFC2822)
 
