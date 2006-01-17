@@ -567,7 +567,6 @@ sub set_pagedata4options {
 
 	for ($i=0; $i<=9; $i++) {
 		unless (($i eq 1) || ($i eq 2)) {
-			# TODO: maybe add "-" to the pattern to avoid strange directory settings ending in a digit :)
 			$state = ($options =~ /\s-$i (?:'(.+?)')/);
 			unless ($state) {
 				# set default values
@@ -651,8 +650,7 @@ sub delete_list {
 			$warning = 'DotQmailDirAccessDenied';
 			return (1==0);
 		}
-		# TODO: this could possibly move some qmail files of other lists - improve it!
-		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
+		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress(|-default|-owner|-return-default|-reject-default|-accept-default|-confirm-default|-discard-default|-digest-owner|-digest|-digest-return-default)$/ } readdir DIR;
 		closedir DIR;
 		foreach (@files) {
 			unless (move($_, "$SAFE_DIR")) {
@@ -882,7 +880,7 @@ sub create_list {
 	# Some taint checking ...
 	$qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
 	$listname = $q->param('list');
-	if ($listname =~ m/[^\w\.-]/) {
+	if ($listname =~ m/[^\w\._\-]/) {
 		$warning = 'InvalidListName';
 		return (1==0);
    	}
@@ -1140,7 +1138,7 @@ sub update_webusers {
 	my $listname = $q->param('list');
 	my $webusers_filtered = $q->param('webusers');
 	# remove any insecure characters (e.g. a line break :))
-	$webusers_filtered =~ s/[^\w_,-]/ /gs;
+	$webusers_filtered =~ s/[^\w,_\.\-]/ /gs;
 	open(TMP, "<$temp_file");
 	unless (open(WU, ">$WEBUSERS_FILE")) {
 		warn "the webusers file ($WEBUSERS_FILE) is not writable";
