@@ -1,6 +1,6 @@
-=================
-| ezmlm-web-3.1 |
-=================
+===================
+| ezmlm-web-3.1.1 |
+===================
 
 If you only want to know how to install ezmlm-web, then you should
 read INSTALL.
@@ -21,7 +21,7 @@ VIII.   Bugs && Bug Reports
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
 ==================
-ezmlm-web - version 3.1 - 12/22/02005
+ezmlm-web - version 3.1.1 - 01/19/02006
 
 Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
 

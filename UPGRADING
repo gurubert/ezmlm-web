@@ -2,6 +2,12 @@ This file contains some useful hints for upgrading from a previous version of ez
 
 ##############################################################################
 
+UPGRADING ezmlm-web 3.1 to ezmlm-web 3.1.1
+
+nothing
+
+------------------------------------------------------------------------------
+
 UPGRADING ezmlm-web 3.0 to ezmlm-web 3.1
 
 1) update the perl module Mail::Ezmlm to v0.07

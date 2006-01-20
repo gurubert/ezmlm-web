@@ -1,6 +1,6 @@
 #!/usr/bin/perl 
 #===========================================================================
-# ezmlm-web.cgi - version 3.1
+# ezmlm-web.cgi - version 3.1.1
 # ==========================================================================
 # All user configuration happens in the config file ``ezmlmwebrc''
 # POD documentation is at the end of this file

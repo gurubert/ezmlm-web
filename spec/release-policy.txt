@@ -1,10 +1,13 @@
 1) update version number
+ * changelog
  * README
  * ezmlm-web.cgi
  * UPGRADING
  * template/footer.cs
+ * debian-related/changelog.Debian
+ * debian-related/DEBIAN/control
 
-2) update changelog
+2) create new tag
 
 3) create tar.gz
 	./make-tar.sh X.Y.Z
@@ -17,3 +20,4 @@
 	scp XYZ.deb uml-bastelecke@systemausfall.org:/data/deb-repo/incoming/unstable
 
 6) update website
+

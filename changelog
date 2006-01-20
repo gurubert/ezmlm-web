@@ -1,3 +1,8 @@
+Version 3.1.1 - 01/19/02006
+ * more careful removal of dotmail files
+ * allow dots in webuser names
+ * allow underscores in descriptive listname
+
 Version 3.1 - 01/14/02006
  * fully compatible with ezmlm-idx v5.0
  * change language of list (idx >= 5.0)

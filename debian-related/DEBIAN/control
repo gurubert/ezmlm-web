@@ -1,5 +1,5 @@
 Package: ezmlm-web
-Version: 3.1-3
+Version: 3.1.1-1
 Section: admin
 Priority: extra
 Architecture: all
@@ -16,5 +16,6 @@ Description: Web interface for ezmlm-idx mailing list administration
   * qmail - http://cr.yp.to/qmail.html
   * ezmlm-idx - http://ezmlm.org/
   * clearsilver for perl (>= 0.10.2) - http://www.clearsilver.net/downloads/
-  * some perl modules (see README.Debian)
+  * Mail::Ezmlm perl module via cpan or as debian package from
+  	https://systemausfall.org/toolforge/debian
 
