@@ -7,7 +7,7 @@ OVERVIEW:
   3 - configuration file
   4 - compile cgi wrapper
   5 - install cgi wrapper
-  6 - (optional) configure access control (http authentication)
+  6 - [optional] configure access control (http authentication)
   7 - css stylesheet file
   8 - final test
 

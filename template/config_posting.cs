@@ -54,7 +54,7 @@
 			<!-- mimeremove and mimereject -->
 			<li><?cs call:checkbox("x") ?>
 				<?cs if:(Data.List.Options.x == 1) ?><ul>
-				<!-- turn off mimermove, if "-x" is not activated, as it will be
+				<!-- turn off mimeremove, if "-x" is not activated, as it will be
 						removed during the next config_update -->
 					<li><?cs var:html_escape(Lang.Misc.MimeReject) ?>:<br/>
 						<textarea name="mimereject" rows="4" cols="70"><?cs

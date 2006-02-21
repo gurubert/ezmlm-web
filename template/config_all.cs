@@ -47,6 +47,12 @@
 			<!-- remove ezmlm-warn -->
 			<li><?cs call:checkbox("w") ?></li>
 
+			<!-- turn on digest list -->
+			<li><?cs call:checkbox("d") ?></li>
+
+			<!-- digest settings -->
+			<li><?cs call:setting("4") ?></li>
+
 			<!-- archive messages -->
 			<li><?cs call:checkbox("a") ?></li>
 
@@ -126,7 +132,7 @@
 			<!-- mimeremove and mimereject -->
 			<li><?cs call:checkbox("x") ?>
 				<?cs if:(Data.List.Options.x == 1) ?><ul>
-				<!-- turn off mimermove, if "-x" is not activated, as it will be
+				<!-- turn off mimeremove, if "-x" is not activated, as it will be
 						removed during the next config_update -->
 					<li><?cs var:html_escape(Lang.Misc.MimeReject) ?>:<br/>
 						<textarea name="mimereject" rows="4" cols="70"><?cs

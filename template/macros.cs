@@ -52,6 +52,3 @@
 	else ?><?cs var:text ?><?cs /if ?><?cs
  /def ?>
 
-<?cs def:display_option(optname)
-	?><?cs linclude:TemplateDir + "/config_options/" + optname + ".cs" ?><?cs
- /def ?>

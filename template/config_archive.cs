@@ -17,7 +17,7 @@
 			<!-- archive messages -->
 			<li><?cs call:checkbox("a") ?>
 				<ul>
-					<!-- subscripiton and archive are public -->
+					<!-- subscription and archive are public -->
 					<li><?cs call:checkbox("p") ?></li>
 					
 					<!-- only moderators may access the archive -->

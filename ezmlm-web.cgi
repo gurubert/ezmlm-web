@@ -150,7 +150,6 @@ elsif ($action eq '' || $action eq 'list_select') {
 	}
 } elsif ($action eq 'list_delete_do') {
 	# User really wants to delete a list ...
-	warn "do it";
 	if (defined($q->param('list'))) {
 		$success = 'DeleteList' if (&delete_list());
 	} else {
@@ -948,14 +947,20 @@ sub extract_options_from_params()
 {
 	# Work out the command line options ...
 	my ($options, $avail_options, $settings, $avail_settings, $i);
-	my ($listname, $list, $old_options, $state, $old_key);
+	my ($listname, $old_options, $state, $old_key);
 
 	# NOTE: we have to define _every_ (even unchanged) setting
 	# as ezmlm-make removes any undefined value
 
 	$listname = $q->param('list');
-	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
-	$old_options = $list->getconfig();
+	if (-e "$LIST_DIR/$listname") {
+		# the list does already exist
+		my $list = new Mail::Ezmlm("$LIST_DIR/$listname");
+		$old_options = $list->getconfig();
+	} else {
+		# creating a new list
+		$old_options = $DEFAULT_OPTIONS;
+	}
 
 	################ options ################
 	$i = 0;
