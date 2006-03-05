@@ -33,14 +33,14 @@ template/config_admin.cs -text
 template/config_all.cs -text
 template/config_archive.cs -text
 template/config_main.cs -text
-template/config_options/admin_allow.cs -text
 template/config_options/admin_edit_text.cs -text
+template/config_options/admin_enabled.cs -text
 template/config_options/admin_get_subscribers.cs -text
 template/config_options/admin_path.cs -text
 template/config_options/archive_deny_unknown.cs -text
 template/config_options/archive_enabled.cs -text
 template/config_options/archive_mod_only.cs -text
-template/config_options/archive_public.cs -text
+template/config_options/archive_remove_private_header.cs -text
 template/config_options/block_deny.cs -text
 template/config_options/block_nonmod_post.cs -text
 template/config_options/block_others_archive.cs -text
