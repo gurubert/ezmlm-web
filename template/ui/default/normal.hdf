@@ -29,6 +29,16 @@ UI	{
 
 
 	Options	{
+		
+		Create {
+			Listname	= create_listname
+			Listaddress	= create_listaddress
+			Listlanguage	= lang_select
+			Mysql		= mysql
+			Webuser		= webusers
+		  }
+
+
 		Subscribers	{
 			Subscribers	= {}
 			Digest	{

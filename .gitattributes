@@ -49,6 +49,8 @@ template/config_options/charset_select.cs -text
 template/config_options/confirm_post.cs -text
 template/config_options/confirm_sub.cs -text
 template/config_options/confirm_unsub.cs -text
+template/config_options/create_listaddress.cs -text
+template/config_options/create_listname.cs -text
 template/config_options/digest_enabled.cs -text
 template/config_options/digest_settings.cs -text
 template/config_options/from_address.cs -text
