@@ -15,6 +15,7 @@ use ClearSilver;
 use Mail::Ezmlm;
 use Mail::Address;
 use File::Copy;
+use File::Path;
 use DB_File;
 use CGI;
 use IO::File;
@@ -291,6 +292,14 @@ sub load_hdf {
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
 	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
+
+	my $ui_set = 'default';
+	my $ui_template = "normal";
+	&fatal_error("UI template file not found") unless (-e "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
+	$hdf->setValue("Config.UI.Set", $ui_set);
+	$hdf->setValue("Config.UI.Template", $ui_template);
+	$hdf->readFile("$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
+
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
 	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
@@ -321,7 +330,12 @@ sub output_page {
 
 	$cs->parseFile($pagefile);
 
-	print $cs->render();
+	my $output;
+	if ($output = $cs->render()) {
+		print $output;
+	} else {
+		&fatal_error($cs->displayError());
+	}
 }
 
 # ---------------------------------------------------------------------------
@@ -611,11 +625,54 @@ sub get_list_part
 
 # ---------------------------------------------------------------------------
 
+sub get_dotqmail_files {
+	my ($list, @files, $qmail_prefix);
+
+	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
+
+	# get the location of the dotqmail files of the list
+	# read 'dot' for idx v5
+	$qmail_prefix = $list->getpart('dot');
+	# untaint content (we trust in it)
+	if ($qmail_prefix) {
+		$qmail_prefix =~ m/^(.*)$/;
+		$qmail_prefix = $1;
+	}
+	# read 'config' (line starts with "T") for idx v4
+	unless ($qmail_prefix) {
+		my $config = $list->getpart('config');
+		$config =~ m/^T:(.*)$/m;
+		$qmail_prefix = $1;
+	}
+	chomp($qmail_prefix);
+
+	# return without result and print a warning, if no dotqmail files were found
+	unless ($qmail_prefix) {
+		warn "[ezmlm-web]: could not get the location of the dotqmail files of this list";
+		return ();
+	}
+
+	# get list of existing files (remove empty entries)
+	@files = grep {/./} map { (-e "$qmail_prefix$_")? "$qmail_prefix$_" : undef  } (
+			'',
+			'-default',
+			'-owner',
+			'-return-default',
+			'-reject-default',
+			'-accept-default',
+			'-confirm-default',
+			'-discard-default',
+			'-digest-owner',
+			'-digest',
+			'-digest-return-default');
+	return @files;
+}
+
+# ---------------------------------------------------------------------------
+
 sub delete_list {
 	# Delete a list ...
 
-	# Fixes a bug from the previous version ... when the .qmail file has a
-	# different name to the list. We use outlocal to handle vhosts ...
 	my ($list, $listaddress, $listadd); 
 	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 	if ($listadd = $list->getpart('outlocal')) {
@@ -639,40 +696,46 @@ sub delete_list {
 
 		$SAFE_DIR .= '/' . $q->param('list') . "-$i";
 
-		my ($oldfile); $oldfile = "$LIST_DIR/" . $q->param('list');
+		my @files = &get_dotqmail_files();
+
+		# remove list directory
+		my $oldfile = "$LIST_DIR/" . $q->param('list');
 		unless (move($oldfile, $SAFE_DIR)) {
 			$warning = 'SafeRemoveRenameDirFailed';
 			return (1==0);
 		}
 
-		unless (opendir(DIR, "$HOME_DIR")) {
-			$warning = 'DotQmailDirAccessDenied';
-			return (1==0);
-		}
-		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress(|-default|-owner|-return-default|-reject-default|-accept-default|-confirm-default|-discard-default|-digest-owner|-digest|-digest-return-default)$/ } readdir DIR;
-		closedir DIR;
+		# remove dotqmail files
 		foreach (@files) {
 			unless (move($_, "$SAFE_DIR")) {
 				$warning = 'SafeRemoveMoveDotQmailFailed';
 				return (1==0); 
 			}
 		}
+
 		warn "List '$oldfile' moved (deleted)";   
 	} else {
 		# This, however, does DELETE the list. I don't like the idea, but I was
 		# asked to include support for it so ...
-		unless (rmtree("$LIST_DIR/" . $q->param('list'))) {
+		my @files = &get_dotqmail_files();
+		my $olddir = $q->param('list');
+		# untaint list directory name
+		$olddir =~ m#^([^/]*)$#;
+		$olddir = $1;
+		# first: check for invalid list directory
+		unless (($olddir ne '') && ($olddir ne '.' ) && ($olddir ne '..')) {
 			$warning = 'UnsafeRemoveListDirFailed';
 			return (1==0);
 		}
-		opendir(DIR, "$HOME_DIR") or &fatal_error("Unable to get directory listing: $!");
-		my @files = map { "$HOME_DIR/$1" if m{^(\.qmail.+)$} } grep { /^\.qmail-$listaddress/ } readdir DIR;
-		closedir DIR;
 		if (unlink(@files) <= 0) {
 			$warning = 'UnsafeRemoveDotQmailFailed';
 			return (1==0);
 		}
-		warn "List '$list->thislist()' deleted";
+		unless (File::Path::rmtree("$LIST_DIR/$olddir")) {
+			$warning = 'UnsafeRemoveListDirFailed';
+			return (1==0);
+		}
+		warn "List '" . $list->thislist() . "' deleted";
 	}
 	$q->param(-name=>'list', -values=>'');
 }
@@ -1274,26 +1337,6 @@ sub check_language {
 }
 
 # ---------------------------------------------------------------------------
-
-sub rmtree {
-   # A subroutine to recursively delete a directory (like rm -f).
-   # Based on the one in the perl cookbook :)
-    
-   use File::Find qw(finddepth);
-   File::Find::finddepth sub {
-         # assume that File::Find::name is secure since it only uses data we pass it
-         my($name) = $File::Find::name =~ m{^(.+)$}; 
-         
-         if (!-l && -d _) {
-            rmdir($name)  or warn "couldn't rmdir $name: $!";
-         } else {
-            unlink($name) or warn "couldn't unlink $name: $!";
-         }
-      }, @_;
-      1;                                   
-}
-
-# ------------------------------------------------------------------------
 
 sub fatal_error() {
 	my $text = shift;

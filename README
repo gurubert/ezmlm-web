@@ -107,6 +107,7 @@ This version of ezmlm-web requires the following;
   + Getopt::Std v4.1
   + File::Find v?
   + File::Copy v2.02
+  + File::Path v1.07
   + Text::ParseWords v3.24
 
 The version number indicates the version of the module that ezmlm-web was
