@@ -4,6 +4,8 @@ LanguageDir
 Stylesheet
 HelpIconURL
 Config.Title
+Config.UI.LinkAttrs.web_lang
+Config.UI.LinkAttrs.template
 
 Data.Action
 Data.areDefaultTextsAvailable

@@ -66,6 +66,32 @@ def:is_substring(text_in, search_in)
 	?><?cs set:search = search_in
 	?><?cs set:found = 0
 	?><?cs loop: index = #0, string.length(text), #1
-	?><?cs if:string.slice(text, index, index + string.length(search) - #1) == search ?><?cs set:found = 1 ?><?cs /if
+	?><?cs if:string.slice(text, index, index + string.length(search) - #1) == searchi
+	?><?cs set:found = 1 ?><?cs /if
 	?><?cs /loop ?><?cs
+ /def ?><?cs
+
+def:link(attr1, value1, attr2, value2, attr3, value3)
+	?><?cs each:attrs = Temp
+		?><?cs set:attrs = ""
+	?><?cs /each
+	?><?cs each:attrs = Config.UI.LinkAttrs
+		?><?cs set:Temp[name(attrs)] = attrs
+		?><?cs /each
+	?><?cs if:attr1 != "" ?><?cs set:Temp[attr1] = value1 ?><?cs /if
+	?><?cs if:attr2 != "" ?><?cs set:Temp[attr2] = value2 ?><?cs /if
+	?><?cs if:attr3 != "" ?><?cs set:Temp[attr3] = value3 ?><?cs /if
+	?><?cs var:ScriptName
+	?><?cs set:first_each = 1
+	?><?cs if:subcount(Temp) > 0
+		?><?cs each:attrs = Temp
+			?><?cs if:(name(attrs) != "") && (attrs != "")
+				?><?cs if:first_each == 1 ?><?cs
+					set:first_each = 0 ?>?<?cs
+				else
+					?>&amp;<?cs /if
+				?><?cs var:url_escape(name(attrs)) ?>=<?cs var:url_escape(attrs)
+			?><?cs /if
+		?><?cs /each
+	?><?cs /if ?><?cs
  /def ?>

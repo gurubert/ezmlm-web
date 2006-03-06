@@ -36,7 +36,7 @@
 	<fieldset class="form">
 		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
 
-	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 
 		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		
@@ -79,7 +79,7 @@
 
 	<table class="subscribers"><tr>
 	<?cs if:subcount(Data.List.Subscribers) > 0 ?>
-		<td><form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+		<td><form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 			<?cs if:Data.List.PartType ?>
 				<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
@@ -105,7 +105,7 @@
 		</ul></form></td>
 	<?cs /if ?>
 
-	<td><form method="post" action="<?cs var:ScriptName ?>" enctype="multipart/form-data">
+	<td><form method="post" action="<?cs call:link("","","","","","") ?>" enctype="multipart/form-data">
 		<!-- this form has to be "multipart/form-data" to make file upload work -->
 		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 		<?cs if:Data.List.PartType ?>

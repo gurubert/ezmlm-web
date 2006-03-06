@@ -16,7 +16,7 @@
 			<?cs var:html_escape(Lang.Introduction.ResetTextFile) ?>
 		</div>
 
-	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 		<input type="hidden" name="file" value="<?cs var:Data.List.File.Name ?>">
 		<input type="hidden" name="action" value="textfile_reset" />
@@ -29,7 +29,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.TextFileEdit) ?> </legend>
 
-<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
 	<input type="hidden" name="file" value="<?cs var:Data.List.File.Name ?>">
 	

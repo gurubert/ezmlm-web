@@ -296,8 +296,8 @@ sub load_hdf {
 	my $ui_set = 'default';
 	my $ui_template = "normal";
 	&fatal_error("UI template file not found") unless (-e "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
-	$hdf->setValue("Config.UI.Set", $ui_set);
-	$hdf->setValue("Config.UI.Template", $ui_template);
+	$hdf->setValue("Config.UI.LinkAttrs.web_lang", $HTML_LANGUAGE);
+	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
 	$hdf->readFile("$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
 
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});

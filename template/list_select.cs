@@ -24,7 +24,9 @@
 		<?cs loop: y = #0, columns-1, #1 ?>
 		<td>
 			<?cs set:listname = Data.Lists[y * col_len + x] ?><?cs
-				if:listname ?><a href="<?cs var:ScriptName ?>?list=<?cs var:url_escape(listname) ?>&amp;action=subscribers" title="<?cs var:html_escape(listname) ?>"><?cs call:limit_string_len(html_escape(listname),18) ?></a>
+				if:listname ?><a href="<?cs call:link("list",listname,"action","subscribers",
+						"","") ?>" title="<?cs var:html_escape(listname) ?>"><?cs
+						call:limit_string_len(html_escape(listname),18) ?></a>
 				<?cs /if ?>
 		</td>
 		<?cs /loop ?>

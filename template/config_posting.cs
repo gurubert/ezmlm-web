@@ -9,7 +9,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.ConfigPosting) ?> </legend>
 
-	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
+	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="config_subset" value="posting" />
 
 		<?cs call:show_options(UI.Options.Config.Posting) ?>
