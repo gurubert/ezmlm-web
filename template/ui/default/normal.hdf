@@ -3,28 +3,26 @@ UI	{
 	Navigation	{
 		ListSelect	= 1
 		ListCreate	= 1
-		Properties	= {
-			Subscribers	{
-				Subscribers	= 1
-				Digest		= 1
-				Allow		= 1
-				Deny		= 1
-				Moderators	= 1
-			  }
-
-			Config	{
-				Main		= 1
-				Subscription	= 1
-				Posting		= 1
-				Processing	= 1
-				Archive		= 1
-				Admin		= 1
-				All			= 1
-			  }
-
-			TextEdit	= 1
-			ListDelete	= 1
+		Subscribers	{
+			Subscribers	= 1
+			Digest		= 1
+			Allow		= 1
+			Deny		= 1
+			Moderators	= 1
 		  }
+
+		Config	{
+			Main		= 1
+			Subscription	= 1
+			Posting		= 1
+			Processing	= 1
+			Archive		= 1
+			Admin		= 1
+			All			= 1
+		  }
+
+		TextEdit	= 1
+		ListDelete	= 1
 
 		Help	= 1
 	  }
@@ -32,7 +30,7 @@ UI	{
 
 	Options	{
 		Subscribers	{
-			Subscribers	{}
+			Subscribers	= {}
 			Digest	{
 				Enabled	= digest_enabled
 				Settings	= digest_settings
@@ -52,7 +50,7 @@ UI	{
 					Path	= mod_sub_path
 				  }
 				Administration	{
-					Self	= admin_allow
+					Self	= admin_enabled
 					Path	= admin_path
 				  }
 			  }
@@ -72,10 +70,13 @@ UI	{
 			  }
 
 			Archive {
-				Enabled		= archive_enabled
+				Enabled		{
+					Self		= archive_enabled
+					Public		= public
+					ModOnly		= archive_mod_only
+					Guard		= archive_deny_unknown
+				  }
 				RemovePrivateHeader	= archive_remove_private_header
-				ModOnly		= archive_mod_only
-				Guard		= archive_deny_unknown
 			  }
 			
 			Subscription {
@@ -89,10 +90,12 @@ UI	{
 			  }
 
 			Admin	{
-				Enabled		= admin_enabled
-				RequestSubscribers	= admin_get_subscribers
-				EditText	= admin_edit_text
-				Path		= admin_path
+				Enabled		{
+					Self		= admin_enabled
+					RequestSubscribers	= admin_get_subscribers
+					EditText	= admin_edit_text
+					Path		= admin_path
+				  }
 			  }
 
 			Posting	{
@@ -104,18 +107,69 @@ UI	{
 					NonMod	= block_nonmod_post
 					Path	= mod_post_path
 				  }
-				SizeMin		= msgsize_min
 				SizeMax		= msgsize_max
-				MimeReject	= mimereject
+				SizeMin		= msgsize_min
+				MimeCheck	{
+					Self		= mimecheck
+					MimeReject	= mimereject
+				  }
 			  }
 
 			Processing {
 				Prefix		= prefix
 				Trailer		= trailer
 				From		= from_address
-				MimeRemove	= mimeremove
+				MimeCheck	{
+					Self		= mimecheck
+					MimeRemove	= mimeremove
+				  }
 				HeaderRemove	= headerremove
 				HeaderAdd	= headeradd
+			  }
+
+			Overview {
+				Public		= public
+				ConfirmSub	= confirm_sub
+				ConfirmUnsub	= confirm_unsub
+				ModSubEnable	= mod_sub
+				UseDeny		= block_deny
+				BlockOthers	= block_others_post
+				ConfirmPosting		= confirm_post
+				ModPosting	= mod_post
+				NonModPosting	= block_nonmod_post
+				MailmanRequests	= mailman_requests
+				RemoveWarn	= warn_remove
+				DigestEnabled	= digest_enabled
+				DigestSettings	= digest_settings
+				ArchiveEnabled	= archive_enabled
+				ArchiveModOnly	= archive_mod_only
+				ArchiveGuard	= archive_deny_unknown
+				RemovePrivateHeader	= archive_remove_private_header
+				AdminEnabled	= admin_enabled
+				AdminRequestSubscribers	= admin_get_subscribers
+				AdminEditText	= admin_edit_text
+				FromAddress		= from_address
+				Owner		= owner_address
+				SQL			= mysql
+				MainList	= mainlist
+				ModPostPath	= mod_post_path
+				ModSubPath	= mod_sub_path
+				AdminPath	= admin_path
+				Prefix		= prefix
+				Trailer		= trailer
+				SizeMax		= msgsize_max
+				SizeMin		= msgsize_min
+				MimeCheck	{
+					Self		= mimecheck
+					MimeRemove	= mimeremove
+					MimeReject	= mimereject
+				  }
+				HeaderRemove	= headerremove
+				HeaderAdd	= headeradd
+				Language	= lang_select
+				Charset		= charset_select
+				WebUsers	= webusers
+				
 			  }
 		  }
 

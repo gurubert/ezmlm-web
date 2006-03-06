@@ -12,30 +12,13 @@
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="config_subset" value="archive" />
 
-		<ul>
-		
-			<!-- archive messages -->
-			<li><?cs call:checkbox("a") ?>
-				<ul>
-					<!-- subscription and archive are public -->
-					<li><?cs call:checkbox("p") ?></li>
-					
-					<!-- only moderators may access the archive -->
-					<li><?cs call:checkbox("b") ?></li>
+		<?cs call:show_options(UI.Options.Config.Archive) ?>
 
-					<!-- block unknown users from archive -->
-					<li><?cs call:checkbox("g") ?></li>
-				</ul></li>
+		<!-- include default form values -->
+		<?cs include:TemplateDir + '/form_common.cs' ?>
 
-			<!-- remove 'no-archive' header -->
-			<li><?cs call:checkbox("i") ?></li>
-		
-			<li><!-- include default form values -->
-			<?cs include:TemplateDir + '/form_common.cs' ?>
-
-			<input type="hidden" name="action" value="config_do" />
-			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
-		</ul>
+		<input type="hidden" name="action" value="config_do" />
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
 
 	</form>
 </fieldset>

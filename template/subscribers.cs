@@ -26,7 +26,12 @@
 <?cs /if ?>
 
 
-<?cs if:((Data.List.PartType == "digest") || (Data.List.PartType == "deny") || (Data.List.PartType == 'mod')) ?>
+<?cs if:(	((Data.List.PartType == "digest")
+				&& (subcount(UI.Options.Subscribers.Digest) >0)) 
+			|| ((Data.List.PartType == "deny")
+				&& (subcount(UI.Options.Subscribers.Deny) >0))
+			|| ((Data.List.PartType == 'mod')
+				&& (subcount(UI.Options.Subscribers.Moderators) >0))) ?>
 
 	<fieldset class="form">
 		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
@@ -35,36 +40,21 @@
 
 		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		
-		<ul>
 			<?cs if:(Data.List.PartType == "digest") ?>
-				<li><?cs call:checkbox("d") ?></li>
-				<li><?cs call:setting("4") ?></li>
+				<?cs call:show_options(UI.Options.Subscribers.Digest) ?>
 			<?cs elif:(Data.List.PartType == "deny") ?>
-				<li><?cs call:checkbox("k") ?></li>
+				<?cs call:show_options(UI.Options.Subscribers.Deny) ?>
 			<?cs elif:(Data.List.PartType == "mod") ?>
-				<li><?cs call:checkbox("m") ?>
-					<?cs if:Data.List.Options.m ?>
-						<ul><li><?cs call:setting("7") ?></li></ul><?cs /if ?>
-					</li>
-				<li><?cs call:checkbox("s") ?>
-					<?cs if:Data.List.Options.s ?>
-						<ul><li><?cs call:setting("8") ?></li></ul><?cs /if ?>
-					</li>
-				<li><?cs call:checkbox("r") ?>
-					<?cs if:Data.List.Options.r ?>
-						<ul><li><?cs call:setting("9") ?>
-							<?cs var:Lang.Misc.ModSubOverridesRemote ?></li></ul><?cs /if ?>
-					</li>
+				<?cs call:show_options(UI.Options.Subscribers.Moderators) ?>
 			<?cs /if ?>
 
-			<li><!-- include default form values -->
+			<!-- include default form values -->
 			<?cs include:TemplateDir + '/form_common.cs' ?>
 
 			<input type="hidden" name="config_subset" value="RESERVED-subscribers" />
 			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 			<input type="hidden" name="action" value="config_do" />
-			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
-		</ul>
+			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
 	</form>
 	</fieldset>
 <?cs /if ?>

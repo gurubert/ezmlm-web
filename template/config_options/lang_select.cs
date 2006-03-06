@@ -1,3 +1,4 @@
+<!-- REMOVE --><?cs include:TemplateDir + '/macros.cs' ?>
 <!-- list language -->
 <?cs if:subcount(Data.List.AvailableLanguages) > 0 ?>
 	<label for="list_language"><?cs var:html_escape(Lang.Misc.ListLanguage)
@@ -8,4 +9,3 @@
 					?>selected="selected"<?cs /if ?>><?cs var:item ?></option>
 			<?cs /each ?>
 		</select><?cs /if ?>
-

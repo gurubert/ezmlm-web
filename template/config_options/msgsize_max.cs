@@ -1,3 +1,4 @@
+<!-- REMOVE --><?cs include:TemplateDir + '/macros.cs' ?>
 <!-- message size limit -->
 <input type="checkbox" name="msgsize_max_state"
 	value="selected" id="msgsize_max_state" <?cs

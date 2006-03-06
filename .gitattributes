@@ -58,6 +58,7 @@ template/config_options/lang_select.cs -text
 template/config_options/mailman_requests.cs -text
 template/config_options/mainlist.cs -text
 template/config_options/mime_both.cs -text
+template/config_options/mimecheck.cs -text
 template/config_options/mimereject.cs -text
 template/config_options/mimeremove.cs -text
 template/config_options/mod_post.cs -text

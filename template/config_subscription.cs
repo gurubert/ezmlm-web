@@ -12,30 +12,13 @@
 	<form method="post" action="<?cs var:ScriptName ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="config_subset" value="subscription" />
 
-		<ul>
+		<?cs call:show_options(UI.Options.Config.Subscription) ?>
 
-			<!-- public subsccription and archive -->
-			<li><?cs call:checkbox("p") ?></li>
+		<!-- include default form values -->
+		<?cs include:TemplateDir + '/form_common.cs' ?>
 
-			<!-- do not require confirmation for subscription -->
-			<li><?cs call:checkbox("h") ?></li>
-
-			<!-- do not require confirmation for unsubscribe -->
-			<li><?cs call:checkbox("j") ?></li>
-
-			<!-- moderate subscription -->
-			<li><?cs call:checkbox("s") ?>
-				<ul>
-				<!-- custom path to subscription moderators -->
-				<li><?cs call:setting("8") ?><?cs if:(Data.List.Settings.8.state && Data.List.Settings.9.state) ?>(<?cs var:Lang.Misc.ModSubOverridesRemote ?>)<?cs /if ?></li>
-				</ul></li>
-
-			<li><!-- include default form values -->
-			<?cs include:TemplateDir + '/form_common.cs' ?>
-
-			<input type="hidden" name="action" value="config_do" />
-			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li>
-		</ul>
+		<input type="hidden" name="action" value="config_do" />
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
 
 	</form>
 
