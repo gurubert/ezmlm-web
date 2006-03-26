@@ -1,5 +1,6 @@
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)
+   [suggested by Maurits Lamers]
  * minor stylesheet change (circumvents IE rendering bug)
  * case-insensitive check for mime type during address file upload
 
