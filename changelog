@@ -1,3 +1,15 @@
+Version 3.1.4 - 03/26/02006
+ * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)
+ * minor stylesheet change (circumvents IE rendering bug)
+ * case-insensitive check for mime type during address file upload
+
+Version 3.1.3 - 02/22/02006
+ * fixed removal of dotqmail files
+
+Version 3.1.2 - 02/15/02006
+ * honour DEFAULT_OPTIONS for new lists
+ * fixed portability issue of the suid-wrapper
+
 Version 3.1.1 - 01/19/02006
  * more careful removal of dotmail files
  * allow dots in webuser names

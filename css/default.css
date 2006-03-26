@@ -106,11 +106,11 @@ font.feature {
 	}
 
 #main_content fieldset.form form ul {
-	padding-left: 1%;
+	padding-left: 10px;
 	}
 
 #main_content fieldset.form form ul li ul {
-	padding-left: 3%;
+	padding-left: 25px;
 	}
 
 #main_content table.list_select {

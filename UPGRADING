@@ -2,9 +2,10 @@ This file contains some useful hints for upgrading from a previous version of ez
 
 ##############################################################################
 
-UPGRADING ezmlm-web 3.1 to ezmlm-web 3.1.1
+UPGRADING ezmlm-web 3.1 to ezmlm-web 3.1.4
 
-nothing
+1) a new (optional) configuration setting is available: DOTQMAIL_DIR
+Use it, if you run a multi domain vpopmail setup.
 
 ------------------------------------------------------------------------------
 

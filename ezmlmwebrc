@@ -12,6 +12,12 @@
 # This directory will automatically be created if needed.
 $LIST_DIR = "$HOME_DIR/lists";
 
+# Where do we store the dotqmail files of this user?
+# (defaults to the home directory of the executing user)
+# You will have to change this value, if you use a multi domain
+# vpopmail setup. Otherwise just leave the setting turned off.
+#$DOTQMAIL_DIR = '/home/vpopmail/domain';
+
 # Where is the webusers file for access-permissions
 # defaults to "$LIST_DIR/webusers"
 $WEBUSERS_FILE = "$LIST_DIR/webusers";

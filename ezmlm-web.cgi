@@ -43,7 +43,7 @@ my @tmp = getpwuid($>); use vars qw[$USER]; $USER=$tmp[0];
 
 use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
-use vars qw[$QMAIL_BASE $PRETTY_NAMES];
+use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 
@@ -76,10 +76,14 @@ if(defined($opt_d)) {
    $LIST_DIR = $1 if ($opt_d =~ /^([-\@\w.\/]+)$/);
 }
 
-# If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2), then use former default value for compatibility
+# If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2),
+# then use former default value for compatibility
 if (!defined($WEBUSERS_FILE)) {
    $WEBUSERS_FILE = $LIST_DIR . '/webusers'
 }
+
+# check for non-default dotqmail directory
+$DOTQMAIL_DIR = $HOME_DIR unless defined($DOTQMAIL_DIR);
 
 # check optional stylesheet
 $HTML_CSS_FILE = '' unless defined($HTML_CSS_FILE);
@@ -808,8 +812,9 @@ sub add_address {
 		# Sanity check
 		my $fileinfo = $q->uploadInfo($q->param('mailaddressfile'));
 		my $filetype = $fileinfo->{'Content-Type'};
-		unless($filetype =~ m{^text/}) {
+		unless($filetype =~ m{^text/}i) {
 			$warning = 'InvalidFileFormat';
+			warn "[ezmlm-web] mime type of uploaded file rejected: $filetype";
 			return (1==0);
 		}
 
@@ -964,7 +969,7 @@ sub create_list {
 		$warning = 'ListNameAlreadyExists';
 		return (1==0);
 	}
-	if (-e "$HOME_DIR/.qmail-$qmail") {
+	if (-e "$DOTQMAIL_DIR/.qmail-$qmail") {
 		$warning = 'ListAddressAlreadyExists';
 		return (1==0);
 	}
@@ -974,7 +979,7 @@ sub create_list {
 	my($list) = new Mail::Ezmlm;
 
 	unless ($list->make(-dir=>"$LIST_DIR/$listname",
-				-qmail=>"$HOME_DIR/.qmail-$qmail",
+				-qmail=>"$DOTQMAIL_DIR/.qmail-$qmail",
 				-name=>$q->param('inlocal'),
 				-host=>$q->param('inhost'),
 				-switches=>$options,

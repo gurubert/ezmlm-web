@@ -180,17 +180,19 @@ V. Notes
   idea. The only reason I put it in is that bvi@rucus asked for it.
   If you set $UNSAFE_RD = 0 (the default) in the config section, the
   ezmlm-web won't actually delete the list. In this case it moves the <list> 
-  to .<list> and all the associated .qmail files to a sub-directory called 
+  and all the associated .qmail files to a sub-directory called 
   deleted.qmail/ (In the users home directory. This is by far a safer way 
   (since you can restore lists) and therefore I recommend it.
-
-* The HTML interface has been tested using Nutscrape, Internet Exploder, and
-  Lynx. If anyone uses anything else and has problems, please let me know.
 
 * I suggest that you make use of custom ezmlmwebrc files rather than using
   the -d command line switches - it makes fault diagnosis easier ...
 
-* Please see the section on languages below.
+* Vpopmail users should set up different suid wrappers for every single
+  managed domain.
+  These wrappers should be accompanied by seperate ezmlmwebrc files with
+  different DOTQMAIL_DIR settings.
+  Please send me a more detailed description, if you managed to use ezmlm-web
+  with this kind of setup :)
 
 
 VI. Multi-Level Access
@@ -237,7 +239,7 @@ VII. Language Portablity
 =========================
 One of the great new features of version 2.0 is that it is essentially
 language independant. All of the fixed strings, help, etc is defined in the
-files of lang directory. Of course you can change them or create a new
+files of the lang directory. Of course you can change them or create a new
 translation.
 
 The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
