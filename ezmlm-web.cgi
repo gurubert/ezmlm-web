@@ -14,7 +14,6 @@ use Getopt::Std;
 use ClearSilver;
 use Mail::Ezmlm;
 use Mail::Address;
-use File::Copy;
 use File::Path;
 use DB_File;
 use CGI;
@@ -22,9 +21,8 @@ use IO::File;
 use POSIX qw(tmpnam);
 use Encode qw/ from_to /;	# add by ooyama for char convert
 
-# These two are actually included later and are put here so we remember them.
-#use File::Find if ($UNSAFE_RM == 1);
-#use File::Copy if ($UNSAFE_RM == 0);
+# do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
+# setting is turned on
 
 
 my $q = new CGI;
@@ -46,29 +44,50 @@ use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
+use vars qw[$DEFAULT_HOST];
+
+# some settings for encrypted mailing lists
+use vars qw[$GPG_SUPPORT];
 
 # set default TEXT_ENCODE
 use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte convert support
 
-# pagedata contains the hdf tree for clearsilver
-# pagename refers to the template file that should be used
-use vars qw[$DEFAULT_HOST];
+# "pagedata" contains the hdf tree for clearsilver
+# "pagename" refers to the template file that should be used
+# "ui_set" is the selected kind of interface ("normal", "gnupg", ...)
+# "ui_template" is one of "basic", "normal" and "expert"
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
+use vars qw[$ui_set $ui_template];
 
 # Get user configuration stuff
+my $config_file;
 if(defined($opt_C)) {
    $opt_C =~ /^([-\w.\/]+)$/;	# security check by ooyama
-   require "$1"; # Command Line
+   $config_file = $1; # Command Line
 } elsif(-e "$HOME_DIR/.ezmlmwebrc") {
-   require "$HOME_DIR/.ezmlmwebrc"; # User
+   $config_file = "$HOME_DIR/.ezmlmwebrc"; # User
 } elsif(-e "./ezmlmwebrc") {
-   require "./ezmlmwebrc"; # Install
+   $config_file = "./ezmlmwebrc"; # Install
 } elsif(-e "/etc/ezmlm-web/ezmlmwebrc") {
-   require "/etc/ezmlm-web/ezmlmwebrc"; # System (new style)
+   $config_file = "/etc/ezmlm-web/ezmlmwebrc"; # System (new style)
 } elsif(-e "/etc/ezmlm/ezmlmwebrc") {
-   require "/etc/ezmlm/ezmlmwebrc"; # System (old style)
+   $config_file = "/etc/ezmlm/ezmlmwebrc"; # System (old style)
 } else {
-   &fatal_error("Unable to read config file");
+   &fatal_error("Unable to find config file");
+}
+do $config_file;
+
+# do we support encrypted mailing lists?
+# see http://www.synacklabs.net/projects/crypt-ml/
+if (-e "$config_file" . ".encrypted") {
+	do "$config_file.encrypted";
+	# the config file should include "use Mail::Ezmlm::Gpg" as the use-line may not
+	# be used here
+	if (defined($GPG_SUPPORT) && ($GPG_SUPPORT)) {
+		$GPG_SUPPORT = 1;
+	} else {
+		$GPG_SUPPORT = 0;
+	}
 }
 
 # Allow suid wrapper to over-ride default list directory ...
@@ -297,12 +316,13 @@ sub load_hdf {
 	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
 	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
 
-	my $ui_set = 'default';
-	my $ui_template = "normal";
-	&fatal_error("UI template file not found") unless (-e "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
+	# the "ui_set" may be changed later according to the type of list, that we encounter
+	$ui_set = 'default';
+
+	# "normal", "basic" and "expert" should be supported
+	$ui_template = "normal";
 	$hdf->setValue("Config.UI.LinkAttrs.web_lang", $HTML_LANGUAGE);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
-	$hdf->readFile("$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
 
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
@@ -314,6 +334,10 @@ sub load_hdf {
 
 sub output_page {
 	# Print the page
+
+	&fatal_error("UI template file not found")
+		unless (-e "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
+	$pagedata->readFile("$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
 
 	$pagedata->setValue('Data.Success', "$success") if (defined($success));
 	$pagedata->setValue('Data.Error', "$error") if (defined($error));
@@ -433,17 +457,81 @@ sub set_pagedata()
 sub set_pagedata4list
 {
 	my $part_type = shift;
-	my ($list, $listname, $webusers);
-	my ($i, $item, @files);
-	my ($address, $addr_name, %pretty);
 
-	$listname = $q->param('list');
+	my $listname = $q->param('list');
 	
 	if (! -e "$LIST_DIR/$listname/lock" ) {
 		$warning = 'ListDoesNotExist' if ($warning eq '');
 		return;
 	}
+
+	# do the common configuration for all kind of lists
+	&set_pagedata4list_common($listname, $part_type);
 	
+	# is this list encrypted?
+	if (&is_list_encrypted($listname)) {
+		# some encryption specific stuff
+		&set_pagedata4list_encrypted($listname);
+	} else {
+		# do the non-encryption configuration
+		&set_pagedata4list_normal($listname, $part_type);
+	}
+
+	return (0==0);
+}
+
+# ---------------------------------------------------------------------------
+
+# extract hdf-data for encrypted lists
+# non-encrypted lists should not use this function
+sub set_pagedata4list_encrypted() {
+	my ($listname) = @_;
+	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key, %hash);
+
+	$gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
+
+	# read the configuration
+	my %config = $gpg_list->getconfig();
+	my $item;
+	foreach $item (keys %config) {
+		$pagedata->setValue("Data.List.gnupg_options.$item", $config{$item});
+	}
+
+	# retrieve the currently available public keys
+	@gpg_keys = $gpg_list->get_public_keys();
+	foreach $gpg_key (@gpg_keys) {
+		%hash = $gpg_key;
+		$pagedata->setValue("Data.List.gnupg_keys.public." . $hash{id}, $hash{uid});
+	}
+
+	# retrieve the currently available secret keys
+	@gpg_keys = $gpg_list->get_secret_keys();
+	foreach $gpg_key (@gpg_keys) {
+		%hash = $gpg_key;
+		$pagedata->setValue("Data.List.gnupg_keys.secret." . $hash{id}, $hash{uid});
+	}
+}
+
+# ---------------------------------------------------------------------------
+
+# extract hdf-data for "normal" (e.g. not encrypted) lists
+# special kinds of lists should not use this function
+sub set_pagedata4list_normal() {
+	my ($listname, $part_type) = @_;
+
+	my $list = new Mail::Ezmlm("$LIST_DIR/$listname");
+	&set_pagedata4options($list->getconfig);   
+}
+
+# ---------------------------------------------------------------------------
+
+# extract hdf-data for all kinds of lists (both encrypted and non-encrypted)
+sub set_pagedata4list_common() {
+	my ($listname, $part_type) = @_;
+
+	my ($list, $webusers);
+	my ($i, $item, @files);
+	my ($address, $addr_name, %pretty);
 	# Work out the address of this list ...
 	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
 
@@ -537,8 +625,6 @@ sub set_pagedata4list
 	}
 
 	$pagedata->setValue('Data.List.Language', $list->get_lang());
-
-	&set_pagedata4options($list->getconfig);   
 }
 
 # ---------------------------------------------------------------------------
@@ -625,6 +711,16 @@ sub get_list_part
 {
 	$q->param('part') =~ m/^(allow|deny|digest|mod)$/;
 	return $1;
+}
+
+# ---------------------------------------------------------------------------
+
+sub is_list_encrypted {
+	my ($listname) = @_;
+	return (1==0) unless ($GPG_SUPPORT);
+
+	my $gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
+	return $gpg_list->is_gpg();
 }
 
 # ---------------------------------------------------------------------------
