@@ -16,7 +16,7 @@ $LIST_DIR = "$HOME_DIR/lists";
 # (defaults to the home directory of the executing user)
 # You will have to change this value, if you use a multi domain
 # vpopmail setup. Otherwise just leave the setting turned off.
-#$DOTQMAIL_DIR = '/home/vpopmail/domain';
+#$DOTQMAIL_DIR = "/home/vpopmail/domain";
 
 # Where is the webusers file for access-permissions
 # defaults to "$LIST_DIR/webusers"
@@ -36,13 +36,13 @@ $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
 $UNSAFE_RM = 0;
 
 # Who is the qmail alias user on this system (usually alias ;)
-$ALIAS_USER = 'alias';
+$ALIAS_USER = "alias";
 
 # Where do the qmail control files live on this system ...
 $QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
 
 # default mailing list domain name (optional)
-#$MAIL_DOMAIN = 'lists.someserver.org';
+#$MAIL_DOMAIN = "lists.someserver.org";
 
 # Do we want to allow ``pretty'' names - ie more human readable ones
 # This will slow ezmlm-web down a bit for large lists
@@ -55,7 +55,7 @@ $FILE_UPLOAD = 1;
 # What switches to we want ezmlm-web to have on as default. The ezmlm-make
 # defaults are aBDFGHIJKLMNOpQRSTUWX (small means enabled, CAPITALS mean
 # disabled). The defaults below should be reasonable - I use them ;)
-$DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx';
+$DEFAULT_OPTIONS = "aBDFGHiJkLMNOpQRSTUWx";
 
 # What is the title of this document?
 $HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
@@ -65,5 +65,5 @@ $HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
 $HTML_CSS_FILE = "/ezmlm-web.css";
 
 # choose a language (en|de)
-$HTML_LANGUAGE = 'en';
+$HTML_LANGUAGE = "en";
 
