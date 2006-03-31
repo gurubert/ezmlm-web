@@ -54,7 +54,7 @@ use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte co
 
 # "pagedata" contains the hdf tree for clearsilver
 # "pagename" refers to the template file that should be used
-# "ui_set" is the selected kind of interface ("normal", "gnupg", ...)
+# "ui_set" is the selected kind of interface ("default", "gnupg", ...)
 # "ui_template" is one of "basic", "normal" and "expert"
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
 use vars qw[$ui_set $ui_template];
@@ -214,6 +214,26 @@ elsif ($action eq '' || $action eq 'list_select') {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
+} elsif (($action eq 'gnupg_ask') || ($action eq 'gnupg_do')) {
+	# User wants to manage keys (only for encrypted mailing lists)
+	my $subset = $q->param('gnupg_subset');
+	if (defined($q->param('list')) && ($subset ne '')) {
+		if (($subset =~ /^[\w]*$/) && (-e "$TEMPLATE_DIR/gnupg_$subset" . ".cs")) {
+			$pagename = 'gnupg_' . $subset;
+		} else {
+			$pagename = '';
+		}
+		if ($pagename ne '') {
+			$success = 'UpdateGnupg' if (($action eq 'gnupg_do') && &update_gnupg());
+		} else {
+			$error = 'UnknownGnupgPage';
+			warn "missing gnupg page: $subset";
+			$pagename = 'list_select';
+		}
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'list_select';
+	}
 } elsif ($action eq 'textfiles') {
 	# Edit DIR/text ...
 	if (defined($q->param('list'))) {
@@ -309,17 +329,17 @@ sub load_hdf {
 	# initialize the data for clearsilver
 	my $hdf = ClearSilver::HDF->new();
 
-	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
-
-	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
-	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
 	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
 
-	# the "ui_set" may be changed later according to the type of list, that we encounter
-	$ui_set = 'default';
+	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
+	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
+
+	# TODO: put some language detection and "web_lang" handling here
+	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
 
 	# "normal", "basic" and "expert" should be supported
+	# TODO: should be selected via web interface
 	$ui_template = "normal";
 	$hdf->setValue("Config.UI.LinkAttrs.web_lang", $HTML_LANGUAGE);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
@@ -469,12 +489,14 @@ sub set_pagedata4list
 	&set_pagedata4list_common($listname, $part_type);
 	
 	# is this list encrypted?
-	if (&is_list_encrypted($listname)) {
+	if (&is_list_gnupg($listname)) {
 		# some encryption specific stuff
-		&set_pagedata4list_encrypted($listname);
+		&set_pagedata4list_gnupg($listname);
+		$ui_set = "gnupg";
 	} else {
 		# do the non-encryption configuration
 		&set_pagedata4list_normal($listname, $part_type);
+		$ui_set = "default";
 	}
 
 	return (0==0);
@@ -484,7 +506,7 @@ sub set_pagedata4list
 
 # extract hdf-data for encrypted lists
 # non-encrypted lists should not use this function
-sub set_pagedata4list_encrypted() {
+sub set_pagedata4list_gnupg() {
 	my ($listname) = @_;
 	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key, %hash);
 
@@ -502,13 +524,16 @@ sub set_pagedata4list_encrypted() {
 	foreach $gpg_key (@gpg_keys) {
 		%hash = $gpg_key;
 		$pagedata->setValue("Data.List.gnupg_keys.public." . $hash{id}, $hash{uid});
+		warn "pubkey: $hash{uid}";
 	}
 
 	# retrieve the currently available secret keys
 	@gpg_keys = $gpg_list->get_secret_keys();
 	foreach $gpg_key (@gpg_keys) {
+		# TODO: %hash is broken!
 		%hash = $gpg_key;
 		$pagedata->setValue("Data.List.gnupg_keys.secret." . $hash{id}, $hash{uid});
+		warn "seckey: " . $hash{uid};
 	}
 }
 
@@ -715,7 +740,7 @@ sub get_list_part
 
 # ---------------------------------------------------------------------------
 
-sub is_list_encrypted {
+sub is_list_gnupg {
 	my ($listname) = @_;
 	return (1==0) unless ($GPG_SUPPORT);
 
@@ -1170,6 +1195,12 @@ sub extract_options_from_params()
 	}
 
 	return $options;
+}
+
+# ------------------------------------------------------------------------
+
+sub update_gnupg {
+	return (0==0);
 }
 
 # ------------------------------------------------------------------------

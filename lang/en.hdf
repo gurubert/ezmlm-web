@@ -19,6 +19,10 @@ Lang {
 		ConfigArchive	= archive
 		ConfigProcess	= processing
 		ConfigAll	= overview
+		KeyManagement	= Key management
+		KeysPublic	= public keys
+		KeysSecret	= secret keys
+		KeysGenerate	= generate key
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
@@ -44,6 +48,9 @@ Lang {
 		ListDelete		= Delete list
 		FileSelect		= Choose a file for editing
 		FileEdit		= Editing file
+		GnupgPublic		= Public keys
+		GnupgSecret		= Secret keys
+		GnupgGenerate	= Generate a new keypair
 	  }
 
 
@@ -53,6 +60,7 @@ Lang {
 		DeleteAddress	= Delete address(es)
 		AddAddress	= Add address(es)
 		UpdateConfiguration = Update configuration
+		UpdateGnupg = Update keyring
 		EditFile	= Edit file
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
@@ -65,6 +73,7 @@ Lang {
 		Forbidden			= Error: you are not allowed to do this!
 		InvalidFileName		= The name of the file is invalid!
 		UnknownConfigPage	= The chosen config page is invalid!
+		UnknownGnupgPage	= The chosen gnupg page is invalid!
 	  }
 
 
@@ -104,6 +113,7 @@ Lang {
 		CreateList		= The new mailing list was successfully created.
 		DeleteList		= The mailing list was successfully removed.
 		UpdateConfig	= The mailing list's configuration was successfully changed.
+		UpdateGnupg		= The keyring was successfully changed.
 		SaveFile		= The file was saved.
 		ResetFile		= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
 	  }

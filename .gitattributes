@@ -54,6 +54,12 @@ template/config_options/create_listname.cs -text
 template/config_options/digest_enabled.cs -text
 template/config_options/digest_settings.cs -text
 template/config_options/from_address.cs -text
+template/config_options/gpg_allow_key_submission -text
+template/config_options/gpg_encrypt_to_all -text
+template/config_options/gpg_nokey_nocrypt -text
+template/config_options/gpg_require_subscriber -text
+template/config_options/gpg_sign_messages -text
+template/config_options/gpg_verified_key_required -text
 template/config_options/headeradd.cs -text
 template/config_options/headerremove.cs -text
 template/config_options/lang_select.cs -text
@@ -81,6 +87,7 @@ template/config_processing.cs -text
 template/config_subscription.cs -text
 template/footer.cs -text
 template/form_common.cs -text
+template/gnupg_public.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
 template/list_create.cs -text
@@ -94,4 +101,5 @@ template/subscribers.cs -text
 template/textfile_edit.cs -text
 template/textfiles.cs -text
 template/ui/default/normal.hdf -text
+template/ui/gnupg/normal.hdf -text
 /webusers.sample -text

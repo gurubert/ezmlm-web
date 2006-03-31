@@ -19,6 +19,10 @@ Lang {
 		ConfigArchive	= Archivierung
 		ConfigProcess	= Verarbeitung
 		ConfigAll	= Übersicht
+		KeyManagement	= Schlüsselverwaltung
+		KeysPublic	= öffentliche Schlüssel
+		KeysSecret	= private Schlüssel
+		KeysGenerate	= Schlüssel anlegen
 		TextFiles	= Texte
 		ListSelect	= Auswahl einer Liste
 		Properties	= Eigenschaften von
@@ -44,6 +48,9 @@ Lang {
 		ListDelete		= Löschung von
 		FileSelect		= Auswählen eines Textbausteins
 		FileEdit		= Bearbeitung des Textbausteins
+		GnupgPublic		= Öffentliche Schlüssel
+		GnupgSecret		= Private Schlüssel
+		GnupgGenerate	= Erzeugen eines Schlüssels
 	  }
 
 
@@ -53,6 +60,7 @@ Lang {
 		DeleteAddress	= Adresse(n) entfernen
 		AddAddress	= Adresse(n) hinzufügen
 		UpdateConfiguration = Einstellungen speichern
+		UpdateGnupg = Schlüsselring aktualisieren
 		EditFile	= Datei bearbeiten
 		SaveFile	= Datei speichern
 		ResetFile	= Angepassten Textbaustein verwerfen
@@ -64,7 +72,8 @@ Lang {
 		ParameterMissing	= Diese Aktion benätigt weitere Parameter!
 		Forbidden			= Fehler: dir fehlen die notwendigen Rechte für diese Aktion
 		InvalidFileName		= Der Dateiname ist nicht zulässig.
-		UnknownConfigPage	= Die gähle Konfigurations-Seite existiert nicht!
+		UnknownConfigPage	= Diese Konfigurations-Seite existiert nicht!
+		UnknownGnupgPage	= Diese GnuPG-Seite existiert nicht!
 	  }
 
 
@@ -104,6 +113,7 @@ Lang {
 		CreateList		= Die neue Liste wurde erfolgreich angelegt.
 		DeleteList		= Die Mailingliste wurde gelöscht.
 		UpdateConfig	= Die neuen Einstellungen wurden erfolgreich gespeichert.
+		UpdateGnupg		= Der Schlüsselring wurde erfolgreich geändert.
 		SaveFile		= Die Datei wurde gespeichert.
 		ResetFile		= Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
 	  }

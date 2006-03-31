@@ -1,0 +1,60 @@
+UI	{
+
+	Navigation	{
+		ListSelect	= 1
+		ListCreate	= 1
+		Subscribers	{
+			Subscribers	= 1
+		  }
+
+		Config	{
+			Main		= 1
+		  }
+
+		Keymanagement	{
+			PublicKeys	= 1
+			SecretKeys	= 1
+			GenerateKey	= 1
+		  }
+
+		TextEdit	= 1
+		ListDelete	= 1
+
+		Help	= 1
+	  }
+
+
+	Options	{
+		
+		Create {
+			# TODO: was soll hier ein?
+			Listname	= create_listname
+			Listaddress	= create_listaddress
+			Listlanguage	= lang_select
+			Mysql		= mysql
+			Webuser		= webusers
+		  }
+
+
+		Config	{
+			Main	{
+				#Language	= lang_select
+				#Charset		= charset_select
+				SignMessages	= gpg_sign_messages
+				EncryptToAll	= gpg_encrypt_to_all
+				AllowKeySubmission	= gpg_allow_key_submission
+				NokeyNocrypt	= gpg_nokey_nocrypt
+				VerifiedKeyReq	= gpg_verified_key_required
+				RequireSub	= gpg_require_subscriber
+				WebUsers	= webusers
+			  }
+			
+			Keymanagement	{
+			  }
+
+		  }
+
+	  }
+
+  }
+
