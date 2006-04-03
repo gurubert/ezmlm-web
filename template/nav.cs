@@ -110,31 +110,31 @@
 					var:html_escape(Lang.Menue.ConfigAll) ?></a></li><?cs /if ?>
 		</ul></li>
 
-		<?cs if:subcount(UI.Navigation.Keymanagement) > 0
-				?><li><font class="no_link"><?cs var:html_escape(Lang.Menue.KeyManagement)
+		<?cs if:subcount(UI.Navigation.Gnupg) > 0
+				?><li><font class="no_link"><?cs var:html_escape(Lang.Menue.Gnupg)
 				?></font>
 		<ul>
-			<?cs if:UI.Navigation.Keymanagement.SecretKeys == 1
+			<?cs if:UI.Navigation.Gnupg.PublicKeys == 1
 				?><li><a <?cs if:(Data.Action == "gnupg_public")
 					?> class="nav_active"<?cs /if ?>
 				href="<?cs call:link("list",Data.List.Name,"action","gnupg_ask",
 						"gnupg_subset","public") ?>"
-					title="<?cs var:html_escape(Lang.Menue.KeysPublic) ?>"><?cs
-					var:html_escape(Lang.Menue.KeysPublic) ?></a></li><?cs /if ?>
-			<?cs if:UI.Navigation.Keymanagement.SecretKeys == 1
+					title="<?cs var:html_escape(Lang.Menue.GnupgPublicKeys) ?>"><?cs
+					var:html_escape(Lang.Menue.GnupgPublicKeys) ?></a></li><?cs /if ?>
+			<?cs if:UI.Navigation.Gnupg.SecretKeys == 1
 				?><li><a <?cs if:(Data.Action == "gnupg_secret")
 					?> class="nav_active"<?cs /if ?>
 				href="<?cs call:link("list",Data.List.Name,"action","gnupg_ask",
 						"gnupg_subset","secret") ?>"
-					title="<?cs var:html_escape(Lang.Menue.KeysSecret) ?>"><?cs
-					var:html_escape(Lang.Menue.KeysSecret) ?></a></li><?cs /if ?>
-			<?cs if:UI.Navigation.Keymanagement.GenerateKey == 1
+					title="<?cs var:html_escape(Lang.Menue.GnupgSecretKeys) ?>"><?cs
+					var:html_escape(Lang.Menue.GnupgSecretKeys) ?></a></li><?cs /if ?>
+			<?cs if:UI.Navigation.Gnupg.GenerateKey == 1
 				?><li><a <?cs if:(Data.Action == "gnupg_generate")
 					?> class="nav_active"<?cs /if ?>
 				href="<?cs call:link("list",Data.List.Name,"action","gnupg_ask",
 						"gnupg_subset","generate") ?>"
-					title="<?cs var:html_escape(Lang.Menue.KeysGenerate) ?>"><?cs
-					var:html_escape(Lang.Menue.KeysGenerate) ?></a></li><?cs /if ?>
+					title="<?cs var:html_escape(Lang.Menue.GnupgGenerateKey) ?>"><?cs
+					var:html_escape(Lang.Menue.GnupgGenerateKey) ?></a></li><?cs /if ?>
 		</ul></li><?cs /if ?>
 
 		<?cs if:UI.Navigation.TextEdit == 1

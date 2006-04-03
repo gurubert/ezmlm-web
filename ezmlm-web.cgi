@@ -508,7 +508,7 @@ sub set_pagedata4list
 # non-encrypted lists should not use this function
 sub set_pagedata4list_gnupg() {
 	my ($listname) = @_;
-	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key, %hash);
+	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key);
 
 	$gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
 
@@ -521,19 +521,20 @@ sub set_pagedata4list_gnupg() {
 
 	# retrieve the currently available public keys
 	@gpg_keys = $gpg_list->get_public_keys();
-	foreach $gpg_key (@gpg_keys) {
-		%hash = $gpg_key;
-		$pagedata->setValue("Data.List.gnupg_keys.public." . $hash{id}, $hash{uid});
-		warn "pubkey: $hash{uid}";
+	for (my $i = 0; $i < $#gpg_keys; $i++) {
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.id" , $gpg_keys[$i]{id});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.email" , $gpg_keys[$i]{email});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.name" , $gpg_keys[$i]{name});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.expires" , $gpg_keys[$i]{expires});
 	}
 
 	# retrieve the currently available secret keys
 	@gpg_keys = $gpg_list->get_secret_keys();
-	foreach $gpg_key (@gpg_keys) {
-		# TODO: %hash is broken!
-		%hash = $gpg_key;
-		$pagedata->setValue("Data.List.gnupg_keys.secret." . $hash{id}, $hash{uid});
-		warn "seckey: " . $hash{uid};
+	for (my $i = 0; $i < $#gpg_keys; $i++) {
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.id" , $gpg_keys[$i]{id});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.email" , $gpg_keys[$i]{email});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.name" , $gpg_keys[$i]{name});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.expires" , $gpg_keys[$i]{expires});
 	}
 }
 

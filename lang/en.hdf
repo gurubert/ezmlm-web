@@ -19,10 +19,10 @@ Lang {
 		ConfigArchive	= archive
 		ConfigProcess	= processing
 		ConfigAll	= overview
-		KeyManagement	= Key management
-		KeysPublic	= public keys
-		KeysSecret	= secret keys
-		KeysGenerate	= generate key
+		Gnupg	= Key management
+		GnupgPublicKeys	= public keys
+		GnupgSecretKeys	= secret keys
+		GnupgGenerateKey	= generate key
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
@@ -64,6 +64,9 @@ Lang {
 		EditFile	= Edit file
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
+		DeletePublicKey	= Delete public key(s)
+		DeleteSecretKey	= Delete secret key(s)
+		GnupgImportKey	= Import key
 	  }
 
 
@@ -199,6 +202,9 @@ Lang {
 		ListLanguage	= Language of the list
 		ListCharset		= Charset of the list
 		ModSubOverridesRemote	= Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them
+		NoPublicKeys	= There are no public keys available.
+		NoSecretKeys	= There are no secret keys available.
+		GnupgImportKey	= Import a new key from a file:
 	  }
 
 
@@ -242,5 +248,8 @@ Lang {
 		TextFileReset	= Discard customized text
 		TextFileInfo	= Useful placeholders
 		AvailableLists	= Available lists
+		GnupgPublicKeys	= Public keys of this list
+		GnupgSecretKeys	= Secret keys of this list
+		GnupgKeyImport	= Import a key
 	}
 }

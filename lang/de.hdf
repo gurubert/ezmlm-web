@@ -19,10 +19,10 @@ Lang {
 		ConfigArchive	= Archivierung
 		ConfigProcess	= Verarbeitung
 		ConfigAll	= Übersicht
-		KeyManagement	= Schlüsselverwaltung
-		KeysPublic	= öffentliche Schlüssel
-		KeysSecret	= private Schlüssel
-		KeysGenerate	= Schlüssel anlegen
+		Gnupg	= Schlüsselverwaltung
+		GnupgPublicKeys	= öffentliche Schlüssel
+		GnupgSecretKeys	= private Schlüssel
+		GnupgGenerateKey	= Schlüssel anlegen
 		TextFiles	= Texte
 		ListSelect	= Auswahl einer Liste
 		Properties	= Eigenschaften von
@@ -64,6 +64,9 @@ Lang {
 		EditFile	= Datei bearbeiten
 		SaveFile	= Datei speichern
 		ResetFile	= Angepassten Textbaustein verwerfen
+		DeletePublicKey	= Öffentliche(n) Schlüssel lälschen
+		DeleteSecretKey	= Private(n) Schlüssel lälschen
+		GnupgImportKey	= Schlüssel importieren
 	  }
 
 
@@ -199,6 +202,9 @@ Lang {
 		ListLanguage	= Sprache der Liste
 		ListCharset		= Zeichensatz der Liste
 		ModSubOverridesRemote	= Hinweis: falls sowohl die Datenbank der Einsende-ModeratorInnen als auch die der Fern-AdministratorInnen in einem nicht-Standard-Verzeichnis liegen, dann wird die Einsende-ModeratorInnen-Datenbank für beides verwendet
+		NoPublicKeys	= Es sind keine öffentlichen Schlüssel vorhanden.
+		NoSecretKeys	= Es sind keine privaten Schlüssel vorhanden.
+		GnupgImportKey	= Schlüssel aus einer Datei importieren:
 	  }
 
 
@@ -242,5 +248,8 @@ Lang {
 		TextFileReset	= Auf die Vorgabe zurücksetzen
 		TextFileInfo	= Nützliche Platzhalter
 		AvailableLists	= Verfügbare Listen
+		GnupgPublicKeys	= öffentliche Schlüssel dieser Liste
+		GnupgSecretKeys	= Private Schlüssel dieser Liste
+		GnupgKeyImport	= Schlüssel importieren
 	}
 }

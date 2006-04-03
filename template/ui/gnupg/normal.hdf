@@ -11,7 +11,7 @@ UI	{
 			Main		= 1
 		  }
 
-		Keymanagement	{
+		Gnupg	{
 			PublicKeys	= 1
 			SecretKeys	= 1
 			GenerateKey	= 1
@@ -49,7 +49,7 @@ UI	{
 				WebUsers	= webusers
 			  }
 			
-			Keymanagement	{
+			Gnupg	{
 			  }
 
 		  }
