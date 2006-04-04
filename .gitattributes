@@ -87,7 +87,9 @@ template/config_processing.cs -text
 template/config_subscription.cs -text
 template/footer.cs -text
 template/form_common.cs -text
+template/gnupg_import_form.cs -text
 template/gnupg_public.cs -text
+template/gnupg_secret.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
 template/list_create.cs -text

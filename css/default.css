@@ -24,7 +24,7 @@ font.feature {
 	margin-left: 1%;
 	margin-right: 1%;
 	margin-bottom: 1%;
-	margin-top: 5px;
+	margin-top: 1%;
 	padding-left: 0.5%;
 	padding-right: 0.5%;
 	padding-top: 1.5%;
@@ -131,7 +131,7 @@ div.formfield {
 	background: #e8947c;
 	color: #000000;
 	margin: 1%;
-	padding: 5px;
+	padding: 1%;
 	width: 30%;
 	float: right;
 	font-size: 80%;
@@ -192,7 +192,7 @@ table.subscribers {
 	width: 100%;
 	}
 
-tr, td {
+table.subscribers tr, td {
 	margin: 0;
 	padding: 0;
 	}
@@ -254,9 +254,9 @@ button:hover {
 	text-align: center;
 	background-color: #c0c0b0;
 	margin-top: 5px;
-	margin-left: 0%;
-	margin-right: 1%;
-	margin-bottom: 0.2%;
+	margin-left: 0px;
+	margin-right: 5px;
+	margin-bottom: 2px;
 	color: #ffffff;
 	font-size: 125%;
 	font-style: italic;
