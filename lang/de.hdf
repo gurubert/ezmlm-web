@@ -67,6 +67,7 @@ Lang {
 		DeletePublicKey	= Öffentliche(n) Schlüssel lälschen
 		DeleteSecretKey	= Private(n) Schlüssel lälschen
 		GnupgImportKey	= Schlüssel importieren
+		GnupgGenerateKey	= Schlüsselpaar erzeugen
 	  }
 
 

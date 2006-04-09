@@ -26,13 +26,11 @@ UI	{
 
 	Options	{
 		
-		Create {
-			# TODO: was soll hier ein?
-			Listname	= create_listname
-			Listaddress	= create_listaddress
-			Listlanguage	= lang_select
-			Mysql		= mysql
-			Webuser		= webusers
+		GenerateKey {
+			KeyName		= gnupg_keyname
+			KeyComment	= gnupg_keycomment
+			KeySize		= gnupg_keysize
+			KeyType		= gnupg_keytype
 		  }
 
 
@@ -40,18 +38,15 @@ UI	{
 			Main	{
 				#Language	= lang_select
 				#Charset		= charset_select
-				SignMessages	= gpg_sign_messages
-				EncryptToAll	= gpg_encrypt_to_all
-				AllowKeySubmission	= gpg_allow_key_submission
-				NokeyNocrypt	= gpg_nokey_nocrypt
-				VerifiedKeyReq	= gpg_verified_key_required
-				RequireSub	= gpg_require_subscriber
+				SignMessages	= gnupg_sign_messages
+				EncryptToAll	= gnupg_encrypt_to_all
+				AllowKeySubmission	= gnupg_allow_key_submission
+				NokeyNocrypt	= gnupg_nokey_nocrypt
+				VerifiedKeyReq	= gnupg_verified_key_required
+				RequireSub	= gnupg_require_subscriber
 				WebUsers	= webusers
 			  }
 			
-			Gnupg	{
-			  }
-
 		  }
 
 	  }

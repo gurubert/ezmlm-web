@@ -341,6 +341,7 @@ sub load_hdf {
 	# "normal", "basic" and "expert" should be supported
 	# TODO: should be selected via web interface
 	$ui_template = "normal";
+	$ui_set = "default";		# may be overwritten later
 	$hdf->setValue("Config.UI.LinkAttrs.web_lang", $HTML_LANGUAGE);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
 
@@ -355,9 +356,10 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
-	&fatal_error("UI template file not found")
-		unless (-e "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
-	$pagedata->readFile("$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf");
+	my $ui_template_file = "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf";
+	&fatal_error("UI template file ($ui_template_file) not found")
+		unless (-e $ui_template_file);
+	$pagedata->readFile($ui_template_file);
 
 	$pagedata->setValue('Data.Success', "$success") if (defined($success));
 	$pagedata->setValue('Data.Error', "$error") if (defined($error));
@@ -1186,7 +1188,10 @@ sub extract_options_from_params()
 			if (defined($q->param("setting_state_$i"))) {
 				$options .= " -$i '" . $q->param("setting_value_$i") . "'";
 			} else {
-				$options .= " -$i ''";
+				# do not set the value to an empty string, 
+				# as ezmlm-idx 5.0 does not work correctly for this case
+				# just skip this setting - this works for 0.4x and 5.0
+				#$options .= " -$i ''";
 			}
 		} else {
 			# import the previous setting

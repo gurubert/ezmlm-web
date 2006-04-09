@@ -132,7 +132,7 @@
 				?><li><a <?cs if:(Data.Action == "gnupg_generate")
 					?> class="nav_active"<?cs /if ?>
 				href="<?cs call:link("list",Data.List.Name,"action","gnupg_ask",
-						"gnupg_subset","generate") ?>"
+						"gnupg_subset","generate_key") ?>"
 					title="<?cs var:html_escape(Lang.Menue.GnupgGenerateKey) ?>"><?cs
 					var:html_escape(Lang.Menue.GnupgGenerateKey) ?></a></li><?cs /if ?>
 		</ul></li><?cs /if ?>

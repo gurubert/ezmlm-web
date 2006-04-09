@@ -67,6 +67,7 @@ Lang {
 		DeletePublicKey	= Delete public key(s)
 		DeleteSecretKey	= Delete secret key(s)
 		GnupgImportKey	= Import key
+		GnupgGenerateKey	= Generate key pair
 	  }
 
 
