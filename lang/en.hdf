@@ -146,6 +146,13 @@ Lang {
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
 		x	= Remove or reject specific mime types in messages
 		y	= Request a confirmation mail for every posted message
+		gnupg_allowKeySubmission	= Allow key submission via mail
+		gnupg_encryptToAll	= Encrypt to all recipients at once (do not encrypt inividually)
+		gnupg_NokeyNocrypt	= Send plaintext to the subscribers which have no key
+		gnupg_RequireSub	= Only subscribers may post messages
+		gnupg_signMessages	= Sign outgoing messages with the list's key
+		gnupg_VerifiedKeyReq	= Use only verified keys
+		gnupg_requireSigs	= Only verifiably signed messages are accepted
 	  }
 
 
@@ -206,6 +213,9 @@ Lang {
 		NoPublicKeys	= There are no public keys available.
 		NoSecretKeys	= There are no secret keys available.
 		GnupgImportKey	= Import a new key from a file:
+		GnupgKeyName	= Name of the key
+		GnupgKeyComment	= Comment (optional)
+		GnupgKeySize	= Length of the key
 	  }
 
 
@@ -252,5 +262,6 @@ Lang {
 		GnupgPublicKeys	= Public keys of this list
 		GnupgSecretKeys	= Secret keys of this list
 		GnupgKeyImport	= Import a key
+		GnupgGenerateKey	= Generate the key for this list
 	}
 }

@@ -14,6 +14,7 @@ use Getopt::Std;
 use ClearSilver;
 use Mail::Ezmlm;
 use Mail::Address;
+use File::Copy;
 use File::Path;
 use DB_File;
 use CGI;
@@ -518,7 +519,7 @@ sub set_pagedata4list_gnupg() {
 	my %config = $gpg_list->getconfig();
 	my $item;
 	foreach $item (keys %config) {
-		$pagedata->setValue("Data.List.gnupg_options.$item", $config{$item});
+		$pagedata->setValue("Data.List.Options.gnupg_$item", $config{$item});
 	}
 
 	# retrieve the currently available public keys
@@ -1138,7 +1139,7 @@ sub create_list {
 sub extract_options_from_params()
 {
 	# Work out the command line options ...
-	my ($options, $avail_options, $settings, $avail_settings, $i);
+	my ($options, $settings, $i);
 	my ($listname, $old_options, $state, $old_key);
 
 	# NOTE: we have to define _every_ (even unchanged) setting
@@ -1157,11 +1158,10 @@ sub extract_options_from_params()
 	################ options ################
 	$i = 0;
 	$old_key = substr($old_options,$i,1);
-	$avail_options = $q->param('options_available');
 	# parse the first part of the options string
 	while ($old_key =~ m/\w/) {
 		# scan the first part of the options string for lower case letters
-		if ($avail_options =~ m/$old_key/i) {
+		if (defined($q->param('available_option_' . lc($old_key)))) {
 			my $form_var_name = "option_" . lc($old_key);
 			# this option was visible for the user
 			if (defined($q->param($form_var_name))) {
@@ -1181,9 +1181,8 @@ sub extract_options_from_params()
 
 
 	############### settings ################
-	$avail_settings = $q->param('settings_available');
 	for ($i=0; $i<=9; $i++) {
-		if ($avail_settings =~ m/$i/) {
+		if (defined($q->param('available_setting_' . $i))) {
 			# this setting was visible for the user
 			if (defined($q->param("setting_state_$i"))) {
 				$options .= " -$i '" . $q->param("setting_value_$i") . "'";

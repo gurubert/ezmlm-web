@@ -59,8 +59,8 @@ template/config_options/gnupg_encrypt_to_all.cs -text
 template/config_options/gnupg_keycomment.cs -text
 template/config_options/gnupg_keyname.cs -text
 template/config_options/gnupg_keysize.cs -text
-template/config_options/gnupg_keytype.cs -text
 template/config_options/gnupg_nokey_nocrypt.cs -text
+template/config_options/gnupg_require_sigs.cs -text
 template/config_options/gnupg_require_subscriber.cs -text
 template/config_options/gnupg_sign_messages.cs -text
 template/config_options/gnupg_verified_key_required.cs -text

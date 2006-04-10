@@ -5,8 +5,9 @@
 			if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs
 				/if ?> /> <label for="option_<?cs var:option ?>"><?cs
 				var:html_escape(Lang.Options[option])
-			?></label><?cs
-		set:available_options = available_options + option ?><?cs
+			?></label>
+		<input type="hidden" name="available_option_<?cs
+			var:option ?>" value="true" /><?cs
 	else ?>unknown option (<?cs var:option ?>)<?cs /if ?><?cs
  /def ?><?cs
 
@@ -19,8 +20,9 @@ def:setting(setting)
 			var:html_escape(Lang.Settings[setting])
 			?></label><ul><li><input type="text" name="setting_value_<?cs var:setting
 			?>" id="setting_value_<?cs var:setting ?>" value="<?cs
-			var:html_escape(Data.List.Settings[setting].value) ?>" size="30" /></li></ul><?cs
-		set:available_settings = available_settings + setting ?><?cs
+			var:html_escape(Data.List.Settings[setting].value) ?>" size="30" /></li></ul>
+		<input type="hidden" name="available_setting_<?cs
+			var:setting ?>" value="true"><?cs
 	else ?>unknown setting (<?cs var:setting ?>)<?cs /if ?><?cs
  /def ?><?cs
 

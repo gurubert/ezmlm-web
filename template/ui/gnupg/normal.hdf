@@ -30,7 +30,6 @@ UI	{
 			KeyName		= gnupg_keyname
 			KeyComment	= gnupg_keycomment
 			KeySize		= gnupg_keysize
-			KeyType		= gnupg_keytype
 		  }
 
 
@@ -44,6 +43,7 @@ UI	{
 				NokeyNocrypt	= gnupg_nokey_nocrypt
 				VerifiedKeyReq	= gnupg_verified_key_required
 				RequireSub	= gnupg_require_subscriber
+				requireSigs	= gnupg_require_sigs
 				WebUsers	= webusers
 			  }
 			

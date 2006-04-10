@@ -146,6 +146,13 @@ Lang {
 		w	= Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
 		x	= Prüfe die MIME-Typen der Anhänge eingehender Nachrichten
 		y	= Fordere eine Bestätigung für jede eingesandte Nachricht an
+		gnupg_allowKeySubmission	= Erlaube die Einsendung von Schlüsseln per Mail
+		gnupg_encryptToAll	= Verschlüssele an alle Empfänger gleichzeitig (keine individuell verschlüsselten Mails)
+		gnupg_NokeyNocrypt	= Sende Nachrichten im Klartext an Empfänger ohne Schlüssel
+		gnupg_RequireSub	= Nur AbonnentInnen dürfen Nachrichten einsenden
+		gnupg_signMessages	= Signiere ausgehende Nachrichten mit dem Listenschlüssel
+		gnupg_VerifiedKeyReq	= Verwende ausschliesslich verifizierte Schlüssel
+		gnupg_requireSigs	= Nur korrekt signierte Nachrichten werden angenommen
 	  }
 
 
@@ -206,6 +213,9 @@ Lang {
 		NoPublicKeys	= Es sind keine öffentlichen Schlüssel vorhanden.
 		NoSecretKeys	= Es sind keine privaten Schlüssel vorhanden.
 		GnupgImportKey	= Schlüssel aus einer Datei importieren:
+		GnupgKeyName	= Die Bezeichung des Schlüssels
+		GnupgKeyComment	= Ein Kommentar (optional)
+		GnupgKeySize	= Die Länge des Schlüssels
 	  }
 
 
@@ -252,5 +262,6 @@ Lang {
 		GnupgPublicKeys	= öffentliche Schlüssel dieser Liste
 		GnupgSecretKeys	= Private Schlüssel dieser Liste
 		GnupgKeyImport	= Schlüssel importieren
+		GnupgGenerateKey	= Schlüssel der Liste erzeugen
 	}
 }
