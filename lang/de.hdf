@@ -210,8 +210,8 @@ Lang {
 		ListLanguage	= Sprache der Liste
 		ListCharset		= Zeichensatz der Liste
 		ModSubOverridesRemote	= Hinweis: falls sowohl die Datenbank der Einsende-ModeratorInnen als auch die der Fern-AdministratorInnen in einem nicht-Standard-Verzeichnis liegen, dann wird die Einsende-ModeratorInnen-Datenbank für beides verwendet
-		NoPublicKeys	= Es sind keine öffentlichen Schlüssel vorhanden.
-		NoSecretKeys	= Es sind keine privaten Schlüssel vorhanden.
+		GnupgNoPublicKeys	= Es sind keine öffentlichen Schlüssel vorhanden.
+		GnupgNoSecretKeys	= Es sind keine privaten Schlüssel vorhanden.
 		GnupgImportKey	= Schlüssel aus einer Datei importieren:
 		GnupgKeyName	= Die Bezeichung des Schlüssels
 		GnupgKeyComment	= Ein Kommentar (optional)

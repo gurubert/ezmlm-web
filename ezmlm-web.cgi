@@ -205,7 +205,11 @@ elsif ($action eq '' || $action eq 'list_select') {
 			$pagename = '';
 		}
 		if ($pagename ne '') {
-			$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
+			if (&is_list_gnupg($q->param('list'))) {
+				$success = 'UpdateConfig' if (($action eq 'config_do') && &update_gnupg());
+			} else {	
+				$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
+			}
 		} else {
 			$error = 'UnknownConfigPage';
 			warn "missing config page: $subset";
@@ -225,7 +229,7 @@ elsif ($action eq '' || $action eq 'list_select') {
 			$pagename = '';
 		}
 		if ($pagename ne '') {
-			$success = 'UpdateGnupg' if (($action eq 'gnupg_do') && &update_gnupg());
+			$success = 'UpdateGnupg' if (($action eq 'gnupg_do') && &manage_gnupg_keys());
 		} else {
 			$error = 'UnknownGnupgPage';
 			warn "missing gnupg page: $subset";
@@ -1204,8 +1208,34 @@ sub extract_options_from_params()
 
 # ------------------------------------------------------------------------
 
-sub update_gnupg {
+sub manage_gnupg_keys()
+# manage gnupg keys
+{
+	return (1==0) unless ($GPG_SUPPORT);
 	return (0==0);
+}
+
+# ------------------------------------------------------------------------
+
+sub update_gnupg {
+	# save the new gnupg configuration
+	# TODO: add headeradd and so on ...
+	
+	my ($list, %switches);
+	return (1==0) unless ($GPG_SUPPORT);
+
+	$list = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
+
+	my ($one_switch, $one_value, $key);
+	my @all_params = $q->param;
+	foreach $one_switch (@all_params) {
+		if ($one_switch =~ /^available_option_gnupg_(\w*)$/) {
+			$key = $1;
+			$switches{$key} = (defined($q->param('option_gnupg_' . $key))) ? 1 : 0;
+		}
+	}
+	$list->update(%switches) && return (0==0);
+	return (1==0);
 }
 
 # ------------------------------------------------------------------------
@@ -1216,8 +1246,8 @@ sub update_config {
 	my ($list, $options, @inlocal, @inhost, $dir_of_list);
 	my ($old_msgsize);
 
-	$list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
 	$dir_of_list = $LIST_DIR . '/' . $q->param('list');
+	$list = new Mail::Ezmlm($dir_of_list);
 
 	$options = &extract_options_from_params();
 

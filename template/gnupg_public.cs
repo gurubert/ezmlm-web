@@ -39,7 +39,7 @@
 
 	</form>
 	<?cs else ?>
-		<p><? var:html_escape(Lang.Misc.NoPublicKeys ?></p>
+		<p><?cs var:html_escape(Lang.Misc.GnupgNoPublicKeys) ?></p>
 	<?cs /if ?>
 
 </fieldset>

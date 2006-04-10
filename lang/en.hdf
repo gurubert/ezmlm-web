@@ -210,8 +210,8 @@ Lang {
 		ListLanguage	= Language of the list
 		ListCharset		= Charset of the list
 		ModSubOverridesRemote	= Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them
-		NoPublicKeys	= There are no public keys available.
-		NoSecretKeys	= There are no secret keys available.
+		GnupgNoPublicKeys	= There are no public keys available.
+		GnupgNoSecretKeys	= There are no secret keys available.
 		GnupgImportKey	= Import a new key from a file:
 		GnupgKeyName	= Name of the key
 		GnupgKeyComment	= Comment (optional)
