@@ -23,6 +23,7 @@ UI	{
 
 		TextEdit	= 1
 		ListDelete	= 1
+		GnupgConvert	= 1
 
 		Help	= 1
 	  }

@@ -219,6 +219,15 @@ elsif ($action eq '' || $action eq 'list_select') {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
+} elsif ($action eq 'gnupg_convert') {
+	my $tlist = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
+	if ($tlist->convert()) {
+		$pagename = 'subscribers';
+		$success = 'GnupgConvert';
+	} else {
+		$pagename = 'subscribers';
+		$warning = 'GnupgConvert';
+	}
 } elsif (($action eq 'gnupg_ask') || ($action eq 'gnupg_do')) {
 	# User wants to manage keys (only for encrypted mailing lists)
 	my $subset = $q->param('gnupg_subset');

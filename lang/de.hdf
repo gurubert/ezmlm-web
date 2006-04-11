@@ -23,6 +23,7 @@ Lang {
 		GnupgPublicKeys	= öffentliche Schlüssel
 		GnupgSecretKeys	= private Schlüssel
 		GnupgGenerateKey	= Schlüssel anlegen
+		GnupgConvert	= Verschlüsselung aktivieren
 		TextFiles	= Texte
 		ListSelect	= Auswahl einer Liste
 		Properties	= Eigenschaften von
@@ -119,6 +120,7 @@ Lang {
 		GnupgInvalidExpiration	= Das Verfallsdatum is ungültig!
 		GnupgInvalidKeySize	= Die Schlüssellänge ist ungültig!
 		GnupgExportKey		= Fehler beim Exportieren des Schlüssels!
+		GnupgConvert		= Beim umwandeln in eine verschlüsselte Mailingliste trat ein Fehler auf!
 	  }
 	
 
@@ -132,6 +134,7 @@ Lang {
 		SaveFile	= Die Datei wurde gespeichert.
 		ResetFile	= Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
 		GnupgKeyImport	= Der Schlüssel wurde importiert.
+		GnupgConvert	= Verschlüsselung für die Mailingliste ist nun aktiv.
 	  }
 
 

@@ -144,6 +144,12 @@
 					title="<?cs var:html_escape(Lang.Menue.TextFiles) ?>"><?cs
 					var:html_escape(Lang.Menue.TextFiles) ?></a></li><?cs /if ?>
 
+		<?cs if:UI.Navigation.GnupgConvert == 1
+			?><li><a <?cs if:Data.Action == "gnupg_convert" ?> class="nav_active"<?cs /if ?>
+			href="<?cs call:link("list",Data.List.Name,"action","gnupg_convert","","") ?>"
+				title="<?cs var:html_escape(Lang.Menue.GnupgConvert) ?>"><?cs
+					var:html_escape(Lang.Menue.GnupgConvert) ?></a></li><?cs /if ?>
+		
 		<?cs if:UI.Navigation.ListDelete == 1
 			?><li><a <?cs if:(Data.Action == "list_delete") ?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("list",Data.List.Name,"action","list_delete_ask","","") ?>"

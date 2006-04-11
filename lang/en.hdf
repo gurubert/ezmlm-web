@@ -23,6 +23,7 @@ Lang {
 		GnupgPublicKeys	= public keys
 		GnupgSecretKeys	= secret keys
 		GnupgGenerateKey	= generate key
+		GnupgConvert	= Enable encryption
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
@@ -119,6 +120,7 @@ Lang {
 		GnupgInvalidExpiration	= The expiration time is invalid!
 		GnupgInvalidKeySize	= The length of the key is invalid!
 		GnupgExportKey		= Export of key failed!
+		GnupgConvert		= Conversion to encrypted mailing list failed!
 	  }
 	
 
@@ -132,6 +134,7 @@ Lang {
 		SaveFile	= The file was saved.
 		ResetFile	= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
 		GnupgKeyImport	= The key was successfully imported.
+		GnupgConvert	= Encryption is now enabled for this list.
 	  }
 
 
