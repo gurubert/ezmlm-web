@@ -185,6 +185,10 @@ h1.oben {
 	color: #ffcc00;
 	} 
 
+table.gnupg_keys td {
+	padding-right: 10px;
+	}
+
 table.subscribers {
 	border-width: 0;
 	margin: 0;

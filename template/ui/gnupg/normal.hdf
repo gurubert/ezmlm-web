@@ -30,6 +30,7 @@ UI	{
 			KeyName		= gnupg_keyname
 			KeyComment	= gnupg_keycomment
 			KeySize		= gnupg_keysize
+			KeyExpiration	= gnupg_keyexpires
 		  }
 
 

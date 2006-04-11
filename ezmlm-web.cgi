@@ -239,6 +239,19 @@ elsif ($action eq '' || $action eq 'list_select') {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
+} elsif ($action eq 'gnupg_export') {
+	if (defined($q->param('list')) && defined($q->param('gnupg_keyid'))) {
+		if (&gnupg_export_key($q->param('list'), $q->param('gnupg_keyid'))) {
+			exit 0;
+		} else {
+			$warning = 'GnupgExportKey';
+			# TODO: pagename is quite random here ...
+			$pagename = 'gnupg_secret';
+		}
+	} else {
+		$error = 'ParameterMissing';
+		$pagename = 'list_select';
+	}
 } elsif ($action eq 'textfiles') {
 	# Edit DIR/text ...
 	if (defined($q->param('list'))) {
@@ -528,7 +541,7 @@ sub set_pagedata4list_gnupg() {
 
 	# retrieve the currently available public keys
 	@gpg_keys = $gpg_list->get_public_keys();
-	for (my $i = 0; $i < $#gpg_keys; $i++) {
+	for (my $i = 0; $i <= $#gpg_keys; $i++) {
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.id" , $gpg_keys[$i]{id});
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.email" , $gpg_keys[$i]{email});
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.name" , $gpg_keys[$i]{name});
@@ -537,7 +550,7 @@ sub set_pagedata4list_gnupg() {
 
 	# retrieve the currently available secret keys
 	@gpg_keys = $gpg_list->get_secret_keys();
-	for (my $i = 0; $i < $#gpg_keys; $i++) {
+	for (my $i = 0; $i <= $#gpg_keys; $i++) {
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.id" , $gpg_keys[$i]{id});
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.email" , $gpg_keys[$i]{email});
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.name" , $gpg_keys[$i]{name});
@@ -887,6 +900,7 @@ sub untaint {
    foreach $i (0 .. $#params) {
       my(@values);
       next if($params[$i] eq 'mailaddressfile');
+      next if($params[$i] eq 'gnupg_key_file');
       foreach $param ($q->param($params[$i])) {
          next if $param eq '';
          if ($param =~ /^([#-\@\w\.\/\[\]\:\n\r\>\< _"']+)$/) {
@@ -958,6 +972,7 @@ sub add_address {
 				$fail_count++;
 			}
 		}
+		# TODO: is CLOSE necessary?
 	}
       
 	# User typed in an address
@@ -1212,7 +1227,137 @@ sub manage_gnupg_keys()
 # manage gnupg keys
 {
 	return (1==0) unless ($GPG_SUPPORT);
-	return (0==0);
+
+	my ($list, $listname, $upload_file);
+
+	$listname = $q->param('list');
+	return (0==1) unless (&is_list_gnupg($listname));
+
+	$list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
+
+	my $subset = $q->param('gnupg_subset');
+	if (defined($q->param('gnupg_key_file'))) {
+		return &gnupg_import_key($list, $q->param('gnupg_key_file'));
+	} elsif (($subset eq 'public') || ($subset eq 'secret')) {
+		return &gnupg_remove_key($list);
+	} elsif ($subset eq 'generate_key') {
+		if (&gnupg_generate_key($list)) {
+			$pagename = 'gnupg_secret';
+			return (0==0);
+		} else {
+			return (0==1);
+		}
+	} else {
+		$error = 'UnknownAction';
+		return (1==0);
+	}
+}
+
+# ------------------------------------------------------------------------
+
+sub gnupg_export_key()
+{
+	my ($listname, $keyid) = @_;
+	my $list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
+	my $key_armor;
+	if ($key_armor = $list->export_key($keyid)) {
+		print "Content-Type: application/pgp\n\n";
+		print $key_armor;
+		return (0==0);
+	} else {
+		return (0==1);
+	}
+}
+
+# ------------------------------------------------------------------------
+
+sub gnupg_import_key()
+{
+	my ($list, $upload_file) = @_;
+	
+	if ($upload_file) {
+		# Sanity check
+		my $fileinfo = $q->uploadInfo($upload_file);
+		my $filetype = $fileinfo->{'Content-Type'};
+		unless($filetype =~ m{^text/}i) {
+			$warning = 'InvalidFileFormat';
+			warn "[ezmlm-web] mime type of uploaded file rejected: $filetype";
+			return (1==0);
+		}
+
+		# Handle key upload
+		my @ascii_key = <$upload_file>;
+		# TODO: filter content?
+		if ($list->import_key(join ('',@ascii_key))) {
+			$success = 'GnupgKeyImport';
+			return (0==0);
+		} else {
+			$error = 'GnupgKeyImport';
+			return (0==1);
+		}
+	} else {
+		$warning = 'GnupgNoKeyFile';
+		return (1==0);
+	}
+}
+
+# ------------------------------------------------------------------------
+
+sub gnupg_generate_key() {
+	my ($list) = @_;
+	my ($key_name, $key_comment, $key_size, $key_expires);
+	$key_name = $q->param('gnupg_keyname');
+	$key_comment = $q->param('gnupg_keycomment');
+	$key_size = $q->param('gnupg_keysize');
+	$key_expires = $q->param('gnupg_keyexpires');
+
+	unless ($key_name) {
+		$warning = 'GnupgNoName';
+		return (0==1);
+	}
+
+	unless ($key_expires =~ m/^[0-9]+[wmy]?$/) {
+		$warning = 'GnupgInvalidExpiration';
+		return (1==0);
+	}
+
+	unless ($key_size =~ m/^[0-9]*$/) {
+		$warning = 'GnupgInvalidKeySize';
+		return (1==0);
+	}
+
+	if ($list->generate_private_key($key_name, $key_comment,
+			&this_listaddress(), $key_size, $key_expires)) {
+		$pagename = 'gnupg_secret';
+		return (0==0);
+	} else {
+		return (0==1);
+		$error = 'GnupgGenerateKey';
+	}
+}
+
+# ------------------------------------------------------------------------
+
+sub gnupg_remove_key() {
+	my ($list) = @_;
+
+	my $removed = 0;
+	my $key_id;
+	my @all_keys = grep /^gnupg_key_[0-9A-F]*$/, $q->param;
+	foreach $key_id (@all_keys) {
+		$key_id =~ /^gnupg_key_([0-9A-F]*)$/;
+		$list->delete_key($1) && $removed++;
+	}
+	
+	if ($removed == 0) {
+		$error = 'GnupgDelKey';
+		return (1==0);
+	} elsif ($#all_keys > $removed) {
+		$warning = 'GnupgDelKey';
+		return (0==0);
+	} else {
+		return (0==0);
+	}
 }
 
 # ------------------------------------------------------------------------

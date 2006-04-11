@@ -68,6 +68,7 @@ Lang {
 		DeleteSecretKey	= Delete secret key(s)
 		GnupgImportKey	= Import key
 		GnupgGenerateKey	= Generate key pair
+		GnupgExportKey	= download
 	  }
 
 
@@ -78,6 +79,9 @@ Lang {
 		InvalidFileName		= The name of the file is invalid!
 		UnknownConfigPage	= The chosen config page is invalid!
 		UnknownGnupgPage	= The chosen gnupg page is invalid!
+		GnupgKeyImport		= Failed to import the uploaded key!
+		GnupgDelKey			= Failed to remove the key(s)!
+		GnupgGenerateKey	= Failed generate a new key!
 	  }
 
 
@@ -107,19 +111,27 @@ Lang {
 		InvalidLocalPart	= The local part of the list address is not valid
 		RequiresIDX5		= This action requires ezmlm-idx v5.0 or higher.
 		ResetFileIsDefault	= There is no customized text file, that can be removed.
-		ResetFile			= Removal of custimized text file failed.
+		ResetFile		= Removal of custimized text file failed.
+		GnupgNoKeyFile		= There was no key file selected for upload!
+		GnupgDelKey			= Removal of (at least) one key failed!
+		GnupgNoKeySelected	= There was no key selected to be removed!
+		GnupgNoName			= The name of the key may not be empty!
+		GnupgInvalidExpiration	= The expiration time is invalid!
+		GnupgInvalidKeySize	= The length of the key is invalid!
+		GnupgExportKey		= Export of key failed!
 	  }
 	
 
 	SuccessMessage {
-		AddAddress		= The address was added to the list.
+		AddAddress	= The address was added to the list.
 		DeleteAddress	= The address was removed from the list.
-		CreateList		= The new mailing list was successfully created.
-		DeleteList		= The mailing list was successfully removed.
+		CreateList	= The new mailing list was successfully created.
+		DeleteList	= The mailing list was successfully removed.
 		UpdateConfig	= The mailing list's configuration was successfully changed.
-		UpdateGnupg		= The keyring was successfully changed.
-		SaveFile		= The file was saved.
-		ResetFile		= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
+		UpdateGnupg	= The keyring has been changed successfully.
+		SaveFile	= The file was saved.
+		ResetFile	= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
+		GnupgKeyImport	= The key was successfully imported.
 	  }
 
 
@@ -215,7 +227,9 @@ Lang {
 		GnupgImportKey	= Import a new key from a file:
 		GnupgKeyName	= Name of the key
 		GnupgKeyComment	= Comment (optional)
-		GnupgKeySize	= Length of the key
+		GnupgKeySize	= Length of the key (bytes)
+		GnupgKeyExpires	= Expiration time (years)
+		Never			= never
 	  }
 
 
@@ -236,6 +250,7 @@ Lang {
 		TextFiles	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
 		EditTextFile	= Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page.
 		ResetTextFile	= This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file.
+		GnupgGenerateKey	= Every encrypted mailing list needs a secret key. You can import this key or create it with the form below. After submitting the form, you have to be patient, as it takes some time to create a key.
 	  }
 
 	Legend {

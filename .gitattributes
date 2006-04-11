@@ -92,7 +92,7 @@ template/config_subscription.cs -text
 template/footer.cs -text
 template/form_common.cs -text
 template/gnupg_generate_key.cs -text
-template/gnupg_import_form.cs -text
+template/gnupg_import.cs -text
 template/gnupg_public.cs -text
 template/gnupg_secret.cs -text
 template/header.cs -text

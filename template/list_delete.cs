@@ -9,7 +9,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.ListDelete) ?> </legend>
 
-	<p><?cs var:Lang.Misc.ConfirmDelete ?></p>
+	<p><?cs var:html_escape(Lang.Misc.ConfirmDelete) ?></p>
 	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 

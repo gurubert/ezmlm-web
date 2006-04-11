@@ -129,7 +129,7 @@
 					title="<?cs var:html_escape(Lang.Menue.GnupgSecretKeys) ?>"><?cs
 					var:html_escape(Lang.Menue.GnupgSecretKeys) ?></a></li><?cs /if ?>
 			<?cs if:UI.Navigation.Gnupg.GenerateKey == 1
-				?><li><a <?cs if:(Data.Action == "gnupg_generate")
+				?><li><a <?cs if:(Data.Action == "gnupg_generate_key")
 					?> class="nav_active"<?cs /if ?>
 				href="<?cs call:link("list",Data.List.Name,"action","gnupg_ask",
 						"gnupg_subset","generate_key") ?>"

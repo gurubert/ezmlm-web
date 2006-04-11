@@ -68,6 +68,7 @@ Lang {
 		DeleteSecretKey	= Private(n) Schlüssel lälschen
 		GnupgImportKey	= Schlüssel importieren
 		GnupgGenerateKey	= Schlüsselpaar erzeugen
+		GnupgExportKey		= exportieren
 	  }
 
 
@@ -78,6 +79,9 @@ Lang {
 		InvalidFileName		= Der Dateiname ist nicht zulässig.
 		UnknownConfigPage	= Diese Konfigurations-Seite existiert nicht!
 		UnknownGnupgPage	= Diese GnuPG-Seite existiert nicht!
+		GnupgKeyImport		= Der Import des Schlüssels schlug fehl!
+		GnupgDelKey			= Das Entfernen des Schlüssels schlug fehl!
+		GnupgGenerateKey	= Das Erzeugen des Schlüssels schlug fehl!
 	  }
 
 
@@ -108,18 +112,26 @@ Lang {
 		RequiresIDX5		= Diese Aktion erfordert ezmlm-idx in der Version 5.0 oder höher.
 		ResetFileIsDefault	= Dieser Textbaustein ist keine angepasste Variante und kann somit nicht zurückgesetzt werden.
 		ResetFile			= Der angepasste Textbaustein konnte nicht entfernt werden.
+		GnupgNoKeyFile		= Es wurde keine Datei zum Hochladen ausgewählt!
+		GnupgDelKey			= Mindestens ein Schlüssel konnte nicht gelöscht werden!
+		GnupgNoKeySelected	= Es wurde kein Schlüssel ausgewählt!
+		GnupgNoName			= Der Name des Schlüssels darf nicht leer sein!
+		GnupgInvalidExpiration	= Das Verfallsdatum is ungültig!
+		GnupgInvalidKeySize	= Die Schlüssellänge ist ungültig!
+		GnupgExportKey		= Fehler beim Exportieren des Schlüssels!
 	  }
 	
 
 	SuccessMessage {
-		AddAddress		= Einschreibung erfolgreich
+		AddAddress	= Einschreibung erfolgreich
 		DeleteAddress	= Austragung erfolgreich abgeschlossen
-		CreateList		= Die neue Liste wurde erfolgreich angelegt.
-		DeleteList		= Die Mailingliste wurde gelöscht.
+		CreateList	= Die neue Liste wurde erfolgreich angelegt.
+		DeleteList	= Die Mailingliste wurde gelöscht.
 		UpdateConfig	= Die neuen Einstellungen wurden erfolgreich gespeichert.
-		UpdateGnupg		= Der Schlüsselring wurde erfolgreich geändert.
-		SaveFile		= Die Datei wurde gespeichert.
-		ResetFile		= Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
+		UpdateGnupg	= Der Schlüsselring wurde erfolgreich aktualisiert.
+		SaveFile	= Die Datei wurde gespeichert.
+		ResetFile	= Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
+		GnupgKeyImport	= Der Schlüssel wurde importiert.
 	  }
 
 
@@ -215,7 +227,9 @@ Lang {
 		GnupgImportKey	= Schlüssel aus einer Datei importieren:
 		GnupgKeyName	= Die Bezeichung des Schlüssels
 		GnupgKeyComment	= Ein Kommentar (optional)
-		GnupgKeySize	= Die Länge des Schlüssels
+		GnupgKeySize	= Schlüssellänge (in Bytes)
+		GnupgKeyExpires	= Verfallsdatum (in Jahren)
+		Never			= nie
 	  }
 
 
@@ -236,6 +250,7 @@ Lang {
 		TextFiles	= Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbausteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
 		EditTextFile	= Passe den Textbaustein an die Erfordernisse der Liste an. Eventuell möchtest du dafür auch einige der reservierten Platzhalter verwenden, die am Ende dieser Seite aufgeführt sind.
 		ResetTextFile	= Der Textbaustein wurde spezifisch an diese Liste angepasst. Um stattdessen den vorgegebenen Baustein der eingestellten Sprache zu verwenden, kannst du diesen listenspezifischen Baustein entfernen.
+		GnupgGenerateKey	= Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es (abhängig von der Schlüssellänge) eine Weile dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
 	  }
 
 	Legend {
