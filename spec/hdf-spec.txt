@@ -4,6 +4,7 @@ LanguageDir
 Stylesheet
 HelpIconURL
 Config.Title
+Config.UI.Languages.[names]
 Config.UI.LinkAttrs.web_lang
 Config.UI.LinkAttrs.template
 
@@ -38,6 +39,7 @@ Data.List.Settings.[0-9].state
 Data.List.SubModPath
 Data.List.Subscribers.*
 Data.List.TrailingText
+Data.List.Type ("default" or "gnupg")
 Data.List.WebUsers
 Data.Lists.[0-9]+
 Data.ListsCount

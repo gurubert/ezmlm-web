@@ -1,8 +1,8 @@
-LanguageID = en
-
-LanguageName = English
-
 Lang {
+
+	ID = en
+
+	Name = English
 
 	Menue {
 		ListCreate	= Create new list
@@ -23,10 +23,11 @@ Lang {
 		GnupgPublicKeys	= public keys
 		GnupgSecretKeys	= secret keys
 		GnupgGenerateKey	= generate key
-		GnupgConvert	= Enable encryption
+		GnupgConvert	= Encryption
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
+		Language	= Language
 		Help		= Help (external)
 	  }
 
@@ -49,6 +50,7 @@ Lang {
 		ListDelete		= Delete list
 		FileSelect		= Choose a file for editing
 		FileEdit		= Editing file
+		GnupgConvert	= Encryption
 		GnupgPublic		= Public keys
 		GnupgSecret		= Secret keys
 		GnupgGenerate	= Generate a new keypair
@@ -65,6 +67,9 @@ Lang {
 		EditFile	= Edit file
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
+		LanguageSet	= select
+		GnupgConvertToEncrypted = Convert to an encrypted mailinglist
+		GnupgConvertToNormal	= Convert to a plaintext mainlinglist
 		DeletePublicKey	= Delete public key(s)
 		DeleteSecretKey	= Delete secret key(s)
 		GnupgImportKey	= Import key
@@ -253,7 +258,8 @@ Lang {
 		TextFiles	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
 		EditTextFile	= Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page.
 		ResetTextFile	= This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file.
-		GnupgGenerateKey	= Every encrypted mailing list needs a secret key. You can import this key or create it with the form below. After submitting the form, you have to be patient, as it takes some time to create a key.
+		GnupgConvert	= You can convert a normal mailinglist to an encrypted list and vice versa.
+		GnupgGenerateKey	= Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key.
 	  }
 
 	Legend {
@@ -277,6 +283,7 @@ Lang {
 		TextFileReset	= Discard customized text
 		TextFileInfo	= Useful placeholders
 		AvailableLists	= Available lists
+		GnupgConvert	= Encryption support
 		GnupgPublicKeys	= Public keys of this list
 		GnupgSecretKeys	= Secret keys of this list
 		GnupgKeyImport	= Import a key

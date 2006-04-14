@@ -2,12 +2,15 @@ This file contains some useful hints for upgrading from a previous version of ez
 
 ##############################################################################
 
-UPGRADING ezmlm-web 3.1 to ezmlm-web 3.1.4
+UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 
 1) install the perl module File::Path
 
 2) a new (optional) configuration setting is available: DOTQMAIL_DIR
 Use it, if you run a multi domain vpopmail setup.
+
+3) install Mail::Ezmlm::Gpg if you want to handle encrypted mailing lists
+(see README.gnupg for details)
 
 ------------------------------------------------------------------------------
 

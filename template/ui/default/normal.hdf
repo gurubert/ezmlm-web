@@ -24,7 +24,8 @@ UI	{
 		TextEdit	= 1
 		ListDelete	= 1
 		GnupgConvert	= 1
-
+		Language	= 1
+		Interface	= 1
 		Help	= 1
 	  }
 

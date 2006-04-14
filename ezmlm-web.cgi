@@ -1,6 +1,6 @@
 #!/usr/bin/perl 
 #===========================================================================
-# ezmlm-web.cgi - version 3.1.1
+# ezmlm-web.cgi - version 3.2
 # ==========================================================================
 # All user configuration happens in the config file ``ezmlmwebrc''
 # POD documentation is at the end of this file
@@ -21,10 +21,15 @@ use CGI;
 use IO::File;
 use POSIX qw(tmpnam);
 use Encode qw/ from_to /;	# add by ooyama for char convert
+use English;			# for dropping privileges
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
 # setting is turned on
 
+
+# drop privileges (necessary for calling gpg)
+$UID = $EUID;
+$GID = $EGID;
 
 my $q = new CGI;
 $q->import_names('Q');
@@ -80,8 +85,8 @@ do $config_file;
 
 # do we support encrypted mailing lists?
 # see http://www.synacklabs.net/projects/crypt-ml/
-if (-e "$config_file" . ".encrypted") {
-	do "$config_file.encrypted";
+if (-e "$config_file" . ".gnupg") {
+	do "$config_file.gnupg";
 	# the config file should include "use Mail::Ezmlm::Gpg" as the use-line may not
 	# be used here
 	if (defined($GPG_SUPPORT) && ($GPG_SUPPORT)) {
@@ -138,6 +143,12 @@ unless (&check_permission_for_action) {
 elsif ($action eq '' || $action eq 'list_select') {
 	# Default action. Present a list of available lists to the user ...
 	$pagename = 'list_select';
+} elsif ($action eq 'show_page') {
+	$pagename = $q->param('pagename');
+	unless (-e "$TEMPLATE_DIR/$pagename.cs") {
+		$pagename = 'list_select';
+		$error = 'UnknownAction';
+	}
 } elsif ($action eq 'subscribers') {
 	# display list (or part list) subscribers
 	if (defined($q->param('list'))) {
@@ -219,16 +230,30 @@ elsif ($action eq '' || $action eq 'list_select') {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
-} elsif ($action eq 'gnupg_convert') {
+} elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_ask')) {
+	$pagename = 'gnupg_convert';
+} elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_do')) {
 	my $tlist = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
-	if ($tlist->convert()) {
-		$pagename = 'subscribers';
-		$success = 'GnupgConvert';
+	if ($tlist->is_gpg()) {
+		if ($tlist->convert_to_plaintext()) {
+			$pagename = 'subscribers';
+			$success = 'GnupgConvert';
+		} else {
+			warn $tlist->errmsg();
+			$pagename = 'gnupg_convert';
+			$warning = 'GnupgConvert';
+		}
 	} else {
-		$pagename = 'subscribers';
-		$warning = 'GnupgConvert';
+		if ($tlist->convert_to_encrypted()) {
+			$pagename = 'gnupg_generate_key';
+			$success = 'GnupgConvert';
+		} else {
+			warn $tlist->errmsg();
+			$pagename = 'gnupg_convert';
+			$warning = 'GnupgConvert';
+		}
 	}
-} elsif (($action eq 'gnupg_ask') || ($action eq 'gnupg_do')) {
+} elsif ($GPG_SUPPORT && (($action eq 'gnupg_ask') || ($action eq 'gnupg_do'))) {
 	# User wants to manage keys (only for encrypted mailing lists)
 	my $subset = $q->param('gnupg_subset');
 	if (defined($q->param('list')) && ($subset ne '')) {
@@ -248,7 +273,7 @@ elsif ($action eq '' || $action eq 'list_select') {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
-} elsif ($action eq 'gnupg_export') {
+} elsif ($GPG_SUPPORT && ($action eq 'gnupg_export')) {
 	if (defined($q->param('list')) && defined($q->param('gnupg_keyid'))) {
 		if (&gnupg_export_key($q->param('list'), $q->param('gnupg_keyid'))) {
 			exit 0;
@@ -362,15 +387,20 @@ sub load_hdf {
 	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 
-	# TODO: put some language detection and "web_lang" handling here
-	$hdf->readFile($LANGUAGE_DIR . '/' . $HTML_LANGUAGE . '.hdf');
-
 	# "normal", "basic" and "expert" should be supported
 	# TODO: should be selected via web interface
 	$ui_template = "normal";
 	$ui_set = "default";		# may be overwritten later
-	$hdf->setValue("Config.UI.LinkAttrs.web_lang", $HTML_LANGUAGE);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
+
+	# retrieve available languages and add them to the dataset
+	my %languages = &get_available_interface_languages();
+	my $lang;
+	foreach $lang (keys %languages) {
+		$hdf->setValue("Config.UI.Languages.$lang", $languages{$lang});
+	}
+
+	$hdf = &load_interface_language($hdf);
 
 	$hdf->setValue("ScriptName", $ENV{'SCRIPT_NAME'});
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
@@ -413,6 +443,75 @@ sub output_page {
 	} else {
 		&fatal_error($cs->displayError());
 	}
+}
+
+# ---------------------------------------------------------------------------
+
+sub load_interface_language
+{
+	my ($data) = @_;
+	my $config_language;
+
+	# load $HTML_LANGUAGE - this is necessary, if a translation is incomplete
+	$data->readFile("$LANGUAGE_DIR/$HTML_LANGUAGE" . ".hdf");
+
+	# set default language
+	$config_language = 'en';
+	$config_language = $HTML_LANGUAGE
+		unless (&check_interface_language($HTML_LANGUAGE));
+
+	# check for preferred browser language, if the box was not initialized yet
+	my $prefLang = &get_browser_language();
+	# take it, if a supported browser language was found
+	$config_language = $prefLang unless ($prefLang eq '');
+
+	######### temporary language setting? ############
+	# the default language can be overriden by the language selection form
+	if ($q->param('web_lang')) {
+		my $weblang = $q->param('web_lang');
+		if (&check_interface_language($weblang)) {
+			# load the data
+			$config_language = "$weblang";
+		} else {
+			# no valid language was selected - so you may ignore it
+			$warning = 'InvalidLanguage';
+		}
+	}
+	# add the setting to every link
+	$data->setValue('Config.UI.LinkAttrs.web_lang', "$config_language");
+
+	# import the configured resp. the temporarily selected language
+	$data->readFile("$LANGUAGE_DIR/$config_language" . ".hdf");
+	return $data;
+}
+
+
+# ---------------------------------------------------------------------------
+
+# look for preferred browser language setting
+# this code was adapted from Per Cederberg
+# http://www.percederberg.net/home/perl/select.perl
+# it returns an empty string, if no supported language was found
+sub get_browser_language
+{
+    my ($str, @langs, @res);
+
+    # Use language preference settings
+	if ($ENV{'HTTP_ACCEPT_LANGUAGE'} ne '')
+	{
+		@langs = split(/,/, $ENV{'HTTP_ACCEPT_LANGUAGE'});
+		foreach (@langs)
+		{
+			# get the first part of the language setting
+			($str) = ($_ =~ m/([a-z]+)/);
+			# check, if it is available
+			$res[$#res+1] = $str if check_interface_language($str);
+		}
+	}
+	
+    # if everything fails - return empty string
+	$res[0] = "" if ($#res lt 0);
+	return $res[0];
 }
 
 # ---------------------------------------------------------------------------
@@ -521,10 +620,12 @@ sub set_pagedata4list
 	if (&is_list_gnupg($listname)) {
 		# some encryption specific stuff
 		&set_pagedata4list_gnupg($listname);
+		$pagedata->setValue("Data.List.Type","gnupg");
 		$ui_set = "gnupg";
 	} else {
 		# do the non-encryption configuration
 		&set_pagedata4list_normal($listname, $part_type);
+		$pagedata->setValue("Data.List.Type","default");
 		$ui_set = "default";
 	}
 
@@ -542,15 +643,14 @@ sub set_pagedata4list_gnupg() {
 	$gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
 
 	# read the configuration
-	my %config = $gpg_list->getconfig();
-	my $item;
+	%config = $gpg_list->getconfig();
 	foreach $item (keys %config) {
 		$pagedata->setValue("Data.List.Options.gnupg_$item", $config{$item});
 	}
 
 	# retrieve the currently available public keys
 	@gpg_keys = $gpg_list->get_public_keys();
-	for (my $i = 0; $i <= $#gpg_keys; $i++) {
+	for (my $i = 0; $i < @gpg_keys; $i++) {
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.id" , $gpg_keys[$i]{id});
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.email" , $gpg_keys[$i]{email});
 		$pagedata->setValue("Data.List.gnupg_keys.public.$i.name" , $gpg_keys[$i]{name});
@@ -559,7 +659,7 @@ sub set_pagedata4list_gnupg() {
 
 	# retrieve the currently available secret keys
 	@gpg_keys = $gpg_list->get_secret_keys();
-	for (my $i = 0; $i <= $#gpg_keys; $i++) {
+	for (my $i = 0; $i < @gpg_keys; $i++) {
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.id" , $gpg_keys[$i]{id});
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.email" , $gpg_keys[$i]{email});
 		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.name" , $gpg_keys[$i]{name});
@@ -810,7 +910,9 @@ sub get_dotqmail_files {
 	# get list of existing files (remove empty entries)
 	@files = grep {/./} map { (-e "$qmail_prefix$_")? "$qmail_prefix$_" : undef  } (
 			'',
+			'.no-gpg',
 			'-default',
+			'-default.no-gpg',
 			'-owner',
 			'-return-default',
 			'-reject-default',
@@ -1144,7 +1246,7 @@ sub create_list {
 	}
 
 	if (defined($q->param('list_language')) && ($q->param('list_language') ne 'default')) {
-		if (&check_language($list, $q->param('list_language'))) {
+		if (&check_list_language($list, $q->param('list_language'))) {
 			$list->set_lang($q->param('list_language'));
 		} else {
 			$warning = 'InvalidListLanguage';
@@ -1268,9 +1370,29 @@ sub gnupg_export_key()
 {
 	my ($listname, $keyid) = @_;
 	my $list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
+	
+	# get the name of the key (for the download filename)
+	my @all_keys = $list->get_public_keys();
+	my ($i, $key, $name);
+	for ($i = 0; $i < @all_keys; $i++) {
+		$name = $all_keys[$i]{name} if ($keyid == $all_keys[$i]{id});
+	}
+	warn "vorher: $name";
+	if ($name) {
+		$name =~ s/\W+/_/g;
+		$name .= '.asc';
+	} else {
+		$name = "public_key.asc";
+	}
+	warn "nachher: $name";
+	
 	my $key_armor;
 	if ($key_armor = $list->export_key($keyid)) {
-		print "Content-Type: application/pgp\n\n";
+		print "Content-Type: application/pgp\n";
+		# suggest a download filename
+		# (taken from http://www.bewley.net/perl/download.pl)
+		print "Content-Disposition: attachment; filename=$name\n";
+		print "Content-Description: exported key";
 		print $key_armor;
 		return (0==0);
 	} else {
@@ -1485,7 +1607,7 @@ sub update_config {
 	# update language
 	# this _must_ happen after set_charset to avaoid accidently overriding default charset
 	if (defined($q->param('list_language'))) {
-		if (&check_language($list, $q->param('list_language'))) {
+		if (&check_list_language($list, $q->param('list_language'))) {
 			$list->set_lang($q->param('list_language'));
 		} else {
 			$warning = 'InvalidListLanguage';
@@ -1647,7 +1769,34 @@ sub webauth_create_allowed {
 
 # ---------------------------------------------------------------------------
 
-sub check_language {
+sub get_available_interface_languages {
+	my (%languages, @files, $file);
+	opendir(DIR, $LANGUAGE_DIR)
+		or &fatal_error ("Language directory ($LANGUAGE_DIR) not accessible!");
+	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
+	close(DIR);
+
+	foreach $file (@files) {
+		my $hdf = ClearSilver::HDF->new();
+		$hdf->readFile("$LANGUAGE_DIR/$file");
+		substr($file, -4) = "";
+		my $lang_name = $hdf->getValue("Lang.Name", "$file");
+		$languages{$file} = $lang_name;
+	}
+	return %languages;
+}
+
+# ---------------------------------------------------------------------------
+
+sub check_interface_language {
+	my ($language) = @_;
+	my %languages = &get_available_interface_languages();
+	return defined($languages{$language});
+}
+
+# ---------------------------------------------------------------------------
+
+sub check_list_language {
 	my ($list, $lang) = @_;
 	my $found = 0;
 	my $item;

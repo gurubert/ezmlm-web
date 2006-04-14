@@ -19,6 +19,7 @@ debian-related/index.c -text
 debian-related/man/ezmlm-web-make-suid.1 -text
 /ezmlm-web.cgi -text
 /ezmlmwebrc -text
+/ezmlmwebrc.gnupg -text
 /htaccess.sample -text
 /index.c -text
 lang/de.hdf -text
@@ -92,12 +93,14 @@ template/config_processing.cs -text
 template/config_subscription.cs -text
 template/footer.cs -text
 template/form_common.cs -text
+template/gnupg_convert.cs -text
 template/gnupg_generate_key.cs -text
 template/gnupg_import.cs -text
 template/gnupg_public.cs -text
 template/gnupg_secret.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
+template/language_select.cs -text
 template/list_create.cs -text
 template/list_delete.cs -text
 template/list_select.cs -text

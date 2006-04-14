@@ -30,7 +30,18 @@ font.feature {
 	padding-top: 1.5%;
 	padding-bottom: 1.5%;
 	background-color: #c0c0b0;
+	border-style: solid;
+	border-width: 2px 2px 1px 1px;
+	border-color: white;
 	}
+
+#nav_bar hr {
+	color: #707770;
+	background-color: #707770;
+	margin: 10px 30px 10px 10px;
+	align: center;
+	}
+
 
 .nav_group {
 	margin-top: 1%;
@@ -49,6 +60,12 @@ font.feature {
 	/* small space between highest level entries */
 	margin-bottom: 5px;
 	}
+
+v_bar ul li ul {
+	/* small space between middle level entries */
+	margin-bottom: 4px;
+	}
+
 
 #nav_bar ul li ul li {
 	/* no space between lower level entries */
@@ -73,6 +90,28 @@ font.feature {
 	background-color: #d8d8d8;
 	color: #2f4860;
 	}
+
+#nav_bar form.select select {
+	background-color: #c8c8b8;
+	border-width: 1px;
+	border-style: dotted;
+	border-color: #b0b0a0;
+	color: #2f4860;
+}
+
+#nav_bar form.select button {
+	background-color: #c4c4b4;
+	border-width: 0px;
+}
+
+#nav_bar form.select button:hover {
+	background-color: #d8d8d8;
+	color: #2f4860;
+}
+
+#nav_bar form.select {
+	margin: 7px 0px 7px 0px;
+}
 
 #main_content {
 	margin-left: 22%;

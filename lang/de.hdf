@@ -1,8 +1,9 @@
-LanguageID = de
-
-LanguageName = Deutsch
-
 Lang {
+
+	ID = de
+
+	Name = Deutsch
+
 
 	Menue {
 		ListCreate	= Neue Liste anlegen
@@ -23,10 +24,11 @@ Lang {
 		GnupgPublicKeys	= öffentliche Schlüssel
 		GnupgSecretKeys	= private Schlüssel
 		GnupgGenerateKey	= Schlüssel anlegen
-		GnupgConvert	= Verschlüsselung aktivieren
+		GnupgConvert	= Verschlüsselung
 		TextFiles	= Texte
 		ListSelect	= Auswahl einer Liste
 		Properties	= Eigenschaften von
+		Language	= Sprache
 		Help		= Hilfe (extern)
 	  }
 
@@ -49,6 +51,7 @@ Lang {
 		ListDelete		= Löschung von
 		FileSelect		= Auswählen eines Textbausteins
 		FileEdit		= Bearbeitung des Textbausteins
+		GnupgConvert	= Verschlüsselung
 		GnupgPublic		= Öffentliche Schlüssel
 		GnupgSecret		= Private Schlüssel
 		GnupgGenerate	= Erzeugen eines Schlüssels
@@ -65,8 +68,11 @@ Lang {
 		EditFile	= Datei bearbeiten
 		SaveFile	= Datei speichern
 		ResetFile	= Angepassten Textbaustein verwerfen
-		DeletePublicKey	= Öffentliche(n) Schlüssel lälschen
-		DeleteSecretKey	= Private(n) Schlüssel lälschen
+		LanguageSet	= wählen
+		DeletePublicKey	= Öffentliche(n) Schlüssel löschen
+		DeleteSecretKey	= Private(n) Schlüssel löschen
+		GnupgConvertToEncrypted = Wandle in eine verschlüsselte Liste um
+		GnupgConvertToNormal	= Wandle in eine unverschlüsselte Liste um
 		GnupgImportKey	= Schlüssel importieren
 		GnupgGenerateKey	= Schlüsselpaar erzeugen
 		GnupgExportKey		= exportieren
@@ -120,7 +126,7 @@ Lang {
 		GnupgInvalidExpiration	= Das Verfallsdatum is ungültig!
 		GnupgInvalidKeySize	= Die Schlüssellänge ist ungültig!
 		GnupgExportKey		= Fehler beim Exportieren des Schlüssels!
-		GnupgConvert		= Beim umwandeln in eine verschlüsselte Mailingliste trat ein Fehler auf!
+		GnupgConvert		= Beim Umwandeln trat ein Fehler auf!
 	  }
 	
 
@@ -253,7 +259,8 @@ Lang {
 		TextFiles	= Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbausteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
 		EditTextFile	= Passe den Textbaustein an die Erfordernisse der Liste an. Eventuell möchtest du dafür auch einige der reservierten Platzhalter verwenden, die am Ende dieser Seite aufgeführt sind.
 		ResetTextFile	= Der Textbaustein wurde spezifisch an diese Liste angepasst. Um stattdessen den vorgegebenen Baustein der eingestellten Sprache zu verwenden, kannst du diesen listenspezifischen Baustein entfernen.
-		GnupgGenerateKey	= Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es (abhängig von der Schlüssellänge) eine Weile dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
+		GnupgConvert	= Du kannst eine normale Mailingliste in eine verschlüsselte umwandeln und umgekehrt.
+		GnupgGenerateKey	= Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
 	  }
 
 	Legend {
@@ -277,6 +284,7 @@ Lang {
 		TextFileReset	= Auf die Vorgabe zurücksetzen
 		TextFileInfo	= Nützliche Platzhalter
 		AvailableLists	= Verfügbare Listen
+		GnupgConvert	= Verschlüsselungsunterstützung
 		GnupgPublicKeys	= öffentliche Schlüssel dieser Liste
 		GnupgSecretKeys	= Private Schlüssel dieser Liste
 		GnupgKeyImport	= Schlüssel importieren

@@ -10,12 +10,6 @@
 
 int main(void) {
 
-	/* Set the (real) uid to the same value, as the effective uid.
-	   This is necesary, as (the suid) gpg tries to run on behalf of www-data
-	   instead of the presumed user.
-	   I hope, that this will not break on non-linux systems ... */
-	setreuid(getuid(), -1);
-	
 	/* Change this path to wherever you decided to put ezmlm-web.cgi */
 	execv("/usr/local/bin/ezmlm-web.cgi", NULL); 
 

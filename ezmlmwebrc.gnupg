@@ -1,0 +1,12 @@
+# sample configuration file for encrypted mailing list support
+
+# BEWARE: enable the following line ONLY if you installed the
+# Mail::Ezmlm::Gpg module - otherwise ezmlm-web will not work!
+#use Mail::Ezmlm::Gpg;
+
+# turn support for encrypted mailing lists on or off
+# defaults to 0 (off)
+# you MUST enable the "use" line above, if you turn on the gpg support
+$GPG_SUPPORT = 0;
+
+

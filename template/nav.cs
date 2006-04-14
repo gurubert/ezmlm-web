@@ -8,12 +8,17 @@
 			title="<?cs var:html_escape(Lang.Menue.ListSelect) ?>"><?cs var:html_escape(Lang.Menue.ListSelect) ?></a>
 		</li>
 		<?cs /if ?>
-	<?cs if:Data.Permissions.Create  && (UI.Navigation.ListCreate == 1) ?>
+	<?cs if:Data.Permissions.Create && (UI.Navigation.ListCreate == 1) ?>
 		<li><a <?cs if:(Data.Action == "list_create") ?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("action","list_create_ask","","","","") ?>"
 			title="<?cs var:html_escape(Lang.Menue.ListCreate) ?>"><?cs var:html_escape(Lang.Menue.ListCreate) ?></a>
 		</li>
 		<?cs /if ?>
+
+	<?cs if:((subcount(Data.Lists) > 0) && (UI.Navigation.ListSelect == 1))
+			|| (Data.Permissions.Create && (UI.Navigation.ListCreate == 1)) ?>
+		<hr/>
+	<?cs /if ?>
 
 
 <?cs if:Data.List.Name ?>
@@ -145,8 +150,9 @@
 					var:html_escape(Lang.Menue.TextFiles) ?></a></li><?cs /if ?>
 
 		<?cs if:UI.Navigation.GnupgConvert == 1
-			?><li><a <?cs if:Data.Action == "gnupg_convert" ?> class="nav_active"<?cs /if ?>
-			href="<?cs call:link("list",Data.List.Name,"action","gnupg_convert","","") ?>"
+			?><li><a <?cs if:(Data.Action == "gnupg_convert_ask") ||
+				(Data.Action == "gnupg_convert_do") ?> class="nav_active"<?cs /if ?>
+			href="<?cs call:link("list",Data.List.Name,"action","gnupg_convert_ask","","") ?>"
 				title="<?cs var:html_escape(Lang.Menue.GnupgConvert) ?>"><?cs
 					var:html_escape(Lang.Menue.GnupgConvert) ?></a></li><?cs /if ?>
 		
@@ -158,7 +164,15 @@
 		
 	</ul></li>
 
+	<hr/>
 <?cs /if ?>
+
+	<?cs if:UI.Navigation.Language
+		?><li><?cs include:TemplateDir + '/language_select.cs' ?></li>
+
+		<hr/>
+
+	<?cs /if ?>
 
 	<?cs if:UI.Navigation.Help
 		?><li><a href="http://www.ezmlm.org/ezman/index.html#toc1" target="_blank"
