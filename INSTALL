@@ -15,122 +15,122 @@ OVERVIEW:
 ------------------------------------------------------------------------------
 
 
-0.   IMPORTANT: you need the perl module Mail::Ezmlm and others to use 
-     ezmlm-web! The file README contains the complete list of necessary
-     modules.
+0.	IMPORTANT: you need the perl module Mail::Ezmlm and others to use 
+	ezmlm-web! The file README contains the complete list of necessary
+	modules.
 
-	 Additionally (since v3.0) you have to install clearsilver (a templating
-	 engine). See INSTALL.clearsilver for details.
-
-
-1.   Choose a distribution form
-
-1a)  source installation
-     Get ezmlm-web and extract the archive:
-	tar xzf ezmlm-web-3.x.tar.gz
-     (for source installation continue with step 2)
-
-1b)  debian package
-     This is the (by far) most convenient way to install ezmlm-web.
-	 Read debian-releated/README.Debian for details.
-	 (debian users may stop reading here)
+	Additionally (since v3.0) you have to install clearsilver (a templating
+	engine). See INSTALL.clearsilver for details.
 
 
-2.   Copy ezmlm-web.cgi to some publically readable directory. It does not
-     have to be in a path accessible to your web server, but any user with a
-     mailing list must be able to run it (Check the read and execute rights
-     on both the file and directory). We put our copy in "/usr/local/bin".
+1.	Choose a distribution form
 
-     At the top of ezmlm-web.cgi you may have to change the $ENV{'PATH'}
-	 variable. Be careful about what you set as the path. Too 
-     much is a security risk and too little will cause the script to 
-     malfunction. Version 2.0 requires that the following programs be 
-     accessible in your path: mv, rm
+1a)	source installation
+	Get ezmlm-web and extract the archive:
+		tar xzf ezmlm-web-3.x.tar.gz
+	 (for source installation continue with step 2)
+
+1b)	debian package
+	This is the (by far) most convenient way to install ezmlm-web.
+	Read debian-releated/README.Debian for details.
+	(debian users may stop reading here)
 
 
-3.   Edit the ezmlmwebrc file and alter the variables to suit your
-     particular system.
+2.	Copy ezmlm-web.cgi to some publically readable directory. It does not
+	have to be in a path accessible to your web server, but any user with a
+	mailing list must be able to run it (Check the read and execute rights
+	on both the file and directory). We put our copy in "/usr/local/bin".
+
+	At the top of ezmlm-web.cgi you may have to change the $ENV{'PATH'}
+	variable. Be careful about what you set as the path. Too 
+	much is a security risk and too little will cause the script to 
+	malfunction. Version 2.0 requires that the following programs be 
+	accessible in your path: mv, rm
+
+
+3.	Edit the ezmlmwebrc file and alter the variables to suit your
+	particular system.
      
-     Be careful about the $LIST_DIR variable. This script assumes that all 
-     users store their mailing lists in the same sub directory of the home 
-     directory (eg ~/lists). You can override this for an individual user 
-     by recompiling the C wrapper to call ezmlm-web.cgi with a -d option.
+	Be careful about the $LIST_DIR variable. This script assumes that all 
+	users store their mailing lists in the same sub directory of the home 
+	directory (eg ~/lists). You can override this for an individual user 
+	by recompiling the C wrapper to call ezmlm-web.cgi with a -d option.
 
-     Other configurable options are documented in the ezmlmwebrc file
-     itself. I have tried to keep the amount of information that you need to
-     supply to a minimum and also make reasonable guesses about default
-     values.
+	Other configurable options are documented in the ezmlmwebrc file
+	itself. I have tried to keep the amount of information that you need to
+	supply to a minimum and also make reasonable guesses about default
+	values.
 
-     The directory containing ezmlm-web's language files should be something
-     like '/usr/local/share/ezmlm-web/lang':
+	The directory containing ezmlm-web's language files should be something
+	like '/usr/local/share/ezmlm-web/lang':
 		mkdir -p /usr/local/share/ezmlm-web
 		cp -r lang /usr/local/share/ezmlm-web
-     You can change this default location in the ezmlmwebrc file.
-	 Do the same with the template directory (e.g copy it
-	 to /usr/local/share/ezmlm-web/template). Then you also have to
-	 set the appropriate location in the ezmlmwebrc file.
+	You can change this default location in the ezmlmwebrc file.
+	Do the same with the template directory (e.g copy it
+	to /usr/local/share/ezmlm-web/template). Then you also have to
+	set the appropriate location in the ezmlmwebrc file.
 
-     Finally, copy the ezmlmwebrc file to one of
-     the following places:
-	1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
-	2) the directory, that contains your cgi binary (index.cgi)
-	3) /etc/ezmlm-web/ezmlmwebrc
-	4) /etc/ezmlm/ezmlmwebrc [deprecated]
+	Finally, copy the ezmlmwebrc file to one of
+	the following places:
+		1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
+		2) the directory, that contains your cgi binary (index.cgi)
+		3) /etc/ezmlm-web/ezmlmwebrc
+		4) /etc/ezmlm/ezmlmwebrc [deprecated]
 	 (ezmlm-web will look for it in these places in the given order)
 
 
-4.   Edit the index.c file and change the path to the path of your copy
-     of ezmlm-web.cgi. Then compile this file. You can do this by issuing
-     this command:
-     			gcc -o index.cgi index.c
+4.	Edit the index.c file and change the path to the path of your copy
+	of ezmlm-web.cgi. Then compile this file. You can do this by issuing
+	this command:
+		gcc -o index.cgi index.c
 
 
-5.   For every user/virtual host that needs to manage mailing lists, you
-     need to create a SUID (user not root!!) copy of index.cgi (e.g
-	 chmod 4755 index.cgi). These need to reside somewhere accessible by 
-     the web server. I suggest that you put them in a sub directory (see 
-     about security) of each user/virtual host's home directory (eg
-     /home/luser/public_html/ezmlm for Apache on Redhat). 
+5.	For every user/virtual host that needs to manage mailing lists, you
+	need to create a SUID (user not root!!) copy of index.cgi (e.g
+	chmod 4755 index.cgi). These need to reside somewhere accessible by 
+	the web server. I suggest that you put them in a sub directory (see 
+	about security) of each user/virtual host's home directory (eg.
+    /home/luser/public_html/ezmlm for Apache). 
 
-     The copies don't actually have to be called index.cgi, but it is nice
-     for web servers that can resolve a cgi script as an index page (see the
-     srm.conf file in Apache). It is important to make sure that whichever
-     directory you choose to put them can
-	 	i: Execute CGI Scripts and
-		ii: Be access controlled (here I mean both web and user access) by
+	The copies don't actually have to be called index.cgi, but it is nice
+	for web servers that can resolve a cgi script as an index page (see the
+	srm.conf file in Apache). It is important to make sure that whichever
+	directory you choose to put them can
+		i:	Execute CGI Scripts and
+		ii:	Be access controlled (here I mean both web and user access) by
 			some method (eg .htaccess, access.conf for Apache).
 
 
-6.   Install some method of securing access to the page. The following
-     information is applicable to Apache web servers ... Detailed
-     information on user authentication can be obtained from the Apache
-     documentation (http://www.apache.org) and ApacheWeek
-     (http://www.apacheweek.com/features/userauth)
+6.	Install some method of securing access to the page. The following
+	information is applicable to Apache web servers ... Detailed
+	information on user authentication can be obtained from the Apache
+	documentation (http://www.apache.org) and ApacheWeek
+	(http://www.apacheweek.com/features/userauth).
 
-6.1  Ensure that your Apache setup will allow .htaccess file to control
-     access in the directory that contains. This is controlled by the
-     AllowOverride tag in access.conf. (Also ensure you have the
-     necessary Apache modules installed)
+6.1	Ensure that your Apache setup will allow .htaccess file to control
+	access in the directory that contains. This is controlled by the
+	AllowOverride tag in access.conf. (Also ensure you have the
+	necessary Apache modules installed)
 
-6.2  Create a htpasswd file. This is done using the htpasswd command that
-     comes with Apache. Its command line syntax is;
-     htpasswd [-c] passwordfile username
+6.2	Create a htpasswd file. This is done using the htpasswd command that
+	comes with Apache. Its command line syntax is;
+		htpasswd [-c] passwordfile username
    
-     You need to put the passwordfile somewhere that is not accessible by
-     people through the web, and create an entry for each user you want
-     to have access ... See the ApacheWeek article for more details.
+	You need to put the passwordfile somewhere that is not accessible by
+	people through the web, and create an entry for each user you want
+	to have access ... See the ApacheWeek article for more details.
 
-6.3  Create a .htaccess file in the directory that contains index.cgi.
-     Note that using Apache's built in access control, you can only control
-     access to directories, not individual files, hence the need for a
-     sub-directory in step 5.
+6.3	Create a .htaccess file in the directory that contains index.cgi.
+	Note that using Apache's built in access control, you can only control
+	access to directories, not individual files, hence the need for a
+	sub-directory in step 5.
 
-     The format of the .htaccess file should be along the lines of this;
+	The format of the .htaccess file should be along the lines of this;
 
-	AuthName EZ Mailing List Manager
-	AuthType Basic
-	AuthUserFile /path/to/passwordfile
-	require valid-user      # or require user username
+		AuthName EZ Mailing List Manager
+		AuthType Basic
+		AuthUserFile /path/to/passwordfile
+		require valid-user      # or require user username
 
 	Again, see the ApacheWeek article for details.
 
@@ -154,8 +154,9 @@ OVERVIEW:
 	(e.g /var/log/apache/error.log).
 
 
-If you have any problems:
-- take a look at https://systemausfall.org/toolforge/ezmlm-web
-- send me an email: ezmlm-web@sumpfralle.de
-- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org
-- report a bug at https://systemausfall.org/trac/ezmlm-web
+9.  If you have any problems:
+	- take a look at https://systemausfall.org/toolforge/ezmlm-web
+	- send me an email: ezmlm-web@sumpfralle.de
+	- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org
+	- report a bug at https://systemausfall.org/trac/ezmlm-web
+
