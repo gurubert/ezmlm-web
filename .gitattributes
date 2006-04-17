@@ -2,6 +2,7 @@
 /INSTALL -text
 /INSTALL.clearsilver -text
 /README -text
+/README.gnupg -text
 /TODO -text
 /UPGRADING -text
 /changelog -text

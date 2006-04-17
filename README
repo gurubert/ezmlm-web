@@ -14,9 +14,10 @@ Contents
    V.   Notes
   VI.   Multi-level list access
  VII.   Language Portability
-VIII.   Bugs && Bug Reports
-  XI.   Acknowledgements
-   X.   Availability
+VIII.	Encrypted mailing lists
+  IX.   Bugs && Bug Reports
+   X.   Acknowledgements
+  XI.   Availability
 
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
@@ -255,7 +256,14 @@ Secondly, please mail me a copy (ezmlm-web@sumpfralle.de) so that I may use
 them in any future releases of ezmlm-web.
 
 
-VIII. Bugs && Bug Reports
+VIII. Encrypted mailing lists
+=============================
+If you want to manage encrypted mailing lists (see
+http://www.synacklabs.net/projects/crypt-ml/) with ezmlm-web, then you should
+read README.gnupg and follow the instructions.
+
+
+IX. Bugs && Bug Reports
 =======================
 I don't know of any bugs, but then this is a rewrite and a first release. It
 has been tested reasonably well, but not exhaustively. I know it works on
@@ -263,12 +271,15 @@ FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and Debian
 3.0 all using an Apache web server, but I would be interested to know whether
 it works on other OSs and with other web servers.
 
-Please mail bug reports and comments to ezmlm-web@sumpfralle.de.
-Or (even better) submit a bug report at https://systemausfall.org/trac/ezmlm-web.
-Or subscribe to the ezmlm-web mailinglist: ezmlm-web-subscribe@lists.systemausfall.org.
+Please mail bug reports and comments to
+	ezmlm-web@sumpfralle.de
+Or (even better) submit a bug report at
+	https://systemausfall.org/trac/ezmlm-web
+Or subscribe to the ezmlm-web mailinglist:
+	ezmlm-web-subscribe@lists.systemausfall.org
 
 
-IX. Acknowledgements
+X. Acknowledgements
 ===================
 *  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - he created ezmlm-web
    and maintained it till 02005 
@@ -293,7 +304,7 @@ IX. Acknowledgements
    interface for v3.0
 
 
-X. Availability
+XI. Availability
 =================
 More information on ezmlm-web and developments to ezmlm-web can be found at:
 https://systemausfall.org/toolforge/ezmlm-web

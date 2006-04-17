@@ -1,4 +1,8 @@
 # sample configuration file for encrypted mailing list support
+# You do not need to change anything, if you do not want to
+# manage encrypted mailing lists. See README.gnupg for details.
+
+# Put this file besides ezmlmwebrc (just suffixed with ".gnupg").
 
 # BEWARE: enable the following line ONLY if you installed the
 # Mail::Ezmlm::Gpg module - otherwise ezmlm-web will not work!
@@ -6,7 +10,6 @@
 
 # turn support for encrypted mailing lists on or off
 # defaults to 0 (off)
-# you MUST enable the "use" line above, if you turn on the gpg support
+# you MUST enable the "use" line above, if you want to turn on gnupg support
 $GPG_SUPPORT = 0;
-
 
