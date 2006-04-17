@@ -94,19 +94,24 @@ v_bar ul li ul {
 #nav_bar form.select select {
 	background-color: #c8c8b8;
 	border-width: 1px;
-	border-style: dotted;
-	border-color: #b0b0a0;
+	border-style: solid;
+	border-color: #707070;
 	color: #2f4860;
 }
 
 #nav_bar form.select button {
 	background-color: #c4c4b4;
-	border-width: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #707070;
 }
 
 #nav_bar form.select button:hover {
 	background-color: #d8d8d8;
 	color: #2f4860;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #707070;
 }
 
 #nav_bar form.select {
