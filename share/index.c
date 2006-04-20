@@ -1,5 +1,8 @@
 /* $Id$ */
 
+/* Change this path to wherever you decided to put ezmlm-web.cgi */
+#define EZMLM_WEB_CGI "/usr/local/bin/ezmlm-web.cgi"
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -10,8 +13,7 @@
 
 int main(void) {
 
-	/* Change this path to wherever you decided to put ezmlm-web.cgi */
-	execv("/usr/local/bin/ezmlm-web.cgi", NULL); 
+	execv(EZMLM_WEB_CGI, NULL); 
 
 	/* Note that you could also use the following to allow a specific user
 	   to store their mailing lists and configuration file in a different 
@@ -29,7 +31,7 @@ int main(void) {
    
 	/*
 		char *switches[] = { "ezmlm-web.cgi", "-d", "/tmp/ezmlm-web-demo", NULL };
-		execv("/usr/local/bin/ezmlm-web.cgi", switches);
+		execv(EZMLM_WEB_CGI, switches);
 	*/
    
    
