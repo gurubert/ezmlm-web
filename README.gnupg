@@ -9,42 +9,46 @@ Content:
 ------------------------------
 
 1) Requirements
-To use encrypted mailing lists, you need to install gpg-ezmlm (see
-http://www.synacklabs.net/projects/crypt-ml/). It is essential to use
-at least version 0.3.4.
-gpg-ezmlm will handle your incoming and outgoing mails. It does not
-support all the features of ezmlm-idx, but it should suffice for the
-specialized needs of encrypted communication for small groups.
+	To use encrypted mailing lists, you need to install gpg-ezmlm (see
+	http://www.synacklabs.net/projects/crypt-ml/). It is essential to use
+	at least version 0.3.4.
+	gpg-ezmlm will handle your incoming and outgoing mails. It does not
+	support all the features of ezmlm-idx, but it should suffice for the
+	specialized needs of encrypted communication for small groups.
 
-Install the perl module Mail::Ezmlm::Gpg to access gpg-ezmlm. You can
-downloaded it from 
-https://systemausfall.org/toolforge/ezmlm-web/downloads/gnupg-support.
+	Install the perl module Mail::Ezmlm::Gpg to access gpg-ezmlm. You can
+	downloaded it from 
+	https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm-Gpg.
 
-Of course, you also need gnupg (it is required by gpg-ezmlm, too).
+	Of course, you also need gnupg (it is required by gpg-ezmlm, too).
 
 
 2) Installation
-Follow the instructions in the README file of gpg-ezmlm.
-Usually it should boil down to the following commands:
- perl Makefile.PL
- make
- make install
+	Follow the instructions in the README file of gpg-ezmlm.
+	Usually it should boil down to the following commands:
+		perl Makefile.PL
+		make
+		make test
+		make install
 
 
 3) Setup of ezmlm-web
-The location of the encryption configuration file for ezmlm-web depends
-on the location of your ezmlmwebrc file. ezmlm-web will just check, if
-a file prefixed with ".gnupg" exists besides ezmlmwebrc.
-In short: you have to put it into the same directory, as you placed your
-ezmlmwebrc. ezmlm-web will NOT look into any other location.
+	The location of the encryption configuration file for ezmlm-web depends
+	on the location of your ezmlmwebrc file. ezmlm-web will just check, if
+	a file prefixed with ".gnupg" exists besides ezmlmwebrc.
+	In short: you have to put it into the same directory, as you placed your
+	ezmlmwebrc. ezmlm-web will NOT look into any other location.
 
-To support the setup of encrypted mailing lists, you have to include the
-following lines in your ezmlmwebrc.gnupg file.
- use Mail::Ezmlm::Gpg;
- GPG_SUPPRT = yes;
+	To support the setup of encrypted mailing lists, you have to include the
+	following lines in your ezmlmwebrc.gnupg file.
+		use Mail::Ezmlm::Gpg;
+		GPG_SUPPRT = yes;
+	
+	You can find a documented example of the ezmlmwebrc.gnupg file in the
+	examples directory.
 
 4) Notes
-As soon as you installed all the necessary programs and after you did put
-the ezmlmwebrc.gnupg to the right location, you will find a new link in the
-navigation bar of ezmlm-web named "Encryption".
+	As soon as you installed all the necessary programs and after you did put
+	the ezmlmwebrc.gnupg to the right location, you will find a new link in the
+	navigation bar of ezmlm-web named "Encryption".
 

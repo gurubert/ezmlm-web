@@ -7,10 +7,7 @@ restore user input after failed list_create (especially options)
 support for:
 	* show subscription log
 	* 'mailinglist' (maybe)
-	* config directory (maybe)
-	* gpg-ezmlm (defenitely)
 
-interface language switch support
 choose basic/expert to disable questions
 
 export subscribers

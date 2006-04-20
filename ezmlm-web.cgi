@@ -31,6 +31,8 @@ use English;			# for dropping privileges
 $UID = $EUID;
 $GID = $EGID;
 
+$VERSION = '3.2';
+
 my $q = new CGI;
 $q->import_names('Q');
 use vars qw[$opt_c $opt_d $opt_C];

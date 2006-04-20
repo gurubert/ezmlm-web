@@ -10,7 +10,6 @@ Contents
    I.   Copyright Stuff
   II.   Some Background
  III.   Requirements
-  IV.   Files
    V.   Notes
   VI.   Multi-level list access
  VII.   Language Portability
@@ -56,45 +55,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 
 
-II. Some Background
-===================
-[this text was written by Guy Antony Halse - the original author of ezmlm-web]
-The need for ezmlm-web arose from the fact that we host many student
-societies on our system. These societies usually have a virtual host for web
-and email, which is administered by a computer rep from the society. These
-computer reps often have little or no knowledge of Unix and so we needed a
-user friendly system that would let the create and maintain mailing lists
-(such as members@foo.soc.ru.ac.za, committee@foo.soc.ru.ac.za, etc).
-
-Since I am never keen to re-invent the wheel, I had a look at Steve Peterson's
-script (http://virtation.com/qmail/ml-sub), which allows people to subscribe 
-and unsubscribe from mailing lists using a form->email gateway. This is fine 
-for putting on a web page saying "here come and join our mailing list", but
-doesn't really allow you to administrate a list.
-
-Security of mailing lists was a concern, as we really didn't want
-unauthorised people to be able to alter some users list. Ezmlm-web itself
-implements no security checks (apart from un-tainting input) and so relies
-on the web server to do this (re-inventing the wheel again :). We use an
-Apache webserver, so one can control access to a directory using a .htaccess
-file or in the access.conf file. ApacheWeek have a good article on doing
-this at http://www.apacheweek.com/features/userauth. I also give examples
-later in this document.
-
-This version of ezmlm-web is based to a large extent on previous
-versions that I have developed. It has however been totally re-written to
-make use of the Mail::Ezmlm perl module I wrote. At the same time it was
-updated and extended to include the new features of ezmlm-idx. It includes 
-many new features that have been suggested to me over the last few months,
-and hopefully is now useful to a much larger group of people.
-
-Since 02005 ezmlm-web is maintained by Lars Kruse (ezmlm-web@sumpfralle.de).
-Only minor improvements had to be implemented to keep the already fully
-functional ezmlm-web up to date.
-
-
-III. Requirements
-=================
+II. Requirements
+================
 This version of ezmlm-web requires the following;
 
 * qmail v1.03
@@ -125,59 +87,8 @@ You can download clearsilver (a templating engine - it is required since
 ezmlm-web v3.0) from http://clearsilver.net.
 
 
-IV. Files
-=========
-In this distribution you should find the following files;
-
-README			(optional) This file. Provides some background information.
-
-INSTALL			(optional) Notes on installation.
-
-INSTALL.clearsilver	(optional) Notes on the installation of clearsilver.
-
-CHANGES			(optional) The change history.
-
-UPGRADING		(optional) Notes on upgrading ezmlm-web from a previous version.
-
-TODO			(optional) This file is a list of things I intend doing in future
-			versions of ezmlm-web.
-
-ezmlm-web.cgi		(required) The ezmlm-web cgi script in perl. You will need it :)
-
-index.c			(recommended) A C wrapper to allow ezmlm-web.cgi to run
-			suid. Not strictly necessary if your setup allows perl scripts
-			to run suid, but I prefer using wrappers anyway. It needs to
-			be edited and compiled to suit your system. Not needed to
-			run ezmlm-web.
-
-ezmlmwebrc		(required) This is the configuration file for ezmlm-web.
-			All options are explained in this example file. You will need
-			this file to run ezmlm-web.
-
-htaccess.sample		(recommended) A sample Apache .htaccess file for controlling access to
-			the mailing lists. If you use another web server, you will
-			have to work this bit out for yourself.
-
-webusers.sample		(recommended) A sample webusers file for multi-level access control.
-
-lang			(directory, required) It contains the language files. You will need
-			at least the one, that you have choosen in "ezmlmwebrc" by
-			the option "HTML_LANGUAGE".
-
-css			(directory, recommended) Here you find available css stylesheet files.
-			Pick the one you like (for now, there is only one choice :)) and
-			set it up by pointing the "HTML_CSS_FILE" setting in your
-			"ezmlmwebrc" to an appropriate URL.
-
-template		(directory, required) The clearsilver template files in this
-			directory defined the layout of the web interface. You should be able
-			to adapt them to your needs, if you like.
-
-spec			(directory, optional) Some development specific information.
-
-
-V. Notes
-=========
+III. Notes
+==========
 * There is a function to delete mailing lists, but I really don't like the
   idea. The only reason I put it in is that bvi@rucus asked for it.
   If you set $UNSAFE_RD = 0 (the default) in the config section, the
@@ -197,8 +108,8 @@ V. Notes
   with this kind of setup :)
 
 
-VI. Multi-Level Access
-=======================
+IV. Multi-Level Access
+======================
 Ezmlm-web has a multi-level access system. This depends on a file called
 webusers being present in $LIST_DIR. If the file is not present, then ANY
 valid user has access to all lists.  If, however, this file exists a number
@@ -237,9 +148,9 @@ use of this option is deprecated, since the line "ALLOW_CREATE: ALL" provides
 the same effect in a cleaner way.
 
 
-VII. Language Portablity
-=========================
-One of the great new features of version 2.0 is that it is essentially
+V. Language Portablity
+======================
+One of the great new features since version 2.0 is that it is essentially
 language independant. All of the fixed strings, help, etc is defined in the
 files of the lang directory. Of course you can change them or create a new
 translation.
@@ -256,15 +167,15 @@ Secondly, please mail me a copy (ezmlm-web@sumpfralle.de) so that I may use
 them in any future releases of ezmlm-web.
 
 
-VIII. Encrypted mailing lists
-=============================
+VI. Encrypted mailing lists
+===========================
 If you want to manage encrypted mailing lists (see
 http://www.synacklabs.net/projects/crypt-ml/) with ezmlm-web, then you should
 read README.gnupg and follow the instructions.
 
 
-IX. Bugs && Bug Reports
-=======================
+VII. Bugs && Bug Reports
+========================
 I don't know of any bugs, but then this is a rewrite and a first release. It
 has been tested reasonably well, but not exhaustively. I know it works on
 FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and Debian
@@ -279,8 +190,8 @@ Or subscribe to the ezmlm-web mailinglist:
 	ezmlm-web-subscribe@lists.systemausfall.org
 
 
-X. Acknowledgements
-===================
+VIII. Acknowledgements
+======================
 *  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - he created ezmlm-web
    and maintained it till 02005 
 *  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me (Guy) and
@@ -304,16 +215,20 @@ X. Acknowledgements
    interface for v3.0
 
 
-XI. Availability
-=================
+IX. Availability
+================
 More information on ezmlm-web and developments to ezmlm-web can be found at:
-https://systemausfall.org/toolforge/ezmlm-web
+https://systemausfall.org/toolforge/ezmlm-web/
 
 The public subversion repository is at:
-https://svn.systemausfall.org/svn/ezmlm-web
+https://svn.systemausfall.org/svn/ezmlm-web/
 
-The website of Guy Antony Halse (the author of ezmlm-web) is still at:
+The (inofficial) debian repository containing ezmlm-web is at:
+http://systemausfall.org/toolforge/debian/
+
+The website of Guy Antony Halse (the original author of ezmlm-web) is still at:
 http://rucus.ru.ac.za/~guy/ezmlm/
 
 The old ftp-archive of ezmlm-web is still available on:
 ftp://rucus.ru.ac.za/pub/mail/ezmlm/
+
