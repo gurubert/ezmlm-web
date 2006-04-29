@@ -2,7 +2,7 @@ Source: ezmlm-web
 Section: admin
 Priority: extra
 Maintainer: Lars Kruse <devel@sumpfralle.de>
-Build-Depends: debhelper (>>3.0.0), gcc
+Build-Depends: debhelper (>>3.0.0), gcc, dpatch
 Standards-Version: 3.6.2
 
 Package: ezmlm-web
