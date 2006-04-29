@@ -16,7 +16,7 @@ export DH_COMPAT=4
 configure: configure-stamp
 configure-stamp: patch
 	dh_testdir
-	perl Makefile.PL INSTALLDIRS=vendor DESTDIR="$(CURDIR)/debian/build"
+	perl Makefile.PL INSTALLDIRS=vendor DESTDIR="$(CURDIR)/debian/ezmlm-web"
 	touch configure-stamp
 
 
@@ -53,8 +53,8 @@ install: build
 
 	$(MAKE) install
 
-	install -c -m 644 examples/ezmlmwebrc.dist "$(CURDIR)/debian/build/etc/ezmlm-web/ezmlmwebrc"
-	install -c -m 644 examples/ezmlmwebrc.gnupg.dist "$(CURDIR)/debian/build/etc/ezmlm-web/ezmlmwebrc.gnupg"
+	install -c -m 644 examples/ezmlmwebrc.dist "$(CURDIR)/debian/ezmlm-web/etc/ezmlm-web/ezmlmwebrc"
+	install -c -m 644 examples/ezmlmwebrc.gnupg.dist "$(CURDIR)/debian/ezmlm-web/etc/ezmlm-web/ezmlmwebrc.gnupg"
 
 
 # Build architecture-independent files here.
