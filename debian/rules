@@ -16,7 +16,7 @@ export DH_COMPAT=4
 configure: configure-stamp
 configure-stamp: patch
 	dh_testdir
-	$(PERL) Makefile.PL INSTALLDIRS=vendor DESTDIR=$(DESTDIR)
+	perl Makefile.PL INSTALLDIRS=vendor
 	touch configure-stamp
 
 
@@ -32,7 +32,7 @@ clean: clean-patched unpatch
 clean-patched:
 	dh_testdir
 	dh_testroot
-	#-$(MAKE) clean
+	-$(MAKE) clean
 	rm -f build-stamp configure-stamp
 	dh_clean 
 
