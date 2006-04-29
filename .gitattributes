@@ -23,6 +23,7 @@ debian/changelog -text
 debian/conffiles -text
 debian/control -text
 debian/copyright -text
+debian/dirs -text
 debian/rules -text
 examples/ezmlmwebrc.dist -text
 examples/ezmlmwebrc.gnupg.dist -text
