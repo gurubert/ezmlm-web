@@ -18,6 +18,12 @@ debian-related/README.Debian -text
 debian-related/changelog.Debian -text
 debian-related/index.c -text
 debian-related/man/ezmlm-web-make-suid.1 -text
+debian/README.Debian -text
+debian/changelog -text
+debian/conffiles -text
+debian/control -text
+debian/copyright -text
+debian/rules -text
 examples/ezmlmwebrc.dist -text
 examples/ezmlmwebrc.gnupg.dist -text
 examples/htaccess.dist -text
