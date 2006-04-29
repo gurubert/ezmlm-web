@@ -9,9 +9,7 @@
 
 set -eu
 
-C_SOURCE=/usr/share/ezmlm-web/index.c
-
-which cc >/dev/null || { echo "no compiler (cc) installed - sorry" >&2; exit 1; }
+EZMLM_WEB_SUID_WRAPPER=/usr/local/bin/ezmlm-web.wrapper
 
 [ $(id -u) -ne 0 ] && [ $# -ne 1 ] && echo "Syntax (for non-root): $(basename $0) DESTINATION_FILE" >&2 && exit 1
 [ $(id -u) -eq 0 ] && [ $# -gt 2 -o $# -lt 1 ] && echo "Syntax (for root): $(basename $0) [USERNAME] DESTINATION_FILE" >&2 && exit 1
@@ -23,7 +21,7 @@ if [ $# -eq 1 ]
 			EZ_FILE=$2
   fi
 
-cc -o "$EZ_FILE" "$C_SOURCE"
+cp "$EZMLM_WEB_SUID_WRAPPER" "$EZ_FILE"
 if [ $(id -u) -eq 0 ]
 	then chown "$EZ_USER". "$EZ_FILE" || { echo "the user '$EZ_USER' does not exist" >&2; rm "$EZ_FILE"; exit 1; }
   fi

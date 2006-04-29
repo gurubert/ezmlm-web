@@ -2,7 +2,7 @@ Package: ezmlm-web
 Version: 3.2-1
 Section: admin
 Priority: extra
-Architecture: all
+Architecture: any
 Depends: perl, httpd-cgi, libemail-address-perl, libemail-ezmlm-perl (>= 0.07)
 Suggests: qmail-src, bash (>=2.0), gcc
 Maintainer: Lars Kruse <devel@sumpfralle.de>

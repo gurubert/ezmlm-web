@@ -3,13 +3,14 @@ The following notes will guide you through the installation of ezmlm-web:
 OVERVIEW:
   0 - important notes
   1 - get it
-  2 - install executable
+  2 - install executable and shared files
   3 - configuration file
   4 - compile cgi wrapper
   5 - install cgi wrapper
   6 - [optional] configure access control (http authentication)
   7 - css stylesheet file
   8 - final test
+  9 - any problems?
 
 
 ------------------------------------------------------------------------------
@@ -36,16 +37,11 @@ OVERVIEW:
 	(debian users may stop reading here)
 
 
-2.	Copy ezmlm-web.cgi to some publically readable directory. It does not
-	have to be in a path accessible to your web server, but any user with a
-	mailing list must be able to run it (Check the read and execute rights
-	on both the file and directory). We put our copy in "/usr/local/bin".
-
-	At the top of ezmlm-web.cgi you may have to change the $ENV{'PATH'}
-	variable. Be careful about what you set as the path. Too 
-	much is a security risk and too little will cause the script to 
-	malfunction. Version 2.0 requires that the following programs be 
-	accessible in your path: mv, rm
+2.	Execute the following lines to install the cgi script and the shared data
+	files to the appropriate locations.
+		perl Makefile.PL
+		make
+		make install
 
 
 3.	Edit the examples/ezmlmwebrc.dist file and alter the variables to suit
@@ -62,15 +58,6 @@ OVERVIEW:
 	supply to a minimum and also make reasonable guesses about default
 	values.
 
-	The directory containing ezmlm-web's language files should be something
-	like '/usr/local/share/ezmlm-web/lang':
-		mkdir -p /usr/local/share/ezmlm-web
-		cp -r share/lang /usr/local/share/ezmlm-web
-	You can change this default location in the ezmlmwebrc file.
-	Do the same with the share/template directory (e.g copy it
-	to /usr/local/share/ezmlm-web/template). Then you also have to
-	set the appropriate location in the ezmlmwebrc file.
-
 	Finally, copy the ezmlmwebrc file to one of
 	the following places:
 		1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
@@ -80,26 +67,22 @@ OVERVIEW:
 	 (ezmlm-web will look for it in these places in the given order)
 
 
-4.	Edit the index.c file and change the path to the path of your copy
-	of ezmlm-web.cgi. Then compile this file. You can do this by issuing
-	this command:
-		gcc -o index.cgi share/index.c
+4.	For every user/virtual host that needs to manage mailing lists, you
+	need to create a suid wrapper owned by the user whom the mailing lists
+	belong to. This wrapper needs to reside somewhere accessible by 
+	the web server. I suggest that you put it in a sub directory 
+	of each user/virtual host's home directory (eg.
+	/home/luser/public_html/ezmlm for Apache). 
 
-
-5.	For every user/virtual host that needs to manage mailing lists, you
-	need to create a SUID (user not root!!) copy of index.cgi (e.g
-	chmod 4755 index.cgi). These need to reside somewhere accessible by 
-	the web server. I suggest that you put them in a sub directory (see 
-	about security) of each user/virtual host's home directory (eg.
-    /home/luser/public_html/ezmlm for Apache). 
+	Create a suid wrapper by issuing the following command:
+		ezmlm-web-make-suid 
 
 	The copies don't actually have to be called index.cgi, but it is nice
-	for web servers that can resolve a cgi script as an index page (see the
-	srm.conf file in Apache). It is important to make sure that whichever
-	directory you choose to put them can
+	for web servers that can resolve a cgi script as an index page. It is
+	important to make sure that whichever directory you choose to put them can
 		i:	Execute CGI Scripts and
 		ii:	Be access controlled (here I mean both web and user access) by
-			some method (eg .htaccess, access.conf for Apache).
+			some method (eg .htaccess for Apache).
 
 
 6.	Install some method of securing access to the page. The following
@@ -138,9 +121,9 @@ OVERVIEW:
 	Again, see the ApacheWeek article for details.
 
 
-7.	You should copy the stylesheet file (share/css/default.css) to a location
-	of your choice. It has to be accessible by an URL - maybe a place like
-	"/var/www/ezmlm-web.css" could be appropriate.
+7.	Copy the stylesheet file (/usr/local/share/ezmlm-web/css/default.css)
+	to a location of your choice. It has to be accessible by an URL - maybe
+	a place like "/var/www/ezmlm-web.css" could be appropriate.
 	Now you may have to change the "HTML_CSS_FILE" setting in your
 	ezmlmwebrc file. This value is a URL - not the local filename.
 

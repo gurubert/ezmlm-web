@@ -1,6 +1,8 @@
 * text=auto !eol
 /INSTALL -text
 /INSTALL.clearsilver -text
+/MANIFEST -text
+/Makefile.PL -text
 /README -text
 /README.gnupg -text
 /TODO -text
@@ -14,7 +16,6 @@ debian-related/DEBIAN/postrm -text
 debian-related/DEBIAN/prerm -text
 debian-related/README.Debian -text
 debian-related/changelog.Debian -text
-debian-related/ezmlm-web-make-suid -text
 debian-related/index.c -text
 debian-related/man/ezmlm-web-make-suid.1 -text
 examples/ezmlmwebrc.dist -text
@@ -25,7 +26,6 @@ examples/webusers.dist -text
 scripts/check_languages.sh -text
 scripts/debian.sh -text
 share/css/default.css -text
-share/index.c -text
 share/lang/de.hdf -text
 share/lang/en.hdf -text
 share/lang/jp.pm -text
@@ -115,3 +115,7 @@ share/template/ui/gnupg/normal.hdf -text
 spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
 spec/release-policy.txt -text
+suid-wrapper/Makefile -text
+suid-wrapper/ezmlm-web-make-suid -text
+suid-wrapper/index.c -text
+suid-wrapper/index.h -text

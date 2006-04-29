@@ -1,7 +1,7 @@
 /* $Id$ */
 
-/* Change this path to wherever you decided to put ezmlm-web.cgi */
-#define EZMLM_WEB_CGI "/usr/local/bin/ezmlm-web.cgi"
+// define the location of your ezmlm-web.cgi file in this header file
+#include "index.h"
 
 #include <stdio.h>
 #include <unistd.h>
