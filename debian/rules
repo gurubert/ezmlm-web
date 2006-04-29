@@ -16,7 +16,7 @@ export DH_COMPAT=4
 configure: configure-stamp
 configure-stamp: patch
 	dh_testdir
-	perl Makefile.PL INSTALLDIRS=vendor
+	perl Makefile.PL INSTALLDIRS=vendor DESTDIR=$(CURDIR)/debian/build
 	touch configure-stamp
 
 
