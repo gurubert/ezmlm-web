@@ -6,11 +6,11 @@ ezmlm-web-make-suid \- create user-specific suid wrappers for ezmlm-web
 [\fIUSERNAME\fR] \fIDESTINATION_FILE\fR
 .SH DESCRIPTION
 .PP
-Compile a user-specific suid wrapper for ezmlm-web. This is necessary, as
-the mailing lists are usually not owned by the webserver, that executes
-the cgi.
+Create a user-specific copy of the suid wrapper for ezmlm-web. This is
+necessary, as the mailing lists are usually not owned by the user of the
+webserver, that executes the cgi.
 .PP
-The destination file determines where to put the resulting binary.
+The destination file determines where to put the resulting wrapper.
 .PP
 Only root is allowed to choose a username.
 .SH EXAMPLES

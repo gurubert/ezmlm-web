@@ -5,50 +5,62 @@ Table of content
 2 - install required additional software
 3 - create user-sprecific suid binaries
 4 - create a user-specific configuration
+5 - enable stylesheet
 5 - access control
 6 - testing
 
 #################################################################
 
 1) install the package
-you surely did this already :)
+	you surely did this already :)
 
 
 2) install required additional software
-clearsilver perl bindings:
-	* download clearsilver (http://clearsilver.net) v0.10.2 or higher
-	* compile and install it with perl enabled
+	clearsilver perl bindings:
+		* download clearsilver (http://clearsilver.net) v0.10.2 or higher
+		* compile and install it with perl enabled
 
 
 3) create user-specific suid binaries
-As perl-suid is considered deprecated, you have to compile a C-wrapper
-for every user of your debian system, who wants to manage his mailing
-lists with ezmlm-we.
-Usually you do this only for your virtual mailing list user.
+	As perl-suid is considered deprecated, you have to compile a C-wrapper
+	for every user of your debian system, who wants to manage his mailing
+	lists with ezmlm-we.
+	Usually you do this only for your virtual mailing list user.
 
-to create a wrapper, type the following:
-	ezmlm-web-make-suid USERNAME DESTINATION_FILE
+	to create a wrapper, type the following:
+		ezmlm-web-make-suid USERNAME DESTINATION_FILE
 
-e.g: ezmlm-web-make-suid john ~john/public_html/cgi-bin/ezmlm-web
+	e.g: ezmlm-web-make-suid john ~john/public_html/cgi-bin/ezmlm-web
 
 
 4) create a user-specific configuration file (optional)
-Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc to ~john/.ezmlmwebrc
-and change its content according to your setup.
+	Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc to ~john/.ezmlmwebrc
+	and change its content according to your setup.
 
 
-5) access control (optional)
-configure access control for the fresh cgi binary. Maybe you can
-use the htaccess.sample file in /usr/share/doc/ezmlm-web/examples as
-a template.
-
-Now you should create a webusers file to define the permissions of all
-possible web users. An example webusers file can be found at
-/usr/share/doc/ezmlm-web/examples/webusers.sample.
-
-See /usr/share/doc/ezmlm-web/README for details about access control.
+5) enable the stylesheet
+	Copy the stylesheet file (/usr/share/ezmlm-web/css/default.css)
+	to a location of your choice. It has to be accessible by an URL - maybe
+	a place like "/var/www/ezmlm-web.css" could be appropriate.
+	Now you may have to change the "HTML_CSS_FILE" setting in your
+	ezmlmwebrc file. This value is a URL - not the local filename.
 
 
-6) testing
-Now you can access the ezmlm-web interface by using your web browser.
-e.g. point it to http://localhost/~john/cgi-bin/ezmlm-web
+6) access control (optional)
+	Configure access control for the fresh cgi binary. Maybe you can
+	use the htaccess.sample file in /usr/share/doc/ezmlm-web/examples as
+	a template.
+
+	Now you should create a webusers file to define the permissions of all
+	possible web users. An example webusers file can be found at
+	/usr/share/doc/ezmlm-web/examples/webusers.sample.
+
+	See /usr/share/doc/ezmlm-web/README for details about access control.
+
+
+7) testing
+	Now you can access the ezmlm-web interface by using your web browser.
+	e.g. point it to http://localhost/~john/cgi-bin/ezmlm-web
+	If the web interface looks not as colorful as you expected, then you
+	may have to revisit your stylesheet setting (HTML_CSS_FILE in ezmlmwebrc).
+

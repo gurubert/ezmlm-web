@@ -1,14 +1,10 @@
-ezmlm-idx5: modsub and modpost are ignored, if the flag is not set
-
-"cancel" button during text editing (simple "reset" input button)
-
 restore user input after failed list_create (especially options)
 
 support for:
 	* show subscription log
 	* 'mailinglist' (maybe)
 
-choose basic/expert to disable questions
+choose basic/normal/expert to disable questions
 
 export subscribers
 
