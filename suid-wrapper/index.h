@@ -1,1 +1,1 @@
-#define EZMLM_WEB_CGI "/usr/local/bin/ezmlm-web.cgi"
+#define EZMLM_WEB_CGI "test/bin/ezmlm-web.cgi"
