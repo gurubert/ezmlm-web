@@ -10,12 +10,14 @@
 
 # Where do we store lists on this server ... Try "$HOME_DIR/lists". 
 # This directory will automatically be created if needed.
+# BEWARE: the (resulting) path MUST be absolute (starting with a slash)!
 $LIST_DIR = "$HOME_DIR/lists";
 
 # Where do we store the dotqmail files of this user?
 # (defaults to the home directory of the executing user)
 # You will have to change this value, if you use a multi domain
 # vpopmail setup. Otherwise just leave the setting turned off.
+# BEWARE: the (resulting) path MUST be absolute (starting with a slash)!
 #$DOTQMAIL_DIR = "/home/vpopmail/domain";
 
 # Where is the webusers file for access-permissions

@@ -423,8 +423,8 @@ sub output_page {
 	$pagedata->setValue('Data.Success', "$success") if (defined($success));
 	$pagedata->setValue('Data.Error', "$error") if (defined($error));
 	$pagedata->setValue('Data.Warning', "$warning") if (defined($warning));
-	$pagedata->setValue('Data.CustomError', "$customError") if (defined($customError));
-	$pagedata->setValue('Data.CustomWarning', "$customWarning") if (defined($customWarning));
+	$pagedata->setValue('Data.customError', "$customError") if (defined($customError));
+	$pagedata->setValue('Data.customWarning', "$customWarning") if (defined($customWarning));
 
 	$pagedata->setValue('Data.Action', "$pagename");
 
@@ -1243,7 +1243,7 @@ sub create_list {
 				-user=>$USER)
 	) {
 		# fatal error
-		$customWarning = $list->errmsg();
+		$customError = $list->errmsg();
 		return (1==0);
 	}
 
