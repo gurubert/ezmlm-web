@@ -27,20 +27,20 @@ def:setting(setting)
  /def ?><?cs
 
 def:warning(warntext)
-    ?><div class="warning"><?cs alt:warntext ?>unknown warning message (<?cs
-			var:Data.Warning ?>)<?cs /alt ?></div><?cs
+    ?><div class="warning"><?cs alt:html_escape(warntext) ?>unknown warning message (<?cs
+			var:html_escape(Data.Warning) ?>)<?cs /alt ?></div><?cs
  /def ?><?cs
 
 def:error(errtext)
     ?><div class="error">
-		<?cs alt:errtext ?>unknown error message (<?cs
-			var:Data.Error ?>)<?cs /alt ?></div><?cs
+		<?cs alt:html_escape(errtext) ?>unknown error message (<?cs
+			var:html_escape(Data.Error) ?>)<?cs /alt ?></div><?cs
  /def ?><?cs
 
 def:success(succtext)
     ?><div class="success">
-		<?cs alt:succtext ?>unknown success message (<?cs 
-		var:Data.Success ?>)<?cs /alt ?></div><?cs
+		<?cs alt:html_escape(succtext) ?>unknown success message (<?cs 
+		var:html_escape(Data.Success) ?>)<?cs /alt ?></div><?cs
  /def ?><?cs
 
 def:limit_string_len(text,limit)
