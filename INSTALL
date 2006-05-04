@@ -22,7 +22,7 @@ OVERVIEW:
 	modules.
 
 	Additionally (since v3.0) you have to install clearsilver (a templating
-	engine). See INSTALL.clearsilver for details.
+	engine). See README.clearsilver for details.
 
 
 1.	Choose a distribution form

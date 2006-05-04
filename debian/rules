@@ -12,6 +12,9 @@
 # This is the debhelper compatibility version to use.
 export DH_COMPAT=4
 
+# necessary for dpatch
+.NOTPARALLEL:
+
 
 configure: configure-stamp
 configure-stamp: patch

@@ -1,6 +1,7 @@
 #!/usr/bin/perl 
 #===========================================================================
 # ezmlm-web.cgi - version 3.2
+# $Id$
 # ==========================================================================
 # All user configuration happens in the config file ``ezmlmwebrc''
 # POD documentation is at the end of this file
@@ -1379,14 +1380,12 @@ sub gnupg_export_key()
 	for ($i = 0; $i < @all_keys; $i++) {
 		$name = $all_keys[$i]{name} if ($keyid == $all_keys[$i]{id});
 	}
-	warn "vorher: $name";
 	if ($name) {
 		$name =~ s/\W+/_/g;
 		$name .= '.asc';
 	} else {
 		$name = "public_key.asc";
 	}
-	warn "nachher: $name";
 	
 	my $key_armor;
 	if ($key_armor = $list->export_key($keyid)) {
@@ -1824,7 +1823,7 @@ sub fatal_error() {
 }
 
 # ------------------------------------------------------------------------
-# End of ezmlm-web.cgi v2.3
+# End of ezmlm-web.cgi
 # ------------------------------------------------------------------------
 __END__
 
@@ -1840,11 +1839,15 @@ ezmlm-web [B<-c>] [B<-C> E<lt>F<config file>E<gt>] [B<-d> E<lt>F<list directory>
 
 =over 4
 
-=item B<-C> Specify an alternate configuration file given as F<config file>
-If not specified, ezmlm-web checks first in the users home directory, then in
-F</etc/ezmlm> and then the current directory
+=item B<-C>
 
-=item B<-d> Specify an alternate directory where lists live. This is now
+Specify an alternate configuration file given as F<config file>
+If not specified, ezmlm-web checks first in the users home directory, then the
+current directory (filename: .ezmlmwebrc) and then F</etc/ezmlm-web/ezmlwebrc>.
+
+=item B<-d>
+
+Specify an alternate directory where lists live. This is now
 depreciated in favour of using a custom ezmlmwebrc, but is left for backward
 compatibility.
 
@@ -1852,39 +1855,59 @@ compatibility.
 
 =head1 SUID WRAPPER
 
-C<#include stdio.h>
+Create a suid binary wrapper for every (virtual) mailing list account:
 
-C<void main (void) {>
-   C</* call ezmlm-web */>
-   C<system("/path/to/ezmlm-web.cgi");>
-C<}>
-
+	ezmlm-web-make-suid john ~john/public_html/cgi-bin/ezmlm-web
 
 =head1 DOCUMENTATION/CONFIGURATION
 
-   Please refer to the example ezmlmwebrc which is well commented, and
-   to the README file in this distribution.
+Please refer to the example ezmlmwebrc which is well commented, and
+to the README file in this distribution.
+
+=head1 ENCRYPTED MAILING LISTS
+
+Please refer to README.gnupg for details on how to manage encrypted
+mailing lists with ezmlm-web.
 
 =head1 FILES
 
-F<~/.ezmlmwebrc>
-F</etc/ezmlm/ezmlmwebrc>
-F<./ezmlmwebrc>
+=over
 
-=head1 AUTHOR
+=item F<./.ezmlmwebrc>
 
- Guy Antony Halse <guy-ezmlm@rucus.ru.ac.za>
- Lars Kruse <ezmlm-web@sumpfralle.de>
+=item F<~/.ezmlmwebrc>
+
+=item F</etc/ezmlm-web/ezmlmwebrc>
+
+=back
+
+=head1 AUTHORS
+
+=over
+
+=item Guy Antony Halse <guy-ezmlm@rucus.ru.ac.za>
+
+=item Lars Kruse <ezmlm-web@sumpfralle.de>
+
+=back
 
 =head1 BUGS
 
- None known yet. Please report bugs to the author.
+None known yet. Please report bugs to the author.
 
 =head1 S<SEE ALSO>
  
- ezmlm(5), ezmlm-cgi(1), Mail::Ezmlm(3)
-   
- https://systemausfall.org/toolforge/ezmlm-web
- http://rucus.ru.ac.za/~guy/ezmlm/
- http://www.ezmlm.org/
- http://www.qmail.org/
+L<ezmlm-web-make-suid(1)>, L<ezmlm(5)>, L<ezmlm-cgi(1)>, L<Mail::Ezmlm(3)>
+
+=over
+
+=item L<https://systemausfall.org/toolforge/ezmlm-web/>
+
+=item L<http://rucus.ru.ac.za/~guy/ezmlm/>
+
+=item L<http://www.ezmlm.org/>
+
+=item L<http://www.qmail.org/>
+
+=back
+

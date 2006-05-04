@@ -27,6 +27,8 @@ you should replace the existing SITEPREFIX line in perl/Makefile with the follow
 	SITEPREFIX = $(PREFIX)
 (without the leading white space)
 
+This issue should be fixed in clearsilver 0.10.3.
+
 
 5) make install
 

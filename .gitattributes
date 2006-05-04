@@ -1,9 +1,9 @@
 * text=auto !eol
 /INSTALL -text
-/INSTALL.clearsilver -text
 /MANIFEST -text
 /Makefile.PL -text
 /README -text
+/README.clearsilver -text
 /README.gnupg -text
 /TODO -text
 /UPGRADING -text
@@ -16,6 +16,8 @@ debian/copyright -text
 debian/dirs -text
 debian/docs -text
 debian/ezmlm-web.manpages -text
+debian/patches/00list -text
+debian/patches/01_paths_in_config_file.dpatch -text
 debian/rules -text
 examples/ezmlmwebrc.dist -text
 examples/ezmlmwebrc.gnupg.dist -text
@@ -23,6 +25,7 @@ examples/htaccess.dist -text
 examples/webusers.dist -text
 /ezmlm-web.cgi -text
 man/ezmlm-web-make-suid.1 -text
+man/ezmlm-web.wrapper.1 -text
 scripts/check_languages.sh -text
 scripts/debian.sh -text
 share/css/default.css -text

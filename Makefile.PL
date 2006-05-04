@@ -20,6 +20,7 @@ WriteMakefile(
 			'File::Copy'	=> 2.02,
 			'File::Path'	=> 1.07,
 			'Text::ParseWords'	=> 3.0 },
+	'MAN1PODS'	=> { 'ezmlm-web.cgi' => 'blib/man1/ezmlm-web.cgi.1p' },
 	'dist'		=> { COMPRESS => 'gzip', SUFFIX => 'gz' }
 );
 
@@ -76,7 +77,7 @@ install_cgi:	make_real_bin
 install_suid_wrapper:	build_suid_wrapper make_real_bin
 	\$(NOECHO) echo "WARNING: \$(REALINSTALLBIN)"
 	install -c -m 0755 suid-wrapper/index.cgi \$(DESTDIR)\$(REALINSTALLBIN)/ezmlm-web.wrapper
-	install -c -m 0755 suid-wrapper/ezmlm-web-make-suid \$(DESTDIR)\$(REALINSTALLBIN)/
+	install -c -m 0755 suid-wrapper/ezmlm-web-make-suid.configured \$(DESTDIR)\$(REALINSTALLBIN)/ezmlm-web-make-suid
 
 install::	real_install_bin_\$(INSTALLDIRS) install_share_\$(INSTALLDIRS)
 install_share_site::	DESTINSTALLSHARE := \$(DESTDIR)\$(PREFIX)/local/share

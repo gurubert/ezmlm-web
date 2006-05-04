@@ -1,1 +1,3 @@
 man/ezmlm-web-make-suid.1
+man/ezmlm-web.wrapper.1
+blib/man1/ezmlm-web.cgi.1p

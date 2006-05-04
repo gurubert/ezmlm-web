@@ -9,7 +9,7 @@
 
 set -eu
 
-EZMLM_WEB_SUID_WRAPPER=test/bin/ezmlm-web.wrapper
+EZMLM_WEB_SUID_WRAPPER=/usr/local/bin/ezmlm-web.wrapper
 
 [ $(id -u) -ne 0 ] && [ $# -ne 1 ] && echo "Syntax (for non-root): $(basename $0) DESTINATION_FILE" >&2 && exit 1
 [ $(id -u) -eq 0 ] && [ $# -gt 2 -o $# -lt 1 ] && echo "Syntax (for root): $(basename $0) [USERNAME] DESTINATION_FILE" >&2 && exit 1
