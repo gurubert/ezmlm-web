@@ -1,16 +1,17 @@
 The following notes will guide you through the installation of ezmlm-web:
 
+$Id$
+
 OVERVIEW:
   0 - important notes
   1 - get it
   2 - install executable and shared files
   3 - configuration file
-  4 - compile cgi wrapper
-  5 - install cgi wrapper
-  6 - [optional] configure access control (http authentication)
-  7 - css stylesheet file
-  8 - final test
-  9 - any problems?
+  4 - create a suid cgi wrapper
+  5 - [optional] configure access control (http authentication)
+  6 - css stylesheet file
+  7 - final test
+  8 - any problems?
 
 
 ------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ OVERVIEW:
 
 1b)	debian package
 	This is the (by far) most convenient way to install ezmlm-web.
-	Read debian-releated/README.Debian for details.
+	Read debian/README.Debian for details.
 	(debian users may stop reading here)
 
 
@@ -85,18 +86,18 @@ OVERVIEW:
 			some method (eg .htaccess for Apache).
 
 
-6.	Install some method of securing access to the page. The following
+5.	Install some method of securing access to the page. The following
 	information is applicable to Apache web servers ... Detailed
 	information on user authentication can be obtained from the Apache
 	documentation (http://www.apache.org) and ApacheWeek
 	(http://www.apacheweek.com/features/userauth).
 
-6.1	Ensure that your Apache setup will allow .htaccess file to control
+5.1	Ensure that your Apache setup will allow .htaccess file to control
 	access in the directory that contains. This is controlled by the
 	AllowOverride tag in access.conf. (Also ensure you have the
 	necessary Apache modules installed)
 
-6.2	Create a htpasswd file. This is done using the htpasswd command that
+5.2	Create a htpasswd file. This is done using the htpasswd command that
 	comes with Apache. Its command line syntax is;
 		htpasswd [-c] passwordfile username
    
@@ -104,7 +105,7 @@ OVERVIEW:
 	people through the web, and create an entry for each user you want
 	to have access ... See the ApacheWeek article for more details.
 
-6.3	Create a .htaccess file in the directory that contains index.cgi.
+5.3	Create a .htaccess file in the directory that contains index.cgi.
 	Note that using Apache's built in access control, you can only control
 	access to directories, not individual files, hence the need for a
 	sub-directory in step 5.
@@ -121,14 +122,14 @@ OVERVIEW:
 	Again, see the ApacheWeek article for details.
 
 
-7.	Copy the stylesheet file (/usr/local/share/ezmlm-web/css/default.css)
+6.	Copy the stylesheet file (/usr/local/share/ezmlm-web/css/default.css)
 	to a location of your choice. It has to be accessible by an URL - maybe
 	a place like "/var/www/ezmlm-web.css" could be appropriate.
 	Now you may have to change the "HTML_CSS_FILE" setting in your
 	ezmlmwebrc file. This value is a URL - not the local filename.
 
 
-8.  Test the installation with your favourite web browser. You should be
+7.  Test the installation with your favourite web browser. You should be
 	asked for a username and password (supplied in 6.2) and then be presented
 	with a screen entitled "EZ Mailing List Manger". You can then try to
 	create and edit mailing lists ... Have Fun :)
@@ -140,7 +141,7 @@ OVERVIEW:
 	(e.g. /var/log/apache/error.log).
 
 
-9.  If you have any problems:
+8.  If you have any problems:
 	- take a look at https://systemausfall.org/toolforge/ezmlm-web
 	- send me an email: ezmlm-web@sumpfralle.de
 	- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org

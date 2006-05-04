@@ -1,5 +1,7 @@
 How to use ezmlm-web with debian
 
+$Id$
+
 Table of content
 1 - install the package
 2 - install required additional software
@@ -12,7 +14,16 @@ Table of content
 #################################################################
 
 1) install the package
-	you surely did this already :)
+	The debian packages for ezmlm-web are not part of the main
+	debian distribution. Instead you have to use the debian repository
+	at systemausfall.org. Just add the following line to your
+	/etc/apt/sources.list:
+
+	deb http://systemausfall.org/toolforge/debian testing main contrib non-free
+
+	Now you may simply execute the following commands:
+		apt-get update
+		apt-get install ezmlm-web libemail-ezmlm-perl
 
 
 2) install required additional software

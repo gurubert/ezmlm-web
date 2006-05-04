@@ -2,6 +2,8 @@
 | ezmlm-web-3.2 |
 =================
 
+$Id$
+
 If you only want to know how to install ezmlm-web, then you should
 read INSTALL.
 
@@ -126,7 +128,7 @@ If list creation is allowed and the webusers file exists, then the person who
 creates the list is the default owner. There is no way to create users
 through the web interface, as this depends on your authentication system.
 
-The format of a webusers file is as follows;
+The format of a webusers file is as follows:
 
 list1: user1 user2 user3
 ALL: user1 user2
@@ -158,7 +160,7 @@ translation.
 The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
 
 If anyone gets round to writing full templates for languages I would
-appreciate it if you would do two things;
+appreciate it if you would do two things:
 
 Firstly, make them public and announce them on the ezmlm@lists.cr.yp.to
 mailing list so that others may benefit.
@@ -176,11 +178,11 @@ read README.gnupg and follow the instructions.
 
 VII. Bugs && Bug Reports
 ========================
-I don't know of any bugs, but then this is a rewrite and a first release. It
-has been tested reasonably well, but not exhaustively. I know it works on
-FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and Debian
-3.0 all using an Apache web server, but I would be interested to know whether
-it works on other OSs and with other web servers.
+I don't know of any bugs ...
+Ezmlm-web has been tested reasonably well, but not exhaustively. I know it
+works on FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and
+Debian 3.0 all using an Apache web server, but I would be interested to know
+whether it works on other OSs and with other web servers.
 
 Please mail bug reports and comments to
 	ezmlm-web@sumpfralle.de
