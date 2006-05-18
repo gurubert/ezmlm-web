@@ -567,7 +567,7 @@ sub set_pagedata()
 
 	# modules
 	# TODO: someone should test, if the mysql support works
-	$pagedata->setValue("Data.Modules.MySQL", ($Mail::Ezmlm::MYSQL_BASE)? 1 : 0);
+	$pagedata->setValue("Data.Modules.mySQL", ($Mail::Ezmlm::MYSQL_BASE)? 1 : 0);
    
 
 	# permissions
