@@ -21,8 +21,8 @@ use DB_File;
 use CGI;
 use IO::File;
 use POSIX qw(tmpnam);
-use Encode qw/ from_to /;	# add by ooyama for char convert
-use English;			# for dropping privileges
+use Encode qw/ from_to /;	# added by ooyama for char convert
+use English;
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
 # setting is turned on
@@ -1640,7 +1640,7 @@ sub update_webusers {
 	close $fh; 
 	unless (open(TMP, ">$temp_file")) {
 		warn "could not open a temporary file";
-		return (1==0);;
+		return (1==0);
 	}
 	open(WU, "<$WEBUSERS_FILE");
 	while(<WU>) { print TMP; }

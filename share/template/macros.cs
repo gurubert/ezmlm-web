@@ -78,7 +78,7 @@ def:link(attr1, value1, attr2, value2, attr3, value3)
 		?><?cs set:attrs = ""
 	?><?cs /each
 	?><?cs each:attrs = Config.UI.LinkAttrs
-		?><?cs set:Temp[name(attrs)] = attrs
+		?><?cs set:Temp[url_escape(name(attrs))] = url_escape(attrs)
 		?><?cs /each
 	?><?cs if:attr1 != "" ?><?cs set:Temp[attr1] = value1 ?><?cs /if
 	?><?cs if:attr2 != "" ?><?cs set:Temp[attr2] = value2 ?><?cs /if
@@ -97,3 +97,4 @@ def:link(attr1, value1, attr2, value2, attr3, value3)
 		?><?cs /each
 	?><?cs /if ?><?cs
  /def ?>
+
