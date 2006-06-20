@@ -264,7 +264,7 @@ Lang {
 
 	Legend {
 		ConfigAdmin		= Remote administrator's permissions
-		ConfigArchve	= Archive configuration
+		ConfigArchive	= Archive configuration
 		ConfigPosting	= Posting rules
 		ConfigSub		= Subscription details
 		ConfigMain		= General list configuration
