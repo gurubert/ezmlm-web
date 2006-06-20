@@ -1,3 +1,9 @@
+Maximale Anzahl von Mailinglisten definieren?
+	- wird wohl von qmailadmin in der .qmailadmin-limits-Datei festgelegt
+
+Infos fuer Massen-Hosting:
+	http://www.fbis.ch/index-de.php?page=14&frameset=4
+
 restore user input after failed list_create (especially options)
 
 support for:

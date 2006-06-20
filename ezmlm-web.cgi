@@ -759,9 +759,20 @@ sub set_pagedata4list_common() {
 		if (($q->param('file') ne '') && ($q->param('file') =~ m/^[\w-]*$/)) {
 			my ($content);
 			$content = $list->get_text_content($q->param('file'));
-			from_to($content,$TEXT_ENCODE,'utf8');	# by ooyama for multibyte
+			# get character set of current list (ignore ":Q" prefix)
+			my ($charset) = split(':',$list->get_charset());
+			# use default for ezmlm-idx<5.0
+			$charset = 'us-ascii' if ($charset eq '');
+			warn "Charset: $charset";
+			my $content_utf8;
+			eval { $content_utf8 = Encode::decode($charset, $content); };
+			# use $content if conversion failed somehow
+			if ($@) {
+				$content_utf8 = $content;
+				warn "Conversion failed for charset '$charset'";
+			}
 			$pagedata->setValue("Data.List.File.Name", $q->param('file'));
-			$pagedata->setValue("Data.List.File.Content", "$content");
+			$pagedata->setValue("Data.List.File.Content", "$content_utf8");
 			$pagedata->setValue("Data.List.File.isDefault",
 				$list->is_text_default($q->param('file')) ? 1 : 0);
 		}
@@ -1687,15 +1698,23 @@ sub this_listaddress {
 # ------------------------------------------------------------------------
 
 sub save_text {
-   # Save new text in DIR/text ...
+	# Save new text in DIR/text ...
 
-   my ($list) = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
-   my ($content) = $q->param('content');
-   from_to($content,'utf8',$TEXT_ENCODE);	# by ooyama for multibyte
-   unless ($list->set_text_content($q->param('file'), $content)) {
+	my ($list) = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
+	my ($content) = $q->param('content');
+	my ($charset) = split(':',$list->get_charset());
+	$charset = 'us-ascii' if ($charset eq '');
+	my $content_encoded;
+	eval { $content_encoded = Encode::encode($charset, $content); };
+	if ($@) {
+		$content_encoded = $content;
+		warn "Conversion failed for charset '$charset'";
+	}
+	unless ($list->set_text_content($q->param('file'), $content_encoded)) {
 		$warning = 'SaveFile';
 		return (1==0);
-   }
+	}
+	return (0==0);
 }   
 
 # ------------------------------------------------------------------------
