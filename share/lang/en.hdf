@@ -220,7 +220,7 @@ Lang {
 		MessageSize.Unit = bytes
 		NoFiles	= There are no files in the text directory of the mailinglist.
 		AddSubscriberAddress	= Add a new mail address:
-		AddSubscriberFile	= Upload a file containing mail addresses to be added:
+		AddSubscriberFile	= Upload a text file containing mail addresses to be added:
 		SuggestDefaultPath	= It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web.
 		FooterText		= a web interface for
 		NoListsAvailable	= I could not find any accessible list for you.

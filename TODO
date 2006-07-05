@@ -1,3 +1,9 @@
+clearsilver-Infos updaten
+
+charset support for idx <= 5.0
+
+suppress success message, if no new subscriber addresses were selected for adding
+
 Maximale Anzahl von Mailinglisten definieren?
 	- wird wohl von qmailadmin in der .qmailadmin-limits-Datei festgelegt
 

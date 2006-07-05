@@ -221,7 +221,7 @@ Lang {
 		MessageSize.Unit = Bytes
 		NoFiles	= Es befinden sich keine Dateien im Text-Verzeichnis der Mailingliste.
 		AddSubscriberAddress	= Füge eine neue Mailadresse hinzu:
-		AddSubscriberFile	= Importiere eine Datei, die Mailadressen enthält:
+		AddSubscriberFile	= Importiere eine Textdatei, die Mailadressen enthält:
 		SuggestDefaultPath	= Es wird empfohlen, das Standard-Verzeichnis zu verwenden. Andernfalls kannst du die ModeratorInnen-Liste nicht mit ezmlm-web verwalten.
 		FooterText		= eine Web-Oberfläche für
 		NoListsAvailable	= Es sind keine passenden Listen vorhanden.

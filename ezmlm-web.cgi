@@ -32,7 +32,7 @@ use English;
 $UID = $EUID;
 $GID = $EGID;
 
-$VERSION = '3.2';
+my $VERSION = '3.2';
 
 my $q = new CGI;
 $q->import_names('Q');
@@ -1040,7 +1040,7 @@ sub untaint {
 	# special stuff
 
 	# check the list name
-	if (($q->param('list') =~ /[^\w-]/) && ($q->param('action') !~ /^list_create_(do|ask)$/)) {
+	if (($q->param('list') =~ /[^\w\.-]/) && ($q->param('action') !~ /^list_create_(do|ask)$/)) {
 		$warning = 'InvalidListName' if ($warning eq '');
 		$q->param(-name=>'list', -values=>'');
 	}
@@ -1216,7 +1216,7 @@ sub create_list {
 	# Some taint checking ...
 	$qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
 	$listname = $q->param('list');
-	if ($listname =~ m/[^\w\._\-]/) {
+	if ($listname =~ m/[^\w\.-]/) {
 		$warning = 'InvalidListName';
 		return (1==0);
    	}
