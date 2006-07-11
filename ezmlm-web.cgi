@@ -21,7 +21,7 @@ use DB_File;
 use CGI;
 use IO::File;
 use POSIX qw(tmpnam);
-use Encode qw/ from_to /;	# added by ooyama for char convert
+use Encode;
 use English;
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
@@ -1215,6 +1215,9 @@ sub create_list {
 
 	# Some taint checking ...
 	$qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
+	# dots have to be turned into colons
+	# see http://www.qmail.org/man/man5/dot-qmail.html
+	$qmail =~ s/\./:/g;
 	$listname = $q->param('list');
 	if ($listname =~ m/[^\w\.-]/) {
 		$warning = 'InvalidListName';

@@ -6,7 +6,7 @@ Version 3.2 - 04/14/02006
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)
  * script for creating binary suid wrappers added
  * bug in MySQL support fixed
- * treatment of the special character "dot" in listname fixed
+ * treatment of the special character "dot" in listname and list address fixed
 
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)

@@ -1,5 +1,7 @@
 clearsilver-Infos updaten
 
+die nicht-Abonnenten-Listen (allow/deny/mod) sagen trotzdem: "x AbonnentInnen"
+
 charset support for idx <= 5.0
 
 suppress success message, if no new subscriber addresses were selected for adding
