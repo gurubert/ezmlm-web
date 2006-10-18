@@ -148,7 +148,7 @@ Lang {
 		b	= Only moderators are allowed to access the archive
 		d	= Activate the digest list
 		f	= Add a prefix to the subject line of outgoing messages
-		g	= Archive requests from unrecogniced senders are denied
+		g	= Archive requests from unrecognised senders are denied
 		h	= Subscriptions do not require confirmation by the user
 		i	= Index mailing list messages for WWW archive access
 		j	= Unsubscribe does not require confirmation
