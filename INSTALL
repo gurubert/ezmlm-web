@@ -11,7 +11,8 @@ OVERVIEW:
   5 - [optional] configure access control (http authentication)
   6 - css stylesheet file
   7 - final test
-  8 - any problems?
+  8 - troubleshooting
+  9 - report problems
 
 
 ------------------------------------------------------------------------------
@@ -22,7 +23,7 @@ OVERVIEW:
 	modules.
 
 	Additionally (since v3.0) you have to install clearsilver (a templating
-	engine). See README.clearsilver for details.
+	engine).
 
 
 1.	Choose a distribution form
@@ -137,11 +138,12 @@ OVERVIEW:
 	If you do not see a colorful screen, then you did not set the HTML_CSS_FILE
 	option correctly in ezmlmwebrc. Check it again.
 
-	If anything failes - take a look at the web server's error log
+
+8.	If anything failes - take a look at the web server's error log
 	(e.g. /var/log/apache/error.log).
 
 
-8.  If you have any problems:
+9.	If the error log of your web server did not help you to solve your problem:
 	- take a look at https://systemausfall.org/toolforge/ezmlm-web
 	- send me an email: ezmlm-web@sumpfralle.de
 	- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org

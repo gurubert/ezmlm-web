@@ -7,7 +7,7 @@ Standards-Version: 3.6.2
 
 Package: ezmlm-web
 Architecture: any
-Depends: perl, httpd-cgi, libemail-address-perl, libemail-ezmlm-perl (>= 0.07)
+Depends: perl, httpd-cgi, libemail-address-perl, liblocale-gettext-perl, libemail-ezmlm-perl (>= 0.07)
 Suggests: qmail-src, bash (>=2.0), gcc
 Description: Web interface for ezmlm-idx mailing list administration
  This web interface allows you to configure every part of an ezmlm-idx

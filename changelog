@@ -7,6 +7,7 @@ Version 3.2 - 04/14/02006
  * script for creating binary suid wrappers added
  * bug in MySQL support fixed
  * treatment of the special character "dot" in listname and list address fixed
+ * use gettext for translations (Locale::gettext is now required)
 
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)

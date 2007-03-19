@@ -63,7 +63,7 @@ This version of ezmlm-web requires the following;
 
 * qmail v1.03
 * ezmlm v0.53 (or ezmlm-idx v0.40)
-* clearsilver v0.10.2 (only perl support is necessary)
+* clearsilver v0.10.3 (only perl support is necessary)
 * Perl v5.004 and the following modules;
   + Mail::Ezmlm v0.07 (current version!)
   + Mail::Address v1.15
@@ -75,6 +75,7 @@ This version of ezmlm-web requires the following;
   + File::Copy v2.02
   + File::Path v1.07
   + Text::ParseWords v3.24
+  + Locale::gettext v1.01
 
 The version number indicates the version of the module that ezmlm-web was
 developed with. Earlier versions may work, but then they haven't been

@@ -23,6 +23,7 @@ use IO::File;
 use POSIX qw(tmpnam);
 use Encode;
 use English;
+use Locale::gettext;
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
 # setting is turned on
@@ -70,16 +71,16 @@ use vars qw[$ui_set $ui_template];
 
 # Get user configuration stuff
 my $config_file;
-if(defined($opt_C)) {
+if (defined($opt_C)) {
    $opt_C =~ /^([-\w.\/]+)$/;	# security check by ooyama
    $config_file = $1; # Command Line
-} elsif(-e "$HOME_DIR/.ezmlmwebrc") {
+} elsif (-e "$HOME_DIR/.ezmlmwebrc") {
    $config_file = "$HOME_DIR/.ezmlmwebrc"; # User
-} elsif(-e "./ezmlmwebrc") {
+} elsif (-e "./ezmlmwebrc") {
    $config_file = "./ezmlmwebrc"; # Install
-} elsif(-e "/etc/ezmlm-web/ezmlmwebrc") {
+} elsif (-e "/etc/ezmlm-web/ezmlmwebrc") {
    $config_file = "/etc/ezmlm-web/ezmlmwebrc"; # System (new style)
-} elsif(-e "/etc/ezmlm/ezmlmwebrc") {
+} elsif (-e "/etc/ezmlm/ezmlmwebrc") {
    $config_file = "/etc/ezmlm/ezmlmwebrc"; # System (old style)
 } else {
    &fatal_error("Unable to find config file");
@@ -98,9 +99,10 @@ if (-e "$config_file" . ".gnupg") {
 		$GPG_SUPPORT = 0;
 	}
 }
+$GPG_SUPPORT = 0 if (!defined($GPG_SUPPORT));
 
 # Allow suid wrapper to over-ride default list directory ...
-if(defined($opt_d)) {
+if (defined($opt_d)) {
    $LIST_DIR = $1 if ($opt_d =~ /^([-\@\w.\/]+)$/);
 }
 
@@ -491,6 +493,25 @@ sub load_interface_language
 
 # ---------------------------------------------------------------------------
 
+sub add_language_data
+{
+	my ($hdf, $lang) = @_;
+	$td = Locale::gettext->domain("ezmlm-web");
+	$langdata = ClearSilver::HDF->new();
+	$langdata->readFile("$LANGUAGE_DIR/en.hdf");
+	#TODO: add translation
+	return $hdf;
+	
+}
+
+# ---------------------------------------------------------------------------
+
+sub recurse_hdf_data
+{
+}
+
+# ---------------------------------------------------------------------------
+
 # look for preferred browser language setting
 # this code was adapted from Per Cederberg
 # http://www.percederberg.net/home/perl/select.perl
@@ -550,14 +571,14 @@ sub set_pagedata()
 
 	# username and hostname
 	# Work out if this user has a virtual host and set input accordingly ...
-	if(-e "$QMAIL_BASE/virtualdomains") {
+	if (-e "$QMAIL_BASE/virtualdomains") {
 		open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
 		while(<VD>) {
-			last if(($hostname) = /(.+?):$USER/);
+			last if (($hostname) = /(.+?):$USER/);
 		}
 		close VD;
 	}
-	if(!defined($hostname)) {
+	if (!defined($hostname)) {
 		$username = "$USER-" if ($USER ne $ALIAS_USER);
 		$hostname = $DEFAULT_HOST;
 	}
@@ -730,7 +751,7 @@ sub set_pagedata4list_common() {
 	$pagedata->setValue("Data.List.MsgSize.Min", "$2");
 
 	# TODO: this is definitely ugly - create a new sub!
-	if(open(WEBUSER, "<$WEBUSERS_FILE")) {
+	if (open(WEBUSER, "<$WEBUSERS_FILE")) {
 		while(<WEBUSER>) {
 			last if (($webusers) = m{^$listname\s*\:\s*(.+)$});
 		}
@@ -1024,8 +1045,9 @@ sub untaint {
    
    foreach $i (0 .. $#params) {
       my(@values);
-      next if($params[$i] eq 'mailaddressfile');
-      next if($params[$i] eq 'gnupg_key_file');
+      next if ($params[$i] eq 'mailaddressfile');
+      next if ($params[$i] eq 'gnupg_key_file');
+      next if ($params[$i] eq 'content');
       foreach $param ($q->param($params[$i])) {
          next if $param eq '';
          if ($param =~ /^([#-\@\w\.\/\[\]\:\n\r\>\< _"']+)$/) {
@@ -1127,7 +1149,7 @@ sub add_address {
 				&& !($list->issub($add->address(), $part))) {
 			# it seems, that we cannot trust the return value of "$list->sub"
 			$list->sub($add->address(), $part);
-			if(defined($add->name()) && $PRETTY_NAMES) {
+			if (defined($add->name()) && $PRETTY_NAMES) {
 				$pretty{$add->address()} = $add->name();
 			}
 		} else {
@@ -1160,7 +1182,7 @@ sub delete_address {
 	  return (1==0);
    }
    
-   if($PRETTY_NAMES) {
+   if ($PRETTY_NAMES) {
       my(%pretty, $add);
       tie %pretty, "DB_File", "$LIST_DIR/" . $q->param('list') . "/webnames";
       foreach $add (@address) {
@@ -1185,7 +1207,7 @@ sub set_pagedata4part_list {
 
    $pagedata->setValue("Data.List.PartType", "$part");
 
-   if($part eq 'mod') {
+   if ($part eq 'mod') {
       # do we store things in different directories?
       my $config = $list->getconfig;
 	  # empty values represent default settings - everything else is considered as evil :)
@@ -1271,7 +1293,7 @@ sub create_list {
 	}
 	
 	# handle MySQL stuff
-	if(defined($q->param('setting_state_6')) && $options =~ m/-6\s+/) {
+	if (defined($q->param('setting_state_6')) && $options =~ m/-6\s+/) {
 		$customWarning = $list->errmsg() unless($list->createsql());
 	}
    
@@ -1707,6 +1729,9 @@ sub save_text {
 	my ($content) = $q->param('content');
 	my ($charset) = split(':',$list->get_charset());
 	$charset = 'us-ascii' if ($charset eq '');
+	# untaint 'content' unconditionally
+	$content =~ m/^(.*)$/;
+	$content = $1;
 	my $content_encoded;
 	eval { $content_encoded = Encode::encode($charset, $content); };
 	if ($@) {
