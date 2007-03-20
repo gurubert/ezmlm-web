@@ -20,10 +20,11 @@ use File::Path;
 use DB_File;
 use CGI;
 use IO::File;
-use POSIX qw(tmpnam);
+use POSIX;
 use Encode;
 use English;
 use Locale::gettext;
+
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
 # setting is turned on
@@ -53,8 +54,13 @@ use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
-use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
-use vars qw[$DEFAULT_HOST];
+use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $HTML_LANGUAGE];
+use vars qw[$DEFAULT_HOST @LANGUAGE_LIST];
+
+# some deprecated configuration settings - they have to be announced
+# otherwise old configuration files would break
+use vars qw[$LANGUAGE_DIR];		# deprecated since v3.2
+
 
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
@@ -386,9 +392,6 @@ sub load_hdf {
 	# initialize the data for clearsilver
 	my $hdf = ClearSilver::HDF->new();
 
-	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!") unless (-e $LANGUAGE_DIR);
-	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
-
 	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 
@@ -414,6 +417,7 @@ sub load_hdf {
 	return $hdf;
 }
 
+# =========================================================================
 
 sub output_page {
 	# Print the page
@@ -457,9 +461,6 @@ sub load_interface_language
 	my ($data) = @_;
 	my $config_language;
 
-	# load $HTML_LANGUAGE - this is necessary, if a translation is incomplete
-	$data->readFile("$LANGUAGE_DIR/$HTML_LANGUAGE" . ".hdf");
-
 	# set default language
 	$config_language = 'en';
 	$config_language = $HTML_LANGUAGE
@@ -482,32 +483,61 @@ sub load_interface_language
 			$warning = 'InvalidLanguage';
 		}
 	}
+
 	# add the setting to every link
 	$data->setValue('Config.UI.LinkAttrs.web_lang', "$config_language");
 
-	# import the configured resp. the temporarily selected language
-	$data->readFile("$LANGUAGE_DIR/$config_language" . ".hdf");
+	&translate_language_data($data, $config_language);
+
 	return $data;
 }
 
 
 # ---------------------------------------------------------------------------
 
-sub add_language_data
+sub translate_language_data
 {
-	my ($hdf, $lang) = @_;
-	$td = Locale::gettext->domain("ezmlm-web");
+	my ($hdf, $language) = @_;
+	my $langdata;
+	my %translation;
+	my $key;
+
+	# create gettext object
+	&setlocale(POSIX::LC_MESSAGES, $language);
+	&textdomain("ezmlm-web");
+
+	# read language template
 	$langdata = ClearSilver::HDF->new();
-	$langdata->readFile("$LANGUAGE_DIR/en.hdf");
-	#TODO: add translation
-	return $hdf;
-	
+	$langdata->readFile("$TEMPLATE_DIR/language.hdf");
+	# translate all strings
+	my $subtree = $langdata->getObj("Lang");
+	%translation = &recurse_hdf($subtree, "Lang");
+	foreach $key (keys %translation) {
+		$hdf->setValue($key, gettext($translation{$key}))
+	}
 }
 
 # ---------------------------------------------------------------------------
 
-sub recurse_hdf_data
+sub recurse_hdf
 {
+	my ($node, $prefix) = @_;
+	my ($value, $child, $next, %result, %sub_result, $key);
+	$value = $node->objValue();
+	if ($value) {
+		#print "Prefix: " . $prefix . " / " . $value . "\n";
+		#TODO: check if this works on the same single object - no tests up to now
+		$result{$prefix} = $value;
+	}
+	$next = $node->objChild();
+	while ($next) {
+		%sub_result = &recurse_hdf($next, $prefix . "." . $next->objName());
+		foreach $key (keys %sub_result) {
+			$result{$key} = $sub_result{$key};
+		}
+		$next = $next->objNext();
+	}
+	return %result;
 }
 
 # ---------------------------------------------------------------------------
@@ -1499,8 +1529,8 @@ sub gnupg_generate_key() {
 		$pagename = 'gnupg_secret';
 		return (0==0);
 	} else {
-		return (0==1);
 		$error = 'GnupgGenerateKey';
+		return (0==1);
 	}
 }
 
@@ -1671,7 +1701,7 @@ sub update_webusers {
 	my $temp_file;
 	my $fh;
 	# generate a temporary filename (as suggested by the Perl Cookbook)
-	do { $temp_file = tmpnam() }
+	do { $temp_file = POSIX::tmpnam() }
 	    until $fh = IO::File->new($temp_file, O_RDWR|O_CREAT|O_EXCL);
 	close $fh; 
 	unless (open(TMP, ">$temp_file")) {
@@ -1818,18 +1848,10 @@ sub webauth_create_allowed {
 # ---------------------------------------------------------------------------
 
 sub get_available_interface_languages {
-	my (%languages, @files, $file);
-	opendir(DIR, $LANGUAGE_DIR)
-		or &fatal_error ("Language directory ($LANGUAGE_DIR) not accessible!");
-	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
-	close(DIR);
-
-	foreach $file (@files) {
-		my $hdf = ClearSilver::HDF->new();
-		$hdf->readFile("$LANGUAGE_DIR/$file");
-		substr($file, -4) = "";
-		my $lang_name = $hdf->getValue("Lang.Name", "$file");
-		$languages{$file} = $lang_name;
+	my (%languages, $lang_id);
+	foreach $lang_id (@LANGUAGE_LIST) {
+		# TODO: retrieve the local spelling of each language
+		$languages{$lang_id} = $lang_id;
 	}
 	return %languages;
 }

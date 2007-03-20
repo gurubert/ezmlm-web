@@ -101,6 +101,7 @@ share/template/gnupg_public.cs -text
 share/template/gnupg_secret.cs -text
 share/template/header.cs -text
 share/template/help_tag_substitution.cs -text
+share/template/language.hdf -text
 share/template/language_select.cs -text
 share/template/list_create.cs -text
 share/template/list_delete.cs -text

@@ -1,6 +1,5 @@
 ScriptName
 TemplateDir
-LanguageDir
 Stylesheet
 HelpIconURL
 Config.Title
