@@ -1,0 +1,974 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ezmlm-web 3.2\n"
+"Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+"POT-Creation-Date: 2007-03-21 06:41+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Translate Toolkit 0.10.1\n"
+
+#: Lang.ID
+msgid "en"
+msgstr ""
+
+#: Lang.Name
+msgid "English"
+msgstr ""
+
+#: Lang.Menue.ListCreate
+msgid "Create new list"
+msgstr ""
+
+#: Lang.Menue.ListDelete
+msgid "Delete list"
+msgstr ""
+
+#: Lang.Menue.Subscribers
+msgid "Subscribers"
+msgstr ""
+
+#: Lang.Menue.AllowList
+msgid "allow list"
+msgstr ""
+
+#: Lang.Menue.DenyList
+msgid "deny list"
+msgstr ""
+
+#: Lang.Menue.DigestList
+msgid "digest list"
+msgstr ""
+
+#: Lang.Menue.ModList
+msgid "moderators"
+msgstr ""
+
+#: Lang.Menue.ConfigMain
+msgid "Options"
+msgstr ""
+
+#: Lang.Menue.ConfigSub
+msgid "subscription"
+msgstr ""
+
+#: Lang.Menue.ConfigPost
+msgid "posting"
+msgstr ""
+
+#: Lang.Menue.ConfigAdmin
+msgid "administration"
+msgstr ""
+
+#: Lang.Menue.ConfigArchive
+msgid "archive"
+msgstr ""
+
+#: Lang.Menue.ConfigProcess
+msgid "processing"
+msgstr ""
+
+#: Lang.Menue.ConfigAll
+msgid "overview"
+msgstr ""
+
+#: Lang.Menue.Gnupg
+msgid "Key management"
+msgstr ""
+
+#: Lang.Menue.GnupgPublicKeys
+msgid "public keys"
+msgstr ""
+
+#: Lang.Menue.GnupgSecretKeys
+msgid "secret keys"
+msgstr ""
+
+#: Lang.Menue.GnupgGenerateKey
+msgid "generate key"
+msgstr ""
+
+#: Lang.Menue.GnupgConvert
+msgid "Encryption"
+msgstr ""
+
+#: Lang.Menue.TextFiles
+msgid "Text files"
+msgstr ""
+
+#: Lang.Menue.ListSelect
+msgid "Choose a list"
+msgstr ""
+
+#: Lang.Menue.Properties
+msgid "Properties of"
+msgstr ""
+
+#: Lang.Menue.Language
+msgid "Language"
+msgstr ""
+
+#: Lang.Menue.Help
+msgid "Help (external)"
+msgstr ""
+
+#: Lang.Title.ConfigMain
+msgid "List configuration"
+msgstr ""
+
+#: Lang.Title.ConfigSub
+msgid "Subscription options"
+msgstr ""
+
+#: Lang.Title.ConfigPosting
+msgid "Posting options"
+msgstr ""
+
+#: Lang.Title.ConfigAdmin
+msgid "Remote administration"
+msgstr ""
+
+#: Lang.Title.ConfigArchive
+msgid "Archive options"
+msgstr ""
+
+#: Lang.Title.ConfigProcess
+msgid "Message processing"
+msgstr ""
+
+#: Lang.Title.ConfigAll
+msgid "Complete configuration"
+msgstr ""
+
+#: Lang.Title.SubscriberList
+msgid "Subscribers of the list"
+msgstr ""
+
+#: Lang.Title.AllowList
+msgid "Allowed users"
+msgstr ""
+
+#: Lang.Title.DenyList
+msgid "Blocked users"
+msgstr ""
+
+#: Lang.Title.DigestList
+msgid "Digest subscribers"
+msgstr ""
+
+#: Lang.Title.ModList
+msgid "Moderators of the mailinglist"
+msgstr ""
+
+#: Lang.Title.ListCreate
+msgid "Create a new list"
+msgstr ""
+
+#: Lang.Title.FileSelect
+msgid "Choose a file for editing"
+msgstr ""
+
+#: Lang.Title.FileEdit
+msgid "Editing file"
+msgstr ""
+
+#: Lang.Title.GnupgPublic
+msgid "Public keys"
+msgstr ""
+
+#: Lang.Title.GnupgSecret
+msgid "Secret keys"
+msgstr ""
+
+#: Lang.Title.GnupgGenerate
+msgid "Generate a new keypair"
+msgstr ""
+
+#: Lang.Buttons.Create
+msgid "Create list"
+msgstr ""
+
+#: Lang.Buttons.ConfirmDeletion
+msgid "Delete the list"
+msgstr ""
+
+#: Lang.Buttons.DeleteAddress
+msgid "Delete address(es)"
+msgstr ""
+
+#: Lang.Buttons.AddAddress
+msgid "Add address(es)"
+msgstr ""
+
+#: Lang.Buttons.UpdateConfiguration
+msgid "Update configuration"
+msgstr ""
+
+#: Lang.Buttons.UpdateGnupg
+msgid "Update keyring"
+msgstr ""
+
+#: Lang.Buttons.EditFile
+msgid "Edit file"
+msgstr ""
+
+#: Lang.Buttons.SaveFile
+msgid "Save file"
+msgstr ""
+
+#: Lang.Buttons.ResetFile
+msgid "Remove customized file"
+msgstr ""
+
+#: Lang.Buttons.LanguageSet
+msgid "select"
+msgstr ""
+
+#: Lang.Buttons.GnupgConvertToEncrypted
+msgid "Convert to an encrypted mailinglist"
+msgstr ""
+
+#: Lang.Buttons.GnupgConvertToNormal
+msgid "Convert to a plaintext mainlinglist"
+msgstr ""
+
+#: Lang.Buttons.DeletePublicKey
+msgid "Delete public key(s)"
+msgstr ""
+
+#: Lang.Buttons.DeleteSecretKey
+msgid "Delete secret key(s)"
+msgstr ""
+
+#: Lang.Buttons.GnupgImportKey
+msgid "Import key"
+msgstr ""
+
+#: Lang.Buttons.GnupgGenerateKey
+msgid "Generate key pair"
+msgstr ""
+
+#: Lang.Buttons.GnupgExportKey
+msgid "download"
+msgstr ""
+
+#: Lang.ErrorMessage.UnknownAction
+msgid "this action is undefined"
+msgstr ""
+
+#: Lang.ErrorMessage.ParameterMissing
+msgid "this action needs one or more parameters"
+msgstr ""
+
+#: Lang.ErrorMessage.Forbidden
+msgid "Error: you are not allowed to do this!"
+msgstr ""
+
+#: Lang.ErrorMessage.InvalidFileName
+msgid "The name of the file is invalid!"
+msgstr ""
+
+#: Lang.ErrorMessage.UnknownConfigPage
+msgid "The chosen config page is invalid!"
+msgstr ""
+
+#: Lang.ErrorMessage.UnknownGnupgPage
+msgid "The chosen gnupg page is invalid!"
+msgstr ""
+
+#: Lang.ErrorMessage.GnupgKeyImport
+msgid "Failed to import the uploaded key!"
+msgstr ""
+
+#: Lang.ErrorMessage.GnupgDelKey
+msgid "Failed to remove the key(s)!"
+msgstr ""
+
+#: Lang.ErrorMessage.GnupgGenerateKey
+msgid "Failed generate a new key!"
+msgstr ""
+
+#: Lang.WarningMessage.AddAddress
+msgid "Adding of at least one mail address failed!"
+msgstr ""
+
+#: Lang.WarningMessage.DeleteAddress
+msgid "Removal of at least one mail address failed!"
+msgstr ""
+
+#: Lang.WarningMessage.CreateList
+msgid "Creation of new mailing list failed!"
+msgstr ""
+
+#: Lang.WarningMessage.DeleteList
+msgid "Removal of mailing list failed!"
+msgstr ""
+
+#: Lang.WarningMessage.UpdateConfig
+msgid "Update of configuration failed!"
+msgstr ""
+
+#: Lang.WarningMessage.SaveFile
+msgid "The file could not be saved!"
+msgstr ""
+
+#: Lang.WarningMessage.ListNameAlreadyExists
+msgid "There is already a list with this name!"
+msgstr ""
+
+#: Lang.WarningMessage.ListAddressAlreadyExists
+msgid "There is already a list with this address!"
+msgstr ""
+
+#: Lang.WarningMessage.ListDoesNotExist
+msgid "A list with this name does not exist!"
+msgstr ""
+
+#: Lang.WarningMessage.ListDirAccessDenied
+msgid "Unable to access the list's directory"
+msgstr ""
+
+#: Lang.WarningMessage.TextDirAccessDenied
+msgid "Unable to access the list's directory of text files"
+msgstr ""
+
+#: Lang.WarningMessage.SafeRemoveRenameDirFailed
+msgid "Unable to rename list for safe removal"
+msgstr ""
+
+#: Lang.WarningMessage.DotQmailDirAccessDenied
+msgid "Unable to read the mail user's home directory for .qmail files"
+msgstr ""
+
+#: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
+msgid "Unable to move .qmail files"
+msgstr ""
+
+#: Lang.WarningMessage.UnsafeRemoveListDirFailed
+msgid "Unable to delete list"
+msgstr ""
+
+#: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
+msgid "Unable to delete .qmail files"
+msgstr ""
+
+#: Lang.WarningMessage.InvalidFileFormat
+msgid "The uploaded file must be a text file"
+msgstr ""
+
+#: Lang.WarningMessage.WebUsersUpdate
+msgid "Could not update the webusers file"
+msgstr ""
+
+#: Lang.WarningMessage.WebUsersRead
+msgid "Could not read the webusers file"
+msgstr ""
+
+#: Lang.WarningMessage.InvalidListName
+msgid "The name of the list contains invalid characters"
+msgstr ""
+
+#: Lang.WarningMessage.ReservedListName
+msgid "This listname may not be used as it is reserved for internal purposes"
+msgstr ""
+
+#: Lang.WarningMessage.EmptyListName
+msgid "The name of the list may not be empty"
+msgstr ""
+
+#: Lang.WarningMessage.InvalidLocalPart
+msgid "The local part of the list address is not valid"
+msgstr ""
+
+#: Lang.WarningMessage.RequiresIDX5
+msgid "This action requires ezmlm-idx v5.0 or higher."
+msgstr ""
+
+#: Lang.WarningMessage.ResetFileIsDefault
+msgid "There is no customized text file, that can be removed."
+msgstr ""
+
+#: Lang.WarningMessage.ResetFile
+msgid "Removal of custimized text file failed."
+msgstr ""
+
+#: Lang.WarningMessage.GnupgNoKeyFile
+msgid "There was no key file selected for upload!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgDelKey
+msgid "Removal of (at least) one key failed!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgNoKeySelected
+msgid "There was no key selected to be removed!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgNoName
+msgid "The name of the key may not be empty!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgInvalidExpiration
+msgid "The expiration time is invalid!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgInvalidKeySize
+msgid "The length of the key is invalid!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgExportKey
+msgid "Export of key failed!"
+msgstr ""
+
+#: Lang.WarningMessage.GnupgConvert
+msgid "Conversion to encrypted mailing list failed!"
+msgstr ""
+
+#: Lang.SuccessMessage.AddAddress
+msgid "The address was added to the list."
+msgstr ""
+
+#: Lang.SuccessMessage.DeleteAddress
+msgid "The address was removed from the list."
+msgstr ""
+
+#: Lang.SuccessMessage.CreateList
+msgid "The new mailing list was successfully created."
+msgstr ""
+
+#: Lang.SuccessMessage.DeleteList
+msgid "The mailing list was successfully removed."
+msgstr ""
+
+#: Lang.SuccessMessage.UpdateConfig
+msgid "The mailing list's configuration was successfully changed."
+msgstr ""
+
+#: Lang.SuccessMessage.UpdateGnupg
+msgid "The keyring has been changed successfully."
+msgstr ""
+
+#: Lang.SuccessMessage.SaveFile
+msgid "The file was saved."
+msgstr ""
+
+#: Lang.SuccessMessage.ResetFile
+msgid "The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it."
+msgstr ""
+
+#: Lang.SuccessMessage.GnupgKeyImport
+msgid "The key was successfully imported."
+msgstr ""
+
+#: Lang.SuccessMessage.GnupgConvert
+msgid "Encryption is now enabled for this list."
+msgstr ""
+
+#: Lang.Options.a
+msgid "Archive mailing list messages"
+msgstr ""
+
+#: Lang.Options.b
+msgid "Only moderators are allowed to access the archive"
+msgstr ""
+
+#: Lang.Options.d
+msgid "Activate the digest list"
+msgstr ""
+
+#: Lang.Options.f
+msgid "Add a prefix to the subject line of outgoing messages"
+msgstr ""
+
+#: Lang.Options.g
+msgid "Archive requests from unrecognised senders are denied"
+msgstr ""
+
+#: Lang.Options.h
+msgid "Subscriptions do not require confirmation by the user"
+msgstr ""
+
+#: Lang.Options.i
+msgid "Index mailing list messages for WWW archive access"
+msgstr ""
+
+#: Lang.Options.j
+msgid "Unsubscribe does not require confirmation"
+msgstr ""
+
+#: Lang.Options.k
+msgid "Use deny list to prevent some users from posting"
+msgstr ""
+
+#: Lang.Options.l
+msgid "Remote administrators (moderators) may request a subscriber list"
+msgstr ""
+
+#: Lang.Options.m
+msgid "All incoming messages are moderated"
+msgstr ""
+
+#: Lang.Options.n
+msgid "Remote administrators (moderators) may edit text files in DIR/text"
+msgstr ""
+
+#: Lang.Options.o
+msgid "Only moderators may post"
+msgstr ""
+
+#: Lang.Options.p
+msgid "Allow subscription and archive retrieval for everyone"
+msgstr ""
+
+#: Lang.Options.q
+msgid "Process mailman-style requests (to local-request@domain)"
+msgstr ""
+
+#: Lang.Options.r
+msgid "Enable remote administration of the list (for moderators)"
+msgstr ""
+
+#: Lang.Options.s
+msgid "Subscriptions to the main list and the digest list will be moderated"
+msgstr ""
+
+#: Lang.Options.t
+msgid "Add a trailing text to every message"
+msgstr ""
+
+#: Lang.Options.u
+msgid "Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)"
+msgstr ""
+
+#: Lang.Options.w
+msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
+msgstr ""
+
+#: Lang.Options.x
+msgid "Remove or reject specific mime types in messages"
+msgstr ""
+
+#: Lang.Options.y
+msgid "Request a confirmation mail for every posted message"
+msgstr ""
+
+#: Lang.Options.gnupg_allowKeySubmission
+msgid "Allow key submission via mail"
+msgstr ""
+
+#: Lang.Options.gnupg_encryptToAll
+msgid "Encrypt to all recipients at once (do not encrypt inividually)"
+msgstr ""
+
+#: Lang.Options.gnupg_NokeyNocrypt
+msgid "Send plaintext to the subscribers which have no key"
+msgstr ""
+
+#: Lang.Options.gnupg_RequireSub
+msgid "Only subscribers may post messages"
+msgstr ""
+
+#: Lang.Options.gnupg_signMessages
+msgid "Sign outgoing messages with the list's key"
+msgstr ""
+
+#: Lang.Options.gnupg_VerifiedKeyReq
+msgid "Use only verified keys"
+msgstr ""
+
+#: Lang.Options.gnupg_requireSigs
+msgid "Only verifiably signed messages are accepted"
+msgstr ""
+
+#: Lang.Settings.0
+msgid "Make the list a sublist of another list"
+msgstr ""
+
+#: Lang.Settings.3
+msgid "Set a custom \"From:\" header for outgoing messsages"
+msgstr ""
+
+#: Lang.Settings.4
+msgid "Define customized setting for digest creation (ezmlm-tstdig)"
+msgstr ""
+
+#: Lang.Settings.5
+msgid "Define the email address of the list owner"
+msgstr ""
+
+#: Lang.Settings.6
+msgid "Use a SQL database"
+msgstr ""
+
+#: Lang.Settings.7
+msgid "Define a custom path to the database for posting moderators"
+msgstr ""
+
+#: Lang.Settings.8
+msgid "Define a custom path to the database for subscription moderators"
+msgstr ""
+
+#: Lang.Settings.9
+msgid "Define a custom path to the database for remote administators"
+msgstr ""
+
+#: Lang.Misc.HelpLink
+msgid "The manual page of ezmlm-idx"
+msgstr ""
+
+#: Lang.Misc.Subscription
+msgid "Subscription"
+msgstr ""
+
+#: Lang.Misc.Subscribers
+msgid "subscribers"
+msgstr ""
+
+#: Lang.Misc.RemoteAdmin
+msgid "Remote Admin"
+msgstr ""
+
+#: Lang.Misc.ListName
+msgid "List Name"
+msgstr ""
+
+#: Lang.Misc.ListAddress
+msgid "List Address"
+msgstr ""
+
+#: Lang.Misc.ListOptions
+msgid "Basic List Options"
+msgstr ""
+
+#: Lang.Misc.AllowedToEdit
+msgid "Users allowed to edit this list via web interface:"
+msgstr ""
+
+#: Lang.Misc.HeaderRemove
+msgid "Headers to strip from every outgoing mail"
+msgstr ""
+
+#: Lang.Misc.HeaderAdd
+msgid "Headers to add to all outgoing mail"
+msgstr ""
+
+#: Lang.Misc.MimeRemove
+msgid "Mime types to strip from all outgoing mail"
+msgstr ""
+
+#: Lang.Misc.MimeReject
+msgid "Messages containing any of these mime type will be rejected"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.CommonTags
+msgid "common tags"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.ListNameLocal
+msgid "The local part of the list name"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.ListNameHost
+msgid "The host name of the list name"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.MessageNumber
+msgid "Number of the respective message"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.SubAddress
+msgid "The subscription address"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.SubReplyAddress
+msgid "The address a subscriber must reply to"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.AcceptanceAddress
+msgid "The acceptance address"
+msgstr ""
+
+#: Lang.Misc.EditFileInfo.RejectionAddress
+msgid "The rejection address"
+msgstr ""
+
+#: Lang.Misc.SuggestDefaultPath
+msgid "It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web."
+msgstr ""
+
+#: Lang.Misc.PostModPathWarn
+msgid "Posting moderators are stored in a non-standard location"
+msgstr ""
+
+#: Lang.Misc.SubModPathWarn
+msgid "Subscription moderators are stored in a non-standard location"
+msgstr ""
+
+#: Lang.Misc.RemoteAdminPathWarn
+msgid "Remote administrators are stored in a non-standard location"
+msgstr ""
+
+#: Lang.Misc.MessageSize.Max
+msgid "Reject messages exceeding a specified value"
+msgstr ""
+
+#: Lang.Misc.MessageSize.Min
+msgid "Reject messages smaller than a specified value"
+msgstr ""
+
+#: Lang.Misc.MessageSize.Unit
+msgid "bytes"
+msgstr ""
+
+#: Lang.Misc.NoFiles
+msgid "There are no files in the text directory of the mailinglist."
+msgstr ""
+
+#: Lang.Misc.AddSubscriberAddress
+msgid "Add a new mail address:"
+msgstr ""
+
+#: Lang.Misc.AddSubscriberFile
+msgid "Upload a text file containing mail addresses to be added:"
+msgstr ""
+
+#: Lang.Misc.FooterText
+msgid "a web interface for"
+msgstr ""
+
+#: Lang.Misc.NoListsAvailable
+msgid "I could not find any accessible list for you."
+msgstr ""
+
+#: Lang.Misc.ConfirmDelete
+msgid "Do you really want to remove this list completely?"
+msgstr ""
+
+#: Lang.Misc.CustomizedFiles
+msgid "customized files"
+msgstr ""
+
+#: Lang.Misc.DefaultFiles
+msgid "default files"
+msgstr ""
+
+#: Lang.Misc.ListLanguage
+msgid "Language of the list"
+msgstr ""
+
+#: Lang.Misc.ListCharset
+msgid "Charset of the list"
+msgstr ""
+
+#: Lang.Misc.ModSubOverridesRemote
+msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
+msgstr ""
+
+#: Lang.Misc.GnupgNoPublicKeys
+msgid "There are no public keys available."
+msgstr ""
+
+#: Lang.Misc.GnupgNoSecretKeys
+msgid "There are no secret keys available."
+msgstr ""
+
+#: Lang.Misc.GnupgImportKey
+msgid "Import a new key from a file:"
+msgstr ""
+
+#: Lang.Misc.GnupgKeyName
+msgid "Name of the key"
+msgstr ""
+
+#: Lang.Misc.GnupgKeyComment
+msgid "Comment (optional)"
+msgstr ""
+
+#: Lang.Misc.GnupgKeySize
+msgid "Length of the key (bytes)"
+msgstr ""
+
+#: Lang.Misc.GnupgKeyExpires
+msgid "Expiration time (years)"
+msgstr ""
+
+#: Lang.Misc.Never
+msgid "never"
+msgstr ""
+
+#: Lang.Introduction.ConfigAdmin
+msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
+msgstr ""
+
+#: Lang.Introduction.ConfigArchive
+msgid "The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
+msgstr ""
+
+#: Lang.Introduction.ConfigProcess
+msgid "Modify some message properties, before they are distributed to the subscribers."
+msgstr ""
+
+#: Lang.Introduction.ConfigMain
+msgid "Here you find some settings, that did not fit into any other category."
+msgstr ""
+
+#: Lang.Introduction.ConfigPosting
+msgid "The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed."
+msgstr ""
+
+#: Lang.Introduction.ConfigSub
+msgid "Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process."
+msgstr ""
+
+#: Lang.Introduction.ConfigAll
+msgid "This is the complete list of all available properties of the list. Usually it should be easier to use the topic-based configuration pages, but - of course - this is your choice."
+msgstr ""
+
+#: Lang.Introduction.ListDelete
+msgid "This mailinglist and everything inside of it will be removed completely."
+msgstr ""
+
+#: Lang.Introduction.AllowList
+msgid "Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers."
+msgstr ""
+
+#: Lang.Introduction.DenyList
+msgid "If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security."
+msgstr ""
+
+#: Lang.Introduction.DigestList
+msgid "Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway."
+msgstr ""
+
+#: Lang.Introduction.ModList
+msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
+msgstr ""
+
+#: Lang.Introduction.SubscriberList
+msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
+msgstr ""
+
+#: Lang.Introduction.TextFiles
+msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
+msgstr ""
+
+#: Lang.Introduction.EditTextFile
+msgid "Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page."
+msgstr ""
+
+#: Lang.Introduction.ResetTextFile
+msgid "This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file."
+msgstr ""
+
+#: Lang.Introduction.GnupgConvert
+msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
+msgstr ""
+
+#: Lang.Introduction.GnupgGenerateKey
+msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
+msgstr ""
+
+#: Lang.Legend.ConfigAdmin
+msgid "Remote administrator's permissions"
+msgstr ""
+
+#: Lang.Legend.ConfigArchive
+msgid "Archive configuration"
+msgstr ""
+
+#: Lang.Legend.ConfigPosting
+msgid "Posting rules"
+msgstr ""
+
+#: Lang.Legend.ConfigSub
+msgid "Subscription details"
+msgstr ""
+
+#: Lang.Legend.ConfigMain
+msgid "General list configuration"
+msgstr ""
+
+#: Lang.Legend.ConfigProcess
+msgid "Processing rules"
+msgstr ""
+
+#: Lang.Legend.ConfigAll
+msgid "Available properties"
+msgstr ""
+
+#: Lang.Legend.ListCreate
+msgid "Properties of the new list"
+msgstr ""
+
+#: Lang.Legend.ListDelete
+msgid "Remove this mailinglist"
+msgstr ""
+
+#: Lang.Legend.RelevantOptions
+msgid "Useful settings"
+msgstr ""
+
+#: Lang.Legend.MembersList
+msgid "Manage subscribers"
+msgstr ""
+
+#: Lang.Legend.MembersAllow
+msgid "Manage allowed users"
+msgstr ""
+
+#: Lang.Legend.MembersDeny
+msgid "Manage blocked users"
+msgstr ""
+
+#: Lang.Legend.MembersDigest
+msgid "Manage digest subscribers"
+msgstr ""
+
+#: Lang.Legend.MembersMod
+msgid "Manage moderators and administrators"
+msgstr ""
+
+#: Lang.Legend.TextFiles
+msgid "Available text files"
+msgstr ""
+
+#: Lang.Legend.TextFileEdit
+msgid "Edit content of text file"
+msgstr ""
+
+#: Lang.Legend.TextFileReset
+msgid "Discard customized text"
+msgstr ""
+
+#: Lang.Legend.TextFileInfo
+msgid "Useful placeholders"
+msgstr ""
+
+#: Lang.Legend.AvailableLists
+msgid "Available lists"
+msgstr ""
+
+#: Lang.Legend.GnupgConvert
+msgid "Encryption support"
+msgstr ""
+
+#: Lang.Legend.GnupgPublicKeys
+msgid "Public keys of this list"
+msgstr ""
+
+#: Lang.Legend.GnupgSecretKeys
+msgid "Secret keys of this list"
+msgstr ""
+
+#: Lang.Legend.GnupgKeyImport
+msgid "Import a key"
+msgstr ""
+
+#: Lang.Legend.GnupgGenerateKey
+msgid "Generate the key for this list"
+msgstr ""
