@@ -26,7 +26,9 @@
 					<td><label for="gnupg_key_<?cs var:key.id ?>"><?cs
 						var:html_escape(key.email) ?></label></td>
 					<td><label for="gnupg_key_<?cs var:key.id ?>"><?cs
-						var:html_escape(key.expires) ?></label></td>
+						if:key.expires ?><?cs var:html_escape(key.expires) ?><?cs
+						else ?><?cs var:html_escape(Lang.Misc.Never) ?><?cs /if
+						?></label></td>
 					<td><a href="<?cs call:link("action", "gnupg_export",
 									"list", Data.List.Name,
 									"gnupg_keyid", key.id) ?>"

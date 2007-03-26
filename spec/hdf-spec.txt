@@ -14,6 +14,7 @@ Data.List.Address
 Data.List.CharSet
 Data.List.CustomizedFiles.*
 Data.List.DefaultFiles.*
+Data.List.Features.Crypto
 Data.List.File.Name
 Data.List.File.Content
 Data.List.File.isDefault

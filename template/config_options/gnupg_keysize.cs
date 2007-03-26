@@ -1,3 +1,4 @@
+<?cs if:Data.List.Features.Crypto ?>
 <!-- REMOVE --><?cs include:TemplateDir + '/macros.cs' ?>
 <!-- length of the key (bytes) -->
 <label for="gnupg_keysize"><?cs var:html_escape(Lang.Misc.GnupgKeySize) ?>:</label>
@@ -6,4 +7,5 @@
 	<option selected="selected">2048</option>
 	<option>4096</option>
 </select>
+<?cs /if ?>
 

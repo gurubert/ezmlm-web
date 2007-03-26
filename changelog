@@ -1,6 +1,6 @@
 Version 3.2 - 04/14/02006
  * support for encrypted mailing lists
-   (http://www.synacklabs.net/projects/crypt-ml/)
+   (https://systemausfall.org/toolforge/gpgpy-ezmlm/)
  * detect preferred interface language
  * user-specific interface language selection
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)
@@ -8,6 +8,7 @@ Version 3.2 - 04/14/02006
  * bug in MySQL support fixed
  * treatment of the special character "dot" in listname and list address fixed
  * use gettext for translations (Locale::gettext is now required)
+ * the formerly required module "Encode" is now optional
 
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)

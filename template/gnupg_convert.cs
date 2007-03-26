@@ -11,14 +11,15 @@
 
 	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
-
-		<input type="hidden" name="action" value="gnupg_convert_do" />
-		<button type="submit" name="send" value="do"><?cs
-			if:Data.List.Type == "gnupg" ?><?cs
-				var:html_escape(Lang.Buttons.GnupgConvertToNormal) ?><?cs
-			else ?><?cs
-				var:html_escape(Lang.Buttons.GnupgConvertToEncrypted) ?><?cs
-			/if ?></button>
+		<?cs if:Data.List.Features.Crypto
+			?><button type="submit" name="send" value="do"><?cs
+			var:html_escape(Lang.Buttons.GnupgConvertToPlain) ?></button>
+			<input type="hidden" name="action" value="gnupg_convert_disable" /><?cs
+		else
+			?><button type="submit" name="send" value="do"><?cs
+			var:html_escape(Lang.Buttons.GnupgConvertToEncrypted) ?></button>
+			<input type="hidden" name="action" value="gnupg_convert_enable" /><?cs
+		/if ?>
 	</form>
 
 </fieldset>

@@ -92,6 +92,14 @@
 						"config_subset","processing") ?>"
 					title="<?cs var:html_escape(Lang.Menue.ConfigProcess) ?>"><?cs
 					var:html_escape(Lang.Menue.ConfigProcess) ?></a></li><?cs /if ?>
+			<?cs if:(UI.Navigation.Config.GnupgOptions == 1) &&
+					Data.List.Features.Crypto
+				?><li><a <?cs if:(Data.Action == "config_encryption")
+					?> class="nav_active"<?cs /if ?>
+				href="<?cs call:link("list",Data.List.Name,"action","config_ask",
+						"config_subset","encryption") ?>"
+					title="<?cs var:html_escape(Lang.Menue.GnupgOptions) ?>"><?cs
+					var:html_escape(Lang.Menue.GnupgOptions) ?></a></li><?cs /if ?>
 			<?cs if:UI.Navigation.Config.Archive == 1
 				?><li><a <?cs if:(Data.Action == "config_archive") ?>
 					class="nav_active"<?cs /if ?>
@@ -115,7 +123,7 @@
 					var:html_escape(Lang.Menue.ConfigAll) ?></a></li><?cs /if ?>
 		</ul></li>
 
-		<?cs if:subcount(UI.Navigation.Gnupg) > 0
+		<?cs if:(subcount(UI.Navigation.Gnupg) > 0) && (Data.List.Features.Crypto)
 				?><li><font class="no_link"><?cs var:html_escape(Lang.Menue.Gnupg)
 				?></font>
 		<ul>
@@ -149,7 +157,7 @@
 					title="<?cs var:html_escape(Lang.Menue.TextFiles) ?>"><?cs
 					var:html_escape(Lang.Menue.TextFiles) ?></a></li><?cs /if ?>
 
-		<?cs if:UI.Navigation.GnupgConvert == 1
+		<?cs if:(UI.Navigation.GnupgConvert == 1) && Config.Features.Crypto
 			?><li><a <?cs if:(Data.Action == "gnupg_convert_ask") ||
 				(Data.Action == "gnupg_convert_do") ?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("list",Data.List.Name,"action","gnupg_convert_ask","","") ?>"

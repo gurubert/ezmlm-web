@@ -4,10 +4,12 @@ This file contains some useful hints for upgrading from a previous version of ez
 
 UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 
-1) install the perl module File::Path
+1) the following dependencies were added:
+	- File::Path
+	- Locale::gettext
 
 2) a new (optional) configuration setting is available: DOTQMAIL_DIR
-Use it, if you run a multi domain vpopmail setup.
+It can be useful if you run a multi domain vpopmail setup.
 
 3) install Mail::Ezmlm::Gpg if you want to handle encrypted mailing lists
 (see README.gnupg for details)
@@ -28,7 +30,7 @@ UPGRADING ezmlm-web 2.3 to ezmlm-web 3.0
 
 3) set "TEMPLATE_DIR" in your ezmlmwebrc file to this directory
 
-4) copy the languga directory somewehre and adjust the "LANGUAGE_DIR" setting
+4) copy the languge directory somewhere and adjust the "LANGUAGE_DIR" setting
 
 4) maybe you want to define "MAIL_DOMAIN" in your ezmlmwebrc
 
@@ -81,3 +83,4 @@ addaddressfile   => 'or you may enter the filename of a plain text file containi
 
 Have a look for these two lines in the new ezmlmwebrc included in this
 distribution if you are unsure of how/where to put these.
+

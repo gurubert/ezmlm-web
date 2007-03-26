@@ -16,6 +16,7 @@ UI	{
 			Subscription	= 1
 			Posting		= 1
 			Processing	= 1
+			GnupgOptions	= 1
 			Archive		= 1
 			Admin		= 1
 			All			= 1
@@ -74,6 +75,12 @@ UI	{
 			  }
 		  }
 
+		GenerateKey {
+			KeyName		= gnupg_keyname
+			KeyComment	= gnupg_keycomment
+			KeySize		= gnupg_keysize
+			KeyExpiration	= gnupg_keyexpires
+		  }
 
 		Config	{
 			Main	{
@@ -131,6 +138,11 @@ UI	{
 					Self		= mimecheck
 					MimeReject	= mimereject
 				  }
+			  }
+
+			GnupgOptions {
+				SignMessages	= gnupg_sign_messages
+				PlainWithoutKey	= gnupg_plain_without_key
 			  }
 
 			Processing {

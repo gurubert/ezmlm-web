@@ -21,16 +21,45 @@ use DB_File;
 use CGI;
 use IO::File;
 use POSIX;
-use Encode;
 use English;
-use Locale::gettext;
+
+# the Encode module is optional - we do not break if it is absent
+my $ENCODE_SUPPORT = 1;
+unless (&safely_import_module("Encode")) {
+	$ENCODE_SUPPORT = 0;
+	warn "Encoding module is not available - charset conversion will fail!";
+}
 
 
 # do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
-# setting is turned on
+# setting is enabled
 
+
+# the local names of all available (and some other) languages
+my %LANGUAGE_NAMES = (
+    "cs" => 'Český',
+    "da" => 'Dansk',
+    "de" => 'Deutsch',
+    "en" => 'English',
+    "es" => 'Español',
+    "fi" => 'Suomi',
+    "fr" => 'Français',
+    "hu" => 'Magyar',
+    "it" => 'Italiano',
+    "ja" => '日本語',
+    "nl" => 'Nederlands',
+    "pl" => 'Polski',
+    "pt" => 'Português',
+    "ru" => 'Русский',
+    "sl" => 'Slovensko',
+    "sv" => 'Svenska',
+    );
+
+
+################## some preparations at the beginning ##################
 
 # drop privileges (necessary for calling gpg)
+# this should not do any other harm
 $UID = $EUID;
 $GID = $EGID;
 
@@ -48,29 +77,26 @@ $ENV{'PATH'} = '/bin';
 # user. :( Don't alter this line unless you are _sure_ you have to.
 my @tmp = getpwuid($>); use vars qw[$USER]; $USER=$tmp[0];
 
+# defined by our environment - see above
+use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
+
 # use strict is a good thing++
 
-use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
+# some configuration settings
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $HTML_LANGUAGE];
 use vars qw[$DEFAULT_HOST @LANGUAGE_LIST];
+# some settings for encrypted mailing lists
+use vars qw[$GPG_SUPPORT];
 
 # some deprecated configuration settings - they have to be announced
 # otherwise old configuration files would break
 use vars qw[$LANGUAGE_DIR];		# deprecated since v3.2
 
-
-# some settings for encrypted mailing lists
-use vars qw[$GPG_SUPPORT];
-
-# set default TEXT_ENCODE
-use vars qw[$TEXT_ENCODE]; $TEXT_ENCODE='us-ascii';	# by ooyama for multibyte convert support
-
 # "pagedata" contains the hdf tree for clearsilver
 # "pagename" refers to the template file that should be used
-# "ui_set" is the selected kind of interface ("default", "gnupg", ...)
 # "ui_template" is one of "basic", "normal" and "expert"
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
 use vars qw[$ui_set $ui_template];
@@ -85,38 +111,40 @@ if (defined($opt_C)) {
 } elsif (-e "./ezmlmwebrc") {
    $config_file = "./ezmlmwebrc"; # Install
 } elsif (-e "/etc/ezmlm-web/ezmlmwebrc") {
-   $config_file = "/etc/ezmlm-web/ezmlmwebrc"; # System (new style)
+   $config_file = "/etc/ezmlm-web/ezmlmwebrc"; # System (new style - since v2.2)
 } elsif (-e "/etc/ezmlm/ezmlmwebrc") {
-   $config_file = "/etc/ezmlm/ezmlmwebrc"; # System (old style)
+   $config_file = "/etc/ezmlm/ezmlmwebrc"; # System (old style - up to v2.1)
 } else {
    &fatal_error("Unable to find config file");
 }
 do $config_file;
 
+
+####### validate configuration and apply some default settings ##########
+
 # do we support encrypted mailing lists?
-# see http://www.synacklabs.net/projects/crypt-ml/
-if (-e "$config_file" . ".gnupg") {
-	do "$config_file.gnupg";
-	# the config file should include "use Mail::Ezmlm::Gpg" as the use-line may not
-	# be used here
-	if (defined($GPG_SUPPORT) && ($GPG_SUPPORT)) {
+# see https://systemausfall.org/toolforge/crypto-ezmlm
+$GPG_SUPPORT = 0 unless defined($GPG_SUPPORT);
+if (defined($GPG_SUPPORT) && ($GPG_SUPPORT)) {
+	if (&safely_import_module("Mail::Ezmlm::Gpg")) {
 		$GPG_SUPPORT = 1;
 	} else {
-		$GPG_SUPPORT = 0;
+		warn "WARNING: Support for encrypted mailinglists is disabled, as the module Mail::Ezmlm::Gpg failed to load!";
 	}
 }
-$GPG_SUPPORT = 0 if (!defined($GPG_SUPPORT));
 
-# Allow suid wrapper to over-ride default list directory ...
+# Allow suid wrapper to override default list directory ...
 if (defined($opt_d)) {
    $LIST_DIR = $1 if ($opt_d =~ /^([-\@\w.\/]+)$/);
 }
 
 # If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2),
 # then use former default value for compatibility
-if (!defined($WEBUSERS_FILE)) {
-   $WEBUSERS_FILE = $LIST_DIR . '/webusers'
-}
+$WEBUSERS_FILE = $LIST_DIR . '/webusers' unless (defined($WEBUSERS_FILE));
+
+# set default value of supported languages
+@LANGUAGE_LIST = ( 'en', 'de' ) unless (defined(@LANGUAGE_LIST));
+
 
 # check for non-default dotqmail directory
 $DOTQMAIL_DIR = $HOME_DIR unless defined($DOTQMAIL_DIR);
@@ -137,10 +165,12 @@ if (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
 }
 
 
+###################### process a request ########################
+
 # Untaint form input ...
 &untaint;
 
-my $pagedata = load_hdf();
+my $pagedata = &init_hdf();
 my $action = $q->param('action');
 
 # check permissions
@@ -227,11 +257,7 @@ elsif ($action eq '' || $action eq 'list_select') {
 			$pagename = '';
 		}
 		if ($pagename ne '') {
-			if (&is_list_gnupg($q->param('list'))) {
-				$success = 'UpdateConfig' if (($action eq 'config_do') && &update_gnupg());
-			} else {	
-				$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
-			}
+			$success = 'UpdateConfig' if (($action eq 'config_do') && &update_config());
 		} else {
 			$error = 'UnknownConfigPage';
 			warn "missing config page: $subset";
@@ -243,25 +269,41 @@ elsif ($action eq '' || $action eq 'list_select') {
 	}
 } elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_ask')) {
 	$pagename = 'gnupg_convert';
-} elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_do')) {
+} elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_enable')) {
 	my $tlist = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
-	if ($tlist->is_gpg()) {
-		if ($tlist->convert_to_plaintext()) {
-			$pagename = 'subscribers';
-			$success = 'GnupgConvert';
-		} else {
-			warn $tlist->errmsg();
-			$pagename = 'gnupg_convert';
-			$warning = 'GnupgConvert';
-		}
+	if ($tlist->is_encrypted()) {
+		$pagename = 'gnupg_convert';
+		$warning = 'GnupgConvertAlreadyEnabled';
 	} else {
-		if ($tlist->convert_to_encrypted()) {
-			$pagename = 'gnupg_generate_key';
-			$success = 'GnupgConvert';
+		if ($tlist->enable_encryption()) {
+			# if the keyring already contains a secret key, then we do not
+			# need to generate a new one
+			my @secret_keys = $tlist->get_secret_keys();
+			if ($#secret_keys >= 0) {
+				$pagename = 'gnupg_secret';
+			} else {
+				$pagename = 'gnupg_generate_key';
+			}
+			$success = 'GnupgConvertEnable';
 		} else {
 			warn $tlist->errmsg();
 			$pagename = 'gnupg_convert';
-			$warning = 'GnupgConvert';
+			$warning = 'GnupgConvertEnable';
+		}
+	}
+} elsif ($GPG_SUPPORT && ($action eq 'gnupg_convert_disable')) {
+	my $tlist = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
+	unless ($tlist->is_encrypted()) {
+		$pagename = 'gnupg_convert';
+		$warning = 'GnupgConvertAlreadyDisabled';
+	} else {
+		if ($tlist->disable_encryption()) {
+			$pagename = 'gnupg_convert';
+			$success = 'GnupgConvertDisable';
+		} else {
+			warn $tlist->errmsg();
+			$pagename = 'gnupg_convert';
+			$warning = 'GnupgConvertDisable';
 		}
 	}
 } elsif ($GPG_SUPPORT && (($action eq 'gnupg_ask') || ($action eq 'gnupg_do'))) {
@@ -269,12 +311,12 @@ elsif ($action eq '' || $action eq 'list_select') {
 	my $subset = $q->param('gnupg_subset');
 	if (defined($q->param('list')) && ($subset ne '')) {
 		if (($subset =~ /^[\w]*$/) && (-e "$TEMPLATE_DIR/gnupg_$subset" . ".cs")) {
-			$pagename = 'gnupg_' . $subset;
-		} else {
-			$pagename = '';
-		}
-		if ($pagename ne '') {
-			$success = 'UpdateGnupg' if (($action eq 'gnupg_do') && &manage_gnupg_keys());
+			if ($action eq 'gnupg_do') {
+				$success = 'UpdateGnupg' if (&manage_gnupg_keys());
+			} else {
+				# warnings are defined in the respective subs
+				$pagename = 'gnupg_' . $subset;
+			}
 		} else {
 			$error = 'UnknownGnupgPage';
 			warn "missing gnupg page: $subset";
@@ -291,7 +333,7 @@ elsif ($action eq '' || $action eq 'list_select') {
 		} else {
 			$warning = 'GnupgExportKey';
 			# TODO: pagename is quite random here ...
-			$pagename = 'gnupg_secret';
+			$pagename = 'gnupg_public';
 		}
 	} else {
 		$error = 'ParameterMissing';
@@ -388,17 +430,16 @@ exit;
 
 # =========================================================================
 
-sub load_hdf {
+sub init_hdf {
 	# initialize the data for clearsilver
 	my $hdf = ClearSilver::HDF->new();
 
 	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 
-	# "normal", "basic" and "expert" should be supported
+	# "normal", "basic" and "expert" should be supported soon
 	# TODO: should be selected via web interface
 	$ui_template = "normal";
-	$ui_set = "default";		# may be overwritten later
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
 
 	# retrieve available languages and add them to the dataset
@@ -414,6 +455,9 @@ sub load_hdf {
 	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
 	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
 
+	# support for encrypted mailing lists?
+	$hdf->setValue("Config.Features.Crypto", 1) if ($GPG_SUPPORT);
+
 	return $hdf;
 }
 
@@ -422,7 +466,7 @@ sub load_hdf {
 sub output_page {
 	# Print the page
 
-	my $ui_template_file = "$TEMPLATE_DIR/ui/$ui_set/${ui_template}.hdf";
+	my $ui_template_file = "$TEMPLATE_DIR/ui/${ui_template}.hdf";
 	&fatal_error("UI template file ($ui_template_file) not found")
 		unless (-e $ui_template_file);
 	$pagedata->readFile($ui_template_file);
@@ -456,8 +500,8 @@ sub output_page {
 
 # ---------------------------------------------------------------------------
 
-sub load_interface_language
-{
+sub load_interface_language {
+
 	my ($data) = @_;
 	my $config_language;
 
@@ -495,16 +539,24 @@ sub load_interface_language
 
 # ---------------------------------------------------------------------------
 
-sub translate_language_data
-{
+sub translate_language_data {
+
 	my ($hdf, $language) = @_;
 	my $langdata;
 	my %translation;
 	my $key;
 
 	# create gettext object
-	&setlocale(POSIX::LC_MESSAGES, $language);
+	# TODO: getttext support seems to be broken???
+	# TODO: provide an alternative, if no gettext is available
+	#&setlocale(POSIX::LC_MESSAGES, $language);
 	&textdomain("ezmlm-web");
+	warn "failed to set locale: $@" unless (&setlocale(LC_ALL, ''));
+	# "setlocale" seems to need "de_DE" instead of just "de" - so we will
+	# use the environment setting instead
+	# see http://lists.debian.org/debian-perl/2000/01/msg00016.html
+	# beware that no other programs are called afterwards: their output may suffer :)
+	$ENV{LC_ALL} = "$language";
 
 	# read language template
 	$langdata = ClearSilver::HDF->new();
@@ -519,8 +571,8 @@ sub translate_language_data
 
 # ---------------------------------------------------------------------------
 
-sub recurse_hdf
-{
+sub recurse_hdf {
+
 	my ($node, $prefix) = @_;
 	my ($value, $child, $next, %result, %sub_result, $key);
 	$value = $node->objValue();
@@ -546,8 +598,8 @@ sub recurse_hdf
 # this code was adapted from Per Cederberg
 # http://www.percederberg.net/home/perl/select.perl
 # it returns an empty string, if no supported language was found
-sub get_browser_language
-{
+sub get_browser_language {
+
     my ($str, @langs, @res);
 
     # Use language preference settings
@@ -570,8 +622,8 @@ sub get_browser_language
 
 # ---------------------------------------------------------------------------
 
-sub set_pagedata_list_of_lists()
-{
+sub set_pagedata_list_of_lists {
+
 	my (@files, $i, $num);
 
 	# Read the list directory for mailing lists.
@@ -592,8 +644,8 @@ sub set_pagedata_list_of_lists()
 
 # ---------------------------------------------------------------------------
 
-sub set_pagedata()
-{
+sub set_pagedata {
+
 	my ($hostname, $username);
 
 	# read available list of lists
@@ -645,9 +697,8 @@ sub set_pagedata()
 	# default username for webuser file
 	$pagedata->setValue("Data.WebUser.UserName", $ENV{'REMOTE_USER'}||'ALL');
 
-	# list specific configuration
-	if ($q->param('list') ne '' )
-	{
+	# list specific configuration - use defaults if no list is selected
+	if ($q->param('list') ne '' ) {
 		&set_pagedata4list(&get_list_part());
 	} else {
 		&set_pagedata4options($DEFAULT_OPTIONS);
@@ -656,32 +707,37 @@ sub set_pagedata()
 
 # ---------------------------------------------------------------------------
 
-sub set_pagedata4list
-{
-	my $part_type = shift;
+sub set_pagedata4list {
 
-	my $listname = $q->param('list');
+	my $part_type = shift;
+	my ($listname, $list);
+
+	$listname = $q->param('list');
 	
 	if (! -e "$LIST_DIR/$listname/lock" ) {
 		$warning = 'ListDoesNotExist' if ($warning eq '');
-		return;
+		return (1==0);
 	}
 
-	# do the common configuration for all kind of lists
-	&set_pagedata4list_common($listname, $part_type);
-	
-	# is this list encrypted?
-	if (&is_list_gnupg($listname)) {
-		# some encryption specific stuff
-		&set_pagedata4list_gnupg($listname);
-		$pagedata->setValue("Data.List.Type","gnupg");
-		$ui_set = "gnupg";
-	} else {
-		# do the non-encryption configuration
-		&set_pagedata4list_normal($listname, $part_type);
-		$pagedata->setValue("Data.List.Type","default");
-		$ui_set = "default";
-	}
+	# Work out the address of this list ...
+	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
+
+	$pagedata->setValue("Data.List.Name", "$listname");
+	$pagedata->setValue("Data.List.Address", &this_listaddress);
+
+	# do we support encryption? Set some data if the list is encrypted ...
+	&set_pagedata_crypto($listname) if ($GPG_SUPPORT);
+
+	# is this a moderation/administration list?
+	&set_pagedata4part_list($part_type) if ($part_type ne '');
+
+	&set_pagedata_subscribers($list, $listname, $part_type);
+	&set_pagedata_misc_configfiles($list);
+	&set_pagedata_textfiles($list);
+	&set_pagedata_webusers($list, $listname);
+	&set_pagedata_localization($list);
+
+	&set_pagedata4options($list->getconfig);   
 
 	return (0==0);
 }
@@ -689,13 +745,16 @@ sub set_pagedata4list
 # ---------------------------------------------------------------------------
 
 # extract hdf-data for encrypted lists
-# non-encrypted lists should not use this function
-sub set_pagedata4list_gnupg() {
+sub set_pagedata_crypto {
 	my ($listname) = @_;
 	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key);
 
 	$gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
 
+	return unless ($gpg_list->is_encrypted());
+
+	$pagedata->setValue("Data.List.Features.Crypto", 1);
+	
 	# read the configuration
 	%config = $gpg_list->getconfig();
 	foreach $item (keys %config) {
@@ -723,43 +782,10 @@ sub set_pagedata4list_gnupg() {
 
 # ---------------------------------------------------------------------------
 
-# extract hdf-data for "normal" (e.g. not encrypted) lists
-# special kinds of lists should not use this function
-sub set_pagedata4list_normal() {
-	my ($listname, $part_type) = @_;
+sub set_pagedata_misc_configfiles {
 
-	my $list = new Mail::Ezmlm("$LIST_DIR/$listname");
-	&set_pagedata4options($list->getconfig);   
-}
-
-# ---------------------------------------------------------------------------
-
-# extract hdf-data for all kinds of lists (both encrypted and non-encrypted)
-sub set_pagedata4list_common() {
-	my ($listname, $part_type) = @_;
-
-	my ($list, $webusers);
-	my ($i, $item, @files);
-	my ($address, $addr_name, %pretty);
-	# Work out the address of this list ...
-	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
-
-	$pagedata->setValue("Data.List.Name", "$listname");
-	$pagedata->setValue("Data.List.Address", &this_listaddress);
-
-	&set_pagedata4part_list($part_type) if ($part_type ne '');
-
-	$i = 0;
-	tie %pretty, "DB_File", "$LIST_DIR/$listname/webnames" if ($PRETTY_NAMES);
-	foreach $address (sort $list->subscribers($part_type)) {
-		if ($address ne '') {
-			$pagedata->setValue("Data.List.Subscribers." . $i . '.address', "$address");
-			$addr_name = ($PRETTY_NAMES)? $pretty{$address} : '';
-			$pagedata->setValue("Data.List.Subscribers." . $i . '.name', $addr_name);
-		}
-		$i++;
-	}
-	untie %pretty if ($PRETTY_NAMES);
+	my $list = shift;
+	my ($item);
 
 	# Get the contents of some important files
 	$item = $list->getpart('prefix');
@@ -779,55 +805,77 @@ sub set_pagedata4list_common() {
 	$list->getpart('msgsize') =~ m/^\s*(\d+)\s*:\s*(\d+)\s*$/;
 	$pagedata->setValue("Data.List.MsgSize.Max", "$1");
 	$pagedata->setValue("Data.List.MsgSize.Min", "$2");
+}
 
-	# TODO: this is definitely ugly - create a new sub!
-	if (open(WEBUSER, "<$WEBUSERS_FILE")) {
-		while(<WEBUSER>) {
-			last if (($webusers) = m{^$listname\s*\:\s*(.+)$});
+# ---------------------------------------------------------------------------
+
+sub set_pagedata_subscribers {
+
+	my ($list, $listname, $part_type) = @_;
+	my ($i, $address, $addr_name, %pretty);
+
+	$i = 0;
+	tie %pretty, "DB_File", "$LIST_DIR/$listname/webnames" if ($PRETTY_NAMES);
+	foreach $address (sort $list->subscribers($part_type)) {
+		if ($address ne '') {
+			$pagedata->setValue("Data.List.Subscribers." . $i . '.address', "$address");
+			$addr_name = ($PRETTY_NAMES)? $pretty{$address} : '';
+			$pagedata->setValue("Data.List.Subscribers." . $i . '.name', $addr_name);
 		}
-		close WEBUSER;
+		$i++;
 	}
-	# set default if there was no list definition
-	$webusers ||= $ENV{'REMOTE_USER'} || 'ALL';
+	untie %pretty if ($PRETTY_NAMES);
+}
 
-    $pagedata->setValue("Data.List.WebUsers", "$webusers");
+# ---------------------------------------------------------------------------
 
-	# get the names of the textfiles of this list
-	{
-		@files = sort $list->get_available_text_files();
-		$i = 0;
+# set the names of the textfiles of this list
+sub set_pagedata_textfiles {
 
-		foreach $item (@files) {
-			if ($list->is_text_default($item)) {
-				$pagedata->setValue('Data.List.DefaultFiles.' . $i , "$item");
-			} else {
-				$pagedata->setValue('Data.List.CustomizedFiles.' . $i , "$item");
-			}
-			$i++;
+	my $list = shift;
+	my ($i, @files, $item);
+
+	@files = sort $list->get_available_text_files();
+	$i = 0;
+
+	foreach $item (@files) {
+		if ($list->is_text_default($item)) {
+			$pagedata->setValue('Data.List.DefaultFiles.' . $i , "$item");
+		} else {
+			$pagedata->setValue('Data.List.CustomizedFiles.' . $i , "$item");
 		}
-
-		# text file specified?
-		if (($q->param('file') ne '') && ($q->param('file') =~ m/^[\w-]*$/)) {
-			my ($content);
-			$content = $list->get_text_content($q->param('file'));
-			# get character set of current list (ignore ":Q" prefix)
-			my ($charset) = split(':',$list->get_charset());
-			# use default for ezmlm-idx<5.0
-			$charset = 'us-ascii' if ($charset eq '');
-			warn "Charset: $charset";
-			my $content_utf8;
-			eval { $content_utf8 = Encode::decode($charset, $content); };
-			# use $content if conversion failed somehow
-			if ($@) {
-				$content_utf8 = $content;
-				warn "Conversion failed for charset '$charset'";
-			}
-			$pagedata->setValue("Data.List.File.Name", $q->param('file'));
-			$pagedata->setValue("Data.List.File.Content", "$content_utf8");
-			$pagedata->setValue("Data.List.File.isDefault",
-				$list->is_text_default($q->param('file')) ? 1 : 0);
-		}
+		$i++;
 	}
+
+	# text file specified?
+	if (($q->param('file') ne '') && ($q->param('file') =~ m/^[\w-]*$/)) {
+		my ($content);
+		$content = $list->get_text_content($q->param('file'));
+		# get character set of current list (ignore ":Q" prefix)
+		my ($charset) = split(':',$list->get_charset());
+		# use default for ezmlm-idx<5.0
+		$charset = 'us-ascii' if ($charset eq '');
+		my $content_utf8;
+		eval { $content_utf8 = Encode::decode($charset, $content); };
+		# use $content if conversion failed somehow
+		if ($@) {
+			$content_utf8 = $content;
+			# no warning, if the encoding support is not available
+			warn "Conversion failed for charset '$charset'" if ($ENCODE_SUPPORT);
+		}
+		$pagedata->setValue("Data.List.File.Name", $q->param('file'));
+		$pagedata->setValue("Data.List.File.Content", "$content_utf8");
+		$pagedata->setValue("Data.List.File.isDefault",
+			$list->is_text_default($q->param('file')) ? 1 : 0);
+	}
+}
+
+# ---------------------------------------------------------------------------
+
+sub set_pagedata_localization {
+
+	my $list = shift;
+	my ($i, $item);
 
 	# get available languages for this list
 	# no result for ezmlm-idx < 5
@@ -849,7 +897,31 @@ sub set_pagedata4list_common() {
 
 # ---------------------------------------------------------------------------
 
+sub set_pagedata_webusers {
+
+	my ($list, $listname) = @_;
+	my ($webusers);
+
+	# retrieve the users of the list by reading the webusers file
+	if (open(WEBUSER, "<$WEBUSERS_FILE")) {
+		while(<WEBUSER>) {
+			# ok - this is very short:
+			# $webusers becomes the matched group as soon as we find the
+			# line of the list - and: no, we do not need "=~" instead of "="
+			last if (($webusers) = m{^$listname\s*\:\s*(.+)$});
+		}
+		close WEBUSER;
+	}
+	# set default if there was no list definition
+	$webusers ||= $ENV{'REMOTE_USER'} || 'ALL';
+
+    $pagedata->setValue("Data.List.WebUsers", "$webusers");
+}
+
+# ---------------------------------------------------------------------------
+
 sub set_pagedata4options {
+
 	my($options) = shift;
 	my($i, $list, $key, $state, $value, $dir_of_list);
 
@@ -935,12 +1007,12 @@ sub get_list_part
 
 # ---------------------------------------------------------------------------
 
-sub is_list_gnupg {
+sub is_list_encrypted {
 	my ($listname) = @_;
 	return (1==0) unless ($GPG_SUPPORT);
 
 	my $gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
-	return $gpg_list->is_gpg();
+	return $gpg_list->is_encrypted();
 }
 
 # ---------------------------------------------------------------------------
@@ -975,9 +1047,7 @@ sub get_dotqmail_files {
 	# get list of existing files (remove empty entries)
 	@files = grep {/./} map { (-e "$qmail_prefix$_")? "$qmail_prefix$_" : undef  } (
 			'',
-			'.no-gpg',
 			'-default',
-			'-default.no-gpg',
 			'-owner',
 			'-return-default',
 			'-reject-default',
@@ -1406,25 +1476,26 @@ sub extract_options_from_params()
 sub manage_gnupg_keys()
 # manage gnupg keys
 {
-	return (1==0) unless ($GPG_SUPPORT);
-
 	my ($list, $listname, $upload_file);
 
 	$listname = $q->param('list');
-	return (0==1) unless (&is_list_gnupg($listname));
+	return (0==1) unless (&is_list_encrypted($listname));
 
 	$list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
 
 	my $subset = $q->param('gnupg_subset');
 	if (defined($q->param('gnupg_key_file'))) {
+		$pagename = 'gnupg_public';
 		return &gnupg_import_key($list, $q->param('gnupg_key_file'));
 	} elsif (($subset eq 'public') || ($subset eq 'secret')) {
+		$pagename = "gnupg_$subset";
 		return &gnupg_remove_key($list);
 	} elsif ($subset eq 'generate_key') {
-		if (&gnupg_generate_key($list)) {
+		if (&gnupg_generate_key($list, $listname)) {
 			$pagename = 'gnupg_secret';
 			return (0==0);
 		} else {
+			$pagename = 'gnupg_generate_key';
 			return (0==1);
 		}
 	} else {
@@ -1502,12 +1573,33 @@ sub gnupg_import_key()
 # ------------------------------------------------------------------------
 
 sub gnupg_generate_key() {
-	my ($list) = @_;
+
+	my ($list, $listname) = @_;
 	my ($key_name, $key_comment, $key_size, $key_expires);
-	$key_name = $q->param('gnupg_keyname');
-	$key_comment = $q->param('gnupg_keycomment');
-	$key_size = $q->param('gnupg_keysize');
-	$key_expires = $q->param('gnupg_keyexpires');
+
+	if (defined($q->param('gnupg_keyname'))) {
+		$key_name = $q->param('gnupg_keyname');
+	} else {
+		$key_name = $listname;
+	}
+
+	if (defined($q->param('gnupg_keycomment'))) {
+		$key_comment = $q->param('gnupg_keycomment');
+	} else {
+		$key_comment = "Mailing list";
+	}
+
+	if (defined($q->param('gnupg_keysize'))) {
+		$key_size = $q->param('gnupg_keysize');
+	} else {
+		$key_size = 2048;
+	}
+
+	if (defined($q->param('gnupg_keyexpires'))) {
+		$key_expires = $q->param('gnupg_keyexpires');
+	} else {
+		$key_expires = 0;
+	}
 
 	unless ($key_name) {
 		$warning = 'GnupgNoName';
@@ -1560,25 +1652,45 @@ sub gnupg_remove_key() {
 
 # ------------------------------------------------------------------------
 
-sub update_gnupg {
-	# save the new gnupg configuration
-	# TODO: add headeradd and so on ...
+sub update_config_crypto {
+	# save gpgpy-ezmlm settings
+	# call this function somewhere during "update_config" for encrypted lists
+	# only encryption-settings are used - the rest is ignored
 	
 	my ($list, %switches);
-	return (1==0) unless ($GPG_SUPPORT);
+	my @ALLOWED_GNUPG_SWITCHES = ( 'sign_messages', 'plain_without_key' );
 
 	$list = new Mail::Ezmlm::Gpg("$LIST_DIR/" . $q->param('list'));
+	return (0==0) unless ($list->is_encrypted());
 
+	# retrieve the configuration settings from the CGI input
 	my ($one_switch, $one_value, $key);
 	my @all_params = $q->param;
 	foreach $one_switch (@all_params) {
 		if ($one_switch =~ /^available_option_gnupg_(\w*)$/) {
-			$key = $1;
-			$switches{$key} = (defined($q->param('option_gnupg_' . $key))) ? 1 : 0;
+			$key = lc($1);
+			# the gnupg directory setting may not be accessible via the web
+			# interface, as this would expose the private keys of other lists
+			# this would be VERY, VERY ugly!
+			# Result: we use the whitelist above
+			my $avail_switch;
+			foreach $avail_switch (@ALLOWED_GNUPG_SWITCHES) {
+				next if ($key ne $avail_switch);
+				$switches{$key} = (defined($q->param('option_gnupg_' . $key))) ? 1 : 0;
+			}
 		}
 	}
-	$list->update(%switches) && return (0==0);
-	return (1==0);
+
+	# Any changes? Otherwise just return. 
+	# beware: the length function returns "1" for empty hashes
+	return (0==0) if (length(%switches) <= 1);
+
+	# update the configuration file
+	if ($list->update(%switches)) {
+		return (0==0);
+	} else {
+		return (1==0);
+	}
 }
 
 # ------------------------------------------------------------------------
@@ -1672,7 +1784,8 @@ sub update_config {
 	}
 	
 	# update language
-	# this _must_ happen after set_charset to avaoid accidently overriding default charset
+	# this _must_ happen after set_charset to avoid accidently overriding
+	# the default charset
 	if (defined($q->param('list_language'))) {
 		if (&check_list_language($list, $q->param('list_language'))) {
 			$list->set_lang($q->param('list_language'));
@@ -1681,6 +1794,10 @@ sub update_config {
 		}
 	}
 
+	# gnupg options?
+	&update_config_crypto() if ($GPG_SUPPORT);
+
+	# change webuser setting
 	unless (&update_webusers()) {
 		$warning = 'WebUsersUpdate';
 		return (1==0);
@@ -1766,7 +1883,8 @@ sub save_text {
 	eval { $content_encoded = Encode::encode($charset, $content); };
 	if ($@) {
 		$content_encoded = $content;
-		warn "Conversion failed for charset '$charset'";
+		# no warning, if the encoding support is not available
+		warn "Conversion failed for charset '$charset'" if ($ENCODE_SUPPORT);
 	}
 	unless ($list->set_text_content($q->param('file'), $content_encoded)) {
 		$warning = 'SaveFile';
@@ -1850,8 +1968,11 @@ sub webauth_create_allowed {
 sub get_available_interface_languages {
 	my (%languages, $lang_id);
 	foreach $lang_id (@LANGUAGE_LIST) {
-		# TODO: retrieve the local spelling of each language
-		$languages{$lang_id} = $lang_id;
+		if (defined($LANGUAGE_NAMES{$lang_id})) {
+			$languages{$lang_id} = $LANGUAGE_NAMES{$lang_id};
+		} else {
+			$languages{$lang_id} = $lang_id;
+		}
 	}
 	return %languages;
 }
@@ -1874,6 +1995,22 @@ sub check_list_language {
 		$found++ if ($item eq $q->param('list_language'));
 	}
 	return ($found > 0);
+}
+
+# ---------------------------------------------------------------------------
+
+sub safely_import_module {
+	# import a module if it exists
+	# otherwise False is returned
+
+	my ($mod_name) = @_;
+	eval "use $mod_name";
+	if ($@) {
+		warn "Failed to load module '$mod_name': $@";
+		return (1==0);
+	} else {
+		return (0==0);
+	}
 }
 
 # ---------------------------------------------------------------------------

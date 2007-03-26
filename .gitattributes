@@ -19,7 +19,6 @@ debian/patches/00list -text
 debian/patches/01_paths_in_config_file.dpatch -text
 debian/rules -text
 examples/ezmlmwebrc.dist -text
-examples/ezmlmwebrc.gnupg.dist -text
 examples/htaccess.dist -text
 examples/webusers.dist -text
 /ezmlm-web.cgi -text
@@ -55,6 +54,7 @@ suid-wrapper/index.h -text
 template/config_admin.cs -text
 template/config_all.cs -text
 template/config_archive.cs -text
+template/config_encryption.cs -text
 template/config_main.cs -text
 template/config_options/admin_edit_text.cs -text
 template/config_options/admin_enabled.cs -text
@@ -77,17 +77,12 @@ template/config_options/create_listname.cs -text
 template/config_options/digest_enabled.cs -text
 template/config_options/digest_settings.cs -text
 template/config_options/from_address.cs -text
-template/config_options/gnupg_allow_key_submission.cs -text
-template/config_options/gnupg_encrypt_to_all.cs -text
 template/config_options/gnupg_keycomment.cs -text
 template/config_options/gnupg_keyexpires.cs -text
 template/config_options/gnupg_keyname.cs -text
 template/config_options/gnupg_keysize.cs -text
-template/config_options/gnupg_nokey_nocrypt.cs -text
-template/config_options/gnupg_require_sigs.cs -text
-template/config_options/gnupg_require_subscriber.cs -text
+template/config_options/gnupg_plain_without_key.cs -text
 template/config_options/gnupg_sign_messages.cs -text
-template/config_options/gnupg_verified_key_required.cs -text
 template/config_options/headeradd.cs -text
 template/config_options/headerremove.cs -text
 template/config_options/lang_select.cs -text
@@ -136,4 +131,5 @@ template/textfile_edit.cs -text
 template/textfiles.cs -text
 template/ui/default/normal.hdf -text
 template/ui/gnupg/normal.hdf -text
+template/ui/normal.hdf -text
 www-data/default.css -text

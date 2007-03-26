@@ -69,3 +69,7 @@ $HTML_LANGUAGE = "en";
 # example: LANGUAGE_LIST = ( "en", "de", "si", "jp" );
 @LANGUAGE_LIST = ( "en", "de" );
 
+# turn support for encrypted mailing lists on or off - defaults to 0 (off)
+# see https://systemausfall.org/toolforge/gpgpy-ezmlm for details
+$GPG_SUPPORT = 0;
+

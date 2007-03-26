@@ -1,3 +1,8 @@
+urgent:
+	- add basic/normal/expert to web interface
+	- export subscribers
+	- fix display of language name
+
 clearsilver-Infos updaten
 
 die nicht-Abonnenten-Listen (allow/deny/mod) sagen trotzdem: "x AbonnentInnen"
@@ -19,8 +24,4 @@ restore user input after failed list_create (especially options)
 support for:
 	* show subscription log
 	* 'mailinglist' (maybe)
-
-choose basic/normal/expert to disable questions
-
-export subscribers
 
