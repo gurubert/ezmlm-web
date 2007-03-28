@@ -1,27 +1,11 @@
-urgent:
-	- add basic/normal/expert to web interface
-	- export subscribers
-	- fix display of language name
-
-clearsilver-Infos updaten
-
-die nicht-Abonnenten-Listen (allow/deny/mod) sagen trotzdem: "x AbonnentInnen"
+add basic/normal/expert to web interface
 
 multi-domain-Support?
 
 charset support for idx <= 5.0
 
-suppress success message, if no new subscriber addresses were selected for adding
-
-Maximale Anzahl von Mailinglisten definieren?
-	- wird wohl von qmailadmin in der .qmailadmin-limits-Datei festgelegt
-
 Infos fuer Massen-Hosting:
 	http://www.fbis.ch/index-de.php?page=14&frameset=4
 
-restore user input after failed list_create (especially options)
-
-support for:
-	* show subscription log
-	* 'mailinglist' (maybe)
+support for 'mailinglist' (maybe)
 

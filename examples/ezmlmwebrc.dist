@@ -29,7 +29,7 @@ $WEBUSERS_FILE = "$LIST_DIR/webusers";
 $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
 
 # Safe list deletion? 
-# 0 = move list to $LIST_DIR/_deleted_lists -> recoverable :)
+# 0 = move List to $LIST_DIR/_deleted_lists -> recoverable :)
 # 1 = allow user to delete list completely. No backup, therefore no recovery.
 $UNSAFE_RM = 0;
 
@@ -62,12 +62,9 @@ $HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
 # this is a URL - you have to copy the css file to the right location before
 $HTML_CSS_FILE = "/ezmlm-web.css";
 
-# choose a language (en|de)
+# the default interface language
+# can only be changed via the web interface if gettext support is available
 $HTML_LANGUAGE = "en";
-
-# list of available languages - this should include the default language above
-# example: LANGUAGE_LIST = ( "en", "de", "si", "jp" );
-@LANGUAGE_LIST = ( "en", "de" );
 
 # turn support for encrypted mailing lists on or off - defaults to 0 (off)
 # see https://systemausfall.org/toolforge/gpgpy-ezmlm for details

@@ -173,8 +173,8 @@ them in any future releases of ezmlm-web.
 VI. Encrypted mailing lists
 ===========================
 If you want to manage encrypted mailing lists (see
-http://www.synacklabs.net/projects/crypt-ml/) with ezmlm-web, then you should
-read README.gnupg and follow the instructions.
+https://systemausfall.org/toolforge/gpgpy-ezmlm) with ezmlm-web, then you
+should read README.gnupg and follow the instructions.
 
 
 VII. Bugs && Bug Reports

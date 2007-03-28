@@ -26,6 +26,7 @@ Lang {
 		Properties	= Properties of
 		Language	= Language
 		Help		= Help (external)
+		SubscribeLog	= Subscriber's log
 	  }
 
 
@@ -47,6 +48,7 @@ Lang {
 		ListDelete		= Delete list
 		FileSelect		= Choose a file for editing
 		FileEdit		= Editing file
+		SubscribeLog	= Subscription events
 		GnupgConvert	= Encryption
 		GnupgPublic		= Public keys
 		GnupgSecret		= Secret keys
@@ -59,6 +61,7 @@ Lang {
 		Create		= Create list
 		ConfirmDeletion		= Delete the list
 		DeleteAddress	= Delete address(es)
+		DownloadSubscribersList	= Download subscribers
 		AddAddress	= Add address(es)
 		UpdateConfiguration = Update configuration
 		UpdateGnupg = Update keyring
@@ -112,10 +115,12 @@ Lang {
 		InvalidListName		= The name of the list contains invalid characters
 		ReservedListName	= This listname may not be used as it is reserved for internal purposes
 		EmptyListName		= The name of the list may not be empty
+		EmptyList			= This list has no subscribers.
 		InvalidLocalPart	= The local part of the list address is not valid
 		RequiresIDX5		= This action requires ezmlm-idx v5.0 or higher.
 		ResetFileIsDefault	= There is no customized text file, that can be removed.
 		ResetFile		= Removal of custimized text file failed.
+		LogFile			= Reading of log file failed.
 		GnupgNoKeyFile		= There was no key file selected for upload!
 		GnupgDelKey			= Removal of (at least) one key failed!
 		GnupgNoKeySelected	= There was no key selected to be removed!
@@ -281,6 +286,7 @@ Lang {
 		TextFileReset	= Discard customized text
 		TextFileInfo	= Useful placeholders
 		AvailableLists	= Available lists
+		SubscribeLog	= Events
 		GnupgConvert	= Encryption support
 		GnupgPublicKeys	= Public keys of this list
 		GnupgSecretKeys	= Secret keys of this list

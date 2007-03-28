@@ -126,6 +126,7 @@ template/macros.cs -text
 template/main.cs -text
 template/modpath_info.cs -text
 template/nav.cs -text
+template/show_subscription_log.cs -text
 template/subscribers.cs -text
 template/textfile_edit.cs -text
 template/textfiles.cs -text

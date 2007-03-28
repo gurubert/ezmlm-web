@@ -17,7 +17,7 @@
 
 	<?cs if:((subcount(Data.Lists) > 0) && (UI.Navigation.ListSelect == 1))
 			|| (Data.Permissions.Create && (UI.Navigation.ListCreate == 1)) ?>
-		<hr/>
+		<li><hr/></li>
 	<?cs /if ?>
 
 
@@ -164,6 +164,11 @@
 				title="<?cs var:html_escape(Lang.Menue.GnupgConvert) ?>"><?cs
 					var:html_escape(Lang.Menue.GnupgConvert) ?></a></li><?cs /if ?>
 		
+		<?cs if:UI.Navigation.SubscribeLog == 1
+			?><li><a <?cs if:(Data.Action == "subscribe_log") ?> class="nav_active"<?cs /if ?>
+			href="<?cs call:link("list",Data.List.Name,"action","subscribe_log","","") ?>"
+				title="<?cs var:html_escape(Lang.Menue.SubscribeLog) ?>"><?cs
+				var:html_escape(Lang.Menue.SubscribeLog) ?></a></li><?cs /if ?>
 		<?cs if:UI.Navigation.ListDelete == 1
 			?><li><a <?cs if:(Data.Action == "list_delete") ?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("list",Data.List.Name,"action","list_delete_ask","","") ?>"
@@ -172,13 +177,13 @@
 		
 	</ul></li>
 
-	<hr/>
+	<li><hr/></li>
 <?cs /if ?>
 
 	<?cs if:UI.Navigation.Language
 		?><li><?cs include:TemplateDir + '/language_select.cs' ?></li>
 
-		<hr/>
+		<li><hr/></li>
 
 	<?cs /if ?>
 

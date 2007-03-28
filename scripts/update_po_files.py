@@ -55,17 +55,20 @@ except ImportError, errMsg:
 	sys.exit(1)
 
 
-LANGUAGE_FILE = 'language.hdf'
+HDF_DIR = 'lang'
 ## name of the main domain and prefix for all plugin domains
 GETTEXT_DOMAIN = 'ezmlm-web'
 ## set the msgstrs for this language to the value of the respective msgids
 DEFAULT_LANG = 'en'
-LANG_DIR = 'intl'
+PO_DIR = 'intl'
 ## mail adress for translation bugs
 MAIL_ADDRESS = 'devel@sumpfralle.de'
 ## the complete list of languages wastes a lot of space - for now we use only a few
 #ALL_LANGUAGES = "af aka am ar bn ca cs da de el en es et eu fa fi fr fur gl he hi hr hu hy is it ja ka kg ko ku lt lv mr ms mt nb ne nl nn ns pa pl pt ru sl sr st sv tr uk ve vi xh".split(" ")
 ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt ru sl sv".split(" ")
+
+## use subversion for reverting?
+USE_SVN = False
 
 # --------------=-=-=- functions -=-=-=--------------------
 
@@ -99,9 +102,9 @@ def revert_if_unchanged(po_file):
 	proc.wait()
 
 
-def process_language_file(hdf_file, po_dir, textDomain):
+def generate_po_files(hdf_file, po_dir, textDomain):
 	## prepare hdf
-	if not os.path.isfile(hdf_file) or not os.access(hdf_file, os.R_OK):
+	if ((not os.path.isfile(hdf_file)) or (not os.access(hdf_file, os.R_OK))):
 		sys.stderr.write("Unable to read the hdf file: %s\n" % hdf_file)
 		return
 	if not os.path.isdir(po_dir):
@@ -157,7 +160,9 @@ def process_language_file(hdf_file, po_dir, textDomain):
 	for ld in ALL_LANGUAGES:
 		if not os.path.isdir(os.path.join(po_dir,ld)):
 			os.mkdir(os.path.join(po_dir, ld))
-		po_file = os.path.join(po_dir, ld, "%s.po" % textDomain)
+		if not os.path.isdir(os.path.join(po_dir,ld, 'LC_MESSAGES')):
+			os.mkdir(os.path.join(po_dir, ld, 'LC_MESSAGES'))
+		po_file = os.path.join(po_dir, ld, 'LC_MESSAGES', "%s.po" % textDomain)
 		if not os.path.isfile(po_file):
 			translate.convert.pot2po.convertpot(file(pot_file), file(po_file,'w'), None)
 		else:
@@ -177,7 +182,8 @@ def process_language_file(hdf_file, po_dir, textDomain):
 			po_content.removeduplicates()
 			po_content.removeblanks()
 			po_content.savefile(po_file)
-		revert_if_unchanged(po_file)
+		if USE_SVN:
+			revert_if_unchanged(po_file)
 		## make it writeable for pootle
 		os.chmod(po_file, 0666)
 		## compile po file
@@ -185,6 +191,67 @@ def process_language_file(hdf_file, po_dir, textDomain):
 		translate.tools.pocompile.convertmo(file(po_file), file(mo_file,'w'), file(pot_file))
 
 
+def generate_translated_hdf_files(orig_hdf_file, po_dir, hdf_dir, textdomain):
+	for lang in ALL_LANGUAGES:
+		if lang != DEFAULT_LANG:
+			generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lang)
+
+def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, language):
+	import gettext
+	## prepare original hdf
+	if ((not os.path.isfile(orig_hdf_file)) or (not os.access(orig_hdf_file, os.R_OK))):
+		sys.stderr.write("Unable to read the hdf file: %s\n" % orig_hdf_file)
+		return
+	hdf = neo_util.HDF()
+	hdf.readFile(orig_hdf_file)
+	## name of new hdf file
+	new_hdf_file = os.path.join(hdf_dir, language + '.hdf')
+	## create translation object
+	translator = gettext.translation(
+			textdomain,
+			localedir=po_dir,
+			languages=[language])
+	## translate entries
+	## count the number of translated items - so we can decide later, if we
+	## want to create the language file
+	translate_count = 0
+	def walk_hdf(prefix, node):
+		def addHdfItem(hdf_node):
+			## ignore hdf values with a "LINK" attribute
+			for (key,value) in hdf_node.attrs():
+				if key == "LINK":
+					return
+			if not hdf_node.value():
+				return
+			translated = translator.gettext(hdf_node.value())
+			if translated:
+				translate_count += 1
+				hdf.setValue("%s%s" % (prefix, hdf_node.name()), translated)
+			else:
+				hdf.setValue("%s%s" % (prefix, hdf_node.name()), hdf_node.value())
+		while node:
+			if node.name():
+				new_prefix = prefix + node.name() + '.'
+			else:
+				new_prefix = prefix
+			## as the attribute feature of clearsilver does not work yet, we
+			## have to rely on magic names to prevent the translation of links
+			if not (new_prefix.endswith(".Link.Rel.") \
+					or new_prefix.endswith(".Link.Prot.") \
+					or new_prefix.endswith(".Link.Abs.") \
+					or new_prefix.endswith(".Link.Attr1.name.") \
+					or new_prefix.endswith(".Link.Attr1.value.") \
+					or new_prefix.endswith(".Link.Attr2.name.") \
+					or new_prefix.endswith(".Link.Attr2.value.")):
+				addHdfItem(node)
+			walk_hdf(new_prefix, node.child())
+			node = node.next()
+	walk_hdf("", hdf)
+	## if there was at least one valid translation, then we should write
+	## the language file
+	if translate_count > 0:
+		hdf.writeFile(new_hdf_file)
+	
 
 
 # ----------------=-=-=- main -=-=-=-----------------------
@@ -195,8 +262,14 @@ if __name__ == "__main__":
 	## the project directory is the parent of the directory of this script
 	PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),os.path.pardir))
 
-	process_language_file(
-			os.path.join(PROJECT_DIR, 'templates', LANGUAGE_FILE),
-			os.path.join(PROJECT_DIR, LANG_DIR),
+	generate_po_files(
+			os.path.join(PROJECT_DIR, HDF_DIR, DEFAULT_LANG + '.hdf'),
+			os.path.join(PROJECT_DIR, PO_DIR),
+			GETTEXT_DOMAIN)
+
+	generate_translated_hdf_files(
+			os.path.join(PROJECT_DIR, HDF_DIR, DEFAULT_LANG + '.hdf'),
+			os.path.join(PROJECT_DIR, PO_DIR),
+			os.path.join(PROJECT_DIR, HDF_DIR),
 			GETTEXT_DOMAIN)
 

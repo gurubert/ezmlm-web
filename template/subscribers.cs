@@ -88,21 +88,32 @@
 			<ul>
 				<!-- scrollbox for list's subscribers -->
 				<!-- Keep selection box a reasonable size - suggested by Sebastian Andersson -->
-					<?cs if:subcount(Data.List.Subscribers) > 15 ?>
-						<?cs set:Data.ScrollSize = 15 ?>
-					  <?cs else ?>
-						<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
-					<?cs /if ?>
-					<li><select name="mailaddress_del"
-							size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
-						<?cs each:item = Data.List.Subscribers ?>
-							<option value="<?cs var:item.address ?>"><?cs var:item.address ?><?cs if:item.name ?> (<?cs var:item.name ?>)<?cs /if ?></option>
-						<?cs /each ?>
-					</select></li>
-					<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
-					<li><input type="hidden" name="action" value="address_del" />
-					<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
-		</ul></form></td>
+				<?cs if:subcount(Data.List.Subscribers) > 15 ?>
+					<?cs set:Data.ScrollSize = 15 ?>
+				  <?cs else ?>
+					<?cs set:Data.ScrollSize = subcount(Data.List.Subscribers) ?>
+				<?cs /if ?>
+				<li><select name="mailaddress_del"
+						size="<?cs var:Data.ScrollSize ?>" multiple="multiple">
+					<?cs each:item = Data.List.Subscribers ?>
+						<option value="<?cs var:item.address ?>"><?cs var:item.address ?><?cs if:item.name ?> (<?cs var:item.name ?>)<?cs /if ?></option>
+					<?cs /each ?>
+				</select></li>
+				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
+				<li><input type="hidden" name="action" value="address_del" />
+				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></form></li>
+				<li><form method="post" action="<?cs call:link('','','','','','')
+						?>" enctype="application/x-www-form-urlencoded">
+					<input type="hidden" name="list" value="<?cs
+							var:Data.List.Name ?>" />
+					<input type="hidden" name="action" value="download_subscribers" />
+					<?cs if:Data.List.PartType ?>
+						<input type="hidden" name="part" value="<?cs
+								var:Data.List.PartType ?>" /><?cs /if ?>
+					<button type="submit" name="send" value="do"><?cs
+							var:html_escape(Lang.Buttons.DownloadSubscribersList)
+							?></button></form></li>
+		</ul></td>
 	<?cs /if ?>
 
 	<td><form method="post" action="<?cs call:link("","","","","","") ?>" enctype="multipart/form-data">
