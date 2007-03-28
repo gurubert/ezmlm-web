@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-03-21 06:41+0100\n"
-"PO-Revision-Date: 2007-03-21 08:06+0100\n"
+"POT-Creation-Date: 2007-03-28 11:56+0200\n"
+"PO-Revision-Date: 2007-03-27 13:38+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -11,14 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 0.10.1\n"
-
-#: Lang.ID
-msgid "en"
-msgstr ""
-
-#: Lang.Name
-msgid "English"
-msgstr ""
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -96,6 +88,10 @@ msgstr "Schlüssel anlegen"
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
+#: Lang.Menue.GnupgOptions
+msgid "encryption"
+msgstr "Verschlüsselung"
+
 #: Lang.Menue.TextFiles
 msgid "Text files"
 msgstr "Texte"
@@ -115,6 +111,10 @@ msgstr "Sprache"
 #: Lang.Menue.Help
 msgid "Help (external)"
 msgstr "Hilfe (extern)"
+
+#: Lang.Menue.SubscribeLog
+msgid "Subscriber's log"
+msgstr ""
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
@@ -176,6 +176,11 @@ msgstr "Auswählen eines Textbausteins"
 msgid "Editing file"
 msgstr "Bearbeitung des Textbausteins"
 
+#: Lang.Title.SubscribeLog
+#, fuzzy
+msgid "Subscription events"
+msgstr "Einschreibungsdetails"
+
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
 msgstr "Öffentliche Schlüssel"
@@ -188,6 +193,10 @@ msgstr "Private Schlüssel"
 msgid "Generate a new keypair"
 msgstr "Erzeugen eines Schlüssels"
 
+#: Lang.Title.GnupgOptions
+msgid "Encryption settings"
+msgstr "Verschlüsselungseinstellungen"
+
 #: Lang.Buttons.Create
 msgid "Create list"
 msgstr "Erzeuge die Liste"
@@ -199,6 +208,10 @@ msgstr "Lösche die Liste"
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
 msgstr "Adresse(n) entfernen"
+
+#: Lang.Buttons.DownloadSubscribersList
+msgid "Download subscribers"
+msgstr "Adress-Liste herunterladen"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
@@ -232,7 +245,7 @@ msgstr "wählen"
 msgid "Convert to an encrypted mailinglist"
 msgstr "Wandle in eine verschlüsselte Liste um"
 
-#: Lang.Buttons.GnupgConvertToNormal
+#: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Wandle in eine unverschlüsselte Liste um"
 
@@ -380,6 +393,10 @@ msgstr "Dieser Listenname ist ein reserviertes Wort und kann nicht benutzt werde
 msgid "The name of the list may not be empty"
 msgstr "Es wurde kein Name für die Listen angegeben."
 
+#: Lang.WarningMessage.EmptyList
+msgid "This list has no subscribers."
+msgstr "Diese Liste hat keine AbonnentInnen."
+
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
 msgstr "Die gewählte untergeordnete Liste ist ungültig."
@@ -395,6 +412,10 @@ msgstr "Dieser Textbaustein ist keine angepasste Variante und kann somit nicht z
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
 msgstr "Der angepasste Textbaustein konnte nicht entfernt werden."
+
+#: Lang.WarningMessage.LogFile
+msgid "Reading of log file failed."
+msgstr ""
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
@@ -424,9 +445,21 @@ msgstr "Die Schlüssellänge ist ungültig!"
 msgid "Export of key failed!"
 msgstr "Fehler beim Exportieren des Schlüssels!"
 
-#: Lang.WarningMessage.GnupgConvert
+#: Lang.WarningMessage.GnupgConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Beim Umwandeln trat ein Fehler auf!"
+
+#: Lang.WarningMessage.GnupgConvertDisable
+msgid "Conversion to plaintext mailing list failed!"
+msgstr "Beim Aktivieren der Verschlüsselung für die Liste trat ein Fehler auf!"
+
+#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+msgid "Encryption was already enabled for this mailing list."
+msgstr "Für diese Liste war die Verschlüsselung bereits aktiviert."
+
+#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+msgid "Encryption was already disabled for this mailing list."
+msgstr "Für diese List war die Verschlüsselung bereits abgeschaltet."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
@@ -464,9 +497,13 @@ msgstr "Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen 
 msgid "The key was successfully imported."
 msgstr "Der Schlüssel wurde importiert."
 
-#: Lang.SuccessMessage.GnupgConvert
+#: Lang.SuccessMessage.GnupgConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "Verschlüsselung für die Mailingliste ist nun aktiv."
+
+#: Lang.SuccessMessage.GnupgConvertDisable
+msgid "Encryption is now disabled for this list."
+msgstr "Verschlüsselung für die Mailingliste ist nun abgeschaltet."
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
@@ -556,33 +593,13 @@ msgstr "Prüfe die MIME-Typen der Anhänge eingehender Nachrichten"
 msgid "Request a confirmation mail for every posted message"
 msgstr "Fordere eine Bestätigung für jede eingesandte Nachricht an"
 
-#: Lang.Options.gnupg_allowKeySubmission
-msgid "Allow key submission via mail"
-msgstr "Erlaube die Einsendung von Schlüsseln per Mail"
-
-#: Lang.Options.gnupg_encryptToAll
-msgid "Encrypt to all recipients at once (do not encrypt inividually)"
-msgstr "Verschlüssele an alle Empfänger gleichzeitig (keine individuell verschlüsselten Mails)"
-
-#: Lang.Options.gnupg_NokeyNocrypt
+#: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
 msgstr "Sende Nachrichten im Klartext an Empfänger ohne Schlüssel"
 
-#: Lang.Options.gnupg_RequireSub
-msgid "Only subscribers may post messages"
-msgstr "Nur AbonnentInnen dürfen Nachrichten einsenden"
-
-#: Lang.Options.gnupg_signMessages
+#: Lang.Options.gnupg_sign_messages
 msgid "Sign outgoing messages with the list's key"
 msgstr "Signiere ausgehende Nachrichten mit dem Listenschlüssel"
-
-#: Lang.Options.gnupg_VerifiedKeyReq
-msgid "Use only verified keys"
-msgstr "Verwende ausschliesslich verifizierte Schlüssel"
-
-#: Lang.Options.gnupg_requireSigs
-msgid "Only verifiably signed messages are accepted"
-msgstr "Nur korrekt signierte Nachrichten werden akzeptiert"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -872,6 +889,10 @@ msgstr "Du kannst eine normale Mailingliste in eine verschlüsselte umwandeln un
 msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
 msgstr "Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig."
 
+#: Lang.Introduction.GnupgOptions
+msgid "Configure some useful settings of the encrypted mailing list."
+msgstr "Konfiguriere die Einstellungen der verschlüsselten Mailingliste."
+
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
 msgstr "Fern-Administrations-Rechte"
@@ -951,6 +972,10 @@ msgstr "Nützliche Platzhalter"
 #: Lang.Legend.AvailableLists
 msgid "Available lists"
 msgstr "Verfügbare Listen"
+
+#: Lang.Legend.SubscribeLog
+msgid "Events"
+msgstr ""
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"

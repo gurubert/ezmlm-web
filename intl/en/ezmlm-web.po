@@ -1,12 +1,4 @@
 
-#: Lang.ID
-msgid "en"
-msgstr "en"
-
-#: Lang.Name
-msgid "English"
-msgstr "English"
-
 #: Lang.Menue.ListCreate
 msgid "Create new list"
 msgstr "Create new list"
@@ -83,6 +75,11 @@ msgstr "generate key"
 msgid "Encryption"
 msgstr "Encryption"
 
+#: Lang.Menue.GnupgOptions
+#, fuzzy
+msgid "encryption"
+msgstr "encryption"
+
 #: Lang.Menue.TextFiles
 msgid "Text files"
 msgstr "Text files"
@@ -102,6 +99,10 @@ msgstr "Language"
 #: Lang.Menue.Help
 msgid "Help (external)"
 msgstr "Help (external)"
+
+#: Lang.Menue.SubscribeLog
+msgid "Subscriber's log"
+msgstr "Subscriber's log"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
@@ -163,6 +164,11 @@ msgstr "Choose a file for editing"
 msgid "Editing file"
 msgstr "Editing file"
 
+#: Lang.Title.SubscribeLog
+#, fuzzy
+msgid "Subscription events"
+msgstr "Subscription events"
+
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
 msgstr "Public keys"
@@ -175,6 +181,10 @@ msgstr "Secret keys"
 msgid "Generate a new keypair"
 msgstr "Generate a new keypair"
 
+#: Lang.Title.GnupgOptions
+msgid "Encryption settings"
+msgstr "Encryption settings"
+
 #: Lang.Buttons.Create
 msgid "Create list"
 msgstr "Create list"
@@ -186,6 +196,10 @@ msgstr "Delete the list"
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
 msgstr "Delete address(es)"
+
+#: Lang.Buttons.DownloadSubscribersList
+msgid "Download subscribers"
+msgstr "Download subscribers"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
@@ -219,7 +233,7 @@ msgstr "select"
 msgid "Convert to an encrypted mailinglist"
 msgstr "Convert to an encrypted mailinglist"
 
-#: Lang.Buttons.GnupgConvertToNormal
+#: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Convert to a plaintext mainlinglist"
 
@@ -367,6 +381,10 @@ msgstr "This listname may not be used as it is reserved for internal purposes"
 msgid "The name of the list may not be empty"
 msgstr "The name of the list may not be empty"
 
+#: Lang.WarningMessage.EmptyList
+msgid "This list has no subscribers."
+msgstr "This list has no subscribers."
+
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
 msgstr "The local part of the list address is not valid"
@@ -382,6 +400,10 @@ msgstr "There is no customized text file, that can be removed."
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
 msgstr "Removal of custimized text file failed."
+
+#: Lang.WarningMessage.LogFile
+msgid "Reading of log file failed."
+msgstr "Reading of log file failed."
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
@@ -411,9 +433,22 @@ msgstr "The length of the key is invalid!"
 msgid "Export of key failed!"
 msgstr "Export of key failed!"
 
-#: Lang.WarningMessage.GnupgConvert
+#: Lang.WarningMessage.GnupgConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Conversion to encrypted mailing list failed!"
+
+#: Lang.WarningMessage.GnupgConvertDisable
+#, fuzzy
+msgid "Conversion to plaintext mailing list failed!"
+msgstr "Conversion to plaintext mailing list failed!"
+
+#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+msgid "Encryption was already enabled for this mailing list."
+msgstr "Encryption was already enabled for this mailing list."
+
+#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+msgid "Encryption was already disabled for this mailing list."
+msgstr "Encryption was already disabled for this mailing list."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
@@ -451,9 +486,14 @@ msgstr "The customized text file was successfully removed. From now on, the syst
 msgid "The key was successfully imported."
 msgstr "The key was successfully imported."
 
-#: Lang.SuccessMessage.GnupgConvert
+#: Lang.SuccessMessage.GnupgConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "Encryption is now enabled for this list."
+
+#: Lang.SuccessMessage.GnupgConvertDisable
+#, fuzzy
+msgid "Encryption is now disabled for this list."
+msgstr "Encryption is now disabled for this list."
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
@@ -543,33 +583,13 @@ msgstr "Remove or reject specific mime types in messages"
 msgid "Request a confirmation mail for every posted message"
 msgstr "Request a confirmation mail for every posted message"
 
-#: Lang.Options.gnupg_allowKeySubmission
-msgid "Allow key submission via mail"
-msgstr "Allow key submission via mail"
-
-#: Lang.Options.gnupg_encryptToAll
-msgid "Encrypt to all recipients at once (do not encrypt inividually)"
-msgstr "Encrypt to all recipients at once (do not encrypt inividually)"
-
-#: Lang.Options.gnupg_NokeyNocrypt
+#: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
 msgstr "Send plaintext to the subscribers which have no key"
 
-#: Lang.Options.gnupg_RequireSub
-msgid "Only subscribers may post messages"
-msgstr "Only subscribers may post messages"
-
-#: Lang.Options.gnupg_signMessages
+#: Lang.Options.gnupg_sign_messages
 msgid "Sign outgoing messages with the list's key"
 msgstr "Sign outgoing messages with the list's key"
-
-#: Lang.Options.gnupg_VerifiedKeyReq
-msgid "Use only verified keys"
-msgstr "Use only verified keys"
-
-#: Lang.Options.gnupg_requireSigs
-msgid "Only verifiably signed messages are accepted"
-msgstr "Only verifiably signed messages are accepted"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -859,6 +879,10 @@ msgstr "You can convert a normal mailinglist to an encrypted list and vice versa
 msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
 msgstr "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
 
+#: Lang.Introduction.GnupgOptions
+msgid "Configure some useful settings of the encrypted mailing list."
+msgstr "Configure some useful settings of the encrypted mailing list."
+
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
 msgstr "Remote administrator's permissions"
@@ -938,6 +962,10 @@ msgstr "Useful placeholders"
 #: Lang.Legend.AvailableLists
 msgid "Available lists"
 msgstr "Available lists"
+
+#: Lang.Legend.SubscribeLog
+msgid "Events"
+msgstr "Events"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
