@@ -1,0 +1,278 @@
+Lang {
+  Menue {
+    ListCreate = Neue Liste anlegen
+    ListDelete = Liste löschen
+    Subscribers = AbonnentInnen
+    AllowList = Zulassungsliste
+    DenyList = Ablehnungsliste
+    DigestList = Zusammenfassung
+    ModList = ModeratorInnen
+    ConfigMain = Einstellungen
+    ConfigSub = Einschreibung
+    ConfigPost = Einsendung
+    ConfigAdmin = Administration
+    ConfigArchive = Archivierung
+    ConfigProcess = Verarbeitung
+    ConfigAll = Übersicht
+    Gnupg = Schlüsselverwaltung
+    GnupgPublicKeys = öffentliche Schlüssel
+    GnupgSecretKeys = private Schlüssel
+    GnupgGenerateKey = Schlüssel anlegen
+    GnupgConvert = Verschlüsselung
+    GnupgOptions = Verschlüsselung
+    TextFiles = Texte
+    ListSelect = Auswahl einer Liste
+    Properties = Eigenschaften von
+    Language = Sprache
+    Help = Hilfe (extern)
+    SubscribeLog = Subscriber's log
+  }
+  Title {
+    ConfigMain = Listeneinstellungen
+    ConfigSub = Einschreibungsregeln
+    ConfigPosting = Einsendungsregeln
+    ConfigAdmin = Fern-Administration der Liste
+    ConfigArchive = Archivierung der Liste
+    ConfigProcess = Nachrichtenverarbeitung
+    ConfigAll = Einstellungen im Überblick
+    SubscriberList = AbonnentInnen der Liste
+    AllowList = Zugelassene Nutzer
+    DenyList = Abzuweisende Einsender
+    DigestList = EmpfängerInnen von Zusammenfassungen
+    ModList = ModeratorInnen der Liste
+    ListCreate = Anlegen einer neuen Liste
+    ListSelect = Auswahl einer Liste
+    ListDelete = Liste löschen
+    FileSelect = Auswählen eines Textbausteins
+    FileEdit = Bearbeitung des Textbausteins
+    SubscribeLog = Subscription events
+    GnupgConvert = Verschlüsselung
+    GnupgPublic = Öffentliche Schlüssel
+    GnupgSecret = Private Schlüssel
+    GnupgGenerate = Erzeugen eines Schlüssels
+    GnupgOptions = Verschlüsselungseinstellungen
+  }
+  Buttons {
+    Create = Erzeuge die Liste
+    ConfirmDeletion = Lösche die Liste
+    DeleteAddress = Adresse(n) entfernen
+    DownloadSubscribersList = Adress-Liste herunterladen
+    AddAddress = Adresse(n) hinzufügen
+    UpdateConfiguration = Einstellungen speichern
+    UpdateGnupg = Schlüsselring aktualisieren
+    EditFile = Datei bearbeiten
+    SaveFile = Datei speichern
+    ResetFile = Angepassten Textbaustein verwerfen
+    LanguageSet = wählen
+    GnupgConvertToEncrypted = Wandle in eine verschlüsselte Liste um
+    GnupgConvertToPlain = Wandle in eine unverschlüsselte Liste um
+    DeletePublicKey = Öffentliche(n) Schlüssel löschen
+    DeleteSecretKey = Private(n) Schlüssel löschen
+    GnupgImportKey = Schlüssel importieren
+    GnupgGenerateKey = Schlüsselpaar erzeugen
+    GnupgExportKey = exportieren
+  }
+  ErrorMessage {
+    UnknownAction = Diese Aktion ist undefiniert!
+    ParameterMissing = Diese Aktion benötigt weitere Parameter!
+    Forbidden = Fehler: dir fehlen die notwendigen Rechte für diese Aktion
+    InvalidFileName = Der Dateiname ist nicht zulässig.
+    UnknownConfigPage = Diese Konfigurations-Seite existiert nicht!
+    UnknownGnupgPage = Diese GnuPG-Seite existiert nicht!
+    GnupgKeyImport = Der Import des Schlüssels schlug fehl!
+    GnupgDelKey = Das Entfernen des Schlüssels schlug fehl!
+    GnupgGenerateKey = Das Erzeugen des Schlüssels schlug fehl!
+  }
+  WarningMessage {
+    AddAddress = Mindestens eine Mailadresse konnte nicht hinzugefügt werden!
+    DeleteAddress = Mindestens eine der angegebenen Adressen konnte nicht entfernt werden!
+    CreateList = Fehler beim Anlegen der neuen Liste!
+    DeleteList = Die Löschung der Mailingliste schlug fehl!
+    UpdateConfig = Beim Speichern der Einstellungen trat ein Fehler auf!
+    SaveFile = Die Datei konnte nicht gespeichert werden!
+    ListNameAlreadyExists = Es gibt bereits eine Liste mit diesem Namen.
+    ListAddressAlreadyExists = Es gibt bereits eine Liste mit dieser Adresse.
+    ListDoesNotExist = Eine Liste dieses Namens existiert nicht.
+    ListDirAccessDenied = Fehler beim Zugriff auf das Verzeichnis der Liste
+    TextDirAccessDenied = Beim Zugriff auf das Text-Verzeichnis der Liste trat ein Fehler auf.
+    SafeRemoveRenameDirFailed = Das Verschieben der Liste schlug fehl.
+    DotQmailDirAccessDenied = Fehler beim Zugriff auf das Nutzerverzeichnis des Listenverwalters
+    SafeRemoveMoveDotQmailFailed = Beim Verschieben der .qmail-Dateien trat ein Fehler auf!
+    UnsafeRemoveListDirFailed = Fehler beim sicheren Löschen der Mailingliste
+    UnsafeRemoveDotQmailFailed = Fehler beim Löschen der .qmail-Dateien
+    InvalidFileFormat = Die gewählte Datei konnte nicht als Textdatei erkannt werden.
+    WebUsersUpdate = Fehler beim Aktualisieren der Nutzerverwaltungsdatei
+    WebUsersRead = Fehler beim Lesen der Nutzerverwaltungsdatei
+    InvalidListName = Der gewählte Listenname enthält unzulässige Zeichen
+    ReservedListName = Dieser Listenname ist ein reserviertes Wort und kann nicht benutzt werden
+    EmptyListName = Es wurde kein Name für die Listen angegeben.
+    EmptyList = Diese Liste hat keine AbonnentInnen.
+    InvalidLocalPart = Die gewählte untergeordnete Liste ist ungültig.
+    RequiresIDX5 = Diese Aktion erfordert ezmlm-idx in der Version 5.0
+    ResetFileIsDefault = Dieser Textbaustein ist keine angepasste Variante und kann somit nicht zurückgesetzt werden.
+    ResetFile = Der angepasste Textbaustein konnte nicht entfernt werden.
+    LogFile = Reading of log file failed.
+    GnupgNoKeyFile = Es wurde keine Datei zum Hochladen ausgewählt!
+    GnupgDelKey = Mindestens ein Schlüssel konnte nicht gelöscht werden!
+    GnupgNoKeySelected = Es wurde kein Schlüssel ausgewählt!
+    GnupgNoName = Der Name des Schlüssels darf nicht leer sein!
+    GnupgInvalidExpiration = Das Verfallsdatum ist ungültig!
+    GnupgInvalidKeySize = Die Schlüssellänge ist ungültig!
+    GnupgExportKey = Fehler beim Exportieren des Schlüssels!
+    GnupgConvertEnable = Beim Umwandeln trat ein Fehler auf!
+    GnupgConvertDisable = Beim Aktivieren der Verschlüsselung für die Liste trat ein Fehler auf!
+    GnupgConvertAlreadyEnabled = Für diese Liste war die Verschlüsselung bereits aktiviert.
+    GnupgConvertAlreadyDisabled = Für diese List war die Verschlüsselung bereits abgeschaltet.
+  }
+  SuccessMessage {
+    AddAddress = Einschreibung erfolgreich
+    DeleteAddress = Austragung erfolgreich abgeschlossen
+    CreateList = Die neue Liste wurde erfolgreich angelegt.
+    DeleteList = Die Mailingliste wurde gelöscht.
+    UpdateConfig = Die neuen Einstellungen wurden erfolgreich gespeichert.
+    UpdateGnupg = Der Schlüsselring wurde erfolgreich aktualisiert.
+    SaveFile = Die Datei wurde gespeichert.
+    ResetFile = Der angepasste Textbaustein wurde entfernt. Zukünftig wird stattdessen der systemweite Standard-Baustein verwendet.
+    GnupgKeyImport = Der Schlüssel wurde importiert.
+    GnupgConvertEnable = Verschlüsselung für die Mailingliste ist nun aktiv.
+    GnupgConvertDisable = Verschlüsselung für die Mailingliste ist nun abgeschaltet.
+  }
+  Options {
+    a = Archiviere Mailinglisten-Mails
+    b = Nur Moderatoren dürfen auf das Archiv zugreifen
+    d = Aktiviere die Zusammenfassungsliste
+    f = Füge ein Präfix zum Betreff der ausgehenden Mails hinzu
+    g = Verweigere unbekannten NutzerInnen den Zugriff auf das Archiv
+    h = Bei der Einschreibung in die Liste ist keine Bestätigungsmail
+    i = Indiziere die Nachrichten zur Veröffentlichung im Internet (z.B. mit ezmlm-www)
+    j = Beim Austragen aus der Liste ist keine Bestätigungsmail erforderlich
+    k = Beachte die Ablehnungsliste bei der Verarbeitung von Mails
+    l = Fern-AdministratorInnen (ModeratorInnen) dürfen eine Liste der AbonnentInnen anfordern
+    m = Alle eingehenden Nachrichten werden moderiert
+    n = Fern-AdministratorInnen (ModeratorInnen) dürfen Textbausteine per Mail verändern
+    o = Nur ModeratorInnen dürfen Nachrichten einsenden
+    p = Die Einschreibung und der Zugriff auf das Archiv sind öffentlich zugänglich
+    q = Verarbeite auch Anfragen im Mailman-Stil (Kompatibilität)
+    r = Erlaube die Fern-Administration der Liste (für ModeratorInnen)
+    s = Die Einschreibung in die Liste und für die Zusammenfassungen wird moderiert
+    t = Hänge eine Signatur an jede versandte Nachricht
+    u = Nur Einsendungen von AbonnentInnen werden akzeptiert (für moderierte Listen: akzeptiere alle Einsendungen von AbonnentInnen)
+    w = Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
+    x = Prüfe die MIME-Typen der Anhänge eingehender Nachrichten
+    y = Fordere eine Bestätigung für jede eingesandte Nachricht an
+    gnupg_plain_without_key = Sende Nachrichten im Klartext an Empfänger ohne Schlüssel
+    gnupg_sign_messages = Signiere ausgehende Nachrichten mit dem Listenschlüssel
+  }
+  Settings {
+    0 = Diese Liste ist die Unterliste einer anderen
+    3 = Definiere die Absender-Adresse ausgehender Mails
+    4 = Eigene Einstellungen zum Versand von Zusammenfassungsmails (ezmlm-tstdig)
+    5 = Lege die Mailadresse der/des Verantwortlichen für diese Liste fest
+    6 = Verwende eine SQL-Datenbank
+    7 = Die Datenbank der Nachrichten-ModeratorInnen befindet sich in einem alternativen Verzeichnis
+    8 = Die Datenbank der Einschreibe-ModeratorInnen befindet sich in einem alternativen Verzeichnis
+    9 = Die Datenbank der Fern-AdministratorInnen befindet sich in einem alternativen Verzeichnis
+  }
+  Misc {
+    HelpLink = Das online-Handbuch von ezmlm-idx
+    Subscription = Einschreibung
+    Subscribers = AbonnentInnen
+    RemoteAdmin = Fern-AdministratorIn
+    ListName = Name der Liste
+    ListAddress = Addresse der Liste
+    ListOptions = Grundlegende Einstellungen
+    AllowedToEdit = Nutzer, die diese Liste per Web-Interface konfigurieren dürfen:
+    HeaderRemove = zu entfernende Kopfzeilen
+    HeaderAdd = hinzuzufügende Kopfzeilen
+    MimeRemove = Nachrichtenbestandteile dieses Typs werden entfernt
+    MimeReject = Nachrichten, die einen der folgenden Datentypen enthalten, werden abgewiesen
+    EditFileInfo {
+      CommonTags = allgemeine Platzhalter
+      ListNameLocal = der lokale Teil (vor dem "@") der Listenadresse
+      ListNameHost = die Domain der Mailadresse
+      MessageNumber = die Nummer der jeweiligen Nachricht
+      SubAddress = die Einschribe-Adresse
+      SubReplyAddress = die Bestätigungsadresse
+      AcceptanceAddress = die Zustimmungsadresse
+      RejectionAddress = die Ablehnungsadresse
+    }
+    SuggestDefaultPath = Es wird empfohlen, das Standard-Verzeichnis für zu verwenden. Andernfalls kannst du die ModeratorInnen-Liste nicht mit ezmlm-web verwalten.
+    PostModPathWarn = Die Nachrichten-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+    SubModPathWarn = Die Einschreibe-ModeratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+    RemoteAdminPathWarn = Die Fern-AdministratorInnen werden nicht an ihrem üblichen Ort gespeichert.
+    MessageSize {
+      Max = Verweigere die Annahme von Nachrichten, die eine gewisse Größe überschreiten
+      Min = Verweigere die Annahme von Nachrichten, die eine gewisse Größe unterschreiten
+      Unit = Bytes
+    }
+    NoFiles = Es befinden sich keine Dateien im Text-Verzeichnis der Mailingliste.
+    AddSubscriberAddress = Füge eine neue Mailadresse hinzu:
+    AddSubscriberFile = Importiere eine Textdatei, die Mailadressen enthält:
+    FooterText = eine Web-Oberfläche für
+    NoListsAvailable = Es sind keine passenden Listen vorhanden.
+    ConfirmDelete = Willst du wirklich diese Liste vollständig löschen?
+    CustomizedFiles = angepasste Dateien
+    DefaultFiles = vorgegebene Dateien
+    ListLanguage = Sprache der Liste
+    ListCharset = Zeichensatz der Liste
+    ModSubOverridesRemote = Hinweis: falls sowohl die Datenbank der Einsende-ModeratorInnen als auch die der Fern-AdministratorInnen in einem nicht-Standard-Verzeichnis liegen, dann wird die Einsende-ModeratorInnen-Datenbank für beides verwendet
+    GnupgNoPublicKeys = Es sind keine öffentlichen Schlüssel vorhanden.
+    GnupgNoSecretKeys = Es sind keine privaten Schlüssel vorhanden.
+    GnupgImportKey = Schlüssel aus einer Datei importieren:
+    GnupgKeyName = Die Bezeichung des Schlüssels
+    GnupgKeyComment = Ein Kommentar (optional)
+    GnupgKeySize = Schlüssellänge (in Bytes)
+    GnupgKeyExpires = Verfallsdatum (in Jahren)
+    Never = nie
+  }
+  Introduction {
+    ConfigAdmin = Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.
+    ConfigArchive = Das Mailinglisten-Archiv ist per Mail verfügbar. Außerdem benötigst du ein Archiv, falls du vergangene Mails im Internet zur Verfügung stellen möchtest (z.B. mit ezmlm-www).
+    ConfigProcess = Die folgenden Regeln werden auf alle Mails angewandt, bevor sie an die AbonnentInnen verteilt werden.
+    ConfigMain = Hier findest du ein paar allgemeine Einstellungen der Mailingliste, die sich nicht in den themenorientierten Rubriken unterbringen ließen.
+    ConfigPosting = Die Einsende-Konfiguration bestimmt, wer Nachrichten einsenden darf und welchen Bedingungen die Mails genügen müssen.
+    ConfigSub = Hier kannst du festlegen, wer sich als Abonnent selbständig eintragen darf und wie der Einschreibungsprozess abläuft.
+    ConfigAll = Diese Seite enthält alle verfügbaren Optionen auf einen Blick.
+    ListDelete = Die Mailingliste und alle damit verbundenen Daten werden hiermit vollständig entfernt.
+    AllowList = An die Adressen der Zulassungsliste werden keine Mails verschickt. Einsendungen von diesen Adressen werden so behandelt, als kämen sie von AbonnentInnen. Üblicherweise solltest du Aliase von AbonnentInnen in die Zulassungsliste eintragen.
+    DenyList = Falls du Mails von bestimmte Mailadressen verweigern möchtest, dann füge sie einfach zur Ablehnungsliste hinzu Dies kann nützlich sein, um unbeliebte Nutzer auszuschließen oder um störende Abwesenheitsbenachrichtigungen zu verhindern.
+    DigestList = Einige AbonnentInnen deiner Mailingliste sind möglicherweise nicht an jeder einzelnen Nachricht interessiert, sondern ziehen es vor, stattdessen regelmäßig automatisch erstellte Zusammenfassungen zu erhalten.
+    ModList = ModeratorInnen (für die Einschreibung von AbonnentInnen und die Einsendungen an die Liste) und Fern-AdministratorInnen können die Kontrolle über viele wichtige Aspekte der Liste übernehmen (falls du sie dementsprechend konfigurierst).
+    SubscriberList = Die AbonnentInnen der Mailingliste empfangen alle versandten Nachrichten der Liste. Zudem kann es ihnen gestattet sein, Nachrichten direkt oder indirekt zur weiteren Verteilung an die Liste zu senden. Oft ist es anonymen Nutzern gestattet, sich selbständig in die Mailingliste einzuschreiben, ohne die Hilfe eines Administrators in Anspruch nehmen zu müssen.
+    TextFiles = Das Auswahlfeld beinhaltet die Liste aller verfügbaren Textbausteine im Texte-Verzeichnis der Liste. Diese Textbausteine werden zur Erstellung der automatischen Antworten der Mailingliste benutzt.
+    EditTextFile = Passe den Textbaustein an die Erfordernisse der Liste an. Eventuell möchtest du dafür auch einige der reservierten Platzhalter verwenden, die am Ende dieser Seite aufgeführt sind.
+    ResetTextFile = Der Textbaustein wurde spezifisch an diese Liste angepasst. Um stattdessen den vorgegebenen Baustein der eingestellten Sprache zu verwenden, kannst du diesen listenspezifischen Baustein entfernen.
+    GnupgConvert = Du kannst eine normale Mailingliste in eine verschlüsselte umwandeln und umgekehrt.
+    GnupgGenerateKey = Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
+    GnupgOptions = Konfiguriere die Einstellungen der verschlüsselten Mailingliste.
+  }
+  Legend {
+    ConfigAdmin = Fern-Administrations-Rechte
+    ConfigArchive = Archivierungseinstellungen
+    ConfigPosting = Einsende-Regeln
+    ConfigSub = Einschreibungsdetails
+    ConfigMain = Allgemeine Listen-Einstellungen
+    ConfigProcess = Verarbeitungsregeln
+    ConfigAll = Einstellungen
+    ListCreate = Eigenschaften der neuen Liste
+    ListDelete = Löschung der Mailingliste
+    RelevantOptions = Relevante Optionen
+    MembersList = AbonnentInnen-Verwaltung
+    MembersAllow = Verwaltung der zulässigen Adressen
+    MembersDeny = Verwaltung der abzulehnenden Adressen
+    MembersDigest = Verwaltung der AbonnentInnen der Zusammenfassungen
+    MembersMod = Verwaltung der ModeratorInnen / AdministratorInnen
+    TextFiles = Verfügbare Textbausteine
+    TextFileEdit = Bearbeite den Textbaustein
+    TextFileReset = Auf die Vorgabe zurücksetzen
+    TextFileInfo = Nützliche Platzhalter
+    AvailableLists = Verfügbare Listen
+    SubscribeLog = Events
+    GnupgConvert = Verschlüsselungsunterstützung
+    GnupgPublicKeys = Öffentliche Schlüssel dieser Liste
+    GnupgSecretKeys = Private Schlüssel dieser Liste
+    GnupgKeyImport = Schlüssel importieren
+    GnupgGenerateKey = Schlüssel der Liste erzeugen
+    GnupgOptions = Verschlüsselungseinstellungen
+  }
+}

@@ -39,11 +39,14 @@ intl/pt/LC_MESSAGES/ezmlm-web.po -text
 intl/ru/LC_MESSAGES/ezmlm-web.po -text
 intl/sl/LC_MESSAGES/ezmlm-web.po -text
 intl/sv/LC_MESSAGES/ezmlm-web.po -text
+lang/README -text
+lang/de.hdf -text
+lang/en.hdf -text
 man/ezmlm-web-make-suid.1 -text
 man/ezmlm-web.wrapper.1 -text
 scripts/debian.sh -text
 scripts/fetch_po_files.sh -text
-scripts/update_po_files.py -text
+scripts/update_language_files.sh -text
 spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
 spec/release-policy.txt -text
@@ -117,7 +120,6 @@ template/gnupg_public.cs -text
 template/gnupg_secret.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
-template/language.hdf -text
 template/language_select.cs -text
 template/list_create.cs -text
 template/list_delete.cs -text

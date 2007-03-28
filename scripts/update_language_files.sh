@@ -68,7 +68,7 @@ MAIL_ADDRESS = 'devel@sumpfralle.de'
 ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt ru sl sv".split(" ")
 
 ## use subversion for reverting?
-USE_SVN = False
+USE_SVN = True
 
 # --------------=-=-=- functions -=-=-=--------------------
 
@@ -214,8 +214,8 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 	## translate entries
 	## count the number of translated items - so we can decide later, if we
 	## want to create the language file
-	translate_count = 0
 	def walk_hdf(prefix, node):
+		translate_count = 0
 		def addHdfItem(hdf_node):
 			## ignore hdf values with a "LINK" attribute
 			for (key,value) in hdf_node.attrs():
@@ -225,10 +225,11 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 				return
 			translated = translator.gettext(hdf_node.value())
 			if translated:
-				translate_count += 1
 				hdf.setValue("%s%s" % (prefix, hdf_node.name()), translated)
+				return True
 			else:
 				hdf.setValue("%s%s" % (prefix, hdf_node.name()), hdf_node.value())
+				return False
 		while node:
 			if node.name():
 				new_prefix = prefix + node.name() + '.'
@@ -243,14 +244,19 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 					or new_prefix.endswith(".Link.Attr1.value.") \
 					or new_prefix.endswith(".Link.Attr2.name.") \
 					or new_prefix.endswith(".Link.Attr2.value.")):
-				addHdfItem(node)
-			walk_hdf(new_prefix, node.child())
+				if addHdfItem(node):
+					translate_count += 1
+			translate_count += walk_hdf(new_prefix, node.child())
 			node = node.next()
-	walk_hdf("", hdf)
+		return translate_count
+	translated_items_count = walk_hdf("", hdf)
 	## if there was at least one valid translation, then we should write
 	## the language file
-	if translate_count > 0:
+	if translated_items_count > 0:
+		print "Writing translation: %s" % language
 		hdf.writeFile(new_hdf_file)
+	else:
+		print "Skipping empty translation: %s" % language
 	
 
 
