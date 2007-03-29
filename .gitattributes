@@ -46,7 +46,7 @@ man/ezmlm-web-make-suid.1 -text
 man/ezmlm-web.wrapper.1 -text
 scripts/debian.sh -text
 scripts/fetch_po_files.sh -text
-scripts/update_language_files.sh -text
+scripts/update_language_files.py -text
 spec/actions-spec.txt -text
 spec/hdf-spec.txt -text
 spec/release-policy.txt -text
