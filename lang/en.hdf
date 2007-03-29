@@ -1,5 +1,7 @@
 Lang {
 
+	Name = English
+
 	Menue {
 		ListCreate	= Create new list
 		ListDelete	= Delete list

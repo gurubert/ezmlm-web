@@ -1,4 +1,5 @@
 Lang {
+  Name = Deutsch
   Menue {
     ListCreate = Neue Liste anlegen
     ListDelete = Liste löschen

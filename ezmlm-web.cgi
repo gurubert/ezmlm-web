@@ -43,25 +43,6 @@ unless (&safely_import_module("Encode")) {
 # setting is enabled
 
 
-# the local names of all available (and some other) languages
-my %LANGUAGE_NAMES = (
-    "cs" => 'Český',
-    "da" => 'Dansk',
-    "de" => 'Deutsch',
-    "en" => 'English',
-    "es" => 'Español',
-    "fi" => 'Suomi',
-    "fr" => 'Français',
-    "hu" => 'Magyar',
-    "it" => 'Italiano',
-    "ja" => '日本語',
-    "nl" => 'Nederlands',
-    "pl" => 'Polski',
-    "pt" => 'Português',
-    "ru" => 'Русский',
-    "sl" => 'Slovensko',
-    "sv" => 'Svenska',
-    );
 
 
 ################## some preparations at the beginning ##################
@@ -94,14 +75,14 @@ use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
-use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $HTML_LANGUAGE];
-use vars qw[$DEFAULT_HOST @LANGUAGE_LIST];
+use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
+use vars qw[$DEFAULT_HOST];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 
 # some deprecated configuration settings - they have to be announced
 # otherwise old configuration files would break
-use vars qw[$LANGUAGE_DIR];		# deprecated since v3.2
+# for now there are no deprecated settings
 
 # "pagedata" contains the hdf tree for clearsilver
 # "pagename" refers to the template file that should be used
@@ -150,10 +131,6 @@ if (defined($opt_d)) {
 # If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2),
 # then use former default value for compatibility
 $WEBUSERS_FILE = $LIST_DIR . '/webusers' unless (defined($WEBUSERS_FILE));
-
-# set default value of supported languages
-@LANGUAGE_LIST = ( 'en', 'de' ) unless (defined(@LANGUAGE_LIST));
-
 
 # check for non-default dotqmail directory
 $DOTQMAIL_DIR = $HOME_DIR unless defined($DOTQMAIL_DIR);
@@ -462,8 +439,13 @@ sub init_hdf {
 	# initialize the data for clearsilver
 
 	my $hdf = ClearSilver::HDF->new();
+ 
+	&fatal_error("Language data dir ($LANGUAGE_DIR) not found!")
+		unless (-e $LANGUAGE_DIR);
+	$hdf->setValue("LanguageDir", "$LANGUAGE_DIR/");
 
-	&fatal_error("Template dir ($TEMPLATE_DIR) not found!") unless (-e $TEMPLATE_DIR);
+	&fatal_error("Template dir ($TEMPLATE_DIR) not found!")
+		unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 
 	# "normal", "basic" and "expert" should be supported soon
@@ -536,8 +518,13 @@ sub load_interface_language {
 
 	# set default language
 	$config_language = 'en';
+	
+	# english should always be there - but just in case of local modifications
 	$config_language = $HTML_LANGUAGE
 		unless (&check_interface_language($HTML_LANGUAGE));
+	
+	# first: load default language - in case some translations are incomplete
+	$data->readFile("$LANGUAGE_DIR/$HTML_LANGUAGE" . ".hdf");
 
 	# check for preferred browser language, if the box was not initialized yet
 	my $prefLang = &get_browser_language();
@@ -560,71 +547,12 @@ sub load_interface_language {
 	# add the setting to every link
 	$data->setValue('Config.UI.LinkAttrs.web_lang', "$config_language");
 
-	&translate_language_data($data, $config_language);
+	# import the configured resp. the temporarily selected language
+	$data->readFile("$LANGUAGE_DIR/$config_language" . ".hdf");
 
 	return $data;
 }
 
-
-# ---------------------------------------------------------------------------
-
-sub translate_language_data {
-
-	my ($hdf, $language) = @_;
-	my $langdata;
-	my %language_strings;
-	my $key;
-
-	# read language template
-	$langdata = ClearSilver::HDF->new();
-	$langdata->readFile("$TEMPLATE_DIR/language.hdf");
-	# parse all strings
-	my $subtree = $langdata->getObj("Lang");
-	%language_strings = &recurse_hdf($subtree, "Lang");
-
-	if ($GETTEXT_SUPPORT) {
-		# create gettext object
-		&textdomain("ezmlm-web");
-		warn "failed to set locale: $@" unless (&setlocale(LC_MESSAGES, ''));
-		# "setlocale" seems to need "de_DE" instead of just "de" - so we will
-		# use the environment setting instead
-		# see http://lists.debian.org/debian-perl/2000/01/msg00016.html
-		# avoid calling other programs later: their output may suffer :)
-		$ENV{LC_ALL} = "$language";
-
-		# translate every string
-		foreach $key (keys %language_strings) {
-			$hdf->setValue($key, &gettext($language_strings{$key}))
-		}
-	} else {
-		# just copy all strings
-		foreach $key (keys %language_strings) {
-			$hdf->setValue($key, $language_strings{$key})
-		}
-	}
-}
-
-# ---------------------------------------------------------------------------
-
-sub recurse_hdf {
-
-	my ($node, $prefix) = @_;
-	my ($value, $child, $next, %result, %sub_result, $key);
-	$value = $node->objValue();
-	if ($value) {
-		#print "Prefix: " . $prefix . " / " . $value . "\n";
-		$result{$prefix} = $value;
-	}
-	$next = $node->objChild();
-	while ($next) {
-		%sub_result = &recurse_hdf($next, $prefix . "." . $next->objName());
-		foreach $key (keys %sub_result) {
-			$result{$key} = $sub_result{$key};
-		}
-		$next = $next->objNext();
-	}
-	return %result;
-}
 
 # ---------------------------------------------------------------------------
 
@@ -2107,13 +2035,20 @@ sub webauth_create_allowed {
 # ---------------------------------------------------------------------------
 
 sub get_available_interface_languages {
-	my (%languages, $lang_id);
-	foreach $lang_id (@LANGUAGE_LIST) {
-		if (defined($LANGUAGE_NAMES{$lang_id})) {
-			$languages{$lang_id} = $LANGUAGE_NAMES{$lang_id};
-		} else {
-			$languages{$lang_id} = $lang_id;
-		}
+
+	my (%languages, @files, $file);
+
+	opendir(DIR, $LANGUAGE_DIR)
+		or &fatal_error ("Language directory ($LANGUAGE_DIR) not accessible!");
+	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
+	close(DIR);
+
+	foreach $file (@files) {
+		my $hdf = ClearSilver::HDF->new();
+		$hdf->readFile("$LANGUAGE_DIR/$file");
+		substr($file, -4) = "";
+		my $lang_name = $hdf->getValue("Lang.Name", "$file");
+		$languages{$file} = $lang_name;
 	}
 	return %languages;
 }

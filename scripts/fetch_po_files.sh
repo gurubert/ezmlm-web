@@ -46,6 +46,7 @@ if test "$(id -u)" == 0
 
 DEST_GROUP=pootle
 TARGETPATH=${1%/}
+# BASEPATH must be absolute
 BASEPATH=$(cd $(dirname "$0")/..; pwd)
 
 ############# functions ###############

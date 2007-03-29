@@ -24,6 +24,10 @@ $LIST_DIR = "$HOME_DIR/lists";
 # defaults to "$LIST_DIR/webusers"
 $WEBUSERS_FILE = "$LIST_DIR/webusers";
 
+# Where are the language files
+# usually something like /usr/local/share/ezmlm-web/lang
+$LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
+
 # Where are the template files
 # usually something like /usr/local/share/ezmlm-web/template
 $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#-*- coding: utf-8 -*-
 #
 # Copyright 2007 Lars Kruse <devel@sumpfralle.de>
 # 
@@ -70,6 +71,25 @@ ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt ru sl sv".split(" ")
 ## use subversion for reverting?
 USE_SVN = True
 
+LANGUAGE_NAMES = {
+    "cs": 'Český',
+    "da": 'Dansk',
+    "de": 'Deutsch',
+    "en": 'English',
+    "es": 'Español',
+    "fi": 'Suomi',
+    "fr": 'Français',
+    "hu": 'Magyar',
+    "it": 'Italiano',
+    "ja": '日本語',
+    "nl": 'Nederlands',
+    "pl": 'Polski',
+    "pt": 'Português',
+    "ru": 'Русский',
+    "sl": 'Slovensko',
+    "sv": 'Svenska',
+    };
+
 # --------------=-=-=- functions -=-=-=--------------------
 
 def revert_if_unchanged(po_file):
@@ -128,7 +148,7 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 	def walk_hdf(prefix, node):
 		def addPoItem(hdf_node):
 			## ignore hdf values with a "LINK" attribute
-			for (key,value) in hdf_node.attrs():
+			for (key, value) in hdf_node.attrs():
 				if key == "LINK":
 					return
 			if not hdf_node.value():
@@ -150,12 +170,14 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 					or new_prefix.endswith(".Link.Attr1.name.") \
 					or new_prefix.endswith(".Link.Attr1.value.") \
 					or new_prefix.endswith(".Link.Attr2.name.") \
-					or new_prefix.endswith(".Link.Attr2.value.")):
+					or new_prefix.endswith(".Link.Attr2.value.") \
+					or new_prefix == "Lang.Name."):
 				addPoItem(node)
 			walk_hdf(new_prefix, node.child())
 			node = node.next()
 	walk_hdf("",hdf)
 	pot.savefile(pot_file)
+	# TODO: remove the following line?
 	p = translate.storage.po.pofile(pot_file)
 	for ld in ALL_LANGUAGES:
 		if not os.path.isdir(os.path.join(po_dir,ld)):
@@ -218,7 +240,7 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 		translate_count = 0
 		def addHdfItem(hdf_node):
 			## ignore hdf values with a "LINK" attribute
-			for (key,value) in hdf_node.attrs():
+			for (key, value) in hdf_node.attrs():
 				if key == "LINK":
 					return
 			if not hdf_node.value():
@@ -237,13 +259,23 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 				new_prefix = prefix
 			## as the attribute feature of clearsilver does not work yet, we
 			## have to rely on magic names to prevent the translation of links
-			if not (new_prefix.endswith(".Link.Rel.") \
+			if (new_prefix.endswith(".Link.Rel.") \
 					or new_prefix.endswith(".Link.Prot.") \
 					or new_prefix.endswith(".Link.Abs.") \
 					or new_prefix.endswith(".Link.Attr1.name.") \
 					or new_prefix.endswith(".Link.Attr1.value.") \
 					or new_prefix.endswith(".Link.Attr2.name.") \
 					or new_prefix.endswith(".Link.Attr2.value.")):
+				pass
+			elif new_prefix == "Lang.Name.":
+				# set the "Lang.Name" attribute properly
+				# remove trailing dot
+				new_prefix = new_prefix.strip(".")
+				if language in LANGUAGE_NAMES:
+					hdf.setValue(new_prefix, LANGUAGE_NAMES[language])
+				else:
+					hdf.setValue(new_prefix, language)
+			else:
 				if addHdfItem(node):
 					translate_count += 1
 			translate_count += walk_hdf(new_prefix, node.child())
