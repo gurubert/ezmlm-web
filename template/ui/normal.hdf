@@ -1,6 +1,7 @@
 UI	{
 
 	Navigation	{
+		DomainSelect = 1
 		ListSelect	= 1
 		ListCreate	= 1
 		Subscribers	{

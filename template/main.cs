@@ -7,8 +7,11 @@
 
 <?cs include:TemplateDir + '/nav.cs' ?>
 <div id="main_content">
-	<?cs if:Data.List.Name ?><div id="info_title"><?cs var:Data.List.Name ?> - <?cs
-			var:Data.List.Address ?></div><?cs /if ?>
+	<?cs if:Data.List.Name ?><div id="info_title"><?cs
+		if:Data.CurrentDomain ?><?cs
+			var:html_escape(Data.CurrentDomain.Description) ?> - <?cs /if
+		?><?cs var:html_escape(Data.List.Name) ?> - <?cs
+			var:html_escape(Data.List.Address) ?></div><?cs /if ?>
 	<?cs if:Data.Error ?><?cs call:error(Lang.ErrorMessage[Data.Error]) ?><?cs /if ?>
 	<?cs if:Data.customError ?><?cs call:error(Data.customError) ?><?cs /if ?>
 	<?cs if:Data.Warning ?><?cs call:warning(Lang.WarningMessage[Data.Warning]) ?><?cs /if ?>

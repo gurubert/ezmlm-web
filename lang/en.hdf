@@ -29,6 +29,7 @@ Lang {
 		Language	= Language
 		Help		= Help (external)
 		SubscribeLog	= Subscriber's log
+		DomainSelect	= Choose a domain
 	  }
 
 
@@ -56,6 +57,7 @@ Lang {
 		GnupgSecret		= Secret keys
 		GnupgGenerate	= Generate a new keypair
 		GnupgOptions	= Encryption settings
+		DomainSelect	= Choose a domain
 	  }
 
 
@@ -242,6 +244,7 @@ Lang {
 		GnupgKeySize	= Length of the key (bytes)
 		GnupgKeyExpires	= Expiration time (years)
 		Never			= never
+		NoDomainsAvailable	= No domains are available.
 	  }
 
 
@@ -295,5 +298,7 @@ Lang {
 		GnupgKeyImport	= Import a key
 		GnupgGenerateKey	= Generate the key for this list
 		GnupgOptions	= Encryption settings
+		AvailableDomains	= Available domains
 	}
 }
+

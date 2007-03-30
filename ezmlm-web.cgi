@@ -22,7 +22,8 @@ use CGI;
 use IO::File;
 use POSIX;
 use English;
-use Time::localtime;
+# TODO: uncomment it later
+use Time::localtime ();
 
 # gettext support is optional
 my $GETTEXT_SUPPORT = 1;
@@ -79,6 +80,8 @@ use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 use vars qw[$DEFAULT_HOST];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
+# settings for multi-domain setups
+use vars qw[%DOMAINS $CURRENT_DOMAIN];
 
 # some deprecated configuration settings - they have to be announced
 # otherwise old configuration files would break
@@ -106,7 +109,15 @@ if (defined($opt_C)) {
 } else {
    &fatal_error("Unable to find config file");
 }
-do $config_file;
+unless (my $return = do $config_file) {
+	if ($@) {
+		&fatal_error("Failed to parse the config file ($config_file): $@");
+	} elsif (!defined $return) {
+		&fatal_error("Failed to read the config file ($config_file): $!");
+	} else {
+		# the last statement of the config file return False -> this is ok
+	}
+}
 
 
 ####### validate configuration and apply some default settings ##########
@@ -162,8 +173,13 @@ my $action = $q->param('action');
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
 # TODO: unify all these "is list param set?" checks ...
-# check permissions
-unless (&check_permission_for_action()) {
+if (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')
+		|| ($action eq 'domain_select'))) {
+	# domain support is enabled, but no domain is selected
+	$pagename = 'domain_select';
+	# undef the currently selected domain
+	undef $CURRENT_DOMAIN;
+} elsif (!&check_permission_for_action()) {
 	$pagename = 'list_select';
 	$error = 'Forbidden';
 } elsif ($action eq '' || $action eq 'list_select') {
@@ -423,6 +439,8 @@ unless (&check_permission_for_action()) {
 # set default action, if there is no list available and the user is
 # allowed to create a new one
 if (((!defined($action)) || ($action eq ''))
+		&& ((%DOMAINS && defined($CURRENT_DOMAIN) and ($CURRENT_DOMAIN ne '')) 
+			|| (!%DOMAINS))
 		&& (&webauth_create_allowed())
 		&& ($pagedata->getValue('Data.Lists.0','') eq '')) {
 	$pagename = 'list_create';
@@ -524,7 +542,7 @@ sub load_interface_language {
 		unless (&check_interface_language($HTML_LANGUAGE));
 	
 	# first: load default language - in case some translations are incomplete
-	$data->readFile("$LANGUAGE_DIR/$HTML_LANGUAGE" . ".hdf");
+	$data->readFile("$LANGUAGE_DIR/$config_language" . ".hdf");
 
 	# check for preferred browser language, if the box was not initialized yet
 	my $prefLang = &get_browser_language();
@@ -583,9 +601,37 @@ sub get_browser_language {
 
 # ---------------------------------------------------------------------------
 
+sub set_pagedata_domains {
+
+	my ($domain_name);
+
+	# multi-domain setup?
+	if (defined($CURRENT_DOMAIN)) {
+		$pagedata->setValue("Config.UI.LinkAttrs.domain", $CURRENT_DOMAIN);
+		$pagedata->setValue("Data.CurrentDomain", $CURRENT_DOMAIN);
+		$pagedata->setValue("Data.CurrentDomain.Description",
+				$DOMAINS{$CURRENT_DOMAIN}{name});
+	}
+	
+	foreach $domain_name (keys %DOMAINS) {
+		$pagedata->setValue("Data.Domains.$domain_name",
+				$DOMAINS{$domain_name}{'name'});
+	}
+}
+
+# ---------------------------------------------------------------------------
+
 sub set_pagedata_list_of_lists {
 
 	my (@files, $i, $num);
+
+	# for a multi-domain setup there are no lists available if no domain
+	# is selected
+	return (0==0) if (%DOMAINS && 
+			(!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')));
+	
+	# undefined $LIST_DIR?
+	return (0==0) if (!defined($LIST_DIR) || ($LIST_DIR eq ''));
 
 	# Read the list directory for mailing lists.
 	return (0==0) unless (opendir DIR, $LIST_DIR);
@@ -611,6 +657,9 @@ sub set_pagedata {
 
 	# read available list of lists
 	&set_pagedata_list_of_lists();
+
+	# multi domain support?
+	&set_pagedata_domains() if (%DOMAINS);
 
 	# username and hostname
 	# Work out if this user has a virtual host and set input accordingly ...
@@ -2001,6 +2050,11 @@ sub webauth {
 # ---------------------------------------------------------------------------
 
 sub webauth_create_allowed {
+
+	# for a multi-domain setup we disallow list creation until a domain
+	# is selected
+	return (1==0) if (%DOMAINS && 
+			(!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')));
 
 	# Check if we were called with the deprecated argument "-c" (allow to create lists)
 	return (0==0) if (defined($opt_c));

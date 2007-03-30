@@ -26,7 +26,8 @@ Lang {
     Properties = Eigenschaften von
     Language = Sprache
     Help = Hilfe (extern)
-    SubscribeLog = Subscriber's log
+    SubscribeLog = Einschreibungen
+    DomainSelect = Choose a domain
   }
   Title {
     ConfigMain = Listeneinstellungen
@@ -46,12 +47,13 @@ Lang {
     ListDelete = Liste löschen
     FileSelect = Auswählen eines Textbausteins
     FileEdit = Bearbeitung des Textbausteins
-    SubscribeLog = Subscription events
+    SubscribeLog = Einschreibungsereignisse
     GnupgConvert = Verschlüsselung
     GnupgPublic = Öffentliche Schlüssel
     GnupgSecret = Private Schlüssel
     GnupgGenerate = Erzeugen eines Schlüssels
     GnupgOptions = Verschlüsselungseinstellungen
+    DomainSelect = Choose a domain
   }
   Buttons {
     Create = Erzeuge die Liste
@@ -112,7 +114,7 @@ Lang {
     RequiresIDX5 = Diese Aktion erfordert ezmlm-idx in der Version 5.0
     ResetFileIsDefault = Dieser Textbaustein ist keine angepasste Variante und kann somit nicht zurückgesetzt werden.
     ResetFile = Der angepasste Textbaustein konnte nicht entfernt werden.
-    LogFile = Reading of log file failed.
+    LogFile = Das Lesen der Protokoll-Datei schlug fehl.
     GnupgNoKeyFile = Es wurde keine Datei zum Hochladen ausgewählt!
     GnupgDelKey = Mindestens ein Schlüssel konnte nicht gelöscht werden!
     GnupgNoKeySelected = Es wurde kein Schlüssel ausgewählt!
@@ -225,6 +227,7 @@ Lang {
     GnupgKeySize = Schlüssellänge (in Bytes)
     GnupgKeyExpires = Verfallsdatum (in Jahren)
     Never = nie
+    NoDomainsAvailable = No domains are available.
   }
   Introduction {
     ConfigAdmin = Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.
@@ -268,12 +271,13 @@ Lang {
     TextFileReset = Auf die Vorgabe zurücksetzen
     TextFileInfo = Nützliche Platzhalter
     AvailableLists = Verfügbare Listen
-    SubscribeLog = Events
+    SubscribeLog = Ereignisse
     GnupgConvert = Verschlüsselungsunterstützung
     GnupgPublicKeys = Öffentliche Schlüssel dieser Liste
     GnupgSecretKeys = Private Schlüssel dieser Liste
     GnupgKeyImport = Schlüssel importieren
     GnupgGenerateKey = Schlüssel der Liste erzeugen
     GnupgOptions = Verschlüsselungseinstellungen
+    AvailableDomains = Available domains
   }
 }

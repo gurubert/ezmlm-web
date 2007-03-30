@@ -4,10 +4,11 @@
 	<form class="select" method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
 
 		<?cs if:Data.List.Name ?><input type="hidden" name="list" value="<?cs
-				var:Data.List.Name ?>" /><?cs /if ?>
+					var:Data.List.Name ?>" />
+				<input type="hidden" name="action" value="subscribers" /><?cs /if ?>
+		<?cs if:Data.CurrentDomain ?><input type="hidden" name="domain" value="<?cs
+				var:Data.CurrentDomain ?>" /><?cs /if ?>
 
-		<input type="hidden" name="action" value="show_page" />
-		<input type="hidden" name="pagename" value="<?cs var:Data.Action ?>" />
 		<font class="no_link"><?cs
 			var:html_escape(Lang.Menue.Language) ?>:</font><br/>
 		<select name="web_lang" size="0">

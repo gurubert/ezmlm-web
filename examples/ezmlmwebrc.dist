@@ -13,6 +13,17 @@
 # BEWARE: the (resulting) path MUST be absolute (starting with a slash)!
 $LIST_DIR = "$HOME_DIR/lists";
 
+# Multi-Domain-Support
+# This is a quite advanced setting for special installations.
+# Most people should just ignore it.
+# Anyway - if you want to control more than one directory containing
+# different lists, then you should:
+#  1) copy examples/multidomain.conf.dist to /etc/ezmlm-web/multidomain.conf
+#  2) adjust /etc/ezmlm-web/multidomain.conf to your setup
+#  3) uncomment the following line
+#  4) make sure that your multi domain settings are not overriden below
+#warn "multidomain.conf failed" unless (defined do "/etc/ezmlm-web/multidomain.conf");
+
 # Where do we store the dotqmail files of this user?
 # (defaults to the home directory of the executing user)
 # You will have to change this value, if you use a multi domain

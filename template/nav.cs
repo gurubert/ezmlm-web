@@ -1,8 +1,16 @@
 <!-- $Id$ -->
 
 <div id="nav_bar">
+
 <ul>
-	<?cs if:(subcount(Data.Lists) > 0)  && (UI.Navigation.ListSelect == 1) ?>
+	<?cs if:(subcount(Data.Domains) > 0) && (UI.Navigation.DomainSelect == 1) ?>
+		<li><a <?cs if:(Data.Action == "domain_select") ?> class="nav_active"<?cs /if ?>
+			href="<?cs call:link('action','domain_select','','','','') ?>"
+			title="<?cs var:html_escape(Lang.Menue.DomainSelect) ?>"><?cs
+			var:html_escape(Lang.Menue.DomainSelect) ?></a>
+		</li>
+		<?cs /if ?>
+	<?cs if:(subcount(Data.Lists) > 0) && (UI.Navigation.ListSelect == 1) ?>
 		<li><a <?cs if:(Data.Action == "list_select") ?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("action","list_select","","","","") ?>"
 			title="<?cs var:html_escape(Lang.Menue.ListSelect) ?>"><?cs var:html_escape(Lang.Menue.ListSelect) ?></a>

@@ -1,0 +1,55 @@
+# This is a configuration file for ezmlm-web setups with more than one
+# mailing list directory.
+#
+# If you want to use multi-domain support, then you should somehow know
+# what you are doing. You have been warned! ;)
+#
+# Usually you just need to adjust the $DOMAIN setting below.
+# Use the existing example as a template.
+#
+# If your setup is a little bit more exotic, then you can change the code, too.
+# In the end, the setting $LIST_DIR should either be an empty string or
+# the path of a mailing list directory. You may also want to take care for the
+# $DOTQMAIL_DIR and $MAILDOMAIN settings.
+#
+# BEWARE: you may not define new variables as - otherwise they could collide
+# with the names of variables of the ezmlm-web program.
+#
+
+
+{
+	# we do not want to spoil our namespace - but we need CGI input
+	use CGI ();
+	$CURRENT_DOMAIN = new CGI->param('domain');
+};
+
+# domain names may not contain any special characters
+# you must define at least "name" and "list_dir" for each domain
+%DOMAINS = (
+	foo => {
+		name => "Example Domain Foo",
+		list_dir => "/data/lists/foo",
+		dot_dir => "/data/lists/foo",
+		mail_domain => "lists.foo.org",
+	},
+	bar => {
+		name => "Example Domain Bar",
+		list_dir => "/data/lists/bar",
+		dot_dir => "/data/lists/bar",
+		mail_domain => "lists.bar.org",
+	},
+);
+
+
+# this simple code defines $LIST_DIR and $DOTQMAILDIR in a sane way
+if (defined($CURRENT_DOMAIN) && defined($DOMAINS{$CURRENT_DOMAIN})) {
+	$LIST_DIR = $DOMAINS{$CURRENT_DOMAIN}{'list_dir'}
+		if (defined $DOMAINS{$CURRENT_DOMAIN}{'list_dir'});
+	$DOTQMAIL_DIR = $DOMAINS{$CURRENT_DOMAIN}{'dot_dir'}
+		if (defined $DOMAINS{$CURRENT_DOMAIN}{'dot_dir'});
+	$MAIL_DOMAIN = $DOMAINS{$CURRENT_DOMAIN}{'mail_domain'}
+		if (defined $DOMAINS{$CURRENT_DOMAIN}{'mail_domain'});
+} else {
+	$LIST_DIR = '';
+}
+

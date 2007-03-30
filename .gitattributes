@@ -20,6 +20,7 @@ debian/patches/01_paths_in_config_file.dpatch -text
 debian/rules -text
 examples/ezmlmwebrc.dist -text
 examples/htaccess.dist -text
+examples/multidomain.conf.dist -text
 examples/webusers.dist -text
 /ezmlm-web.cgi -text
 intl/cs/LC_MESSAGES/ezmlm-web.po -text
@@ -111,6 +112,7 @@ template/config_options/webusers.cs -text
 template/config_posting.cs -text
 template/config_processing.cs -text
 template/config_subscription.cs -text
+template/domain_select.cs -text
 template/footer.cs -text
 template/form_common.cs -text
 template/gnupg_convert.cs -text
@@ -132,7 +134,5 @@ template/show_subscription_log.cs -text
 template/subscribers.cs -text
 template/textfile_edit.cs -text
 template/textfiles.cs -text
-template/ui/default/normal.hdf -text
-template/ui/gnupg/normal.hdf -text
 template/ui/normal.hdf -text
 www-data/default.css -text

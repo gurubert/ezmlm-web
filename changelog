@@ -1,12 +1,13 @@
 Version 3.2 - 04/14/02006
  * support for encrypted mailing lists
    (https://systemausfall.org/toolforge/gpgpy-ezmlm/)
+ * support for multi-domain setups
  * detect preferred interface language
  * user-specific interface language selection
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)
  * script for creating binary suid wrappers added
  * bug in MySQL support fixed
- * treatment of the special character "dot" in listname and list address fixed
+ * handling of the special character "dot" in listname and list address fixed
  * the formerly required module "Encode" is now optional
  * support for listing of subscription log
 
