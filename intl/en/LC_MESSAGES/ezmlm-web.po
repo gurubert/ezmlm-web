@@ -104,6 +104,10 @@ msgstr "Help (external)"
 msgid "Subscriber's log"
 msgstr "Subscriber's log"
 
+#: Lang.Menue.DomainSelect
+msgid "Choose a domain"
+msgstr "Choose a domain"
+
 #: Lang.Title.ConfigMain
 msgid "List configuration"
 msgstr "List configuration"
@@ -807,6 +811,10 @@ msgstr "Expiration time (years)"
 msgid "never"
 msgstr "never"
 
+#: Lang.Misc.NoDomainsAvailable
+msgid "No domains are available."
+msgstr "No domains are available."
+
 #: Lang.Introduction.ConfigAdmin
 msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
 msgstr "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
@@ -986,3 +994,7 @@ msgstr "Import a key"
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
 msgstr "Generate the key for this list"
+
+#: Lang.Legend.AvailableDomains
+msgid "Available domains"
+msgstr "Available domains"

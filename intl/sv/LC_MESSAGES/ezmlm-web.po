@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-03-28 11:57+0200\n"
+"POT-Creation-Date: 2007-03-30 07:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,6 +115,10 @@ msgstr ""
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
+msgstr ""
+
+#: Lang.Menue.DomainSelect
+msgid "Choose a domain"
 msgstr ""
 
 #: Lang.Title.ConfigMain
@@ -817,6 +821,10 @@ msgstr ""
 msgid "never"
 msgstr ""
 
+#: Lang.Misc.NoDomainsAvailable
+msgid "No domains are available."
+msgstr ""
+
 #: Lang.Introduction.ConfigAdmin
 msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
 msgstr ""
@@ -995,4 +1003,8 @@ msgstr ""
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
+msgstr ""
+
+#: Lang.Legend.AvailableDomains
+msgid "Available domains"
 msgstr ""
