@@ -36,7 +36,7 @@
 	<fieldset class="form">
 		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
 
-	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
+	<?cs call:form_header("config_subscription", "") ?>
 
 		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		
@@ -48,11 +48,7 @@
 				<?cs call:show_options(UI.Options.Subscribers.Moderators) ?>
 			<?cs /if ?>
 
-			<!-- include default form values -->
-			<?cs include:TemplateDir + '/form_common.cs' ?>
-
 			<input type="hidden" name="config_subset" value="RESERVED-subscribers" />
-			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
 			<input type="hidden" name="action" value="config_do" />
 			<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
 	</form>
@@ -79,8 +75,7 @@
 
 	<table class="subscribers"><tr>
 	<?cs if:subcount(Data.List.Subscribers) > 0 ?>
-		<td><form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
-			<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
+		<td><?cs call:form_header("remove_subscriber", "") ?>
 			<?cs if:Data.List.PartType ?>
 				<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 			<?cs /if ?>
@@ -102,10 +97,7 @@
 				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
 				<li><input type="hidden" name="action" value="address_del" />
 				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></form></li>
-				<li><form method="post" action="<?cs call:link('','','','','','')
-						?>" enctype="application/x-www-form-urlencoded">
-					<input type="hidden" name="list" value="<?cs
-							var:Data.List.Name ?>" />
+				<li><?cs call:form_header("download_subscribers", "") ?>
 					<input type="hidden" name="action" value="download_subscribers" />
 					<?cs if:Data.List.PartType ?>
 						<input type="hidden" name="part" value="<?cs
@@ -116,9 +108,7 @@
 		</ul></td>
 	<?cs /if ?>
 
-	<td><form method="post" action="<?cs call:link("","","","","","") ?>" enctype="multipart/form-data">
-		<!-- this form has to be "multipart/form-data" to make file upload work -->
-		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
+	<td><?cs call:form_header_upload("upload_subscribers", "") ?>
 		<?cs if:Data.List.PartType ?>
 			<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		<?cs /if ?>

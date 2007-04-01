@@ -10,7 +10,7 @@
 # If your setup is a little bit more exotic, then you can change the code, too.
 # In the end, the setting $LIST_DIR should either be an empty string or
 # the path of a mailing list directory. You may also want to take care for the
-# $DOTQMAIL_DIR and $MAILDOMAIN settings.
+# $DOTQMAIL_DIR, $MAILDOMAIN and $MAIL_ADDRESS_PREFIX settings.
 #
 # BEWARE: you may not define new variables as - otherwise they could collide
 # with the names of variables of the ezmlm-web program.
@@ -29,14 +29,13 @@
 	foo => {
 		name => "Example Domain Foo",
 		list_dir => "/data/lists/foo",
-		dot_dir => "/data/lists/foo",
-		mail_domain => "lists.foo.org",
 	},
 	bar => {
 		name => "Example Domain Bar",
 		list_dir => "/data/lists/bar",
-		dot_dir => "/data/lists/bar",
+		dot_dir => "/var/vpopmail/lists/bar",
 		mail_domain => "lists.bar.org",
+		mail_prefix => "lists-",
 	},
 );
 
@@ -49,6 +48,8 @@ if (defined($CURRENT_DOMAIN) && defined($DOMAINS{$CURRENT_DOMAIN})) {
 		if (defined $DOMAINS{$CURRENT_DOMAIN}{'dot_dir'});
 	$MAIL_DOMAIN = $DOMAINS{$CURRENT_DOMAIN}{'mail_domain'}
 		if (defined $DOMAINS{$CURRENT_DOMAIN}{'mail_domain'});
+	$MAIL_ADDRESS_PREFIX = $DOMAINS{$CURRENT_DOMAIN}{'mail_prefix'}
+		if (defined $DOMAINS{$CURRENT_DOMAIN}{'mail_prefix'});
 } else {
 	$LIST_DIR = '';
 }

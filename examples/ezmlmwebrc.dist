@@ -33,7 +33,7 @@ $LIST_DIR = "$HOME_DIR/lists";
 
 # Where is the webusers file for access-permissions
 # defaults to "$LIST_DIR/webusers"
-$WEBUSERS_FILE = "$LIST_DIR/webusers";
+#$WEBUSERS_FILE = "$LIST_DIR/webusers";
 
 # Where are the language files
 # usually something like /usr/local/share/ezmlm-web/lang
@@ -56,6 +56,10 @@ $QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
 
 # default mailing list domain name (optional)
 #$MAIL_DOMAIN = "lists.someserver.org";
+
+# default prefix of the local part of the addresses of mailing lists
+# useful for some qmail-ldap setups
+#$MAIL_ADDRESS_PREFIX = "lists-";
 
 # Do we want to allow ``pretty'' names - ie more human readable ones
 # This will slow ezmlm-web down a bit for large lists

@@ -16,8 +16,7 @@
 			<?cs var:html_escape(Lang.Introduction.ResetTextFile) ?>
 		</div>
 
-	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
-		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
+	<?cs call:form_header("textfile_reset", "") ?>
 		<input type="hidden" name="file" value="<?cs var:Data.List.File.Name ?>">
 		<input type="hidden" name="action" value="textfile_reset" />
 		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.ResetFile) ?></button>
@@ -29,8 +28,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.TextFileEdit) ?> </legend>
 
-<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
-	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>">
+<?cs call:form_header("textfile_reset", "") ?>
 	<input type="hidden" name="file" value="<?cs var:Data.List.File.Name ?>">
 	
 	<p><textarea name="content" rows="13"

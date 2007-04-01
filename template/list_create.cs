@@ -5,15 +5,13 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.ListCreate) ?> </legend>
 
-	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
+	<?cs call:form_header("list_create", "") ?>
 		
 		<?cs call:show_options(UI.Options.Create) ?>
-
-		<!-- include default form values -->
-		<?cs include:TemplateDir + '/form_common.cs' ?>
 
 		<input type="hidden" name="action" value="list_create_do" />
 		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.Create) ?></button>
 	</form>
 
 </fieldset>
+

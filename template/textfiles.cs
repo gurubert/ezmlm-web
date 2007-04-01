@@ -9,9 +9,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.TextFiles) ?> </legend>
 
-<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
-	<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
-
+<?cs call:form_header("select_textfile", "") ?>
 	<ul>
 		<?cs if:subcount(Data.List.CustomizedFiles) +
 			subcount(Data.List.DefaultFiles) > 0 ?>

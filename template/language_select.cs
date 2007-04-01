@@ -1,13 +1,10 @@
 <!-- allows the user to change the interface language (not of the list!) -->
 <?cs if:subcount(Config.UI.Languages) > 0 ?>
 
-	<form class="select" method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
+	<?cs call:form_header("select_language", "web_lang") ?>
 
-		<?cs if:Data.List.Name ?><input type="hidden" name="list" value="<?cs
-					var:Data.List.Name ?>" />
-				<input type="hidden" name="action" value="subscribers" /><?cs /if ?>
-		<?cs if:Data.CurrentDomain ?><input type="hidden" name="domain" value="<?cs
-				var:Data.CurrentDomain ?>" /><?cs /if ?>
+		<?cs if:Data.List.Name ?><input type="hidden" name="action"
+				value="subscribers" /><?cs /if ?>
 
 		<font class="no_link"><?cs
 			var:html_escape(Lang.Menue.Language) ?>:</font><br/>

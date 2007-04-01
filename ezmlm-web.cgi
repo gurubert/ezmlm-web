@@ -22,7 +22,6 @@ use CGI;
 use IO::File;
 use POSIX;
 use English;
-# TODO: uncomment it later
 use Time::localtime ();
 
 # gettext support is optional
@@ -77,7 +76,7 @@ use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
-use vars qw[$DEFAULT_HOST];
+use vars qw[$DEFAULT_HOST $MAIL_ADDRESS_PREFIX];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
@@ -606,7 +605,7 @@ sub set_pagedata_domains {
 	my ($domain_name);
 
 	# multi-domain setup?
-	if (defined($CURRENT_DOMAIN)) {
+	if (defined($CURRENT_DOMAIN) && ($CURRENT_DOMAIN ne '')) {
 		$pagedata->setValue("Config.UI.LinkAttrs.domain", $CURRENT_DOMAIN);
 		$pagedata->setValue("Data.CurrentDomain", $CURRENT_DOMAIN);
 		$pagedata->setValue("Data.CurrentDomain.Description",
@@ -674,6 +673,11 @@ sub set_pagedata {
 		$username = "$USER-" if ($USER ne $ALIAS_USER);
 		$hostname = $DEFAULT_HOST;
 	}
+	# maybe a local prefix was configured?
+	if (defined($MAIL_ADDRESS_PREFIX)) {
+		$username = $MAIL_ADDRESS_PREFIX;
+	}
+
 	$pagedata->setValue("Data.UserName", "$username");
 	$pagedata->setValue("Data.HostName", "$hostname");
 

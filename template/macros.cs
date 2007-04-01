@@ -96,5 +96,33 @@ def:link(attr1, value1, attr2, value2, attr3, value3)
 			?><?cs /if
 		?><?cs /each
 	?><?cs /if ?><?cs
+ /def ?><?cs
+
+
+def:form_header_generic(form_name, ignore_attr, enctype)
+	?><?cs # somehow perl's CGI has problems to evaluate the querystring of a
+		form action - thus we have to use hidden input fields instead
+	?><form accept-charset="utf-8" name="<?cs var:html_escape(form_name)
+			?>" method="post" action="<?cs var:ScriptName
+			?>" enctype="<?cs var:enctype ?>">
+		<?cs each:attr = Config.UI.LinkAttrs ?><?cs
+			if:name(attr) != ignore_attr ?><input type="hidden" name="<?cs
+				var:html_escape(name(attr)) ?>" value="<?cs
+				var:html_escape(attr) ?>" /><?cs /if ?>
+		<?cs /each ?><?cs
+		if:Data.List.Name ?><input type="hidden" name="list" value="<?cs
+			var:html_escape(Data.List.Name) ?>" /><?cs /if ?><?cs
+ /def ?><?cs
+
+
+def:form_header(form_name, ignore_attr)
+	?><?cs call:form_header_generic(form_name, ignore_attr,
+			"application/x-www-form-urlencoded") ?><?cs
+ /def ?><?cs
+
+
+def:form_header_upload(form_name, ignore_attr)
+	?><?cs call:form_header_generic(form_name, ignore_attr,
+			"multipart/form-data") ?><?cs
  /def ?>
 

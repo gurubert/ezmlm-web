@@ -10,9 +10,7 @@
 	<legend><?cs var:html_escape(Lang.Legend.ListDelete) ?> </legend>
 
 	<p><?cs var:html_escape(Lang.Misc.ConfirmDelete) ?></p>
-	<form method="post" action="<?cs call:link("","","","","","") ?>" enctype="application/x-www-form-urlencoded">
-		<input type="hidden" name="list" value="<?cs var:Data.List.Name ?>" />
-
+	<?cs call:form_header("delete_list_confirm", "") ?>
 		<input type="hidden" name="action" value="list_delete_do" />
 		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.ConfirmDeletion) ?></button>
 	</form>

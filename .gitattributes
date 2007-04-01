@@ -114,7 +114,6 @@ template/config_processing.cs -text
 template/config_subscription.cs -text
 template/domain_select.cs -text
 template/footer.cs -text
-template/form_common.cs -text
 template/gnupg_convert.cs -text
 template/gnupg_generate_key.cs -text
 template/gnupg_import.cs -text

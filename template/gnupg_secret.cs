@@ -13,8 +13,7 @@
 
 	<?cs if:subcount(Data.List.gnupg_keys.secret) > 0 ?>
 
-		<form method="post" action="<?cs call:link("","","","","","") ?>"
-			enctype="application/x-www-form-urlencoded">
+	<?cs call:form_header("gnupg_secret_keys") ?>
 		<input type="hidden" name="gnupg_subset" value="secret" />
 
 		<table class="gnupg_keys">
@@ -38,9 +37,6 @@
 					</tr>
 			<?cs /each ?>
 		</table>
-
-		<!-- include default form values -->
-		<?cs include:TemplateDir + '/form_common.cs' ?>
 
 		<input type="hidden" name="action" value="gnupg_do" />
 		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteSecretKey) ?></button>
