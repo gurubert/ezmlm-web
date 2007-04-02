@@ -9,7 +9,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.ConfigProcess) ?> </legend>
 
-	<?cs call:form_header("config_processing") ?>
+	<?cs call:form_header("config_processing", "") ?>
 		<input type="hidden" name="config_subset" value="processing" />
 
 		<?cs call:show_options(UI.Options.Config.Processing) ?>

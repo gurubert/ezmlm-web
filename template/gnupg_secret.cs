@@ -13,7 +13,7 @@
 
 	<?cs if:subcount(Data.List.gnupg_keys.secret) > 0 ?>
 
-	<?cs call:form_header("gnupg_secret_keys") ?>
+	<?cs call:form_header("gnupg_secret_keys", "") ?>
 		<input type="hidden" name="gnupg_subset" value="secret" />
 
 		<table class="gnupg_keys">

@@ -9,7 +9,7 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.ConfigSub) ?> </legend>
 
-	<?cs call:form_header("config_subscription") ?>
+	<?cs call:form_header("config_subscription", "") ?>
 		<input type="hidden" name="config_subset" value="subscription" />
 
 		<?cs call:show_options(UI.Options.Config.Subscription) ?>

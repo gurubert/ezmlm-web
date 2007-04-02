@@ -1,6 +1,6 @@
 <fieldset class="form">
 	<legend><?cs var:html_escape(Lang.Legend.GnupgKeyImport) ?> </legend>
-	<?cs call:form_header_upload("gnupg_key_upload") ?>
+	<?cs call:form_header_upload("gnupg_key_upload", "") ?>
 
 		<input type="hidden" name="gnupg_subset" value="<?cs
 			if:Data.Action == 'gnupg_public' ?>public<?cs
