@@ -1301,6 +1301,7 @@ sub delete_list {
 		warn "List '" . $list->thislist() . "' deleted";
 	}
 	$q->param(-name=>'list', -values=>'');
+	return (0==0);
 }
 
 # ------------------------------------------------------------------------
