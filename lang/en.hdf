@@ -27,6 +27,7 @@ Lang {
 		ListSelect	= Choose a list
 		Properties	= Properties of
 		Language	= Language
+		Interface	= Interface
 		Help		= Help (external)
 		SubscribeLog	= Subscriber's log
 		DomainSelect	= Choose a domain
@@ -73,6 +74,7 @@ Lang {
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
 		LanguageSet	= select
+		InterfaceSet	= select
 		GnupgConvertToEncrypted = Convert to an encrypted mailinglist
 		GnupgConvertToPlain	= Convert to a plaintext mainlinglist
 		DeletePublicKey	= Delete public key(s)
@@ -175,7 +177,7 @@ Lang {
 		t	= Add a trailing text to every message
 		u	= Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
-		x	= Remove or reject specific mime types in messages
+		x	= Reset the list of to be stripped mime types to its default value
 		y	= Request a confirmation mail for every posted message
 		gnupg_plain_without_key	= Send plaintext to the subscribers which have no key
 		gnupg_sign_messages	= Sign outgoing messages with the list's key
@@ -202,10 +204,15 @@ Lang {
 		ListName	= List Name
 		ListAddress	= List Address
 		ListOptions	= Basic List Options
-		AllowedToEdit	= Users allowed to edit this list via web interface:
-		HeaderRemove	= Headers to strip from every outgoing mail
+		AllowedToEdit	= Users allowed to edit this list via web interface
+		HeaderFiltering	= Header filtering
+		HeaderRemove	=  strip these header lines
+		HeaderKeep	= keep only these header lines
 		HeaderAdd	= Headers to add to all outgoing mail
-		MimeRemove	= Mime types to strip from all outgoing mail
+		MimeTypeExamples	= Show some example mime types
+		MimeFiltering	= Mime type filtering (for multipart mails)
+		MimeRemove	= strip these from all messages
+		MimeKeep	= keep only these in messages
 		MimeReject	= Messages containing any of these mime type will be rejected
 		EditFileInfo {
 			CommonTags			= common tags
@@ -245,6 +252,13 @@ Lang {
 		GnupgKeyExpires	= Expiration time (years)
 		Never			= never
 		NoDomainsAvailable	= No domains are available.
+		CopyLinesEnabled	= Add some lines of every original message to automatic replies
+		CopyLinesNumber	= number of lines
+		Interfaces {
+			easy	= basic
+			normal	= default
+			expert	= expert
+		  }
 	  }
 
 

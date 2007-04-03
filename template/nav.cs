@@ -166,14 +166,15 @@
 					var:html_escape(Lang.Menue.TextFiles) ?></a></li><?cs /if ?>
 
 		<?cs if:(UI.Navigation.GnupgConvert == 1) && Config.Features.Crypto
-			?><li><a <?cs if:(Data.Action == "gnupg_convert_ask") ||
-				(Data.Action == "gnupg_convert_do") ?> class="nav_active"<?cs /if ?>
+			?><li><a <?cs if:(Data.Action == "gnupg_convert")
+				?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("list",Data.List.Name,"action","gnupg_convert_ask","","") ?>"
 				title="<?cs var:html_escape(Lang.Menue.GnupgConvert) ?>"><?cs
 					var:html_escape(Lang.Menue.GnupgConvert) ?></a></li><?cs /if ?>
 		
 		<?cs if:UI.Navigation.SubscribeLog == 1
-			?><li><a <?cs if:(Data.Action == "subscribe_log") ?> class="nav_active"<?cs /if ?>
+			?><li><a <?cs if:(Data.Action == "show_subscription_log")
+				?> class="nav_active"<?cs /if ?>
 			href="<?cs call:link("list",Data.List.Name,"action","subscribe_log","","") ?>"
 				title="<?cs var:html_escape(Lang.Menue.SubscribeLog) ?>"><?cs
 				var:html_escape(Lang.Menue.SubscribeLog) ?></a></li><?cs /if ?>
@@ -188,8 +189,13 @@
 	<li><hr/></li>
 <?cs /if ?>
 
-	<?cs if:UI.Navigation.Language
-		?><li><?cs include:TemplateDir + '/language_select.cs' ?></li>
+	<?cs if:UI.Navigation.Language || UI.Navigation.Interface ?>
+		<?cs if:UI.Navigation.Language ?>
+			<li><?cs include:TemplateDir + '/language_select.cs' ?></li>
+		<?cs /if ?>
+		<?cs if:UI.Navigation.Interface ?>
+			<li><?cs include:TemplateDir + '/interface_select.cs' ?></li>
+		<?cs /if ?>
 
 		<li><hr/></li>
 

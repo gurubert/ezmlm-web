@@ -25,6 +25,7 @@ Lang {
     ListSelect = Auswahl einer Liste
     Properties = Eigenschaften von
     Language = Sprache
+    Interface = Interface
     Help = Hilfe (extern)
     SubscribeLog = Einschreibungen
     DomainSelect = Choose a domain
@@ -67,6 +68,7 @@ Lang {
     SaveFile = Datei speichern
     ResetFile = Angepassten Textbaustein verwerfen
     LanguageSet = wählen
+    InterfaceSet = wählen
     GnupgConvertToEncrypted = Wandle in eine verschlüsselte Liste um
     GnupgConvertToPlain = Wandle in eine unverschlüsselte Liste um
     DeletePublicKey = Öffentliche(n) Schlüssel löschen
@@ -161,7 +163,7 @@ Lang {
     t = Hänge eine Signatur an jede versandte Nachricht
     u = Nur Einsendungen von AbonnentInnen werden akzeptiert (für moderierte Listen: akzeptiere alle Einsendungen von AbonnentInnen)
     w = Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
-    x = Prüfe die MIME-Typen der Anhänge eingehender Nachrichten
+    x = Reset the list of to be stripped mime types to its default value
     y = Fordere eine Bestätigung für jede eingesandte Nachricht an
     gnupg_plain_without_key = Sende Nachrichten im Klartext an Empfänger ohne Schlüssel
     gnupg_sign_messages = Signiere ausgehende Nachrichten mit dem Listenschlüssel
@@ -184,10 +186,15 @@ Lang {
     ListName = Name der Liste
     ListAddress = Addresse der Liste
     ListOptions = Grundlegende Einstellungen
-    AllowedToEdit = Nutzer, die diese Liste per Web-Interface konfigurieren dürfen:
-    HeaderRemove = zu entfernende Kopfzeilen
+    AllowedToEdit = Users allowed to edit this list via web interface
+    HeaderFiltering = Header filtering
+    HeaderRemove = strip these header lines
+    HeaderKeep = keep only these header lines
     HeaderAdd = hinzuzufügende Kopfzeilen
-    MimeRemove = Nachrichtenbestandteile dieses Typs werden entfernt
+    MimeTypeExamples = Show some example mime types
+    MimeFiltering = Mime type filtering (for multipart mails)
+    MimeRemove = strip these from all messages
+    MimeKeep = keep only these in messages
     MimeReject = Nachrichten, die einen der folgenden Datentypen enthalten, werden abgewiesen
     EditFileInfo {
       CommonTags = allgemeine Platzhalter
@@ -228,6 +235,13 @@ Lang {
     GnupgKeyExpires = Verfallsdatum (in Jahren)
     Never = nie
     NoDomainsAvailable = No domains are available.
+    CopyLinesEnabled = Add some lines of every original message to automatic replies
+    CopyLinesNumber = number of lines
+    Interfaces {
+      easy = basic
+      normal = default
+      expert = expert
+    }
   }
   Introduction {
     ConfigAdmin = Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.

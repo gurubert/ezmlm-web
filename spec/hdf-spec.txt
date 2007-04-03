@@ -7,6 +7,11 @@ Config.Title
 Config.UI.Languages.[names]
 Config.UI.LinkAttrs.web_lang
 Config.UI.LinkAttrs.template
+Config.Features.Crypto
+Config.Features.KeepFiles
+Config.Features.LanguageSelect
+Config.Features.CharsetSelect
+Config.Features.CopyLines
 
 Data.Action
 Data.areDefaultTextsAvailable

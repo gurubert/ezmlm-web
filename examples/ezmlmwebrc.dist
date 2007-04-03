@@ -52,6 +52,7 @@ $UNSAFE_RM = 0;
 $ALIAS_USER = "alias";
 
 # Where do the qmail control files live on this system ...
+# defaults to /var/qmail/control
 $QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
 
 # default mailing list domain name (optional)

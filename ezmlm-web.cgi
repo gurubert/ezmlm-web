@@ -76,7 +76,7 @@ use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
-use vars qw[$DEFAULT_HOST $MAIL_ADDRESS_PREFIX];
+use vars qw[$MAIL_ADDRESS_PREFIX];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
@@ -151,13 +151,40 @@ $HTML_CSS_FILE = '' unless defined($HTML_CSS_FILE);
 # check template directory
 $TEMPLATE_DIR = 'template' unless defined($TEMPLATE_DIR);
 
-if (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
-	$DEFAULT_HOST = $MAIL_DOMAIN;
-} else {
-	# Work out default domain name from qmail (for David Summers)
-	open (GETHOST, "<$QMAIL_BASE/defaultdomain") || open (GETHOST, "<$QMAIL_BASE/me") || &fatal_error("Unable to read $QMAIL_BASE/me: $!");
-	chomp($DEFAULT_HOST = <GETHOST>);
-	close GETHOST;
+# check QMAIL_BASE
+$QMAIL_BASE = '/var/qmail/control' unless defined($QMAIL_BASE);
+
+# determine MAIL_DOMAIN
+unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
+	if ((-e "$QMAIL_BASE/virtualdomains") && open(VD, "<$QMAIL_BASE/virtualdomains")) {
+		# Work out if this user has a virtual host and set input accordingly ...
+		while(<VD>) {
+			last if (($MAIL_DOMAIN) = /(.+?):$USER/);
+		}
+		close VD;
+	}
+	# use 'defaultdomain' or 'me' if no matching virtualdomain was found
+	if (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
+		# the prefix is empty for virtual domains
+		$MAIL_ADDRESS_PREFIX = "" unless (defined($MAIL_ADDRESS_PREFIX));
+	} else {
+		# Work out default domain name from qmail (for David Summers)
+		if (open (GETHOST, "<$QMAIL_BASE/defaultdomain") || open (GETHOST, "<$QMAIL_BASE/me")) {
+			chomp($MAIL_DOMAIN = <GETHOST>);
+			close GETHOST;
+		} else {
+			&fatal_error("Unable to read $QMAIL_BASE/me: $!");
+		}
+	}
+}
+
+# check MAIL_ADDRESS_PREFIX
+unless (defined($MAIL_ADDRESS_PREFIX)) {
+	if ($USER eq $ALIAS_USER) {
+		$MAIL_ADDRESS_PREFIX = "";
+	} else {
+		$MAIL_ADDRESS_PREFIX = "$USER-"
+	}
 }
 
 
@@ -172,7 +199,10 @@ my $action = $q->param('action');
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
 # TODO: unify all these "is list param set?" checks ...
-if (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')
+if ($action eq 'show_mime_examples') {
+	&output_mime_examples();
+	exit 0;
+} elsif (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')
 		|| ($action eq 'domain_select'))) {
 	# domain support is enabled, but no domain is selected
 	$pagename = 'domain_select';
@@ -465,10 +495,26 @@ sub init_hdf {
 		unless (-e $TEMPLATE_DIR);
 	$hdf->setValue("TemplateDir", "$TEMPLATE_DIR/");
 
-	# "normal", "basic" and "expert" should be supported soon
-	# TODO: should be selected via web interface
-	$ui_template = "normal";
+	# easy/normal/expert
+	my $one_template;
+	my @all_templates = &get_available_interfaces();
+	if (defined($q->param('template'))) {
+		foreach $one_template (@all_templates) {
+			$ui_template = $q->param('template')
+				if ($q->param('template') eq $one_template);
+		}
+	}
+	$ui_template = 'normal' unless defined($ui_template);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
+
+
+	# retrieve available interface sets and add them to the dataset
+	my %interfaces = &get_available_interfaces();
+	my $interface;
+	foreach $interface (keys %interfaces) {
+		$hdf->setValue("Config.UI.Interfaces.$interface",
+				$interfaces{$interface});
+	}
 
 	# retrieve available languages and add them to the dataset
 	my %languages = &get_available_interface_languages();
@@ -485,6 +531,17 @@ sub init_hdf {
 
 	# support for encrypted mailing lists?
 	$hdf->setValue("Config.Features.Crypto", 1) if ($GPG_SUPPORT);
+
+	# enable some features that are only available for specific versions
+	# of ezmlm-idx
+	if (Mail::Ezmlm->get_version() >= 5.1) {
+		$hdf->setValue("Config.Features.KeepFiles", 1);
+	}
+	if (Mail::Ezmlm->get_version() >= 5) {
+		$hdf->setValue("Config.Features.LanguageSelect", 1);
+		$hdf->setValue("Config.Features.CharsetSelect", 1);
+		$hdf->setValue("Config.Features.CopyLines", 1);
+	}
 
 	return $hdf;
 }
@@ -652,34 +709,14 @@ sub set_pagedata_list_of_lists {
 
 sub set_pagedata {
 
-	my ($hostname, $username);
-
 	# read available list of lists
 	&set_pagedata_list_of_lists();
 
 	# multi domain support?
 	&set_pagedata_domains() if (%DOMAINS);
 
-	# username and hostname
-	# Work out if this user has a virtual host and set input accordingly ...
-	if (-e "$QMAIL_BASE/virtualdomains") {
-		open(VD, "<$QMAIL_BASE/virtualdomains") || warn "Can't read virtual domains file: $!";
-		while(<VD>) {
-			last if (($hostname) = /(.+?):$USER/);
-		}
-		close VD;
-	}
-	if (!defined($hostname)) {
-		$username = "$USER-" if ($USER ne $ALIAS_USER);
-		$hostname = $DEFAULT_HOST;
-	}
-	# maybe a local prefix was configured?
-	if (defined($MAIL_ADDRESS_PREFIX)) {
-		$username = $MAIL_ADDRESS_PREFIX;
-	}
-
-	$pagedata->setValue("Data.UserName", "$username");
-	$pagedata->setValue("Data.HostName", "$hostname");
+	$pagedata->setValue("Data.LocalPrefix", $MAIL_ADDRESS_PREFIX);
+	$pagedata->setValue("Data.HostName", $MAIL_DOMAIN);
 
 
 	# modules
@@ -807,10 +844,30 @@ sub set_pagedata_misc_configfiles {
 	$pagedata->setValue("Data.List.Prefix", "$item");
 	$item = $list->getpart('headeradd');
 	$pagedata->setValue("Data.List.HeaderAdd", "$item");
-	$item = $list->getpart('headerremove');
-	$pagedata->setValue("Data.List.HeaderRemove", "$item");
-	$item = $list->getpart('mimeremove');
-	$pagedata->setValue("Data.List.MimeRemove", "$item");
+
+	# 'headerremove' is ignored if 'headerkeep' exists (since ezmlm-idx v5)
+	if ((Mail::Ezmlm->get_version() >= 5.1) &&(-e $list->thislist() . "/headerkeep")) {
+		$item = $list->getpart('headerkeep');
+		$pagedata->setValue("Data.List.HeaderKeep", "$item");
+	} else {
+		$item = $list->getpart('headerremove');
+		$pagedata->setValue("Data.List.HeaderRemove", "$item");
+	}
+	
+	# 'mimeremove' is ignored if 'mimekeep' exists (since ezmlm-idx v5)
+	if ((Mail::Ezmlm->get_version() >= 5.1) && (-e $list->thislist() . "/mimekeep")) {
+		$item = $list->getpart('mimekeep');
+		$pagedata->setValue("Data.List.MimeKeep", "$item");
+	} else {
+		$item = $list->getpart('mimeremove');
+		$pagedata->setValue("Data.List.MimeRemove", "$item");
+	}
+
+	if (Mail::Ezmlm->get_version() >= 5) {
+		$item = $list->getpart('copylines');
+		$pagedata->setValue("Data.List.CopyLines", "$item");
+	}
+
 	$item = $list->getpart('mimereject');
 	$pagedata->setValue("Data.List.MimeReject", "$item");
 	$item = $list->get_text_content('trailer');
@@ -958,7 +1015,7 @@ sub set_pagedata4options {
 			unless ($state) {
 				# set default values
 				if ($i eq 0) {
-					$value = 'mainlist@' . $DEFAULT_HOST;
+					$value = 'mainlist@' . $MAIL_DOMAIN;
 				} elsif ($i eq 3) {
 					$value = 'from_address@domain.org';
 				} elsif ($i eq 4) {
@@ -1000,14 +1057,15 @@ sub set_pagedata4options {
 		if (-e "$dir_of_list/trailer");
 	$pagedata->setValue("Data.List.Options.f" , 1)
 		if (-e "$dir_of_list/prefix");
-	$pagedata->setValue("Data.List.Options.x" , 1)
-		if ((-e "$dir_of_list/mimeremove") || (-e "$dir_of_list/mimereject"));
 	$pagedata->setValue("Data.List.Options.m" , 1)
 		if (-e "$dir_of_list/modpost");
 	$pagedata->setValue("Data.List.Options.s" , 1)
 		if (-e "$dir_of_list/modsub");
 	$pagedata->setValue("Data.List.Options.r" , 1)
 		if (-e "$dir_of_list/remote");
+	# the option 'x' is always off, as we use it for resetting - this
+	# should be easier to understand for users
+	$pagedata->setValue("Data.List.Options.x" , 0);
 }
 
 # ---------------------------------------------------------------------------
@@ -1251,7 +1309,8 @@ sub untaint {
    # Go through all the CGI input and make sure it is not tainted. Log any
    # tainted data that we come accross ... See the perlsec(1) man page ...
 
-   $DEFAULT_HOST = $1 if $DEFAULT_HOST =~ /^([\w\d\.-]+)$/;
+   # maybe it was read from a file - so we should untaint it
+   $MAIL_DOMAIN = $1 if $MAIL_DOMAIN =~ /^([\w\d\.-]+)$/;
    
    my (@params, $i, $param);
    @params = $q->param;
@@ -1343,7 +1402,7 @@ sub add_address {
 	if ($q->param('mailaddress_add') ne '') {
 
 		$address = $q->param('mailaddress_add');
-		$address .= $DEFAULT_HOST if ($q->param('mailaddress_add') =~ /\@$/);
+		$address .= $MAIL_DOMAIN if ($q->param('mailaddress_add') =~ /\@$/);
 
 		# untaint
 		if ($address =~ m/(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)/) {
@@ -1431,7 +1490,7 @@ sub set_pagedata4part_list {
 
    if ($part eq 'mod') {
       # do we store things in different directories?
-      my $config = $list->getconfig;
+      my $config = $list->getconfig();
 	  # empty values represent default settings - everything else is considered as evil :)
       my($postpath) = $config =~ m{-7\s*'([^']+)'};
       my($subpath) = $config =~ m{-8\s*'([^']+)'};
@@ -1552,7 +1611,19 @@ sub extract_options_from_params {
 	# parse the first part of the options string
 	while ($old_key =~ m/\w/) {
 		# scan the first part of the options string for lower case letters
-		if (defined($q->param('available_option_' . lc($old_key)))) {
+		if (lc($old_key) eq 'x') {
+			# the 'x' setting does not really represent the mimeremove
+			# ezmlm-idx is ugly: 'X' -> remove file / 'x' -> reset file to default
+			if (-e "$LIST_DIR/$listname/mimeremove") {
+				$options .= 'x';
+				# we have to delete 'mimeremove' if the 'x' checkbox was activated
+				# as ezmlm-make will only reset it, if the file does not exist
+				unlink("$LIST_DIR/$listname/mimeremove")
+					if (defined($q->param('option_x')));
+			} else {
+				$options .= 'X';
+			}
+		} elsif (defined($q->param('available_option_' . lc($old_key)))) {
 			my $form_var_name = "option_" . lc($old_key);
 			# this option was visible for the user
 			if (defined($q->param($form_var_name))) {
@@ -1637,7 +1708,7 @@ sub gnupg_export_key {
 	my @all_keys = $list->get_public_keys();
 	my ($i, $key, $name);
 	for ($i = 0; $i < @all_keys; $i++) {
-		$name = $all_keys[$i]{name} if ($keyid == $all_keys[$i]{id});
+		$name = $all_keys[$i]{name} if ($keyid eq $all_keys[$i]{id});
 	}
 	if ($name) {
 		$name =~ s/\W+/_/g;
@@ -1857,30 +1928,53 @@ sub update_config {
 		}
 	}
 
-	# update mimeremove
-	if (defined($q->param('mimeremove'))) {
-		if (defined($q->param('option_x'))) {
-			$list->setpart('mimeremove', $q->param('mimeremove'))
-		} else {
-			# ezmlm-make automatically removes this file
-		}
+	# update mimeremove/keep
+	if ($q->param('mimefilter_action') eq "remove") {
+		# the checkbox 'x' is only used for reset - so we may not write,
+		# if a reset was requested
+		$list->setpart('mimeremove', $q->param('mimefilter'))
+			unless (defined($q->param('option_x')));
+		# remove 'mimekeep' as it is dominating
+		my $keep_file = "$LIST_DIR/" . $q->param('list') . "/mimekeep";
+		unlink ($keep_file) if (-e $keep_file);
+	} elsif ($q->param('mimefilter_action') eq "keep") {
+		$list->setpart('mimekeep', $q->param('mimefilter'))
+		# it is not necessary to remove 'mimeremove' - see above
 	}
 
-	# update mimereject
-	if (defined($q->param('mimereject'))) {
-		if (defined($q->param('option_x'))) {
-			$list->setpart('mimereject', $q->param('mimereject'))
-		} else {
-			# ezmlm-make automatically removes this file
-		}
-	}
+	# update mimereject - we do not care for 'x'
+	$list->setpart('mimereject', $q->param('mimereject'))
+		if (defined($q->param('mimereject')));
 
-	# Update headeradd and headerremove if these options were visible
+	# Update headeradd if this option is visible
 	$list->setpart('headeradd', $q->param('headeradd'))
 		if (defined($q->param('headeradd')));
-	$list->setpart('headerremove', $q->param('headerremove'))
-		if (defined($q->param('headerremove')));
-	
+
+	# update headerremove/keep
+	if ($q->param('headerfilter_action') eq "remove") {
+		$list->setpart('headerremove', $q->param('headerfilter'));
+		# remove 'headerkeep' as it is dominating
+		my $keep_file = "$LIST_DIR/" . $q->param('list') . "/headerkeep";
+		unlink ($keep_file) if (-e $keep_file);
+	} elsif ($q->param('headerfilter_action') eq "keep") {
+		$list->setpart('headerkeep', $q->param('headerfilter'))
+		# it is not necessary to remove 'headerremove' - see above
+	}
+
+	# 'copylines' setting (since ezmlm-idx v5)
+	if (defined($q->param('copylines'))) {
+		my $copylines;
+		$copylines = (defined($q->param('copylines'))) ?
+			$q->param('copylines') : 0;
+		if (defined($q->param('copylines_enabled')) && ($copylines)) {
+			$list->setpart('copylines', "$copylines");
+		} else {
+			my $copyfile = "$LIST_DIR/" . $q->param('list') . "/copylines";
+			unlink ($copyfile) if (-e $copyfile);
+		}
+	}
+
+	# 'msgsize' setting
 	if (defined($q->param('msgsize_max_value')) && defined($q->param('msgsize_min_value'))) {
 		my ($minsize, $maxsize);
 		$maxsize = (defined($q->param('msgsize_max_state'))) ?
@@ -1974,6 +2068,24 @@ sub update_webusers {
 	
 	close TMP; close WU;
 	unlink "$temp_file";
+}
+
+# ------------------------------------------------------------------------
+
+sub output_mime_examples {
+	# print an incomplete list of possible mime types (taken from ezmlm-idx 6.0)
+
+	my $example_file = "$TEMPLATE_DIR/mime_type_examples.txt";
+	print "Content-Type: text/plain\n\n";
+	if (open(MTF, "<$example_file")) {
+		while (<MTF>) {
+			print $_;
+		}
+		close MTF;
+	} else {
+		warn "Failed to open the example file ($example_file): $!\n";
+		print "Failed to open the example file ($example_file): $!\n";
+	}
 }
 
 # ------------------------------------------------------------------------
@@ -2097,7 +2209,7 @@ sub get_available_interface_languages {
 	my (%languages, @files, $file);
 
 	opendir(DIR, $LANGUAGE_DIR)
-		or &fatal_error ("Language directory ($LANGUAGE_DIR) not accessible!");
+		or &fatal_error ("Language directory ($LANGUAGE_DIR) is not accessible!");
 	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
 	close(DIR);
 
@@ -2109,6 +2221,24 @@ sub get_available_interface_languages {
 		$languages{$file} = $lang_name;
 	}
 	return %languages;
+}
+
+# ---------------------------------------------------------------------------
+
+sub get_available_interfaces {
+
+	my (%interfaces, @files, $file);
+
+	opendir(DIR, "$TEMPLATE_DIR/ui")
+		or &fatal_error ("Interface directory ($TEMPLATE_DIR/ui) is not accessible!");
+	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
+	close(DIR);
+
+	foreach $file (@files) {
+		substr($file, -4) = "";
+		$interfaces{$file} = $file;
+	}
+	return %interfaces;
 }
 
 # ---------------------------------------------------------------------------

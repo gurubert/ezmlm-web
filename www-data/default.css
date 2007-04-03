@@ -56,12 +56,12 @@ font.feature {
 	}
 
 #nav_bar ul li {
-	margin-top: 0;
+	margin-top: 0px;
 	/* small space between highest level entries */
 	margin-bottom: 5px;
 	}
 
-v_bar ul li ul {
+#nav_bar ul li ul {
 	/* small space between middle level entries */
 	margin-bottom: 4px;
 	}
@@ -138,9 +138,19 @@ v_bar ul li ul {
 	list-style: none;
 	}
 
+#main_content ul li {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
 #main_content ul li ul {
 	font-size: 85%;
 	}
+
+#main_content ul li ul li {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
 
 #main_content fieldset {
 	margin-top: 0.5%;

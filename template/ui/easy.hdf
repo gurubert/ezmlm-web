@@ -1,0 +1,83 @@
+UI	{
+
+	Navigation	{
+		DomainSelect = 1
+		ListSelect	= 1
+		ListCreate	= 1
+		Subscribers	{
+			Subscribers	= 1
+			Allow		= 1
+		  }
+
+		Config	{
+			Main		= 1
+			Subscription	= 1
+			Posting		= 1
+			Processing	= 1
+		  }
+
+		Gnupg	{
+			PublicKeys	= 1
+			SecretKeys	= 1
+			GenerateKey	= 1
+		  }
+
+		TextEdit	= 1
+		ListDelete	= 1
+		SubscribeLog	= 1
+		GnupgConvert	= 1
+		Language	= 1
+		Interface	= 1
+		Help	= 1
+	  }
+
+
+	Options	{
+		
+		Create {
+			Listname	= create_listname
+			Listaddress	= create_listaddress
+			Listlanguage	= lang_select
+			Webuser		= webusers
+		  }
+
+
+		Subscribers	{
+			Subscribers	= {}
+		  }
+
+		GenerateKey {
+			KeyName		= gnupg_keyname
+			KeyComment	= gnupg_keycomment
+		  }
+
+		Config	{
+			Main	{
+				Language	= lang_select
+				Owner		= owner_address
+				WebUsers	= webusers
+			  }
+
+			Subscription {
+				Public		= public
+				ConfirmSub	= confirm_sub
+				ConfirmUnsub	= confirm_unsub
+			  }
+
+			Posting	{
+				BlockOthers	= block_others_post
+				SizeMax		= msgsize_max
+			  }
+
+			Processing {
+				Prefix		= prefix
+				Trailer		= trailer
+				From		= from_address
+			  }
+
+		  }
+
+	  }
+
+  }
+

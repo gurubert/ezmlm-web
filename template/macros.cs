@@ -22,7 +22,7 @@ def:setting(setting)
 			?>" id="setting_value_<?cs var:setting ?>" value="<?cs
 			var:html_escape(Data.List.Settings[setting].value) ?>" size="30" /></li></ul>
 		<input type="hidden" name="available_setting_<?cs
-			var:setting ?>" value="true"><?cs
+			var:setting ?>" value="true" /><?cs
 	else ?>unknown setting (<?cs var:setting ?>)<?cs /if ?><?cs
  /def ?><?cs
 

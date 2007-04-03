@@ -1,11 +1,13 @@
 Version 3.2 - 04/14/02006
  * support for encrypted mailing lists
    (https://systemausfall.org/toolforge/gpgpy-ezmlm/)
- * support for multi-domain setups
+ * support for multi-domain setups (multiple list directories)
  * detect preferred interface language
  * user-specific interface language selection
  * support for listing of subscription log
  * a prefix for the local part of mailing list addresses is now configurable
+ * user-specific interface selection (easy/default/expert)
+ * support for more ezmlm-idx: 'headerkeep', 'mimekeep' and 'copylines'
  * script for creating binary suid wrappers added
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)
  * bug in MySQL support fixed
