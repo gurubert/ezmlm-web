@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-03-30 07:54+0200\n"
-"PO-Revision-Date: 2007-03-29 22:12+0200\n"
+"POT-Creation-Date: 2007-04-03 05:57+0200\n"
+"PO-Revision-Date: 2007-04-03 06:08+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -108,6 +108,10 @@ msgstr "Eigenschaften von"
 msgid "Language"
 msgstr "Sprache"
 
+#: Lang.Menue.Interface
+msgid "Interface"
+msgstr "Oberfläche"
+
 #: Lang.Menue.Help
 msgid "Help (external)"
 msgstr "Hilfe (extern)"
@@ -118,7 +122,7 @@ msgstr "Einschreibungen"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Auswahl einer Domain"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
@@ -589,8 +593,8 @@ msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 msgstr "Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)"
 
 #: Lang.Options.x
-msgid "Remove or reject specific mime types in messages"
-msgstr "Prüfe die MIME-Typen der Anhänge eingehender Nachrichten"
+msgid "Reset the list of to be stripped mime types to its default value"
+msgstr "Setze die Liste der zu entfernenden MIME-Typen auf den Startwert zurück"
 
 #: Lang.Options.y
 msgid "Request a confirmation mail for every posted message"
@@ -665,20 +669,40 @@ msgid "Basic List Options"
 msgstr "Grundlegende Einstellungen"
 
 #: Lang.Misc.AllowedToEdit
-msgid "Users allowed to edit this list via web interface:"
-msgstr "Nutzer, die diese Liste per Web-Interface konfigurieren dürfen:"
+msgid "Users allowed to edit this list via web interface"
+msgstr "Nutzer, die diese Liste per Web-Interface konfigurieren dürfen"
+
+#: Lang.Misc.HeaderFiltering
+msgid "Header filtering"
+msgstr "Kopfzeilen-Filterung"
 
 #: Lang.Misc.HeaderRemove
-msgid "Headers to strip from every outgoing mail"
-msgstr "zu entfernende Kopfzeilen"
+msgid "strip these header lines"
+msgstr "entferne die folgenden Kopfzeilen"
+
+#: Lang.Misc.HeaderKeep
+msgid "keep only these header lines"
+msgstr "behalte nur die folgenden Kopfzeilen"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
 msgstr "hinzuzufügende Kopfzeilen"
 
+#: Lang.Misc.MimeTypeExamples
+msgid "Show some example mime types"
+msgstr "Zeige einige Beispiel-MIME-Typen"
+
+#: Lang.Misc.MimeFiltering
+msgid "Mime type filtering (for multipart mails)"
+msgstr "MIME-Typ-Filterung (für mehrteilige Mails)"
+
 #: Lang.Misc.MimeRemove
-msgid "Mime types to strip from all outgoing mail"
-msgstr "Nachrichtenbestandteile dieses Typs werden entfernt"
+msgid "strip these from all messages"
+msgstr "entferne diese von allen Nachrichten"
+
+#: Lang.Misc.MimeKeep
+msgid "keep only these in messages"
+msgstr "erhalte nur diese in den Nachrichten"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
@@ -822,7 +846,27 @@ msgstr "nie"
 
 #: Lang.Misc.NoDomainsAvailable
 msgid "No domains are available."
-msgstr ""
+msgstr "Es sind keine Domains vorhanden."
+
+#: Lang.Misc.CopyLinesEnabled
+msgid "Add some lines of every original message to automatic replies"
+msgstr "Hänge ein paar Zeilen der Original-Nachricht an jede automatische Antwort"
+
+#: Lang.Misc.CopyLinesNumber
+msgid "number of lines"
+msgstr "Anzahl von Zeilen"
+
+#: Lang.Misc.Interfaces.easy
+msgid "basic"
+msgstr "einfach"
+
+#: Lang.Misc.Interfaces.normal
+msgid "default"
+msgstr "normal"
+
+#: Lang.Misc.Interfaces.expert
+msgid "expert"
+msgstr "erweitert"
 
 #: Lang.Introduction.ConfigAdmin
 msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
@@ -1006,4 +1050,4 @@ msgstr "Schlüssel der Liste erzeugen"
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
-msgstr ""
+msgstr "Verfügbare Domains"

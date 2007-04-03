@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-03-30 07:55+0200\n"
+"POT-Creation-Date: 2007-04-03 05:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,6 +107,10 @@ msgstr ""
 
 #: Lang.Menue.Language
 msgid "Language"
+msgstr ""
+
+#: Lang.Menue.Interface
+msgid "Interface"
 msgstr ""
 
 #: Lang.Menue.Help
@@ -590,7 +594,7 @@ msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 msgstr ""
 
 #: Lang.Options.x
-msgid "Remove or reject specific mime types in messages"
+msgid "Reset the list of to be stripped mime types to its default value"
 msgstr ""
 
 #: Lang.Options.y
@@ -666,19 +670,39 @@ msgid "Basic List Options"
 msgstr ""
 
 #: Lang.Misc.AllowedToEdit
-msgid "Users allowed to edit this list via web interface:"
+msgid "Users allowed to edit this list via web interface"
+msgstr ""
+
+#: Lang.Misc.HeaderFiltering
+msgid "Header filtering"
 msgstr ""
 
 #: Lang.Misc.HeaderRemove
-msgid "Headers to strip from every outgoing mail"
+msgid "strip these header lines"
+msgstr ""
+
+#: Lang.Misc.HeaderKeep
+msgid "keep only these header lines"
 msgstr ""
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
 msgstr ""
 
+#: Lang.Misc.MimeTypeExamples
+msgid "Show some example mime types"
+msgstr ""
+
+#: Lang.Misc.MimeFiltering
+msgid "Mime type filtering (for multipart mails)"
+msgstr ""
+
 #: Lang.Misc.MimeRemove
-msgid "Mime types to strip from all outgoing mail"
+msgid "strip these from all messages"
+msgstr ""
+
+#: Lang.Misc.MimeKeep
+msgid "keep only these in messages"
 msgstr ""
 
 #: Lang.Misc.MimeReject
@@ -823,6 +847,26 @@ msgstr ""
 
 #: Lang.Misc.NoDomainsAvailable
 msgid "No domains are available."
+msgstr ""
+
+#: Lang.Misc.CopyLinesEnabled
+msgid "Add some lines of every original message to automatic replies"
+msgstr ""
+
+#: Lang.Misc.CopyLinesNumber
+msgid "number of lines"
+msgstr ""
+
+#: Lang.Misc.Interfaces.easy
+msgid "basic"
+msgstr ""
+
+#: Lang.Misc.Interfaces.normal
+msgid "default"
+msgstr ""
+
+#: Lang.Misc.Interfaces.expert
+msgid "expert"
 msgstr ""
 
 #: Lang.Introduction.ConfigAdmin

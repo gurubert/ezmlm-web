@@ -96,6 +96,10 @@ msgstr "Properties of"
 msgid "Language"
 msgstr "Language"
 
+#: Lang.Menue.Interface
+msgid "Interface"
+msgstr "Interface"
+
 #: Lang.Menue.Help
 msgid "Help (external)"
 msgstr "Help (external)"
@@ -580,8 +584,8 @@ msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 msgstr "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 
 #: Lang.Options.x
-msgid "Remove or reject specific mime types in messages"
-msgstr "Remove or reject specific mime types in messages"
+msgid "Reset the list of to be stripped mime types to its default value"
+msgstr "Reset the list of to be stripped mime types to its default value"
 
 #: Lang.Options.y
 msgid "Request a confirmation mail for every posted message"
@@ -656,20 +660,41 @@ msgid "Basic List Options"
 msgstr "Basic List Options"
 
 #: Lang.Misc.AllowedToEdit
-msgid "Users allowed to edit this list via web interface:"
-msgstr "Users allowed to edit this list via web interface:"
+#, fuzzy
+msgid "Users allowed to edit this list via web interface"
+msgstr "Users allowed to edit this list via web interface"
+
+#: Lang.Misc.HeaderFiltering
+msgid "Header filtering"
+msgstr "Header filtering"
 
 #: Lang.Misc.HeaderRemove
-msgid "Headers to strip from every outgoing mail"
-msgstr "Headers to strip from every outgoing mail"
+msgid "strip these header lines"
+msgstr "strip these header lines"
+
+#: Lang.Misc.HeaderKeep
+msgid "keep only these header lines"
+msgstr "keep only these header lines"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
 msgstr "Headers to add to all outgoing mail"
 
+#: Lang.Misc.MimeTypeExamples
+msgid "Show some example mime types"
+msgstr "Show some example mime types"
+
+#: Lang.Misc.MimeFiltering
+msgid "Mime type filtering (for multipart mails)"
+msgstr "Mime type filtering (for multipart mails)"
+
 #: Lang.Misc.MimeRemove
-msgid "Mime types to strip from all outgoing mail"
-msgstr "Mime types to strip from all outgoing mail"
+msgid "strip these from all messages"
+msgstr "strip these from all messages"
+
+#: Lang.Misc.MimeKeep
+msgid "keep only these in messages"
+msgstr "keep only these in messages"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
@@ -814,6 +839,26 @@ msgstr "never"
 #: Lang.Misc.NoDomainsAvailable
 msgid "No domains are available."
 msgstr "No domains are available."
+
+#: Lang.Misc.CopyLinesEnabled
+msgid "Add some lines of every original message to automatic replies"
+msgstr "Add some lines of every original message to automatic replies"
+
+#: Lang.Misc.CopyLinesNumber
+msgid "number of lines"
+msgstr "number of lines"
+
+#: Lang.Misc.Interfaces.easy
+msgid "basic"
+msgstr "basic"
+
+#: Lang.Misc.Interfaces.normal
+msgid "default"
+msgstr "default"
+
+#: Lang.Misc.Interfaces.expert
+msgid "expert"
+msgstr "expert"
 
 #: Lang.Introduction.ConfigAdmin
 msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
