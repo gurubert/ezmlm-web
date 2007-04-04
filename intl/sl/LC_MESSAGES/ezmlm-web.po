@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-03 05:58+0200\n"
+"POT-Creation-Date: 2007-04-04 12:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -197,7 +197,7 @@ msgstr ""
 msgid "Secret keys"
 msgstr ""
 
-#: Lang.Title.GnupgGenerate
+#: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
 msgstr ""
 
@@ -609,6 +609,70 @@ msgstr ""
 msgid "Sign outgoing messages with the list's key"
 msgstr ""
 
+#: Lang.Selections.archive
+msgid "Access to the archive is granted for"
+msgstr ""
+
+#: Lang.Selections.archive.bg
+msgid "administrators"
+msgstr ""
+
+#: Lang.Selections.archive.Bg
+msgid "subscribers and administrators"
+msgstr ""
+
+#: Lang.Selections.archive.BG
+msgid "everyone"
+msgstr ""
+
+#: Lang.Selections.subscribe
+msgid "Public subscription is"
+msgstr ""
+
+#: Lang.Selections.subscribe.pS
+msgid "open"
+msgstr ""
+
+#: Lang.Selections.subscribe.ps
+msgid "moderated"
+msgstr ""
+
+#: Lang.Selections.subscribe.P
+msgid "not allowed"
+msgstr ""
+
+#: Lang.Selections.posting
+msgid "Posting is"
+msgstr ""
+
+#: Lang.Selections.posting.MOU
+msgid "allowed for everyone"
+msgstr ""
+
+#: Lang.Selections.posting.mOU
+msgid "moderated for everyone"
+msgstr ""
+
+#: Lang.Selections.posting.mOu
+msgid "allowed for subscribers and moderated for others"
+msgstr ""
+
+#: Lang.Selections.posting.MOu
+msgid "allowed for subscribers"
+msgstr ""
+
+#: Lang.Selections.posting.moU
+msgid "allowed only for moderators"
+msgstr ""
+
+#: Lang.Selections.confirmation
+msgid "Confirmation mails are required for"
+msgstr ""
+
+#: Lang.Selections.confirmation.J
+msgid "unsubscription"
+msgstr ""
+
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
 msgstr ""
@@ -943,6 +1007,14 @@ msgstr ""
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
+msgstr ""
+
+#: Lang.Introduction.GnupgSecret
+msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
+msgstr ""
+
+#: Lang.Introduction.GnupgPublic
+msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
 msgstr ""
 
 #: Lang.Legend.ConfigAdmin

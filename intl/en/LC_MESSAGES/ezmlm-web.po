@@ -185,7 +185,7 @@ msgstr "Public keys"
 msgid "Secret keys"
 msgstr "Secret keys"
 
-#: Lang.Title.GnupgGenerate
+#: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
 msgstr "Generate a new keypair"
 
@@ -599,6 +599,72 @@ msgstr "Send plaintext to the subscribers which have no key"
 msgid "Sign outgoing messages with the list's key"
 msgstr "Sign outgoing messages with the list's key"
 
+#: Lang.Selections.archive
+msgid "Access to the archive is granted for"
+msgstr "Access to the archive is granted for"
+
+#: Lang.Selections.archive.bg
+#, fuzzy
+msgid "administrators"
+msgstr "administrators"
+
+#: Lang.Selections.archive.Bg
+msgid "subscribers and administrators"
+msgstr "subscribers and administrators"
+
+#: Lang.Selections.archive.BG
+msgid "everyone"
+msgstr "everyone"
+
+#: Lang.Selections.subscribe
+msgid "Public subscription is"
+msgstr "Public subscription is"
+
+#: Lang.Selections.subscribe.pS
+msgid "open"
+msgstr "open"
+
+#: Lang.Selections.subscribe.ps
+msgid "moderated"
+msgstr "moderated"
+
+#: Lang.Selections.subscribe.P
+msgid "not allowed"
+msgstr "not allowed"
+
+#: Lang.Selections.posting
+msgid "Posting is"
+msgstr "Posting is"
+
+#: Lang.Selections.posting.MOU
+msgid "allowed for everyone"
+msgstr "allowed for everyone"
+
+#: Lang.Selections.posting.mOU
+msgid "moderated for everyone"
+msgstr "moderated for everyone"
+
+#: Lang.Selections.posting.mOu
+msgid "allowed for subscribers and moderated for others"
+msgstr "allowed for subscribers and moderated for others"
+
+#: Lang.Selections.posting.MOu
+msgid "allowed for subscribers"
+msgstr "allowed for subscribers"
+
+#: Lang.Selections.posting.moU
+msgid "allowed only for moderators"
+msgstr "allowed only for moderators"
+
+#: Lang.Selections.confirmation
+msgid "Confirmation mails are required for"
+msgstr "Confirmation mails are required for"
+
+#: Lang.Selections.confirmation.J
+#, fuzzy
+msgid "unsubscription"
+msgstr "unsubscription"
+
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
 msgstr "Make the list a sublist of another list"
@@ -935,6 +1001,14 @@ msgstr "Every encrypted mailing list needs a secret key. You can import this key
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "Configure some useful settings of the encrypted mailing list."
+
+#: Lang.Introduction.GnupgSecret
+msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
+msgstr "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
+
+#: Lang.Introduction.GnupgPublic
+msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
+msgstr "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
