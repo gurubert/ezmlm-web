@@ -89,6 +89,7 @@ UI	{
 				Language	= lang_select
 				Charset		= charset_select
 				Owner		= owner_address
+				Confirm		= confirm_selection
 				MainList	= mainlist
 				MailmanRequests	= mailman_requests
 				RemoveWarn	= warn_remove
@@ -97,23 +98,16 @@ UI	{
 			  }
 
 			Archive {
-				Enabled		{
-					Self		= archive_enabled
-					Public		= public
-					ModOnly		= archive_mod_only
-					Guard		= archive_deny_unknown
-				  }
+				Enabled		= archive_enabled
+				Access		= archive_access
 				RemovePrivateHeader	= archive_remove_private_header
 			  }
 			
 			Subscription {
-				Public		= public
+				Rules		= subscribe_selection
 				ConfirmSub	= confirm_sub
 				ConfirmUnsub	= confirm_unsub
-				ModSub	{
-					Self	= mod_sub
-					Path	= mod_sub_path
-				  }
+				Path		= mod_sub_path
 			  }
 
 			Admin	{
@@ -126,17 +120,13 @@ UI	{
 			  }
 
 			Posting	{
+				Rules		= posting_selection
 				UseDeny		= block_deny
-				BlockOthers	= block_others_post
 				Confirm		= confirm_post
-				Moderate	{
-					Self	= mod_post
-					NonMod	= block_nonmod_post
-					Path	= mod_post_path
-				  }
 				SizeMax		= msgsize_max
 				SizeMin		= msgsize_min
 				MimeReject	= mimereject
+				Path		= mod_post_path
 			  }
 
 			GnupgOptions {
@@ -146,6 +136,7 @@ UI	{
 
 			Processing {
 				Prefix		= prefix
+				ReplyToSelf	= reply_to_self
 				Trailer		= trailer
 				From		= from_address
 				MimeFilter	= mimefilter

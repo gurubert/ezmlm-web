@@ -56,7 +56,7 @@ Lang {
 		GnupgConvert	= Encryption
 		GnupgPublic		= Public keys
 		GnupgSecret		= Secret keys
-		GnupgGenerate	= Generate a new keypair
+		GnupgGenerateKey	= Generate a new keypair
 		GnupgOptions	= Encryption settings
 		DomainSelect	= Choose a domain
 	  }
@@ -179,8 +179,31 @@ Lang {
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
 		x	= Reset the list of to be stripped mime types to its default value
 		y	= Request a confirmation mail for every posted message
+		special_replytoself	= Redirect replies to the list
 		gnupg_plain_without_key	= Send plaintext to the subscribers which have no key
 		gnupg_sign_messages	= Sign outgoing messages with the list's key
+	  }
+	
+
+	Selections {
+		archive		= Access to the archive is granted for
+		archive.bg	= administrators
+		archive.Bg	= subscribers and administrators
+		archive.BG	= everyone
+		subscribe		= Public subscription is
+		subscribe.pS	= open
+		subscribe.ps	= moderated
+		subscribe.P		= not allowed
+		posting		= Posting is
+		posting.MOU	= allowed for everyone
+		posting.mOU	= moderated for everyone
+		posting.mOu	= allowed for subscribers and moderated for others
+		posting.MOu	= allowed for subscribers
+		posting.moU	= allowed only for moderators
+		confirmation	= Confirmation mails are required for
+		confirmation.H	= subscription
+		confirmation.J	= unsubscription
+		confirmation.y	= posting
 	  }
 
 
@@ -282,6 +305,8 @@ Lang {
 		GnupgConvert	= You can convert a normal mailinglist to an encrypted list and vice versa.
 		GnupgGenerateKey	= Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key.
 		GnupgOptions	= Configure some useful settings of the encrypted mailing list.
+		GnupgSecret		= Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken.
+		GnupgPublic		= There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys.
 	  }
 
 	Legend {

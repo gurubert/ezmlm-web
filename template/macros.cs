@@ -1,9 +1,10 @@
 <?cs def:checkbox(option)
 	?><?cs if:Lang.Options[option]
-		?><input type="checkbox" name="option_<?cs var:option ?>" id="option_<?cs
-				var:option ?>" value="selected" <?cs
-			if:(Data.List.Options[option] == 1) ?>checked="checked"<?cs
-				/if ?> /> <label for="option_<?cs var:option ?>"><?cs
+		?><input type="checkbox" name="option_<?cs var:option
+				?>" id="option_<?cs var:option ?>" value="selected" <?cs
+			if:(Data.List.Options[option] == 1) ?>checked="checked" <?cs
+					/if ?>/>
+				<label for="option_<?cs var:option ?>"><?cs
 				var:html_escape(Lang.Options[option])
 			?></label>
 		<input type="hidden" name="available_option_<?cs
@@ -15,8 +16,9 @@ def:setting(setting)
 	?><?cs if:Lang.Settings[setting]
 		?><input type="checkbox" name="setting_state_<?cs var:setting
 			?>" id="setting_state_<?cs var:setting ?>" value="selected" <?cs
-			if:(Data.List.Settings[setting].state == 1) ?>checked="checked"<?cs /if
-				?> /> <label for="setting_state_<?cs var:setting ?>"><?cs
+			if:(Data.List.Settings[setting].state == 1) ?>checked="checked"<?cs
+				/if ?> />
+			<label for="setting_state_<?cs var:setting ?>"><?cs
 			var:html_escape(Lang.Settings[setting])
 			?></label><ul><li><input type="text" name="setting_value_<?cs var:setting
 			?>" id="setting_value_<?cs var:setting ?>" value="<?cs
@@ -124,5 +126,47 @@ def:form_header(form_name, ignore_attr)
 def:form_header_upload(form_name, ignore_attr)
 	?><?cs call:form_header_generic(form_name, ignore_attr,
 			"multipart/form-data") ?><?cs
- /def ?>
+ /def ?><?cs
+
+
+def:check_active_selection(input)
+	?><?cs set:selection=input
+	?><?cs set:match_ok = 1 ?><?cs
+	set:slen = string.length(selection) ?><?cs
+	loop: sindex = #0, slen-1, #1 ?><?cs
+		set:selection_char = string.slice(selection, sindex, sindex+1) ?><?cs
+		if:(Data.List.Options[selection_char] != "1") ?><?cs
+			set:match_ok = 0 ?><?cs /if ?><?cs
+	/loop ?><?cs if:match_ok == 1 ?> checked="checked" <?cs /if ?><?cs
+ /def ?><?cs
+
+
+def:selection_list(sel_name)
+	?><?cs var:html_escape(Lang.Selections[sel_name])
+	?>:<br/>
+	<ul><?cs each:item = Lang.Selections[sel_name] ?>
+			<li><input type="radio" name="selection_<?cs var:sel_name
+				?>" value="<?cs var:name(item) ?>" id="selection_<?cs
+				var:sel_name + '_' + name(item) ?>" <?cs
+				call:check_active_selection(name(item)) ?> />
+				<label for="selection_<?csvar:sel_name + '_' + name(item)
+				?>"><?cs var:html_escape(item) ?></label></li><?cs /each ?>
+	</ul>
+ <?cs /def ?><?cs
+
+
+def:selection_checkboxes(sel_name)
+	?><?cs var:html_escape(Lang.Selections[sel_name]) ?>:
+	<ul><?cs each:item = Lang.Selections[sel_name] ?>
+		<li><input type="checkbox" value="enabled" name="option_<?cs
+				var:name(item) ?>" id="selection_<?cs
+				var:sel_name + '_' + name(item) ?>" <?cs
+				call:check_active_selection(name(item)) ?> />
+				<input type="hidden" name="available_option_<?cs
+				var:name(item) ?>" value="enabled" />
+				<label for="selection_<?cs var:sel_name + '_' + name(item)
+				?>"><?cs var:html_escape(item) ?></label></li>
+		<?cs /each ?>
+	</ul>
+ <?cs /def ?>
 

@@ -1,3 +1,7 @@
+#!/bin/sh
+# TODO: remove this header as soon as the demo-uml has python
+exit
+
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 #

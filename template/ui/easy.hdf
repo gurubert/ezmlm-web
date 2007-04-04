@@ -7,12 +7,11 @@ UI	{
 		Subscribers	{
 			Subscribers	= 1
 			Allow		= 1
+			Moderators	= 1
 		  }
 
 		Config	{
 			Main		= 1
-			Subscription	= 1
-			Posting		= 1
 			Processing	= 1
 		  }
 
@@ -54,23 +53,15 @@ UI	{
 		Config	{
 			Main	{
 				Language	= lang_select
+				SubscribeRules	= subscribe_selection
+				PostingRules	= posting_selection
 				Owner		= owner_address
 				WebUsers	= webusers
 			  }
 
-			Subscription {
-				Public		= public
-				ConfirmSub	= confirm_sub
-				ConfirmUnsub	= confirm_unsub
-			  }
-
-			Posting	{
-				BlockOthers	= block_others_post
-				SizeMax		= msgsize_max
-			  }
-
 			Processing {
 				Prefix		= prefix
+				ReplyToSelf	= reply_to_self
 				Trailer		= trailer
 				From		= from_address
 			  }

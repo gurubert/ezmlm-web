@@ -25,10 +25,10 @@ Lang {
     ListSelect = Auswahl einer Liste
     Properties = Eigenschaften von
     Language = Sprache
-    Interface = Interface
+    Interface = Oberfläche
     Help = Hilfe (extern)
     SubscribeLog = Einschreibungen
-    DomainSelect = Choose a domain
+    DomainSelect = Auswahl einer Domain
   }
   Title {
     ConfigMain = Listeneinstellungen
@@ -52,9 +52,9 @@ Lang {
     GnupgConvert = Verschlüsselung
     GnupgPublic = Öffentliche Schlüssel
     GnupgSecret = Private Schlüssel
-    GnupgGenerate = Erzeugen eines Schlüssels
+    GnupgGenerateKey = Erzeugen eines Schlüssels
     GnupgOptions = Verschlüsselungseinstellungen
-    DomainSelect = Choose a domain
+    DomainSelect = Auswahl einer Domain
   }
   Buttons {
     Create = Erzeuge die Liste
@@ -148,7 +148,7 @@ Lang {
     d = Aktiviere die Zusammenfassungsliste
     f = Füge ein Präfix zum Betreff der ausgehenden Mails hinzu
     g = Verweigere unbekannten NutzerInnen den Zugriff auf das Archiv
-    h = Bei der Einschreibung in die Liste ist keine Bestätigungsmail
+    h = Bei der Einschreibung in die Liste ist keine Bestätigungsmail erforderlich.
     i = Indiziere die Nachrichten zur Veröffentlichung im Internet (z.B. mit ezmlm-www)
     j = Beim Austragen aus der Liste ist keine Bestätigungsmail erforderlich
     k = Beachte die Ablehnungsliste bei der Verarbeitung von Mails
@@ -163,10 +163,38 @@ Lang {
     t = Hänge eine Signatur an jede versandte Nachricht
     u = Nur Einsendungen von AbonnentInnen werden akzeptiert (für moderierte Listen: akzeptiere alle Einsendungen von AbonnentInnen)
     w = Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
-    x = Reset the list of to be stripped mime types to its default value
+    x = Setze die Liste der zu entfernenden MIME-Typen auf den Startwert zurück
     y = Fordere eine Bestätigung für jede eingesandte Nachricht an
     gnupg_plain_without_key = Sende Nachrichten im Klartext an Empfänger ohne Schlüssel
     gnupg_sign_messages = Signiere ausgehende Nachrichten mit dem Listenschlüssel
+  }
+  Selections {
+    archive = Das Archiv ist zugänglich für
+    archive {
+      bg = AdministratorInnen
+      Bg = AbonnentInnen und AdministratorInnen
+      BG = jede/r
+    }
+    subscribe = Öffentliche Einschreibung ist
+    subscribe {
+      pS = offen
+      ps = moderiert
+      P = nicht erlaubt
+    }
+    posting = Einsendungen sind
+    posting {
+      MOU = offen für jede/n
+      mOU = moderiert für jede/n
+      mOu = offen für AbonnentInnen und moderiert für alle anderen
+      MOu = offen für AbonnentInnen
+      moU = offen nur für ModeratorInnen
+    }
+    confirmation = Bestätigungsmails werden benötigt für
+    confirmation {
+      H = Einschreibung
+      J = Austragung
+      y = Einsendung
+    }
   }
   Settings {
     0 = Diese Liste ist die Unterliste einer anderen
@@ -186,15 +214,15 @@ Lang {
     ListName = Name der Liste
     ListAddress = Addresse der Liste
     ListOptions = Grundlegende Einstellungen
-    AllowedToEdit = Users allowed to edit this list via web interface
-    HeaderFiltering = Header filtering
-    HeaderRemove = strip these header lines
-    HeaderKeep = keep only these header lines
+    AllowedToEdit = Nutzer, die diese Liste per Web-Interface konfigurieren dürfen
+    HeaderFiltering = Kopfzeilen-Filterung
+    HeaderRemove = entferne die folgenden Kopfzeilen
+    HeaderKeep = behalte nur die folgenden Kopfzeilen
     HeaderAdd = hinzuzufügende Kopfzeilen
-    MimeTypeExamples = Show some example mime types
-    MimeFiltering = Mime type filtering (for multipart mails)
-    MimeRemove = strip these from all messages
-    MimeKeep = keep only these in messages
+    MimeTypeExamples = Zeige einige Beispiel-MIME-Typen
+    MimeFiltering = MIME-Typ-Filterung (für mehrteilige Mails)
+    MimeRemove = entferne diese von allen Nachrichten
+    MimeKeep = erhalte nur diese in den Nachrichten
     MimeReject = Nachrichten, die einen der folgenden Datentypen enthalten, werden abgewiesen
     EditFileInfo {
       CommonTags = allgemeine Platzhalter
@@ -234,13 +262,13 @@ Lang {
     GnupgKeySize = Schlüssellänge (in Bytes)
     GnupgKeyExpires = Verfallsdatum (in Jahren)
     Never = nie
-    NoDomainsAvailable = No domains are available.
-    CopyLinesEnabled = Add some lines of every original message to automatic replies
-    CopyLinesNumber = number of lines
+    NoDomainsAvailable = Es sind keine Domains vorhanden.
+    CopyLinesEnabled = Hänge ein paar Zeilen der Original-Nachricht an jede automatische Antwort
+    CopyLinesNumber = Anzahl von Zeilen
     Interfaces {
-      easy = basic
-      normal = default
-      expert = expert
+      easy = einfach
+      normal = normal
+      expert = erweitert
     }
   }
   Introduction {
@@ -263,6 +291,8 @@ Lang {
     GnupgConvert = Du kannst eine normale Mailingliste in eine verschlüsselte umwandeln und umgekehrt.
     GnupgGenerateKey = Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
     GnupgOptions = Konfiguriere die Einstellungen der verschlüsselten Mailingliste.
+    GnupgSecret = Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken.
+    GnupgPublic = There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys.
   }
   Legend {
     ConfigAdmin = Fern-Administrations-Rechte
@@ -292,6 +322,6 @@ Lang {
     GnupgKeyImport = Schlüssel importieren
     GnupgGenerateKey = Schlüssel der Liste erzeugen
     GnupgOptions = Verschlüsselungseinstellungen
-    AvailableDomains = Available domains
+    AvailableDomains = Verfügbare Domains
   }
 }

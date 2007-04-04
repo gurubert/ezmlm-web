@@ -7,6 +7,7 @@ Version 3.2 - 04/14/02006
  * support for listing of subscription log
  * a prefix for the local part of mailing list addresses is now configurable
  * user-specific interface selection (easy/default/expert)
+ * simplified rules for subscribing, posting and archive access
  * support for more ezmlm-idx: 'headerkeep', 'mimekeep' and 'copylines'
  * script for creating binary suid wrappers added
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)

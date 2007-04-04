@@ -842,8 +842,12 @@ sub set_pagedata_misc_configfiles {
 	# Get the contents of some important files
 	$item = $list->getpart('prefix');
 	$pagedata->setValue("Data.List.Prefix", "$item");
+
+	# check reply_to setting
 	$item = $list->getpart('headeradd');
 	$pagedata->setValue("Data.List.HeaderAdd", "$item");
+	$pagedata->setValue("Data.List.Options.special_replytoself", 1)
+		if (&is_reply_to_self("$item"));
 
 	# 'headerremove' is ignored if 'headerkeep' exists (since ezmlm-idx v5)
 	if ((Mail::Ezmlm->get_version() >= 5.1) &&(-e $list->thislist() . "/headerkeep")) {
@@ -1003,7 +1007,10 @@ sub set_pagedata4options {
 	while ($key =~ m/\w/) {
 		# scan the first part of the options string for lower case letters
 		$state = ($options =~ /^\w*$key\w*\s*/);
+		# set the lower case option
 		$pagedata->setValue("Data.List.Options." . $key , ($state)? 1 : 0);
+		# also set the reverse value - see cs macro "check_active_selection"
+		$pagedata->setValue("Data.List.Options." . uc($key) , ($state)? 0 : 1);
 		$i++;
 		$key = lc(substr($options,$i,1));
 	}
@@ -1609,6 +1616,8 @@ sub extract_options_from_params {
 	################ options ################
 	$i = 0;
 	$old_key = substr($old_options,$i,1);
+	# some special selections
+	my @avail_selections = ('archive', 'subscribe', 'posting');
 	# parse the first part of the options string
 	while ($old_key =~ m/\w/) {
 		# scan the first part of the options string for lower case letters
@@ -1624,7 +1633,17 @@ sub extract_options_from_params {
 			} else {
 				$options .= 'X';
 			}
+		} elsif (defined($q->param('available_option_' . uc($old_key)))) {
+			# inverted checkbox
+			my $form_var_name = "option_" . uc($old_key);
+			# this option was visible for the user
+			if (defined($q->param($form_var_name))) {
+				$options .= uc($old_key);
+			} else {
+				$options .= lc($old_key);
+			}
 		} elsif (defined($q->param('available_option_' . lc($old_key)))) {
+			# non inverted checkbox
 			my $form_var_name = "option_" . lc($old_key);
 			# this option was visible for the user
 			if (defined($q->param($form_var_name))) {
@@ -1632,6 +1651,12 @@ sub extract_options_from_params {
 			} else {
 				$options .= uc($old_key);
 			}
+		} elsif (&is_option_in_selections(lc($old_key)))  {
+			# enabled due to some special selection
+			$options .= lc($old_key);
+		} elsif (&is_option_in_selections(uc($old_key)))  {
+			# disabled due to some special selection
+			$options .= uc($old_key);
 		} elsif ("cevz" =~ m/$old_key/i) {
 			# ignore invalid settings (the output of "getconfig" is really weird!)
 		} else {
@@ -1914,6 +1939,7 @@ sub update_config {
 	# update trailing text
 	if (defined($q->param('trailing_text'))) {
 		if (defined($q->param('option_t'))) {
+			# TODO: the trailer _must_ be followed by a newline
 			$list->set_text_content('trailer', $q->param('trailing_text'));
 		} else {
 			# ezmlm-make automatically removes this file
@@ -1948,8 +1974,30 @@ sub update_config {
 		if (defined($q->param('mimereject')));
 
 	# Update headeradd if this option is visible
-	$list->setpart('headeradd', $q->param('headeradd'))
-		if (defined($q->param('headeradd')));
+	# afterwards we will care about a single 'options_special_replytoself'
+	if (defined($q->param('headeradd'))
+			|| defined($q->param('available_option_special_replytoself'))) {
+		my $headers;
+		if (defined($q->param('headeradd'))) {
+			$headers = $q->param('headeradd');
+		} else {
+			$headers = $list->getpart('headeradd');
+		}
+		chomp($headers);
+		if (defined($q->param('available_option_special_replytoself'))) {
+			if (!defined($q->param('option_special_replytoself'))
+					&& (&is_reply_to_self("$headers"))) {
+				# remove the header line
+				$headers =~ s/^Reply-To:\s+.*$//m;
+			} elsif (defined($q->param('option_special_replytoself'))
+					&& (!&is_reply_to_self("$headers"))) {
+				# add the header line
+				chomp($headers);
+				$headers .= "\nReply-To: <#l#>@<#h#>";
+			}
+		}
+		$list->setpart('headeradd', "$headers");
+	}
 
 	# update headerremove/keep
 	if ($q->param('headerfilter_action') eq "remove") {
@@ -2021,6 +2069,34 @@ sub update_config {
 	}
 
 	return (0==0);
+}
+
+# ------------------------------------------------------------------------
+
+sub is_reply_to_self {
+	# check if the header lines of the list contain a reply-to-self line
+	
+	my ($header_lines) = @_;
+	return (0==0) if ($header_lines =~ m/^Reply-To:\s+<#l#>@<#h#>/m);
+	return (1==0);
+}
+
+# ------------------------------------------------------------------------
+
+sub is_option_in_selections {
+	# check if the given 'key' is defined in any of the special selection
+	# form fields ('archive', 'subscribe', 'posting'). Case for key matters!
+
+	my $key = shift;
+	my @avail_selections = ('archive', 'subscribe', 'posting');
+	my $one_selection;
+
+	foreach $one_selection (@avail_selections) {
+		my $form_name = "selection_$one_selection";
+		return (0==0) if (defined($q->param($form_name))
+				&& ($q->param($form_name) =~ m/$key/));
+	}
+	return (1==0);
 }
 
 # ------------------------------------------------------------------------

@@ -8,8 +8,8 @@
 				<select name="list_language" id="list_language">
 					<?cs each:item = Data.List.AvailableLanguages ?>
 						<option <?cs if:(item == Data.List.Language)
-							?>selected="selected"<?cs /if ?>><?cs var:item ?></option>
-					<?cs /each ?>
+							?>selected="selected"<?cs /if ?>><?cs var:item
+							?></option><?cs /each ?>
 				</select><?cs /if ?>
 	<?cs else ?>
 		<?cs if:subcount(Data.AvailableLanguages) > 0 ?>
@@ -18,8 +18,8 @@
 				<select name="list_language" id="list_language">
 					<?cs each:item = Data.AvailableLanguages ?>
 						<option <?cs if:item == "default"
-							?>selected="selected"<?cs /if ?>><?cs var:item ?></option>
-					<?cs /each ?>
+							?>selected="selected"<?cs /if ?>><?cs var:item
+							?></option><?cs /each ?>
 				</select><?cs /if ?>
 	<?cs /if ?>
 <?cs /if ?>

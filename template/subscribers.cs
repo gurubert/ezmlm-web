@@ -96,7 +96,9 @@
 				</select></li>
 				<li><?cs var:subcount(Data.List.Subscribers) ?> <?cs var:html_escape(Lang.Misc.Subscribers) ?></li>
 				<li><input type="hidden" name="action" value="address_del" />
-				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></form></li>
+				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
+			</ul></form>
+			<ul>
 				<li><?cs call:form_header("download_subscribers", "") ?>
 					<input type="hidden" name="action" value="download_subscribers" />
 					<?cs if:Data.List.PartType ?>

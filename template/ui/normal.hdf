@@ -81,29 +81,20 @@ UI	{
 		Config	{
 			Main	{
 				Language	= lang_select
-				Charset		= charset_select
 				Owner		= owner_address
-				MainList	= mainlist
 				WebUsers	= webusers
 			  }
 
 			Archive {
-				Enabled		{
-					Self		= archive_enabled
-					Public		= public
-					ModOnly		= archive_mod_only
-					Guard		= archive_deny_unknown
-				  }
+				Enabled		= archive_enabled
+				Access		= archive_access
 				RemovePrivateHeader	= archive_remove_private_header
 			  }
 			
 			Subscription {
-				Public		= public
+				Rules		= subscribe_selection
 				ConfirmSub	= confirm_sub
 				ConfirmUnsub	= confirm_unsub
-				ModSub	{
-					Self	= mod_sub
-				  }
 			  }
 
 			Admin	{
@@ -115,13 +106,9 @@ UI	{
 			  }
 
 			Posting	{
+				Moderate	= posting_selection
 				UseDeny		= block_deny
-				BlockOthers	= block_others_post
 				Confirm		= confirm_post
-				Moderate	{
-					Self	= mod_post
-					NonMod	= block_nonmod_post
-				  }
 				SizeMax		= msgsize_max
 				SizeMin		= msgsize_min
 				MimeReject	= mimereject
@@ -134,6 +121,7 @@ UI	{
 
 			Processing {
 				Prefix		= prefix
+				ReplyToSelf	= reply_to_self
 				Trailer		= trailer
 				From		= from_address
 				MimeFilter	= mimefilter

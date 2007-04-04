@@ -1,4 +1,4 @@
-<!-- allows the user to change the interface language (not of the list!) -->
+<!-- allows the user to change the interface style -->
 <?cs if:subcount(Config.UI.Interfaces) > 0 ?>
 
 	<?cs call:form_header("select_interface", "template") ?>
