@@ -2437,7 +2437,7 @@ mailing lists with ezmlm-web.
 
 =item Guy Antony Halse <guy-ezmlm@rucus.ru.ac.za>
 
-=item Lars Kruse <ezmlm-web@sumpfralle.de>
+=item Lars Kruse <devel@sumpfralle.de>
 
 =back
 
