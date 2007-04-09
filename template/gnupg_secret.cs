@@ -8,7 +8,7 @@
 
 <?cs include:TemplateDir + '/gnupg_import.cs' ?>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgSecretKeys) ?> </legend>
 
 	<?cs if:subcount(Data.List.gnupg_keys.secret) > 0 ?>

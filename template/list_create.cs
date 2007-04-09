@@ -2,7 +2,7 @@
 	<h1><?cs var:html_escape(Lang.Title.ListCreate) ?></h1>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ListCreate) ?> </legend>
 
 	<?cs call:form_header("list_create", "") ?>

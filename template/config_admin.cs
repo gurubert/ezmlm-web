@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.ConfigAdmin) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ConfigAdmin) ?> </legend>
 
 	<?cs call:form_header("config_admin", "") ?>

@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.GnupgGenerateKey) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgGenerateKey) ?> </legend>
 
 	<?cs call:form_header("gnupg_generate_key", "") ?>

@@ -143,3 +143,7 @@ template/ui/easy.hdf -text
 template/ui/expert.hdf -text
 template/ui/normal.hdf -text
 www-data/default.css -text
+www-data/graphics-template.svg -text
+www-data/horiz_grad_blue.png -text
+www-data/horiz_grad_blue_long.png -text
+www-data/vert_grad_red.png -text

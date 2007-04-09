@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.GnupgOptions) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgOptions) ?> </legend>
 
 	<?cs call:form_header("config_encryption", "") ?>

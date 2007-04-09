@@ -16,10 +16,10 @@
 </head>
 
 <body>
-	<div id="oben">
+	<div id="top">
 		<div id="perm_nav">
 			<?cs var:Config.PageTitle ?>
 		</div>
-		<h1 class="oben">ezmlm-web</h1>
+		<h1>ezmlm-web</h1>
 	</div>
 

@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.ListDelete) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ListDelete) ?> </legend>
 
 	<p><?cs var:html_escape(Lang.Misc.ConfirmDelete) ?></p>

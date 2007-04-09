@@ -33,7 +33,7 @@
 			|| ((Data.List.PartType == 'mod')
 				&& (subcount(UI.Options.Subscribers.Moderators) >0))) ?>
 
-	<fieldset class="form">
+	<fieldset>
 		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
 
 	<?cs call:form_header("config_subscription", "") ?>
@@ -63,7 +63,7 @@
 	((Data.List.PartType == 'deny') && (Data.List.Options.k == 1)) ||
 	((Data.List.PartType == 'digest') && (Data.List.Options.d == 1)) ?>
 
-	<fieldset class="form">
+	<fieldset>
 		<legend>
 			<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Legend.MembersAllow) ?>
 			<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Legend.MembersDeny) ?>

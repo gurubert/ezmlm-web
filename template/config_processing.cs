@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.ConfigProcess) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ConfigProcess) ?> </legend>
 
 	<?cs call:form_header("config_processing", "") ?>

@@ -1,4 +1,4 @@
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgKeyImport) ?> </legend>
 	<?cs call:form_header_upload("gnupg_key_upload", "") ?>
 

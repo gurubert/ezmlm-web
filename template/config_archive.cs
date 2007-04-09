@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.ConfigArchive) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ConfigArchive) ?> </legend>
 
 	<?cs call:form_header("config_archive", "") ?>

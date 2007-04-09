@@ -2,7 +2,7 @@
 	<h1><?cs var:html_escape(Lang.Title.SubscribeLog) ?></h1>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.SubscribeLog) ?> </legend>
 
 	<?cs if:subcount(Data.List.SubscribeLog) > 0 ?>

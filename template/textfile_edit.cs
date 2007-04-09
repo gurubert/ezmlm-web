@@ -9,7 +9,7 @@
 
 <!-- reset text file -->
 <?cs if:(Data.areDefaultTextsAvailable == 1) && (Data.List.File.isDefault == 0) ?>
-	<fieldset class="form">
+	<fieldset>
 		<legend><?cs var:html_escape(Lang.Legend.TextFileReset) ?> </legend>
 
 		<div class="introduction">
@@ -25,7 +25,7 @@
 <?cs /if ?>
 
 <!-- edit text file -->
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.TextFileEdit) ?> </legend>
 
 <?cs call:form_header("textfile_reset", "") ?>

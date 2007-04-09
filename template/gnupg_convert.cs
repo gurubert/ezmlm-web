@@ -6,7 +6,7 @@
 	<p><?cs var:html_escape(Lang.Introduction.GnupgConvert) ?></p>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgConvert) ?> </legend>
 
 	<?cs call:form_header("gnupg_convert", "") ?>

@@ -6,7 +6,7 @@
 	<?cs var:html_escape(Lang.Introduction.TextFiles) ?>
 </div>
 
-<fieldset class="form">
+<fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.TextFiles) ?> </legend>
 
 <?cs call:form_header("select_textfile", "") ?>
