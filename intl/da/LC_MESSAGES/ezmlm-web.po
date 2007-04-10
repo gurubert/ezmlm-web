@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-04 12:58+0200\n"
+"POT-Creation-Date: 2007-04-11 00:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -601,6 +601,10 @@ msgstr ""
 msgid "Request a confirmation mail for every posted message"
 msgstr ""
 
+#: Lang.Options.special_replytoself
+msgid "Redirect replies to the list"
+msgstr ""
+
 #: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
 msgstr ""
@@ -931,6 +935,42 @@ msgstr ""
 
 #: Lang.Misc.Interfaces.expert
 msgid "expert"
+msgstr ""
+
+#: Lang.Misc.MailAddress
+msgid "Mail address"
+msgstr ""
+
+#: Lang.Misc.SubscribeAction
+msgid "Event"
+msgstr ""
+
+#: Lang.Misc.SubscribeActionDetails
+msgid "Details"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.remove
+msgid "removed"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.add
+msgid "added"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.manual
+msgid "manual"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.auto
+msgid "automatical"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.unknown
+msgid "unknown"
+msgstr ""
+
+#: Lang.Misc.Date
+msgid "Date"
 msgstr ""
 
 #: Lang.Introduction.ConfigAdmin

@@ -591,6 +591,10 @@ msgstr "Reset the list of to be stripped mime types to its default value"
 msgid "Request a confirmation mail for every posted message"
 msgstr "Request a confirmation mail for every posted message"
 
+#: Lang.Options.special_replytoself
+msgid "Redirect replies to the list"
+msgstr "Redirect replies to the list"
+
 #: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
 msgstr "Send plaintext to the subscribers which have no key"
@@ -925,6 +929,43 @@ msgstr "default"
 #: Lang.Misc.Interfaces.expert
 msgid "expert"
 msgstr "expert"
+
+#: Lang.Misc.MailAddress
+msgid "Mail address"
+msgstr "Mail address"
+
+#: Lang.Misc.SubscribeAction
+#, fuzzy
+msgid "Event"
+msgstr "Event"
+
+#: Lang.Misc.SubscribeActionDetails
+msgid "Details"
+msgstr "Details"
+
+#: Lang.Misc.SubscribeActions.remove
+msgid "removed"
+msgstr "removed"
+
+#: Lang.Misc.SubscribeActions.add
+msgid "added"
+msgstr "added"
+
+#: Lang.Misc.SubscribeActions.manual
+msgid "manual"
+msgstr "manual"
+
+#: Lang.Misc.SubscribeActions.auto
+msgid "automatical"
+msgstr "automatical"
+
+#: Lang.Misc.SubscribeActions.unknown
+msgid "unknown"
+msgstr "unknown"
+
+#: Lang.Misc.Date
+msgid "Date"
+msgstr "Date"
 
 #: Lang.Introduction.ConfigAdmin
 msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."

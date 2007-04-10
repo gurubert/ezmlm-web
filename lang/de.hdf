@@ -165,6 +165,7 @@ Lang {
     w = Entferne den Aufruf von ezmlm-warn aus den Verarbeitungsregeln (für sehr spezielle Konfigurationen)
     x = Setze die Liste der zu entfernenden MIME-Typen auf den Startwert zurück
     y = Fordere eine Bestätigung für jede eingesandte Nachricht an
+    special_replytoself = Leite Antworten an die Listenandresse um
     gnupg_plain_without_key = Sende Nachrichten im Klartext an Empfänger ohne Schlüssel
     gnupg_sign_messages = Signiere ausgehende Nachrichten mit dem Listenschlüssel
   }
@@ -270,6 +271,18 @@ Lang {
       normal = normal
       expert = erweitert
     }
+    MailAddress = Email-Adresse
+    SubscribeAction = Ereignis
+    SubscribeActionDetails = Details
+    SubscribeActions {
+      remove = entfernt
+      add = hinzugefügt
+      mod = moderiert
+      manual = manuell
+      auto = automatisch
+      unknown = unbekannt
+    }
+    Date = Datum
   }
   Introduction {
     ConfigAdmin = Fern-AdministratorInnen sind (per Voreinstellung) auch ModeratorInnen für die Einschreibung und für eingesandte Mails. Sie können berechtigt sein, per Mail Nutzer ein- und auszutragen, sowie Textbausteine zu verändern.
@@ -291,8 +304,8 @@ Lang {
     GnupgConvert = Du kannst eine normale Mailingliste in eine verschlüsselte umwandeln und umgekehrt.
     GnupgGenerateKey = Um eine verschlüsselte Mailingliste verwenden zu können, ist es erforderlich, einen Schlüssel für die Liste zu erzeugen (oder zu importieren). Nachdem du das folgende Formular ausgefüllt und abgeschickt hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel fertig ist. Sei also bitte geduldig.
     GnupgOptions = Konfiguriere die Einstellungen der verschlüsselten Mailingliste.
-    GnupgSecret = Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken.
-    GnupgPublic = There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys.
+    GnupgSecret = Jede Mailingliste benötigt einen geheimen Schlüssel zur Entschlüsselung eingehender Nachrichten. Du solltest darauf achten, dass der geheime Schlüssel vor fremdem Zugriff sicher ist. Andernfalls ist die Sicherheit der Mailingliste gefährdet.
+    GnupgPublic = Die Mailingliste sollte einen öffentlichen Schlüssel jeder AbonnentIn haben. Zudem muss der Schlüssel der Mailingliste existieren, der an alle AbonnentInnen verteilt werden sollte. Es ist ungefährlich, öffentliche Schlüssel zu veröffentlichen.
   }
   Legend {
     ConfigAdmin = Fern-Administrations-Rechte
