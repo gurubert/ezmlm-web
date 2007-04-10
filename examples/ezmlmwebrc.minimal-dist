@@ -1,0 +1,26 @@
+# Configuration file for ezmlm-web 3.2
+# ===========================================================================
+
+# This file is not just an ordinary configuration file - it contains valid
+# perl statements that are executed just like any other perl script. When
+# editing this file, be careful that it is still valid perl when you have
+# finished (perl -w ezmlmwebrc ;-)
+# 
+# See the manpage of ezmlmwebrc(5) for a list of all available configuration
+# settings.
+
+# ---------------------------------------------------------------------------
+
+# Where do we store lists on this server ... Try "$HOME_DIR/lists". 
+# This directory will automatically be created if needed.
+# BEWARE: the (resulting) path MUST be absolute (starting with a slash)!
+$LIST_DIR = "$HOME_DIR/lists";
+
+# Where are the language files
+# usually something like /usr/local/share/ezmlm-web/lang
+$LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
+
+# Where are the template files
+# usually something like /usr/local/share/ezmlm-web/template
+$TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
+

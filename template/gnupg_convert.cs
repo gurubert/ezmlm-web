@@ -9,7 +9,8 @@
 <fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgConvert) ?> </legend>
 
-	<?cs call:form_header("gnupg_convert", "") ?>
+	<?cs call:form_header("gnupg_convert") ?>
+	<ul><li>
 		<?cs if:Data.List.Features.Crypto
 			?><button type="submit" name="send" value="do"><?cs
 			var:html_escape(Lang.Buttons.GnupgConvertToPlain) ?></button>
@@ -19,6 +20,7 @@
 			var:html_escape(Lang.Buttons.GnupgConvertToEncrypted) ?></button>
 			<input type="hidden" name="action" value="gnupg_convert_enable" /><?cs
 		/if ?>
+	</li></ul>
 	</form>
 
 </fieldset>

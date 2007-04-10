@@ -24,7 +24,8 @@
 		<?cs /if ?>
 
 	<?cs if:((subcount(Data.Lists) > 0) && (UI.Navigation.ListSelect == 1))
-			|| (Data.Permissions.Create && (UI.Navigation.ListCreate == 1)) ?>
+			|| (Data.Permissions.Create && (UI.Navigation.ListCreate == 1)) 
+			|| ((subcount(Data.Domains) > 0) && (UI.Navigation.DomainSelect == 1)) ?>
 		<li><hr/></li>
 	<?cs /if ?>
 
@@ -188,18 +189,6 @@
 
 	<li><hr/></li>
 <?cs /if ?>
-
-	<?cs if:UI.Navigation.Language || UI.Navigation.Interface ?>
-		<?cs if:UI.Navigation.Language ?>
-			<li><?cs include:TemplateDir + '/language_select.cs' ?></li>
-		<?cs /if ?>
-		<?cs if:UI.Navigation.Interface ?>
-			<li><?cs include:TemplateDir + '/interface_select.cs' ?></li>
-		<?cs /if ?>
-
-		<li><hr/></li>
-
-	<?cs /if ?>
 
 	<?cs if:UI.Navigation.Help
 		?><li><a href="http://www.ezmlm.org/ezman/index.html#toc1" target="_blank"

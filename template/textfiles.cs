@@ -9,7 +9,7 @@
 <fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.TextFiles) ?> </legend>
 
-<?cs call:form_header("select_textfile", "") ?>
+<?cs call:form_header("select_textfile") ?>
 	<ul>
 		<?cs if:subcount(Data.List.CustomizedFiles) +
 			subcount(Data.List.DefaultFiles) > 0 ?>

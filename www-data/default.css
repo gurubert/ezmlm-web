@@ -8,13 +8,15 @@ body {
 
 a { text-decoration: none; }
 
+button, select { cursor: pointer; }
 
-/***************** navbar *************************/
+/***************** navgation bar *************************/
 
 #nav_bar {
+	clear: left;
 	float: left;
 	width: 20%;
-	color: inherit;
+	color: black;
 	background-color: #3465a4;
 	background-image: url(horiz_grad_blue.png);
 	margin: 1%;
@@ -27,6 +29,7 @@ a { text-decoration: none; }
 
 #nav_bar hr {
 	margin: 10px 30px 10px 10px;
+	font-size: 0%;	/* otherwise IE6 adds a huge gap above */
 	}
 
 #nav_bar ul {
@@ -63,42 +66,13 @@ a { text-decoration: none; }
 	}
 
 #nav_bar a {
-	color: inherit;
+	color: black;	/* necessary: IE6 ignores 'inherit' */
 	background-color: inherit;
 	}
 
 #nav_bar a:hover {
 	color: #fce94f;
 	background-color: inherit;
-	}
-
-#nav_bar form select {
-	color: inherit;
-	background-color: #729fcf;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #557353;
-	}
-
-#nav_bar form button {
-	color: inherit;
-	background-color: #babdb6;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #557353;
-	}
-
-#nav_bar form button:hover {
-	color: #555753;
-	background-color: #d3d7cf;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #557353;
-	cursor: pointer;
-	}
-
-#nav_bar form {
-	margin: 7px 0px 7px 0px;
 	}
 
 
@@ -109,38 +83,79 @@ a { text-decoration: none; }
 	background-color: #cc0000;
 	background-image: url(vert_grad_red.png);
 	background-position: top;
+	width: 100%;
+	margin: 0;
+	padding: 2px 3px 2px 3px;
 	}
 
 #top * {
 	background-color: transparent;
 	}
 	
-#top h1 {
+#title {
 	text-align: left;
-	border-bottom: solid 2px #ffffff;
-	padding: 5px;
-	font-weight: bold;
-	letter-spacing: -1px;
+	}
+
+#title * {
+	padding: 0;
 	margin: 0;
 	}
 
-#top #perm_nav {
-	float: right;
-	padding-right: 5px;
-	font-size: 100%;
-	}
-
-#top #perm_nav a {
+#title h1 {
 	font-weight: bold;
-	padding-left: 2px;
-	padding-right: 2px;
-	text-decoration: none;
+	letter-spacing: -1px;
 	}
 
-#top #perm_nav a:hover {
-	color: #e9b96e;
+#perm_nav {
+	padding: 0;
+	margin: 0;
+	text-align: right;
+	}
+
+#perm_nav * {
+	padding: 0;
+	margin: 0;
+	}
+
+#perm_nav p {
+	padding: 1px 0 2px 0;
+	}
+
+#perm_nav a {
+	font-weight: bold;
+	color: #eeeeec;
+	background-color: inherit;
+	}
+
+#perm_nav a:hover {
+	color: #fce94f;
 	background-color: inherit;
 	} 
+
+#top form {
+	font-size: 85%;
+	margin: 2px 0 2px 0;
+	}
+
+#top form select {
+	background-color: #d3d7c4;
+	margin-right: 4px;
+	}
+
+#top form select:hover {
+	background-color: #eeeeec;
+	}
+
+#top form button {
+	border-color: #ef2929;
+	border-style: groove;
+	background-color: #f57900;
+	margin-left: 3px;
+	}
+
+#top form button:hover {
+	background-color: #fcaf3e;
+	}
 
 
 /******************************* content ************************/
@@ -171,6 +186,7 @@ a { text-decoration: none; }
 #main_content ul {
 	line-height: 1.8em;
 	list-style: none;
+	margin-left: 5px;
 	}
 
 #main_content ul li {
@@ -185,11 +201,12 @@ a { text-decoration: none; }
 	padding-bottom: 0px;
 	}
 
-#main_content fieldset {
-	margin-top: 0.5%;
-	margin-bottom: 1%;
-	padding-top: 1%;
-	padding-bottom: 1.5%;
+#main_content > fieldset {	/* sub-fieldsets do not need margin/padding */
+	padding: 5px 5px 10px 5px;	/* IE6 acts weird for %-values */
+	}
+
+#main_content fieldset p {
+	margin-left: 10px;
 	}
 
 #main_content fieldset form ul { padding-left: 10px; }
@@ -202,16 +219,26 @@ a { text-decoration: none; }
 	text-align: left;
 	line-height: 1.2em;
 	border-width: 0;
-	/* padding-left: 2%; */
 	padding-right: 0;
+	}
+
+#main_content table.list_select td {
+	padding-left: 5px;
+	}
+
+#main_content table.subscribe_log {
+	border-collapse: separate;
+	border-spacing: 10px 3px;
 	}
 
 #main_content div.introduction {
 	font-size: 80%;
 	}
 
-#main_content div.warning, div.error, div.success {
-	margin-left: 10%;
+#main_content div.warning,
+#main_content div.error,
+#main_content div.success {
+	margin-left: 30%;	/* we have to include the width of the nav-bar */
 	margin-right: 10%;
 	margin-top: 2%;
 	margin-bottom: 3%;
@@ -225,14 +252,14 @@ a { text-decoration: none; }
 #main_content div.warning,
 #main_content div.error {
 	color: #2e3436;
-	background-color: inherit;
+	background-color: inherit;	/* just to avaid css syntax warnings */
 	}
 
-#main_content div.warning { background-color: #40d070; }
+#main_content div.success { background-color: #40d070; }
 
-#main_content div.warning { background-color: #e0a0a0; }
+#main_content div.warning { background-color: #ef2929; }
 
-#main_content div.error { background-color: #cc0000; }
+#main_content div.error { background-color: #a40000; }
 
 #main_content table.gnupg_keys td {
 	padding-right: 10px;
@@ -255,7 +282,6 @@ a { text-decoration: none; }
 	background-color: #d3d7cf;
 	border: 1px dotted #555753;
 	font-size: 90%;
-	cursor: pointer;
 	}
 
 #main_content button:hover {
@@ -263,7 +289,6 @@ a { text-decoration: none; }
 	background-color: #d3d7cf;
 	border: 1px dotted #ace149;
 	font-size: 90%;
-	cursor: pointer;
 	}
 
 /************************** footer ******************************/
@@ -276,7 +301,7 @@ a { text-decoration: none; }
 	clear: left;	/* do not overlap with left navigation bar */
 	text-align: center;
 	font-size: 90%;
-	margin: 0px;
+	margin: 10px 0 0 0;
 	padding: 3px;
 	}
 

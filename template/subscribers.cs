@@ -36,7 +36,7 @@
 	<fieldset>
 		<legend><?cs var:html_escape(Lang.Legend.RelevantOptions) ?> </legend>
 
-	<?cs call:form_header("config_subscription", "") ?>
+	<?cs call:form_header("config_subscription") ?>
 
 		<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		
@@ -75,7 +75,7 @@
 
 	<table class="subscribers"><tr>
 	<?cs if:subcount(Data.List.Subscribers) > 0 ?>
-		<td><?cs call:form_header("remove_subscriber", "") ?>
+		<td><?cs call:form_header("remove_subscriber") ?>
 			<?cs if:Data.List.PartType ?>
 				<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 			<?cs /if ?>
@@ -98,19 +98,20 @@
 				<li><input type="hidden" name="action" value="address_del" />
 				<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteAddress) ?></button></li>
 			</ul></form>
-			<ul>
-				<li><?cs call:form_header("download_subscribers", "") ?>
+			<?cs call:form_header("download_subscribers") ?>
+				<ul><li>
 					<input type="hidden" name="action" value="download_subscribers" />
 					<?cs if:Data.List.PartType ?>
 						<input type="hidden" name="part" value="<?cs
 								var:Data.List.PartType ?>" /><?cs /if ?>
 					<button type="submit" name="send" value="do"><?cs
 							var:html_escape(Lang.Buttons.DownloadSubscribersList)
-							?></button></form></li>
-		</ul></td>
+							?></button></li>
+			</ul></form>
+		</td>
 	<?cs /if ?>
 
-	<td><?cs call:form_header_upload("upload_subscribers", "") ?>
+	<td><?cs call:form_header_upload("upload_subscribers") ?>
 		<?cs if:Data.List.PartType ?>
 			<input type="hidden" name="part" value="<?cs var:Data.List.PartType ?>" />
 		<?cs /if ?>

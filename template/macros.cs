@@ -101,14 +101,15 @@ def:link(attr1, value1, attr2, value2, attr3, value3)
  /def ?><?cs
 
 
-def:form_header_generic(form_name, ignore_attr, enctype)
+def:form_header_generic(form_name, enctype, ignore1, ignore2, ignore3)
 	?><?cs # somehow perl's CGI has problems to evaluate the querystring of a
 		form action - thus we have to use hidden input fields instead
 	?><form accept-charset="utf-8" name="<?cs var:html_escape(form_name)
 			?>" method="post" action="<?cs var:ScriptName
 			?>" enctype="<?cs var:enctype ?>">
 		<?cs each:attr = Config.UI.LinkAttrs ?><?cs
-			if:name(attr) != ignore_attr ?><input type="hidden" name="<?cs
+			if:(name(attr) != ignore1) && (name(attr) != ignore2)
+					&& (name(attr) != ignore3) ?><input type="hidden" name="<?cs
 				var:html_escape(name(attr)) ?>" value="<?cs
 				var:html_escape(attr) ?>" /><?cs /if ?>
 		<?cs /each ?><?cs
@@ -117,15 +118,21 @@ def:form_header_generic(form_name, ignore_attr, enctype)
  /def ?><?cs
 
 
-def:form_header(form_name, ignore_attr)
-	?><?cs call:form_header_generic(form_name, ignore_attr,
-			"application/x-www-form-urlencoded") ?><?cs
+def:form_header(form_name)
+	?><?cs call:form_header_generic(form_name,
+			"application/x-www-form-urlencoded", '', '', '') ?><?cs
  /def ?><?cs
 
 
-def:form_header_upload(form_name, ignore_attr)
-	?><?cs call:form_header_generic(form_name, ignore_attr,
-			"multipart/form-data") ?><?cs
+def:form_header_ignore(form_name, ignore1, ignore2, ignore3)
+	?><?cs call:form_header_generic(form_name,
+			"application/x-www-form-urlencoded", ignore1, ignore2, ignore3)
+ ?><?cs /def ?><?cs
+
+
+def:form_header_upload(form_name)
+	?><?cs call:form_header_generic(form_name, "multipart/form-data",
+			'', '', '') ?><?cs
  /def ?><?cs
 
 

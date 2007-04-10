@@ -64,10 +64,12 @@ OVERVIEW:
 	Finally, copy the ezmlmwebrc file to one of
 	the following places:
 		1) the home directory of the user that runs ezmlm-web.cgi (~/.ezmlmwebrc)
-		2) the directory, that contains your cgi binary (index.cgi)
-		3) /etc/ezmlm-web/ezmlmwebrc
-		4) /etc/ezmlm/ezmlmwebrc [deprecated]
+		2) /etc/ezmlm-web/ezmlmwebrc
+		3) /etc/ezmlm/ezmlmwebrc [deprecated]
 	 (ezmlm-web will look for it in these places in the given order)
+	
+	See the manpage of ezmlmwebrc (5) for a complete description of all
+	configuration settings.
 
 
 4.	For every user/virtual host that needs to manage mailing lists, you
@@ -86,6 +88,10 @@ OVERVIEW:
 		i:	Execute CGI Scripts and
 		ii:	Be access controlled (here I mean both web and user access) by
 			some method (eg .htaccess for Apache).
+	
+	Alternatively you can also manage multiple domains/users/virtual hosts
+	with a single suid-wrapper. Take a look at examples/multidomain.conf for
+	details.
 
 
 5.	Install some method of securing access to the page. The following

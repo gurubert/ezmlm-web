@@ -22,14 +22,11 @@ use CGI;
 use IO::File;
 use POSIX;
 use English;
-use Time::localtime ();
 
-# gettext support is optional
-my $GETTEXT_SUPPORT = 1;
-unless (&safely_import_module("Locale::gettext")) {
-	$GETTEXT_SUPPORT = 0;
-	warn "Gettext support is not available - the multilingual web interface is not available!";
-}
+# optional modules - they will be loaded later if they are available
+#Encode
+#Mail::Ezmlm::Gpg
+
 
 # the Encode module is optional - we do not break if it is absent
 my $ENCODE_SUPPORT = 1;
@@ -37,11 +34,6 @@ unless (&safely_import_module("Encode")) {
 	$ENCODE_SUPPORT = 0;
 	warn "Encoding module is not available - charset conversion will fail!";
 }
-
-
-# do not forget: we depend on Mail::Ezmlm::Gpg if the corresponding configuration
-# setting is enabled
-
 
 
 
@@ -75,12 +67,15 @@ use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
-use vars qw[$HTML_CSS_FILE $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
-use vars qw[$MAIL_ADDRESS_PREFIX];
+use vars qw[$HTML_CSS_URL $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
+use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
+
+# deprecated settings
+use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_URL since v3.2
 
 # some deprecated configuration settings - they have to be announced
 # otherwise old configuration files would break
@@ -99,8 +94,6 @@ if (defined($opt_C)) {
    $config_file = $1; # Command Line
 } elsif (-e "$HOME_DIR/.ezmlmwebrc") {
    $config_file = "$HOME_DIR/.ezmlmwebrc"; # User
-} elsif (-e "./ezmlmwebrc") {
-   $config_file = "./ezmlmwebrc"; # Install
 } elsif (-e "/etc/ezmlm-web/ezmlmwebrc") {
    $config_file = "/etc/ezmlm-web/ezmlmwebrc"; # System (new style - since v2.2)
 } elsif (-e "/etc/ezmlm/ezmlmwebrc") {
@@ -138,6 +131,14 @@ if (defined($opt_d)) {
    $LIST_DIR = $1 if ($opt_d =~ /^([-\@\w.\/]+)$/);
 }
 
+# check required configuration settings
+&fatal_error("Configuration setting 'LIST_DIR' not specified!")
+	unless (defined($LIST_DIR));
+&fatal_error("Configuration setting 'LANGUAGE_DIR' not specified!")
+	unless (defined($LANGUAGE_DIR));
+&fatal_error("Configuration setting 'TEMPLATE_DIR' not specified!")
+	unless (defined($TEMPLATE_DIR));
+
 # If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2),
 # then use former default value for compatibility
 $WEBUSERS_FILE = $LIST_DIR . '/webusers' unless (defined($WEBUSERS_FILE));
@@ -145,14 +146,48 @@ $WEBUSERS_FILE = $LIST_DIR . '/webusers' unless (defined($WEBUSERS_FILE));
 # check for non-default dotqmail directory
 $DOTQMAIL_DIR = $HOME_DIR unless defined($DOTQMAIL_DIR);
 
-# check optional stylesheet
-$HTML_CSS_FILE = '' unless defined($HTML_CSS_FILE);
+# check default options for new mailing lists
+$DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx' unless defined($DEFAULT_OPTIONS);
+
+# check default language
+$HTML_LANGUAGE = 'en' unless defined($HTML_LANGUAGE);
+
+# check stylesheet
+# HTML_CSS_FILE was replaced by HTML_CSS_URL in v3.2
+unless (defined($HTML_CSS_URL)) {
+	# HTML_CSS_URL is undefined - we will check the deprecated setting first
+	if (defined($HTML_CSS_FILE)) {
+		# ok - we fall back to the deprecated setting
+		$HTML_CSS_URL = $HTML_CSS_FILE;
+	} else {
+		# nothing is defined - we use the default value
+		$HTML_CSS_URL = '/ezmlm-web.css';
+	}
+}
 
 # check template directory
 $TEMPLATE_DIR = 'template' unless defined($TEMPLATE_DIR);
 
 # check QMAIL_BASE
 $QMAIL_BASE = '/var/qmail/control' unless defined($QMAIL_BASE);
+
+# check UNSAFE_RM
+$UNSAFE_RM = 0 unless defined($UNSAFE_RM);
+
+# check PRETTY_NAMES
+$PRETTY_NAMES = 0 unless defined($PRETTY_NAMES);
+
+# check FILE_UPLOAD
+$FILE_UPLOAD = 1 unless defined($FILE_UPLOAD);
+
+# check ALIAS_USER
+$ALIAS_USER = 'alias' unless defined($ALIAS_USER);
+
+# check HTML_TITLE
+$HTML_TITLE = '' unless defined($HTML_TITLE);
+
+# check HTML_LINKS
+@HTML_LINKS = () unless defined(@HTML_LINKS);
 
 # determine MAIL_DOMAIN
 unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
@@ -199,7 +234,7 @@ my $action = $q->param('action');
 # This is where we decide what to do, depending on the form state and the
 # users chosen course of action ...
 # TODO: unify all these "is list param set?" checks ...
-if ($action eq 'show_mime_examples') {
+if (defined($action) && ($action eq 'show_mime_examples')) {
 	&output_mime_examples();
 	exit 0;
 } elsif (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')
@@ -526,8 +561,15 @@ sub init_hdf {
 	$hdf = &load_interface_language($hdf);
 
 	$hdf->setValue("ScriptName", $ENV{SCRIPT_NAME}) if (defined($ENV{SCRIPT_NAME}));
-	$hdf->setValue("Stylesheet", "$HTML_CSS_FILE");
+	$hdf->setValue("Stylesheet", "$HTML_CSS_URL");
 	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
+
+	my $i;
+	for $i (0 .. $#HTML_LINKS) {
+		$hdf->setValue("Config.PageLinks.$i.name", $HTML_LINKS[$i]{name});
+		$hdf->setValue("Config.PageLinks.$i.url", $HTML_LINKS[$i]{url});
+		$i++;
+	}
 
 	# support for encrypted mailing lists?
 	$hdf->setValue("Config.Features.Crypto", 1) if ($GPG_SUPPORT);
@@ -1206,7 +1248,7 @@ sub set_pagedata_subscription_log {
 	
 	my ($listname) = @_;
 
-	my ($log_file, @event, $i, $epoch_seconds, $note, $address); 
+	my ($log_file, @event, $i, $datetext, $epoch_seconds, $note, $address);
 	$log_file = "$LIST_DIR/" . $q->param('list') . "/Log";
 	
 	# break if there is no log_file
@@ -1219,18 +1261,20 @@ sub set_pagedata_subscription_log {
 	}
 
 	$i = 0;
-
 	while (<LOG_FILE>) {
 		chomp;
-		split;
-		@event = @_;
+		@event = split;
 		if ($#event eq 2) {
 			$epoch_seconds = $event[0];
-			my $datetext = ctime($epoch_seconds);
+			$datetext = localtime($epoch_seconds);
 			$note = $event[1];
 			$address = $event[2];
+			# the date in gmt format - this should be sufficient
 			$pagedata->setValue("Data.List.SubscribeLog.$i.date", $datetext);
-			$pagedata->setValue("Data.List.SubscribeLog.$i.text", $note);
+			# the first letter of 'note' should be +/-
+			$pagedata->setValue("Data.List.SubscribeLog.$i.action", substr($note,0,1));
+			# manual/auto/mod - TODO: verify "auto"
+			$pagedata->setValue("Data.List.SubscribeLog.$i.details", substr($note,1));
 			$pagedata->setValue("Data.List.SubscribeLog.$i.address", $address);
 			$i++;
 		}
@@ -1328,6 +1372,8 @@ sub untaint {
       next if ($params[$i] eq 'mailaddressfile');
       next if ($params[$i] eq 'gnupg_key_file');
       next if ($params[$i] eq 'content');
+	  # the button description may contain non-ascii characters - skip check
+	  next if ($params[$i] eq 'send');
       foreach $param ($q->param($params[$i])) {
          next if $param eq '';
          if ($param =~ /^([#-\@\w\.\/\[\]\:\n\r\>\< _"']+)$/) {

@@ -1,10 +1,13 @@
-# Configuration file for ezmlm-web 2.3
+# Configuration file for ezmlm-web 3.2
 # ===========================================================================
 
 # This file is not just an ordinary configuration file - it contains valid
 # perl statements that are executed just like any other perl script. When
 # editing this file, be careful that it is still valid perl when you have
 # finished (perl -w ezmlmwebrc ;-)
+# 
+# See the manpage of ezmlmwebrc(5) for a list of all available configuration
+# settings.
 
 # ---------------------------------------------------------------------------
 
@@ -21,7 +24,7 @@ $LIST_DIR = "$HOME_DIR/lists";
 #  1) copy examples/multidomain.conf.dist to /etc/ezmlm-web/multidomain.conf
 #  2) adjust /etc/ezmlm-web/multidomain.conf to your setup
 #  3) uncomment the following line
-#  4) make sure that your multi domain settings are not overriden below
+#  4) make sure that your multi domain settings are not overriden by settings below
 #warn "multidomain.conf failed" unless (defined do "/etc/ezmlm-web/multidomain.conf");
 
 # Where do we store the dotqmail files of this user?
@@ -76,11 +79,19 @@ $FILE_UPLOAD = 1;
 $DEFAULT_OPTIONS = "aBDFGHiJkLMNOpQRSTUWx";
 
 # What is the title of this document?
-$HTML_TITLE = "ezmlm-web - a mailinglists' administration interface";
+$HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
 
-# Optional: use a cascading style sheet (css)
+# Optional: some permanent links (visible in the top right corner)
+#@HTML_LINKS = (
+#	{ name	=> 'ezmlm-web homepage',
+#		url	=> 'https://systemausfall.org/toolforge/ezmlm-web' },
+#	{ name	=> 'domain\'s root',
+#		url	=> '/'},
+#	);
+
+# use a cascading style sheet (css)
 # this is a URL - you have to copy the css file to the right location before
-$HTML_CSS_FILE = "/ezmlm-web.css";
+$HTML_CSS_URL = "/ezmlm-web.css";
 
 # the default interface language
 # can only be changed via the web interface if gettext support is available

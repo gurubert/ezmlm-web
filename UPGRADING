@@ -4,15 +4,31 @@ This file contains some useful hints for upgrading from a previous version of ez
 
 UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 
-1) the following dependencies were added:
+1) the following dependency was added:
 	- File::Path
-	- Locale::gettext
 
-2) a new (optional) configuration setting is available: DOTQMAIL_DIR
-It can be useful if you run a multi domain vpopmail setup.
+2) design update
+	The css stylesheet file changed significantly. Please update your copy.
+	Additionally you should also copy the images of the directory www-data/
+	to the directory of your local stylesheet file.
 
 3) install Mail::Ezmlm::Gpg if you want to handle encrypted mailing lists
-(see README.gnupg for details)
+	(see README.gnupg for details)
+
+4) possible locations of ezmlmwebrc
+	ezmlm-web does no longer search for a configuration file (ezmlmwebrc) in
+	the current directory, as this can be a security risk.
+	If you relied on this behavior (should be rare), then you have two options:
+	A) move your configuration file to one of the other possible locations
+	B) patch the source of ezmlm-web.cgi to include the deprecated
+		configuration file location. Do this on your own risk!
+
+5) renamed configuration setting
+	The configuration setting 'HTML_CSS_FILE' is replaced by 'HTML_CSS_URL' for
+	clarity. 'HTML_CSS_URL' falls back to the value of 'HTML_CSS_FILE' if it is
+	undefined. Thus your setup should work as before. But you are encouraged to
+	replace the setting, as it might break your setup in a future version of
+	ezmlm-web.
 
 ------------------------------------------------------------------------------
 

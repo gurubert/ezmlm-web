@@ -9,14 +9,15 @@
 <fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.GnupgGenerateKey) ?> </legend>
 
-	<?cs call:form_header("gnupg_generate_key", "") ?>
+	<?cs call:form_header("gnupg_generate_key") ?>
 
 		<input type="hidden" name="gnupg_subset" value="generate_key" />
 		
 		<?cs call:show_options(UI.Options.GenerateKey) ?>
 
+	<ul><li>
 		<input type="hidden" name="action" value="gnupg_do" />
-		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.GnupgGenerateKey) ?></button>
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.GnupgGenerateKey) ?></button></li></ul>
 	</form>
 
 </fieldset>

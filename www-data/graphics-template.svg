@@ -41,7 +41,7 @@
          id="stop3683" />
       <stop
          id="stop5459"
-         offset="0.5"
+         offset="0.25"
          style="stop-color:#ef2929;stop-opacity:1;" />
       <stop
          style="stop-color:#ef2929;stop-opacity:1;"
@@ -56,7 +56,7 @@
          style="stop-color:#3465a4;stop-opacity:1;" />
       <stop
          style="stop-color:#729fcf;stop-opacity:1;"
-         offset="0.5"
+         offset="0.25"
          id="stop2794" />
       <stop
          id="stop2792"
@@ -72,23 +72,23 @@
        x2="450.08337"
        y2="624.87115"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(0,-213.9658)" />
+       gradientTransform="matrix(2,0,0,1,-65.36665,-117.8995)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3681"
        id="linearGradient3687"
-       x1="47.064362"
-       y1="119.26222"
-       x2="147.06436"
-       y2="119.26222"
+       x1="47.053432"
+       y1="123.98675"
+       x2="147.06433"
+       y2="123.98675"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1,0,0,1.25,22.19786,-256.1422)" />
+       gradientTransform="matrix(4,0,0,1.25,270.9353,58.25642)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient3680"
        id="linearGradient2793"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(2,0,0,1,-60.99997,50.21641)"
+       gradientTransform="matrix(2,0,0,1,-65.36662,159.3826)"
        x1="50.083374"
        y1="624.87115"
        x2="450.08337"
@@ -104,9 +104,9 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.45801722"
-     inkscape:cx="372.04724"
-     inkscape:cy="526.18109"
+     inkscape:zoom="0.84666115"
+     inkscape:cx="287.3556"
+     inkscape:cy="378.57053"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="1014"
@@ -174,16 +174,19 @@
     <rect
        style="opacity:1;fill:url(#linearGradient3687);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1890"
-       width="100"
-       height="100"
-       x="69.262222"
-       y="-157.06436"
-       transform="matrix(0,1,-1,0,0,0)" />
-    <rect
-       y="370.9054"
-       x="50.083374"
-       height="80"
        width="400"
+       height="100"
+       x="459.19263"
+       y="157.3343"
+       transform="matrix(0,1,-1,0,0,0)"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="/home/lars/subversion/ezmlm-web/trunk/www-data/vert_grad_red.png" />
+    <rect
+       y="466.97165"
+       x="34.800106"
+       height="80"
+       width="800"
        id="rect1892"
        style="opacity:1;fill:url(#linearGradient2786);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:3;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        inkscape:export-filename="/home/lars/subversion/ezmlm-web/trunk/www-data/horiz_grad_blue.png"
@@ -192,38 +195,38 @@
     <text
        xml:space="preserve"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter"
-       x="52.399776"
-       y="218.3324"
+       x="-255.44891"
+       y="901.71283"
        id="text6346"><tspan
          sodipodi:role="line"
          id="tspan6348"
-         x="52.399776"
-         y="218.3324">1x100px</tspan><tspan
+         x="-255.44891"
+         y="901.71283">1x400px</tspan><tspan
          sodipodi:role="line"
-         x="52.399776"
-         y="258.3324"
+         x="-255.44891"
+         y="941.71283"
          id="tspan6360">90dpi</tspan><tspan
          sodipodi:role="line"
-         x="52.399776"
-         y="298.3324"
+         x="-255.44891"
+         y="981.71283"
          id="tspan6350">vert_grad_red.png</tspan></text>
     <text
        id="text6352"
-       y="508.71448"
-       x="53.849804"
+       y="604.78076"
+       x="38.566536"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter"
        xml:space="preserve"><tspan
-         y="508.71448"
-         x="53.849804"
+         y="604.78076"
+         x="38.566536"
          id="tspan6354"
-         sodipodi:role="line">400x1px</tspan><tspan
-         y="548.71448"
-         x="53.849804"
+         sodipodi:role="line">800x1px</tspan><tspan
+         y="644.78076"
+         x="38.566536"
          sodipodi:role="line"
          id="tspan6358">90dpi</tspan><tspan
          id="tspan6356"
-         y="588.71448"
-         x="53.849804"
+         y="684.78076"
+         x="38.566536"
          sodipodi:role="line">horiz_grad_blue.png</tspan></text>
     <rect
        inkscape:export-ydpi="90"
@@ -233,25 +236,25 @@
        id="rect2783"
        width="800"
        height="80"
-       x="39.166756"
-       y="635.08759" />
+       x="34.800106"
+       y="744.25378" />
     <text
        xml:space="preserve"
        style="font-size:32px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter"
-       x="42.933186"
-       y="772.89667"
+       x="38.566536"
+       y="882.06287"
        id="text2785"><tspan
          sodipodi:role="line"
          id="tspan2787"
-         x="42.933186"
-         y="772.89667">800x1px</tspan><tspan
+         x="38.566536"
+         y="882.06287">800x1px</tspan><tspan
          id="tspan2789"
          sodipodi:role="line"
-         x="42.933186"
-         y="812.89667">90dpi</tspan><tspan
+         x="38.566536"
+         y="922.06287">90dpi</tspan><tspan
          sodipodi:role="line"
-         x="42.933186"
-         y="852.89667"
+         x="38.566536"
+         y="962.06287"
          id="tspan2791">horiz_grad_blue_long.png</tspan></text>
   </g>
 </svg>

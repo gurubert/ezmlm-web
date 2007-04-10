@@ -1,7 +1,7 @@
 <!-- allows the user to change the interface language (not of the list!) -->
 <?cs if:subcount(Config.UI.Languages) > 0 ?>
 
-	<?cs call:form_header("select_language", "web_lang") ?>
+	<?cs call:form_header("select_language") ?>
 
 		<?cs if:Data.List.Name ?><input type="hidden" name="action"
 				value="subscribers" /><?cs /if ?>

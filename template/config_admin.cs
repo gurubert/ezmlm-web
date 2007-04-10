@@ -9,13 +9,14 @@
 <fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ConfigAdmin) ?> </legend>
 
-	<?cs call:form_header("config_admin", "") ?>
+	<?cs call:form_header("config_admin") ?>
 		<input type="hidden" name="config_subset" value="admin" />
 
 		<?cs call:show_options(UI.Options.Config.Admin) ?>
 
+	<ul><li>
 		<input type="hidden" name="action" value="config_do" />
-		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li></ul>
 
 	</form>
 </fieldset>

@@ -282,6 +282,18 @@ Lang {
 			normal	= default
 			expert	= expert
 		  }
+		MailAddress	= Mail address
+		SubscribeAction	= Event
+		SubscribeActionDetails	= Details
+		SubscribeActions {
+			remove	= removed
+			add	= added
+			mod	= moderated
+			manual	= manual
+			auto	= automatical
+			unknown	= unknown
+		  }
+		Date	= Date
 	  }
 
 

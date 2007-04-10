@@ -75,7 +75,7 @@ This version of ezmlm-web requires the following;
   + File::Copy v2.02
   + File::Path v1.07
   + Text::ParseWords v3.24
-  + Locale::gettext v1.01
+  + Encode (optional)
 
 The version number indicates the version of the module that ezmlm-web was
 developed with. Earlier versions may work, but then they haven't been
@@ -86,18 +86,17 @@ versions are expected to work as well.
 To install perl modules you may use the cpan command line interface.
 Just run "cpan" and type something like "install Mail::Ezmlm".
 
-You can download clearsilver (a templating engine - it is required since
-ezmlm-web v3.0) from http://clearsilver.net.
+You can download clearsilver (a templating engine) from http://clearsilver.net.
 
 
 III. Notes
 ==========
 * There is a function to delete mailing lists, but I really don't like the
   idea. The only reason I put it in is that bvi@rucus asked for it.
-  If you set $UNSAFE_RD = 0 (the default) in the config section, the
+  If you set $UNSAFE_RM = 0 (the default) in the config section, the
   ezmlm-web won't actually delete the list. In this case it moves the <list> 
   and all the associated .qmail files to a sub-directory called 
-  deleted.qmail/ (In the users home directory. This is by far a safer way 
+  _deleted_lists/ (In the user's home directory. This is by far a safer way 
   (since you can restore lists) and therefore I recommend it.
 
 * I suggest that you make use of custom ezmlmwebrc files rather than using
@@ -150,6 +149,9 @@ option "-c" for ezmlm-web.cgi will still allow everyone to create lists. The
 use of this option is deprecated, since the line "ALLOW_CREATE: ALL" provides
 the same effect in a cleaner way.
 
+You find the details of the format of webusers (5) file in the respective
+manpage.
+
 
 V. Language Portablity
 ======================
@@ -160,14 +162,8 @@ translation.
 
 The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
 
-If anyone gets round to writing full templates for languages I would
-appreciate it if you would do two things:
-
-Firstly, make them public and announce them on the ezmlm@lists.cr.yp.to
-mailing list so that others may benefit.
-
-Secondly, please mail me a copy (ezmlm-web@sumpfralle.de) so that I may use
-them in any future releases of ezmlm-web.
+Please visit the translation center at http://translate.systemausfall.org
+to contribute some strings translated to yoru native language. Thanks!
 
 
 VI. Encrypted mailing lists
@@ -182,7 +178,7 @@ VII. Bugs && Bug Reports
 I don't know of any bugs ...
 Ezmlm-web has been tested reasonably well, but not exhaustively. I know it
 works on FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and
-Debian 3.0 all using an Apache web server, but I would be interested to know
+Debian 3.1 all using an Apache web server, but I would be interested to know
 whether it works on other OSs and with other web servers.
 
 Please mail bug reports and comments to
@@ -216,6 +212,7 @@ VIII. Acknowledgements
 *  Reinin Ooyama (lenin@hasiru.net) - a japanese translation and bugixes for v2.3
 *  Henning Rieger (age@systemausfall.org) - he designed most of the new
    interface for v3.0
+*  Clavdia Horvat - she designed the new color scheme of v3.2
 
 
 IX. Availability

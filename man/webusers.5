@@ -1,0 +1,60 @@
+.TH webusers 5 "April 02007" "ezmlm-web" "access configuration file"
+.SH NAME
+webusers \- define the access permissions for a directory of lists
+.SH DESCRIPTION
+.PP
+\fBwebusers\fR contains the access definitions for the lists below a certain
+directory.
+.PP
+This file is optional. The actions of users are unrestricted, if the
+\fBwebusers\fR file does not exist. Be careful when using this setting.
+.PP
+A webusers file is only useful if you can request some kind of authentication
+from the user. Usually this should be done via http-authentication. See
+the INSTALL file for more details.
+.SH LOCATION
+By default the \fBwebusers\fR file is located in the same directory as the
+mailing lists. This can be adjusted with the setting \fIWEBUSERS_FILE\fR in
+the configuration file ezmlmwebrc (5). Read its manpage for details.
+.SH FILE FORMAT
+.IP "The file consists of lines of the following form:"
+.sp
+.nf
+LISTNAME: USER1 USER2
+.PP
+Empty lines and lines starting with a '#' are ignored. The same goes for
+invalid configuration lines.
+.PP
+If \fILISTNAME\fR equals the string \fIALL\fR, then the following users are
+allowed to manage all existing mailing lists.
+.PP
+If \fILISTNAME\fR equals the string \fIALLOW_CREATE\fR, then the following
+users are allowed to create new lists.
+.PP
+Otherwise the named users are allowed to manage only list \fILISTNAME\fR.
+.PP
+If one of the usernames equals the string \fIALL\fR, then every authenticated
+user is allowed to perform the action specified by \fILISTNAME\fR.
+.SH EXAMPLES
+.IP "A minimal example access configuration file:"
+.sp
+.nf
+comm: guy arb
+users: arb
+members: ALL
+ALL: root
+ALLOW_CREATE: root guy
+.PP
+In the example above, the users \fIroot\fR and \fIguy\fR are allowed to create
+new lists.
+.PP
+Every authenticated user may configure the list \fImembers\fR.
+.PP
+The user \fIroot\fR can manage all mailing lists.
+.SH AUTHOR
+Written by Lars Kruse
+.SH "REPORTING BUGS"
+Report bugs to <devel@sumpfralle.de>
+.SH COPYRIGHT
+Copyright \(co 02007 Lars Kruse
+

@@ -16,10 +16,23 @@
 </head>
 
 <body>
-	<div id="top">
-		<div id="perm_nav">
-			<?cs var:Config.PageTitle ?>
-		</div>
-		<h1>ezmlm-web</h1>
-	</div>
+	<table id="top"><tr>
+		<td id="title">
+			<h1>ezmlm-web</h1>
+			<?cs if:Config.PageTitle
+				?><p><?cs var:Config.PageTitle ?></p><?cs /if ?>
+			</td>
+		<td id="perm_nav">
+			<?cs if:subcount(Config.PageLinks) > 0 ?><p><?cs
+				loop: x = #0, subcount(Config.PageLinks)-1, #1
+					?><?cs if:x > #0 ?> | <?cs /if
+					?><a href="<?cs var:html_escape(Config.PageLinks[x].url)
+						?>"><?cs var:html_escape(Config.PageLinks[x].name)
+						?></a>
+					<?cs /loop ?></p><?cs /if ?>
+			<?cs if:UI.Top.Language || UI.Top.Interface ?>
+				<?cs include: TemplateDir + '/interface_select.cs' ?>
+			<?cs /if ?>
+		</td>
+	</tr></table>
 

@@ -9,13 +9,14 @@
 <fieldset>
 	<legend><?cs var:html_escape(Lang.Legend.ConfigSub) ?> </legend>
 
-	<?cs call:form_header("config_subscription", "") ?>
+	<?cs call:form_header("config_subscription") ?>
 		<input type="hidden" name="config_subset" value="subscription" />
 
 		<?cs call:show_options(UI.Options.Config.Subscription) ?>
 
+	<ul><li>
 		<input type="hidden" name="action" value="config_do" />
-		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button>
+		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.UpdateConfiguration) ?></button></li></ul>
 
 	</form>
 

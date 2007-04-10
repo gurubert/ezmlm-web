@@ -13,10 +13,10 @@
 
 	<?cs if:subcount(Data.List.gnupg_keys.secret) > 0 ?>
 
-	<?cs call:form_header("gnupg_secret_keys", "") ?>
-		<input type="hidden" name="gnupg_subset" value="secret" />
+	<?cs call:form_header("gnupg_secret_keys") ?>
 
-		<table class="gnupg_keys">
+	<ul>
+		<li><table class="gnupg_keys">
 			<?cs each:key = Data.List.gnupg_keys.secret
 				?><tr><td><input type="checkbox" name="gnupg_key_<?cs var:key.id ?>"
 					id="gnupg_key_<?cs var:key.id ?>" /></td>
@@ -36,10 +36,14 @@
 								?></a></td>
 					</tr>
 			<?cs /each ?>
-		</table>
+		</table></li>
 
-		<input type="hidden" name="action" value="gnupg_do" />
-		<button type="submit" name="send" value="do"><?cs var:html_escape(Lang.Buttons.DeleteSecretKey) ?></button>
+		<li>
+			<input type="hidden" name="gnupg_subset" value="secret" />
+			<input type="hidden" name="action" value="gnupg_do" />
+			<button type="submit" name="send" value="do"><?cs
+				var:html_escape(Lang.Buttons.DeleteSecretKey) ?></button></li>
+	</ul>
 
 	</form>
 	<?cs else ?>

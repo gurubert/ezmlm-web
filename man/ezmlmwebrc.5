@@ -1,0 +1,122 @@
+.TH ezmlmwebrc 5 "April 02007" "ezmlm-web" "configuration file"
+.SH NAME
+ezmlmwebrc \- configuration file for ezmlm-web
+.SH DESCRIPTION
+.PP
+\fBezmlmwebrc\fR contains the configuration settings necessary for ezmlm-web.
+.PP
+The file is required for ezmlm-web and must exist in one of the following
+locations:
+.IP \fB~/.ezmlmwebrc\fR
+user-specific configuration file
+.IP \fB/etc/ezmlm-web/ezmlmwebrc\fR
+system-wide default configuration file
+.IP \fB/etc/ezmlm/ezmlmwebrc\fR
+system-wide default configuration file (deprecated since v2.2)
+.PP
+Additionally the location of the configuration file may be overriden by the
+command line switch \fB\-C\fR of \fIezmlm-web.cgi (1p)\fR. 
+.SH FILE FORMAT
+.PP
+The file itself is sourced by the perl script \fIezmlm-web.cgi\fR, so it is
+required that the file conforms to the syntax of perl scripts. See the
+manpage of perl (1) for details.
+.PP
+You should avoid to declare other variables than the settings described below.
+Otherwise you may run into namespace conflicts. Just don't do it.
+.PP
+You may rely on the existence (and meaningful content) of the following
+variables:
+.IP \fI$USER\fR
+the name of the owner of the current process
+.IP \fI$HOME\fR
+the home directory of the owner of the current process
+.SH REQUIRED SETTINGS
+.IP \fB$LIST_DIR\fR
+This is the directory containing the lists, that you want to manage via
+ezmlm-web. It will be created automatically if it does not exist yet.
+The value \fI$HOME/lists\fR should be quite reasonable.
+.IP \fB$LANGUAGE_DIR\fR
+This directory contains the language files of ezmlm-web (e.g. \fIen.hdf\fR).
+Usually this should be something like \fI/usr/local/share/ezmlm-web/lang\fR.
+.IP \fB$TEMPLATE_DIR\fR
+This directory contains the template files of ezmlm-web (e.g. \fImain.cs\fR).
+Usually this should be something like
+\fI/usr/local/share/ezmlm-web/template\fR.
+.SH OPTIONAL SETTINGS
+.IP \fB$DEFAULT_OPTIONS\fR
+Specify the default options used for ezmlm-make (1) when creating a new list.
+The default value is: \fIaBDFGHiJkLMNOpQRSTUWx\fR. See the manpage of
+ezmlm-make (1) for details.
+.IP \fB$ALIAS_USER\fR
+The alias user of a qmail installation manages all mail addresses that are
+not handled by specific dotqmail files or other definitions. It defaults to
+\fIalias\fR.
+.IP \fB$QMAIL_BASE\fR
+This is the control directory of your qmail setup. It defaults to
+\fI/var/qmail/control\fR.
+.IP \fB$DOTQMAIL_DIR\fR
+The directory of the dotqmail (5) files of the lists managed by ezmlm-web.
+It defaults to the home directory of the owner of the current process
+(\fI$HOME\fR).
+.IP \fB$WEBUSERS_FILE\fR
+This file contains the access rules for the lists managed by ezmlm-web.
+Read the README file of ezmlm-web for details. This setting defaults to
+\fI$LISTS/webusers\fR.
+.IP \fB$MAIL_DOMAIN\fR
+Specify the default domain name of new mailing lists. Leave it empty if you
+want ezmlm-web to try to detect this value automatically.
+.IP \fB$MAIL_ADDRESS_PREFIX\fR
+Specify the default prefix for the local part of the addresses of new mailing
+lists. By default it is empty ('').
+.IP \fB$PRETTY_NAMES\fR
+Do you want to store connections between real names and mail addresses if both
+were provided when adding a new subscriber? This results in a file called
+\fIwebnames\fR being created in every mailing list directory when necessary.
+.IP \fB$FILE_UPLOAD\fR
+Should the upload of subscriber files be possible? The default is \fI1\fR.
+If you consider this as a security risk, then you should set it to \fI0\fR.
+.IP \fB$UNSAFE_RM\fR
+This setting defines, if list removal requested via the web interface should
+be recoverable or not. The value \fI1\fR will make ezmlm-web remove the list
+directory completely without any chance of recovery. The default value \fI0\fR 
+will just move deleted lists to a safe place. Thus deletion is recoverable.
+.IP \fB$HTML_TITLE\fR
+Print a reasonable name of the web interface to the left upper corner of every
+page. By default this string is empty.
+.IP \fB$HTML_CSS_URL\fR
+This is the URL of the stylesheet file to be used by ezmlm-web. Make sure it is
+actually available, as the design of the web interface will suffer a lot
+without it.
+.IP \fB@HTML_LINKS\fR
+This array may contain hashes with the elements \fIname\fR and \fIurl\fR.
+These links will be visible in the upper right corner of every page.
+Please pay attention to the syntax of perl and use the example configuration
+file distributed with ezmlm-web as a template. By default, this array is
+empty.
+.IP \fB$HTML_LANGUAGE\fR
+Specify the defaut language of the web interface. This value will be overriden
+when the browser requests an available language or when the user explicitly
+selects a different language. The default value is \fIen\fR.
+.IP \fB$GPG_SUPPORT\fR
+Enable support for encrypted mailing lists. Currently this feature is still
+considered as beta quality. User reports are warmly welcome!
+.IP \fB%DOMAINS\fR
+This hash of hashes (\fIname\fR associated with a hash of domain specific
+information) can be used to define a multi-domain setup. See the example
+configuration file (\fImultidomain.conf\fR) as distributed with ezmlm-web for
+more details.
+.SH EXAMPLES
+.IP "A minimal example configuration file:"
+.sp
+.nf
+$LIST_DIR = "$HOME_DIR/lists";
+$LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
+$TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
+.SH AUTHOR
+Written by Lars Kruse
+.SH "REPORTING BUGS"
+Report bugs to <devel@sumpfralle.de>
+.SH COPYRIGHT
+Copyright \(co 02007 Lars Kruse
+
