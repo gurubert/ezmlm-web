@@ -149,12 +149,12 @@ button, select { cursor: pointer; }
 #top form button {
 	border-color: #ef2929;
 	border-style: groove;
-	background-color: #f57900;
+	background-color: #edd400;
 	margin-left: 3px;
 	}
 
 #top form button:hover {
-	background-color: #fcaf3e;
+	background-color: #fce94f;
 	}
 
 

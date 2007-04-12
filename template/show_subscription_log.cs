@@ -27,7 +27,7 @@
 						var:html_escape(Lang.Misc.SubscribeActions.manual) ?><?cs
 					elif:Data.List.SubscribeLog[x].details == 'mod' ?><?cs
 						var:html_escape(Lang.Misc.SubscribeActions.mod) ?><?cs
-					elif:Data.List.SubscribeLog[x].details == 'auto' ?><?cs
+					elif:Data.List.SubscribeLog[x].details == '' ?><?cs
 						var:html_escape(Lang.Misc.SubscribeActions.auto) ?><?cs
 					else ?><?cs var:html_escape(Lang.Misc.SubscribeActions.unknown)
 					?><?cs /if ?></td>
