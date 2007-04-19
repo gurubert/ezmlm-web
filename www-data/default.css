@@ -82,10 +82,10 @@ button, select { cursor: pointer; }
 	color: #eeeeec;
 	background-color: #cc0000;
 	background-image: url(vert_grad_red.png);
-	background-position: top;
+	background-position: center;
 	width: 100%;
 	margin: 0;
-	padding: 2px 3px 2px 3px;
+	padding: 2px 7px 2px 3px;
 	}
 
 #top * {
@@ -149,7 +149,7 @@ button, select { cursor: pointer; }
 #top form button {
 	border-color: #ef2929;
 	border-style: groove;
-	background-color: #edd400;
+	background-color: #fcaf3e;
 	margin-left: 3px;
 	}
 
