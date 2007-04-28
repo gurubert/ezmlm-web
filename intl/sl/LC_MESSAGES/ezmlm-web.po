@@ -1,113 +1,112 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-04-08 03:22+0200\n"
+"Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 0.10.1\n"
+"X-Generator: Pootle 0.10.1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Ustvari nov seznam"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Izbriši seznam"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Naročniki"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "odobri seznam"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "zavrni seznam"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "povzami seznam"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "moderatorji"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Možnosti"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "podpis"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "pošiljanje"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "administracija"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "arhiv"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "procesiranje"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "pregled"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "Upravljanje ključev"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "javni ključi"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "skrivni ključi"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "ustvari ključ"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Šifriranje"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "šifriranje"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "besedilne datoteke"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Izberi seznam"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Lastnosti"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: Lang.Menue.Interface
 msgid "Interface"
@@ -115,23 +114,23 @@ msgstr ""
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Pomoč (zunanja)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "Naročnikov dnevnik"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Izberi domeno"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Seznam postavitev"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Naročnikove možnosti"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
@@ -143,11 +142,11 @@ msgstr ""
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Možnosti arhiva"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Obdelava sporočil"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
@@ -155,35 +154,35 @@ msgstr ""
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Naročniki seznama"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Uporabniki z dovoljenjem"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Blokirani uporabniki"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr ""
+msgstr "Pregled uporabnikov"
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Moderator poštnega seznama"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Ustvari nov seznam"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Izberi datoteko za urejanje"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Urejevalna datoteka"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
@@ -191,43 +190,43 @@ msgstr ""
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Javni ključi"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Skrivni ključi"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Proizvedi nov par ključev"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Nastavitve šifriranja"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Ustvari seznam"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Izbriši seznam"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Izbriši naslov(e)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr ""
+msgstr "Snami naročnike "
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Dodaj naslov(e)"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Ažuriraj konfiguracijo"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
@@ -235,119 +234,119 @@ msgstr ""
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Uredi datoteko"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Shrani datoteko"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Odstrani prikrojene datoteke"
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
-msgstr ""
+msgstr "izberi"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Pretvori v šifriran poštni seznam"
 
 #: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Pretvori v odkrito besedilni poštni seznam"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Izbriši javni ključ"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Izbriši skrivni ključ"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Uvozi ključ"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Proizvedi par ključev"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "snami"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "nejasno dejanje"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "to dejanje potrebuje enega ali več parametrov"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Napaka: za to dejanje nimaš dovoljenja "
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Ime datoteke ni veljavno!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "Izbrana config stran ni veljavna"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "Izbrana gnupg stran ni veljavna"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "Neuspešen uvoz naloženega ključa"
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "Odstranitev ključa (ključev) ni uspela!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "Proizvodnja novega ključa ni uspela!"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "Dodajanje enega (ali več) naslova ni uspelo! "
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Odstranitev vsaj enega (ali več) naslova ni uspela!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "Ustvarjanje novega poštnega seznama ni uspelo!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "Odstranitev poštnega seznama ni uspela!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "Ažuriranje konfiguracij ni uspelo! "
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "Datoteke ni moč shraniti!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Seznam s tem imenom že obstaja!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Seznam s tem naslovom že obstaja!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Seznam s tem imenom ne obstaja!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
@@ -359,7 +358,7 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
-msgstr ""
+msgstr "Ni moč preimenovati seznama za varno odstranjevanje"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
@@ -367,19 +366,19 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "Ni moč premakniti .qmail datotek"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "Ni moč izbrisati seznama"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "Ni moč izbrisati .qmail datotek"
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
-msgstr ""
+msgstr "Naložitena datoteka mora biti v besedilni obliki"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"

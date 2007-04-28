@@ -1,113 +1,112 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-04-28 18:02+0200\n"
+"Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 0.10.1\n"
+"X-Generator: Pootle 0.10.1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Criar nova lista"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Remover lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Inscritos"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "permissão à lista"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "restrição à lista"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "mensagem com sumário"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "moderadores"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Opções"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "de inscrição"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "de envio"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "administração"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "arquivos"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "processamento"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "da lista"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "Gerenciamento de chaves"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "Chaves públicas"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "Chaves privadas"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "Gerar chave"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Criptografar"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "criptografar"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "Arquivos de texto"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Escolha uma lista"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Propriedades de"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: Lang.Menue.Interface
 msgid "Interface"
@@ -115,107 +114,107 @@ msgstr ""
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Ajuda (externa)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "Log dos inscritos"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Escolha um domínio"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Configuração da lista"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Opções de inscrição"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Opções de envio"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Administração remota"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Opções de arquivamento"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Processamento de mensagem"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Configuração completa"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Inscritos da lista"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Usuários permitidos"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Usuários bloqueados"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr ""
+msgstr "Usuários com Sumário"
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Moderadores da lista"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Criar uma nova lista"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Escolha um arquivo para editar"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Editando arquivo"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "Eventos de inscrição"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Chaves públicas"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Chaves privadas"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Gerar um novo par de chaves"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Configurações de criptografia"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Criar lista"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Remover lista"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Remover endereço(s)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
@@ -223,139 +222,139 @@ msgstr ""
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Adicionar endereço(s)"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Atualizar configuração"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Atualizar chaveiro"
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Editar arquivo"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Gravar arquivo"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Remover arquivo customizado"
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
-msgstr ""
+msgstr "selecione"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Converter para lista criptografada"
 
 #: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Converter para lista modo texto"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Remover chave(s) pública(s)"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Remover chave(s) provada(s)"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Importar chave"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Gerar par de chaves"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "Baixar"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "Ação indefinida"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "Essa ação precisa de um ou mais parâmetros"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Erro: você não tem permissão para isso!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Nome de arquivo inválido!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "Escolha de configuraç~ao inválida!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "Escolha de página gnupg inválida"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "Falha ao importar a chave enviada."
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "Falha ao remover chave(s)"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "Falha ao gerar uma nova chave"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "A adição de ao menos um endereço falhou!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "A remoção de ao menos um endereço falhou!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "A criação de uma nova lista falhou!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "A remoção da lista falhou!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "A atualização da configuração falhou!"
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "O arquivo não pode ser gravado!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Já existe uma lista com esse nome!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Já existe uma lista com esse endereço!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Não existe uma lista com esse nome!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "Não foi possível acessar o diretório de listas"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
-msgstr ""
+msgstr "Não foi possível acessar os arquivos do diretório de listas"
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
@@ -367,15 +366,15 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "Não foi possível mover os arquivos do .qmail"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "Não foi possível remover a lista"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "Não foi possível remover os arquivos .qmail"
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
@@ -1039,7 +1038,7 @@ msgstr ""
 
 #: Lang.Introduction.GnupgConvert
 msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
-msgstr ""
+msgstr "Você pode converter uma lista norma para criptopgrada e vice-versa"
 
 #: Lang.Introduction.GnupgGenerateKey
 msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
@@ -1047,7 +1046,7 @@ msgstr ""
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
-msgstr ""
+msgstr "Configure algumas opções para uma lista com criptografia"
 
 #: Lang.Introduction.GnupgSecret
 msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
@@ -1059,35 +1058,35 @@ msgstr ""
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
-msgstr ""
+msgstr "Permissões remotas de administradores"
 
 #: Lang.Legend.ConfigArchive
 msgid "Archive configuration"
-msgstr ""
+msgstr "Arquivo de configuração"
 
 #: Lang.Legend.ConfigPosting
 msgid "Posting rules"
-msgstr ""
+msgstr "Regras de envio"
 
 #: Lang.Legend.ConfigSub
 msgid "Subscription details"
-msgstr ""
+msgstr "Detalhes de inscrição"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
-msgstr ""
+msgstr "Configurações gerais da lista"
 
 #: Lang.Legend.ConfigProcess
 msgid "Processing rules"
-msgstr ""
+msgstr "Regras de processamento"
 
 #: Lang.Legend.ConfigAll
 msgid "Available properties"
-msgstr ""
+msgstr "Propriedades disponíveis"
 
 #: Lang.Legend.ListCreate
 msgid "Properties of the new list"
-msgstr ""
+msgstr "Propriedades da nova lista"
 
 #: Lang.Legend.ListDelete
 msgid "Remove this mailinglist"
@@ -1099,31 +1098,31 @@ msgstr ""
 
 #: Lang.Legend.MembersList
 msgid "Manage subscribers"
-msgstr ""
+msgstr "Gerenciar inscritos"
 
 #: Lang.Legend.MembersAllow
 msgid "Manage allowed users"
-msgstr ""
+msgstr "Gerenciar usuários com permissão"
 
 #: Lang.Legend.MembersDeny
 msgid "Manage blocked users"
-msgstr ""
+msgstr "Gerenciar usuários bloqueados"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
-msgstr ""
+msgstr "Gerenciar usuários com sumário"
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
-msgstr ""
+msgstr "Gerenciar moderadores e administradores"
 
 #: Lang.Legend.TextFiles
 msgid "Available text files"
-msgstr ""
+msgstr "Arquivos de texto disponíveis"
 
 #: Lang.Legend.TextFileEdit
 msgid "Edit content of text file"
-msgstr ""
+msgstr "Editar conteúdo do arquivo de texto"
 
 #: Lang.Legend.TextFileReset
 msgid "Discard customized text"
@@ -1135,32 +1134,32 @@ msgstr ""
 
 #: Lang.Legend.AvailableLists
 msgid "Available lists"
-msgstr ""
+msgstr "Listas disponíveis"
 
 #: Lang.Legend.SubscribeLog
 msgid "Events"
-msgstr ""
+msgstr "Eventos"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
-msgstr ""
+msgstr "Suporte à criptografia"
 
 #: Lang.Legend.GnupgPublicKeys
 msgid "Public keys of this list"
-msgstr ""
+msgstr "Chaves públicas da lista"
 
 #: Lang.Legend.GnupgSecretKeys
 msgid "Secret keys of this list"
-msgstr ""
+msgstr "Chaves privadas da lista"
 
 #: Lang.Legend.GnupgKeyImport
 msgid "Import a key"
-msgstr ""
+msgstr "Importar uma chave"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
-msgstr ""
+msgstr "Gerar a chave para essa lista"
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
-msgstr ""
+msgstr "Domínios disponíveis"
