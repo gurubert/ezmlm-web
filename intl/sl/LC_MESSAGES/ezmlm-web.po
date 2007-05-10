@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: 2007-04-08 03:22+0200\n"
+"PO-Revision-Date: 2007-05-10 20:54+0200\n"
 "Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr "Jezik"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "Vmesnik"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
@@ -138,7 +138,7 @@ msgstr ""
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "daljinsko upravništvo"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
@@ -150,7 +150,7 @@ msgstr "Obdelava sporočil"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Konfiguracija"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
@@ -186,7 +186,7 @@ msgstr "Urejevalna datoteka"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "subskripcijski dogodki"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
@@ -354,7 +354,7 @@ msgstr ""
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
-msgstr ""
+msgstr "Dostop do direktorija tekstovne datoteke ni mogoč"
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
@@ -362,7 +362,7 @@ msgstr "Ni moč preimenovati seznama za varno odstranjevanje"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
-msgstr ""
+msgstr "Ni moč prebrati uporabnikovega domačega direktorija za .qmail datoteke"
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
@@ -382,111 +382,111 @@ msgstr "Naložitena datoteka mora biti v besedilni obliki"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
-msgstr ""
+msgstr "Ažuriranje datotek spletnega uporabnika ni mogoče"
 
 #: Lang.WarningMessage.WebUsersRead
 msgid "Could not read the webusers file"
-msgstr ""
+msgstr "Ni moč prebrati datotek spletnega uporabnika "
 
 #: Lang.WarningMessage.InvalidListName
 msgid "The name of the list contains invalid characters"
-msgstr ""
+msgstr "Ime seznama vsebuje neveljavne znake"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
-msgstr ""
+msgstr "Tega imena seznama ne morete uporabiti, ker je rezervirano za interne namene"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
-msgstr ""
+msgstr "Vpišite Ime seznama. To mesto ne sme biti prazno."
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr ""
+msgstr "Ta seznam nima naročnikov"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
-msgstr ""
+msgstr "Lokalen del seznama naslovov ni veljaven"
 
 #: Lang.WarningMessage.RequiresIDX5
 msgid "This action requires ezmlm-idx v5.0 or higher."
-msgstr ""
+msgstr "To dejanje zahteva ezmlm-idx v5.0 ali višjo verzijo"
 
 #: Lang.WarningMessage.ResetFileIsDefault
 msgid "There is no customized text file, that can be removed."
-msgstr ""
+msgstr "Ni prikrojene tekstovne datoteke, ki bi jo lahko odstranili"
 
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
-msgstr ""
+msgstr "Odstranitev prikrojene tekstovne datoteke ni uspela"
 
 #: Lang.WarningMessage.LogFile
 msgid "Reading of log file failed."
-msgstr ""
+msgstr "Branje dnevnika ni uspelo"
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
-msgstr ""
+msgstr "Niste izbrali datoteke s ključem, da bi jo naložili  "
 
 #: Lang.WarningMessage.GnupgDelKey
 msgid "Removal of (at least) one key failed!"
-msgstr ""
+msgstr "Odstranitev (vsaj enega) kjuča ni uspela"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
-msgstr ""
+msgstr "Niste izbrali ključa za odstranitev"
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "Vpišite ime ključa. To mesto ne sme biti prazno"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
-msgstr ""
+msgstr "Čas poteka ni veljaven "
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "Dolžina ključa ni veljavna"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "Izvoz ključa ni uspel!"
 
 #: Lang.WarningMessage.GnupgConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "Pretvorba v kriptirano  poštni seznam ni uspela"
 
 #: Lang.WarningMessage.GnupgConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "Pretvorba v besedilni poštni seznam ni uspela"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "Šifriranje za ta poštni seznam je že omogočeno"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "Šifriranje za ta poštni seznam je bilo (že)onemogočeno"
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "Naslov je dodan seznamu"
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "Naslov je izbrisan iz seznama"
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "Nov poštni seznam je bil uspešno narejen"
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "Poštni seznam je bil uspešno odstranjen"
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
-msgstr ""
+msgstr "konfiguracija pošnega seznama je bila uspešno spremenjena"
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
@@ -494,79 +494,79 @@ msgstr ""
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
-msgstr ""
+msgstr "Datoteka je shranjena"
 
 #: Lang.SuccessMessage.ResetFile
 msgid "The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it."
-msgstr ""
+msgstr "prikrojena tekstovna datoteka je uspešno odstranjena. Od zdaj naprej bo namesto te, uporabljena system-wide default tekstovna datoteka  "
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
-msgstr ""
+msgstr "Ključ je bil uspešno uvožen"
 
 #: Lang.SuccessMessage.GnupgConvertEnable
 msgid "Encryption is now enabled for this list."
-msgstr ""
+msgstr "Šifriranje za ta seznam je zdaj omogočeno "
 
 #: Lang.SuccessMessage.GnupgConvertDisable
 msgid "Encryption is now disabled for this list."
-msgstr ""
+msgstr "Šifriranje za ta seznam je zdaj onemogočeno"
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
-msgstr ""
+msgstr "Arhiv sporočil poštnega seznama "
 
 #: Lang.Options.b
 msgid "Only moderators are allowed to access the archive"
-msgstr ""
+msgstr "Samo moderatorji imajo dostop do arhiva"
 
 #: Lang.Options.d
 msgid "Activate the digest list"
-msgstr ""
+msgstr "Aktiviraj _____ seznam "
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
-msgstr ""
+msgstr "Dodaj prefix vrstici predmet, pri izhodnih sporočilih "
 
 #: Lang.Options.g
 msgid "Archive requests from unrecognised senders are denied"
-msgstr ""
+msgstr "Zahteve neznanih pošiljateljev so zavrnjene "
 
 #: Lang.Options.h
 msgid "Subscriptions do not require confirmation by the user"
-msgstr ""
+msgstr "Subskripcije ne zahtevajo potrditve uporabnika"
 
 #: Lang.Options.i
 msgid "Index mailing list messages for WWW archive access"
-msgstr ""
+msgstr "Kazalo poštnega seznama, sporočila za dostop do WWW arhiva"
 
 #: Lang.Options.j
 msgid "Unsubscribe does not require confirmation"
-msgstr ""
+msgstr "Izpis ne zahteva potrditve "
 
 #: Lang.Options.k
 msgid "Use deny list to prevent some users from posting"
-msgstr ""
+msgstr "Uporabi seznam zavrnitev če želiš preprečiti objavo nekaterim uporabnikom "
 
 #: Lang.Options.l
 msgid "Remote administrators (moderators) may request a subscriber list"
-msgstr ""
+msgstr "Skrbniki na daljavo (ali moderatorji) lahko zahtevajo seznam vseh, ki so prijavljeni."
 
 #: Lang.Options.m
 msgid "All incoming messages are moderated"
-msgstr ""
+msgstr "Vsa vhodna sporočila so moderirana"
 
 #: Lang.Options.n
 msgid "Remote administrators (moderators) may edit text files in DIR/text"
-msgstr ""
+msgstr "Skrbniki na daljavo (ali moderatorji) lahko urejajo tekstovne datoteke v DIR/text"
 
 #: Lang.Options.o
 msgid "Only moderators may post"
-msgstr ""
+msgstr "Samo moderatorji laghko objavljajo"
 
 #: Lang.Options.p
 msgid "Allow subscription and archive retrieval for everyone"
-msgstr ""
+msgstr "Dovoli prijavo in arhiv vzpostavitev - za vse "
 
 #: Lang.Options.q
 msgid "Process mailman-style requests (to local-request@domain)"
@@ -574,23 +574,23 @@ msgstr ""
 
 #: Lang.Options.r
 msgid "Enable remote administration of the list (for moderators)"
-msgstr ""
+msgstr "Za ta seznam omogoči skrbništvo na daljavo (za moderatorje)  "
 
 #: Lang.Options.s
 msgid "Subscriptions to the main list and the digest list will be moderated"
-msgstr ""
+msgstr "Prijava v glavni seznam in povzeti seznam bosta moderirana."
 
 #: Lang.Options.t
 msgid "Add a trailing text to every message"
-msgstr ""
+msgstr "Dodaj trailing tekst vsakemu sporočilu"
 
 #: Lang.Options.u
 msgid "Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)"
-msgstr ""
+msgstr "Samo prijavljeni uporabniki lahko objavljajo sporočila (za moderatorjev seznam: vedno sprejmi sporočila prijavnikov)"
 
 #: Lang.Options.w
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
-msgstr ""
+msgstr "Odstrani ezmlm- opozorilni poziv s seznama  namestitev (redko uporabno) "
 
 #: Lang.Options.x
 msgid "Reset the list of to be stripped mime types to its default value"
@@ -598,87 +598,87 @@ msgstr ""
 
 #: Lang.Options.y
 msgid "Request a confirmation mail for every posted message"
-msgstr ""
+msgstr "Zahtevaj potrditveno pošto za vsako objavljeno sporočilo"
 
 #: Lang.Options.special_replytoself
 msgid "Redirect replies to the list"
-msgstr ""
+msgstr "Preusmeri odgovore na seznam"
 
 #: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
-msgstr ""
+msgstr "Pošlji le-besedilo tistim, ki so prijavljeni pa nimajo ključa"
 
 #: Lang.Options.gnupg_sign_messages
 msgid "Sign outgoing messages with the list's key"
-msgstr ""
+msgstr "Podpiši izhodna sporočila s ključem seznama"
 
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
-msgstr ""
+msgstr "Dostop do arhiva je prepovedan za"
 
 #: Lang.Selections.archive.bg
 msgid "administrators"
-msgstr ""
+msgstr "Administratorje"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
-msgstr ""
+msgstr "prijavljene in administratorje"
 
 #: Lang.Selections.archive.BG
 msgid "everyone"
-msgstr ""
+msgstr "vse"
 
 #: Lang.Selections.subscribe
 msgid "Public subscription is"
-msgstr ""
+msgstr "Javna prijava"
 
 #: Lang.Selections.subscribe.pS
 msgid "open"
-msgstr ""
+msgstr "je odprta"
 
 #: Lang.Selections.subscribe.ps
 msgid "moderated"
-msgstr ""
+msgstr "je moderirana"
 
 #: Lang.Selections.subscribe.P
 msgid "not allowed"
-msgstr ""
+msgstr "ni dovoljena"
 
 #: Lang.Selections.posting
 msgid "Posting is"
-msgstr ""
+msgstr "Objava"
 
 #: Lang.Selections.posting.MOU
 msgid "allowed for everyone"
-msgstr ""
+msgstr "je dovoljena vsem"
 
 #: Lang.Selections.posting.mOU
 msgid "moderated for everyone"
-msgstr ""
+msgstr "je moderirana za vse"
 
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
-msgstr ""
+msgstr "je dovoljena vsem prijavljenim in moderirana za vse ostale"
 
 #: Lang.Selections.posting.MOu
 msgid "allowed for subscribers"
-msgstr ""
+msgstr "je dovoljena vsem prijavljenim"
 
 #: Lang.Selections.posting.moU
 msgid "allowed only for moderators"
-msgstr ""
+msgstr "je dovoljena le moderatorjem"
 
 #: Lang.Selections.confirmation
 msgid "Confirmation mails are required for"
-msgstr ""
+msgstr "Potrditveno sporočilo je zahtevano za"
 
 #: Lang.Selections.confirmation.J
 msgid "unsubscription"
-msgstr ""
+msgstr "tiste, ki niso prijavljeni"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
-msgstr ""
+msgstr "Naredi ta seznam podseznam seznama"
 
 #: Lang.Settings.3
 msgid "Set a custom \"From:\" header for outgoing messsages"
@@ -690,219 +690,219 @@ msgstr ""
 
 #: Lang.Settings.5
 msgid "Define the email address of the list owner"
-msgstr ""
+msgstr "Določi naslov elektronske pošte lastnika seznama "
 
 #: Lang.Settings.6
 msgid "Use a SQL database"
-msgstr ""
+msgstr "uporabi SQL podatkovno bazo"
 
 #: Lang.Settings.7
 msgid "Define a custom path to the database for posting moderators"
-msgstr ""
+msgstr "Določi običajno pot podatkovni bazi za moderatorje objav"
 
 #: Lang.Settings.8
 msgid "Define a custom path to the database for subscription moderators"
-msgstr ""
+msgstr "Določi običajno pot podatkovni bazi za prijavljene moderatorje"
 
 #: Lang.Settings.9
 msgid "Define a custom path to the database for remote administators"
-msgstr ""
+msgstr "Določi običajno pot podatkovni bazi za skrbnike na daljavo"
 
 #: Lang.Misc.HelpLink
 msgid "The manual page of ezmlm-idx"
-msgstr ""
+msgstr "The manual page of ezmlm-idx"
 
 #: Lang.Misc.Subscription
 msgid "Subscription"
-msgstr ""
+msgstr "Prijava"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
-msgstr ""
+msgstr "Prijavniki - subskribenti"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
-msgstr ""
+msgstr "Srbniki na daljavo"
 
 #: Lang.Misc.ListName
 msgid "List Name"
-msgstr ""
+msgstr "Ime seznama"
 
 #: Lang.Misc.ListAddress
 msgid "List Address"
-msgstr ""
+msgstr "Naslov seznama"
 
 #: Lang.Misc.ListOptions
 msgid "Basic List Options"
-msgstr ""
+msgstr "Osnovni seznam - možnosti"
 
 #: Lang.Misc.AllowedToEdit
 msgid "Users allowed to edit this list via web interface"
-msgstr ""
+msgstr "Uporabnikom je dovoljeno urejati seznam preko spletnega vmesnika"
 
 #: Lang.Misc.HeaderFiltering
 msgid "Header filtering"
-msgstr ""
+msgstr "Filtriranje glave"
 
 #: Lang.Misc.HeaderRemove
 msgid "strip these header lines"
-msgstr ""
+msgstr "strip these header lines"
 
 #: Lang.Misc.HeaderKeep
 msgid "keep only these header lines"
-msgstr ""
+msgstr "keep only these header lines"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
-msgstr ""
+msgstr "glave - za dodajanje vsem izhodnim sporočilom"
 
 #: Lang.Misc.MimeTypeExamples
 msgid "Show some example mime types"
-msgstr ""
+msgstr "prikaži nekaj primerov mime tipov"
 
 #: Lang.Misc.MimeFiltering
 msgid "Mime type filtering (for multipart mails)"
-msgstr ""
+msgstr "Mime tip filtriranje (za mnogodelno pošto)"
 
 #: Lang.Misc.MimeRemove
 msgid "strip these from all messages"
-msgstr ""
+msgstr "Odstrani to z vseh sporočil"
 
 #: Lang.Misc.MimeKeep
 msgid "keep only these in messages"
-msgstr ""
+msgstr "Obdrži samo te v sporočilih"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
-msgstr ""
+msgstr "Sporočila, ki bodo vsebovala katerega koli od teh mime tipov bodo zavrnjena "
 
 #: Lang.Misc.EditFileInfo.CommonTags
 msgid "common tags"
-msgstr ""
+msgstr "common tags"
 
 #: Lang.Misc.EditFileInfo.ListNameLocal
 msgid "The local part of the list name"
-msgstr ""
+msgstr "Lokalni del imena seznama"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
 msgid "The host name of the list name"
-msgstr ""
+msgstr "The host name of the list name"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
-msgstr ""
+msgstr "Število individualnih sporočil"
 
 #: Lang.Misc.EditFileInfo.SubAddress
 msgid "The subscription address"
-msgstr ""
+msgstr "Naslov subskripcije"
 
 #: Lang.Misc.EditFileInfo.SubReplyAddress
 msgid "The address a subscriber must reply to"
-msgstr ""
+msgstr "Naslov na katerega naj prijavljeni odgovori"
 
 #: Lang.Misc.EditFileInfo.AcceptanceAddress
 msgid "The acceptance address"
-msgstr ""
+msgstr "Naslov odobritve"
 
 #: Lang.Misc.EditFileInfo.RejectionAddress
 msgid "The rejection address"
-msgstr ""
+msgstr "Naslov zavrnitve"
 
 #: Lang.Misc.SuggestDefaultPath
 msgid "It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web."
-msgstr ""
+msgstr "Priporočljivo je, da se uporablja privzeta pot za moderatorsko podatkovno bazo. Drugače ne boste mogli upravljati moderatorskega seznama z ezmlm-web"
 
 #: Lang.Misc.PostModPathWarn
 msgid "Posting moderators are stored in a non-standard location"
-msgstr ""
+msgstr "Posting moderators so shranjeni na ne-običajni lokaciji"
 
 #: Lang.Misc.SubModPathWarn
 msgid "Subscription moderators are stored in a non-standard location"
-msgstr ""
+msgstr "Subscription moderators so shranjeni na ne-običajni lokaciji"
 
 #: Lang.Misc.RemoteAdminPathWarn
 msgid "Remote administrators are stored in a non-standard location"
-msgstr ""
+msgstr "Skrbniki na daljavo so shranjeni na ne-običajni lokaciji"
 
 #: Lang.Misc.MessageSize.Max
 msgid "Reject messages exceeding a specified value"
-msgstr ""
+msgstr "Zavrnjena sporočila presegajo določeno vrednost"
 
 #: Lang.Misc.MessageSize.Min
 msgid "Reject messages smaller than a specified value"
-msgstr ""
+msgstr "Zavrnjrna sporočila so manjša kot je določena vrednost"
 
 #: Lang.Misc.MessageSize.Unit
 msgid "bytes"
-msgstr ""
+msgstr "byti"
 
 #: Lang.Misc.NoFiles
 msgid "There are no files in the text directory of the mailinglist."
-msgstr ""
+msgstr "V tem direktoriju poštnega seznama ni datotek"
 
 #: Lang.Misc.AddSubscriberAddress
 msgid "Add a new mail address:"
-msgstr ""
+msgstr "Dodaj nov poštni naslov "
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"
-msgstr ""
+msgstr "Naloži besedilno datoteko ki vsebuje poštni naslov ki bo dodan"
 
 #: Lang.Misc.FooterText
 msgid "a web interface for"
-msgstr ""
+msgstr "Spletni vmesnik za"
 
 #: Lang.Misc.NoListsAvailable
 msgid "I could not find any accessible list for you."
-msgstr ""
+msgstr "Ne najdem dostopnih seznamov za vas"
 
 #: Lang.Misc.ConfirmDelete
 msgid "Do you really want to remove this list completely?"
-msgstr ""
+msgstr "Ali zares želite popolnoma odstraniti ta seznam?"
 
 #: Lang.Misc.CustomizedFiles
 msgid "customized files"
-msgstr ""
+msgstr "Prikrojene datoteke"
 
 #: Lang.Misc.DefaultFiles
 msgid "default files"
-msgstr ""
+msgstr "Privzete datoteke"
 
 #: Lang.Misc.ListLanguage
 msgid "Language of the list"
-msgstr ""
+msgstr "Jezik seznama"
 
 #: Lang.Misc.ListCharset
 msgid "Charset of the list"
-msgstr ""
+msgstr "Nabor znakov seznama"
 
 #: Lang.Misc.ModSubOverridesRemote
 msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
-msgstr ""
+msgstr "Namig: Če oba - podatkovna baza vpisanega moderatorja in skrbnik na daljavo uporabljata prikrojeno lokacijo, potem bo podatkovna baza moderatorja uporabljena za oba"
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
-msgstr ""
+msgstr "Ni razpoložljivih javnih ključev"
 
 #: Lang.Misc.GnupgNoSecretKeys
 msgid "There are no secret keys available."
-msgstr ""
+msgstr "Edit Ni razpoložljivih skrivnih ključev"
 
 #: Lang.Misc.GnupgImportKey
 msgid "Import a new key from a file:"
-msgstr ""
+msgstr "Uvozi nov ključ iz datoteke:"
 
 #: Lang.Misc.GnupgKeyName
 msgid "Name of the key"
-msgstr ""
+msgstr "Ime ključa"
 
 #: Lang.Misc.GnupgKeyComment
 msgid "Comment (optional)"
-msgstr ""
+msgstr "Razlaga (neobvezno)"
 
 #: Lang.Misc.GnupgKeySize
 msgid "Length of the key (bytes)"
-msgstr ""
+msgstr "Dolžina ključa (byti)"
 
 #: Lang.Misc.GnupgKeyExpires
 msgid "Expiration time (years)"
@@ -1162,4 +1162,4 @@ msgstr ""
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
-msgstr ""
+msgstr "Razpoložljive domene"
