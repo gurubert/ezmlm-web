@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: 2007-05-07 21:06+0200\n"
+"PO-Revision-Date: 2007-06-11 14:00+0200\n"
 "Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -878,7 +878,7 @@ msgstr "Codificação de caractér da lista"
 
 #: Lang.Misc.ModSubOverridesRemote
 msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
-msgstr ""
+msgstr "Dica: se ambas as bases de dados de moderadores e de administradores têm locais configurados, a base de dados de moderadores será utilizada para ambos os casos"
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
@@ -1006,7 +1006,7 @@ msgstr "A lista e qualquer coisa contida nela será removida completamente."
 
 #: Lang.Introduction.AllowList
 msgid "Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers."
-msgstr ""
+msgstr "Os integrantes com permissão à lista e que não recebem mensagens, mas têm as mesmos direitos, como integrantes normais. Geralmente a lista contem apelidos (alias) do mail de integrantes."
 
 #: Lang.Introduction.DenyList
 msgid "If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security."
@@ -1018,11 +1018,11 @@ msgstr "Alguns usuários de sua lista podem preferir receber um mail contendo a 
 
 #: Lang.Introduction.ModList
 msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
-msgstr ""
+msgstr "Os moderadores (para postagem ou inscrição) e os administradores remotos podem (se assim configurado) controlar os detalhes de administração mais importantes da lista: inscrição e postagens moderadas, regras de filtros, controles de usuários. Os moderadores podem ser configurados para ser uma única pessoa, e quem tem permissão de envio de mail para a lista."
 
 #: Lang.Introduction.SubscriberList
 msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
-msgstr ""
+msgstr "Os integrantes de uma lista enviando receberão todas mensagens enviadas à lista. Pode-se  também configurar para que eles sejam permitidos postar mensagens ou que sejam moderados. Os usuários anonymous podem se inscrever ou se descadatrar sem a ajuda de um administrador - mas você pode configurar isto de acordo com suas necessidades."
 
 #: Lang.Introduction.TextFiles
 msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
