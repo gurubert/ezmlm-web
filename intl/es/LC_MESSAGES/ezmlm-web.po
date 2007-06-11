@@ -1,25 +1,24 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-05-30 21:12+0200\n"
+"Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 0.10.1\n"
+"X-Generator: Pootle 0.10.1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Crear una nueva lista"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Borrar lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
@@ -27,11 +26,11 @@ msgstr ""
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "lista de permitidos"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "lista de denegados"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
@@ -39,15 +38,15 @@ msgstr ""
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "moderadores"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "suscripción"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
@@ -55,7 +54,7 @@ msgstr ""
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "administración"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
@@ -67,7 +66,7 @@ msgstr ""
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "vista general"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
@@ -87,35 +86,35 @@ msgstr ""
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Encriptación"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "encriptación"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "Ficheros de texto"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Escoje una lista"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Propiedades de"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "Interfaz"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Ayuda (externa)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
@@ -127,11 +126,11 @@ msgstr ""
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Configuración de lista"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Opciones de suscripción"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
@@ -139,31 +138,31 @@ msgstr ""
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Administración remota"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Opciones de archivo"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Procesamiento de mensajes"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Configuración completa"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Suscritores de la lista"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Usuarios permitidos"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Usuarios bloqueados"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
@@ -171,19 +170,19 @@ msgstr ""
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Moderadores de la lista"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Crear una nueva lista"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Escojer un fichero para editar"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Editando fichero"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
@@ -203,31 +202,31 @@ msgstr ""
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Opciones de encriptación"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Crear una lista"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Borrar la lista"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Borrar dirección(es)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr ""
+msgstr "Bajar suscritores"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Añadir dirección(es)"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Actualizar configuración"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
@@ -235,11 +234,11 @@ msgstr ""
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Editar fichero"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Guardar fichero"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
@@ -247,15 +246,15 @@ msgstr ""
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
-msgstr ""
+msgstr "seleccionar"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Convertir a una lista encriptada"
 
 #: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Convertir a una lista desencriptada"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
@@ -275,23 +274,23 @@ msgstr ""
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "bajar"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "esta acción no está definida"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "esta acción requiere uno o más parámetros"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Error: no tienes permiso para hacer esto!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Nombre de fichero inválido!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
@@ -315,51 +314,51 @@ msgstr ""
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "Falló la inserción de al menos una dirección!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Falló el borrado de al menos una dirección!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "Falló la creación de la lista de correo!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "Falló el borrado de la lista de correo!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "Falló la actualización de la lista de correo!"
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "El fichero no pudo ser guardado!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Ya existe una lista con este nombre!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Ya existe una lista con esta dirección!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "No existe una lista con este nombre!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "No se puede acceder al directorio de la lista"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
-msgstr ""
+msgstr "No se puede acceder a los ficheros del directorio de la lista"
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
-msgstr ""
+msgstr "No se pudo renombrar la lista para el borrado seguro"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
@@ -367,19 +366,19 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "No se pudieron mover los ficheros .qmail"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "No se pudo borrar la lista"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "No se pudieron borrar ficheros .qmail"
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
-msgstr ""
+msgstr "El fichero enviado debe ser de texto"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
