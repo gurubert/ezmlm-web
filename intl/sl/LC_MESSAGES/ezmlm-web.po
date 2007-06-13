@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: 2007-05-14 15:02+0200\n"
+"PO-Revision-Date: 2007-06-13 10:44+0200\n"
 "Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "Naročnikove možnosti"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Možnosti objavljanja"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
@@ -230,7 +230,7 @@ msgstr "Ažuriraj konfiguracijo"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Ažuriranje ključev"
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
@@ -350,7 +350,7 @@ msgstr "Seznam s tem imenom ne obstaja!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "Direktorij seznama ni dostopen"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
@@ -490,7 +490,7 @@ msgstr "konfiguracija pošnega seznama je bila uspešno spremenjena"
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
-msgstr ""
+msgstr "Ključenje je uspešno spremenjeno"
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
@@ -682,11 +682,11 @@ msgstr "Naredi ta seznam podseznam seznama"
 
 #: Lang.Settings.3
 msgid "Set a custom \"From:\" header for outgoing messsages"
-msgstr ""
+msgstr "Po meri nastavi glavo \"Od:\" za izhodna sporočila"
 
 #: Lang.Settings.4
 msgid "Define customized setting for digest creation (ezmlm-tstdig)"
-msgstr ""
+msgstr "Določi, po meri, nastavitve za digest creation (ezmlm-tstdig)"
 
 #: Lang.Settings.5
 msgid "Define the email address of the list owner"
@@ -710,7 +710,7 @@ msgstr "Določi običajno pot podatkovni bazi za skrbnike na daljavo"
 
 #: Lang.Misc.HelpLink
 msgid "The manual page of ezmlm-idx"
-msgstr "The manual page of ezmlm-idx"
+msgstr ""
 
 #: Lang.Misc.Subscription
 msgid "Subscription"
@@ -746,11 +746,11 @@ msgstr "Filtriranje glave"
 
 #: Lang.Misc.HeaderRemove
 msgid "strip these header lines"
-msgstr "strip these header lines"
+msgstr ""
 
 #: Lang.Misc.HeaderKeep
 msgid "keep only these header lines"
-msgstr "keep only these header lines"
+msgstr ""
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
@@ -786,7 +786,7 @@ msgstr "Lokalni del imena seznama"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
 msgid "The host name of the list name"
-msgstr "The host name of the list name"
+msgstr ""
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
@@ -990,7 +990,7 @@ msgstr "Tu najdete nastavitve, ki niso bile primerne za ostale kategorije"
 
 #: Lang.Introduction.ConfigPosting
 msgid "The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed."
-msgstr ""
+msgstr "Konfiguracija objavljanja določa komu je dovoljeno objavljati sporočila, jih pošiljati prijavljenim na seznamu in kako bodo sporočila obdelana."
 
 #: Lang.Introduction.ConfigSub
 msgid "Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process."
@@ -1014,7 +1014,7 @@ msgstr "Če želite določenim poštnim naslovom preprečiti, da bi uporabljali 
 
 #: Lang.Introduction.DigestList
 msgid "Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway."
-msgstr ""
+msgstr "Nekateri uporabniki vašega seznama bodo morda želeli prejemati običajni povzetek namesto vseh sporočil s poštnega seznama. Navadno v razpravah ne bodo sodelovali, vendar jih bo zadeva na nek način vseeno zanimala. "
 
 #: Lang.Introduction.ModList
 msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
@@ -1022,91 +1022,91 @@ msgstr "Moderatorjem (za objave in prijave) in skrbnikom na daljavo je dovoljeno
 
 #: Lang.Introduction.SubscriberList
 msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
-msgstr ""
+msgstr "Vpisani na poštni seznam bodo dobili vsa izhodna sporočila. Lahko jim je tudi dovoljeno objavljati sporočila ali jih moderirati. Anonimni uporabniki se lahko vpišejo ali izpišejo brez pomoči administratorja - lahko pa seveda prikrojite ta pravila kakor vam ustreza.  "
 
 #: Lang.Introduction.TextFiles
 msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
-msgstr ""
+msgstr "polje za urejenaje vsebuje seznam datotek, ki so dostopne v DIR/text directory. Te datoteke so poslane z namenom odgovora na izrecno prošnjo uporabnika  ali kot del vsakega izhodnega sporočila. Uredite jih kot vam drago."
 
 #: Lang.Introduction.EditTextFile
 msgid "Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page."
-msgstr ""
+msgstr "Spremeni besedilo v skladu s svojimi potrebami. Morda vam bo prav prišlo katera od oznak podanih na dnu strani."
 
 #: Lang.Introduction.ResetTextFile
 msgid "This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file."
-msgstr ""
+msgstr "To besedilo je prirejeno za ta seznam. Če bi raje uporabljali system-wide default text file izbranega jezika, lahko to datoteko odstranite."
 
 #: Lang.Introduction.GnupgConvert
 msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
-msgstr ""
+msgstr "Navadni poštni seznam lahko preoblikujete v šifriranega in obratno. "
 
 #: Lang.Introduction.GnupgGenerateKey
 msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
-msgstr ""
+msgstr "Za vsak šifriran poštni seznam (mailinglist) potrebujete skrivni ključ. Lahko ga uvozite ali ustvarite s pomočjo obrazca podanega niže. Po potrditvi obrazca ostanite potrpežljivi. V nekaj minutah bo ključ ustvarjen.  "
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
-msgstr ""
+msgstr "oblikujte koristne nastavitve šifriranega poštnega seznama."
 
 #: Lang.Introduction.GnupgSecret
 msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
-msgstr ""
+msgstr "Poštni seznam potrebuje skrivni ključ za dešifriranje sporočil. Poskrbite, da bo skrivni ključ varno spravljen. V nasprotnem primeru bo varnost vašega poštnega seznama ogrožena."
 
 #: Lang.Introduction.GnupgPublic
 msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
-msgstr ""
+msgstr "Za vsakega prijavljenega uporabnika poštnega seznama mora obstajati javni ključ. Dodatno je tu ključ poštnega seznama, ki naj bo dostavljen vsem uporabnikom poštnega seznama. Javna objava javnega ključa je varna."
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
-msgstr ""
+msgstr "Dovoljenja administratorjev na daljavo"
 
 #: Lang.Legend.ConfigArchive
 msgid "Archive configuration"
-msgstr ""
+msgstr "Arhiv postavitve (konfiguracije)"
 
 #: Lang.Legend.ConfigPosting
 msgid "Posting rules"
-msgstr ""
+msgstr "Pravila objavljanja"
 
 #: Lang.Legend.ConfigSub
 msgid "Subscription details"
-msgstr ""
+msgstr "Podrobnosti subskripcije"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
-msgstr ""
+msgstr "Obči seznam konfiguracij"
 
 #: Lang.Legend.ConfigProcess
 msgid "Processing rules"
-msgstr ""
+msgstr "Pravila obdelovanja"
 
 #: Lang.Legend.ConfigAll
 msgid "Available properties"
-msgstr ""
+msgstr "Razpoložljive lastnosti"
 
 #: Lang.Legend.ListCreate
 msgid "Properties of the new list"
-msgstr ""
+msgstr "Lastnosti novega seznama"
 
 #: Lang.Legend.ListDelete
 msgid "Remove this mailinglist"
-msgstr ""
+msgstr "odstrani ta pošni seznam"
 
 #: Lang.Legend.RelevantOptions
 msgid "Useful settings"
-msgstr ""
+msgstr "Koristne nastavitve "
 
 #: Lang.Legend.MembersList
 msgid "Manage subscribers"
-msgstr ""
+msgstr "Upravljanje vpisanih v poštni seznam"
 
 #: Lang.Legend.MembersAllow
 msgid "Manage allowed users"
-msgstr ""
+msgstr "Upravljanje \"dovoljenih uporabnikov\""
 
 #: Lang.Legend.MembersDeny
 msgid "Manage blocked users"
-msgstr ""
+msgstr "Upravljanje \"blokiranih\" uporabnikov"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
@@ -1114,51 +1114,51 @@ msgstr ""
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
-msgstr ""
+msgstr "Upravljanje moderatorjev in administratorjev"
 
 #: Lang.Legend.TextFiles
 msgid "Available text files"
-msgstr ""
+msgstr "Dostopne besedilne datoteke"
 
 #: Lang.Legend.TextFileEdit
 msgid "Edit content of text file"
-msgstr ""
+msgstr "Uredi vsebino besedilne datoteke"
 
 #: Lang.Legend.TextFileReset
 msgid "Discard customized text"
-msgstr ""
+msgstr "Zavzi prikrojene tekste"
 
 #: Lang.Legend.TextFileInfo
 msgid "Useful placeholders"
-msgstr ""
+msgstr "Uporabne namestitve"
 
 #: Lang.Legend.AvailableLists
 msgid "Available lists"
-msgstr ""
+msgstr "Dostopni seznami"
 
 #: Lang.Legend.SubscribeLog
 msgid "Events"
-msgstr ""
+msgstr "Dogodki"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
-msgstr ""
+msgstr "Podpora šifriranja "
 
 #: Lang.Legend.GnupgPublicKeys
 msgid "Public keys of this list"
-msgstr ""
+msgstr "Javni ključi tega seznama"
 
 #: Lang.Legend.GnupgSecretKeys
 msgid "Secret keys of this list"
-msgstr ""
+msgstr "Skriti ključi tega seznama"
 
 #: Lang.Legend.GnupgKeyImport
 msgid "Import a key"
-msgstr ""
+msgstr "Uvozi ključ"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
-msgstr ""
+msgstr "Ustvari ključ za ta seznam"
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
