@@ -1,65 +1,64 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-06-29 12:00+0200\n"
+"Last-Translator: Andrea Garbato <agarbato@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 0.10.1\n"
+"X-Generator: Pootle 0.10.1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Crea nuova Lista"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Cancella Lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Iscritti"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "Liste Abilitate"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "Nega Lista"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "Lista Digest"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "Moderatori"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Opzioni"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "Iscrizione"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "Scrittura"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "Amministrazione"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "Archivio"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
