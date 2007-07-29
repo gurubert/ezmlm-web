@@ -42,7 +42,6 @@ intl/ru/LC_MESSAGES/ezmlm-web.po -text
 intl/sl/LC_MESSAGES/ezmlm-web.po -text
 intl/sv/LC_MESSAGES/ezmlm-web.po -text
 lang/README -text
-lang/de.hdf -text
 lang/en.hdf -text
 man/ezmlm-web-make-suid.1 -text
 man/ezmlm-web.wrapper.1 -text
