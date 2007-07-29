@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-07-29 23:29+0200\n"
 "PO-Revision-Date: 2007-06-29 12:00+0200\n"
 "Last-Translator: Andrea Garbato <agarbato@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,8 +173,9 @@ msgid "Moderators of the mailinglist"
 msgstr ""
 
 #: Lang.Title.ListCreate
+#, fuzzy
 msgid "Create a new list"
-msgstr ""
+msgstr "Crea nuova Lista"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
@@ -617,8 +618,9 @@ msgid "Access to the archive is granted for"
 msgstr ""
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
-msgstr ""
+msgstr "Amministrazione"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -673,8 +675,9 @@ msgid "Confirmation mails are required for"
 msgstr ""
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
-msgstr ""
+msgstr "Iscrizione"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -713,12 +716,14 @@ msgid "The manual page of ezmlm-idx"
 msgstr ""
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
-msgstr ""
+msgstr "Iscrizione"
 
 #: Lang.Misc.Subscribers
+#, fuzzy
 msgid "subscribers"
-msgstr ""
+msgstr "Iscritti"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
