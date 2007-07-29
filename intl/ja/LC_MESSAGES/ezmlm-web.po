@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-07-29 23:00+0200\n"
 "PO-Revision-Date: 2007-06-09 16:15+0200\n"
 "Last-Translator: Ward Lai <lai@kitools.com.tw>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,8 +173,9 @@ msgid "Moderators of the mailinglist"
 msgstr ""
 
 #: Lang.Title.ListCreate
+#, fuzzy
 msgid "Create a new list"
-msgstr ""
+msgstr "建立新表單"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
@@ -717,8 +718,9 @@ msgid "Subscription"
 msgstr ""
 
 #: Lang.Misc.Subscribers
+#, fuzzy
 msgid "subscribers"
-msgstr ""
+msgstr "簽署者"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
