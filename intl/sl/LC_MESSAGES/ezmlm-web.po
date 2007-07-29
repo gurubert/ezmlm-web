@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-07-29 23:00+0200\n"
 "PO-Revision-Date: 2007-06-13 10:44+0200\n"
 "Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,8 +149,9 @@ msgid "Message processing"
 msgstr "Obdelava sporočil"
 
 #: Lang.Title.ConfigAll
+#, fuzzy
 msgid "Complete configuration"
-msgstr "Konfiguracija"
+msgstr "Ažuriraj konfiguracijo"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
@@ -617,8 +618,9 @@ msgid "Access to the archive is granted for"
 msgstr "Dostop do arhiva je prepovedan za"
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
-msgstr "Administratorje"
+msgstr "administracija"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -673,8 +675,9 @@ msgid "Confirmation mails are required for"
 msgstr "Potrditveno sporočilo je zahtevano za"
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
-msgstr "tiste, ki niso prijavljeni"
+msgstr "podpististe, ki niso prijavljeni"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -713,12 +716,14 @@ msgid "The manual page of ezmlm-idx"
 msgstr ""
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
-msgstr "Prijava"
+msgstr "Podpis"
 
 #: Lang.Misc.Subscribers
+#, fuzzy
 msgid "subscribers"
-msgstr "Prijavniki - subskribenti"
+msgstr "naročniki"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
@@ -785,8 +790,9 @@ msgid "The local part of the list name"
 msgstr "Lokalni del imena seznama"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
+#, fuzzy
 msgid "The host name of the list name"
-msgstr ""
+msgstr "Lokalni del imena seznama"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
@@ -1069,8 +1075,9 @@ msgid "Posting rules"
 msgstr "Pravila objavljanja"
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
-msgstr "Podrobnosti subskripcije"
+msgstr "Naročnikove možnosti"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
@@ -1137,8 +1144,9 @@ msgid "Available lists"
 msgstr "Dostopni seznami"
 
 #: Lang.Legend.SubscribeLog
+#, fuzzy
 msgid "Events"
-msgstr "Dogodki"
+msgstr "Dogodek"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
@@ -1153,6 +1161,7 @@ msgid "Secret keys of this list"
 msgstr "Skriti ključi tega seznama"
 
 #: Lang.Legend.GnupgKeyImport
+#, fuzzy
 msgid "Import a key"
 msgstr "Uvozi ključ"
 
