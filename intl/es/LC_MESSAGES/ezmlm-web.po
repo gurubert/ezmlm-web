@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-07-29 23:00+0200\n"
 "PO-Revision-Date: 2007-05-30 21:12+0200\n"
 "Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -617,8 +617,9 @@ msgid "Access to the archive is granted for"
 msgstr ""
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
-msgstr ""
+msgstr "administración"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -673,8 +674,9 @@ msgid "Confirmation mails are required for"
 msgstr ""
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
-msgstr ""
+msgstr "suscripción"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -713,8 +715,9 @@ msgid "The manual page of ezmlm-idx"
 msgstr ""
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
-msgstr ""
+msgstr "suscripción"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
@@ -1069,8 +1072,9 @@ msgid "Posting rules"
 msgstr ""
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
-msgstr ""
+msgstr "Opciones de suscripción"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
