@@ -1,9 +1,12 @@
+/* ezmlm-web css stylesheet for positioning
+ *
+ * all changes regarding the color scheme can be found in the
+ * respective 'color-*.css' file */
+
 body {
 	margin: 0;
 	padding: 0;
 	font: normal 100% sans-serif;
-	color: #2e3436;
-	background-color: white;
 	}
 
 a { text-decoration: none; }
@@ -16,15 +19,8 @@ button, select { cursor: pointer; }
 	clear: left;
 	float: left;
 	width: 20%;
-	color: black;
-	background-color: #3465a4;
-	background-image: url(horiz_grad_blue.png);
 	margin: 1%;
 	padding: 1.5% 0;
-	}
-
-#nav_bar * {
-	background-color: transparent;
 	}
 
 #nav_bar hr {
@@ -54,44 +50,19 @@ button, select { cursor: pointer; }
 	margin-bottom: 0;
 	}
 
-#nav_bar li a.nav_active {
-	color: #eeeeec;
-	background-color: inherit;
-	}
-
 #nav_bar font.no_link {
 	font-style: italic;
-	color: inherit;
-	background-color: inherit;
-	}
-
-#nav_bar a {
-	color: black;	/* necessary: IE6 ignores 'inherit' */
-	background-color: inherit;
-	}
-
-#nav_bar a:hover {
-	color: #fce94f;
-	background-color: inherit;
 	}
 
 
 /***************************** header **************************/
 
 #top {
-	color: #eeeeec;
-	background-color: #cc0000;
-	background-image: url(vert_grad_red.png);
-	background-position: center;
 	width: 100%;
 	margin: 0;
 	padding: 2px 7px 2px 3px;
 	}
 
-#top * {
-	background-color: transparent;
-	}
-	
 #title {
 	text-align: left;
 	}
@@ -123,14 +94,7 @@ button, select { cursor: pointer; }
 
 #perm_nav a {
 	font-weight: bold;
-	color: #eeeeec;
-	background-color: inherit;
 	}
-
-#perm_nav a:hover {
-	color: #fce94f;
-	background-color: inherit;
-	} 
 
 #top form {
 	font-size: 85%;
@@ -138,23 +102,12 @@ button, select { cursor: pointer; }
 	}
 
 #top form select {
-	background-color: #d3d7c4;
 	margin-right: 4px;
 	}
 
-#top form select:hover {
-	background-color: #eeeeec;
-	}
-
 #top form button {
-	border-color: #ef2929;
 	border-style: groove;
-	background-color: #edd400;
 	margin-left: 3px;
-	}
-
-#top form button:hover {
-	background-color: #fce94f;
 	}
 
 
@@ -166,10 +119,6 @@ button, select { cursor: pointer; }
 	}
 
 #main_content #info_title {
-	color: #eeeeec;
-	background-color: #729fcf;
-	background-image: url(horiz_grad_blue_long.png);
-	background-position: left;
 	margin-left: 20%;	/* no background coloring behind the nav bar */
 	margin-top: 0.5%;
 	margin-right: 0.2%;
@@ -248,19 +197,6 @@ button, select { cursor: pointer; }
 	font-size: 90%;
 	}
 
-#main_content div.success,
-#main_content div.warning,
-#main_content div.error {
-	color: #2e3436;
-	background-color: inherit;	/* just to avaid css syntax warnings */
-	}
-
-#main_content div.success { background-color: #40d070; }
-
-#main_content div.warning { background-color: #ef2929; }
-
-#main_content div.error { background-color: #a40000; }
-
 #main_content table.gnupg_keys td {
 	padding-right: 10px;
 	}
@@ -278,38 +214,24 @@ button, select { cursor: pointer; }
 	}
 
 #main_content button {
-	color: #555753;
-	background-color: #d3d7cf;
-	border: 1px dotted #555753;
+	border-width: 1px;
+    border-style: dotted;
 	font-size: 90%;
 	}
 
 #main_content button:hover {
-	color: #555753;
-	background-color: #d3d7cf;
-	border: 1px dotted #ace149;
+	border-width: 1px;
+    border-style: dotted;
 	font-size: 90%;
 	}
 
 /************************** footer ******************************/
 
 #footer {
-	color: #eeeeec;
-	background-color: #cc0000;
-	background-image: url(vert_grad_red.png);
-	background-position: center;
 	clear: left;	/* do not overlap with left navigation bar */
 	text-align: center;
 	font-size: 90%;
 	margin: 10px 0 0 0;
 	padding: 3px;
-	}
-
-#footer * { background-color: transparent; }
-
-#footer a,
-#footer a:visited {
-	color: #fce94f;
-	background-color: transparent;
 	}
 

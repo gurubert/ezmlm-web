@@ -1,0 +1,116 @@
+body {
+        color: #606760;
+        background-color: white;
+    }
+
+#nav_bar {
+        color: inherit;
+        background-color: #c0c0b0;
+    }
+
+#nav_bar * {
+        background-color: transparent;
+	}
+
+#nav_bar li a.nav_active {
+        color: white;
+        background-color: inherit;
+	}
+
+#nav_bar font.no_link {
+        color: #2f4860;
+        background-color: inherit;
+	}
+
+#nav_bar a {
+        color: #2f4860;	/* necessary: IE6 ignores 'inherit' */
+        background-color: inherit;
+	}
+
+#nav_bar a:hover {
+        color: #2f4860;
+        background-color: #d8d8d8;
+	}
+
+#top {
+        background-color: #2f4860;
+    }
+
+#top * {
+        color: white;
+        background-color: transparent;
+	}
+	
+#perm_nav a {
+        color: white;
+        background-color: inherit;
+	}
+
+#perm_nav a:hover {
+        color: #ffcc00;
+        background-color: inherit;
+	} 
+
+#top form select {
+        background-color: #6f88c0;
+	}
+
+#top form select:hover {
+        background-color: #7f98ff;
+	}
+
+#top form button {
+        border-color: #ef2929;
+        background-color: #acaf9e;
+	}
+
+#top form button:hover {
+        color: #404040;
+        background-color: #cccfbe;
+	}
+
+#main_content #info_title {
+        color: white;
+        background-color: #c0c0b0;
+    }
+
+#main_content div.success,
+#main_content div.warning,
+#main_content div.error {
+        color: #202020;
+        background-color: inherit;	/* just to avoid css syntax warnings */
+	}
+
+#main_content div.success { background-color: #40d070; }
+
+#main_content div.warning { background-color: #e0a0a0; }
+
+#main_content div.error { background-color: #d05050; }
+
+#main_content button {
+        color: #555753;
+        background-color: #d8d8d8;
+        border-color: #555753;
+    }
+
+#main_content button:hover {
+        color: #505050;
+        background-color: #d0d0d0;
+        border-color: #ace149;
+    }
+
+
+#footer {
+        color: white;
+        background-color: #2f4860;
+        background-position: center;
+    }
+
+#footer * { background-color: transparent; }
+
+#footer a,
+#footer a:visited {
+        color: #a0d0b0;
+        background-color: transparent;
+	}
+

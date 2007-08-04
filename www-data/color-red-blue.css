@@ -1,0 +1,121 @@
+body {
+        color: #2e3436;
+        background-color: white;
+    }
+
+#nav_bar {
+        color: black;
+        background-color: #3465a4;
+        background-image: url(horiz_grad_blue.png);
+    }
+
+#nav_bar * {
+        background-color: transparent;
+	}
+
+#nav_bar li a.nav_active {
+        color: #eeeeec;
+        background-color: inherit;
+	}
+
+#nav_bar font.no_link {
+        color: inherit;
+        background-color: inherit;
+	}
+
+#nav_bar a {
+        color: black;	/* necessary: IE6 ignores 'inherit' */
+        background-color: inherit;
+	}
+
+#nav_bar a:hover {
+        color: #fce94f;
+        background-color: inherit;
+	}
+
+#top {
+        color: #eeeeec;
+        background-color: #cc0000;
+        background-image: url(vert_grad_red.png);
+        background-position: center;
+    }
+
+#top * {
+        background-color: transparent;
+	}
+	
+#perm_nav a {
+        color: #eeeeec;
+        background-color: inherit;
+	}
+
+#perm_nav a:hover {
+        color: #fce94f;
+        background-color: inherit;
+	} 
+
+#top form select {
+        background-color: #d3d7c4;
+	}
+
+#top form select:hover {
+        background-color: #eeeeec;
+	}
+
+#top form button {
+        border-color: #ef2929;
+        background-color: #fcaf3e;
+	}
+
+#top form button:hover {
+        background-color: #fce94f;
+	}
+
+#main_content #info_title {
+        color: #eeeeec;
+        background-color: #729fcf;
+        background-image: url(horiz_grad_blue_long.png);
+        background-position: left;
+    }
+
+#main_content div.success,
+#main_content div.warning,
+#main_content div.error {
+        color: #2e3436;
+        background-color: inherit;	/* just to avoid css syntax warnings */
+	}
+
+#main_content div.success { background-color: #40d070; }
+
+#main_content div.warning { background-color: #ef2929; }
+
+#main_content div.error { background-color: #a40000; }
+
+#main_content button {
+        color: #555753;
+        background-color: #d3d7cf;
+        border-color: #555753;
+    }
+
+#main_content button:hover {
+        color: #555753;
+        background-color: #d3d7cf;
+        border-color: #ace149;
+    }
+
+
+#footer {
+        color: #eeeeec;
+        background-color: #cc0000;
+        background-image: url(vert_grad_red.png);
+        background-position: center;
+    }
+
+#footer * { background-color: transparent; }
+
+#footer a,
+#footer a:visited {
+        color: #fce94f;
+        background-color: transparent;
+	}
+

@@ -147,6 +147,8 @@ template/textfiles.cs -text
 template/ui/easy.hdf -text
 template/ui/expert.hdf -text
 template/ui/normal.hdf -text
+www-data/color-blue-gray.css -text
+www-data/color-red-blue.css -text
 www-data/default.css -text
 www-data/graphics-template.svg -text
 www-data/horiz_grad_blue.png -text
