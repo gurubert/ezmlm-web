@@ -4,12 +4,11 @@ $Id$
 
 Table of content
 1 - install the package
-2 - install required additional software
-3 - create user-sprecific suid binaries
-4 - create a user-specific configuration
-5 - enable stylesheet
-6 - access control
-7 - testing
+2 - create user-sprecific suid binaries
+3 - create a user-specific configuration
+4 - enable stylesheet
+5 - access control
+6 - testing
 
 #################################################################
 
@@ -23,16 +22,10 @@ Table of content
 
 	Now you may simply execute the following commands:
 		apt-get update
-		apt-get install ezmlm-web libemail-ezmlm-perl
+		apt-get install ezmlm-web
 
 
-2) install required additional software
-	clearsilver perl bindings:
-		* download clearsilver (http://clearsilver.net) v0.10.2 or higher
-		* compile and install it with perl enabled
-
-
-3) create user-specific suid binaries
+2) create user-specific suid binaries
 	As perl-suid is considered deprecated, you have to compile a C-wrapper
 	for every user of your debian system, who wants to manage his mailing
 	lists with ezmlm-we.
@@ -44,20 +37,21 @@ Table of content
 	e.g: ezmlm-web-make-suid john ~john/public_html/cgi-bin/ezmlm-web
 
 
-4) create a user-specific configuration file (optional)
+3) create a user-specific configuration file (optional)
 	Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc to ~john/.ezmlmwebrc
 	and change its content according to your setup.
 
 
-5) enable the stylesheet
-	Copy the stylesheet file (/usr/share/ezmlm-web/css/default.css)
-	to a location of your choice. It has to be accessible by an URL - maybe
-	a place like "/var/www/ezmlm-web.css" could be appropriate.
-	Now you may have to change the "HTML_CSS_FILE" setting in your
-	ezmlmwebrc file. This value is a URL - not the local filename.
+4) enable the stylesheet
+	Copy the stylesheet files (/usr/share/ezmlm-web/www-data/*) to a location
+	of your choice. These files have to be accessible via a URL - maybe a place
+	like "/var/www/ezmlm-web-data/" could be appropriate.
+	Now you may have to change the "HTML_CSS_COMMON" and "HTML_CSS_COLOR"
+	settings in your ezmlmwebrc file. These values are URLs - not local
+	filenames.
 
 
-6) access control (optional)
+5) access control (optional)
 	Configure access control for the fresh cgi binary. Maybe you can
 	use the htaccess.sample file in /usr/share/doc/ezmlm-web/examples as
 	a template.
@@ -69,9 +63,10 @@ Table of content
 	See /usr/share/doc/ezmlm-web/README for details about access control.
 
 
-7) testing
+6) testing
 	Now you can access the ezmlm-web interface by using your web browser.
 	e.g. point it to http://localhost/~john/cgi-bin/ezmlm-web
-	If the web interface looks not as colorful as you expected, then you
-	may have to revisit your stylesheet setting (HTML_CSS_FILE in ezmlmwebrc).
+	If the web interface does not look like you would expect it, then you
+	may have to revise your stylesheet settings (HTML_CSS_COMMON and
+	HTML_CSS_COLOR in ezmlmwebrc).
 

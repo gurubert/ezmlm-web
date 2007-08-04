@@ -145,11 +145,11 @@ OVERVIEW:
 		http://BASE_URL/ezmlm-web?domain=foo
 	
 
-7.	Copy the stylesheet file (/usr/local/share/ezmlm-web/css/default.css)
+7.	Copy the stylesheet files (/usr/local/share/ezmlm-web/www-data/*.css)
 	to a location of your choice. It has to be accessible by an URL - maybe
 	a place like "/var/www/ezmlm-web.css" could be appropriate.
-	Now you may have to change the "HTML_CSS_FILE" setting in your
-	ezmlmwebrc file. This value is a URL - not the local filename.
+	Now you may have to change the "HTML_CSS_COMMON" and "HTML_CSS_COLOR"
+	settings in your ezmlmwebrc file.
 
 
 8.  Test the installation with your favourite web browser. You should be
@@ -157,8 +157,11 @@ OVERVIEW:
 	with a screen entitled "EZ Mailing List Manger". You can then try to
 	create and edit mailing lists ... Have Fun :)
 
-	If you do not see a colorful screen, then you did not set the HTML_CSS_FILE
-	option correctly in ezmlmwebrc. Check it again.
+	If you see a slightly disordered screen, the you did not set the
+	HTML_CSS_COMMON option correctly. Check it again.
+
+	If you do not see a colorful screen, then you did not set the HTML_CSS_COLOR
+	option correctly. Check it again.
 
 
 9.	If anything failes - take a look at the web server's error log
@@ -167,7 +170,7 @@ OVERVIEW:
 
 10.	If the error log of your web server did not help you to solve your problem:
 	- take a look at https://systemausfall.org/toolforge/ezmlm-web
-	- send me an email: ezmlm-web@sumpfralle.de
 	- subscribe to the mailinglist: ezmlm-web-subscribe@lists.systemausfall.org
+	- send me an email: ezmlm-web@sumpfralle.de
 	- report a bug at https://systemausfall.org/trac/ezmlm-web
 

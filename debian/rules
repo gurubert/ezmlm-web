@@ -9,9 +9,6 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-# This is the debhelper compatibility version to use.
-export DH_COMPAT=4
-
 # necessary for dpatch
 .NOTPARALLEL:
 
@@ -36,7 +33,7 @@ clean-patched:
 	dh_testdir
 	dh_testroot
 	-$(MAKE) clean
-	rm -f build-stamp configure-stamp
+	rm -f build-stamp configure-stamp Makefile.old
 	dh_clean 
 
 patch: patch-stamp
@@ -57,7 +54,6 @@ install: build
 	$(MAKE) install
 
 	install -c -m 644 examples/ezmlmwebrc.dist "$(CURDIR)/debian/ezmlm-web/etc/ezmlm-web/ezmlmwebrc"
-	install -c -m 644 examples/ezmlmwebrc.gnupg.dist "$(CURDIR)/debian/ezmlm-web/etc/ezmlm-web/ezmlmwebrc.gnupg"
 
 
 # Build architecture-independent files here.
@@ -70,24 +66,13 @@ binary-arch: build install
 	dh_installchangelogs 
 	dh_installdocs
 	dh_installexamples
-#	dh_install
-#	dh_installmenu
-#	dh_installdebconf	
-#	dh_installlogrotate
-#	dh_installemacsen
-#	dh_installpam
-#	dh_installmime
-#	dh_installinit
-#	dh_installcron
-#	dh_installinfo
+	dh_install
 	dh_installman
 	dh_link
 	dh_strip
 	dh_compress
 	dh_fixperms
-#	dh_perl
-#	dh_python
-#	dh_makeshlibs
+	dh_perl
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol
@@ -96,3 +81,4 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install configure
+

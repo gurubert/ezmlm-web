@@ -7,15 +7,19 @@ UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 1) the following dependency was added:
 	- File::Path
 
-2) design update
+2) CSS stylesheet file
 	The css stylesheet file changed significantly. Please update your copy.
-	Additionally you should also copy the images of the directory www-data/
-	to the directory of your local stylesheet file.
+	Additionally the stylesheet file was splitted into a common and a color
+	scheme part. Thus you need to specify the location of your color scheme
+	CSS file (a URL) in your ezmlmwebrc as HTML_CSS_COLOR. Otherwise your web
+	interface will be plain black and white. Read 'man ezmlmwebrc' for details.
 
-3) install Mail::Ezmlm::Gpg if you want to handle encrypted mailing lists
-	(see README.gnupg for details)
+	Be aware that at least one of the supplied color schemes requires some
+	images to be available in the directory of the stylesheet file.
+	The easiest approach would be to publish the 'www-data' directory via an
+	'Alias' (or something similar) with your favourite web server.
 
-4) possible locations of ezmlmwebrc
+3) possible locations of ezmlmwebrc
 	ezmlm-web does no longer search for a configuration file (ezmlmwebrc) in
 	the current directory, as this can be a security risk.
 	If you relied on this behavior (should be rare), then you have two options:
@@ -23,12 +27,12 @@ UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 	B) patch the source of ezmlm-web.cgi to include the deprecated
 		configuration file location. Do this on your own risk!
 
-5) renamed configuration setting
-	The configuration setting 'HTML_CSS_FILE' is replaced by 'HTML_CSS_URL' for
-	clarity. 'HTML_CSS_URL' falls back to the value of 'HTML_CSS_FILE' if it is
-	undefined. Thus your setup should work as before. But you are encouraged to
-	replace the setting, as it might break your setup in a future version of
-	ezmlm-web.
+4) renamed configuration setting
+	The configuration setting 'HTML_CSS_FILE' is replaced by 'HTML_CSS_COMMON'
+	for clarity. 'HTML_CSS_COMMON' falls back to the value of 'HTML_CSS_FILE'
+	if it is undefined. Thus your setup should work as before. But you are
+	encouraged to replace the setting, as it might break your setup in a
+	future version of ezmlm-web.
 
 ------------------------------------------------------------------------------
 

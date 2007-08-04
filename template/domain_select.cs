@@ -3,9 +3,7 @@
 </div>
 
 <fieldset>
-	<legend>
-		<?cs var:html_escape(Lang.Legend.AvailableDomains) ?>
-	</legend>
+	<legend><?cs var:html_escape(Lang.Legend.AvailableDomains) ?></legend>
 
 <?cs if:subcount(Data.Domains) > 0 ?>
 	<ul>

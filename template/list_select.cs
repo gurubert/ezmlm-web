@@ -3,9 +3,7 @@
 </div>
 
 <fieldset>
-	<legend>
-		<?cs var:html_escape(Lang.Legend.AvailableLists) ?>
-	</legend>
+	<legend><?cs var:html_escape(Lang.Legend.AvailableLists) ?></legend>
 
 <!-- to get a multiple-columns-design, we do strange things ... -->
 <?cs set:listnum=subcount(Data.Lists) ?>

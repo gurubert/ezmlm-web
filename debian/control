@@ -3,11 +3,11 @@ Section: admin
 Priority: extra
 Maintainer: Lars Kruse <devel@sumpfralle.de>
 Build-Depends: debhelper (>>3.0.0), gcc (>= 2.95), dpatch
-Standards-Version: 3.6.2
+Standards-Version: 3.7.2
 
 Package: ezmlm-web
 Architecture: any
-Depends: perl, httpd-cgi, libemail-address-perl, liblocale-gettext-perl, libemail-ezmlm-perl (>= 0.07)
+Depends: httpd-cgi, libemail-address-perl, libemail-ezmlm-perl (>= 0.07), ${perl:Depends}
 Suggests: qmail-src, bash (>=2.0), gcc
 Description: Web interface for ezmlm-idx mailing list administration
  This web interface allows you to configure every part of an ezmlm-idx
@@ -19,6 +19,6 @@ Description: Web interface for ezmlm-idx mailing list administration
   * qmail - http://cr.yp.to/qmail.html
   * ezmlm-idx - http://ezmlm.org/
   * clearsilver for perl (>= 0.10.2) - http://www.clearsilver.net/downloads/
-  * Mail::Ezmlm perl module via cpan or as debian package from
+  * Mail::Ezmlm perl module via cpan or as a debian package from
     https://systemausfall.org/toolforge/debian
 

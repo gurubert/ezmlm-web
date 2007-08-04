@@ -3,5 +3,8 @@ changelog
 copyright
 TODO
 UPGRADING
-share
-examples
+template/
+www-data/
+man/
+examples/
+suid-wrapper/

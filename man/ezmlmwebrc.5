@@ -84,10 +84,17 @@ will just move deleted lists to a safe place. Thus deletion is recoverable.
 .IP \fB$HTML_TITLE\fR
 Print a reasonable name of the web interface to the left upper corner of every
 page. By default this string is empty.
-.IP \fB$HTML_CSS_URL\fR
-This is the URL of the stylesheet file to be used by ezmlm-web. Make sure it is
-actually available, as the design of the web interface will suffer a lot
+.IP \fB$HTML_CSS_COMMON\fR
+This is the URL of the basic stylesheet file to be used by ezmlm-web. Make sure
+it is actually available, as the design of the web interface will suffer a lot
 without it.
+.IP \fB$HTML_CSS_COLOR\fR
+The color scheme of the web interface is separated from the basic stylesheet.
+This URL should point to the location of the color scheme CSS file. Your
+interface will be plain black and white if the stylesheet is not available.
+Be aware, that some of the supplied color schemes may require additional
+files (images) in the same directory. Currently 'color-red-blue.css'
+and 'color-blue-gray.css' are available.
 .IP \fB@HTML_LINKS\fR
 This array may contain hashes with the elements \fIname\fR and \fIurl\fR.
 These links will be visible in the upper right corner of every page.

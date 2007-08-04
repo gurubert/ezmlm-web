@@ -44,7 +44,8 @@ unless (&safely_import_module("Encode")) {
 $UID = $EUID;
 $GID = $EGID;
 
-my $VERSION = '3.2';
+my $VERSION;
+$VERSION = '3.2';
 
 my $q = new CGI;
 $q->import_names('Q');
@@ -67,19 +68,18 @@ use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
 use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
-use vars qw[$HTML_CSS_URL $TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
+use vars qw[$TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
+use vars qw[$HTML_CSS_COMMON $HTML_CSS_COLOR];
 use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
 
-# deprecated settings
-use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_URL since v3.2
-
-# some deprecated configuration settings - they have to be announced
+# some deprecated configuration settings - they have to be registered
 # otherwise old configuration files would break
-# for now there are no deprecated settings
+use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_COMMON since v3.2
+
 
 # "pagedata" contains the hdf tree for clearsilver
 # "pagename" refers to the template file that should be used
@@ -116,7 +116,7 @@ unless (my $return = do $config_file) {
 
 # do we support encrypted mailing lists?
 # see https://systemausfall.org/toolforge/crypto-ezmlm
-$GPG_SUPPORT = 0 unless defined($GPG_SUPPORT);
+$GPG_SUPPORT = 0; # disabled for v3.2 - unless defined($GPG_SUPPORT);
 if ($GPG_SUPPORT) {
 	if (&safely_import_module("Mail::Ezmlm::Gpg")) {
 		$GPG_SUPPORT = 1;
@@ -153,17 +153,20 @@ $DEFAULT_OPTIONS = 'aBDFGHiJkLMNOpQRSTUWx' unless defined($DEFAULT_OPTIONS);
 $HTML_LANGUAGE = 'en' unless defined($HTML_LANGUAGE);
 
 # check stylesheet
-# HTML_CSS_FILE was replaced by HTML_CSS_URL in v3.2
-unless (defined($HTML_CSS_URL)) {
-	# HTML_CSS_URL is undefined - we will check the deprecated setting first
+# HTML_CSS_FILE was replaced by HTML_CSS_COMMON in v3.2
+unless (defined($HTML_CSS_COMMON)) {
+	# HTML_CSS_COMMON is undefined - we will check the deprecated setting first
 	if (defined($HTML_CSS_FILE)) {
 		# ok - we fall back to the deprecated setting
-		$HTML_CSS_URL = $HTML_CSS_FILE;
+		$HTML_CSS_COMMON = $HTML_CSS_FILE;
 	} else {
 		# nothing is defined - we use the default value
-		$HTML_CSS_URL = '/ezmlm-web.css';
+		$HTML_CSS_COMMON = '/ezmlm-web.css';
 	}
 }
+
+# CSS color scheme
+$HTML_CSS_COLOR = '/color-red-blue.css' unless defined($HTML_CSS_COLOR);
 
 # check template directory
 $TEMPLATE_DIR = 'template' unless defined($TEMPLATE_DIR);
@@ -561,7 +564,8 @@ sub init_hdf {
 	$hdf = &load_interface_language($hdf);
 
 	$hdf->setValue("ScriptName", $ENV{SCRIPT_NAME}) if (defined($ENV{SCRIPT_NAME}));
-	$hdf->setValue("Stylesheet", "$HTML_CSS_URL");
+	$hdf->setValue("Stylesheet.0", "$HTML_CSS_COMMON");
+	$hdf->setValue("Stylesheet.1", "$HTML_CSS_COLOR");
 	$hdf->setValue("Config.PageTitle", "$HTML_TITLE");
 
 	my $i;
@@ -1575,6 +1579,8 @@ sub create_list {
 	# dots have to be turned into colons
 	# see http://www.qmail.org/man/man5/dot-qmail.html
 	$qmail =~ s/\./:/g;
+	# dotqmail files may not contain uppercase letters
+	$qmail = lc($qmail);
 	$listname = $q->param('list');
 	if ($listname =~ m/[^\w\.-]/) {
 		$warning = 'InvalidListName';

@@ -90,14 +90,21 @@ $HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
 #	);
 
 # use a cascading style sheet (css)
-# this is a URL - you have to copy the css file to the right location before
-$HTML_CSS_URL = "/ezmlm-web.css";
+# the setting is interpreted as a URL
+# this setting was formerly known as "HTML_CSS_FILE"
+$HTML_CSS_COMMON = "/ezmlm-web-data/default.css";
+
+# choose a coloring scheme - the available files are:
+#    color-blue-gray:   default style used before v3.2
+#    color-red-blue:    use gradients instead of plain colors (since v3.2)
+#    
+# be aware, that some stylesheets of may require some graphic
+# files in the same directory (where the stylesheet file is located)
+$HTML_CSS_COLOR = "/ezmlm-web-data/color-red-blue.css";
 
 # the default interface language
-# can only be changed via the web interface if gettext support is available
+# all other available translation are available via the web interface
+# the configured preferred browser language of a user can override this
+# setting individually
 $HTML_LANGUAGE = "en";
-
-# turn support for encrypted mailing lists on or off - defaults to 0 (off)
-# see https://systemausfall.org/toolforge/gpgpy-ezmlm for details
-$GPG_SUPPORT = 0;
 

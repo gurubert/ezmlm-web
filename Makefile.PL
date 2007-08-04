@@ -87,29 +87,24 @@ install_share_vendor::	install_share
 install_share:
 	install -d -m 0755 $SHAREDIR
 	install -d -m 0755 $SHAREDIR/lang
-	for file in share/lang/*.hdf ; \\
+	for file in lang/*.hdf ; \\
 		do	install -c -m 0644 \$\$file $SHAREDIR/lang/ ; \\
 	 done
-	install -d -m 0755 $SHAREDIR/css
-	for file in share/css/*.css ; \\
-		do	install -c -m 0644 \$\$file $SHAREDIR/css/ ; \\
+	install -d -m 0755 $SHAREDIR/www-data
+	for file in www-data/*.css www-data/*.png ; \\
+		do	install -c -m 0644 \$\$file $SHAREDIR/www-data/ ; \\
 	 done
 	install -d -m 0755 $SHAREDIR/template
-	install -d -m 0755 $SHAREDIR/template/ui
-	install -d -m 0755 $SHAREDIR/template/ui/default
-	install -d -m 0755 $SHAREDIR/template/ui/gnupg
 	install -d -m 0755 $SHAREDIR/template/config_options
-	for file in share/template/*.cs ; \\
+	install -d -m 0755 $SHAREDIR/template/ui
+	for file in template/*.cs template/*.txt ; \\
 		do	install -c -m 0644 \$\$file $SHAREDIR/template/ ; \\
 	 done
-	for file in share/template/config_options/*.cs ; \\
+	for file in template/config_options/*.cs ; \\
 		do	install -c -m 0644 \$\$file $SHAREDIR/template/config_options/ ; \\
 	 done
-	for file in share/template/ui/default/*.hdf ; \\
-		do	install -c -m 0644 \$\$file $SHAREDIR/template/ui/default/ ; \\
-	 done
-	for file in share/template/ui/gnupg/*.hdf ; \\
-		do	install -c -m 0644 \$\$file $SHAREDIR/template/ui/gnupg/ ; \\
+	for file in template/ui/*.hdf ; \\
+		do	install -c -m 0644 \$\$file $SHAREDIR/template/ui/ ; \\
 	 done
 ENDOFTEXT
 }

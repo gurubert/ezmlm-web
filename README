@@ -10,15 +10,12 @@ read INSTALL.
 Contents
 ========
    I.   Copyright Stuff
-  II.   Some Background
- III.   Requirements
-   V.   Notes
-  VI.   Multi-level list access
- VII.   Language Portability
-VIII.	Encrypted mailing lists
-  IX.   Bugs && Bug Reports
-   X.   Acknowledgements
-  XI.   Availability
+  II.   Requirements
+ III.   Multi-level list access
+  IV.   Multilingual interface
+   V.   Bugs && Bug Reports
+  VI.   Acknowledgements
+ VII.   Availability
 
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
@@ -62,10 +59,10 @@ II. Requirements
 This version of ezmlm-web requires the following;
 
 * qmail v1.03
-* ezmlm v0.53 (or ezmlm-idx v0.40)
+* ezmlm-idx v0.40 or higher
 * clearsilver v0.10.3 (only perl support is necessary)
 * Perl v5.004 and the following modules;
-  + Mail::Ezmlm v0.07 (current version!)
+  + Mail::Ezmlm v0.07
   + Mail::Address v1.15
   + CGI v2.6 
   + CGI::Carp v1.06
@@ -89,29 +86,8 @@ Just run "cpan" and type something like "install Mail::Ezmlm".
 You can download clearsilver (a templating engine) from http://clearsilver.net.
 
 
-III. Notes
-==========
-* There is a function to delete mailing lists, but I really don't like the
-  idea. The only reason I put it in is that bvi@rucus asked for it.
-  If you set $UNSAFE_RM = 0 (the default) in the config section, the
-  ezmlm-web won't actually delete the list. In this case it moves the <list> 
-  and all the associated .qmail files to a sub-directory called 
-  _deleted_lists/ (In the user's home directory. This is by far a safer way 
-  (since you can restore lists) and therefore I recommend it.
-
-* I suggest that you make use of custom ezmlmwebrc files rather than using
-  the -d command line switches - it makes fault diagnosis easier ...
-
-* Vpopmail users should set up different suid wrappers for every single
-  managed domain.
-  These wrappers should be accompanied by seperate ezmlmwebrc files with
-  different DOTQMAIL_DIR settings.
-  Please send me a more detailed description, if you managed to use ezmlm-web
-  with this kind of setup :)
-
-
-IV. Multi-Level Access
-======================
+III. Multi-Level Access
+=======================
 Ezmlm-web has a multi-level access system. This depends on a file called
 webusers being present in $LIST_DIR. If the file is not present, then ANY
 valid user has access to all lists.  If, however, this file exists a number
@@ -153,32 +129,34 @@ You find the details of the format of webusers (5) file in the respective
 manpage.
 
 
-V. Language Portablity
-======================
+IV. Multilingual interface
+=======================
 One of the great new features since version 2.0 is that it is essentially
 language independant. All of the fixed strings, help, etc is defined in the
 files of the lang directory. Of course you can change them or create a new
 translation.
 
-The language can be selected in ezmlmwebrc with the "HTML_LANGUAGE" option.
+The default fallback language can be selected in ezmlmwebrc with the
+"HTML_LANGUAGE" option. ezmlm-web tries to determine the language of the
+current user by evaluating the http header information of the browser.
+Additionally the user may select a different language via the web interface.
+
+The currently supported languages are:
+ - English
+ - German
+ - Slovenian
+ - Portuguese (Brazil)
 
 Please visit the translation center at http://translate.systemausfall.org
-to contribute some strings translated to yoru native language. Thanks!
+to contribute some translations for your native language. Thanks!
 
 
-VI. Encrypted mailing lists
-===========================
-If you want to manage encrypted mailing lists (see
-https://systemausfall.org/toolforge/gpgpy-ezmlm) with ezmlm-web, then you
-should read README.gnupg and follow the instructions.
-
-
-VII. Bugs && Bug Reports
-========================
+V. Bugs && Bug Reports
+======================
 I don't know of any bugs ...
 Ezmlm-web has been tested reasonably well, but not exhaustively. I know it
 works on FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and
-Debian 3.1 all using an Apache web server, but I would be interested to know
+Debian all using an Apache web server, but I would be interested to know
 whether it works on other OSs and with other web servers.
 
 Please mail bug reports and comments to
@@ -189,8 +167,8 @@ Or subscribe to the ezmlm-web mailinglist:
 	ezmlm-web-subscribe@lists.systemausfall.org
 
 
-VIII. Acknowledgements
-======================
+VI. Acknowledgements
+====================
 *  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - he created ezmlm-web
    and maintained it till 02005 
 *  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me (Guy) and
@@ -212,12 +190,13 @@ VIII. Acknowledgements
 *  Reinin Ooyama (lenin@hasiru.net) - a Japanese translation and bugixes for v2.3
 *  Henning Rieger (age@systemausfall.org) - designed most of the new
    interface for v3.0
-*  Clavdia Horvat - designed the new color scheme of v3.2 and translated to Slovenian
+*  Clavdia Horvat - designed the new color scheme of v3.2 and translated to
+   Slovenian
 *  Carlinhos Cecconi - added the translation for Portugues do Brasil
 
 
-IX. Availability
-================
+VII. Availability
+=================
 More information on ezmlm-web and developments to ezmlm-web can be found at:
 https://systemausfall.org/toolforge/ezmlm-web/
 

@@ -64,14 +64,13 @@
 	((Data.List.PartType == 'digest') && (Data.List.Options.d == 1)) ?>
 
 	<fieldset>
-		<legend>
-			<?cs if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Legend.MembersAllow) ?>
-			<?cs elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Legend.MembersDeny) ?>
-			<?cs elif:(Data.List.PartType == "digest") ?><?cs var:html_escape(Lang.Legend.MembersDigest) ?>
-			<?cs elif:(Data.List.PartType == "mod") ?>	<?cs var:html_escape(Lang.Legend.MembersMod) ?>
-			<?cs else ?> 								<?cs var:html_escape(Lang.Legend.MembersList) ?>
-			<?cs /if ?>
-		</legend>
+		<legend><?cs
+			if:(Data.List.PartType == "allow") ?>	<?cs var:html_escape(Lang.Legend.MembersAllow) ?><?cs 
+			elif:(Data.List.PartType == "deny") ?>	<?cs var:html_escape(Lang.Legend.MembersDeny) ?><?cs 
+			elif:(Data.List.PartType == "digest") ?><?cs var:html_escape(Lang.Legend.MembersDigest) ?><?cs 
+			elif:(Data.List.PartType == "mod") ?>	<?cs var:html_escape(Lang.Legend.MembersMod) ?><?cs 
+			else ?> 								<?cs var:html_escape(Lang.Legend.MembersList) ?><?cs 
+			/if ?></legend>
 
 	<table class="subscribers"><tr>
 	<?cs if:subcount(Data.List.Subscribers) > 0 ?>

@@ -12,7 +12,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Author" content="devel[at]sumpfralle.de" />
 	<meta http-equiv="expire" content="-1d" />
-	<link rel="stylesheet" type="text/css" href="<?cs var:Stylesheet ?>" />
+    <?cs each: item = Stylesheet
+		?><link rel="stylesheet" type="text/css" href="<?cs var:item ?>" /><?cs
+		/each ?>
 </head>
 
 <body>
