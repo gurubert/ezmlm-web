@@ -92,15 +92,15 @@ $HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
 # use a cascading style sheet (css)
 # the setting is interpreted as a URL
 # this setting was formerly known as "HTML_CSS_FILE"
-$HTML_CSS_COMMON = "/ezmlm-web-data/default.css";
+$HTML_CSS_COMMON = "/ezmlm-web/default.css";
 
 # choose a coloring scheme - the available files are:
 #    color-blue-gray:   default style used before v3.2
 #    color-red-blue:    use gradients instead of plain colors (since v3.2)
 #    
-# be aware, that some stylesheets of may require some graphic
-# files in the same directory (where the stylesheet file is located)
-$HTML_CSS_COLOR = "/ezmlm-web-data/color-red-blue.css";
+# be aware, that some stylesheets may require additional graphic
+# files in the same directory
+$HTML_CSS_COLOR = "/ezmlm-web/color-red-blue.css";
 
 # the default interface language
 # all other available translation are available via the web interface

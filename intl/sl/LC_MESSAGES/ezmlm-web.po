@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-07-29 23:00+0200\n"
+"POT-Creation-Date: 2007-08-05 16:02+0200\n"
 "PO-Revision-Date: 2007-06-13 10:44+0200\n"
 "Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,7 +395,8 @@ msgstr "Ime seznama vsebuje neveljavne znake"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
-msgstr "Tega imena seznama ne morete uporabiti, ker je rezervirano za interne namene"
+msgstr ""
+"Tega imena seznama ne morete uporabiti, ker je rezervirano za interne namene"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
@@ -498,8 +499,12 @@ msgid "The file was saved."
 msgstr "Datoteka je shranjena"
 
 #: Lang.SuccessMessage.ResetFile
-msgid "The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it."
-msgstr "prikrojena tekstovna datoteka je uspešno odstranjena. Od zdaj naprej bo namesto te, uporabljena system-wide default tekstovna datoteka  "
+msgid ""
+"The customized text file was successfully removed. From now on, the system-"
+"wide default text file will be used instead of it."
+msgstr ""
+"prikrojena tekstovna datoteka je uspešno odstranjena. Od zdaj naprej bo "
+"namesto te, uporabljena system-wide default tekstovna datoteka  "
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
@@ -547,11 +552,14 @@ msgstr "Izpis ne zahteva potrditve "
 
 #: Lang.Options.k
 msgid "Use deny list to prevent some users from posting"
-msgstr "Uporabi seznam zavrnitev če želiš preprečiti objavo nekaterim uporabnikom "
+msgstr ""
+"Uporabi seznam zavrnitev če želiš preprečiti objavo nekaterim uporabnikom "
 
 #: Lang.Options.l
 msgid "Remote administrators (moderators) may request a subscriber list"
-msgstr "Skrbniki na daljavo (ali moderatorji) lahko zahtevajo seznam vseh, ki so prijavljeni."
+msgstr ""
+"Skrbniki na daljavo (ali moderatorji) lahko zahtevajo seznam vseh, ki so "
+"prijavljeni."
 
 #: Lang.Options.m
 msgid "All incoming messages are moderated"
@@ -559,7 +567,9 @@ msgstr "Vsa vhodna sporočila so moderirana"
 
 #: Lang.Options.n
 msgid "Remote administrators (moderators) may edit text files in DIR/text"
-msgstr "Skrbniki na daljavo (ali moderatorji) lahko urejajo tekstovne datoteke v DIR/text"
+msgstr ""
+"Skrbniki na daljavo (ali moderatorji) lahko urejajo tekstovne datoteke v "
+"DIR/text"
 
 #: Lang.Options.o
 msgid "Only moderators may post"
@@ -586,12 +596,17 @@ msgid "Add a trailing text to every message"
 msgstr "Dodaj trailing tekst vsakemu sporočilu"
 
 #: Lang.Options.u
-msgid "Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)"
-msgstr "Samo prijavljeni uporabniki lahko objavljajo sporočila (za moderatorjev seznam: vedno sprejmi sporočila prijavnikov)"
+msgid ""
+"Only subscribed users may post messages (for moderated lists: always accept "
+"subscribers' postings)"
+msgstr ""
+"Samo prijavljeni uporabniki lahko objavljajo sporočila (za moderatorjev "
+"seznam: vedno sprejmi sporočila prijavnikov)"
 
 #: Lang.Options.w
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
-msgstr "Odstrani ezmlm- opozorilni poziv s seznama  namestitev (redko uporabno) "
+msgstr ""
+"Odstrani ezmlm- opozorilni poziv s seznama  namestitev (redko uporabno) "
 
 #: Lang.Options.x
 msgid "Reset the list of to be stripped mime types to its default value"
@@ -779,7 +794,8 @@ msgstr "Obdrži samo te v sporočilih"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
-msgstr "Sporočila, ki bodo vsebovala katerega koli od teh mime tipov bodo zavrnjena "
+msgstr ""
+"Sporočila, ki bodo vsebovala katerega koli od teh mime tipov bodo zavrnjena "
 
 #: Lang.Misc.EditFileInfo.CommonTags
 msgid "common tags"
@@ -815,8 +831,12 @@ msgid "The rejection address"
 msgstr "Naslov zavrnitve"
 
 #: Lang.Misc.SuggestDefaultPath
-msgid "It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web."
-msgstr "Priporočljivo je, da se uporablja privzeta pot za moderatorsko podatkovno bazo. Drugače ne boste mogli upravljati moderatorskega seznama z ezmlm-web"
+msgid ""
+"It is recommended to use the default path for the moderation database. "
+"Otherwise you cannot manage the moderators' list with ezmlm-web."
+msgstr ""
+"Priporočljivo je, da se uporablja privzeta pot za moderatorsko podatkovno "
+"bazo. Drugače ne boste mogli upravljati moderatorskega seznama z ezmlm-web"
 
 #: Lang.Misc.PostModPathWarn
 msgid "Posting moderators are stored in a non-standard location"
@@ -883,8 +903,14 @@ msgid "Charset of the list"
 msgstr "Nabor znakov seznama"
 
 #: Lang.Misc.ModSubOverridesRemote
-msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
-msgstr "Namig: Če oba - podatkovna baza vpisanega moderatorja in skrbnik na daljavo uporabljata prikrojeno lokacijo, potem bo podatkovna baza moderatorja uporabljena za oba"
+msgid ""
+"Hint: if both the database of subscripton moderators and of remote "
+"administrators use customized locations, then the database of subscription "
+"moderators will be used for both of them"
+msgstr ""
+"Namig: Če oba - podatkovna baza vpisanega moderatorja in skrbnik na daljavo "
+"uporabljata prikrojeno lokacijo, potem bo podatkovna baza moderatorja "
+"uporabljena za oba"
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
@@ -979,88 +1005,195 @@ msgid "Date"
 msgstr "datum"
 
 #: Lang.Introduction.ConfigAdmin
-msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
-msgstr "Skrbniki na daljavo so (privzeto) tudi moderatorji za vpisovanje in objave. Imajo dovoljenje za vpis ali izpis uporabnikov in dovoljenje za spreminjanje besedilnih datotek seznama, s pošiljanjem elektronske pošte to the mailing list software"
+msgid ""
+"Remote administrators are (by default) also moderators for subscription and "
+"for posting. They may have the permission to (un)subscribe users and to "
+"change the text files of the list by sending emails to the mailing list "
+"software."
+msgstr ""
+"Skrbniki na daljavo so (privzeto) tudi moderatorji za vpisovanje in objave. "
+"Imajo dovoljenje za vpis ali izpis uporabnikov in dovoljenje za spreminjanje "
+"besedilnih datotek seznama, s pošiljanjem elektronske pošte to the mailing "
+"list software"
 
 #: Lang.Introduction.ConfigArchive
-msgid "The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
-msgstr "Arhiv poštnega seznama je dostopen preko pošte. Če nameravate objaviti seznam, boste verjetno želeli ustvariti seznam arhiva (e.g. z ezmlm-www)."
+msgid ""
+"The mailing list archive can be accessed by mail. Additionally you will want "
+"to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
+msgstr ""
+"Arhiv poštnega seznama je dostopen preko pošte. Če nameravate objaviti "
+"seznam, boste verjetno želeli ustvariti seznam arhiva (e.g. z ezmlm-www)."
 
 #: Lang.Introduction.ConfigProcess
-msgid "Modify some message properties, before they are distributed to the subscribers."
-msgstr "Prilagodi lastnosti sporočila preden bo dostavljeno tistim, ki so na seznamu. "
+msgid ""
+"Modify some message properties, before they are distributed to the "
+"subscribers."
+msgstr ""
+"Prilagodi lastnosti sporočila preden bo dostavljeno tistim, ki so na "
+"seznamu. "
 
 #: Lang.Introduction.ConfigMain
 msgid "Here you find some settings, that did not fit into any other category."
 msgstr "Tu najdete nastavitve, ki niso bile primerne za ostale kategorije"
 
 #: Lang.Introduction.ConfigPosting
-msgid "The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed."
-msgstr "Konfiguracija objavljanja določa komu je dovoljeno objavljati sporočila, jih pošiljati prijavljenim na seznamu in kako bodo sporočila obdelana."
+msgid ""
+"The posting configuration determines, who is allowed to send messages to the "
+"list and how these mails will be processed."
+msgstr ""
+"Konfiguracija objavljanja določa komu je dovoljeno objavljati sporočila, jih "
+"pošiljati prijavljenim na seznamu in kako bodo sporočila obdelana."
 
 #: Lang.Introduction.ConfigSub
-msgid "Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process."
-msgstr "Tu lahko določite kdo se lahko prijavi na seznam in nastavite podrobnosti procesa vpisovanja - subskripcije. "
+msgid ""
+"Here you may define, who is allowed to subscribe to the list and you can set "
+"some details of the subscription process."
+msgstr ""
+"Tu lahko določite kdo se lahko prijavi na seznam in nastavite podrobnosti "
+"procesa vpisovanja - subskripcije. "
 
 #: Lang.Introduction.ConfigAll
-msgid "This is the complete list of all available properties of the list. Usually it should be easier to use the topic-based configuration pages, but - of course - this is your choice."
-msgstr "To je ves seznam vseh razpoložljivih lastnosti seznama. Pravzaprav bi bilo enostavneje uporabiti topic-based configuration pages, - izbira je seveda vaša."
+msgid ""
+"This is the complete list of all available properties of the list. Usually "
+"it should be easier to use the topic-based configuration pages, but - of "
+"course - this is your choice."
+msgstr ""
+"To je ves seznam vseh razpoložljivih lastnosti seznama. Pravzaprav bi bilo "
+"enostavneje uporabiti topic-based configuration pages, - izbira je seveda "
+"vaša."
 
 #: Lang.Introduction.ListDelete
-msgid "This mailinglist and everything inside of it will be removed completely."
+msgid ""
+"This mailinglist and everything inside of it will be removed completely."
 msgstr "Ta poštni seznam z vso vsebino, bo popolnoma izbrisan"
 
 #: Lang.Introduction.AllowList
-msgid "Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers."
-msgstr "Člani seznama \"dovoljeni\" ne bodo prejeli izhodnih sporočil, imajo pa enake pravice kot ostali prijavljeni. Navadno ta seznam vsebuje vzdevke, ki jih prijavljeni uporabljajo za svoj poštni naslov. "
+msgid ""
+"Members of the allow list will not receive outgoing mails, but they have the "
+"same rights, as normal subscribers. Usually the allow list will contain "
+"mail aliases of subscribers."
+msgstr ""
+"Člani seznama \"dovoljeni\" ne bodo prejeli izhodnih sporočil, imajo pa enake "
+"pravice kot ostali prijavljeni. Navadno ta seznam vsebuje vzdevke, ki jih "
+"prijavljeni uporabljajo za svoj poštni naslov. "
 
 #: Lang.Introduction.DenyList
-msgid "If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security."
-msgstr "Če želite določenim poštnim naslovom preprečiti, da bi uporabljali ta seznam ali se vpisali, ali, da bi objavljali, potem jih dodajte na seznam \"zavrni\" in naslove aktivirajte. Uporabno, kadar se želite znebiti zateženih uporabnikov, ali(notorious vacation reply) uporabnikov. Ker pa ni ravno težko ponarediti poštnega naslova, vam to ne bo pomagalo izboljšati varnosti.     "
+msgid ""
+"If you want to prevent specific mail addresses from using this list "
+"(subscription, posting, ...), then you should add them to the deny list and "
+"activate it. This can be useful for annoying people and even for notorious "
+"vacation reply users. But since it is fairly easy to fake an mail address, "
+"this will not really improve security."
+msgstr ""
+"Če želite določenim poštnim naslovom preprečiti, da bi uporabljali ta seznam "
+"ali se vpisali, ali, da bi objavljali, potem jih dodajte na seznam \"zavrni\" "
+"in naslove aktivirajte. Uporabno, kadar se želite znebiti zateženih "
+"uporabnikov, ali(notorious vacation reply) uporabnikov. Ker pa ni ravno "
+"težko ponarediti poštnega naslova, vam to ne bo pomagalo izboljšati "
+"varnosti.     "
 
 #: Lang.Introduction.DigestList
-msgid "Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway."
-msgstr "Nekateri uporabniki vašega seznama bodo morda želeli prejemati običajni povzetek namesto vseh sporočil s poštnega seznama. Navadno v razpravah ne bodo sodelovali, vendar jih bo zadeva na nek način vseeno zanimala. "
+msgid ""
+"Some users of your mailing list may prefer to receive a regular digest "
+"instead of all mailing list messages. They will usually not take part in "
+"discussions, but aret somehow interested anyway."
+msgstr ""
+"Nekateri uporabniki vašega seznama bodo morda želeli prejemati običajni "
+"povzetek namesto vseh sporočil s poštnega seznama. Navadno v razpravah ne "
+"bodo sodelovali, vendar jih bo zadeva na nek način vseeno zanimala. "
 
 #: Lang.Introduction.ModList
-msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
-msgstr "Moderatorjem (za objave in prijave) in skrbnikom na daljavo je dovoljeno upravljanje z najpomembnejšimi deli administracije poštnega seznama; moderiranje vpisovanja in objav, spreminjanje in določanje pravil filtriranja in upravljanje uporabnikov. Moderatorji so lahko tudi edini, ki jim je dovoljeno pošiljanje pošte na poštne sezname.    "
+msgid ""
+"Moderators (for posting or subscription) and remote administrators can be "
+"allowed to manage the most important parts of mailing list administration: "
+"moderating subscription and posting, changing filtering rules, and managing "
+"users. Moderators may even be configured to be the only ones, who are "
+"allowed to send mails to the mailing list."
+msgstr ""
+"Moderatorjem (za objave in prijave) in skrbnikom na daljavo je dovoljeno "
+"upravljanje z najpomembnejšimi deli administracije poštnega seznama; "
+"moderiranje vpisovanja in objav, spreminjanje in določanje pravil "
+"filtriranja in upravljanje uporabnikov. Moderatorji so lahko tudi edini, ki "
+"jim je dovoljeno pošiljanje pošte na poštne sezname.    "
 
 #: Lang.Introduction.SubscriberList
-msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
-msgstr "Vpisani na poštni seznam bodo dobili vsa izhodna sporočila. Lahko jim je tudi dovoljeno objavljati sporočila ali jih moderirati. Anonimni uporabniki se lahko vpišejo ali izpišejo brez pomoči administratorja - lahko pa seveda prikrojite ta pravila kakor vam ustreza.  "
+msgid ""
+"Subscribers of a mailing list will receive all outgoing message of the list. "
+"They may also be allowed to post messages directly or moderated. Usually "
+"anonymous users are able to subscribe and unsubscribe without the help of an "
+"administrator - but of course, you may configure this to suit your needs."
+msgstr ""
+"Vpisani na poštni seznam bodo dobili vsa izhodna sporočila. Lahko jim je "
+"tudi dovoljeno objavljati sporočila ali jih moderirati. Anonimni uporabniki "
+"se lahko vpišejo ali izpišejo brez pomoči administratorja - lahko pa seveda "
+"prikrojite ta pravila kakor vam ustreza.  "
 
 #: Lang.Introduction.TextFiles
-msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
-msgstr "polje za urejenaje vsebuje seznam datotek, ki so dostopne v DIR/text directory. Te datoteke so poslane z namenom odgovora na izrecno prošnjo uporabnika  ali kot del vsakega izhodnega sporočila. Uredite jih kot vam drago."
+msgid ""
+"The selection box contains a list of files available in the DIR/text "
+"directory. These files are sent out in response to specfic user requests or "
+"as part of all outgoing messages. Edit them as necessary."
+msgstr ""
+"polje za urejenaje vsebuje seznam datotek, ki so dostopne v DIR/text "
+"directory. Te datoteke so poslane z namenom odgovora na izrecno prošnjo "
+"uporabnika  ali kot del vsakega izhodnega sporočila. Uredite jih kot vam "
+"drago."
 
 #: Lang.Introduction.EditTextFile
-msgid "Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page."
-msgstr "Spremeni besedilo v skladu s svojimi potrebami. Morda vam bo prav prišlo katera od oznak podanih na dnu strani."
+msgid ""
+"Change this text according to your needs. Maybe you would like to use some "
+"of the reserved tags, that are described at the bottom of this page."
+msgstr ""
+"Spremeni besedilo v skladu s svojimi potrebami. Morda vam bo prav prišlo "
+"katera od oznak podanih na dnu strani."
 
 #: Lang.Introduction.ResetTextFile
-msgid "This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file."
-msgstr "To besedilo je prirejeno za ta seznam. Če bi raje uporabljali system-wide default text file izbranega jezika, lahko to datoteko odstranite."
+msgid ""
+"This text file was customized for this list. If you want to use the system-"
+"wide default text file of the choosen language instead, you may remove this "
+"customized file."
+msgstr ""
+"To besedilo je prirejeno za ta seznam. Če bi raje uporabljali system-wide "
+"default text file izbranega jezika, lahko to datoteko odstranite."
 
 #: Lang.Introduction.GnupgConvert
-msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
+msgid ""
+"You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr "Navadni poštni seznam lahko preoblikujete v šifriranega in obratno. "
 
 #: Lang.Introduction.GnupgGenerateKey
-msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
-msgstr "Za vsak šifriran poštni seznam (mailinglist) potrebujete skrivni ključ. Lahko ga uvozite ali ustvarite s pomočjo obrazca podanega niže. Po potrditvi obrazca ostanite potrpežljivi. V nekaj minutah bo ključ ustvarjen.  "
+msgid ""
+"Every encrypted mailing list needs a secret key. You can import this key or "
+"create it using the form below. After submitting the form, you have to be "
+"patient, as it takes some time (up to several minutes) to create a key."
+msgstr ""
+"Za vsak šifriran poštni seznam (mailinglist) potrebujete skrivni ključ. "
+"Lahko ga uvozite ali ustvarite s pomočjo obrazca podanega niže. Po potrditvi "
+"obrazca ostanite potrpežljivi. V nekaj minutah bo ključ ustvarjen.  "
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "oblikujte koristne nastavitve šifriranega poštnega seznama."
 
 #: Lang.Introduction.GnupgSecret
-msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
-msgstr "Poštni seznam potrebuje skrivni ključ za dešifriranje sporočil. Poskrbite, da bo skrivni ključ varno spravljen. V nasprotnem primeru bo varnost vašega poštnega seznama ogrožena."
+msgid ""
+"Every every mailing list needs a secret key to decrypt incoming. You should "
+"take care that the secret key is kept safe. Otherwise the security of your "
+"mailing list is broken."
+msgstr ""
+"Poštni seznam potrebuje skrivni ključ za dešifriranje sporočil. Poskrbite, "
+"da bo skrivni ključ varno spravljen. V nasprotnem primeru bo varnost vašega "
+"poštnega seznama ogrožena."
 
 #: Lang.Introduction.GnupgPublic
-msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
-msgstr "Za vsakega prijavljenega uporabnika poštnega seznama mora obstajati javni ključ. Dodatno je tu ključ poštnega seznama, ki naj bo dostavljen vsem uporabnikom poštnega seznama. Javna objava javnega ključa je varna."
+msgid ""
+"There should be a public key for every subscriber of the mailing list. "
+"Additionally there is the key of the mailing list, which should be "
+"distributed to all subscribers. It is safe to openly publish public keys."
+msgstr ""
+"Za vsakega prijavljenega uporabnika poštnega seznama mora obstajati javni "
+"ključ. Dodatno je tu ključ poštnega seznama, ki naj bo dostavljen vsem "
+"uporabnikom poštnega seznama. Javna objava javnega ključa je varna."
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
@@ -1172,3 +1305,17 @@ msgstr "Ustvari ključ za ta seznam"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Razpoložljive domene"
+
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: ezmlm-web 3.2\n"
+#~ "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+#~ "POT-Creation-Date: 2007-07-29 23:00+0200\n"
+#~ "PO-Revision-Date: 2007-06-13 10:44+0200\n"
+#~ "Last-Translator: tenzin  <clavdiaa@yahoo.com>\n"
+#~ "Language-Team: LANGUAGE <LL@li.org>\n"
+#~ "MIME-Version: 1.0\n"
+#~ "Content-Type: text/plain; charset=UTF-8\n"
+#~ "Content-Transfer-Encoding: 8bit\n"
+#~ "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+#~ "X-Generator: Pootle 0.10.1\n"

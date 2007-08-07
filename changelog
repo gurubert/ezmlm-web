@@ -1,19 +1,25 @@
-Version 3.2 - 04/14/02006
+Version 3.2 - 08/07/02007
  * support for multi-domain setups (multiple list directories)
  * detect preferred interface language
  * user-specific interface language selection
- * user-specific interface selection (easy/default/expert)
+ * user-specific interface types (easy/default/expert)
  * simplified rules for subscribing, posting and archive access
  * support for listing of subscription log
+ * support for downloading the subscribers list as a text file
  * configurable prefix for the local part of mailing list addresses
  * support for more ezmlm-idx features: 'headerkeep', 'mimekeep' and 'copylines'
+ * "reply-to-self" is easier to use
  * added configuration setting for site-specific links
  * script for creating binary suid wrappers added
  * handling of empty settings for ezmlm-idx 5.0 fixed (closes #21)
  * bug in MySQL support fixed
  * handling of the special character "dot" in listname and list address fixed
  * prevent creation of dotqmail files containing uppercase characters (invalid)
+ * support regional language codes (e.g.: pt_BR)
+ * allow to reset the "owner" attribute
  * the formerly required module "Encode" is now optional
+ * most importantly: a new color scheme! (red/blue instead of blue/gray)
+   (you can also use the "classic" color scheme)
 
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)

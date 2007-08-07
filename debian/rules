@@ -25,6 +25,8 @@ build: build-stamp
 build-stamp: configure-stamp 
 	dh_testdir
 	$(MAKE)
+	# fix 'usr/local/' paths in various files
+	sed -i 's#usr/local/#usr/#g' examples/* suid-wrapper/* man/*
 	touch build-stamp
 
 clean: clean-patched unpatch

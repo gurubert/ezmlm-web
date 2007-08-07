@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-08-05 16:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -498,7 +498,9 @@ msgid "The file was saved."
 msgstr ""
 
 #: Lang.SuccessMessage.ResetFile
-msgid "The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it."
+msgid ""
+"The customized text file was successfully removed. From now on, the system-"
+"wide default text file will be used instead of it."
 msgstr ""
 
 #: Lang.SuccessMessage.GnupgKeyImport
@@ -586,7 +588,9 @@ msgid "Add a trailing text to every message"
 msgstr ""
 
 #: Lang.Options.u
-msgid "Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)"
+msgid ""
+"Only subscribed users may post messages (for moderated lists: always accept "
+"subscribers' postings)"
 msgstr ""
 
 #: Lang.Options.w
@@ -810,7 +814,9 @@ msgid "The rejection address"
 msgstr ""
 
 #: Lang.Misc.SuggestDefaultPath
-msgid "It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web."
+msgid ""
+"It is recommended to use the default path for the moderation database. "
+"Otherwise you cannot manage the moderators' list with ezmlm-web."
 msgstr ""
 
 #: Lang.Misc.PostModPathWarn
@@ -878,7 +884,10 @@ msgid "Charset of the list"
 msgstr ""
 
 #: Lang.Misc.ModSubOverridesRemote
-msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
+msgid ""
+"Hint: if both the database of subscripton moderators and of remote "
+"administrators use customized locations, then the database of subscription "
+"moderators will be used for both of them"
 msgstr ""
 
 #: Lang.Misc.GnupgNoPublicKeys
@@ -974,15 +983,23 @@ msgid "Date"
 msgstr ""
 
 #: Lang.Introduction.ConfigAdmin
-msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
+msgid ""
+"Remote administrators are (by default) also moderators for subscription and "
+"for posting. They may have the permission to (un)subscribe users and to "
+"change the text files of the list by sending emails to the mailing list "
+"software."
 msgstr ""
 
 #: Lang.Introduction.ConfigArchive
-msgid "The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
+msgid ""
+"The mailing list archive can be accessed by mail. Additionally you will want "
+"to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
 msgstr ""
 
 #: Lang.Introduction.ConfigProcess
-msgid "Modify some message properties, before they are distributed to the subscribers."
+msgid ""
+"Modify some message properties, before they are distributed to the "
+"subscribers."
 msgstr ""
 
 #: Lang.Introduction.ConfigMain
@@ -990,59 +1007,99 @@ msgid "Here you find some settings, that did not fit into any other category."
 msgstr ""
 
 #: Lang.Introduction.ConfigPosting
-msgid "The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed."
+msgid ""
+"The posting configuration determines, who is allowed to send messages to the "
+"list and how these mails will be processed."
 msgstr ""
 
 #: Lang.Introduction.ConfigSub
-msgid "Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process."
+msgid ""
+"Here you may define, who is allowed to subscribe to the list and you can set "
+"some details of the subscription process."
 msgstr ""
 
 #: Lang.Introduction.ConfigAll
-msgid "This is the complete list of all available properties of the list. Usually it should be easier to use the topic-based configuration pages, but - of course - this is your choice."
+msgid ""
+"This is the complete list of all available properties of the list. Usually "
+"it should be easier to use the topic-based configuration pages, but - of "
+"course - this is your choice."
 msgstr ""
 
 #: Lang.Introduction.ListDelete
-msgid "This mailinglist and everything inside of it will be removed completely."
+msgid ""
+"This mailinglist and everything inside of it will be removed completely."
 msgstr ""
 
 #: Lang.Introduction.AllowList
-msgid "Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers."
+msgid ""
+"Members of the allow list will not receive outgoing mails, but they have the "
+"same rights, as normal subscribers. Usually the allow list will contain "
+"mail aliases of subscribers."
 msgstr ""
 
 #: Lang.Introduction.DenyList
-msgid "If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security."
+msgid ""
+"If you want to prevent specific mail addresses from using this list "
+"(subscription, posting, ...), then you should add them to the deny list and "
+"activate it. This can be useful for annoying people and even for notorious "
+"vacation reply users. But since it is fairly easy to fake an mail address, "
+"this will not really improve security."
 msgstr ""
 
 #: Lang.Introduction.DigestList
-msgid "Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway."
+msgid ""
+"Some users of your mailing list may prefer to receive a regular digest "
+"instead of all mailing list messages. They will usually not take part in "
+"discussions, but aret somehow interested anyway."
 msgstr ""
 
 #: Lang.Introduction.ModList
-msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
+msgid ""
+"Moderators (for posting or subscription) and remote administrators can be "
+"allowed to manage the most important parts of mailing list administration: "
+"moderating subscription and posting, changing filtering rules, and managing "
+"users. Moderators may even be configured to be the only ones, who are "
+"allowed to send mails to the mailing list."
 msgstr ""
 
 #: Lang.Introduction.SubscriberList
-msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
+msgid ""
+"Subscribers of a mailing list will receive all outgoing message of the list. "
+"They may also be allowed to post messages directly or moderated. Usually "
+"anonymous users are able to subscribe and unsubscribe without the help of an "
+"administrator - but of course, you may configure this to suit your needs."
 msgstr ""
 
 #: Lang.Introduction.TextFiles
-msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
+msgid ""
+"The selection box contains a list of files available in the DIR/text "
+"directory. These files are sent out in response to specfic user requests or "
+"as part of all outgoing messages. Edit them as necessary."
 msgstr ""
 
 #: Lang.Introduction.EditTextFile
-msgid "Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page."
+msgid ""
+"Change this text according to your needs. Maybe you would like to use some "
+"of the reserved tags, that are described at the bottom of this page."
 msgstr ""
 
 #: Lang.Introduction.ResetTextFile
-msgid "This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file."
+msgid ""
+"This text file was customized for this list. If you want to use the system-"
+"wide default text file of the choosen language instead, you may remove this "
+"customized file."
 msgstr ""
 
 #: Lang.Introduction.GnupgConvert
-msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
+msgid ""
+"You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr ""
 
 #: Lang.Introduction.GnupgGenerateKey
-msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
+msgid ""
+"Every encrypted mailing list needs a secret key. You can import this key or "
+"create it using the form below. After submitting the form, you have to be "
+"patient, as it takes some time (up to several minutes) to create a key."
 msgstr ""
 
 #: Lang.Introduction.GnupgOptions
@@ -1050,11 +1107,17 @@ msgid "Configure some useful settings of the encrypted mailing list."
 msgstr ""
 
 #: Lang.Introduction.GnupgSecret
-msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
+msgid ""
+"Every every mailing list needs a secret key to decrypt incoming. You should "
+"take care that the secret key is kept safe. Otherwise the security of your "
+"mailing list is broken."
 msgstr ""
 
 #: Lang.Introduction.GnupgPublic
-msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
+msgid ""
+"There should be a public key for every subscriber of the mailing list. "
+"Additionally there is the key of the mailing list, which should be "
+"distributed to all subscribers. It is safe to openly publish public keys."
 msgstr ""
 
 #: Lang.Legend.ConfigAdmin
@@ -1164,3 +1227,18 @@ msgstr ""
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: ezmlm-web 3.2\n"
+#~ "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+#~ "POT-Creation-Date: 2007-04-11 00:27+0200\n"
+#~ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+#~ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+#~ "Language-Team: LANGUAGE <LL@li.org>\n"
+#~ "MIME-Version: 1.0\n"
+#~ "Content-Type: text/plain; charset=UTF-8\n"
+#~ "Content-Transfer-Encoding: 8bit\n"
+#~ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#~ "X-Generator: Translate Toolkit 0.10.1\n"

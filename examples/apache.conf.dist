@@ -1,0 +1,13 @@
+# example configuration of ezmlm-web for apache-style web servers
+# you should copy this file to e.g. /etc/apache2/conf.d
+# don't forget to restart the web server afterwards
+
+# map the static content (css files and images) to the base URL /ezmlm-web/
+Alias /ezmlm-web/ /usr/local/share/ezmlm-web/www-data/
+
+# usually you will have to create a suid wrapper for ezmlm-web to enable
+# write access to the mailing list directories
+# see 'man ezmlm-web-make-suid' for details
+# e.g.: 'ezmlm-web-make-suid ezmlm /usr/local/bin/ezmlm-web'
+#ScriptAlias /cgi-bin/ezmlm-web /usr/local/bin/ezmlm-web
+

@@ -56,9 +56,10 @@ UI	{
 		Config	{
 			Main	{
 				Language	= lang_select
+				Owner		= owner_address
 				SubscribeRules	= subscribe_selection
 				PostingRules	= posting_selection
-				Owner		= owner_address
+				Confirm		= confirm_selection
 				WebUsers	= webusers
 			  }
 

@@ -300,6 +300,11 @@ if __name__ == "__main__":
 	## the project directory is the parent of the directory of this script
 	PROJECT_DIR = os.path.abspath(os.path.join(os.path.dirname(sys.argv[0]),os.path.pardir))
 
+	## ignore subversion, if we are not called from within a working copy
+	## very useful for the release script (make-tar.sh)
+	if not os.path.isdir(os.path.join(PROJECT_DIR, ".svn")):
+		USE_SVN = False
+
 	generate_po_files(
 			os.path.join(PROJECT_DIR, HDF_DIR, DEFAULT_LANG + '.hdf'),
 			os.path.join(PROJECT_DIR, PO_DIR),

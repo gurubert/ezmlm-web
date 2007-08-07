@@ -92,7 +92,6 @@ UI	{
 				Language	= lang_select
 				Charset		= charset_select
 				Owner		= owner_address
-				Confirm		= confirm_selection
 				MainList	= mainlist
 				MailmanRequests	= mailman_requests
 				RemoveWarn	= warn_remove

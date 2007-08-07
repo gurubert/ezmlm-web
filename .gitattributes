@@ -18,8 +18,8 @@ debian/docs -text
 debian/ezmlm-web.examples -text
 debian/ezmlm-web.manpages -text
 debian/patches/00list -text
-debian/patches/01_paths_in_config_file.dpatch -text
 debian/rules -text
+examples/apache.conf.dist -text
 examples/ezmlmwebrc.dist -text
 examples/ezmlmwebrc.minimal-dist -text
 examples/htaccess.dist -text

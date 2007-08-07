@@ -38,17 +38,14 @@ Table of content
 
 
 3) create a user-specific configuration file (optional)
-	Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc to ~john/.ezmlmwebrc
+	Copy /usr/share/doc/ezmlm-web/examples/ezmlmwebrc.dist to ~john/.ezmlmwebrc
 	and change its content according to your setup.
 
 
-4) enable the stylesheet
-	Copy the stylesheet files (/usr/share/ezmlm-web/www-data/*) to a location
-	of your choice. These files have to be accessible via a URL - maybe a place
-	like "/var/www/ezmlm-web-data/" could be appropriate.
-	Now you may have to change the "HTML_CSS_COMMON" and "HTML_CSS_COLOR"
-	settings in your ezmlmwebrc file. These values are URLs - not local
-	filenames.
+4) web server configuration
+	Adapt /usr/share/doc/ezmlm-web/examples/apache.conf.dist to your needs
+	and copy it to /etc/apache2/conf.d/ezmlm-web.
+	(for other web servers: use a similar setup)
 
 
 5) access control (optional)

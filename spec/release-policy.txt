@@ -3,9 +3,8 @@
  * README
  * ezmlm-web.cgi
  * UPGRADING
- * template/footer.cs
- * debian-related/changelog.Debian
- * debian-related/DEBIAN/control
+ * debian/changelog.Debian
+ * debian/control
 
 2) create new tag
 

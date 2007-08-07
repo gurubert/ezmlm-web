@@ -1,10 +1,17 @@
 #!/bin/sh
 #
-# create user-specific suid binaries to call ezmlm-web.cgi
+# This file is part of ezmlm-web.
+#
+# it creates user-specific suid binaries for calling ezmlm-web.cgi
 #
 # parameters: [USERNAME] DESTINATION_FILE
 # e.g.: john ~john/public_html/cgi-bin/ezmlm-web
 # only root may choose a USERNAME
+#
+# Copyright (C) 2006-2007, Lars Kruse, All Rights Reserved.
+#
+# ezmlm-web is distributed under a BSD-style license.  Please refer to
+# the copyright file included with the release for details.
 #
 
 set -eu

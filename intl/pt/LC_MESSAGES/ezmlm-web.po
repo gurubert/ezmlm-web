@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2007-08-05 16:02+0200\n"
 "PO-Revision-Date: 2007-06-11 14:00+0200\n"
 "Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -362,7 +362,9 @@ msgstr "Não foi possível renomear a lista por remoção segura"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
-msgstr "Não foi possível ler o diretório ler os arquivos .qmail do diretório do usuário "
+msgstr ""
+"Não foi possível ler o diretório ler os arquivos .qmail do diretório do "
+"usuário "
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
@@ -497,8 +499,12 @@ msgid "The file was saved."
 msgstr "Arquivo salvo"
 
 #: Lang.SuccessMessage.ResetFile
-msgid "The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it."
-msgstr "Arquivo de texto customizado removido com sucesso. De agora em diante, o arquivo de texto padrão do sistema será utilizado. "
+msgid ""
+"The customized text file was successfully removed. From now on, the system-"
+"wide default text file will be used instead of it."
+msgstr ""
+"Arquivo de texto customizado removido com sucesso. De agora em diante, o "
+"arquivo de texto padrão do sistema será utilizado. "
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
@@ -546,7 +552,8 @@ msgstr "Descadastramento não necessita de confirmação."
 
 #: Lang.Options.k
 msgid "Use deny list to prevent some users from posting"
-msgstr "Use 'deny list' (lista negada) para prevenir postagem de alguns usuários"
+msgstr ""
+"Use 'deny list' (lista negada) para prevenir postagem de alguns usuários"
 
 #: Lang.Options.l
 msgid "Remote administrators (moderators) may request a subscriber list"
@@ -558,7 +565,9 @@ msgstr "Todas as mensagens enviadas são moderadas"
 
 #: Lang.Options.n
 msgid "Remote administrators (moderators) may edit text files in DIR/text"
-msgstr "Administradores remotos (moderadores) podem editar arquivos de textos em DIR/text"
+msgstr ""
+"Administradores remotos (moderadores) podem editar arquivos de textos em "
+"DIR/text"
 
 #: Lang.Options.o
 msgid "Only moderators may post"
@@ -585,8 +594,12 @@ msgid "Add a trailing text to every message"
 msgstr "Adicionar um rodapé de informações em todas as mensagens"
 
 #: Lang.Options.u
-msgid "Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)"
-msgstr "Somente os usuários inscritos podem enviar mensagens (para listas moderadas: aceitar sempre mensagens dos inscritos)"
+msgid ""
+"Only subscribed users may post messages (for moderated lists: always accept "
+"subscribers' postings)"
+msgstr ""
+"Somente os usuários inscritos podem enviar mensagens (para listas moderadas: "
+"aceitar sempre mensagens dos inscritos)"
 
 #: Lang.Options.w
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
@@ -686,7 +699,8 @@ msgstr "Confirgurar campo \"De:\" padrão no cabeçalho das mensagens enviadas"
 
 #: Lang.Settings.4
 msgid "Define customized setting for digest creation (ezmlm-tstdig)"
-msgstr "Definir configuração customizada para criação de modo coleção (ezmlm-tstdig)"
+msgstr ""
+"Definir configuração customizada para criação de modo coleção (ezmlm-tstdig)"
 
 #: Lang.Settings.5
 msgid "Define the email address of the list owner"
@@ -809,8 +823,12 @@ msgid "The rejection address"
 msgstr "Endereços rejeitados"
 
 #: Lang.Misc.SuggestDefaultPath
-msgid "It is recommended to use the default path for the moderation database. Otherwise you cannot manage the moderators' list with ezmlm-web."
-msgstr "É recomendado usar o caminho padrão para a base de dados de moderação. Caso contrário você não poderá controlar a lista dos moderadores com ezmlm-web"
+msgid ""
+"It is recommended to use the default path for the moderation database. "
+"Otherwise you cannot manage the moderators' list with ezmlm-web."
+msgstr ""
+"É recomendado usar o caminho padrão para a base de dados de moderação. Caso "
+"contrário você não poderá controlar a lista dos moderadores com ezmlm-web"
 
 #: Lang.Misc.PostModPathWarn
 msgid "Posting moderators are stored in a non-standard location"
@@ -846,7 +864,9 @@ msgstr "Acrescentar novo endereço de e-mail"
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"
-msgstr "Transferir arquivo texto que contem os endereços de e-mail a serem acrescentados"
+msgstr ""
+"Transferir arquivo texto que contem os endereços de e-mail a serem "
+"acrescentados"
 
 #: Lang.Misc.FooterText
 msgid "a web interface for"
@@ -877,8 +897,14 @@ msgid "Charset of the list"
 msgstr "Codificação de caractér da lista"
 
 #: Lang.Misc.ModSubOverridesRemote
-msgid "Hint: if both the database of subscripton moderators and of remote administrators use customized locations, then the database of subscription moderators will be used for both of them"
-msgstr "Dica: se ambas as bases de dados de moderadores e de administradores têm locais configurados, a base de dados de moderadores será utilizada para ambos os casos"
+msgid ""
+"Hint: if both the database of subscripton moderators and of remote "
+"administrators use customized locations, then the database of subscription "
+"moderators will be used for both of them"
+msgstr ""
+"Dica: se ambas as bases de dados de moderadores e de administradores têm "
+"locais configurados, a base de dados de moderadores será utilizada para "
+"ambos os casos"
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
@@ -918,7 +944,8 @@ msgstr "Nenhum domínio disponível"
 
 #: Lang.Misc.CopyLinesEnabled
 msgid "Add some lines of every original message to automatic replies"
-msgstr "Acrescentar algumas linhas da mensagem original nas respostas automáticas"
+msgstr ""
+"Acrescentar algumas linhas da mensagem original nas respostas automáticas"
 
 #: Lang.Misc.CopyLinesNumber
 msgid "number of lines"
@@ -973,88 +1000,196 @@ msgid "Date"
 msgstr "Data"
 
 #: Lang.Introduction.ConfigAdmin
-msgid "Remote administrators are (by default) also moderators for subscription and for posting. They may have the permission to (un)subscribe users and to change the text files of the list by sending emails to the mailing list software."
-msgstr "Os administradores remotos são também (por padrão) moderadores das inscrições e envio de mensagens. Podem ter a permissão de inscreverem ou descadastrarem usuários e alterar arquivos de texto da lista, enviando email ao software da lista."
+msgid ""
+"Remote administrators are (by default) also moderators for subscription and "
+"for posting. They may have the permission to (un)subscribe users and to "
+"change the text files of the list by sending emails to the mailing list "
+"software."
+msgstr ""
+"Os administradores remotos são também (por padrão) moderadores das "
+"inscrições e envio de mensagens. Podem ter a permissão de inscreverem ou "
+"descadastrarem usuários e alterar arquivos de texto da lista, enviando email "
+"ao software da lista."
 
 #: Lang.Introduction.ConfigArchive
-msgid "The mailing list archive can be accessed by mail. Additionally you will want to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
-msgstr "O arquivo da lista pode ser acessado por email. Adicionalmente você pode criar um arquivo da lista, se você planeja publicá-la (por exemplo com ezmlm-WWW). "
+msgid ""
+"The mailing list archive can be accessed by mail. Additionally you will want "
+"to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
+msgstr ""
+"O arquivo da lista pode ser acessado por email. Adicionalmente você pode "
+"criar um arquivo da lista, se você planeja publicá-la (por exemplo com "
+"ezmlm-WWW). "
 
 #: Lang.Introduction.ConfigProcess
-msgid "Modify some message properties, before they are distributed to the subscribers."
-msgstr "Modifique algumas propriedades das mensagens antes de distribuí-las aos usuários."
+msgid ""
+"Modify some message properties, before they are distributed to the "
+"subscribers."
+msgstr ""
+"Modifique algumas propriedades das mensagens antes de distribuí-las aos "
+"usuários."
 
 #: Lang.Introduction.ConfigMain
 msgid "Here you find some settings, that did not fit into any other category."
-msgstr "Aqui você encontra algumas configurações que não estão em qualquer outra categoria."
+msgstr ""
+"Aqui você encontra algumas configurações que não estão em qualquer outra "
+"categoria."
 
 #: Lang.Introduction.ConfigPosting
-msgid "The posting configuration determines, who is allowed to send messages to the list and how these mails will be processed."
-msgstr "A configuração de envio de mensagem determina quem tem permisão para postar mensagens à lista e como elas são processadas."
+msgid ""
+"The posting configuration determines, who is allowed to send messages to the "
+"list and how these mails will be processed."
+msgstr ""
+"A configuração de envio de mensagem determina quem tem permisão para postar "
+"mensagens à lista e como elas são processadas."
 
 #: Lang.Introduction.ConfigSub
-msgid "Here you may define, who is allowed to subscribe to the list and you can set some details of the subscription process."
-msgstr "Aqui você pode definir quem pode se inscrever na lista e como o processo de inscrição é processado."
+msgid ""
+"Here you may define, who is allowed to subscribe to the list and you can set "
+"some details of the subscription process."
+msgstr ""
+"Aqui você pode definir quem pode se inscrever na lista e como o processo de "
+"inscrição é processado."
 
 #: Lang.Introduction.ConfigAll
-msgid "This is the complete list of all available properties of the list. Usually it should be easier to use the topic-based configuration pages, but - of course - this is your choice."
-msgstr "Esta é a lista completa de todas as propriedades disponíveis na lista. Geralmente é mais fácil usar as páginas de cada tópico da configuração, mas - claro - esta é sua escolha."
+msgid ""
+"This is the complete list of all available properties of the list. Usually "
+"it should be easier to use the topic-based configuration pages, but - of "
+"course - this is your choice."
+msgstr ""
+"Esta é a lista completa de todas as propriedades disponíveis na lista. "
+"Geralmente é mais fácil usar as páginas de cada tópico da configuração, mas "
+"- claro - esta é sua escolha."
 
 #: Lang.Introduction.ListDelete
-msgid "This mailinglist and everything inside of it will be removed completely."
+msgid ""
+"This mailinglist and everything inside of it will be removed completely."
 msgstr "A lista e qualquer coisa contida nela será removida completamente."
 
 #: Lang.Introduction.AllowList
-msgid "Members of the allow list will not receive outgoing mails, but they have the same rights, as normal subscribers. Usually the allow list will contain mail aliases of subscribers."
-msgstr "Os integrantes com permissão à lista e que não recebem mensagens, mas têm as mesmos direitos, como integrantes normais. Geralmente a lista contem apelidos (alias) do mail de integrantes."
+msgid ""
+"Members of the allow list will not receive outgoing mails, but they have the "
+"same rights, as normal subscribers. Usually the allow list will contain "
+"mail aliases of subscribers."
+msgstr ""
+"Os integrantes com permissão à lista e que não recebem mensagens, mas têm as "
+"mesmos direitos, como integrantes normais. Geralmente a lista contem "
+"apelidos (alias) do mail de integrantes."
 
 #: Lang.Introduction.DenyList
-msgid "If you want to prevent specific mail addresses from using this list (subscription, posting, ...), then you should add them to the deny list and activate it. This can be useful for annoying people and even for notorious vacation reply users. But since it is fairly easy to fake an mail address, this will not really improve security."
-msgstr "Se você quiser impedir que endereços específicos de email utilizem esta lista (para inscrição ou envio), adicione-os à lista negada (deny list). "
+msgid ""
+"If you want to prevent specific mail addresses from using this list "
+"(subscription, posting, ...), then you should add them to the deny list and "
+"activate it. This can be useful for annoying people and even for notorious "
+"vacation reply users. But since it is fairly easy to fake an mail address, "
+"this will not really improve security."
+msgstr ""
+"Se você quiser impedir que endereços específicos de email utilizem esta "
+"lista (para inscrição ou envio), adicione-os à lista negada (deny list). "
 
 #: Lang.Introduction.DigestList
-msgid "Some users of your mailing list may prefer to receive a regular digest instead of all mailing list messages. They will usually not take part in discussions, but aret somehow interested anyway."
-msgstr "Alguns usuários de sua lista podem preferir receber um mail contendo a coleção com todas as mensagens enviadas à lista. Geralmente não tomarão parte nas discussões, mas têm interesse em tomar ciência do debate."
+msgid ""
+"Some users of your mailing list may prefer to receive a regular digest "
+"instead of all mailing list messages. They will usually not take part in "
+"discussions, but aret somehow interested anyway."
+msgstr ""
+"Alguns usuários de sua lista podem preferir receber um mail contendo a "
+"coleção com todas as mensagens enviadas à lista. Geralmente não tomarão "
+"parte nas discussões, mas têm interesse em tomar ciência do debate."
 
 #: Lang.Introduction.ModList
-msgid "Moderators (for posting or subscription) and remote administrators can be allowed to manage the most important parts of mailing list administration: moderating subscription and posting, changing filtering rules, and managing users. Moderators may even be configured to be the only ones, who are allowed to send mails to the mailing list."
-msgstr "Os moderadores (para postagem ou inscrição) e os administradores remotos podem (se assim configurado) controlar os detalhes de administração mais importantes da lista: inscrição e postagens moderadas, regras de filtros, controles de usuários. Os moderadores podem ser configurados para ser uma única pessoa, e quem tem permissão de envio de mail para a lista."
+msgid ""
+"Moderators (for posting or subscription) and remote administrators can be "
+"allowed to manage the most important parts of mailing list administration: "
+"moderating subscription and posting, changing filtering rules, and managing "
+"users. Moderators may even be configured to be the only ones, who are "
+"allowed to send mails to the mailing list."
+msgstr ""
+"Os moderadores (para postagem ou inscrição) e os administradores remotos "
+"podem (se assim configurado) controlar os detalhes de administração mais "
+"importantes da lista: inscrição e postagens moderadas, regras de filtros, "
+"controles de usuários. Os moderadores podem ser configurados para ser uma "
+"única pessoa, e quem tem permissão de envio de mail para a lista."
 
 #: Lang.Introduction.SubscriberList
-msgid "Subscribers of a mailing list will receive all outgoing message of the list. They may also be allowed to post messages directly or moderated. Usually anonymous users are able to subscribe and unsubscribe without the help of an administrator - but of course, you may configure this to suit your needs."
-msgstr "Os integrantes de uma lista enviando receberão todas mensagens enviadas à lista. Pode-se  também configurar para que eles sejam permitidos postar mensagens ou que sejam moderados. Os usuários anonymous podem se inscrever ou se descadatrar sem a ajuda de um administrador - mas você pode configurar isto de acordo com suas necessidades."
+msgid ""
+"Subscribers of a mailing list will receive all outgoing message of the list. "
+"They may also be allowed to post messages directly or moderated. Usually "
+"anonymous users are able to subscribe and unsubscribe without the help of an "
+"administrator - but of course, you may configure this to suit your needs."
+msgstr ""
+"Os integrantes de uma lista enviando receberão todas mensagens enviadas à "
+"lista. Pode-se  também configurar para que eles sejam permitidos postar "
+"mensagens ou que sejam moderados. Os usuários anonymous podem se inscrever "
+"ou se descadatrar sem a ajuda de um administrador - mas você pode configurar "
+"isto de acordo com suas necessidades."
 
 #: Lang.Introduction.TextFiles
-msgid "The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary."
-msgstr "A caixa da seleção contem uma lista dos arquivos  disponíveis no diretório DIR/text. Estes arquivos são enviados em resposta aos pedidos específicos de usuários ou como parte de mensagens. Edite-os como julgar necessário. "
+msgid ""
+"The selection box contains a list of files available in the DIR/text "
+"directory. These files are sent out in response to specfic user requests or "
+"as part of all outgoing messages. Edit them as necessary."
+msgstr ""
+"A caixa da seleção contem uma lista dos arquivos  disponíveis no diretório "
+"DIR/text. Estes arquivos são enviados em resposta aos pedidos específicos de "
+"usuários ou como parte de mensagens. Edite-os como julgar necessário. "
 
 #: Lang.Introduction.EditTextFile
-msgid "Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page."
-msgstr "Altere esse texto de acordo com suas necessidades. Você pode usar algumas marcas (tags) reservadas, conforme descrito no rodapé desta página."
+msgid ""
+"Change this text according to your needs. Maybe you would like to use some "
+"of the reserved tags, that are described at the bottom of this page."
+msgstr ""
+"Altere esse texto de acordo com suas necessidades. Você pode usar algumas "
+"marcas (tags) reservadas, conforme descrito no rodapé desta página."
 
 #: Lang.Introduction.ResetTextFile
-msgid "This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file."
-msgstr "Este arquivo pode ser customizado. Se quiser, pode usar o arquivo padrão do sistema e escolher o idioma de preferência. Arquivos customizados pode ser removidos."
+msgid ""
+"This text file was customized for this list. If you want to use the system-"
+"wide default text file of the choosen language instead, you may remove this "
+"customized file."
+msgstr ""
+"Este arquivo pode ser customizado. Se quiser, pode usar o arquivo padrão do "
+"sistema e escolher o idioma de preferência. Arquivos customizados pode ser "
+"removidos."
 
 #: Lang.Introduction.GnupgConvert
-msgid "You can convert a normal mailinglist to an encrypted list and vice versa."
+msgid ""
+"You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr "Você pode converter uma lista norma para criptopgrada e vice-versa"
 
 #: Lang.Introduction.GnupgGenerateKey
-msgid "Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key."
-msgstr "Toda lista criptografada necessita de uma chave primária. Você pode importar esta chave ou criá-la com o formulário abaixo. Após usar o formulário, seja paciente, pois a criação do par de chaves leva algum tempo (pode chegar a diversos minutos)."
+msgid ""
+"Every encrypted mailing list needs a secret key. You can import this key or "
+"create it using the form below. After submitting the form, you have to be "
+"patient, as it takes some time (up to several minutes) to create a key."
+msgstr ""
+"Toda lista criptografada necessita de uma chave primária. Você pode importar "
+"esta chave ou criá-la com o formulário abaixo. Após usar o formulário, seja "
+"paciente, pois a criação do par de chaves leva algum tempo (pode chegar a "
+"diversos minutos)."
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "Configure algumas opções para uma lista com criptografia"
 
 #: Lang.Introduction.GnupgSecret
-msgid "Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken."
-msgstr "Cada lista necessita de uma chave privada para decifrar as mensagens. Esteja certo de que a chave primária está mantida segura. Caso contrário a segurança de sua lista será quebrada. "
+msgid ""
+"Every every mailing list needs a secret key to decrypt incoming. You should "
+"take care that the secret key is kept safe. Otherwise the security of your "
+"mailing list is broken."
+msgstr ""
+"Cada lista necessita de uma chave privada para decifrar as mensagens. Esteja "
+"certo de que a chave primária está mantida segura. Caso contrário a "
+"segurança de sua lista será quebrada. "
 
 #: Lang.Introduction.GnupgPublic
-msgid "There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys."
-msgstr "Deve haver uma chave pública para cada usuário da lista. Adicionalmente há a chave pública da lista, que deve ser distribuída a todos os usuários. É seguro publicar chaves públicas. "
+msgid ""
+"There should be a public key for every subscriber of the mailing list. "
+"Additionally there is the key of the mailing list, which should be "
+"distributed to all subscribers. It is safe to openly publish public keys."
+msgstr ""
+"Deve haver uma chave pública para cada usuário da lista. Adicionalmente há a "
+"chave pública da lista, que deve ser distribuída a todos os usuários. É "
+"seguro publicar chaves públicas. "
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
@@ -1163,3 +1298,17 @@ msgstr "Gerar a chave para essa lista"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Domínios disponíveis"
+
+#~ msgid ""
+#~ msgstr ""
+#~ "Project-Id-Version: ezmlm-web 3.2\n"
+#~ "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+#~ "POT-Creation-Date: 2007-04-11 00:27+0200\n"
+#~ "PO-Revision-Date: 2007-06-11 14:00+0200\n"
+#~ "Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
+#~ "Language-Team: LANGUAGE <LL@li.org>\n"
+#~ "MIME-Version: 1.0\n"
+#~ "Content-Type: text/plain; charset=UTF-8\n"
+#~ "Content-Transfer-Encoding: 8bit\n"
+#~ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#~ "X-Generator: Pootle 0.10.1\n"

@@ -1,5 +1,11 @@
+add translators to "contribute"
+
 check the content of the Log file for automatic subscription
 
 Infos fuer Massen-Hosting:
 	http://www.fbis.ch/index-de.php?page=14&frameset=4
+
+add "only for plain text mails" to the TrailerText string
+
+check version history of Mail::Ezmlm
 

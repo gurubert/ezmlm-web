@@ -2,9 +2,16 @@
 #===========================================================================
 # ezmlm-web.cgi - version 3.2
 # $Id$
-# ==========================================================================
+# 
+# This file is part of ezmlm-web.
+#
 # All user configuration happens in the config file ``ezmlmwebrc''
 # POD documentation is at the end of this file
+#
+# Copyright (C) 2005-2007, Lars Kruse, All Rights Reserved.
+#
+# ezmlm-web is distributed under a BSD-style license.  Please refer to
+# the copyright file included with the release for details.
 # ==========================================================================
 
 package ezmlm_web;
@@ -75,6 +82,8 @@ use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
+# cached data
+use vars qw[%CACHED_DATA];
 
 # some deprecated configuration settings - they have to be registered
 # otherwise old configuration files would break
@@ -161,12 +170,13 @@ unless (defined($HTML_CSS_COMMON)) {
 		$HTML_CSS_COMMON = $HTML_CSS_FILE;
 	} else {
 		# nothing is defined - we use the default value
-		$HTML_CSS_COMMON = '/ezmlm-web.css';
+		$HTML_CSS_COMMON = '/ezmlm-web/default.css';
 	}
 }
 
 # CSS color scheme
-$HTML_CSS_COLOR = '/color-red-blue.css' unless defined($HTML_CSS_COLOR);
+$HTML_CSS_COLOR = '/ezmlm-web/color-red-blue.css'
+	unless defined($HTML_CSS_COLOR);
 
 # check template directory
 $TEMPLATE_DIR = 'template' unless defined($TEMPLATE_DIR);
@@ -589,6 +599,8 @@ sub init_hdf {
 		$hdf->setValue("Config.Features.CopyLines", 1);
 	}
 
+	$hdf->setValue("Config.Version.ezmlm_web", "$VERSION");
+
 	return $hdf;
 }
 
@@ -636,17 +648,20 @@ sub load_interface_language {
 	my ($data) = @_;
 	my $config_language;
 
-	# set default language
-	$config_language = 'en';
-	
-	# english should always be there - but just in case of local modifications
-	$config_language = $HTML_LANGUAGE
-		unless (&check_interface_language($HTML_LANGUAGE));
-	
-	# first: load default language - in case some translations are incomplete
+	# load default language (configured or 'en') first
+	# this will serve as a fallback
+	#
+	# we do not have to load 'en' separately as a fallback, because partly
+	# translated language files always include the English default for all
+	# missing strings
+	if (&check_interface_language($HTML_LANGUAGE)) {
+		$config_language = "$HTML_LANGUAGE";
+	} else {
+		$config_language = 'en';
+	}
 	$data->readFile("$LANGUAGE_DIR/$config_language" . ".hdf");
 
-	# check for preferred browser language, if the box was not initialized yet
+	# check for preferred browser language
 	my $prefLang = &get_browser_language();
 	# take it, if a supported browser language was found
 	$config_language = $prefLang unless ($prefLang eq '');
@@ -673,7 +688,6 @@ sub load_interface_language {
 	return $data;
 }
 
-
 # ---------------------------------------------------------------------------
 
 sub get_browser_language {
@@ -682,19 +696,36 @@ sub get_browser_language {
 	# http://www.percederberg.net/home/perl/select.perl
 	# it returns an empty string, if no supported language was found
 
-    my ($str, @langs, @res);
+    my ($lang_main, $lang_sub, $lang_name, @langs, @res);
+	my (@main_langs);
 
     # Use language preference settings
 	if (defined($ENV{HTTP_ACCEPT_LANGUAGE})
 			&& ($ENV{HTTP_ACCEPT_LANGUAGE} ne '')) {
 		@langs = split(/,/, $ENV{HTTP_ACCEPT_LANGUAGE});
-		foreach (@langs) {
-			# get the first part of the language setting
-			($str) = ($_ =~ m/([a-z]+)/);
-			# check, if it is available
-			$res[$#res+1] = $str if check_interface_language($str);
+	} else {
+		return "";
+	}
+
+	foreach (@langs) {
+		# get the first part of the language setting
+		($lang_main, $lang_sub) = ($_ =~ m/^([a-z]+)(_[A-Z]+)?/);
+		$lang_name = $lang_main . $lang_sub;
+		# check, if it is available
+		if (&check_interface_language($lang_name)) {
+			$res[$#res+1] = $lang_name;
+		} else {
+			# remember the main languages of all non-supported regional
+			# languages (only if the main language ist supported)
+			$main_langs[$#main_langs+1] = $lang_main
+				if (&check_interface_language($lang_main));
 		}
 	}
+
+	# add the previously remembered main languages to the list of
+	# preferred languages
+	# useful, if someone configured 'de_AT' without the general 'de'
+	$res[$#res+1] = $_ foreach (@main_langs);
 	
     # if everything fails - return empty string
 	$res[0] = "" if ($#res lt 0);
@@ -760,6 +791,8 @@ sub set_pagedata {
 
 	# multi domain support?
 	&set_pagedata_domains() if (%DOMAINS);
+
+	$pagedata->setValue("Data.LocalPrefix", $MAIL_ADDRESS_PREFIX);
 
 	$pagedata->setValue("Data.LocalPrefix", $MAIL_ADDRESS_PREFIX);
 	$pagedata->setValue("Data.HostName", $MAIL_DOMAIN);
@@ -1712,7 +1745,7 @@ sub extract_options_from_params {
 		} elsif ("cevz" =~ m/$old_key/i) {
 			# ignore invalid settings (the output of "getconfig" is really weird!)
 		} else {
-			# import the previous set option
+			# import the previously set option
 			$options .= $old_key;
 		}
 		$i++;
@@ -1727,10 +1760,16 @@ sub extract_options_from_params {
 			if (defined($q->param("setting_state_$i"))) {
 				$options .= " -$i '" . $q->param("setting_value_$i") . "'";
 			} else {
-				# do not set the value to an empty string, 
-				# as ezmlm-idx 5.0 does not work correctly for this case
-				# just skip this setting - this works for 0.4x and 5.0
-				#$options .= " -$i ''";
+				if ($i != 5) {
+					# everything except for the "owner" attribute:
+					# do not set the value to an empty string, 
+					# as ezmlm-idx 5.0 does not work correctly for this case
+					# just skip this setting - this works for 0.4x and 5.0
+					#$options .= " -$i ''";
+				} else {
+					# the "owner" attribute needs something special for reset:
+					$options .= " -5 '$LIST_DIR/$listname/Mailbox'";
+				}
 			}
 		} else {
 			# import the previous setting
@@ -2337,18 +2376,30 @@ sub get_available_interface_languages {
 
 	my (%languages, @files, $file);
 
-	opendir(DIR, $LANGUAGE_DIR)
-		or &fatal_error ("Language directory ($LANGUAGE_DIR) is not accessible!");
-	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
-	close(DIR);
+	%languages = ();
 
-	foreach $file (@files) {
-		my $hdf = ClearSilver::HDF->new();
-		$hdf->readFile("$LANGUAGE_DIR/$file");
-		substr($file, -4) = "";
-		my $lang_name = $hdf->getValue("Lang.Name", "$file");
-		$languages{$file} = $lang_name;
+	# already cached? otherwise we have to retrieve the data first
+	if (exists($CACHED_DATA{'interface_languages'})) {
+		# we only store a reference to the languages hash
+		%languages = %{$CACHED_DATA{'interface_languages'}};
+	} else {
+
+		opendir(DIR, $LANGUAGE_DIR)
+			or &fatal_error ("Language directory ($LANGUAGE_DIR) is not accessible!");
+		@files = sort grep { /.*\.hdf$/ } readdir(DIR);
+		close(DIR);
+
+		foreach $file (@files) {
+			my $hdf = ClearSilver::HDF->new();
+			$hdf->readFile("$LANGUAGE_DIR/$file");
+			substr($file, -4) = "";
+			my $lang_name = $hdf->getValue("Lang.Name", "$file");
+			$languages{$file} = $lang_name;
+		}
+
+		$CACHED_DATA{'interface_languages'} = \%languages;
 	}
+
 	return %languages;
 }
 
@@ -2358,15 +2409,23 @@ sub get_available_interfaces {
 
 	my (%interfaces, @files, $file);
 
-	opendir(DIR, "$TEMPLATE_DIR/ui")
-		or &fatal_error ("Interface directory ($TEMPLATE_DIR/ui) is not accessible!");
-	@files = sort grep { /.*\.hdf$/ } readdir(DIR);
-	close(DIR);
+	# already cached? otherwise we have to retrieve the data first
+	if (exists($CACHED_DATA{'interfaces'})) {
+		# we only store a reference to the interfaces hash
+		%interfaces = %{$CACHED_DATA{'interfaces'}};
+	} else {
+		opendir(DIR, "$TEMPLATE_DIR/ui")
+			or &fatal_error ("Interface directory ($TEMPLATE_DIR/ui) is not accessible!");
+		@files = sort grep { /.*\.hdf$/ } readdir(DIR);
+		close(DIR);
 
-	foreach $file (@files) {
-		substr($file, -4) = "";
-		$interfaces{$file} = $file;
+		foreach $file (@files) {
+			substr($file, -4) = "";
+			$interfaces{$file} = $file;
+		}
+		$CACHED_DATA{'interfaces'} = \%interfaces;
 	}
+
 	return %interfaces;
 }
 
