@@ -21,7 +21,6 @@ use strict;
 use Getopt::Std;
 use ClearSilver;
 use Mail::Ezmlm;
-use Mail::Address;
 use File::Copy;
 use File::Path;
 use DB_File;
@@ -33,7 +32,23 @@ use English;
 # optional modules - they will be loaded later if they are available
 #Encode
 #Mail::Ezmlm::Gpg
+#Mail::Address OR Email::Address
 
+
+my $mail_address_package;
+# we can use either the Mail::Address or the Email::Address module
+# "Mail::Address" was used exclusively until ezmlm-web v3.2, thus it is proven
+# to work with ezmlm-web
+# the downside of Mail::Address is, that it is not available in the debian
+# distribution
+if (&safely_import_module("Mail::Address")) {
+	$mail_address_package = "Mail::Address";
+} elsif (&safely_import_module("Email::Address")) {
+	$mail_address_package = "Email::Address";
+} else {
+	die "Failed to import the Mail::Address and the Email::Address module.\n" .
+		"At least one of these modules is required for ezmlm-web.\n";
+}
 
 # the Encode module is optional - we do not break if it is absent
 my $ENCODE_SUPPORT = 1;
@@ -1511,7 +1526,12 @@ sub add_address {
 	tie %pretty, "DB_File", "$LIST_DIR/" . $q->param('list') . "/webnames" if ($PRETTY_NAMES);
 	foreach $address (@addresses) {
 
-		($add) = Mail::Address->parse($address);
+		# call the "parse" function of either "Mail::Address" or "Email::Address"
+		# based on the perl cookbook (chapter 12_14)
+		# we have to disable 'strict refs' for the call
+		no strict 'refs';
+		($add) = ($mail_address_package . "::parse")->($mail_address_package, $address);
+		use strict 'refs';
 		if (($add->address() =~ m/^(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)$/)
 				&& !($list->issub($add->address(), $part))) {
 			# it seems, that we cannot trust the return value of "$list->sub"
@@ -1654,7 +1674,7 @@ sub create_list {
 				-user=>$USER)
 	) {
 		# fatal error
-		$customError = $list->errmsg();
+		$customError = "[ezmlm-make] " . $list->errmsg();
 		return (1==0);
 	}
 
@@ -2460,7 +2480,8 @@ sub safely_import_module {
 	my ($mod_name) = @_;
 	eval "use $mod_name";
 	if ($@) {
-		warn "Failed to load module '$mod_name': $@";
+		# we do not need the warning message
+		# warn "Failed to load module '$mod_name': $@";
 		return (1==0);
 	} else {
 		return (0==0);

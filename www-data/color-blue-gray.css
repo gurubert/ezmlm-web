@@ -74,10 +74,14 @@ body {
         background-color: #c0c0b0;
     }
 
-#main_content div.success,
+#main_content div.success {
+        color: #202020;
+        background-color: inherit;	/* just to avoid css syntax warnings */
+	}
+
 #main_content div.warning,
 #main_content div.error {
-        color: #202020;
+        color: #eeeeec;			/* the dark red background requires a light color */
         background-color: inherit;	/* just to avoid css syntax warnings */
 	}
 

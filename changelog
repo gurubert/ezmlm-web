@@ -18,8 +18,9 @@ Version 3.2 - 08/07/02007
  * support regional language codes (e.g.: pt_BR)
  * allow to reset the "owner" attribute
  * the formerly required module "Encode" is now optional
+ * the perl module Email::Address can be used instead of Mail::Address
  * most importantly: a new color scheme! (red/blue instead of blue/gray)
-   (you can also use the "classic" color scheme)
+   (the "classic" color scheme is still supported)
 
 Version 3.1.4 - 03/26/02006
  * new setting: DOTQMAIL_DIR (useful for multi domain vpopmail setups)

@@ -32,3 +32,4 @@ intl/sl/*.mo
 intl/sl/LC_MESSAGES/*.mo
 intl/sv/*.mo
 intl/sv/LC_MESSAGES/*.mo
+lang/*.hdf

@@ -63,7 +63,7 @@ This version of ezmlm-web requires the following;
 * clearsilver v0.10.3 (only perl support is necessary)
 * Perl v5.004 and the following modules;
   + Mail::Ezmlm v0.07
-  + Mail::Address v1.15
+  + Mail::Address v1.15 OR Email::Address
   + CGI v2.6 
   + CGI::Carp v1.06
   + DB_File v1.65
