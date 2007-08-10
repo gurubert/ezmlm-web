@@ -1,8 +1,6 @@
-msgid ""
-msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-08-05 16:02+0200\n"
+"POT-Creation-Date: 2007-08-10 12:28+0200\n"
 "PO-Revision-Date: 2007-06-11 14:00+0200\n"
 "Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,492 +11,614 @@ msgstr ""
 "X-Generator: Pootle 0.10.1\n"
 
 #: Lang.Menue.ListCreate
+#, fuzzy
 msgid "Create new list"
 msgstr "Criar nova lista"
 
 #: Lang.Menue.ListDelete
+#, fuzzy
 msgid "Delete list"
 msgstr "Remover lista"
 
 #: Lang.Menue.Subscribers
+#, fuzzy
 msgid "Subscribers"
 msgstr "Usuários"
 
 #: Lang.Menue.AllowList
+#, fuzzy
 msgid "allow list"
 msgstr "permissão à lista"
 
 #: Lang.Menue.DenyList
+#, fuzzy
 msgid "deny list"
 msgstr "restrição à lista"
 
 #: Lang.Menue.DigestList
+#, fuzzy
 msgid "digest list"
 msgstr "lista no modo coleção"
 
 #: Lang.Menue.ModList
+#, fuzzy
 msgid "moderators"
 msgstr "moderadores"
 
 #: Lang.Menue.ConfigMain
+#, fuzzy
 msgid "Options"
 msgstr "Opções"
 
 #: Lang.Menue.ConfigSub
+#, fuzzy
 msgid "subscription"
 msgstr "de inscrição"
 
 #: Lang.Menue.ConfigPost
+#, fuzzy
 msgid "posting"
 msgstr "de envio"
 
 #: Lang.Menue.ConfigAdmin
+#, fuzzy
 msgid "administration"
 msgstr "administração"
 
 #: Lang.Menue.ConfigArchive
+#, fuzzy
 msgid "archive"
 msgstr "arquivos"
 
 #: Lang.Menue.ConfigProcess
+#, fuzzy
 msgid "processing"
 msgstr "processamento"
 
 #: Lang.Menue.ConfigAll
+#, fuzzy
 msgid "overview"
 msgstr "da lista"
 
 #: Lang.Menue.Gnupg
+#, fuzzy
 msgid "Key management"
 msgstr "Gerenciamento de chaves"
 
 #: Lang.Menue.GnupgPublicKeys
+#, fuzzy
 msgid "public keys"
 msgstr "Chaves públicas"
 
 #: Lang.Menue.GnupgSecretKeys
+#, fuzzy
 msgid "secret keys"
 msgstr "Chaves privadas"
 
 #: Lang.Menue.GnupgGenerateKey
+#, fuzzy
 msgid "generate key"
 msgstr "Gerar chave"
 
 #: Lang.Menue.GnupgConvert
+#, fuzzy
 msgid "Encryption"
 msgstr "Criptografar"
 
 #: Lang.Menue.GnupgOptions
+#, fuzzy
 msgid "encryption"
 msgstr "criptografar"
 
 #: Lang.Menue.TextFiles
+#, fuzzy
 msgid "Text files"
 msgstr "Arquivos de texto"
 
 #: Lang.Menue.ListSelect
+#, fuzzy
 msgid "Choose a list"
 msgstr "Escolha uma lista"
 
 #: Lang.Menue.Properties
+#, fuzzy
 msgid "Properties of"
 msgstr "Propriedades de"
 
 #: Lang.Menue.Language
+#, fuzzy
 msgid "Language"
 msgstr "Idioma"
 
 #: Lang.Menue.Interface
+#, fuzzy
 msgid "Interface"
 msgstr "Interface"
 
 #: Lang.Menue.Help
+#, fuzzy
 msgid "Help (external)"
 msgstr "Ajuda (externa)"
 
 #: Lang.Menue.SubscribeLog
+#, fuzzy
 msgid "Subscriber's log"
 msgstr "Log dos inscritos"
 
 #: Lang.Menue.DomainSelect
+#, fuzzy
 msgid "Choose a domain"
 msgstr "Escolha um domínio"
 
 #: Lang.Title.ConfigMain
+#, fuzzy
 msgid "List configuration"
 msgstr "Configuração da lista"
 
 #: Lang.Title.ConfigSub
+#, fuzzy
 msgid "Subscription options"
 msgstr "Opções de inscrição"
 
 #: Lang.Title.ConfigPosting
+#, fuzzy
 msgid "Posting options"
 msgstr "Opções de envio"
 
 #: Lang.Title.ConfigAdmin
+#, fuzzy
 msgid "Remote administration"
 msgstr "Administração remota"
 
 #: Lang.Title.ConfigArchive
+#, fuzzy
 msgid "Archive options"
 msgstr "Opções de arquivamento"
 
 #: Lang.Title.ConfigProcess
+#, fuzzy
 msgid "Message processing"
 msgstr "Processamento de mensagem"
 
 #: Lang.Title.ConfigAll
+#, fuzzy
 msgid "Complete configuration"
 msgstr "Configuração completa"
 
 #: Lang.Title.SubscriberList
+#, fuzzy
 msgid "Subscribers of the list"
 msgstr "Usuários da lista"
 
 #: Lang.Title.AllowList
+#, fuzzy
 msgid "Allowed users"
 msgstr "Usuários permitidos"
 
 #: Lang.Title.DenyList
+#, fuzzy
 msgid "Blocked users"
 msgstr "Usuários bloqueados"
 
 #: Lang.Title.DigestList
+#, fuzzy
 msgid "Digest subscribers"
 msgstr "Usuários com modo coleção"
 
 #: Lang.Title.ModList
+#, fuzzy
 msgid "Moderators of the mailinglist"
 msgstr "Moderadores da lista"
 
 #: Lang.Title.ListCreate
+#, fuzzy
 msgid "Create a new list"
 msgstr "Criar uma nova lista"
 
 #: Lang.Title.FileSelect
+#, fuzzy
 msgid "Choose a file for editing"
 msgstr "Escolha um arquivo para editar"
 
 #: Lang.Title.FileEdit
+#, fuzzy
 msgid "Editing file"
 msgstr "Editando arquivo"
 
 #: Lang.Title.SubscribeLog
+#, fuzzy
 msgid "Subscription events"
 msgstr "Eventos de inscrição"
 
 #: Lang.Title.GnupgPublic
+#, fuzzy
 msgid "Public keys"
 msgstr "Chaves públicas"
 
 #: Lang.Title.GnupgSecret
+#, fuzzy
 msgid "Secret keys"
 msgstr "Chaves privadas"
 
 #: Lang.Title.GnupgGenerateKey
+#, fuzzy
 msgid "Generate a new keypair"
 msgstr "Gerar um novo par de chaves"
 
 #: Lang.Title.GnupgOptions
+#, fuzzy
 msgid "Encryption settings"
 msgstr "Configurações de criptografia"
 
 #: Lang.Buttons.Create
+#, fuzzy
 msgid "Create list"
 msgstr "Criar lista"
 
 #: Lang.Buttons.ConfirmDeletion
+#, fuzzy
 msgid "Delete the list"
 msgstr "Remover lista"
 
 #: Lang.Buttons.DeleteAddress
+#, fuzzy
 msgid "Delete address(es)"
 msgstr "Remover endereço(s)"
 
 #: Lang.Buttons.DownloadSubscribersList
+#, fuzzy
 msgid "Download subscribers"
 msgstr "Baixar usuários"
 
 #: Lang.Buttons.AddAddress
+#, fuzzy
 msgid "Add address(es)"
 msgstr "Adicionar endereço(s)"
 
 #: Lang.Buttons.UpdateConfiguration
+#, fuzzy
 msgid "Update configuration"
 msgstr "Atualizar configuração"
 
 #: Lang.Buttons.UpdateGnupg
+#, fuzzy
 msgid "Update keyring"
 msgstr "Atualizar chaveiro"
 
 #: Lang.Buttons.EditFile
+#, fuzzy
 msgid "Edit file"
 msgstr "Editar arquivo"
 
 #: Lang.Buttons.SaveFile
+#, fuzzy
 msgid "Save file"
 msgstr "Gravar arquivo"
 
 #: Lang.Buttons.ResetFile
+#, fuzzy
 msgid "Remove customized file"
 msgstr "Remover arquivo customizado"
 
 #: Lang.Buttons.LanguageSet
+#, fuzzy
 msgid "select"
 msgstr "selecione"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
+#, fuzzy
 msgid "Convert to an encrypted mailinglist"
 msgstr "Converter para lista criptografada"
 
 #: Lang.Buttons.GnupgConvertToPlain
+#, fuzzy
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Converter para lista modo texto"
 
 #: Lang.Buttons.DeletePublicKey
+#, fuzzy
 msgid "Delete public key(s)"
 msgstr "Remover chave(s) pública(s)"
 
 #: Lang.Buttons.DeleteSecretKey
+#, fuzzy
 msgid "Delete secret key(s)"
 msgstr "Remover chave(s) provada(s)"
 
 #: Lang.Buttons.GnupgImportKey
+#, fuzzy
 msgid "Import key"
 msgstr "Importar chave"
 
 #: Lang.Buttons.GnupgGenerateKey
+#, fuzzy
 msgid "Generate key pair"
 msgstr "Gerar par de chaves"
 
 #: Lang.Buttons.GnupgExportKey
+#, fuzzy
 msgid "download"
 msgstr "Baixar"
 
 #: Lang.ErrorMessage.UnknownAction
+#, fuzzy
 msgid "this action is undefined"
 msgstr "Ação indefinida"
 
 #: Lang.ErrorMessage.ParameterMissing
+#, fuzzy
 msgid "this action needs one or more parameters"
 msgstr "Essa ação precisa de um ou mais parâmetros"
 
 #: Lang.ErrorMessage.Forbidden
+#, fuzzy
 msgid "Error: you are not allowed to do this!"
 msgstr "Erro: você não tem permissão para isso!"
 
 #: Lang.ErrorMessage.InvalidFileName
+#, fuzzy
 msgid "The name of the file is invalid!"
 msgstr "Nome de arquivo inválido!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
+#, fuzzy
 msgid "The chosen config page is invalid!"
 msgstr "Escolha de configuraç~ao inválida!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
+#, fuzzy
 msgid "The chosen gnupg page is invalid!"
 msgstr "Escolha de página gnupg inválida"
 
 #: Lang.ErrorMessage.GnupgKeyImport
+#, fuzzy
 msgid "Failed to import the uploaded key!"
 msgstr "Falha ao importar a chave enviada."
 
 #: Lang.ErrorMessage.GnupgDelKey
+#, fuzzy
 msgid "Failed to remove the key(s)!"
 msgstr "Falha ao remover chave(s)"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
+#, fuzzy
 msgid "Failed generate a new key!"
 msgstr "Falha ao gerar uma nova chave"
 
 #: Lang.WarningMessage.AddAddress
+#, fuzzy
 msgid "Adding of at least one mail address failed!"
 msgstr "A adição de ao menos um endereço falhou!"
 
 #: Lang.WarningMessage.DeleteAddress
+#, fuzzy
 msgid "Removal of at least one mail address failed!"
 msgstr "A remoção de ao menos um endereço falhou!"
 
 #: Lang.WarningMessage.CreateList
+#, fuzzy
 msgid "Creation of new mailing list failed!"
 msgstr "A criação de uma nova lista falhou!"
 
 #: Lang.WarningMessage.DeleteList
+#, fuzzy
 msgid "Removal of mailing list failed!"
 msgstr "A remoção da lista falhou!"
 
 #: Lang.WarningMessage.UpdateConfig
+#, fuzzy
 msgid "Update of configuration failed!"
 msgstr "A atualização da configuração falhou!"
 
 #: Lang.WarningMessage.SaveFile
+#, fuzzy
 msgid "The file could not be saved!"
 msgstr "O arquivo não pode ser gravado!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
+#, fuzzy
 msgid "There is already a list with this name!"
 msgstr "Já existe uma lista com esse nome!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
+#, fuzzy
 msgid "There is already a list with this address!"
 msgstr "Já existe uma lista com esse endereço!"
 
 #: Lang.WarningMessage.ListDoesNotExist
+#, fuzzy
 msgid "A list with this name does not exist!"
 msgstr "Não existe uma lista com esse nome!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
+#, fuzzy
 msgid "Unable to access the list's directory"
 msgstr "Não foi possível acessar o diretório de listas"
 
 #: Lang.WarningMessage.TextDirAccessDenied
+#, fuzzy
 msgid "Unable to access the list's directory of text files"
 msgstr "Não foi possível acessar os arquivos do diretório de listas"
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
+#, fuzzy
 msgid "Unable to rename list for safe removal"
 msgstr "Não foi possível renomear a lista por remoção segura"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
+#, fuzzy
 msgid "Unable to read the mail user's home directory for .qmail files"
 msgstr ""
 "Não foi possível ler o diretório ler os arquivos .qmail do diretório do "
 "usuário "
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
+#, fuzzy
 msgid "Unable to move .qmail files"
 msgstr "Não foi possível mover os arquivos do .qmail"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
+#, fuzzy
 msgid "Unable to delete list"
 msgstr "Não foi possível remover a lista"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
+#, fuzzy
 msgid "Unable to delete .qmail files"
 msgstr "Não foi possível remover os arquivos .qmail"
 
 #: Lang.WarningMessage.InvalidFileFormat
+#, fuzzy
 msgid "The uploaded file must be a text file"
 msgstr "O arquivo a ser transferido deve ser um arquivo texto"
 
 #: Lang.WarningMessage.WebUsersUpdate
+#, fuzzy
 msgid "Could not update the webusers file"
 msgstr "O arquivo de usuários web não foi atualizado"
 
 #: Lang.WarningMessage.WebUsersRead
+#, fuzzy
 msgid "Could not read the webusers file"
 msgstr "Não foi possível ler o arquivo de usuários web"
 
 #: Lang.WarningMessage.InvalidListName
+#, fuzzy
 msgid "The name of the list contains invalid characters"
 msgstr "O nome da lista contém caracteres inválidos"
 
 #: Lang.WarningMessage.ReservedListName
+#, fuzzy
 msgid "This listname may not be used as it is reserved for internal purposes"
 msgstr "Esta lista não pode ser utilizada. Reservada para propósitos internos."
 
 #: Lang.WarningMessage.EmptyListName
+#, fuzzy
 msgid "The name of the list may not be empty"
 msgstr "O nome da lista não pode ser vazio"
 
 #: Lang.WarningMessage.EmptyList
+#, fuzzy
 msgid "This list has no subscribers."
 msgstr "Não há usuários na lista"
 
 #: Lang.WarningMessage.InvalidLocalPart
+#, fuzzy
 msgid "The local part of the list address is not valid"
 msgstr "A parte local do endereço da lista não é válida"
 
 #: Lang.WarningMessage.RequiresIDX5
+#, fuzzy
 msgid "This action requires ezmlm-idx v5.0 or higher."
 msgstr "Essa ação requer ezmlm-idx v5.0 ou superior."
 
 #: Lang.WarningMessage.ResetFileIsDefault
+#, fuzzy
 msgid "There is no customized text file, that can be removed."
 msgstr "Não há arquivos customizados."
 
 #: Lang.WarningMessage.ResetFile
+#, fuzzy
 msgid "Removal of custimized text file failed."
 msgstr "A remoção do arquivo de texto customizado falhou"
 
 #: Lang.WarningMessage.LogFile
+#, fuzzy
 msgid "Reading of log file failed."
 msgstr "A leitura do arquivo de log falhou."
 
 #: Lang.WarningMessage.GnupgNoKeyFile
+#, fuzzy
 msgid "There was no key file selected for upload!"
 msgstr "Não há nenhuma chave selecionada para transferência!"
 
 #: Lang.WarningMessage.GnupgDelKey
+#, fuzzy
 msgid "Removal of (at least) one key failed!"
 msgstr "A remoção de (pelo menos) uma chave falhou!"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
+#, fuzzy
 msgid "There was no key selected to be removed!"
 msgstr "Não há nenhuma chave selecionada para remoção!"
 
 #: Lang.WarningMessage.GnupgNoName
+#, fuzzy
 msgid "The name of the key may not be empty!"
 msgstr "O nome da chave não pode ser vazio"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
+#, fuzzy
 msgid "The expiration time is invalid!"
 msgstr "O tempo para expiração é inválido"
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
+#, fuzzy
 msgid "The length of the key is invalid!"
 msgstr "O comprimento da chave é inválido!"
 
 #: Lang.WarningMessage.GnupgExportKey
+#, fuzzy
 msgid "Export of key failed!"
 msgstr "Falha ao exportar a chave!"
 
 #: Lang.WarningMessage.GnupgConvertEnable
+#, fuzzy
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Conversão para lista critografrada falhou"
 
 #: Lang.WarningMessage.GnupgConvertDisable
+#, fuzzy
 msgid "Conversion to plaintext mailing list failed!"
 msgstr "Conversão para lista modo texto falhou"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#, fuzzy
 msgid "Encryption was already enabled for this mailing list."
 msgstr "Criptografia disponível para essa lista."
 
 #: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#, fuzzy
 msgid "Encryption was already disabled for this mailing list."
 msgstr "Criptografia não disponível para essa lista"
 
 #: Lang.SuccessMessage.AddAddress
+#, fuzzy
 msgid "The address was added to the list."
 msgstr "Endereço adicionado."
 
 #: Lang.SuccessMessage.DeleteAddress
+#, fuzzy
 msgid "The address was removed from the list."
 msgstr "Endereço removido"
 
 #: Lang.SuccessMessage.CreateList
+#, fuzzy
 msgid "The new mailing list was successfully created."
 msgstr "Nova lista criada com sucesso."
 
 #: Lang.SuccessMessage.DeleteList
+#, fuzzy
 msgid "The mailing list was successfully removed."
 msgstr "Lista removida com sucesso"
 
 #: Lang.SuccessMessage.UpdateConfig
+#, fuzzy
 msgid "The mailing list's configuration was successfully changed."
 msgstr "Configuração da lista altgerada com sucesso"
 
 #: Lang.SuccessMessage.UpdateGnupg
+#, fuzzy
 msgid "The keyring has been changed successfully."
 msgstr "Chaveiro alterado com sucesso"
 
 #: Lang.SuccessMessage.SaveFile
+#, fuzzy
 msgid "The file was saved."
 msgstr "Arquivo salvo"
 
 #: Lang.SuccessMessage.ResetFile
+#, fuzzy
 msgid ""
 "The customized text file was successfully removed. From now on, the system-"
 "wide default text file will be used instead of it."
@@ -507,93 +627,115 @@ msgstr ""
 "arquivo de texto padrão do sistema será utilizado. "
 
 #: Lang.SuccessMessage.GnupgKeyImport
+#, fuzzy
 msgid "The key was successfully imported."
 msgstr "Chave importada com sucesso"
 
 #: Lang.SuccessMessage.GnupgConvertEnable
+#, fuzzy
 msgid "Encryption is now enabled for this list."
 msgstr "Criptografia está agora ativada na lista."
 
 #: Lang.SuccessMessage.GnupgConvertDisable
+#, fuzzy
 msgid "Encryption is now disabled for this list."
 msgstr "Criptografaia está agora desativada na lista."
 
 #: Lang.Options.a
+#, fuzzy
 msgid "Archive mailing list messages"
 msgstr "Arquivo de mensagens da lista"
 
 #: Lang.Options.b
+#, fuzzy
 msgid "Only moderators are allowed to access the archive"
 msgstr "Somente moderadores têm permissão para acessar o arquivo"
 
 #: Lang.Options.d
+#, fuzzy
 msgid "Activate the digest list"
 msgstr "Lista em modo coleção ativado"
 
 #: Lang.Options.f
+#, fuzzy
 msgid "Add a prefix to the subject line of outgoing messages"
 msgstr "Adicionar um prefixo no campo assunto das mensagens enviadas"
 
 #: Lang.Options.g
+#, fuzzy
 msgid "Archive requests from unrecognised senders are denied"
 msgstr "Os pedidos de arquivo dos remetentes desconhecidos são negados "
 
 #: Lang.Options.h
+#, fuzzy
 msgid "Subscriptions do not require confirmation by the user"
 msgstr "Inscrições não necessitam de confirmação pelo usuário"
 
 #: Lang.Options.i
+#, fuzzy
 msgid "Index mailing list messages for WWW archive access"
 msgstr "Arquivo com índice de mensagens acessado por WWW"
 
 #: Lang.Options.j
+#, fuzzy
 msgid "Unsubscribe does not require confirmation"
 msgstr "Descadastramento não necessita de confirmação."
 
 #: Lang.Options.k
+#, fuzzy
 msgid "Use deny list to prevent some users from posting"
 msgstr ""
 "Use 'deny list' (lista negada) para prevenir postagem de alguns usuários"
 
 #: Lang.Options.l
+#, fuzzy
 msgid "Remote administrators (moderators) may request a subscriber list"
 msgstr "Administradores remotos (moderadores) podem pedir lista de inscritos"
 
 #: Lang.Options.m
+#, fuzzy
 msgid "All incoming messages are moderated"
 msgstr "Todas as mensagens enviadas são moderadas"
 
 #: Lang.Options.n
+#, fuzzy
 msgid "Remote administrators (moderators) may edit text files in DIR/text"
 msgstr ""
 "Administradores remotos (moderadores) podem editar arquivos de textos em "
 "DIR/text"
 
 #: Lang.Options.o
+#, fuzzy
 msgid "Only moderators may post"
 msgstr "Somente moderadores podem postar."
 
 #: Lang.Options.p
+#, fuzzy
 msgid "Allow subscription and archive retrieval for everyone"
 msgstr "Permitir inscrição e recuperação de arquivo por qualquer um."
 
 #: Lang.Options.q
+#, fuzzy
 msgid "Process mailman-style requests (to local-request@domain)"
 msgstr "Pedidos de processamento ao estilo mailman (para local-request@domínio)"
 
 #: Lang.Options.r
+#, fuzzy
 msgid "Enable remote administration of the list (for moderators)"
 msgstr "Ativar administração remota da lista (para moderadores)"
 
 #: Lang.Options.s
+#, fuzzy
 msgid "Subscriptions to the main list and the digest list will be moderated"
 msgstr "Inscrições para a lista principal e lista em modo coleção são moderadas"
 
 #: Lang.Options.t
+#, fuzzy
 msgid "Add a trailing text to every message"
 msgstr "Adicionar um rodapé de informações em todas as mensagens"
 
 #: Lang.Options.u
+#, fuzzy
 msgid ""
 "Only subscribed users may post messages (for moderated lists: always accept "
 "subscribers' postings)"
@@ -602,227 +744,283 @@ msgstr ""
 "aceitar sempre mensagens dos inscritos)"
 
 #: Lang.Options.w
+#, fuzzy
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 msgstr "Remove ezmlm-warn da configuração da lista (raramente usado)"
 
 #: Lang.Options.x
+#, fuzzy
 msgid "Reset the list of to be stripped mime types to its default value"
 msgstr "Reiniciar a lista para retirar tipos mime como valor padrão"
 
 #: Lang.Options.y
+#, fuzzy
 msgid "Request a confirmation mail for every posted message"
 msgstr "Requisitar um mail de confirmação para toda mensagem enviada"
 
 #: Lang.Options.special_replytoself
+#, fuzzy
 msgid "Redirect replies to the list"
 msgstr "Redirecionar respostas para a lista"
 
 #: Lang.Options.gnupg_plain_without_key
+#, fuzzy
 msgid "Send plaintext to the subscribers which have no key"
 msgstr "Enviar em modo texto para os usuários que não possuem chave"
 
 #: Lang.Options.gnupg_sign_messages
+#, fuzzy
 msgid "Sign outgoing messages with the list's key"
 msgstr "Assinar mensagens enviadas com a chave da lista"
 
 #: Lang.Selections.archive
+#, fuzzy
 msgid "Access to the archive is granted for"
 msgstr "Acesso ao arquivo é concedido para"
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
 msgstr "administradores"
 
 #: Lang.Selections.archive.Bg
+#, fuzzy
 msgid "subscribers and administrators"
 msgstr "usuários e administradores"
 
 #: Lang.Selections.archive.BG
+#, fuzzy
 msgid "everyone"
 msgstr "qualquer um"
 
 #: Lang.Selections.subscribe
+#, fuzzy
 msgid "Public subscription is"
 msgstr "Inscrição pública é"
 
 #: Lang.Selections.subscribe.pS
+#, fuzzy
 msgid "open"
 msgstr "aberta"
 
 #: Lang.Selections.subscribe.ps
+#, fuzzy
 msgid "moderated"
 msgstr "moderada"
 
 #: Lang.Selections.subscribe.P
+#, fuzzy
 msgid "not allowed"
 msgstr "não permitida"
 
 #: Lang.Selections.posting
+#, fuzzy
 msgid "Posting is"
 msgstr "Envio de mensagens é"
 
 #: Lang.Selections.posting.MOU
+#, fuzzy
 msgid "allowed for everyone"
 msgstr "permitido para qualquer um"
 
 #: Lang.Selections.posting.mOU
+#, fuzzy
 msgid "moderated for everyone"
 msgstr "moderado para qualquer um"
 
 #: Lang.Selections.posting.mOu
+#, fuzzy
 msgid "allowed for subscribers and moderated for others"
 msgstr "permitido para usuários e moderado para outros"
 
 #: Lang.Selections.posting.MOu
+#, fuzzy
 msgid "allowed for subscribers"
 msgstr "permitido para usuários"
 
 #: Lang.Selections.posting.moU
+#, fuzzy
 msgid "allowed only for moderators"
 msgstr "permitido somente para moderadores"
 
 #: Lang.Selections.confirmation
+#, fuzzy
 msgid "Confirmation mails are required for"
 msgstr "E-mail de confirmação é necessário para"
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
 msgstr "descadastramento"
 
 #: Lang.Settings.0
+#, fuzzy
 msgid "Make the list a sublist of another list"
 msgstr "Criar da lista uma sublista ou outra lista"
 
 #: Lang.Settings.3
+#, fuzzy
 msgid "Set a custom \"From:\" header for outgoing messsages"
 msgstr "Confirgurar campo \"De:\" padrão no cabeçalho das mensagens enviadas"
 
 #: Lang.Settings.4
+#, fuzzy
 msgid "Define customized setting for digest creation (ezmlm-tstdig)"
 msgstr ""
 "Definir configuração customizada para criação de modo coleção (ezmlm-tstdig)"
 
 #: Lang.Settings.5
+#, fuzzy
 msgid "Define the email address of the list owner"
 msgstr "Define endereço de e-mail do dono da lista"
 
 #: Lang.Settings.6
+#, fuzzy
 msgid "Use a SQL database"
 msgstr "Usar banco de dado SQL"
 
 #: Lang.Settings.7
+#, fuzzy
 msgid "Define a custom path to the database for posting moderators"
 msgstr "Define caminho do banco de dados para mensagens de moderadores"
 
 #: Lang.Settings.8
+#, fuzzy
 msgid "Define a custom path to the database for subscription moderators"
 msgstr "Define caminho do banco de dados para inscrições de moderadores"
 
 #: Lang.Settings.9
+#, fuzzy
 msgid "Define a custom path to the database for remote administators"
 msgstr "Define caminho do banco de dados para administradores remotos"
 
 #: Lang.Misc.HelpLink
+#, fuzzy
 msgid "The manual page of ezmlm-idx"
 msgstr "Manual do ezmlm-idx"
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
 msgstr "Inscrição"
 
 #: Lang.Misc.Subscribers
+#, fuzzy
 msgid "subscribers"
 msgstr "usuários"
 
 #: Lang.Misc.RemoteAdmin
+#, fuzzy
 msgid "Remote Admin"
 msgstr "Administração remota"
 
 #: Lang.Misc.ListName
+#, fuzzy
 msgid "List Name"
 msgstr "Nome da lista"
 
 #: Lang.Misc.ListAddress
+#, fuzzy
 msgid "List Address"
 msgstr "Endereço da lista"
 
 #: Lang.Misc.ListOptions
+#, fuzzy
 msgid "Basic List Options"
 msgstr "Opções básicas da Lista"
 
 #: Lang.Misc.AllowedToEdit
+#, fuzzy
 msgid "Users allowed to edit this list via web interface"
 msgstr "Usuários com permissão de editar a lista via interface web"
 
 #: Lang.Misc.HeaderFiltering
+#, fuzzy
 msgid "Header filtering"
 msgstr "Filtro de cabeçalho"
 
 #: Lang.Misc.HeaderRemove
+#, fuzzy
 msgid "strip these header lines"
 msgstr "retirar estar lisnhas do cabeçalho"
 
 #: Lang.Misc.HeaderKeep
+#, fuzzy
 msgid "keep only these header lines"
 msgstr "deixar somente essas linhas no cabeçalho"
 
 #: Lang.Misc.HeaderAdd
+#, fuzzy
 msgid "Headers to add to all outgoing mail"
 msgstr "Adicionar cabeçalhos em todas as mensagens"
 
 #: Lang.Misc.MimeTypeExamples
+#, fuzzy
 msgid "Show some example mime types"
 msgstr "Mostrar alguns exemplos de tipos mime"
 
 #: Lang.Misc.MimeFiltering
+#, fuzzy
 msgid "Mime type filtering (for multipart mails)"
 msgstr "Filtragem de tipos mime (para mails multipart)"
 
 #: Lang.Misc.MimeRemove
+#, fuzzy
 msgid "strip these from all messages"
 msgstr "retirar esses de todas mensagens"
 
 #: Lang.Misc.MimeKeep
+#, fuzzy
 msgid "keep only these in messages"
 msgstr "deixar somente esses nas mensagens"
 
 #: Lang.Misc.MimeReject
+#, fuzzy
 msgid "Messages containing any of these mime type will be rejected"
 msgstr "mensagens que contêm qualquer desses tipos mime serão rejeitadas"
 
 #: Lang.Misc.EditFileInfo.CommonTags
+#, fuzzy
 msgid "common tags"
 msgstr "Marcas (tags) comuns"
 
 #: Lang.Misc.EditFileInfo.ListNameLocal
+#, fuzzy
 msgid "The local part of the list name"
 msgstr "Parte local do nome da lista"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
+#, fuzzy
 msgid "The host name of the list name"
 msgstr "Nome do host da lista"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
+#, fuzzy
 msgid "Number of the respective message"
 msgstr "Número de mensagens respectivas"
 
 #: Lang.Misc.EditFileInfo.SubAddress
+#, fuzzy
 msgid "The subscription address"
 msgstr "O endereço de inscrição"
 
 #: Lang.Misc.EditFileInfo.SubReplyAddress
+#, fuzzy
 msgid "The address a subscriber must reply to"
 msgstr "O endereço para que o inscrito deve responder"
 
 #: Lang.Misc.EditFileInfo.AcceptanceAddress
+#, fuzzy
 msgid "The acceptance address"
 msgstr "Endereços aceitos"
 
 #: Lang.Misc.EditFileInfo.RejectionAddress
+#, fuzzy
 msgid "The rejection address"
 msgstr "Endereços rejeitados"
 
 #: Lang.Misc.SuggestDefaultPath
+#, fuzzy
 msgid ""
 "It is recommended to use the default path for the moderation database. "
 "Otherwise you cannot manage the moderators' list with ezmlm-web."
@@ -831,72 +1029,89 @@ msgstr ""
 "contrário você não poderá controlar a lista dos moderadores com ezmlm-web"
 
 #: Lang.Misc.PostModPathWarn
+#, fuzzy
 msgid "Posting moderators are stored in a non-standard location"
 msgstr "Mensagens moderadas são armazenadas em local não-padrão"
 
 #: Lang.Misc.SubModPathWarn
+#, fuzzy
 msgid "Subscription moderators are stored in a non-standard location"
 msgstr "Inscrições moderadas são armazenadas em local não padrão"
 
 #: Lang.Misc.RemoteAdminPathWarn
+#, fuzzy
 msgid "Remote administrators are stored in a non-standard location"
 msgstr "Administradores remotos são armazenados em local não padrão"
 
 #: Lang.Misc.MessageSize.Max
+#, fuzzy
 msgid "Reject messages exceeding a specified value"
 msgstr "Rejeitar mensagens que excedam um valor específico"
 
 #: Lang.Misc.MessageSize.Min
+#, fuzzy
 msgid "Reject messages smaller than a specified value"
 msgstr "Rejeitar mensagens menores que um valor específico"
 
 #: Lang.Misc.MessageSize.Unit
+#, fuzzy
 msgid "bytes"
 msgstr "bytes"
 
 #: Lang.Misc.NoFiles
+#, fuzzy
 msgid "There are no files in the text directory of the mailinglist."
 msgstr "Não há arquivos no diretório de texto da lista."
 
 #: Lang.Misc.AddSubscriberAddress
+#, fuzzy
 msgid "Add a new mail address:"
 msgstr "Acrescentar novo endereço de e-mail"
 
 #: Lang.Misc.AddSubscriberFile
+#, fuzzy
 msgid "Upload a text file containing mail addresses to be added:"
 msgstr ""
 "Transferir arquivo texto que contem os endereços de e-mail a serem "
 "acrescentados"
 
 #: Lang.Misc.FooterText
+#, fuzzy
 msgid "a web interface for"
 msgstr "uma interface web para"
 
 #: Lang.Misc.NoListsAvailable
+#, fuzzy
 msgid "I could not find any accessible list for you."
 msgstr "Nenhuma lista é acessível para você."
 
 #: Lang.Misc.ConfirmDelete
+#, fuzzy
 msgid "Do you really want to remove this list completely?"
 msgstr "Realmente remover essa lista completamente?"
 
 #: Lang.Misc.CustomizedFiles
+#, fuzzy
 msgid "customized files"
 msgstr "Arquivos customizados"
 
 #: Lang.Misc.DefaultFiles
+#, fuzzy
 msgid "default files"
 msgstr "Arquivos padrão"
 
 #: Lang.Misc.ListLanguage
+#, fuzzy
 msgid "Language of the list"
 msgstr "Idioma da lista"
 
 #: Lang.Misc.ListCharset
+#, fuzzy
 msgid "Charset of the list"
 msgstr "Codificação de caractér da lista"
 
 #: Lang.Misc.ModSubOverridesRemote
+#, fuzzy
 msgid ""
 "Hint: if both the database of subscripton moderators and of remote "
 "administrators use customized locations, then the database of subscription "
@@ -907,99 +1122,123 @@ msgstr ""
 "ambos os casos"
 
 #: Lang.Misc.GnupgNoPublicKeys
+#, fuzzy
 msgid "There are no public keys available."
 msgstr "Não há chaves públicas disponíveis"
 
 #: Lang.Misc.GnupgNoSecretKeys
+#, fuzzy
 msgid "There are no secret keys available."
 msgstr "Não há chaves privadas disponíveis."
 
 #: Lang.Misc.GnupgImportKey
+#, fuzzy
 msgid "Import a new key from a file:"
 msgstr "Importar nova chave de um arquivo:"
 
 #: Lang.Misc.GnupgKeyName
+#, fuzzy
 msgid "Name of the key"
 msgstr "Nome da chave"
 
 #: Lang.Misc.GnupgKeyComment
+#, fuzzy
 msgid "Comment (optional)"
 msgstr "Comentário (opcional)"
 
 #: Lang.Misc.GnupgKeySize
+#, fuzzy
 msgid "Length of the key (bytes)"
 msgstr "Comprimento da chave (bytes)"
 
 #: Lang.Misc.GnupgKeyExpires
+#, fuzzy
 msgid "Expiration time (years)"
 msgstr "Prazo de expiração (anos)"
 
 #: Lang.Misc.Never
+#, fuzzy
 msgid "never"
 msgstr "nunca"
 
 #: Lang.Misc.NoDomainsAvailable
+#, fuzzy
 msgid "No domains are available."
 msgstr "Nenhum domínio disponível"
 
 #: Lang.Misc.CopyLinesEnabled
+#, fuzzy
 msgid "Add some lines of every original message to automatic replies"
 msgstr ""
 "Acrescentar algumas linhas da mensagem original nas respostas automáticas"
 
 #: Lang.Misc.CopyLinesNumber
+#, fuzzy
 msgid "number of lines"
 msgstr "número de linhas"
 
 #: Lang.Misc.Interfaces.easy
+#, fuzzy
 msgid "basic"
 msgstr "básico"
 
 #: Lang.Misc.Interfaces.normal
+#, fuzzy
 msgid "default"
 msgstr "padrão"
 
 #: Lang.Misc.Interfaces.expert
+#, fuzzy
 msgid "expert"
 msgstr "especialista"
 
 #: Lang.Misc.MailAddress
+#, fuzzy
 msgid "Mail address"
 msgstr "Endereço de e-mail"
 
 #: Lang.Misc.SubscribeAction
+#, fuzzy
 msgid "Event"
 msgstr "Evento"
 
 #: Lang.Misc.SubscribeActionDetails
+#, fuzzy
 msgid "Details"
 msgstr "Detalhes"
 
 #: Lang.Misc.SubscribeActions.remove
+#, fuzzy
 msgid "removed"
 msgstr "removido"
 
 #: Lang.Misc.SubscribeActions.add
+#, fuzzy
 msgid "added"
 msgstr "acrescentado"
 
 #: Lang.Misc.SubscribeActions.manual
+#, fuzzy
 msgid "manual"
 msgstr "Manual"
 
 #: Lang.Misc.SubscribeActions.auto
+#, fuzzy
 msgid "automatical"
 msgstr "automático"
 
 #: Lang.Misc.SubscribeActions.unknown
+#, fuzzy
 msgid "unknown"
 msgstr "desconhecido"
 
 #: Lang.Misc.Date
+#, fuzzy
 msgid "Date"
 msgstr "Data"
 
 #: Lang.Introduction.ConfigAdmin
+#, fuzzy
 msgid ""
 "Remote administrators are (by default) also moderators for subscription and "
 "for posting. They may have the permission to (un)subscribe users and to "
@@ -1012,6 +1251,7 @@ msgstr ""
 "ao software da lista."
 
 #: Lang.Introduction.ConfigArchive
+#, fuzzy
 msgid ""
 "The mailing list archive can be accessed by mail. Additionally you will want "
 "to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
@@ -1021,6 +1261,7 @@ msgstr ""
 "ezmlm-WWW). "
 
 #: Lang.Introduction.ConfigProcess
+#, fuzzy
 msgid ""
 "Modify some message properties, before they are distributed to the "
 "subscribers."
@@ -1029,12 +1270,14 @@ msgstr ""
 "usuários."
 
 #: Lang.Introduction.ConfigMain
+#, fuzzy
 msgid "Here you find some settings, that did not fit into any other category."
 msgstr ""
 "Aqui você encontra algumas configurações que não estão em qualquer outra "
 "categoria."
 
 #: Lang.Introduction.ConfigPosting
+#, fuzzy
 msgid ""
 "The posting configuration determines, who is allowed to send messages to the "
 "list and how these mails will be processed."
@@ -1043,6 +1286,7 @@ msgstr ""
 "mensagens à lista e como elas são processadas."
 
 #: Lang.Introduction.ConfigSub
+#, fuzzy
 msgid ""
 "Here you may define, who is allowed to subscribe to the list and you can set "
 "some details of the subscription process."
@@ -1051,6 +1295,7 @@ msgstr ""
 "inscrição é processado."
 
 #: Lang.Introduction.ConfigAll
+#, fuzzy
 msgid ""
 "This is the complete list of all available properties of the list. Usually "
 "it should be easier to use the topic-based configuration pages, but - of "
@@ -1061,11 +1306,13 @@ msgstr ""
 "- claro - esta é sua escolha."
 
 #: Lang.Introduction.ListDelete
+#, fuzzy
 msgid ""
 "This mailinglist and everything inside of it will be removed completely."
 msgstr "A lista e qualquer coisa contida nela será removida completamente."
 
 #: Lang.Introduction.AllowList
+#, fuzzy
 msgid ""
 "Members of the allow list will not receive outgoing mails, but they have the "
 "same rights, as normal subscribers. Usually the allow list will contain "
@@ -1076,6 +1323,7 @@ msgstr ""
 "apelidos (alias) do mail de integrantes."
 
 #: Lang.Introduction.DenyList
+#, fuzzy
 msgid ""
 "If you want to prevent specific mail addresses from using this list "
 "(subscription, posting, ...), then you should add them to the deny list and "
@@ -1087,6 +1335,7 @@ msgstr ""
 "lista (para inscrição ou envio), adicione-os à lista negada (deny list). "
 
 #: Lang.Introduction.DigestList
+#, fuzzy
 msgid ""
 "Some users of your mailing list may prefer to receive a regular digest "
 "instead of all mailing list messages. They will usually not take part in "
@@ -1097,6 +1346,7 @@ msgstr ""
 "parte nas discussões, mas têm interesse em tomar ciência do debate."
 
 #: Lang.Introduction.ModList
+#, fuzzy
 msgid ""
 "Moderators (for posting or subscription) and remote administrators can be "
 "allowed to manage the most important parts of mailing list administration: "
@@ -1111,6 +1361,7 @@ msgstr ""
 "única pessoa, e quem tem permissão de envio de mail para a lista."
 
 #: Lang.Introduction.SubscriberList
+#, fuzzy
 msgid ""
 "Subscribers of a mailing list will receive all outgoing message of the list. "
 "They may also be allowed to post messages directly or moderated. Usually "
@@ -1124,6 +1375,7 @@ msgstr ""
 "isto de acordo com suas necessidades."
 
 #: Lang.Introduction.TextFiles
+#, fuzzy
 msgid ""
 "The selection box contains a list of files available in the DIR/text "
 "directory. These files are sent out in response to specfic user requests or "
@@ -1134,6 +1386,7 @@ msgstr ""
 "usuários ou como parte de mensagens. Edite-os como julgar necessário. "
 
 #: Lang.Introduction.EditTextFile
+#, fuzzy
 msgid ""
 "Change this text according to your needs. Maybe you would like to use some "
 "of the reserved tags, that are described at the bottom of this page."
@@ -1142,6 +1395,7 @@ msgstr ""
 "marcas (tags) reservadas, conforme descrito no rodapé desta página."
 
 #: Lang.Introduction.ResetTextFile
+#, fuzzy
 msgid ""
 "This text file was customized for this list. If you want to use the system-"
 "wide default text file of the choosen language instead, you may remove this "
@@ -1152,11 +1406,13 @@ msgstr ""
 "removidos."
 
 #: Lang.Introduction.GnupgConvert
+#, fuzzy
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr "Você pode converter uma lista norma para criptopgrada e vice-versa"
 
 #: Lang.Introduction.GnupgGenerateKey
+#, fuzzy
 msgid ""
 "Every encrypted mailing list needs a secret key. You can import this key or "
 "create it using the form below. After submitting the form, you have to be "
@@ -1168,10 +1424,12 @@ msgstr ""
 "diversos minutos)."
 
 #: Lang.Introduction.GnupgOptions
+#, fuzzy
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "Configure algumas opções para uma lista com criptografia"
 
 #: Lang.Introduction.GnupgSecret
+#, fuzzy
 msgid ""
 "Every every mailing list needs a secret key to decrypt incoming. You should "
 "take care that the secret key is kept safe. Otherwise the security of your "
@@ -1182,6 +1440,7 @@ msgstr ""
 "segurança de sua lista será quebrada. "
 
 #: Lang.Introduction.GnupgPublic
+#, fuzzy
 msgid ""
 "There should be a public key for every subscriber of the mailing list. "
 "Additionally there is the key of the mailing list, which should be "
@@ -1192,123 +1451,137 @@ msgstr ""
 "seguro publicar chaves públicas. "
 
 #: Lang.Legend.ConfigAdmin
+#, fuzzy
 msgid "Remote administrator's permissions"
 msgstr "Permissões remotas de administradores"
 
 #: Lang.Legend.ConfigArchive
+#, fuzzy
 msgid "Archive configuration"
 msgstr "Arquivo de configuração"
 
 #: Lang.Legend.ConfigPosting
+#, fuzzy
 msgid "Posting rules"
 msgstr "Regras de envio"
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
 msgstr "Detalhes de inscrição"
 
 #: Lang.Legend.ConfigMain
+#, fuzzy
 msgid "General list configuration"
 msgstr "Configurações gerais da lista"
 
 #: Lang.Legend.ConfigProcess
+#, fuzzy
 msgid "Processing rules"
 msgstr "Regras de processamento"
 
 #: Lang.Legend.ConfigAll
+#, fuzzy
 msgid "Available properties"
 msgstr "Propriedades disponíveis"
 
 #: Lang.Legend.ListCreate
+#, fuzzy
 msgid "Properties of the new list"
 msgstr "Propriedades da nova lista"
 
 #: Lang.Legend.ListDelete
+#, fuzzy
 msgid "Remove this mailinglist"
 msgstr "Remove essa lista"
 
 #: Lang.Legend.RelevantOptions
+#, fuzzy
 msgid "Useful settings"
 msgstr "Configurações úteis"
 
 #: Lang.Legend.MembersList
+#, fuzzy
 msgid "Manage subscribers"
 msgstr "Gerenciar usuários"
 
 #: Lang.Legend.MembersAllow
+#, fuzzy
 msgid "Manage allowed users"
 msgstr "Gerenciar usuários com permissão"
 
 #: Lang.Legend.MembersDeny
+#, fuzzy
 msgid "Manage blocked users"
 msgstr "Gerenciar usuários bloqueados"
 
 #: Lang.Legend.MembersDigest
+#, fuzzy
 msgid "Manage digest subscribers"
 msgstr "Gerenciar usuários com modo de coleção"
 
 #: Lang.Legend.MembersMod
+#, fuzzy
 msgid "Manage moderators and administrators"
 msgstr "Gerenciar moderadores e administradores"
 
 #: Lang.Legend.TextFiles
+#, fuzzy
 msgid "Available text files"
 msgstr "Arquivos de texto disponíveis"
 
 #: Lang.Legend.TextFileEdit
+#, fuzzy
 msgid "Edit content of text file"
 msgstr "Editar conteúdo do arquivo de texto"
 
 #: Lang.Legend.TextFileReset
+#, fuzzy
 msgid "Discard customized text"
 msgstr "Descartar texto customizado"
 
 #: Lang.Legend.TextFileInfo
+#, fuzzy
 msgid "Useful placeholders"
 msgstr "Lugares úteis"
 
 #: Lang.Legend.AvailableLists
+#, fuzzy
 msgid "Available lists"
 msgstr "Listas disponíveis"
 
 #: Lang.Legend.SubscribeLog
+#, fuzzy
 msgid "Events"
 msgstr "Eventos"
 
 #: Lang.Legend.GnupgConvert
+#, fuzzy
 msgid "Encryption support"
 msgstr "Suporte à criptografia"
 
 #: Lang.Legend.GnupgPublicKeys
+#, fuzzy
 msgid "Public keys of this list"
 msgstr "Chaves públicas da lista"
 
 #: Lang.Legend.GnupgSecretKeys
+#, fuzzy
 msgid "Secret keys of this list"
 msgstr "Chaves privadas da lista"
 
 #: Lang.Legend.GnupgKeyImport
+#, fuzzy
 msgid "Import a key"
 msgstr "Importar uma chave"
 
 #: Lang.Legend.GnupgGenerateKey
+#, fuzzy
 msgid "Generate the key for this list"
 msgstr "Gerar a chave para essa lista"
 
 #: Lang.Legend.AvailableDomains
+#, fuzzy
 msgid "Available domains"
 msgstr "Domínios disponíveis"
 
-#~ msgid ""
-#~ msgstr ""
-#~ "Project-Id-Version: ezmlm-web 3.2\n"
-#~ "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-#~ "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-#~ "PO-Revision-Date: 2007-06-11 14:00+0200\n"
-#~ "Last-Translator: carlinhos cecconi <carlinux@terra.com.br>\n"
-#~ "Language-Team: LANGUAGE <LL@li.org>\n"
-#~ "MIME-Version: 1.0\n"
-#~ "Content-Type: text/plain; charset=UTF-8\n"
-#~ "Content-Transfer-Encoding: 8bit\n"
-#~ "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#~ "X-Generator: Pootle 0.10.1\n"

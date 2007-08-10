@@ -24,6 +24,8 @@ intl/pl/*.mo
 intl/pl/LC_MESSAGES/*.mo
 intl/pt/*.mo
 intl/pt/LC_MESSAGES/*.mo
+intl/pt_BR/*.mo
+intl/pt_BR/LC_MESSAGES/*.mo
 intl/ru/*.mo
 intl/ru/LC_MESSAGES/*.mo
 intl/sl/*.mo

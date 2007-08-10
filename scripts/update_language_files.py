@@ -66,7 +66,7 @@ PO_DIR = 'intl'
 MAIL_ADDRESS = 'devel@sumpfralle.de'
 ## the complete list of languages wastes a lot of space - for now we use only a few
 #ALL_LANGUAGES = "af aka am ar bn ca cs da de el en es et eu fa fi fr fur gl he hi hr hu hy is it ja ka kg ko ku lt lv mr ms mt nb ne nl nn ns pa pl pt ru sl sr st sv tr uk ve vi xh".split(" ")
-ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt ru sl sv".split(" ")
+ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt pt_BR ru sl sv".split(" ")
 
 ## use subversion for reverting?
 USE_SVN = True
@@ -85,6 +85,7 @@ LANGUAGE_NAMES = {
     "nl": 'Nederlands',
     "pl": 'Polski',
     "pt": 'Português',
+    "pt_BR": 'Português do Brasil',
     "ru": 'Русский',
     "sl": 'Slovensko',
     "sv": 'Svenska',
