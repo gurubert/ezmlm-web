@@ -9,9 +9,3 @@ add "only for plain text mails" to the TrailerText string
 
 check version history of Mail::Ezmlm
 
-sort languages in selection
-
-define default interface in example/ezmlmwebrc?
-
-check ui_mode, ui_template in source
-

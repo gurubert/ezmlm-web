@@ -93,6 +93,8 @@ use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 use vars qw[$HTML_CSS_COMMON $HTML_CSS_COLOR];
 use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
+# default interface template (basic/normal/expert)
+use vars qw[$DEFAULT_INTERFACE_TYPE];
 # some settings for encrypted mailing lists
 use vars qw[$GPG_SUPPORT];
 # settings for multi-domain setups
@@ -109,7 +111,7 @@ use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_COMMON since v3.2
 # "pagename" refers to the template file that should be used
 # "ui_template" is one of "basic", "normal" and "expert"
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
-use vars qw[$ui_set $ui_template];
+use vars qw[$ui_template];
 
 # Get user configuration stuff
 my $config_file;
@@ -216,6 +218,9 @@ $HTML_TITLE = '' unless defined($HTML_TITLE);
 
 # check HTML_LINKS
 @HTML_LINKS = () unless defined(@HTML_LINKS);
+
+# check DEFAULT_INTERFACE_TYPE
+$DEFAULT_INTERFACE_TYPE = 'norma' unless defined($DEFAULT_INTERFACE_TYPE);
 
 # determine MAIL_DOMAIN
 unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
@@ -567,7 +572,7 @@ sub init_hdf {
 				if ($q->param('template') eq $one_template);
 		}
 	}
-	$ui_template = 'normal' unless defined($ui_template);
+	$ui_template = $DEFAULT_INTERFACE_TYPE unless defined($ui_template);
 	$hdf->setValue("Config.UI.LinkAttrs.template", $ui_template);
 
 
@@ -582,7 +587,7 @@ sub init_hdf {
 	# retrieve available languages and add them to the dataset
 	my %languages = &get_available_interface_languages();
 	my $lang;
-	foreach $lang (keys %languages) {
+	foreach $lang (sort keys %languages) {
 		$hdf->setValue("Config.UI.Languages.$lang", $languages{$lang});
 	}
 
@@ -806,8 +811,6 @@ sub set_pagedata {
 
 	# multi domain support?
 	&set_pagedata_domains() if (%DOMAINS);
-
-	$pagedata->setValue("Data.LocalPrefix", $MAIL_ADDRESS_PREFIX);
 
 	$pagedata->setValue("Data.LocalPrefix", $MAIL_ADDRESS_PREFIX);
 	$pagedata->setValue("Data.HostName", $MAIL_DOMAIN);
@@ -1113,6 +1116,10 @@ sub set_pagedata4options {
 	for ($i=0; $i<=9; $i++) {
 		unless (($i eq 1) || ($i eq 2)) {
 			$state = ($options =~ /\s-$i (?:'(.+?)')/);
+			# store the retrieved value (if possible)
+			$value = $1;
+			# reset "state" if the owner address starts with '/'
+			$state = (0==1) if (($i eq 5) && ($state) && ($value =~ m/^\//));
 			unless ($state) {
 				# set default values
 				if ($i eq 0) {
@@ -1132,9 +1139,6 @@ sub set_pagedata4options {
 						$value = "mod";
 					}
 				}
-			} else {
-				# use the configured value (extracted by the pattern matching for 'state')
-				$value = $1;
 			}
 			$pagedata->setValue("Data.List.Settings." . $i . ".value", $value);
 			$pagedata->setValue("Data.List.Settings." . $i . ".state", $state ? 1 : 0);

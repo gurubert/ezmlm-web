@@ -78,6 +78,10 @@ $FILE_UPLOAD = 1;
 # disabled). The defaults below should be reasonable - I use them ;)
 $DEFAULT_OPTIONS = "aBDFGHiJkLMNOpQRSTUWx";
 
+# Which interface type should be displayed by default?
+# available values are: easy, normal and expert
+#$DEFAULT_INTERFACE_TYPE = "normal";
+
 # What is the title of this document?
 $HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
 

@@ -2,7 +2,7 @@ Version 3.2 - 08/07/02007
  * support for multi-domain setups (multiple list directories)
  * detect preferred interface language
  * user-specific interface language selection
- * user-specific interface types (easy/default/expert)
+ * user-specific interface types (easy/normal/expert)
  * simplified rules for subscribing, posting and archive access
  * support for listing of subscription log
  * support for downloading the subscribers list as a text file
