@@ -72,24 +72,30 @@ ALL_LANGUAGES = "cs da de en es fi fr hu it ja nl pl pt pt_BR ru sl sv".split(" 
 USE_SVN = True
 
 LANGUAGE_NAMES = {
-    "cs": 'Český',
-    "da": 'Dansk',
-    "de": 'Deutsch',
-    "en": 'English',
-    "es": 'Español',
-    "fi": 'Suomi',
-    "fr": 'Français',
-    "hu": 'Magyar',
-    "it": 'Italiano',
-    "ja": '日本語',
-    "nl": 'Nederlands',
-    "pl": 'Polski',
-    "pt": 'Português',
-    "pt_BR": 'Português do Brasil',
-    "ru": 'Русский',
-    "sl": 'Slovensko',
-    "sv": 'Svenska',
-    };
+        "cs": 'Český',
+        "da": 'Dansk',
+        "de": 'Deutsch',
+        "en": 'English',
+        "es": 'Español',
+        "fi": 'Suomi',
+        "fr": 'Français',
+        "hu": 'Magyar',
+        "it": 'Italiano',
+        "ja": '日本語',
+        "nl": 'Nederlands',
+        "pl": 'Polski',
+        "pt": 'Português',
+        "pt_BR": 'Português do Brasil',
+        "ru": 'Русский',
+        "sl": 'Slovensko',
+        "sv": 'Svenska',
+    }
+
+## which languages should fall back to another language (instead of english)
+## necessary e.g. for the 100%-fuzzy release of "pt" based on "pt_BR"
+FALLBACK_DEFINITIONS = {
+        "pt":   [ "pt_BR" ],
+    }
 
 # --------------=-=-=- functions -=-=-=--------------------
 
@@ -178,8 +184,7 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 			node = node.next()
 	walk_hdf("",hdf)
 	pot.savefile(pot_file)
-	# TODO: remove the following line?
-	p = translate.storage.po.pofile(pot_file)
+	## create po files
 	for ld in ALL_LANGUAGES:
 		if not os.path.isdir(os.path.join(po_dir,ld)):
 			os.mkdir(os.path.join(po_dir, ld))
@@ -204,6 +209,11 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 			po_content = translate.storage.po.pofile.parsefile(po_file)
 			po_content.removeduplicates()
 			po_content.removeblanks()
+			## go through all msgstr and remove empty ones
+			for index in range(len(po_content.units)-1, 0, -1):
+				if po_content.units[index].isfuzzy() and \
+						(po_content.units[index].msgidlen() == 0):
+					po_content.units.remove(po_content.units[index])
 			po_content.savefile(po_file)
 		if USE_SVN:
 			revert_if_unchanged(po_file)
@@ -215,11 +225,21 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 
 
 def generate_translated_hdf_files(orig_hdf_file, po_dir, hdf_dir, textdomain):
-	for lang in ALL_LANGUAGES:
-		if lang != DEFAULT_LANG:
-			generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lang)
+    for lang in ALL_LANGUAGES:
+        if lang != DEFAULT_LANG:
+            ## are there any language fallbacks? (e.g. "de" for "de_AT")
+            if lang in FALLBACK_DEFINITIONS:
+                src_languages = FALLBACK_DEFINITIONS[lang]
+            else:
+                src_languages = []
+            ## first choice: always the language itself
+            src_languages.insert(0, lang)
+            generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir,
+                    textdomain, lang, src_languages)
 
-def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, language):
+
+def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain,
+        language, src_languages):
 	import gettext
 	## prepare original hdf
 	if ((not os.path.isfile(orig_hdf_file)) or (not os.access(orig_hdf_file, os.R_OK))):
@@ -232,8 +252,8 @@ def generate_translated_hdf_file(orig_hdf_file, po_dir, hdf_dir, textdomain, lan
 	## create translation object
 	translator = gettext.translation(
 			textdomain,
-			localedir=po_dir,
-			languages=[language])
+			localedir = po_dir,
+			languages = src_languages)
 	## translate entries
 	## count the number of translated items - so we can decide later, if we
 	## want to create the language file
