@@ -1,4 +1,4 @@
-Version 3.2 - 08/07/02007
+Version 3.2 - 08/15/02007
  * support for multi-domain setups (multiple list directories)
  * detect preferred interface language
  * user-specific interface language selection

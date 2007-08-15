@@ -220,7 +220,7 @@ $HTML_TITLE = '' unless defined($HTML_TITLE);
 @HTML_LINKS = () unless defined(@HTML_LINKS);
 
 # check DEFAULT_INTERFACE_TYPE
-$DEFAULT_INTERFACE_TYPE = 'norma' unless defined($DEFAULT_INTERFACE_TYPE);
+$DEFAULT_INTERFACE_TYPE = 'normal' unless defined($DEFAULT_INTERFACE_TYPE);
 
 # determine MAIL_DOMAIN
 unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
