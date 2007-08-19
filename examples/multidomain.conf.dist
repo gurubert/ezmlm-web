@@ -25,6 +25,7 @@
 
 # domain names may not contain any special characters
 # you must define at least "name" and "list_dir" for each domain
+# everything that you do not define here, is taken from ezmlmwebrc
 %DOMAINS = (
 	foo => {
 		name => "Example Domain Foo",
@@ -36,11 +37,12 @@
 		dot_dir => "/var/vpopmail/lists/bar",
 		mail_domain => "lists.bar.org",
 		mail_prefix => "lists-",
+		webusers_file => "/data/lists/bar/webusers",
 	},
 );
 
 
-# this simple code defines $LIST_DIR and $DOTQMAILDIR in a sane way
+# this simple code defines the most common list specific parameters in a sane way
 if (defined($CURRENT_DOMAIN) && defined($DOMAINS{$CURRENT_DOMAIN})) {
 	$LIST_DIR = $DOMAINS{$CURRENT_DOMAIN}{'list_dir'}
 		if (defined $DOMAINS{$CURRENT_DOMAIN}{'list_dir'});
@@ -50,6 +52,8 @@ if (defined($CURRENT_DOMAIN) && defined($DOMAINS{$CURRENT_DOMAIN})) {
 		if (defined $DOMAINS{$CURRENT_DOMAIN}{'mail_domain'});
 	$MAIL_ADDRESS_PREFIX = $DOMAINS{$CURRENT_DOMAIN}{'mail_prefix'}
 		if (defined $DOMAINS{$CURRENT_DOMAIN}{'mail_prefix'});
+	$WEBUSERS_FILE = $DOMAINS{$CURRENT_DOMAIN}{'webusers_file'}
+		if (defined $DOMAINS{$CURRENT_DOMAIN}{'webusers_file'});
 } else {
 	$LIST_DIR = '';
 }
