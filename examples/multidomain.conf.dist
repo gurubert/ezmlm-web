@@ -15,6 +15,9 @@
 # BEWARE: you may not define new variables as - otherwise they could collide
 # with the names of variables of the ezmlm-web program.
 #
+# AGAIN: you have to remove any setting defined in this multidomain setup from
+# the ezmlmwebrc file. Otherwise the settings below get overriden and are ignored.
+#
 
 
 {
@@ -25,11 +28,14 @@
 
 # domain names may not contain any special characters
 # you must define at least "name" and "list_dir" for each domain
-# everything that you do not define here, is taken from ezmlmwebrc
 %DOMAINS = (
 	foo => {
 		name => "Example Domain Foo",
 		list_dir => "/data/lists/foo",
+		dot_dir => "/var/vpopmail/lists/foo",
+		mail_domain => "lists.foo.org",
+		mail_prefix => "lists-",
+		webusers_file => "/data/lists/foo/webusers",
 	},
 	bar => {
 		name => "Example Domain Bar",
