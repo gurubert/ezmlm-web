@@ -1,25 +1,24 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-13 10:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-08-20 11:04+0000\n"
+"Last-Translator: Michiel van Dijk <mcvd@argentina.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.0.1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Maak nieuwe lijst"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Verwijder lijst"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
@@ -27,11 +26,11 @@ msgstr ""
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "sta lijst toe"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "weiger lijst"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
@@ -43,11 +42,11 @@ msgstr ""
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Opties"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "abonnement"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
@@ -59,7 +58,7 @@ msgstr ""
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "archief"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
@@ -67,55 +66,55 @@ msgstr ""
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "overzicht"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "Sleutelbeheer"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "publieke sleutels"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "geheime sleutels"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "genereer sleutel"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Versleuteling"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "versleuteling"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "Tekstbestanden"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Kies een lijst"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Eigenschappen van"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "Interface"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Help (extern)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
@@ -123,7 +122,7 @@ msgstr ""
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Kies een domein"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
@@ -139,11 +138,11 @@ msgstr ""
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Beheer op afstand"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Archiefopties"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
@@ -151,7 +150,7 @@ msgstr ""
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Complete configuratie"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
@@ -159,11 +158,11 @@ msgstr ""
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Toegestane gebruikers"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Geblokkeerde gebruikers"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
@@ -175,15 +174,15 @@ msgstr ""
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Maak een nieuwe lijst"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Kies een bestand om te bewerken"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Bewerken bestand"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
@@ -191,15 +190,15 @@ msgstr ""
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Publieke sleutels"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Geheime sleutels"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Maak een nieuw sleutelpaar"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
@@ -207,15 +206,15 @@ msgstr ""
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Maak lijst"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Verwijder de lijst"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Verwijder adres(sen)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
