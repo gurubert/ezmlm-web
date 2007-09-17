@@ -1,12 +1,11 @@
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-13 10:51+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: ezmlm-web 3.2\n"
+"Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"PO-Revision-Date: 2007-08-04 22:03+0100\n"
+"Last-Translator: CAPSiDE <devel@capside.com>\n"
+"Language-Team: <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -23,7 +22,7 @@ msgstr "Borrar lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Suscritores"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
@@ -35,7 +34,7 @@ msgstr "lista de denegados"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "lista de resumen"
 
 #: Lang.Menue.ModList
 msgid "moderators"
@@ -51,7 +50,7 @@ msgstr "suscripción"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "publicación"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
@@ -59,11 +58,11 @@ msgstr "administración"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "archivo"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "procesando"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
@@ -71,19 +70,19 @@ msgstr "vista general"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "Administración de claves"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "claves públicas"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "claves secretas"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "generar clave"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
@@ -119,11 +118,11 @@ msgstr "Ayuda (externa)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "Traza de suscripciones"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Elige un dominio"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
@@ -135,7 +134,7 @@ msgstr "Opciones de suscripción"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Opciones de publicación"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
@@ -167,7 +166,7 @@ msgstr "Usuarios bloqueados"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr ""
+msgstr "Suscritores de resumen"
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
@@ -187,19 +186,19 @@ msgstr "Editando fichero"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "Eventos de suscripción"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Claves públicas"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Claves secretas"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Generar un nuevo par"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
@@ -231,7 +230,7 @@ msgstr "Actualizar configuración"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Actualizar claves"
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
@@ -243,7 +242,7 @@ msgstr "Guardar fichero"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Eliminar fichero personalizado"
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
@@ -259,19 +258,19 @@ msgstr "Convertir a una lista desencriptada"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Borrar clave(s) pública(s)"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Borrar vlave(s) privada(s)"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Importar claves"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Generar par de claves"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
@@ -295,23 +294,23 @@ msgstr "Nombre de fichero inválido!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "La página de configuración escogida no es válida!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "La página de gnupg escogida no es válida!"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "Falló la importación de la clave enviada!"
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "Falló la eliminación de la(s) clave(s)!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "Falló la generación de una nueva clave!"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
@@ -363,7 +362,7 @@ msgstr "No se pudo renombrar la lista para el borrado seguro"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
-msgstr ""
+msgstr "No se pudo leer el directorio del usuario para buscar ficheros .qmail"
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
@@ -383,243 +382,258 @@ msgstr "El fichero enviado debe ser de texto"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
-msgstr ""
+msgstr "No se pudo actualizar el fichero de usuarios web"
 
 #: Lang.WarningMessage.WebUsersRead
 msgid "Could not read the webusers file"
-msgstr ""
+msgstr "No se pudo leer el fichero de usuarios web"
 
 #: Lang.WarningMessage.InvalidListName
 msgid "The name of the list contains invalid characters"
-msgstr ""
+msgstr "El nombre de la lista contiene carácteres inválidos"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
 msgstr ""
+"No se puede usar este nombre de lista porque está reservado por motivos "
+"internos"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
-msgstr ""
+msgstr "El nombre de la lista no puede estar vacío"
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr ""
+msgstr "La lista no tiene suscritores"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
-msgstr ""
+msgstr "La parte local de la dirección no es válida"
 
 #: Lang.WarningMessage.RequiresIDX5
 msgid "This action requires ezmlm-idx v5.0 or higher."
-msgstr ""
+msgstr "Esta acción requiere exmlm-idx v5.0 o superior."
 
 #: Lang.WarningMessage.ResetFileIsDefault
 msgid "There is no customized text file, that can be removed."
-msgstr ""
+msgstr "No hay fichero de texto personalizado que pueda ser eliminado."
 
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
-msgstr ""
+msgstr "La eliminación del fichero de texto personalizado falló."
 
 #: Lang.WarningMessage.LogFile
 msgid "Reading of log file failed."
-msgstr ""
+msgstr "Error de lectura del fichero de log"
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
-msgstr ""
+msgstr "No se seleccionó ningún fichero de clave para subir!"
 
 #: Lang.WarningMessage.GnupgDelKey
 msgid "Removal of (at least) one key failed!"
-msgstr ""
+msgstr "Borrado de almenos una clave falló!"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
-msgstr ""
+msgstr "No se seleccionó ninguna clave para borrar!"
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "El nombre de la clave no puede estar vacio!"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
-msgstr ""
+msgstr "El tiempo de caducidad es inválido!"
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "La longitud de la llave es inválida!"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "La exportación de la clave falló!"
 
 #: Lang.WarningMessage.GnupgConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "La conversión a una lista de correo encriptada falló!"
 
 #: Lang.WarningMessage.GnupgConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "La conversión a una lista de correo de texto plano falló!"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "La encriptación ya está habilitada para esta lista de correo."
 
 #: Lang.WarningMessage.GnupgConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "La encriptación ya está deshabilitada para esta lista de correo."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "La dirección se añadió a la lista."
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "La dirección se borró de la lista."
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "La nueva lista se ha creado con éxito."
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "Se borró la lista con éxito."
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
-msgstr ""
+msgstr "Se cambió la configuración de la lista con éxito."
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
-msgstr ""
+msgstr "El conjunto de claves ha sido correctamente modificado."
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
-msgstr ""
+msgstr "El fichero fue guardado."
 
 #: Lang.SuccessMessage.ResetFile
 msgid ""
 "The customized text file was successfully removed. From now on, the system-"
 "wide default text file will be used instead of it."
 msgstr ""
+"El fichero de texto personalizado se borró con éxito. A partir de ahora se "
+"usará el fichero por defecto del sistema."
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
-msgstr ""
+msgstr "La clave se importó con éxito."
 
 #: Lang.SuccessMessage.GnupgConvertEnable
 msgid "Encryption is now enabled for this list."
-msgstr ""
+msgstr "La encriptación está habilitada para esta lista."
 
 #: Lang.SuccessMessage.GnupgConvertDisable
 msgid "Encryption is now disabled for this list."
-msgstr ""
+msgstr "La encriptación está deshabilitada para esta lista."
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
-msgstr ""
+msgstr "Archivar mensajes de lista de correo"
 
 #: Lang.Options.b
 msgid "Only moderators are allowed to access the archive"
-msgstr ""
+msgstr "Solo los moderadores tienen acceso al archivo"
 
 #: Lang.Options.d
 msgid "Activate the digest list"
-msgstr ""
+msgstr "Activar la lista en modo resumen"
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
-msgstr ""
+msgstr "Añadir un prefijo al asunto de los mensajes salientes"
 
 #: Lang.Options.g
 msgid "Archive requests from unrecognised senders are denied"
 msgstr ""
+"Peticiones de archivado por parte de remitentes no reconocidos se deniegan"
 
 #: Lang.Options.h
 msgid "Subscriptions do not require confirmation by the user"
-msgstr ""
+msgstr "Suscripciones no requeieren confirmación por parte del usuario"
 
 #: Lang.Options.i
 msgid "Index mailing list messages for WWW archive access"
-msgstr ""
+msgstr "Indexar mensajes de la lista de correo para acceso al archivo por web"
 
 #: Lang.Options.j
 msgid "Unsubscribe does not require confirmation"
-msgstr ""
+msgstr "Desuscipción no requiere confirmación"
 
 #: Lang.Options.k
 msgid "Use deny list to prevent some users from posting"
 msgstr ""
+"Usar la lista de denegaciones para impedir que algunos usuarios publiquen"
 
 #: Lang.Options.l
 msgid "Remote administrators (moderators) may request a subscriber list"
 msgstr ""
+"Administradores remotos (moderadores) pueden pedir una lista de suscritores"
 
 #: Lang.Options.m
 msgid "All incoming messages are moderated"
-msgstr ""
+msgstr "Todos los mensajes entrantes son moderados"
 
 #: Lang.Options.n
 msgid "Remote administrators (moderators) may edit text files in DIR/text"
 msgstr ""
+"Administradores remotos (moderadores) pueden editar ficheros de texto en "
+"DIR/text"
 
 #: Lang.Options.o
 msgid "Only moderators may post"
-msgstr ""
+msgstr "Solo pueden publicar los moderadores"
 
 #: Lang.Options.p
 msgid "Allow subscription and archive retrieval for everyone"
-msgstr ""
+msgstr "Permitir suscripción y archivado para todo el mundo"
 
 #: Lang.Options.q
 msgid "Process mailman-style requests (to local-request@domain)"
-msgstr ""
+msgstr "Procesar peticiones estilo mailman (a local-request@dominio)"
 
 #: Lang.Options.r
 msgid "Enable remote administration of the list (for moderators)"
-msgstr ""
+msgstr "Habilitar administración remota de la lista (para moderadores)"
 
 #: Lang.Options.s
 msgid "Subscriptions to the main list and the digest list will be moderated"
 msgstr ""
+"Suscripciones a la lista principal y a la lista resumida serán moderados"
 
 #: Lang.Options.t
 msgid "Add a trailing text to every message"
-msgstr ""
+msgstr "Añadir un texto al final de cada mensaje"
 
 #: Lang.Options.u
 msgid ""
 "Only subscribed users may post messages (for moderated lists: always accept "
 "subscribers' postings)"
 msgstr ""
+"Solo usuarios suscritos pueden publicar mensajes (para listas moderadas: "
+"siempre aceptar las publicaciones de los suscritores)"
 
 #: Lang.Options.w
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
 msgstr ""
+"Eliminar llamadas a ezmlm-warn de la construcción de la lista (raramente "
+"útil)"
 
 #: Lang.Options.x
 msgid "Reset the list of to be stripped mime types to its default value"
 msgstr ""
+"Resetear la lista de tipos MIME que se eliminarán a su valor por defecto"
 
 #: Lang.Options.y
 msgid "Request a confirmation mail for every posted message"
-msgstr ""
+msgstr "Pedir un mail de confirmación por cada mensaje enviado"
 
 #: Lang.Options.special_replytoself
 msgid "Redirect replies to the list"
-msgstr ""
+msgstr "Redireccionar respuestas a la lista"
 
 #: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
-msgstr ""
+msgstr "Enviar texto plano a los suscritores que no tienen clave"
 
 #: Lang.Options.gnupg_sign_messages
 msgid "Sign outgoing messages with the list's key"
-msgstr ""
+msgstr "Firmar mensajes salientes con las claves de la lista"
 
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
-msgstr ""
+msgstr "Se ha permitido acceso a la lista para"
 
 #: Lang.Selections.archive.bg
 #, fuzzy
@@ -628,55 +642,55 @@ msgstr "administración"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
-msgstr ""
+msgstr "suscritores y administradores"
 
 #: Lang.Selections.archive.BG
 msgid "everyone"
-msgstr ""
+msgstr "todos"
 
 #: Lang.Selections.subscribe
 msgid "Public subscription is"
-msgstr ""
+msgstr "La suscripción pública está"
 
 #: Lang.Selections.subscribe.pS
 msgid "open"
-msgstr ""
+msgstr "abierta"
 
 #: Lang.Selections.subscribe.ps
 msgid "moderated"
-msgstr ""
+msgstr "moderada"
 
 #: Lang.Selections.subscribe.P
 msgid "not allowed"
-msgstr ""
+msgstr "no permitida"
 
 #: Lang.Selections.posting
 msgid "Posting is"
-msgstr ""
+msgstr "Publicación es"
 
 #: Lang.Selections.posting.MOU
 msgid "allowed for everyone"
-msgstr ""
+msgstr "permitido para todo el mundo"
 
 #: Lang.Selections.posting.mOU
 msgid "moderated for everyone"
-msgstr ""
+msgstr "moderado para todo el mundo"
 
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
-msgstr ""
+msgstr "permitido para suscritores y moderado para otros"
 
 #: Lang.Selections.posting.MOu
 msgid "allowed for subscribers"
-msgstr ""
+msgstr "permitido para suscritores"
 
 #: Lang.Selections.posting.moU
 msgid "allowed only for moderators"
-msgstr ""
+msgstr "permitido solo para moderadores"
 
 #: Lang.Selections.confirmation
 msgid "Confirmation mails are required for"
-msgstr ""
+msgstr "Se requieren mail de confirmación para"
 
 #: Lang.Selections.confirmation.J
 #, fuzzy
@@ -685,39 +699,47 @@ msgstr "suscripción"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
-msgstr ""
+msgstr "Convertir una lista en sublista de otra lista"
 
 #: Lang.Settings.3
 msgid "Set a custom \"From:\" header for outgoing messsages"
-msgstr ""
+msgstr "Establecer una cabecera \"From: \" personalizada para mensajes salientes"
 
 #: Lang.Settings.4
 msgid "Define customized setting for digest creation (ezmlm-tstdig)"
 msgstr ""
+"Definir una configuración personalizada para la creación de resumenes "
+"(ezmlm-tstdig)"
 
 #: Lang.Settings.5
 msgid "Define the email address of the list owner"
-msgstr ""
+msgstr "Definir la dirección de correo del dueño de la lista"
 
 #: Lang.Settings.6
 msgid "Use a SQL database"
-msgstr ""
+msgstr "Usar una base de datos SQL"
 
 #: Lang.Settings.7
 msgid "Define a custom path to the database for posting moderators"
 msgstr ""
+"Definir una ruta personalizada para la ruta de la base de datos para "
+"moderadores de publicación"
 
 #: Lang.Settings.8
 msgid "Define a custom path to the database for subscription moderators"
 msgstr ""
+"Definir una ruta personalizada para la ruta de la base de datos para "
+"moderadores de suscripción"
 
 #: Lang.Settings.9
 msgid "Define a custom path to the database for remote administators"
 msgstr ""
+"Definir una ruta personalizada para la ruta de la base de datos para "
+"administradores remotos"
 
 #: Lang.Misc.HelpLink
 msgid "The manual page of ezmlm-idx"
-msgstr ""
+msgstr "La pagina de manual de ezmlm-idx"
 
 #: Lang.Misc.Subscription
 #, fuzzy
@@ -726,165 +748,171 @@ msgstr "suscripción"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
-msgstr ""
+msgstr "suscritores"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
-msgstr ""
+msgstr "Administración remota"
 
 #: Lang.Misc.ListName
 msgid "List Name"
-msgstr ""
+msgstr "Nombre de la lista"
 
 #: Lang.Misc.ListAddress
 msgid "List Address"
-msgstr ""
+msgstr "Dirección de la lista"
 
 #: Lang.Misc.ListOptions
 msgid "Basic List Options"
-msgstr ""
+msgstr "Opciones básicas de lista"
 
 #: Lang.Misc.AllowedToEdit
 msgid "Users allowed to edit this list via web interface"
-msgstr ""
+msgstr "Usuarios que pueden editar esta lista via la interfaz web"
 
 #: Lang.Misc.HeaderFiltering
 msgid "Header filtering"
-msgstr ""
+msgstr "Filtrado de cabeceras"
 
 #: Lang.Misc.HeaderRemove
 msgid "strip these header lines"
-msgstr ""
+msgstr "eliminar estas lineas de cabecera"
 
 #: Lang.Misc.HeaderKeep
 msgid "keep only these header lines"
-msgstr ""
+msgstr "conservar solo estas lineas de cabecera"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
-msgstr ""
+msgstr "Cabeceras a añadir a todo mail saliente"
 
 #: Lang.Misc.MimeTypeExamples
 msgid "Show some example mime types"
-msgstr ""
+msgstr "Mostrar algunos tipos MIME de ejemplo"
 
 #: Lang.Misc.MimeFiltering
 msgid "Mime type filtering (for multipart mails)"
-msgstr ""
+msgstr "Filtrado de tipos MIME (para mensajes multiparte)"
 
 #: Lang.Misc.MimeRemove
 msgid "strip these from all messages"
-msgstr ""
+msgstr "eliminar estos de todos los mensajes"
 
 #: Lang.Misc.MimeKeep
 msgid "keep only these in messages"
-msgstr ""
+msgstr "conservar solo estos en los mensajes"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
-msgstr ""
+msgstr "Mensajes que contengan cualquiera de estos tipos MIME serán rechazados"
 
 #: Lang.Misc.EditFileInfo.CommonTags
 msgid "common tags"
-msgstr ""
+msgstr "etiquetas comunes"
 
 #: Lang.Misc.EditFileInfo.ListNameLocal
 msgid "The local part of the list name"
-msgstr ""
+msgstr "La parte local del nombre de la lista"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
 msgid "The host name of the list name"
-msgstr ""
+msgstr "El nombre de host del nombre de la lista"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
-msgstr ""
+msgstr "Numero del mensaje respectivo"
 
 #: Lang.Misc.EditFileInfo.SubAddress
 msgid "The subscription address"
-msgstr ""
+msgstr "La dirección de suscripción"
 
 #: Lang.Misc.EditFileInfo.SubReplyAddress
 msgid "The address a subscriber must reply to"
-msgstr ""
+msgstr "La dirección al que debe responder un usuario"
 
 #: Lang.Misc.EditFileInfo.AcceptanceAddress
 msgid "The acceptance address"
-msgstr ""
+msgstr "La dirección de aceptación"
 
 #: Lang.Misc.EditFileInfo.RejectionAddress
 msgid "The rejection address"
-msgstr ""
+msgstr "La dirección de denegación"
 
 #: Lang.Misc.SuggestDefaultPath
 msgid ""
 "It is recommended to use the default path for the moderation database. "
 "Otherwise you cannot manage the moderators' list with ezmlm-web."
 msgstr ""
+"Se recomienda el uso de la ruta por defecto para la base de datos de "
+"moderación. Sino, no se puede administrar la lista de moderadores con ezmlm-"
+"web"
 
 #: Lang.Misc.PostModPathWarn
 msgid "Posting moderators are stored in a non-standard location"
-msgstr ""
+msgstr "Moderadores de publicación están guardados en una ubicación no estándar"
 
 #: Lang.Misc.SubModPathWarn
 msgid "Subscription moderators are stored in a non-standard location"
 msgstr ""
+"Moderadores de suscripciones están guardados en una ubicación no estándar"
 
 #: Lang.Misc.RemoteAdminPathWarn
 msgid "Remote administrators are stored in a non-standard location"
-msgstr ""
+msgstr "Administradores remotos están guardados en una ubicación no estándar"
 
 #: Lang.Misc.MessageSize.Max
 msgid "Reject messages exceeding a specified value"
-msgstr ""
+msgstr "Rechazar mensajes que superen un valor especificado"
 
 #: Lang.Misc.MessageSize.Min
 msgid "Reject messages smaller than a specified value"
-msgstr ""
+msgstr "Rechazar mensajes más pequeños que un valor especificado"
 
 #: Lang.Misc.MessageSize.Unit
 msgid "bytes"
-msgstr ""
+msgstr "bytes"
 
 #: Lang.Misc.NoFiles
 msgid "There are no files in the text directory of the mailinglist."
-msgstr ""
+msgstr "No hay ficheros en el directorio de textos de la lista de correo."
 
 #: Lang.Misc.AddSubscriberAddress
 msgid "Add a new mail address:"
-msgstr ""
+msgstr "Añadir una nueva dirección:"
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"
 msgstr ""
+"Subir un fichero de texto que contiene las direcciones de correo a ser "
+"añadidas:"
 
 #: Lang.Misc.FooterText
 msgid "a web interface for"
-msgstr ""
+msgstr "una interfaz web para"
 
 #: Lang.Misc.NoListsAvailable
 msgid "I could not find any accessible list for you."
-msgstr ""
+msgstr "No pude encontrarte una lista accesible."
 
 #: Lang.Misc.ConfirmDelete
 msgid "Do you really want to remove this list completely?"
-msgstr ""
+msgstr "Está seguro que quiere eliminar esta lista completamente?"
 
 #: Lang.Misc.CustomizedFiles
 msgid "customized files"
-msgstr ""
+msgstr "ficheros personalizados"
 
 #: Lang.Misc.DefaultFiles
 msgid "default files"
-msgstr ""
+msgstr "ficheros por defecto"
 
 #: Lang.Misc.ListLanguage
 msgid "Language of the list"
-msgstr ""
+msgstr "Idioma de la lista"
 
 #: Lang.Misc.ListCharset
 msgid "Charset of the list"
-msgstr ""
+msgstr "Código de carácteres de la lista"
 
 #: Lang.Misc.ModSubOverridesRemote
 msgid ""
@@ -892,98 +920,102 @@ msgid ""
 "administrators use customized locations, then the database of subscription "
 "moderators will be used for both of them"
 msgstr ""
+"Sugerencia: si las bases de datos de moderadores de suscripción y de "
+"administradores remotos están en rutas personalizadas, entonces la base de "
+"datos de moderadores de suscripción se usará para los dos."
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
-msgstr ""
+msgstr "No hay claves públicas disponibles."
 
 #: Lang.Misc.GnupgNoSecretKeys
 msgid "There are no secret keys available."
-msgstr ""
+msgstr "No hay claves secretas disponibles."
 
 #: Lang.Misc.GnupgImportKey
 msgid "Import a new key from a file:"
-msgstr ""
+msgstr "Importar una nueva clave desde un fichero:"
 
 #: Lang.Misc.GnupgKeyName
 msgid "Name of the key"
-msgstr ""
+msgstr "Nombre de la clave"
 
 #: Lang.Misc.GnupgKeyComment
 msgid "Comment (optional)"
-msgstr ""
+msgstr "Comentario (opcional)"
 
 #: Lang.Misc.GnupgKeySize
 msgid "Length of the key (bytes)"
-msgstr ""
+msgstr "Longitud de la clave (bytes)"
 
 #: Lang.Misc.GnupgKeyExpires
 msgid "Expiration time (years)"
-msgstr ""
+msgstr "Tiempo de expiración (años)"
 
 #: Lang.Misc.Never
 msgid "never"
-msgstr ""
+msgstr "nunca"
 
 #: Lang.Misc.NoDomainsAvailable
 msgid "No domains are available."
-msgstr ""
+msgstr "No hay dominios disponibles."
 
 #: Lang.Misc.CopyLinesEnabled
 msgid "Add some lines of every original message to automatic replies"
 msgstr ""
+"Añadir algunas lineas de cada mensaje original a las respuestas automáticas"
 
 #: Lang.Misc.CopyLinesNumber
 msgid "number of lines"
-msgstr ""
+msgstr "numero de lineas"
 
 #: Lang.Misc.Interfaces.easy
 msgid "basic"
-msgstr ""
+msgstr "básico"
 
 #: Lang.Misc.Interfaces.normal
 msgid "default"
-msgstr ""
+msgstr "por defecto"
 
 #: Lang.Misc.Interfaces.expert
 msgid "expert"
-msgstr ""
+msgstr "experto"
 
 #: Lang.Misc.MailAddress
 msgid "Mail address"
-msgstr ""
+msgstr "Dirección de correo"
 
 #: Lang.Misc.SubscribeAction
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 #: Lang.Misc.SubscribeActionDetails
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 #: Lang.Misc.SubscribeActions.remove
 msgid "removed"
-msgstr ""
+msgstr "borrado"
 
 #: Lang.Misc.SubscribeActions.add
 msgid "added"
-msgstr ""
+msgstr "añadido"
 
 #: Lang.Misc.SubscribeActions.manual
 msgid "manual"
-msgstr ""
+msgstr "manual"
 
 #: Lang.Misc.SubscribeActions.auto
 msgid "automatical"
-msgstr ""
+msgstr "automático"
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
-msgstr ""
+msgstr "desconocido"
 
 #: Lang.Misc.Date
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #: Lang.Introduction.ConfigAdmin
 msgid ""
@@ -992,34 +1024,49 @@ msgid ""
 "change the text files of the list by sending emails to the mailing list "
 "software."
 msgstr ""
+"Los administradores remotos son (por defecto) también moderadores de "
+"suscripción y sumisión de mensajes. Deben tener permiso para suscribir y "
+"desuscribir usuarios y permiso para cambiar los ficheros de texto de la "
+"lista enviando mails a la lista de correo."
 
 #: Lang.Introduction.ConfigArchive
 msgid ""
 "The mailing list archive can be accessed by mail. Additionally you will want "
 "to create a list archive, if you plan to publish it (e.g. with ezmlm-www)."
 msgstr ""
+"El archivo (histórico) de la lista de correo puede ser accedida por mail. "
+"Adicionalmente puede que desees crear un archivo de la lista, si planeas "
+"publicarla (p. ej. con ezmlm-www)."
 
 #: Lang.Introduction.ConfigProcess
 msgid ""
 "Modify some message properties, before they are distributed to the "
 "subscribers."
 msgstr ""
+"Modificar algunas propiedades de los mensajes, antes que se distribuyan a "
+"los suscritores."
 
 #: Lang.Introduction.ConfigMain
 msgid "Here you find some settings, that did not fit into any other category."
 msgstr ""
+"Aquí encontrarás algunas configuraciones que no tenian cabida en ninguna "
+"categoría más."
 
 #: Lang.Introduction.ConfigPosting
 msgid ""
 "The posting configuration determines, who is allowed to send messages to the "
 "list and how these mails will be processed."
 msgstr ""
+"La configuración de submisión determina quien tiene permiso para enviar "
+"mensajes a la lista, y como estos mails serán procesados."
 
 #: Lang.Introduction.ConfigSub
 msgid ""
 "Here you may define, who is allowed to subscribe to the list and you can set "
 "some details of the subscription process."
 msgstr ""
+"Aquí puedes definir quien tiene permiso para suscribir a la lista y puede "
+"estableces algunos detalles del proceso de suscripción."
 
 #: Lang.Introduction.ConfigAll
 msgid ""
@@ -1027,11 +1074,15 @@ msgid ""
 "it should be easier to use the topic-based configuration pages, but - of "
 "course - this is your choice."
 msgstr ""
+"Ésta el la lista completa de propiedades de la lista. Normalmente debería "
+"ser más fácil usar las páginas de configuración de usos predefinidos, pero, "
+"por supuesto, ésta es su elección."
 
 #: Lang.Introduction.ListDelete
 msgid ""
 "This mailinglist and everything inside of it will be removed completely."
 msgstr ""
+"Esta lista de correo y todos sus contenidos serán completamente eliminados."
 
 #: Lang.Introduction.AllowList
 msgid ""
@@ -1107,7 +1158,7 @@ msgstr ""
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
-msgstr ""
+msgstr "Configurar algunos parámetros útiles de la lista de correo encripatada."
 
 #: Lang.Introduction.GnupgSecret
 msgid ""
@@ -1115,6 +1166,9 @@ msgid ""
 "take care that the secret key is kept safe. Otherwise the security of your "
 "mailing list is broken."
 msgstr ""
+"Cada lista de correo necesita una clave secreta para desencriptar correo "
+"entrante. Ésta clave secreta debería permanecer en un lugar seguro. De otra "
+"manera, la seguridad de la lista de correo está comprometida."
 
 #: Lang.Introduction.GnupgPublic
 msgid ""
@@ -1122,18 +1176,22 @@ msgid ""
 "Additionally there is the key of the mailing list, which should be "
 "distributed to all subscribers. It is safe to openly publish public keys."
 msgstr ""
+"Debería haber una clave pública para cada suscritor de la lista de correo. "
+"Adicionalmente está la clave de la lista de correo, que debería distribuirse "
+"a todos los suscritores. No hay riesgo de seguridad en publicar claves "
+"públicas."
 
 #: Lang.Legend.ConfigAdmin
 msgid "Remote administrator's permissions"
-msgstr ""
+msgstr "Permisos de los administradores remotos"
 
 #: Lang.Legend.ConfigArchive
 msgid "Archive configuration"
-msgstr ""
+msgstr "Configuración de archivado"
 
 #: Lang.Legend.ConfigPosting
 msgid "Posting rules"
-msgstr ""
+msgstr "Reglas de publicación"
 
 #: Lang.Legend.ConfigSub
 #, fuzzy
@@ -1142,92 +1200,92 @@ msgstr "Opciones de suscripción"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
-msgstr ""
+msgstr "Configuración general de lista"
 
 #: Lang.Legend.ConfigProcess
 msgid "Processing rules"
-msgstr ""
+msgstr "Reglas de procesado"
 
 #: Lang.Legend.ConfigAll
 msgid "Available properties"
-msgstr ""
+msgstr "Propiedades disponibles"
 
 #: Lang.Legend.ListCreate
 msgid "Properties of the new list"
-msgstr ""
+msgstr "Propiedades de la nueva lista"
 
 #: Lang.Legend.ListDelete
 msgid "Remove this mailinglist"
-msgstr ""
+msgstr "Borrar esta lista de correo"
 
 #: Lang.Legend.RelevantOptions
 msgid "Useful settings"
-msgstr ""
+msgstr "Configuraciones útiles"
 
 #: Lang.Legend.MembersList
 msgid "Manage subscribers"
-msgstr ""
+msgstr "Administrar suscritores"
 
 #: Lang.Legend.MembersAllow
 msgid "Manage allowed users"
-msgstr ""
+msgstr "Administrar usuarios permitidos"
 
 #: Lang.Legend.MembersDeny
 msgid "Manage blocked users"
-msgstr ""
+msgstr "Administrar usuarios bloqueados"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
-msgstr ""
+msgstr "Administrar suscritores del resumen"
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
-msgstr ""
+msgstr "Administrar moderadores y administradores"
 
 #: Lang.Legend.TextFiles
 msgid "Available text files"
-msgstr ""
+msgstr "Ficheros de texto disponibles"
 
 #: Lang.Legend.TextFileEdit
 msgid "Edit content of text file"
-msgstr ""
+msgstr "Editar contenido del fichero de texto"
 
 #: Lang.Legend.TextFileReset
 msgid "Discard customized text"
-msgstr ""
+msgstr "Descartar texto personalizado"
 
 #: Lang.Legend.TextFileInfo
 msgid "Useful placeholders"
-msgstr ""
+msgstr "Marcadores útiles"
 
 #: Lang.Legend.AvailableLists
 msgid "Available lists"
-msgstr ""
+msgstr "Listas disponibles"
 
 #: Lang.Legend.SubscribeLog
 msgid "Events"
-msgstr ""
+msgstr "Eventos"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
-msgstr ""
+msgstr "Soporte para encriptación"
 
 #: Lang.Legend.GnupgPublicKeys
 msgid "Public keys of this list"
-msgstr ""
+msgstr "Claves públicas de esta lista"
 
 #: Lang.Legend.GnupgSecretKeys
 msgid "Secret keys of this list"
-msgstr ""
+msgstr "Claves secretas de esta lista"
 
 #: Lang.Legend.GnupgKeyImport
 msgid "Import a key"
-msgstr ""
+msgstr "Importar una clave"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
-msgstr ""
+msgstr "Generar una clave para esta lista"
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
-msgstr ""
+msgstr "Dominios disponibles"
