@@ -1304,7 +1304,8 @@ sub set_pagedata_subscription_log {
 	
 	my ($listname) = @_;
 
-	my ($log_file, @event, $i, $datetext, $epoch_seconds, $note, $address);
+	my ($log_file, $i, $line);
+	my ($datetext, $epoch_seconds, $action, $action_details, $address);
 	$log_file = "$LIST_DIR/" . $q->param('list') . "/Log";
 	
 	# break if there is no log_file
@@ -1319,18 +1320,22 @@ sub set_pagedata_subscription_log {
 	$i = 0;
 	while (<LOG_FILE>) {
 		chomp;
-		@event = split;
-		if ($#event eq 2) {
-			$epoch_seconds = $event[0];
+		$line = $_;
+		# a line of the log file could look like the following:
+		#   748392136 +manual foo@bar.org Foo Bar <foo@bar.org>
+		$line =~ m/^(\d+) ([+-])(\w*) ([^ ]*) ?(.*)$/;
+		if (defined($5)) {
+			$epoch_seconds = $1;
+			$action = $2;
+			$action_details = $3;
+			$address = $5 ? $5 : $4;
 			$datetext = localtime($epoch_seconds);
-			$note = $event[1];
-			$address = $event[2];
 			# the date in gmt format - this should be sufficient
 			$pagedata->setValue("Data.List.SubscribeLog.$i.date", $datetext);
-			# the first letter of 'note' should be +/-
-			$pagedata->setValue("Data.List.SubscribeLog.$i.action", substr($note,0,1));
-			# manual/auto/mod - TODO: verify "auto"
-			$pagedata->setValue("Data.List.SubscribeLog.$i.details", substr($note,1));
+			# the the action should be +/-
+			$pagedata->setValue("Data.List.SubscribeLog.$i.action", $action);
+			# manual/auto/mod/probe - TODO: verify "auto"
+			$pagedata->setValue("Data.List.SubscribeLog.$i.details", $action_details);
 			$pagedata->setValue("Data.List.SubscribeLog.$i.address", $address);
 			$i++;
 		}

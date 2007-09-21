@@ -290,6 +290,7 @@ Lang {
 			add	= added
 			mod	= moderated
 			manual	= manual
+			probe   = delivery failed
 			auto	= automatical
 			unknown	= unknown
 		  }
