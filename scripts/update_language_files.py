@@ -201,20 +201,18 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 			## set every msgstr to the respective msgid
 			po_data = translate.storage.po.pofile.parsefile(po_file)
 			po_data.removeduplicates()
-			po_data.removeblanks()
 			for po_unit in po_data.units:
 				po_unit.settarget(po_unit.getsource())
 			po_data.savefile(po_file)
 		else:
-			po_content = translate.storage.po.pofile.parsefile(po_file)
-			po_content.removeduplicates()
-			po_content.removeblanks()
+			po_data = translate.storage.po.pofile.parsefile(po_file)
+			po_data.removeduplicates()
 			## go through all msgstr and remove empty ones
-			for index in range(len(po_content.units)-1, 0, -1):
-				if po_content.units[index].isfuzzy() and \
-						(po_content.units[index].msgidlen() == 0):
-					po_content.units.remove(po_content.units[index])
-			po_content.savefile(po_file)
+			for index in range(len(po_data.units)-1, 0, -1):
+				if po_data.units[index].isfuzzy() and \
+						(po_data.units[index].msgidlen() == 0):
+					po_data.units.remove(po_data.units[index])
+			po_data.savefile(po_file)
 		if USE_SVN:
 			revert_if_unchanged(po_file)
 		## make it writeable for pootle
