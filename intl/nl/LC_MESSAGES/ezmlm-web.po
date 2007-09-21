@@ -1,8 +1,6 @@
-msgid ""
-msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-13 10:51+0200\n"
+"POT-Creation-Date: 2007-08-24 21:16+0200\n"
 "PO-Revision-Date: 2007-08-20 11:04+0000\n"
 "Last-Translator: Michiel van Dijk <mcvd@argentina.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,16 +223,18 @@ msgid "Add address(es)"
 msgstr ""
 
 #: Lang.Buttons.UpdateConfiguration
+#, fuzzy
 msgid "Update configuration"
-msgstr ""
+msgstr "Complete configuratie"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
 msgstr ""
 
 #: Lang.Buttons.EditFile
+#, fuzzy
 msgid "Edit file"
-msgstr ""
+msgstr "Bewerken bestand"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
@@ -677,8 +677,9 @@ msgid "Confirmation mails are required for"
 msgstr ""
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
-msgstr ""
+msgstr "abonnement"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -717,8 +718,9 @@ msgid "The manual page of ezmlm-idx"
 msgstr ""
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
-msgstr ""
+msgstr "abonnement"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
@@ -967,6 +969,10 @@ msgstr ""
 
 #: Lang.Misc.SubscribeActions.manual
 msgid "manual"
+msgstr ""
+
+#: Lang.Misc.SubscribeActions.probe
+msgid "delivery failed"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.auto
@@ -1226,3 +1232,4 @@ msgstr ""
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr ""
+

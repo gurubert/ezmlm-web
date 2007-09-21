@@ -955,6 +955,10 @@ msgstr ""
 msgid "manual"
 msgstr ""
 
+#: Lang.Misc.SubscribeActions.probe
+msgid "delivery failed"
+msgstr ""
+
 #: Lang.Misc.SubscribeActions.auto
 msgid "automatical"
 msgstr ""

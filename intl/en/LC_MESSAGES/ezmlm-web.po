@@ -973,6 +973,10 @@ msgstr "added"
 msgid "manual"
 msgstr "manual"
 
+#: Lang.Misc.SubscribeActions.probe
+msgid "delivery failed"
+msgstr "delivery failed"
+
 #: Lang.Misc.SubscribeActions.auto
 msgid "automatical"
 msgstr "automatical"
