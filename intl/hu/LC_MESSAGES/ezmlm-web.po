@@ -1,73 +1,72 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-24 21:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2007-12-19 06:54+0000\n"
+"Last-Translator: kkk <kamu@hcf.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 1.0.2\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Új lista létrehozása"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Lista törlése"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Lista tagok"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "engedélyezettek listája"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "tiltottak listája"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "kivonat lista"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "moderátorok"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Beállítások"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "feliratkozás"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "küldés"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "adminisztráció"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "archív"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "feldolgozás"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "áttekintés"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
@@ -75,159 +74,159 @@ msgstr ""
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "publikus kulcsok"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "titkos kulcsok"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "kulcs generálás"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Titkosítás"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "titkosítás"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "Szöveges fájlok"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Válassz egy listát"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Tulajdonságai"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "Felület"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Súgó (külső)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "Tagok logja"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Válassz domain -t"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Lista beállításai"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Feliratrkozási szabályok"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Küldési beállítások"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Távoli adminisztráció"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Archívum beállításai"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Üzenetek feldolgozása"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Teljes beállítás"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "A lista tagjai"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Engedélyezett felhasználok"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Tíltott felhasználók"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr ""
+msgstr "Kivonatos ..."
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "A lista moderátorai"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Új lista létrehzása"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Válassz egy fájlt a szerkesztéshez"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Fájl szerkesztése"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "Feliratkozási események"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Publikus kulcsok"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Titkos kulcsok"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Új kulcspár generálása"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Titkosítás beállításai"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Lista létrehozása"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Lista törlése"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Cím(ek) törlése"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr ""
+msgstr "Lista tagok listájának letöltése"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Cím(ek) hozzáadása"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Beállítások frissítése"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
@@ -235,67 +234,67 @@ msgstr ""
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Fájl szerkesztése"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Fájl mentése"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Testre szabott fájl eltávolítása"
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
-msgstr ""
+msgstr "kiválaszt"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Átalakitás titkosított listává"
 
 #: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Átalakítás titkosítatlan listává"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Publikus kulcsok törlése"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Titkos kulcsok törlése"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Kulcs importálása"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Kulcspár generálása"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "letöltés"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "meghatározatlan művelet"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "egy vagy több paraméter hiányzik"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Hiba: nincs engedélyed a művelet elvégzéséhez!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Érvénytelen fájlnév!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "A kiválasztott oldal érvénytelen!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
@@ -303,55 +302,55 @@ msgstr ""
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "A feltöltött kulcs importálása nem siekrült!"
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "A kulcs(ok) eltávolítása nem sikerült!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "Az új kulcs generálása sikertelen!"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "Legalább egy mail cím hozzáadása sikertelen volt!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Legalább egy mail cím eltávolítása sikertelen volt!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "Az új lista létrehozása sikertelen volt!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "A lista eltávolítása sikertelen volt!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "A beállítások frissítése nem sikerült!"
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "A fájlt nem lehet elmenteni!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Már van egy ilyen nevű lista!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Már van egy lista, amelyik ezt a címet használja!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Ilyen nevű lista nem létezik!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "A listák könyvtára elérhetetlen!"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
@@ -359,51 +358,51 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
-msgstr ""
+msgstr "A biztonságos eltávolításhoz nem sikerült a listát átnevezni."
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
-msgstr ""
+msgstr "A mail felhasználók home könyvtárának elérése nem siekrült."
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "A .qmail fájlok mozgatása nem sikerült."
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "A lista törlése nem sikerült."
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "A .qmail fájlok törlése nem sikerült."
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
-msgstr ""
+msgstr "A feltöltendő fájlnak, text fájlnak kell lennie."
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
-msgstr ""
+msgstr "A web felhasználók fájljának frissítése sikertelen."
 
 #: Lang.WarningMessage.WebUsersRead
 msgid "Could not read the webusers file"
-msgstr ""
+msgstr "A web felhsználók fájl nem olvasható!"
 
 #: Lang.WarningMessage.InvalidListName
 msgid "The name of the list contains invalid characters"
-msgstr ""
+msgstr "A lista neve érvénytelen karaktereket tartalmaz!"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
-msgstr ""
+msgstr "A lista neve nem használható!"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
-msgstr ""
+msgstr "A lista neve nem lehet üres!"
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr ""
+msgstr "A listának nincsenek tagjai!"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
@@ -411,83 +410,83 @@ msgstr ""
 
 #: Lang.WarningMessage.RequiresIDX5
 msgid "This action requires ezmlm-idx v5.0 or higher."
-msgstr ""
+msgstr "A művelethez szükséges az ezmlm-idx v5.0 vagy magasabb verziója."
 
 #: Lang.WarningMessage.ResetFileIsDefault
 msgid "There is no customized text file, that can be removed."
-msgstr ""
+msgstr "Nincs testreszabott text fájl, ami eltávolítható lenne."
 
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
-msgstr ""
+msgstr "A testreszabott fájlok eltávolítása sikertelen!"
 
 #: Lang.WarningMessage.LogFile
 msgid "Reading of log file failed."
-msgstr ""
+msgstr "A napló fájl olvasása sikertelen."
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
-msgstr ""
+msgstr "Nem jelöültél ki kulcs fájlt a feltöltéshez!"
 
 #: Lang.WarningMessage.GnupgDelKey
 msgid "Removal of (at least) one key failed!"
-msgstr ""
+msgstr "Legalább egy kulcs módosítása siekrtelen volt!"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
-msgstr ""
+msgstr "Nincs kijelölve az eltávolítandó kulcs!"
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "A kulcs neve nem lehet üres!"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
-msgstr ""
+msgstr "A lejárati idő érvénytelen!"
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "A kulcs hossza érvénytelen!"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "A kulcs exportálása nem sikerült!"
 
 #: Lang.WarningMessage.GnupgConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "Titkosított listává konvertálás sikertelen!"
 
 #: Lang.WarningMessage.GnupgConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "Titkosítatlan listává konvertálás sikertelen!"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "A titkosítás már engedélyezve lett erre a listára!"
 
 #: Lang.WarningMessage.GnupgConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "A lista titkosítása már törölve van!"
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "A cim sikeresen felkerült a listára!"
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "A cím sikeresen törölve a listáról!"
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "Az új lista sikeresen létrejött!"
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "A lista sikeresen törölve!"
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
-msgstr ""
+msgstr "A lista beállításai sikeresen módosítva!"
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
@@ -495,7 +494,7 @@ msgstr ""
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
-msgstr ""
+msgstr "A fájl elmentve!"
 
 #: Lang.SuccessMessage.ResetFile
 msgid ""
@@ -505,31 +504,31 @@ msgstr ""
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
-msgstr ""
+msgstr "A kulcs sikeresen importálva!"
 
 #: Lang.SuccessMessage.GnupgConvertEnable
 msgid "Encryption is now enabled for this list."
-msgstr ""
+msgstr "A titkosítás bekapcsolva a listára!"
 
 #: Lang.SuccessMessage.GnupgConvertDisable
 msgid "Encryption is now disabled for this list."
-msgstr ""
+msgstr "A titkosítás kikapcsolva!"
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
-msgstr ""
+msgstr "Archív üzenetek"
 
 #: Lang.Options.b
 msgid "Only moderators are allowed to access the archive"
-msgstr ""
+msgstr "Csak moderátorok érhetik el az archívumot!"
 
 #: Lang.Options.d
 msgid "Activate the digest list"
-msgstr ""
+msgstr "A kivonatos lista aktiválása"
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
-msgstr ""
+msgstr "Előtag hozzáfűzése a tárgyhoz a kimenő üzeneteknél"
 
 #: Lang.Options.g
 msgid "Archive requests from unrecognised senders are denied"
