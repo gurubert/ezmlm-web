@@ -2534,7 +2534,7 @@ ezmlm-web [B<-c>] [B<-C> E<lt>F<config file>E<gt>] [B<-d> E<lt>F<list directory>
 
 Specify an alternate configuration file given as F<config file>
 If not specified, ezmlm-web checks first in the users home directory, then the
-current directory (filename: .ezmlmwebrc) and then F</etc/ezmlm-web/ezmlwebrc>.
+current directory (filename: .ezmlmwebrc) and then F</etc/ezmlm-web/ezmlmwebrc>.
 
 =item B<-d>
 
