@@ -2246,7 +2246,7 @@ sub update_webusers {
 	my $listname = $q->param('list');
 	my $webusers_filtered = $q->param('webusers');
 	# remove any insecure characters (e.g. a line break :))
-	$webusers_filtered =~ s/[^\w,_\.\-]/ /gs;
+	$webusers_filtered =~ s/[^\w,_\.\-\@]/ /gs;
 	open(TMP, "<$temp_file");
 	unless (open(WU, ">$WEBUSERS_FILE")) {
 		warn "the webusers file ($WEBUSERS_FILE) is not writable";
