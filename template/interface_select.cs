@@ -20,7 +20,7 @@
 	else ?>
 		<input type="hidden" name="web_lang" value="<?cs
 				var:Config.UI.LinkAttrs.web_lang ?>" /><?cs /if
-	?><?cs if:subcount(Config.UI.Interfaces) > 0 ?>
+	?><?cs if:subcount(Config.UI.Interfaces) > 1 ?>
 		<font class="no_link"><?cs
 			var:html_escape(Lang.Menue.Interface) ?>:</font>
 		<select name="template" size="0">
