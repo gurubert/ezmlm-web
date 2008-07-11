@@ -1457,7 +1457,7 @@ sub untaint {
 
 	# check the list name
 	if (defined($q->param('list')) &&
-			($q->param('list') =~ /[^\w\.-]/) &&
+			($q->param('list') !~ m/^[\w\d\_\-\.\/\@]+$/) &&
 			($q->param('action') !~ /^list_create_(do|ask)$/)) {
 		$warning = 'InvalidListName' if ($warning eq '');
 		$q->param(-name=>'list', -values=>'');
@@ -1651,7 +1651,7 @@ sub create_list {
 	# dotqmail files may not contain uppercase letters
 	$qmail = lc($qmail);
 	$listname = $q->param('list');
-	if ($listname =~ m/[^\w\.-]/) {
+	if ($listname !~ m/^[\w\d\_\-\.\/\@]+$/) {
 		$warning = 'InvalidListName';
 		return (1==0);
    	}
