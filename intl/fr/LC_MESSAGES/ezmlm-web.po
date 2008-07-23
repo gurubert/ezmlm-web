@@ -1,357 +1,356 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-24 21:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2008-04-24 10:34+0200\n"
+"Last-Translator: Lionel <ouhaich@razzer.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 1.0.2\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Ajouter une liste"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Supprimer la liste"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Abonnés"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "Adresses autorisées"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "Adresses refusées"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "Messages compilés"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "modérateurs"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "options"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "Abonnement"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "Posté"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "administration"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "archive"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "traitement"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "vue d'ensemble"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "gestion principale"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "clefs publiques"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "clefs secrètes "
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "génération de clef"
 
 #: Lang.Menue.GnupgConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Chiffrage"
 
 #: Lang.Menue.GnupgOptions
 msgid "encryption"
-msgstr ""
+msgstr "chiffrage"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "fichiers texte"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Choisissez une liste"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "propriétés de"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "langue"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "interface"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Aide (extérieur)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "log des inscrits"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Choisissez un domaine"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Configuration de la liste"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Options d'abonnement"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Options d'envoi"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Administration à distance"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Options d'archivage"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Traitement du message"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Configuration complète "
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Abonnés de la liste"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Utilisateurs autorisés"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Utilisateurs bloqués"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr ""
+msgstr "Abonnés à  l'envoi groupé"
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Modérateur de la liste de diffusion"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Créer une nouvelle liste"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Choisissez un fichier pour l'édition"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Fichier à éditer"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "Actions sur les abonnements"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Clefs publiques"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Clefs secrètes "
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Génération d'une nouvelle paire de clefs"
 
 #: Lang.Title.GnupgOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Paramètres de chiffrage"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Créer liste"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Supprimer liste"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Supprimer adresse(s)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr ""
+msgstr "Téléchargement des inscrits"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Ajouter adresse(s)"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Mise à jour de la configuration"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Mise à jour du trousseau de clefs"
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Édition fichier"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Sauvegarde fichier"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Suppression du fichier \"customisé\""
 
 #: Lang.Buttons.LanguageSet
 msgid "select"
-msgstr ""
+msgstr "sélection"
 
 #: Lang.Buttons.GnupgConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Convertir en liste chiffrée"
 
 #: Lang.Buttons.GnupgConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Convertir en liste \"texte\""
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Supprimer clef(s) publique(s)"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Supprimer clef(s) secrète(s)"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Importer clef"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Génération d'une paire de clefs"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "télécharger"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "action non définie"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "cette action nécessite un paramètre ou plus"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Erreur : vous n'êtes pas autorisé à faire ça!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Le nom de fichier est incorrect!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "La page config choisi est invalide!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "La page gnupg choisi est invalide!"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "L'importation de la clef téléchargée à échoué!"
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "La suppression de la clef à échoué!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "La création de na nouvelle clef à échoué!"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "L'addition d'au moins une adresse de courrier a échoué!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Le déplacement d'au moins une adresse de courrier a échoué!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "La création d'une nouvelle liste de diffusion à échoué!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "Le déplacement d'une nouvelle liste de diffusion à échoué!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "La mise à jour de configuration a échoué!"
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "Le fichier n'a pas pu être sauvé!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Il y a déjà une liste avec ce nom!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Il y a déjà une liste avec cette adresse!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Une liste avec ce nom n'existe pas!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "Impossible d'avoir accès à la liste d'adresses"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"

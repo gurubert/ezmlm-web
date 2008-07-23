@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2007-04-11 00:27+0200\n"
-"PO-Revision-Date: 2007-08-04 22:03+0100\n"
-"Last-Translator: CAPSiDE <devel@capside.com>\n"
+"PO-Revision-Date: 2008-07-09 17:30+0200\n"
+"Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"X-Generator: Pootle 1.0.2\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -22,7 +22,7 @@ msgstr "Borrar lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr "Suscritores"
+msgstr "Suscriptores"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
@@ -154,7 +154,7 @@ msgstr "Configuración completa"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr "Suscritores de la lista"
+msgstr "Suscriptores de la lista"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
@@ -166,7 +166,7 @@ msgstr "Usuarios bloqueados"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
-msgstr "Suscritores de resumen"
+msgstr "Suscriptores de resumen"
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
@@ -218,7 +218,7 @@ msgstr "Borrar dirección(es)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr "Bajar suscritores"
+msgstr "Bajar suscriptores"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
@@ -404,7 +404,7 @@ msgstr "El nombre de la lista no puede estar vacío"
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr "La lista no tiene suscritores"
+msgstr "La lista no tiene suscriptores"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
@@ -559,7 +559,7 @@ msgstr ""
 #: Lang.Options.l
 msgid "Remote administrators (moderators) may request a subscriber list"
 msgstr ""
-"Administradores remotos (moderadores) pueden pedir una lista de suscritores"
+"Administradores remotos (moderadores) pueden pedir una lista de suscriptores"
 
 #: Lang.Options.m
 msgid "All incoming messages are moderated"
@@ -602,7 +602,7 @@ msgid ""
 "subscribers' postings)"
 msgstr ""
 "Solo usuarios suscritos pueden publicar mensajes (para listas moderadas: "
-"siempre aceptar las publicaciones de los suscritores)"
+"siempre aceptar las publicaciones de los suscriptores)"
 
 #: Lang.Options.w
 msgid "Remove the ezmlm-warn invocations from the list setup (rarely useful)"
@@ -625,7 +625,7 @@ msgstr "Redireccionar respuestas a la lista"
 
 #: Lang.Options.gnupg_plain_without_key
 msgid "Send plaintext to the subscribers which have no key"
-msgstr "Enviar texto plano a los suscritores que no tienen clave"
+msgstr "Enviar texto plano a los suscriptores que no tienen clave"
 
 #: Lang.Options.gnupg_sign_messages
 msgid "Sign outgoing messages with the list's key"
@@ -636,13 +636,12 @@ msgid "Access to the archive is granted for"
 msgstr "Se ha permitido acceso a la lista para"
 
 #: Lang.Selections.archive.bg
-#, fuzzy
 msgid "administrators"
-msgstr "administración"
+msgstr "administradores"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
-msgstr "suscritores y administradores"
+msgstr "suscriptores y administradores"
 
 #: Lang.Selections.archive.BG
 msgid "everyone"
@@ -678,11 +677,11 @@ msgstr "moderado para todo el mundo"
 
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
-msgstr "permitido para suscritores y moderado para otros"
+msgstr "permitido para suscriptores y moderado para otros"
 
 #: Lang.Selections.posting.MOu
 msgid "allowed for subscribers"
-msgstr "permitido para suscritores"
+msgstr "permitido para suscriptores"
 
 #: Lang.Selections.posting.moU
 msgid "allowed only for moderators"
@@ -693,9 +692,8 @@ msgid "Confirmation mails are required for"
 msgstr "Se requieren mail de confirmación para"
 
 #: Lang.Selections.confirmation.J
-#, fuzzy
 msgid "unsubscription"
-msgstr "suscripción"
+msgstr "desuscripción"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -742,13 +740,12 @@ msgid "The manual page of ezmlm-idx"
 msgstr "La pagina de manual de ezmlm-idx"
 
 #: Lang.Misc.Subscription
-#, fuzzy
 msgid "Subscription"
-msgstr "suscripción"
+msgstr "Suscripción"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
-msgstr "suscritores"
+msgstr "suscriptores"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
@@ -1007,7 +1004,7 @@ msgstr "manual"
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
-msgstr ""
+msgstr "entrega fallida"
 
 #: Lang.Misc.SubscribeActions.auto
 msgid "automatical"
@@ -1048,7 +1045,7 @@ msgid ""
 "subscribers."
 msgstr ""
 "Modificar algunas propiedades de los mensajes, antes que se distribuyan a "
-"los suscritores."
+"los suscriptores."
 
 #: Lang.Introduction.ConfigMain
 msgid "Here you find some settings, that did not fit into any other category."
@@ -1094,6 +1091,9 @@ msgid ""
 "same rights, as normal subscribers. Usually the allow list will contain "
 "mail aliases of subscribers."
 msgstr ""
+"Miembros de la lista de permitidos no recibirán los correos salientes, pero "
+"tienen los mismos privilegios que los suscriptores normales. Normalmente la "
+"lista de permitidos contendrá direcciones alternativas de los suscriptores."
 
 #: Lang.Introduction.DenyList
 msgid ""
@@ -1103,6 +1103,12 @@ msgid ""
 "vacation reply users. But since it is fairly easy to fake an mail address, "
 "this will not really improve security."
 msgstr ""
+"Si desea impedir que unas direcciónes de email específicas usen la lista (no "
+"puedan suscribirse, enviar a la lista, etc), debería añadir las a la lista "
+"de denegados y activar dicha lista. Esto es útil para evitar gente molesta, "
+"o evitar direcciones correo con respuestas autogeneradas (mensajes de \"fuera "
+"de la oficina\"). Como es muy sencillo falsear una dirección de correo, esto "
+"no aumentará la seguridad."
 
 #: Lang.Introduction.DigestList
 msgid ""
@@ -1110,6 +1116,10 @@ msgid ""
 "instead of all mailing list messages. They will usually not take part in "
 "discussions, but aret somehow interested anyway."
 msgstr ""
+"Algunos usuarios de su lista de correo pueden preferir recibir un resumen "
+"regular en vez de todos los mensajes de la lista de correo. Estos usuarios "
+"no tomarán parte regularmente en discusiones, pero están interesados en el "
+"contenido de la lista."
 
 #: Lang.Introduction.ModList
 msgid ""
@@ -1119,6 +1129,12 @@ msgid ""
 "users. Moderators may even be configured to be the only ones, who are "
 "allowed to send mails to the mailing list."
 msgstr ""
+"Se puede permitir que moderadores (de mensajes entrantes o de suscripción) y "
+"administradores remotos administren las partes más importantes de la lista "
+"de correo: moderación de la suscripción y los mensajes entrantes, cambiar "
+"las reglas de filtrado, y administración de usuarios. Moderadores pueden "
+"incluso ser configurados para ser los únicos que pueden enviar mails a la "
+"lista."
 
 #: Lang.Introduction.SubscriberList
 msgid ""
@@ -1127,6 +1143,11 @@ msgid ""
 "anonymous users are able to subscribe and unsubscribe without the help of an "
 "administrator - but of course, you may configure this to suit your needs."
 msgstr ""
+"Suscriptores de una lista de correo recibirán todos los mensajes salientes "
+"de la lista. También puden estar autorizados a enviar mensajes directamente "
+"o  moderados. Normalmente a los usarios anónimos se les permite suscribirse "
+"y desuscribirse sin la ayuda de un administrador, aunque, puede configurar "
+"esto a su medida. "
 
 #: Lang.Introduction.TextFiles
 msgid ""
@@ -1134,12 +1155,19 @@ msgid ""
 "directory. These files are sent out in response to specfic user requests or "
 "as part of all outgoing messages. Edit them as necessary."
 msgstr ""
+"El cuadro de selección contiene una lista de ficheros disponibles en el "
+"directorio DIR/text. Estos ficheros se envian como respuesta a peticiones "
+"concretas de los usuarios, o como parte de los mensajes salientes. Editalos "
+"según convenga."
 
 #: Lang.Introduction.EditTextFile
 msgid ""
 "Change this text according to your needs. Maybe you would like to use some "
 "of the reserved tags, that are described at the bottom of this page."
 msgstr ""
+"Cambie este texto en función de sus necesidades. Posiblemente quiera usar "
+"algunas de las etiquetas reservadas, tal como se describe al final de la "
+"página."
 
 #: Lang.Introduction.ResetTextFile
 msgid ""
@@ -1147,11 +1175,16 @@ msgid ""
 "wide default text file of the choosen language instead, you may remove this "
 "customized file."
 msgstr ""
+"Este fichero de texto fue personalizado para la lista. Si desea usar el "
+"fichero de texto por defecto del idioma de la lista, puede eliminar el "
+"fichero personalizado."
 
 #: Lang.Introduction.GnupgConvert
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr ""
+"Puede convertir una lista de correo normal en una lista de correo encripata, "
+"y viceversa."
 
 #: Lang.Introduction.GnupgGenerateKey
 msgid ""
@@ -1159,6 +1192,10 @@ msgid ""
 "create it using the form below. After submitting the form, you have to be "
 "patient, as it takes some time (up to several minutes) to create a key."
 msgstr ""
+"Cada lista de correo encriptada necesita una clave secreta. Puede importar "
+"una clave, o crearla con el formulario siguiente. Despues de enviar el "
+"formulario, tenga paciencia, porque puede tomar algún tiempo genera una "
+"clave."
 
 #: Lang.Introduction.GnupgOptions
 msgid "Configure some useful settings of the encrypted mailing list."
@@ -1180,7 +1217,7 @@ msgid ""
 "Additionally there is the key of the mailing list, which should be "
 "distributed to all subscribers. It is safe to openly publish public keys."
 msgstr ""
-"Debería haber una clave pública para cada suscritor de la lista de correo. "
+"Debería haber una clave pública para cada suscriptor de la lista de correo. "
 "Adicionalmente está la clave de la lista de correo, que debería distribuirse "
 "a todos los suscritores. No hay riesgo de seguridad en publicar claves "
 "públicas."
@@ -1198,9 +1235,8 @@ msgid "Posting rules"
 msgstr "Reglas de publicación"
 
 #: Lang.Legend.ConfigSub
-#, fuzzy
 msgid "Subscription details"
-msgstr "Opciones de suscripción"
+msgstr "Detalles de suscripción"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
@@ -1228,7 +1264,7 @@ msgstr "Configuraciones útiles"
 
 #: Lang.Legend.MembersList
 msgid "Manage subscribers"
-msgstr "Administrar suscritores"
+msgstr "Administrar suscriptores"
 
 #: Lang.Legend.MembersAllow
 msgid "Manage allowed users"
@@ -1240,7 +1276,7 @@ msgstr "Administrar usuarios bloqueados"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
-msgstr "Administrar suscritores del resumen"
+msgstr "Administrar suscriptores del resumen"
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
