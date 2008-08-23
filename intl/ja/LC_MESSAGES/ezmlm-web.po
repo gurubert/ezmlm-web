@@ -1,65 +1,64 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-08-24 21:16+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2008-08-20 09:47+0200\n"
+"Last-Translator: kinneko <kinneko@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr "建立新表單"
+msgstr "新しいリストを作成"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr "刪除表單"
+msgstr "リストを削除する"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr "簽署者"
+msgstr "参加者"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "リストを承認する"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "リストを拒否する"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
-msgstr ""
+msgstr "リストをダイジェストする"
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "管理者"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "オプション"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "参加"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
-msgstr ""
+msgstr "投稿"
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "管理"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "履歴"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
