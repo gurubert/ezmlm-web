@@ -1358,6 +1358,7 @@ sub set_pagedata_subscription_log {
 		$line = $_;
 		# a line of the log file could look like the following:
 		#   748392136 +manual foo@bar.org Foo Bar <foo@bar.org>
+		# for encoded sender names see "decode_quoted_string" above
 		$line =~ m/^(\d+) ([+-])(\w*) ([^ ]*) ?(.*)$/;
 		if (defined($5)) {
 			$epoch_seconds = $1;
@@ -1369,7 +1370,7 @@ sub set_pagedata_subscription_log {
 			$pagedata->setValue("Data.List.SubscribeLog.$i.date", $datetext);
 			# the the action should be +/-
 			$pagedata->setValue("Data.List.SubscribeLog.$i.action", $action);
-			# manual/auto/mod/probe - TODO: verify "auto"
+			# manual, probe (removal) or auto (empty details)
 			$pagedata->setValue("Data.List.SubscribeLog.$i.details", $action_details);
 			$pagedata->setValue("Data.List.SubscribeLog.$i.address", $address);
 			$i++;
@@ -1672,7 +1673,7 @@ sub create_list {
 	my ($qmail, $listname, $options, $i);
 
 	# Some taint checking ...
-	$qmail = $1 if $q->param('inlocal') =~ /(?:$USER-)?([^\<\>\\\/\s]+)$/;
+	$qmail = $1 if $q->param('inlocal') =~ /(?:$MAIL_ADDRESS_PREFIX-)?([^\<\>\\\/\s]+)$/;
 	# dots have to be turned into colons
 	# see http://www.qmail.org/man/man5/dot-qmail.html
 	$qmail =~ s/\./:/g;
