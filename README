@@ -72,6 +72,7 @@ This version of ezmlm-web requires the following;
   + File::Copy v2.02
   + File::Path v1.07
   + Text::ParseWords v3.24
+  + MIME::QuotedPrint v?
   + Encode (optional)
 
 The version number indicates the version of the module that ezmlm-web was

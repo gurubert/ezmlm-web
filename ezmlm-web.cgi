@@ -28,6 +28,7 @@ use CGI;
 use IO::File;
 use POSIX;
 use English;
+use MIME::QuotedPrint;
 
 # optional modules - they will be loaded later if they are available
 #Encode
@@ -1307,6 +1308,33 @@ sub get_dotqmail_files {
 
 # ---------------------------------------------------------------------------
 
+# check if the input is a quoted string and decode it if necessary
+# a quoted string could look like the following:
+#	=?ISO-8859-1?Q?S=E9rgio?= <sergio@example.org>
+# as a regex:
+#	.*=\?ISO-[^\?]+\?Q\?.*\?=.*
+sub decode_quoted_string {
+
+	my ($input) = @_;
+	my ($pre_text, $post_text, $charset, $encoded, $decoded);
+
+	if ($input =~ m/^(.*)=\?(ISO-[^\?]+)\?Q\?(.*)\?=(.*)$/) {
+		$pre_text = $1;
+		$charset = $2;
+		$encoded = $3;
+		$post_text = $4;
+		# decode the "quoted printable" encoding
+		$decoded = decode_qp($encoded);
+		# try to decode according to the given charset
+		eval { $decoded = Encode::decode($charset, $decoded); };
+		return $pre_text . $decoded . $post_text;
+	} else {
+		return $input;
+	}
+}
+
+# ---------------------------------------------------------------------------
+
 sub set_pagedata_subscription_log {
 	
 	my ($listname) = @_;
@@ -1335,7 +1363,7 @@ sub set_pagedata_subscription_log {
 			$epoch_seconds = $1;
 			$action = $2;
 			$action_details = $3;
-			$address = $5 ? $5 : $4;
+			$address = decode_quoted_string($5 ? $5 : $4);
 			$datetext = localtime($epoch_seconds);
 			# the date in gmt format - this should be sufficient
 			$pagedata->setValue("Data.List.SubscribeLog.$i.date", $datetext);
