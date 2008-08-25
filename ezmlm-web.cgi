@@ -144,7 +144,7 @@ unless (my $return = do $config_file) {
 
 # do we support encrypted mailing lists?
 # see https://systemausfall.org/toolforge/crypto-ezmlm
-$GPG_SUPPORT = 0; # disabled for v3.2 - unless defined($GPG_SUPPORT);
+$GPG_SUPPORT = 0 unless defined($GPG_SUPPORT);
 if ($GPG_SUPPORT) {
 	if (&safely_import_module("Mail::Ezmlm::Gpg")) {
 		$GPG_SUPPORT = 1;
