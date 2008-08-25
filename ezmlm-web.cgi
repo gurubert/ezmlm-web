@@ -113,7 +113,7 @@ use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_COMMON since v3.2
 # "pagename" refers to the template file that should be used
 # "ui_template" is one of "basic", "normal" and "expert"
 use vars qw[$pagedata $pagename $error $customError $warning $customWarning $success];
-use vars qw[$ui_template];
+use vars qw[$ui_template $LOGIN_NAME];
 
 # Get user configuration stuff
 my $config_file;
@@ -262,6 +262,9 @@ unless (defined($MAIL_ADDRESS_PREFIX)) {
 		$MAIL_ADDRESS_PREFIX = "$USER-"
 	}
 }
+
+# get the current login name advertised to the webserver (if it is defined)
+$LOGIN_NAME = lc(ENV{'REMOTE_USER'});
 
 
 ###################### process a request ########################
@@ -851,7 +854,7 @@ sub set_pagedata {
 	# display webuser textfield?
 	$pagedata->setValue("Data.WebUser.show", (-e "$WEBUSERS_FILE")? 1 : 0);
 	# default username for webuser file
-	$pagedata->setValue("Data.WebUser.UserName", $ENV{'REMOTE_USER'}||'ALL');
+	$pagedata->setValue("Data.WebUser.UserName", $LOGIN_NAME || 'ALL');
 
 	# list specific configuration - use defaults if no list is selected
 	if (defined($q->param('list')) && ($q->param('list') ne '')) {
@@ -1094,7 +1097,7 @@ sub set_pagedata_webusers {
 		close WEBUSER;
 	}
 	# set default if there was no list definition
-	$webusers ||= $ENV{'REMOTE_USER'} || 'ALL';
+	$webusers ||= $LOGIN_NAME || 'ALL';
 
     $pagedata->setValue("Data.List.WebUsers", "$webusers");
 }
@@ -2369,7 +2372,7 @@ sub webauth {
 	return ($NO_WEBUSERS_ACCESSALL) if (! -e "$WEBUSERS_FILE");
 
 	# if there was no user authentication, then everything is allowed
-	return (0==0) if (!defined($ENV{REMOTE_USER}) or ($ENV{REMOTE_USER} eq ''));
+	return (0==0) if (!$LOGIN_NAME);
 
 	# Read authentication level from webusers file. Format of this file is
 	# somewhat similar to the unix groups file
@@ -2386,7 +2389,7 @@ sub webauth {
 	while(<USERS>) {
 		if (/^($listname|ALL):/im) {
 			# the following line should be synchronized with the webauth_create_allowed sub
-			if (/^[^:]*:(|.*[\s,])($ENV{REMOTE_USER}|ALL)(,|\s|$)/m) {
+			if (/^[^:]*:(|.*[\s,])($LOGIN_NAME|ALL)(,|\s|$)/m) {
 				close USERS;
 				return (0==0);
 			}
@@ -2409,7 +2412,7 @@ sub webauth_create_allowed {
 	return (0==0) if (defined($opt_c));
 
 	# if there was no user authentication, then everything is allowed
-	return (0==0) if (!defined($ENV{REMOTE_USER}) || ($ENV{REMOTE_USER} eq ''));
+	return (0==0) if (!$LOGIN_NAME);
 
 	# Check if webusers file exists - if not, then access is granted
 	return ($NO_WEBUSERS_CREATE) if (! -e "$WEBUSERS_FILE");
@@ -2425,7 +2428,7 @@ sub webauth_create_allowed {
 	while(<USERS>) {
 		if (/^ALLOW_CREATE:/im) {
 			# the following line should be synchronized with the webauth sub
-			if (/[:\s,]($ENV{'REMOTE_USER'}|(ALL))(,|\s|$)/m) {
+			if (/[:\s,]($LOGIN_NAME|ALL)(,|\s|$)/m) {
 				close USERS;
 				return (0==0);
 			}
