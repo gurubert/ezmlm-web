@@ -2286,6 +2286,25 @@ sub update_webusers {
 	my $webusers_filtered = $q->param('webusers');
 	# remove any insecure characters (e.g. a line break :))
 	$webusers_filtered =~ s/[^\w,_\.\-\@]/ /gs;
+
+	# replace commas by space and reduce multiple space
+	# strip leading and trailing whitespace
+	$webusers_filtered =~ s/,/ /g;
+	$webusers_filtered =~ s/^\s+//;
+	$webusers_filtered =~ s/\s+$//;
+	# reduce multiple whitespaces to a single space
+	$webusers_filtered =~ s/\s+/ /g;
+	# turn everything into lowercase (except for "ALL")
+	my @admins = ();
+	my $admin;
+	foreach $admin (split(/ /, $webusers_filtered)) {
+		$admin = lc($admin) unless ($admin eq 'ALL');
+		push @admins, $admin;
+	}
+	# concatenate the lowercase usernames again
+	$webusers_filtered = join(' ', @admins);
+
+	# create the updated webusers file
 	open(TMP, "<$temp_file");
 	unless (open(WU, ">$WEBUSERS_FILE")) {
 		warn "the webusers file ($WEBUSERS_FILE) is not writable";
