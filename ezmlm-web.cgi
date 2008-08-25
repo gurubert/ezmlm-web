@@ -264,7 +264,7 @@ unless (defined($MAIL_ADDRESS_PREFIX)) {
 }
 
 # get the current login name advertised to the webserver (if it is defined)
-$LOGIN_NAME = lc(ENV{'REMOTE_USER'});
+$LOGIN_NAME = lc($ENV{'REMOTE_USER'});
 
 
 ###################### process a request ########################
