@@ -4,3 +4,5 @@ Do not change these files! All changes will get lost!
 Use the po files in the directory "intl" instead, if you want to update a
 translation.
 
+Use the UTF-8 character set for the language files.
+

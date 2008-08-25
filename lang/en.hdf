@@ -288,10 +288,9 @@ Lang {
 		SubscribeActions {
 			remove	= removed
 			add	= added
-			mod	= moderated
-			manual	= manual
+			manual	= by admin
 			probe   = delivery failed
-			auto	= automatical
+			auto	= via mail
 			unknown	= unknown
 		  }
 		Date	= Date

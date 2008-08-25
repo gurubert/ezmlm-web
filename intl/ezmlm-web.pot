@@ -952,7 +952,7 @@ msgid "added"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.manual
-msgid "manual"
+msgid "by admin"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.probe
@@ -960,7 +960,7 @@ msgid "delivery failed"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.auto
-msgid "automatical"
+msgid "via mail"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.unknown

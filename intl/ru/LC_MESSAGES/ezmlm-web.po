@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-24 21:16+0200\n"
+"Project-Id-Version: ezmlm-web v3.3\n"
+"Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+"POT-Creation-Date: 2008-08-25 02:22+0200\n"
 "PO-Revision-Date: 2008-05-22 10:27+0200\n"
 "Last-Translator: azlk <azlk@mail.ru>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -994,16 +994,16 @@ msgid "added"
 msgstr "добавлено"
 
 #: Lang.Misc.SubscribeActions.manual
-msgid "manual"
-msgstr "описание"
+msgid "by admin"
+msgstr ""
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
 msgstr "доставка не удалась"
 
 #: Lang.Misc.SubscribeActions.auto
-msgid "automatical"
-msgstr "автоматический"
+msgid "via mail"
+msgstr ""
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
@@ -1206,8 +1206,9 @@ msgid "Posting rules"
 msgstr ""
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
-msgstr ""
+msgstr "Подписка на события"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
@@ -1274,8 +1275,9 @@ msgid "Available lists"
 msgstr ""
 
 #: Lang.Legend.SubscribeLog
+#, fuzzy
 msgid "Events"
-msgstr ""
+msgstr "Событие"
 
 #: Lang.Legend.GnupgConvert
 msgid "Encryption support"
@@ -1290,8 +1292,9 @@ msgid "Secret keys of this list"
 msgstr ""
 
 #: Lang.Legend.GnupgKeyImport
+#, fuzzy
 msgid "Import a key"
-msgstr ""
+msgstr "Импорт ключа"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
@@ -1300,3 +1303,9 @@ msgstr ""
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr ""
+
+#~ msgid "manual"
+#~ msgstr "описание"
+
+#~ msgid "automatical"
+#~ msgstr "автоматический"

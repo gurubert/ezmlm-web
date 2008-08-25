@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-24 21:16+0200\n"
+"Project-Id-Version: ezmlm-web v3.3\n"
+"Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
+"POT-Creation-Date: 2008-08-25 02:21+0200\n"
 "PO-Revision-Date: 2008-04-24 10:34+0200\n"
 "Last-Translator: Lionel <ouhaich@razzer.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -621,8 +621,9 @@ msgid "Access to the archive is granted for"
 msgstr ""
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
-msgstr ""
+msgstr "administration"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -677,8 +678,9 @@ msgid "Confirmation mails are required for"
 msgstr ""
 
 #: Lang.Selections.confirmation.J
+#, fuzzy
 msgid "unsubscription"
-msgstr ""
+msgstr "Abonnement"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -717,12 +719,14 @@ msgid "The manual page of ezmlm-idx"
 msgstr ""
 
 #: Lang.Misc.Subscription
+#, fuzzy
 msgid "Subscription"
-msgstr ""
+msgstr "Abonnement"
 
 #: Lang.Misc.Subscribers
+#, fuzzy
 msgid "subscribers"
-msgstr ""
+msgstr "Abonnés"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
@@ -966,7 +970,7 @@ msgid "added"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.manual
-msgid "manual"
+msgid "by admin"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.probe
@@ -974,7 +978,7 @@ msgid "delivery failed"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.auto
-msgid "automatical"
+msgid "via mail"
 msgstr ""
 
 #: Lang.Misc.SubscribeActions.unknown
@@ -1136,8 +1140,9 @@ msgid "Posting rules"
 msgstr ""
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
-msgstr ""
+msgstr "Actions sur les abonnements"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
@@ -1220,8 +1225,9 @@ msgid "Secret keys of this list"
 msgstr ""
 
 #: Lang.Legend.GnupgKeyImport
+#, fuzzy
 msgid "Import a key"
-msgstr ""
+msgstr "Importer clef"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"

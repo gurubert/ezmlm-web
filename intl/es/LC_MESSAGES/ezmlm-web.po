@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.2\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2007-04-11 00:27+0200\n"
+"POT-Creation-Date: 2008-08-25 02:21+0200\n"
 "PO-Revision-Date: 2008-07-09 17:30+0200\n"
 "Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: <>\n"
@@ -999,16 +999,16 @@ msgid "added"
 msgstr "añadido"
 
 #: Lang.Misc.SubscribeActions.manual
-msgid "manual"
-msgstr "manual"
+msgid "by admin"
+msgstr ""
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
 msgstr "entrega fallida"
 
 #: Lang.Misc.SubscribeActions.auto
-msgid "automatical"
-msgstr "automático"
+msgid "via mail"
+msgstr ""
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
@@ -1329,3 +1329,9 @@ msgstr "Generar una clave para esta lista"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Dominios disponibles"
+
+#~ msgid "manual"
+#~ msgstr "manual"
+
+#~ msgid "automatical"
+#~ msgstr "automático"

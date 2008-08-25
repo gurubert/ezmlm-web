@@ -970,16 +970,16 @@ msgid "added"
 msgstr "added"
 
 #: Lang.Misc.SubscribeActions.manual
-msgid "manual"
-msgstr "manual"
+msgid "by admin"
+msgstr "by admin"
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
 msgstr "delivery failed"
 
 #: Lang.Misc.SubscribeActions.auto
-msgid "automatical"
-msgstr "automatical"
+msgid "via mail"
+msgstr "via mail"
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
@@ -1288,3 +1288,9 @@ msgstr "Generate the key for this list"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Available domains"
+
+#~ msgid "manual"
+#~ msgstr "manual"
+
+#~ msgid "automatical"
+#~ msgstr "automatical"
