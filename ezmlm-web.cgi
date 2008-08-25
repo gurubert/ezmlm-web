@@ -1926,7 +1926,7 @@ sub gnupg_import_key {
 		# Sanity check
 		my $fileinfo = $q->uploadInfo($upload_file);
 		my $filetype = $fileinfo->{'Content-Type'};
-		unless($filetype =~ m{^text/}i) {
+		unless (($filetype =~ m{^text/}i) || ($filetype eq 'application/pgp-encrypted')) {
 			$warning = 'InvalidFileFormat';
 			warn "[ezmlm-web] mime type of uploaded file rejected: $filetype";
 			return (1==0);

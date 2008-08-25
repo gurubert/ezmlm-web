@@ -122,3 +122,7 @@ $HTML_CSS_COLOR = "/ezmlm-web/color-red-blue.css";
 # setting individually
 $HTML_LANGUAGE = "en";
 
+# turn support for encrypted mailing lists on or off - defaults to 0 (off) 
+# see https://systemausfall.org/toolforge/gpgpy-ezmlm for details 
+#$GPG_SUPPORT = 0; 
+
