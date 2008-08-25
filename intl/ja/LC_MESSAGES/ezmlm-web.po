@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 02:22+0200\n"
+"POT-Creation-Date: 2008-08-25 03:14+0200\n"
 "PO-Revision-Date: 2008-08-20 09:47+0200\n"
 "Last-Translator: kinneko <kinneko@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -660,6 +660,10 @@ msgstr ""
 
 #: Lang.Selections.posting.mOU
 msgid "moderated for everyone"
+msgstr ""
+
+#: Lang.Selections.posting.mou
+msgid "moderated for subscribers; others are rejected"
 msgstr ""
 
 #: Lang.Selections.posting.mOu

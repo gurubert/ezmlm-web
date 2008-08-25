@@ -197,6 +197,7 @@ Lang {
 		posting		= Posting is
 		posting.MOU	= allowed for everyone
 		posting.mOU	= moderated for everyone
+		posting.mou	= moderated for subscribers; others are rejected
 		posting.mOu	= allowed for subscribers and moderated for others
 		posting.MOu	= allowed for subscribers
 		posting.moU	= allowed only for moderators

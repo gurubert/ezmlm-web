@@ -646,6 +646,10 @@ msgstr ""
 msgid "moderated for everyone"
 msgstr ""
 
+#: Lang.Selections.posting.mou
+msgid "moderated for subscribers; others are rejected"
+msgstr ""
+
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
 msgstr ""
