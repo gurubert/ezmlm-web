@@ -90,11 +90,10 @@ use vars qw[$HOME_DIR]; $HOME_DIR=$tmp[7];
 # some configuration settings
 use vars qw[$DEFAULT_OPTIONS $UNSAFE_RM $ALIAS_USER $LIST_DIR];
 use vars qw[$QMAIL_BASE $PRETTY_NAMES $DOTQMAIL_DIR];
-use vars qw[$FILE_UPLOAD $MAIL_DOMAIN $HTML_TITLE];
+use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 use vars qw[$HTML_CSS_COMMON $HTML_CSS_COLOR];
 use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
-use vars qw[$WEBUSERS_FILE $NO_WEBUSERS_CREATE $NO_WEBUSERS_ACCESSALL];
 # default interface template (basic/normal/expert)
 use vars qw[$DEFAULT_INTERFACE_TYPE];
 # some settings for encrypted mailing lists
@@ -170,12 +169,6 @@ if (defined($opt_d)) {
 # If WEBUSERS_FILE is not defined in ezmlmwebrc (as before version 2.2),
 # then use former default value for compatibility
 $WEBUSERS_FILE = $LIST_DIR . '/webusers' unless (defined($WEBUSERS_FILE));
-
-# if no webusers file, grant list creation by defautlt
-$NO_WEBUSERS_CREATE = 1 unless defined($NO_WEBUSERS_CREATE);
-
-# if no webusers file, grant access to all lists by default
-$NO_WEBUSERS_ACCESSALL = 1 unless defined($NO_WEBUSERS_ACCESSALL);
 
 # check for non-default dotqmail directory
 $DOTQMAIL_DIR = $HOME_DIR unless defined($DOTQMAIL_DIR);
@@ -2388,7 +2381,7 @@ sub webauth {
 	my $listname = shift;
    
 	# Check if webusers file exists - if not, then access is granted
-	return ($NO_WEBUSERS_ACCESSALL) if (! -e "$WEBUSERS_FILE");
+	return (1==0) if (! -e "$WEBUSERS_FILE");
 
 	# if there was no user authentication, then everything is allowed
 	return (0==0) if (!$LOGIN_NAME);
@@ -2434,7 +2427,7 @@ sub webauth_create_allowed {
 	return (0==0) if (!$LOGIN_NAME);
 
 	# Check if webusers file exists - if not, then access is granted
-	return ($NO_WEBUSERS_CREATE) if (! -e "$WEBUSERS_FILE");
+	return (1==0) if (! -e "$WEBUSERS_FILE");
 
 	# Read create-permission from webusers file.
 	# the special listname "ALLOW_CREATE" controls, who is allowed to do it

@@ -2,6 +2,20 @@ This file contains some useful hints for upgrading from a previous version.
 
 ##############################################################################
 
+------------------------------------------------------------------------------
+
+UPGRADING ezmlm-web 3.2 to ezmlm-web 3.3
+
+1) the file webusers is mandatory
+   The admin has to add ALLOW_CREATE or user-specific permissions to the 
+   webusers file, to allow changes to mailing lists otherwise no changes are 
+   allowed. If you have ezmlm-web running already, a webusers file has already 
+   been created for you. This change should just affect setups that let a list
+   be created in a directory where there are no explicit permissions (more than 
+   one domain or multiple user directories)
+
+------------------------------------------------------------------------------
+
 UPGRADING ezmlm-web 3.1 to ezmlm-web 3.2
 
 1) the following dependency was added:

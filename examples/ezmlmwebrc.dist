@@ -38,16 +38,6 @@ $LIST_DIR = "$HOME_DIR/lists";
 # defaults to "$LIST_DIR/webusers"
 #$WEBUSERS_FILE = "$LIST_DIR/webusers";
 
-# if no webusers file, grant list creation by default
-# 0 - don't grant creation if webusers file doesn't exist
-# 1 - grant creation if webusers file doesn't exist
-#$NO_WEBUSERS_CREATE = 1;
-
-# if no webusers file, grant access by default
-# 0 - don't grant access to all lists if webusers file doesn't exist
-# 1 - grant access to all lists if webusers file doesn't exist
-#$NO_WEBUSERS_ACCESSALL = 1;
-
 # Where are the language files
 # usually something like /usr/local/share/ezmlm-web/lang
 $LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
