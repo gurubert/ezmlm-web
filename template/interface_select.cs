@@ -7,7 +7,7 @@
 	?><?cs if:Data.List.Name ?><input type="hidden" name="action"
 			value="subscribers" /><?cs /if
 			
-	?><?cs if:subcount(Config.UI.Interfaces) > 0 ?>
+	?><?cs if:subcount(Config.UI.Languages) > 1 ?>
 		<font class="no_link"><?cs
 			var:html_escape(Lang.Menue.Language) ?>:</font>
 		<select name="web_lang" size="0">
@@ -37,3 +37,4 @@
 	</form>
 
 <?cs /if ?>
+
