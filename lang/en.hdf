@@ -73,8 +73,7 @@ Lang {
 		EditFile	= Edit file
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
-		LanguageSet	= select
-		InterfaceSet	= select
+		InterfaceSet	= Apply
 		GnupgConvertToEncrypted = Convert to an encrypted mailinglist
 		GnupgConvertToPlain	= Convert to a plaintext mainlinglist
 		DeletePublicKey	= Delete public key(s)

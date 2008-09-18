@@ -132,7 +132,6 @@ template/gnupg_secret.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
 template/interface_select.cs -text
-template/language_select.cs -text
 template/list_create.cs -text
 template/list_delete.cs -text
 template/list_select.cs -text
