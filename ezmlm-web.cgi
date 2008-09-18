@@ -32,7 +32,8 @@ use MIME::QuotedPrint;
 
 # optional modules - they will be loaded later if they are available
 #Encode
-#Mail::Ezmlm::Gpg
+#Mail::Ezmlm::Ezmlm-GPG
+#Mail::Ezmlm::GpgKeyRing
 #Mail::Address OR Email::Address
 
 
@@ -94,10 +95,11 @@ use vars qw[$FILE_UPLOAD $WEBUSERS_FILE $MAIL_DOMAIN $HTML_TITLE];
 use vars qw[$TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 use vars qw[$HTML_CSS_COMMON $HTML_CSS_COLOR];
 use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
+use vars qw[@INTERFACE_OPTIONS_BLACKLIST];
 # default interface template (basic/normal/expert)
 use vars qw[$DEFAULT_INTERFACE_TYPE];
 # some settings for encrypted mailing lists
-use vars qw[$GPG_SUPPORT];
+use vars qw[$GPG_SUPPORT $GPG_KEYRING_DEFAULT_LOCATION];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
 # cached data
@@ -141,15 +143,19 @@ unless (my $return = do $config_file) {
 
 ####### validate configuration and apply some default settings ##########
 
-# do we support encrypted mailing lists?
-# see https://systemausfall.org/toolforge/crypto-ezmlm
+# do we support encrypted mailing lists an keyring management?
 $GPG_SUPPORT = 0 unless defined($GPG_SUPPORT);
 if ($GPG_SUPPORT) {
-	if (&safely_import_module("Mail::Ezmlm::Gpg")) {
-		$GPG_SUPPORT = 1;
-	} else {
-		$GPG_SUPPORT = 0;
-		warn "WARNING: Support for encrypted mailinglists is disabled, as the module Mail::Ezmlm::Gpg failed to load!";
+	my @crypto_modules = (
+			"Mail::Ezmlm::GpgKeyRing",
+			"Mail::Ezmlm::Ezmlm-GPG",
+		);
+	for my $module_name (@crypto_modules) {
+		unless (&safely_import_module($module_name)) {
+			$GPG_SUPPORT = 0;
+			warn "WARNING: Support for encryption features is disabled, "
+					. "because the module '$module_name' failed to load!";
+		}
 	}
 }
 
@@ -222,6 +228,13 @@ $HTML_TITLE = '' unless defined($HTML_TITLE);
 
 # check DEFAULT_INTERFACE_TYPE
 $DEFAULT_INTERFACE_TYPE = 'normal' unless defined($DEFAULT_INTERFACE_TYPE);
+
+# check possible blacklist of interface options (since v3.3)
+@INTERFACE_OPTIONS_BLACKLIST = () unless defined(@INTERFACE_OPTIONS_BLACKLIST);
+
+# check the configured detault location of gnupg keyrings
+$GPG_KEYRING_DEFAULT_LOCATION = ".gnupg"
+	unless defined($GPG_KEYRING_DEFAULT_LOCATION);
 
 # determine MAIL_DOMAIN
 unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
@@ -875,10 +888,13 @@ sub set_pagedata4list {
 	$list = new Mail::Ezmlm("$LIST_DIR/$listname");
 
 	$pagedata->setValue("Data.List.Name", "$listname");
-	$pagedata->setValue("Data.List.Address", &this_listaddress);
+	$pagedata->setValue("Data.List.Address", &get_listaddress($listname));
 
-	# do we support encryption? Set some data if the list is encrypted ...
-	&set_pagedata_crypto($listname) if ($GPG_SUPPORT);
+	# set global or module-specific blacklist of list options
+	&set_pagedata_options_blacklist($list);
+
+	# do we support encryption? Show a possible keyring ...
+	&set_pagedata_keyring($list) if ($GPG_SUPPORT);
 
 	# is this a moderation/administration list?
 	&set_pagedata4part_list($part_type) if ($part_type ne '');
@@ -896,11 +912,79 @@ sub set_pagedata4list {
 
 # ---------------------------------------------------------------------------
 
+sub set_pagedata_options_blacklist {
+	my $list = shift;
+	my ($item, @list_blacklist);
+
+	# check if the function "get_options_blacklist" exists for the list object
+	eval {@list_blacklist = $list->get_options_blacklist();};
+	# use an empty blacklist, if the member function was not defined
+	@list_blacklist = () if ($@);
+
+	foreach $item (@list_blacklist, @INTERFACE_OPTIONS_BLACKLIST) {
+		$pagedata->setValue("Data.List.OptionsBlackList." . $item, $item);
+	}
+}
+
+# ---------------------------------------------------------------------------
+
+sub get_keyring_location {
+	my $list = shift;
+	my $keyring_location;
+
+	if ($list->can("get_keyring_location")) {
+		$keyring_location = $list->get_keyring_location();
+	} elsif ($GPG_KEYRING_DEFAULT_LOCATION =~ m#^/#) {
+		$keyring_location = $GPG_KEYRING_DEFAULT_LOCATION;
+	} else {
+		$keyring_location = $list->thislist() . '/' . $GPG_KEYRING_DEFAULT_LOCATION;
+	}
+	return $keyring_location;
+}
+
+# ---------------------------------------------------------------------------
+
+sub set_pagedata_keyring {
+	my $list = shift;
+	my ($keyring_location, $keyring, @gpg_keys);
+
+	$keyring_location = &get_keyring_location($list);
+	# continue only, if keyring_location is defined and accessible
+	if (defined($keyring_location) && (-r $keyring_location)) {
+		$keyring = Mail::Ezmlm::GpgKeyRing->new($keyring_location);
+	} else {
+		# no keyring available -> we are finished
+		return;
+	}
+
+	# retrieve the currently available public keys
+	@gpg_keys = $keyring->get_public_keys();
+	for (my $i = 0; $i < @gpg_keys; $i++) {
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.id" , $gpg_keys[$i]{id});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.email" , $gpg_keys[$i]{email});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.name" , $gpg_keys[$i]{name});
+		$pagedata->setValue("Data.List.gnupg_keys.public.$i.expires" , $gpg_keys[$i]{expires});
+	}
+
+	# retrieve the currently available secret keys
+	@gpg_keys = $keyring->get_secret_keys();
+	for (my $i = 0; $i < @gpg_keys; $i++) {
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.id" , $gpg_keys[$i]{id});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.email" , $gpg_keys[$i]{email});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.name" , $gpg_keys[$i]{name});
+		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.expires" , $gpg_keys[$i]{expires});
+	}
+	# enable "keyring" feature in the interface
+	$pagedata->setValue("Data.List.Features.GpgKeyring", 1);
+}
+
+# ---------------------------------------------------------------------------
+
 sub set_pagedata_crypto {
 	# extract hdf-data for encrypted lists
 
 	my ($listname) = @_;
-	my ($gpg_list, %config, $item, @gpg_keys, $gpg_key);
+	my ($gpg_list, %config, $item);
 
 	$gpg_list = new Mail::Ezmlm::Gpg("$LIST_DIR/$listname");
 
@@ -914,23 +998,6 @@ sub set_pagedata_crypto {
 		$pagedata->setValue("Data.List.Options.gnupg_$item", $config{$item});
 	}
 
-	# retrieve the currently available public keys
-	@gpg_keys = $gpg_list->get_public_keys();
-	for (my $i = 0; $i < @gpg_keys; $i++) {
-		$pagedata->setValue("Data.List.gnupg_keys.public.$i.id" , $gpg_keys[$i]{id});
-		$pagedata->setValue("Data.List.gnupg_keys.public.$i.email" , $gpg_keys[$i]{email});
-		$pagedata->setValue("Data.List.gnupg_keys.public.$i.name" , $gpg_keys[$i]{name});
-		$pagedata->setValue("Data.List.gnupg_keys.public.$i.expires" , $gpg_keys[$i]{expires});
-	}
-
-	# retrieve the currently available secret keys
-	@gpg_keys = $gpg_list->get_secret_keys();
-	for (my $i = 0; $i < @gpg_keys; $i++) {
-		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.id" , $gpg_keys[$i]{id});
-		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.email" , $gpg_keys[$i]{email});
-		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.name" , $gpg_keys[$i]{name});
-		$pagedata->setValue("Data.List.gnupg_keys.secret.$i.expires" , $gpg_keys[$i]{expires});
-	}
 }
 
 # ---------------------------------------------------------------------------
@@ -988,11 +1055,11 @@ sub set_pagedata_misc_configfiles {
 
 sub set_pagedata_subscribers {
 
-	my ($list, $listname, $part_type) = @_;
+	my ($list, $part_type) = @_;
 	my ($i, $address, $addr_name, %pretty);
 
 	$i = 0;
-	tie %pretty, "DB_File", "$LIST_DIR/$listname/webnames" if ($PRETTY_NAMES);
+	tie %pretty, "DB_File", $list->thislist() . "/webnames" if ($PRETTY_NAMES);
 	foreach $address (sort $list->subscribers($part_type)) {
 		if ($address ne '') {
 			$pagedata->setValue("Data.List.Subscribers." . $i . '.address', "$address");
@@ -1636,7 +1703,7 @@ sub set_pagedata4part_list {
    
    # Work out the address of this list ...
    $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
-   $listaddress = &this_listaddress();
+   $listaddress = &get_listaddress($q->param('list'));
 
    $pagedata->setValue("Data.List.PartType", "$part");
 
@@ -1987,7 +2054,7 @@ sub gnupg_generate_key {
 	}
 
 	if ($list->generate_private_key($key_name, $key_comment,
-			&this_listaddress(), $key_size, $key_expires)) {
+			&get_listaddress($listname), $key_size, $key_expires)) {
 		$pagename = 'gnupg_secret';
 		return (0==0);
 	} else {
@@ -2053,8 +2120,8 @@ sub update_config_crypto {
 	}
 
 	# Any changes? Otherwise just return. 
-	# beware: the length function returns "1" for empty hashes
-	return (0==0) if (length(%switches) <= 1);
+	# "scalar keys %..." calculates the length the length of a hash
+	return (0==0) if (scalar keys %switches == 0);
 
 	# update the configuration file
 	if ($list->update(%switches)) {
@@ -2338,11 +2405,12 @@ sub output_mime_examples {
 
 # ------------------------------------------------------------------------
 
-sub this_listaddress {
+sub get_listaddress {
    # Work out the address of this list ... Used often so put in its own subroutine ...
    
-   my ($list, $listaddress);
-   $list = new Mail::Ezmlm("$LIST_DIR/" . $q->param('list'));
+   my $listname = shift;
+   my ($listaddress, $list);
+   $list = new Mail::Ezmlm("$LIST_DIR/" . $listname);
    chomp($listaddress = $list->getpart('outlocal'));
    $listaddress .= '@';
    chomp($listaddress .= $list->getpart('outhost'));

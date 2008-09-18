@@ -82,6 +82,14 @@ $DEFAULT_OPTIONS = "aBDFGHiJkLMNOpQRSTUWx";
 # available values are: easy, normal and expert
 #$DEFAULT_INTERFACE_TYPE = "normal";
 
+# exclude some interface options from being displayed
+# BEWARE: this does not protect the specific option from being changed.
+# It just hides the visible interface items. Anyone can still craft a manual
+# http request, that could change the specified options.
+# See the list of filenames below $TEMPLATE_DIR/config_options/. The
+# blacklist may contain any of these filenames (without '.cs' extension).
+#$INTERFACE_OPTIONS_BLACKLIST = ('lang_select', 'mime_reject');
+
 # What is the title of this document?
 $HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
 
@@ -112,7 +120,15 @@ $HTML_CSS_COLOR = "/ezmlm-web/color-red-blue.css";
 # setting individually
 $HTML_LANGUAGE = "en";
 
-# turn support for encrypted mailing lists on or off - defaults to 0 (off) 
-# see https://systemausfall.org/toolforge/gpgpy-ezmlm for details 
+# enabled support for encrypted mailing lists - defaults to 0 (off) 
+# This include keyring management and mailing list handling in general.
 #$GPG_SUPPORT = 0; 
+
+# Define the default location of gnupg keyrings used for mailing list
+# encryption. If the location starts with a slash ('/'), then it is considered
+# to be an absolute path. Otherwise it is relative to the current list
+# directory. For the ezmlm-gpg mailing list encryption system, the default
+# (".gnupg") is usable.
+#$GPG_KEYRING_DEFAULT_LOCATION = ".gnupg";
+
 

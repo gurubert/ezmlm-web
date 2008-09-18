@@ -53,17 +53,29 @@ def:limit_string_len(text,limit)
 	else ?><?cs var:text ?><?cs /if ?><?cs
  /def ?><?cs
 
+def:show_one_option(optname)
+	?><?cs set:blacklist_found = 0 ?><?cs
+		each:black_opt = Data.List.OptionsBlackList
+			?><?cs if:black_opt == optname ?><?cs set:blacklist_found = 1 ?><?cs
+			/if ?><?cs
+		/each ?><?cs
+	if:blacklist_found == 0 ?><?cs
+		linclude:TemplateDir + '/config_options/' + optname + '.cs' ?><?cs
+		/if ?><?cs
+ /def ?><?cs
+
 def:show_options(element)
 	?><?cs if:subcount(element) == 0 ?><li><?cs
-		linclude:TemplateDir + '/config_options/' + element + '.cs' ?></li><?cs
+		call:show_one_option(element) ?></li><?cs
 	else ?><?cs if:element["Self"] ?><li><?cs
-			linclude:TemplateDir + '/config_options/' + element["Self"] + '.cs' ?><?cs
+			call:show_one_option(element["Self"]) ?><?cs
 		/if ?><ul><?cs each:opts = element ?><?cs if:name(opts) != "Self" ?><?cs
 			call:show_options(opts) ?><?cs
 			/if ?><?cs /each
 		?></ul><?cs if:element["Self"] ?></li><?cs /if ?><?cs
 	/if ?><?cs
  /def ?><?cs
+
 
 def:is_substring(text_in, search_in)
 	?><?cs set:text = text_in

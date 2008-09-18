@@ -108,9 +108,22 @@ selects a different language. The default value is \fIen\fR.
 .IP \fB$DEFAULT_INTERFACE_TYPE\fR
 Set the default interface template. Available values are \fIeasy\fR,
 \fInormal\fR and \fIexpert\fR. The default value is \fInormal\fR.
+.IP \fB$INTERFACE_OPTIONS_BLACKLIST\fR
+Exclude some list options from being displayed via the web interface.
+BEWARE: this does not protect the specific option from being changed.
+It just hides the visible interface items. Anyone can still craft a manual
+http request, that could change the specified options.
+See the list of filenames below \fI$TEMPLATE_DIR/config_options/\fR. The
+blacklist may contain any of these filenames (without '.cs' extension).
 .IP \fB$GPG_SUPPORT\fR
 Enable support for encrypted mailing lists. Currently this feature is still
 considered as beta quality. User reports are warmly welcome!
+.IP \fB$GPG_KEYRING_DEFAULT_LOCATION\fR
+This setting defines the default location of gnupg keyrings used for mailing list
+encryption. If the location starts with a slash ('/'), then it is considered
+to be an absolute path. Otherwise it is relative to the directory of the current
+list. For the ezmlm-gpg mailing list encryption system, the default (".gnupg") is
+usable.
 .IP \fB%DOMAINS\fR
 This hash of hashes (\fIname\fR associated with a hash of domain specific
 information) can be used to define a multi-domain setup. See the example
@@ -123,6 +136,18 @@ more details.
 $LIST_DIR = "$HOME_DIR/lists";
 $LANGUAGE_DIR = "/usr/local/share/ezmlm-web/lang";
 $TEMPLATE_DIR = "/usr/local/share/ezmlm-web/template";
+.IP "Some more examples of settings:"
+.sp
+.nf
+$QMAIL_BASE = $Mail::Ezmlm::QMAIL_BASE . '/control';
+$MAIL_ADDRESS_PREFIX = "lists-";
+$DEFAULT_OPTIONS = "aBDFGHiJkLMNOpQRSTUWx";
+$INTERFACE_OPTIONS_BLACKLIST = ('lang_select', 'mime_reject');
+$HTML_TITLE = "ezmlm-web - a mailinglist administration interface";
+$HTML_CSS_COMMON = "/ezmlm-web/default.css";
+$HTML_CSS_COLOR = "/ezmlm-web/color-red-blue.css";
+$HTML_LANGUAGE = "en";
+$GPG_KEYRING_DEFAULT_LOCATION = ".gnupg";
 .SH AUTHOR
 Written by Lars Kruse
 .SH "REPORTING BUGS"

@@ -17,6 +17,7 @@ Data.Action
 Data.areDefaultTextsAvailable
 Data.ErrorMessage
 Data.List.Address
+Data.List.OptionsBlackList
 Data.List.CharSet
 Data.List.CustomizedFiles.*
 Data.List.DefaultFiles.*

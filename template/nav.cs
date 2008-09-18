@@ -132,7 +132,7 @@
 					var:html_escape(Lang.Menue.ConfigAll) ?></a></li><?cs /if ?>
 		</ul></li>
 
-		<?cs if:(subcount(UI.Navigation.Gnupg) > 0) && (Data.List.Features.Crypto)
+		<?cs if:(subcount(UI.Navigation.Gnupg) > 0) && (Data.List.Features.GpgKeyring)
 				?><li><font class="no_link"><?cs var:html_escape(Lang.Menue.Gnupg)
 				?></font>
 		<ul>
