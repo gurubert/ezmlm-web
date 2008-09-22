@@ -1,3 +1,12 @@
+Version 3.3 - 09/30/02007
+ * added Spanish translation contributed by CAPSiDE
+ * improve parsing of subscription log (Closes: #43)
+ * add posting model for moderated subscriber-only lists (Closes: #49)
+ * fix a bug in the authorization code regarding lower/uppercase 
+ * add configuration of blacklisted interface options
+ * add gnupg keyring management
+ * add Ezmlm-gpg support (beta!)
+
 Version 3.2 - 08/15/02007
  * support for multi-domain setups (multiple list directories)
  * detect preferred interface language
@@ -56,7 +65,7 @@ Version 3.0.1 - 01/06/02006
 
 Version 3.0 - 12/25/02005
  * complete interface rewritten for enhanced usability
- * suppurt for msgsize, mimereject, trailer
+ * support for msgsize, mimereject, trailer
  * fixed insecure writing of webusers data
  * define a default MAIL_DOMAIN
  * changed directory for safely removed mailinglists

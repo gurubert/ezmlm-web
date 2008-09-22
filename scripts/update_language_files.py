@@ -144,7 +144,7 @@ def generate_po_files(hdf_file, po_dir, textDomain):
 		sys.stdout.write("Creating: %s\n" % pot_file)
 		pot = translate.storage.po.pofile(encoding="utf-8")
 		pot.makeheader(pot_creation_date=True)
-		pot.updateheader(add=True, Project_Id_Version='ezmlm-web 3.2', pot_creation_date=True, language_team='Lars Kruse <%s>' % MAIL_ADDRESS, Report_Msgid_Bugs_To=MAIL_ADDRESS, encoding='utf-8', Plural_Forms=['nplurals=2','plural=(n != 1)'])
+		pot.updateheader(add=True, Project_Id_Version='ezmlm-web 3.3', pot_creation_date=True, language_team='Lars Kruse <%s>' % MAIL_ADDRESS, Report_Msgid_Bugs_To=MAIL_ADDRESS, encoding='utf-8', Plural_Forms=['nplurals=2','plural=(n != 1)'])
 		#TODO: somehow we need 'updateheaderplural'
 	else:
 		sys.stdout.write("Loading: %s\n" % pot_file)

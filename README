@@ -1,5 +1,5 @@
 =================
-| ezmlm-web-3.2 |
+| ezmlm-web-3.3 |
 =================
 
 $Id$
@@ -195,7 +195,7 @@ VI. Acknowledgements
    Slovenian
 *  Carlinhos Cecconi - added the translation for Portugues do Brasil
 *  Hans F. Nordhaug - fixed MANIFEST file and reported typos
-*  Jose Luis Martinez - added the Spanish translation
+*  Jose Luis Martinez - various code improvements; added the Spanish translation
 *  Anton Ponkratov - added the Russian translation
 
 

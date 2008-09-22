@@ -1,6 +1,6 @@
 #!/usr/bin/perl 
 #===========================================================================
-# ezmlm-web.cgi - version 3.2
+# ezmlm-web.cgi - version 3.3
 # $Id$
 # 
 # This file is part of ezmlm-web.
@@ -8,7 +8,7 @@
 # All user configuration happens in the config file ``ezmlmwebrc''
 # POD documentation is at the end of this file
 #
-# Copyright (C) 2005-2007, Lars Kruse, All Rights Reserved.
+# Copyright (C) 2005-2008, Lars Kruse, All Rights Reserved.
 #
 # ezmlm-web is distributed under a BSD-style license.  Please refer to
 # the copyright file included with the release for details.
@@ -69,7 +69,7 @@ $UID = $EUID;
 $GID = $EGID;
 
 my $VERSION;
-$VERSION = '3.2';
+$VERSION = '3.3';
 
 my $q = new CGI;
 $q->import_names('Q');
