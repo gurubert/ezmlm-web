@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-08-25 03:13+0200\n"
-"PO-Revision-Date: 2008-07-09 17:30+0200\n"
+"PO-Revision-Date: 2008-09-13 19:51+0200\n"
 "Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.0.2\n"
+"X-Generator: Pootle 1.1.0\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -677,7 +677,7 @@ msgstr "moderado para todo el mundo"
 
 #: Lang.Selections.posting.mou
 msgid "moderated for subscribers; others are rejected"
-msgstr ""
+msgstr "moderado para suscritores; denegado para el resto "
 
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
@@ -1004,7 +1004,7 @@ msgstr "añadido"
 
 #: Lang.Misc.SubscribeActions.manual
 msgid "by admin"
-msgstr ""
+msgstr "por el administrador"
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
@@ -1012,7 +1012,7 @@ msgstr "entrega fallida"
 
 #: Lang.Misc.SubscribeActions.auto
 msgid "via mail"
-msgstr ""
+msgstr "por email"
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
