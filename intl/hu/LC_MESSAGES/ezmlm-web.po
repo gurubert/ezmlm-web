@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 03:14+0200\n"
+"POT-Creation-Date: 2008-09-28 01:08+0200\n"
 "PO-Revision-Date: 2007-12-19 06:54+0000\n"
 "Last-Translator: kkk <kamu@hcf.hu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,11 +84,11 @@ msgstr "titkos kulcsok"
 msgid "generate key"
 msgstr "kulcs generálás"
 
-#: Lang.Menue.GnupgConvert
+#: Lang.Menue.GpgEzmlmConvert
 msgid "Encryption"
 msgstr "Titkosítás"
 
-#: Lang.Menue.GnupgOptions
+#: Lang.Menue.GpgEzmlmOptions
 msgid "encryption"
 msgstr "titkosítás"
 
@@ -200,7 +200,7 @@ msgstr "Titkos kulcsok"
 msgid "Generate a new keypair"
 msgstr "Új kulcspár generálása"
 
-#: Lang.Title.GnupgOptions
+#: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
 msgstr "Titkosítás beállításai"
 
@@ -244,15 +244,15 @@ msgstr "Fájl mentése"
 msgid "Remove customized file"
 msgstr "Testre szabott fájl eltávolítása"
 
-#: Lang.Buttons.LanguageSet
-msgid "select"
-msgstr "kiválaszt"
+#: Lang.Buttons.InterfaceSet
+msgid "Apply"
+msgstr ""
 
-#: Lang.Buttons.GnupgConvertToEncrypted
+#: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
 msgstr "Átalakitás titkosított listává"
 
-#: Lang.Buttons.GnupgConvertToPlain
+#: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Átalakítás titkosítatlan listává"
 
@@ -453,19 +453,19 @@ msgstr "A kulcs hossza érvénytelen!"
 msgid "Export of key failed!"
 msgstr "A kulcs exportálása nem sikerült!"
 
-#: Lang.WarningMessage.GnupgConvertEnable
+#: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Titkosított listává konvertálás sikertelen!"
 
-#: Lang.WarningMessage.GnupgConvertDisable
+#: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
 msgstr "Titkosítatlan listává konvertálás sikertelen!"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
 msgstr "A titkosítás már engedélyezve lett erre a listára!"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
 msgstr "A lista titkosítása már törölve van!"
 
@@ -507,11 +507,11 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr "A kulcs sikeresen importálva!"
 
-#: Lang.SuccessMessage.GnupgConvertEnable
+#: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "A titkosítás bekapcsolva a listára!"
 
-#: Lang.SuccessMessage.GnupgConvertDisable
+#: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
 msgstr "A titkosítás kikapcsolva!"
 
@@ -609,11 +609,12 @@ msgstr ""
 msgid "Redirect replies to the list"
 msgstr ""
 
-#: Lang.Options.gnupg_plain_without_key
-msgid "Send plaintext to the subscribers which have no key"
+#: Lang.Options.gpgezmlm_nokeynocrypt
+msgid ""
+"Send a warning instead of the original content to subscribers without a key"
 msgstr ""
 
-#: Lang.Options.gnupg_sign_messages
+#: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
 msgstr ""
 
@@ -1102,7 +1103,7 @@ msgid ""
 "customized file."
 msgstr ""
 
-#: Lang.Introduction.GnupgConvert
+#: Lang.Introduction.GpgEzmlmConvert
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr ""
@@ -1114,7 +1115,7 @@ msgid ""
 "patient, as it takes some time (up to several minutes) to create a key."
 msgstr ""
 
-#: Lang.Introduction.GnupgOptions
+#: Lang.Introduction.GpgEzmlmOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr ""
 
@@ -1217,7 +1218,7 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: Lang.Legend.GnupgConvert
+#: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
 msgstr ""
 
@@ -1241,3 +1242,6 @@ msgstr ""
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr ""
+
+#~ msgid "select"
+#~ msgstr "kiválaszt"

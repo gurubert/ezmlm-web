@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 03:13+0200\n"
+"POT-Creation-Date: 2008-09-28 01:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,11 +85,11 @@ msgstr "private Schlüssel"
 msgid "generate key"
 msgstr "Schlüssel anlegen"
 
-#: Lang.Menue.GnupgConvert
+#: Lang.Menue.GpgEzmlmConvert
 msgid "Encryption"
 msgstr "Verschlüsselung"
 
-#: Lang.Menue.GnupgOptions
+#: Lang.Menue.GpgEzmlmOptions
 msgid "encryption"
 msgstr "Verschlüsselung"
 
@@ -201,7 +201,7 @@ msgstr "Private Schlüssel"
 msgid "Generate a new keypair"
 msgstr "Erzeugen eines Schlüssels"
 
-#: Lang.Title.GnupgOptions
+#: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
 msgstr "Verschlüsselungseinstellungen"
 
@@ -245,15 +245,15 @@ msgstr "Datei speichern"
 msgid "Remove customized file"
 msgstr "Angepassten Textbaustein verwerfen"
 
-#: Lang.Buttons.LanguageSet
-msgid "select"
-msgstr "wählen"
+#: Lang.Buttons.InterfaceSet
+msgid "Apply"
+msgstr ""
 
-#: Lang.Buttons.GnupgConvertToEncrypted
+#: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
 msgstr "Wandle in eine verschlüsselte Liste um"
 
-#: Lang.Buttons.GnupgConvertToPlain
+#: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Wandle in eine unverschlüsselte Liste um"
 
@@ -456,19 +456,19 @@ msgstr "Die Schlüssellänge ist ungültig!"
 msgid "Export of key failed!"
 msgstr "Fehler beim Exportieren des Schlüssels!"
 
-#: Lang.WarningMessage.GnupgConvertEnable
+#: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Beim Umwandeln trat ein Fehler auf!"
 
-#: Lang.WarningMessage.GnupgConvertDisable
+#: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
 msgstr "Beim Aktivieren der Verschlüsselung für die Liste trat ein Fehler auf!"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
 msgstr "Für diese Liste war die Verschlüsselung bereits aktiviert."
 
-#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
 msgstr "Für diese List war die Verschlüsselung bereits abgeschaltet."
 
@@ -512,11 +512,11 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr "Der Schlüssel wurde importiert."
 
-#: Lang.SuccessMessage.GnupgConvertEnable
+#: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "Verschlüsselung für die Mailingliste ist nun aktiv."
 
-#: Lang.SuccessMessage.GnupgConvertDisable
+#: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
 msgstr "Verschlüsselung für die Mailingliste ist nun abgeschaltet."
 
@@ -627,11 +627,12 @@ msgstr "Fordere eine Bestätigung für jede eingesandte Nachricht an"
 msgid "Redirect replies to the list"
 msgstr "Leite Antworten an die Listenandresse um"
 
-#: Lang.Options.gnupg_plain_without_key
-msgid "Send plaintext to the subscribers which have no key"
-msgstr "Sende Nachrichten im Klartext an Empfänger ohne Schlüssel"
+#: Lang.Options.gpgezmlm_nokeynocrypt
+msgid ""
+"Send a warning instead of the original content to subscribers without a key"
+msgstr ""
 
-#: Lang.Options.gnupg_sign_messages
+#: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
 msgstr "Signiere ausgehende Nachrichten mit dem Listenschlüssel"
 
@@ -1183,7 +1184,7 @@ msgstr ""
 "den vorgegebenen Baustein der eingestellten Sprache zu verwenden, kannst du "
 "diesen listenspezifischen Baustein entfernen."
 
-#: Lang.Introduction.GnupgConvert
+#: Lang.Introduction.GpgEzmlmConvert
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr ""
@@ -1202,7 +1203,7 @@ msgstr ""
 "hast, wird es eine Weile (bis zu mehreren Minuten) dauern, bis der Schlüssel "
 "fertig ist. Sei also bitte geduldig."
 
-#: Lang.Introduction.GnupgOptions
+#: Lang.Introduction.GpgEzmlmOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "Konfiguriere die Einstellungen der verschlüsselten Mailingliste."
 
@@ -1312,7 +1313,7 @@ msgstr "Verfügbare Listen"
 msgid "Events"
 msgstr "Ereignisse"
 
-#: Lang.Legend.GnupgConvert
+#: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
 msgstr "Verschlüsselungsunterstützung"
 
@@ -1335,6 +1336,12 @@ msgstr "Schlüssel der Liste erzeugen"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Verfügbare Domains"
+
+#~ msgid "select"
+#~ msgstr "wählen"
+
+#~ msgid "Send plaintext to the subscribers which have no key"
+#~ msgstr "Sende Nachrichten im Klartext an Empfänger ohne Schlüssel"
 
 #~ msgid "manual"
 #~ msgstr "manuell"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 03:14+0200\n"
+"POT-Creation-Date: 2008-09-28 01:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -85,11 +85,11 @@ msgstr "skrivni ključi"
 msgid "generate key"
 msgstr "ustvari ključ"
 
-#: Lang.Menue.GnupgConvert
+#: Lang.Menue.GpgEzmlmConvert
 msgid "Encryption"
 msgstr "Šifriranje"
 
-#: Lang.Menue.GnupgOptions
+#: Lang.Menue.GpgEzmlmOptions
 msgid "encryption"
 msgstr "šifriranje"
 
@@ -202,7 +202,7 @@ msgstr "Skrivni ključi"
 msgid "Generate a new keypair"
 msgstr "Proizvedi nov par ključev"
 
-#: Lang.Title.GnupgOptions
+#: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
 msgstr "Nastavitve šifriranja"
 
@@ -246,15 +246,15 @@ msgstr "Shrani datoteko"
 msgid "Remove customized file"
 msgstr "Odstrani prikrojene datoteke"
 
-#: Lang.Buttons.LanguageSet
-msgid "select"
-msgstr "izberi"
+#: Lang.Buttons.InterfaceSet
+msgid "Apply"
+msgstr ""
 
-#: Lang.Buttons.GnupgConvertToEncrypted
+#: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
 msgstr "Pretvori v šifriran poštni seznam"
 
-#: Lang.Buttons.GnupgConvertToPlain
+#: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Pretvori v odkrito besedilni poštni seznam"
 
@@ -455,19 +455,19 @@ msgstr "Dolžina ključa ni veljavna"
 msgid "Export of key failed!"
 msgstr "Izvoz ključa ni uspel!"
 
-#: Lang.WarningMessage.GnupgConvertEnable
+#: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Pretvorba v kriptirano  poštni seznam ni uspela"
 
-#: Lang.WarningMessage.GnupgConvertDisable
+#: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
 msgstr "Pretvorba v besedilni poštni seznam ni uspela"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
 msgstr "Šifriranje za ta poštni seznam je že omogočeno"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
 msgstr "Šifriranje za ta poštni seznam je bilo (že)onemogočeno"
 
@@ -511,11 +511,11 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr "Ključ je bil uspešno uvožen"
 
-#: Lang.SuccessMessage.GnupgConvertEnable
+#: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "Šifriranje za ta seznam je zdaj omogočeno "
 
-#: Lang.SuccessMessage.GnupgConvertDisable
+#: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
 msgstr "Šifriranje za ta seznam je zdaj onemogočeno"
 
@@ -621,11 +621,12 @@ msgstr "Zahtevaj potrditveno pošto za vsako objavljeno sporočilo"
 msgid "Redirect replies to the list"
 msgstr "Preusmeri odgovore na seznam"
 
-#: Lang.Options.gnupg_plain_without_key
-msgid "Send plaintext to the subscribers which have no key"
-msgstr "Pošlji le-besedilo tistim, ki so prijavljeni pa nimajo ključa"
+#: Lang.Options.gpgezmlm_nokeynocrypt
+msgid ""
+"Send a warning instead of the original content to subscribers without a key"
+msgstr ""
 
-#: Lang.Options.gnupg_sign_messages
+#: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
 msgstr "Podpiši izhodna sporočila s ključem seznama"
 
@@ -1165,7 +1166,7 @@ msgstr ""
 "To besedilo je prirejeno za ta seznam. Če bi raje uporabljali system-wide "
 "default text file izbranega jezika, lahko to datoteko odstranite."
 
-#: Lang.Introduction.GnupgConvert
+#: Lang.Introduction.GpgEzmlmConvert
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr "Navadni poštni seznam lahko preoblikujete v šifriranega in obratno. "
@@ -1180,7 +1181,7 @@ msgstr ""
 "Lahko ga uvozite ali ustvarite s pomočjo obrazca podanega niže. Po potrditvi "
 "obrazca ostanite potrpežljivi. V nekaj minutah bo ključ ustvarjen.  "
 
-#: Lang.Introduction.GnupgOptions
+#: Lang.Introduction.GpgEzmlmOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "oblikujte koristne nastavitve šifriranega poštnega seznama."
 
@@ -1290,7 +1291,7 @@ msgstr "Dostopni seznami"
 msgid "Events"
 msgstr "Dogodek"
 
-#: Lang.Legend.GnupgConvert
+#: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
 msgstr "Podpora šifriranja "
 
@@ -1314,6 +1315,12 @@ msgstr "Ustvari ključ za ta seznam"
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
 msgstr "Razpoložljive domene"
+
+#~ msgid "select"
+#~ msgstr "izberi"
+
+#~ msgid "Send plaintext to the subscribers which have no key"
+#~ msgstr "Pošlji le-besedilo tistim, ki so prijavljeni pa nimajo ključa"
 
 #~ msgid "manual"
 #~ msgstr "ročno"

@@ -21,8 +21,8 @@ Lang {
 		GnupgPublicKeys	= public keys
 		GnupgSecretKeys	= secret keys
 		GnupgGenerateKey	= generate key
-		GnupgConvert	= Encryption
-		GnupgOptions	= encryption
+		GpgEzmlmConvert	= Encryption
+		GpgEzmlmOptions	= encryption
 		TextFiles	= Text files
 		ListSelect	= Choose a list
 		Properties	= Properties of
@@ -53,11 +53,11 @@ Lang {
 		FileSelect		= Choose a file for editing
 		FileEdit		= Editing file
 		SubscribeLog	= Subscription events
-		GnupgConvert	= Encryption
+		GpgEzmlmConvert	= Encryption
 		GnupgPublic		= Public keys
 		GnupgSecret		= Secret keys
 		GnupgGenerateKey	= Generate a new keypair
-		GnupgOptions	= Encryption settings
+		GpgEzmlmOptions	= Encryption settings
 		DomainSelect	= Choose a domain
 	  }
 
@@ -74,8 +74,8 @@ Lang {
 		SaveFile	= Save file
 		ResetFile	= Remove customized file
 		InterfaceSet	= Apply
-		GnupgConvertToEncrypted = Convert to an encrypted mailinglist
-		GnupgConvertToPlain	= Convert to a plaintext mainlinglist
+		GpgEzmlmConvertToEncrypted = Convert to an encrypted mailinglist
+		GpgEzmlmConvertToPlain	= Convert to a plaintext mainlinglist
 		DeletePublicKey	= Delete public key(s)
 		DeleteSecretKey	= Delete secret key(s)
 		GnupgImportKey	= Import key
@@ -133,10 +133,10 @@ Lang {
 		GnupgInvalidExpiration	= The expiration time is invalid!
 		GnupgInvalidKeySize	= The length of the key is invalid!
 		GnupgExportKey		= Export of key failed!
-		GnupgConvertEnable	= Conversion to encrypted mailing list failed!
-		GnupgConvertDisable	= Conversion to plaintext mailing list failed!
-		GnupgConvertAlreadyEnabled	= Encryption was already enabled for this mailing list.
-		GnupgConvertAlreadyDisabled	= Encryption was already disabled for this mailing list.
+		GpgEzmlmConvertEnable	= Conversion to encrypted mailing list failed!
+		GpgEzmlmConvertDisable	= Conversion to plaintext mailing list failed!
+		GpgEzmlmConvertAlreadyEnabled	= Encryption was already enabled for this mailing list.
+		GpgEzmlmConvertAlreadyDisabled	= Encryption was already disabled for this mailing list.
 	  }
 	
 
@@ -150,8 +150,8 @@ Lang {
 		SaveFile	= The file was saved.
 		ResetFile	= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
 		GnupgKeyImport	= The key was successfully imported.
-		GnupgConvertEnable	= Encryption is now enabled for this list.
-		GnupgConvertDisable	= Encryption is now disabled for this list.
+		GpgEzmlmConvertEnable	= Encryption is now enabled for this list.
+		GpgEzmlmConvertDisable	= Encryption is now disabled for this list.
 	  }
 
 
@@ -179,8 +179,8 @@ Lang {
 		x	= Reset the list of to be stripped mime types to its default value
 		y	= Request a confirmation mail for every posted message
 		special_replytoself	= Redirect replies to the list
-		gnupg_plain_without_key	= Send plaintext to the subscribers which have no key
-		gnupg_sign_messages	= Sign outgoing messages with the list's key
+		gpgezmlm_nokeynocrypt	= Send a warning instead of the original content to subscribers without a key
+		gpgezmlm_signmessages	= Sign outgoing messages with the list's key
 	  }
 	
 
@@ -314,9 +314,9 @@ Lang {
 		TextFiles	= The selection box contains a list of files available in the DIR/text directory. These files are sent out in response to specfic user requests or as part of all outgoing messages. Edit them as necessary.
 		EditTextFile	= Change this text according to your needs. Maybe you would like to use some of the reserved tags, that are described at the bottom of this page.
 		ResetTextFile	= This text file was customized for this list. If you want to use the system-wide default text file of the choosen language instead, you may remove this customized file.
-		GnupgConvert	= You can convert a normal mailinglist to an encrypted list and vice versa.
+		GpgEzmlmConvert	= You can convert a normal mailinglist to an encrypted list and vice versa.
 		GnupgGenerateKey	= Every encrypted mailing list needs a secret key. You can import this key or create it using the form below. After submitting the form, you have to be patient, as it takes some time (up to several minutes) to create a key.
-		GnupgOptions	= Configure some useful settings of the encrypted mailing list.
+		GpgEzmlmOptions	= Configure some useful settings of the encrypted mailing list.
 		GnupgSecret		= Every every mailing list needs a secret key to decrypt incoming. You should take care that the secret key is kept safe. Otherwise the security of your mailing list is broken.
 		GnupgPublic		= There should be a public key for every subscriber of the mailing list. Additionally there is the key of the mailing list, which should be distributed to all subscribers. It is safe to openly publish public keys.
 	  }
@@ -343,12 +343,12 @@ Lang {
 		TextFileInfo	= Useful placeholders
 		AvailableLists	= Available lists
 		SubscribeLog	= Events
-		GnupgConvert	= Encryption support
+		GpgEzmlmConvert	= Encryption support
 		GnupgPublicKeys	= Public keys of this list
 		GnupgSecretKeys	= Secret keys of this list
 		GnupgKeyImport	= Import a key
 		GnupgGenerateKey	= Generate the key for this list
-		GnupgOptions	= Encryption settings
+		GpgEzmlmOptions	= Encryption settings
 		AvailableDomains	= Available domains
 	}
 }

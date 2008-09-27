@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 03:14+0200\n"
+"POT-Creation-Date: 2008-09-28 01:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,12 +103,12 @@ msgstr "Chaves privadas"
 msgid "generate key"
 msgstr "Gerar chave"
 
-#: Lang.Menue.GnupgConvert
+#: Lang.Menue.GpgEzmlmConvert
 #, fuzzy
 msgid "Encryption"
 msgstr "Criptografar"
 
-#: Lang.Menue.GnupgOptions
+#: Lang.Menue.GpgEzmlmOptions
 #, fuzzy
 msgid "encryption"
 msgstr "criptografar"
@@ -248,7 +248,7 @@ msgstr "Chaves privadas"
 msgid "Generate a new keypair"
 msgstr "Gerar um novo par de chaves"
 
-#: Lang.Title.GnupgOptions
+#: Lang.Title.GpgEzmlmOptions
 #, fuzzy
 msgid "Encryption settings"
 msgstr "Configurações de criptografia"
@@ -303,17 +303,16 @@ msgstr "Gravar arquivo"
 msgid "Remove customized file"
 msgstr "Remover arquivo customizado"
 
-#: Lang.Buttons.LanguageSet
-#, fuzzy
-msgid "select"
-msgstr "selecione"
+#: Lang.Buttons.InterfaceSet
+msgid "Apply"
+msgstr ""
 
-#: Lang.Buttons.GnupgConvertToEncrypted
+#: Lang.Buttons.GpgEzmlmConvertToEncrypted
 #, fuzzy
 msgid "Convert to an encrypted mailinglist"
 msgstr "Converter para lista criptografada"
 
-#: Lang.Buttons.GnupgConvertToPlain
+#: Lang.Buttons.GpgEzmlmConvertToPlain
 #, fuzzy
 msgid "Convert to a plaintext mainlinglist"
 msgstr "Converter para lista modo texto"
@@ -565,22 +564,22 @@ msgstr "O comprimento da chave é inválido!"
 msgid "Export of key failed!"
 msgstr "Falha ao exportar a chave!"
 
-#: Lang.WarningMessage.GnupgConvertEnable
+#: Lang.WarningMessage.GpgEzmlmConvertEnable
 #, fuzzy
 msgid "Conversion to encrypted mailing list failed!"
 msgstr "Conversão para lista critografrada falhou"
 
-#: Lang.WarningMessage.GnupgConvertDisable
+#: Lang.WarningMessage.GpgEzmlmConvertDisable
 #, fuzzy
 msgid "Conversion to plaintext mailing list failed!"
 msgstr "Conversão para lista modo texto falhou"
 
-#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 #, fuzzy
 msgid "Encryption was already enabled for this mailing list."
 msgstr "Criptografia disponível para essa lista."
 
-#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 #, fuzzy
 msgid "Encryption was already disabled for this mailing list."
 msgstr "Criptografia não disponível para essa lista"
@@ -634,12 +633,12 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr "Chave importada com sucesso"
 
-#: Lang.SuccessMessage.GnupgConvertEnable
+#: Lang.SuccessMessage.GpgEzmlmConvertEnable
 #, fuzzy
 msgid "Encryption is now enabled for this list."
 msgstr "Criptografia está agora ativada na lista."
 
-#: Lang.SuccessMessage.GnupgConvertDisable
+#: Lang.SuccessMessage.GpgEzmlmConvertDisable
 #, fuzzy
 msgid "Encryption is now disabled for this list."
 msgstr "Criptografaia está agora desativada na lista."
@@ -766,12 +765,12 @@ msgstr "Requisitar um mail de confirmação para toda mensagem enviada"
 msgid "Redirect replies to the list"
 msgstr "Redirecionar respostas para a lista"
 
-#: Lang.Options.gnupg_plain_without_key
-#, fuzzy
-msgid "Send plaintext to the subscribers which have no key"
-msgstr "Enviar em modo texto para os usuários que não possuem chave"
+#: Lang.Options.gpgezmlm_nokeynocrypt
+msgid ""
+"Send a warning instead of the original content to subscribers without a key"
+msgstr ""
 
-#: Lang.Options.gnupg_sign_messages
+#: Lang.Options.gpgezmlm_signmessages
 #, fuzzy
 msgid "Sign outgoing messages with the list's key"
 msgstr "Assinar mensagens enviadas com a chave da lista"
@@ -1414,7 +1413,7 @@ msgstr ""
 "sistema e escolher o idioma de preferência. Arquivos customizados pode ser "
 "removidos."
 
-#: Lang.Introduction.GnupgConvert
+#: Lang.Introduction.GpgEzmlmConvert
 #, fuzzy
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
@@ -1432,7 +1431,7 @@ msgstr ""
 "paciente, pois a criação do par de chaves leva algum tempo (pode chegar a "
 "diversos minutos)."
 
-#: Lang.Introduction.GnupgOptions
+#: Lang.Introduction.GpgEzmlmOptions
 #, fuzzy
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr "Configure algumas opções para uma lista com criptografia"
@@ -1564,7 +1563,7 @@ msgstr "Listas disponíveis"
 msgid "Events"
 msgstr "Eventos"
 
-#: Lang.Legend.GnupgConvert
+#: Lang.Legend.GpgEzmlmConvert
 #, fuzzy
 msgid "Encryption support"
 msgstr "Suporte à criptografia"

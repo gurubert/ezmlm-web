@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-08-25 03:14+0200\n"
+"POT-Creation-Date: 2008-09-28 01:09+0200\n"
 "PO-Revision-Date: 2008-08-20 09:47+0200\n"
 "Last-Translator: kinneko <kinneko@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,11 +84,11 @@ msgstr ""
 msgid "generate key"
 msgstr ""
 
-#: Lang.Menue.GnupgConvert
+#: Lang.Menue.GpgEzmlmConvert
 msgid "Encryption"
 msgstr ""
 
-#: Lang.Menue.GnupgOptions
+#: Lang.Menue.GpgEzmlmOptions
 msgid "encryption"
 msgstr ""
 
@@ -201,7 +201,7 @@ msgstr ""
 msgid "Generate a new keypair"
 msgstr ""
 
-#: Lang.Title.GnupgOptions
+#: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
 msgstr ""
 
@@ -245,15 +245,15 @@ msgstr ""
 msgid "Remove customized file"
 msgstr ""
 
-#: Lang.Buttons.LanguageSet
-msgid "select"
+#: Lang.Buttons.InterfaceSet
+msgid "Apply"
 msgstr ""
 
-#: Lang.Buttons.GnupgConvertToEncrypted
+#: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
 msgstr ""
 
-#: Lang.Buttons.GnupgConvertToPlain
+#: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
 msgstr ""
 
@@ -453,19 +453,19 @@ msgstr ""
 msgid "Export of key failed!"
 msgstr ""
 
-#: Lang.WarningMessage.GnupgConvertEnable
+#: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
 msgstr ""
 
-#: Lang.WarningMessage.GnupgConvertDisable
+#: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
 msgstr ""
 
-#: Lang.WarningMessage.GnupgConvertAlreadyEnabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
 msgstr ""
 
-#: Lang.WarningMessage.GnupgConvertAlreadyDisabled
+#: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
 msgstr ""
 
@@ -507,11 +507,11 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr ""
 
-#: Lang.SuccessMessage.GnupgConvertEnable
+#: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr ""
 
-#: Lang.SuccessMessage.GnupgConvertDisable
+#: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
 msgstr ""
 
@@ -609,11 +609,12 @@ msgstr ""
 msgid "Redirect replies to the list"
 msgstr ""
 
-#: Lang.Options.gnupg_plain_without_key
-msgid "Send plaintext to the subscribers which have no key"
+#: Lang.Options.gpgezmlm_nokeynocrypt
+msgid ""
+"Send a warning instead of the original content to subscribers without a key"
 msgstr ""
 
-#: Lang.Options.gnupg_sign_messages
+#: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
 msgstr ""
 
@@ -1102,7 +1103,7 @@ msgid ""
 "customized file."
 msgstr ""
 
-#: Lang.Introduction.GnupgConvert
+#: Lang.Introduction.GpgEzmlmConvert
 msgid ""
 "You can convert a normal mailinglist to an encrypted list and vice versa."
 msgstr ""
@@ -1114,7 +1115,7 @@ msgid ""
 "patient, as it takes some time (up to several minutes) to create a key."
 msgstr ""
 
-#: Lang.Introduction.GnupgOptions
+#: Lang.Introduction.GpgEzmlmOptions
 msgid "Configure some useful settings of the encrypted mailing list."
 msgstr ""
 
@@ -1216,7 +1217,7 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: Lang.Legend.GnupgConvert
+#: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
 msgstr ""
 
