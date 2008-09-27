@@ -29,7 +29,7 @@ UI	{
 		TextEdit	= 1
 		ListDelete	= 1
 		SubscribeLog	= 1
-		GnupgConvert	= 1
+		GpgEzmlmConvert	= 1
 		Help	= 1
 	  }
 

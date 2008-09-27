@@ -22,7 +22,7 @@ UI	{
 			Subscription	= 1
 			Posting		= 1
 			Processing	= 1
-			GnupgOptions	= 1
+			GpgEzmlmOptions	= 1
 			Archive		= 1
 			Admin		= 1
 		  }
@@ -36,7 +36,7 @@ UI	{
 		TextEdit	= 1
 		ListDelete	= 1
 		SubscribeLog	= 1
-		GnupgConvert	= 1
+		GpgEzmlmConvert	= 1
 		Help	= 1
 	  }
 
@@ -117,9 +117,9 @@ UI	{
 				MimeReject	= mimereject
 			  }
 
-			GnupgOptions {
-				SignMessages	= gnupg_sign_messages
-				PlainWithoutKey	= gnupg_plain_without_key
+			GpgEzmlmOptions {
+				SignMessages	= gpgezmlm_signmessages
+				PlainWithoutKey	= gpgezmlm_nokeynocrypt
 			  }
 
 			Processing {

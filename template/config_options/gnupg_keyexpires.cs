@@ -1,4 +1,4 @@
-<?cs if:Data.List.Features.Crypto ?>
+<?cs if:Data.List.Features.GpgKeyRing ?>
 <!-- expiration of the key (in years) -->
 
 <label for="gnupg_keyexpires"><?cs var:html_escape(Lang.Misc.GnupgKeyExpires) ?>:</label>

@@ -1,4 +1,4 @@
-<?cs if:Data.List.Features.Crypto ?>
+<?cs if:Data.List.Features.GpgKeyRing ?>
 <!-- name of the key (first part of the human readable key description) -->
 
 <label for="gnupg_keyname"><?cs var:html_escape(Lang.Misc.GnupgKeyName) ?>:</label>

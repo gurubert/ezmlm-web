@@ -1,6 +1,6 @@
-<?cs if:Data.List.Features.Crypto ?>
+<?cs if:Data.List.Features.GpgEzmlm ?>
 <!-- REMOVE --><?cs include:TemplateDir + '/macros.cs' ?>
 <!-- Gnupg: sign outgoing messages -->
-<?cs call:checkbox("gnupg_sign_messages") ?>
+<?cs call:checkbox("gpgezmlm_signmessages") ?>
 <?cs /if ?>
 

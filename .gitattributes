@@ -64,7 +64,7 @@ suid-wrapper/index.h -text
 template/config_admin.cs -text
 template/config_all.cs -text
 template/config_archive.cs -text
-template/config_encryption.cs -text
+template/config_gpgezmlm.cs -text
 template/config_main.cs -text
 template/config_options/admin_edit_text.cs -text
 template/config_options/admin_enabled.cs -text
@@ -94,8 +94,8 @@ template/config_options/gnupg_keycomment.cs -text
 template/config_options/gnupg_keyexpires.cs -text
 template/config_options/gnupg_keyname.cs -text
 template/config_options/gnupg_keysize.cs -text
-template/config_options/gnupg_plain_without_key.cs -text
-template/config_options/gnupg_sign_messages.cs -text
+template/config_options/gpgezmlm_nokeynocrypt.cs -text
+template/config_options/gpgezmlm_signmessages.cs -text
 template/config_options/headeradd.cs -text
 template/config_options/headerfilter.cs -text
 template/config_options/lang_select.cs -text
@@ -124,11 +124,11 @@ template/config_processing.cs -text
 template/config_subscription.cs -text
 template/domain_select.cs -text
 template/footer.cs -text
-template/gnupg_convert.cs -text
 template/gnupg_generate_key.cs -text
 template/gnupg_import.cs -text
 template/gnupg_public.cs -text
 template/gnupg_secret.cs -text
+template/gpgezmlm_convert.cs -text
 template/header.cs -text
 template/help_tag_substitution.cs -text
 template/interface_select.cs -text

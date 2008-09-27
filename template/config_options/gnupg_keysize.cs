@@ -1,4 +1,4 @@
-<?cs if:Data.List.Features.Crypto ?>
+<?cs if:Data.List.Features.GpgKeyRing ?>
 <!-- REMOVE --><?cs include:TemplateDir + '/macros.cs' ?>
 <!-- length of the key (bytes) -->
 <label for="gnupg_keysize"><?cs var:html_escape(Lang.Misc.GnupgKeySize) ?>:</label>

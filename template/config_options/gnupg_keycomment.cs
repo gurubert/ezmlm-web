@@ -1,4 +1,4 @@
-<?cs if:Data.List.Features.Crypto ?>
+<?cs if:Data.List.Features.GpgKeyRing ?>
 <!-- comment for the key (second part of the human readable key description) -->
 
 <label for="gnupg_keycomment"><?cs var:html_escape(Lang.Misc.GnupgKeyComment) ?>:</label>
