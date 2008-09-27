@@ -7,7 +7,8 @@ Config.Title
 Config.UI.Languages.[names]
 Config.UI.LinkAttrs.web_lang
 Config.UI.LinkAttrs.template
-Config.Features.Crypto
+Config.Features.GpgKeyRing
+Config.Features.GpgEzlm
 Config.Features.KeepFiles
 Config.Features.LanguageSelect
 Config.Features.CharsetSelect
@@ -21,7 +22,8 @@ Data.List.OptionsBlackList
 Data.List.CharSet
 Data.List.CustomizedFiles.*
 Data.List.DefaultFiles.*
-Data.List.Features.Crypto
+Data.List.Features.GpgKeyRing
+Data.List.Features.GpgEzmlm
 Data.List.File.Name
 Data.List.File.Content
 Data.List.File.isDefault
