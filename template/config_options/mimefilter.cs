@@ -11,7 +11,7 @@
 			?> checked="checked"<?cs /if ?> /><label for="mf_keep"><?cs
 			var:html_escape(Lang.Misc.MimeKeep) ?></label></li>
 	<li>
-		<textarea name="mimefilter" rows="5" cols="70"><?cs
+		<textarea name="mimefilter" rows="5" cols="60"><?cs
 			if Data.List.MimeRemove ?><?cs var:html_escape(Data.List.MimeRemove)
 			?><?cs else ?><?cs var:html_escape(Data.List.MimeKeep)
 			?><?cs /if ?></textarea></li>
@@ -24,7 +24,7 @@
 	<?cs var:html_escape(Lang.Misc.MimeRemove) ?>
 	<input type="hidden" name="mimefilter_action" value="remove" />
 	<ul><li>
-		<textarea name="mimefilter" rows="5" cols="70"><?cs
+		<textarea name="mimefilter" rows="5" cols="60"><?cs
 			if Data.List.MimeRemove ?><?cs var:html_escape(Data.List.MimeRemove)
 			?><?cs else ?><?cs var:html_escape(Data.List.MimeKeep)
 			?><?cs /if ?></textarea></li>

@@ -12,7 +12,7 @@
 			?> checked="checked"<?cs /if ?> /><label for="hf_keep"><?cs
 			var:html_escape(Lang.Misc.HeaderKeep) ?></label></li>
 	<li>
-		<textarea name="headerfilter" rows="5" cols="70"><?cs
+		<textarea name="headerfilter" rows="5" cols="60"><?cs
 			if Data.List.HeaderRemove ?><?cs
 			var:html_escape(Data.List.HeaderRemove) ?><?cs else ?><?cs
 			var:html_escape(Data.List.HeaderKeep) ?><?cs /if ?></textarea></li>
@@ -23,7 +23,7 @@
 	<input type="hidden" name="headerfilter_action" value="remove" />
 	<ul>
 	<li>
-		<textarea name="headerfilter" rows="5" cols="70"><?cs
+		<textarea name="headerfilter" rows="5" cols="60"><?cs
 			if Data.List.HeaderRemove ?><?cs
 			var:html_escape(Data.List.HeaderRemove) ?><?cs else ?><?cs
 			var:html_escape(Data.List.HeaderKeep) ?><?cs /if ?></textarea></li>
