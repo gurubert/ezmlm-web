@@ -2213,7 +2213,7 @@ sub update_config_gpgezmlm {
 		return (0==0);
 	} else {
 		# update the configuration file
-		if ($list->update(%switches)) {
+		if ($list->update_special(%switches)) {
 			return (0==0);
 		} else {
 			return (1==0);
