@@ -429,9 +429,17 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		$pagename = 'list_select';
 	}
 } elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_ask')) {
-	$pagename = 'gpgezmlm_convert';
+	if ($list) {
+		$pagename = 'gpgezmlm_convert';
+	} else {
+		$pagename = 'list_select';
+		$error = 'ParameterMissing';
+	}
 } elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_enable')) {
-	if (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
+	if (!defined($list)) {
+		$pagename = 'list_select';
+		$error = 'ParameterMissing';
+	} elsif (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		$pagename = 'gpgezmlm_convert';
 		$warning = 'GpgEzmlmConvertAlreadyEnabled';
 	} else {
@@ -454,9 +462,13 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		}
 	}
 } elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_disable')) {
-	if ($list && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
-		if ($list->convert_to_plaintext()) {
-			$list = $_;
+	if (!defined($list)) {
+		$pagename = 'list_select';
+		$error = 'ParameterMissing';
+	} elsif ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
+		my $plain_list = $list->convert_to_plaintext();
+		if ($plain_list) {
+			$list = $plain_list;
 			$pagename = 'gpgezmlm_convert';
 			$success = 'GpgEzmlmConvertDisable';
 		} else {
@@ -1446,7 +1458,7 @@ sub get_dotqmail_files {
 
 	# get list of existing files (remove empty entries)
 	@files = grep {/./} map
-			{ (-e "$qmail_prefix$_")? "$qmail_prefix$_" : undef  } (
+			{ (-e "$qmail_prefix$_")? "$qmail_prefix$_" : ''  } (
 					'',
 					'-default',
 					'-owner',
