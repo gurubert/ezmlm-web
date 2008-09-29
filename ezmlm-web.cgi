@@ -483,7 +483,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		($action eq 'gnupg_do'))) {
 	# User wants to manage keys (only for encrypted mailing lists)
 	my $subset = $q->param('gnupg_subset');
-	if ($list && is_list_encrypted($list) && ($subset ne '')) {
+	if ($list && ($subset ne '')) {
 		if (($subset =~ /^[\w]*$/)
 				&& (-e "$TEMPLATE_DIR/gnupg_$subset" . ".cs")) {
 			if ($action eq 'gnupg_do') {
@@ -502,8 +502,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		$pagename = 'list_select';
 	}
 } elsif ($FEATURES{GPGKEYRING} && ($action eq 'gnupg_export')) {
-	if ($list && is_list_encrypted($list)
-			&& defined($q->param('gnupg_keyid'))) {
+	if ($list && defined($q->param('gnupg_keyid'))) {
 		if (&gnupg_export_key($list, $q->param('gnupg_keyid'))) {
 			# the key was printed to stdout - we can exit now
 			# TODO: this should be something like "skip_output" instead
@@ -1412,18 +1411,6 @@ sub get_list_part {
 		return $1;
 	} else {
 		return '';
-	}
-}
-
-# ---------------------------------------------------------------------------
-
-sub is_list_encrypted {
-	my $list = shift;
-
-	if ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
-		return (0==0);
-	} else {
-		return (0==1);
 	}
 }
 
