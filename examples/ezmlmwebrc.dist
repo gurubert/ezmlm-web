@@ -122,7 +122,7 @@ $HTML_LANGUAGE = "en";
 
 # enabled support for encrypted mailing lists - defaults to 0 (off) 
 # This include keyring management and mailing list handling in general.
-#$GPG_SUPPORT = 0; 
+#$ENCRYPTION_SUPPORT = 0; 
 
 # Define the default location of gnupg keyrings used for mailing list
 # encryption. If the location starts with a slash ('/'), then it is considered

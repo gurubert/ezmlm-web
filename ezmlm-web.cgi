@@ -103,11 +103,13 @@ use vars qw[@INTERFACE_OPTIONS_BLACKLIST];
 # default interface template (basic/normal/expert)
 use vars qw[$DEFAULT_INTERFACE_TYPE];
 # some settings for encrypted mailing lists
-use vars qw[$GPG_SUPPORT $GPG_KEYRING_DEFAULT_LOCATION];
+use vars qw[$ENCRYPTION_SUPPORT $GPG_KEYRING_DEFAULT_LOCATION];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
 # cached data
 use vars qw[%CACHED_DATA];
+# available features
+use vars qw[%FEATURES];
 
 # some deprecated configuration settings - they have to be registered
 # otherwise old configuration files would break
@@ -149,18 +151,18 @@ unless (my $return = do $config_file) {
 ####### validate configuration and apply some default settings ##########
 
 # do we support encrypted mailing lists an keyring management?
-$GPG_SUPPORT = 0 unless defined($GPG_SUPPORT);
-if ($GPG_SUPPORT) {
-	my @crypto_modules = (
-			"Mail::Ezmlm::GpgKeyRing",
-			"Mail::Ezmlm::GpgEzmlm",
-		);
-	for my $module_name (@crypto_modules) {
-		unless (&safely_import_module($module_name)) {
-			$GPG_SUPPORT = 0;
-			warn "WARNING: Support for encryption features is disabled, "
-					. "because the module '$module_name' failed to load!";
-		}
+$ENCRYPTION_SUPPORT = 0 unless defined($ENCRYPTION_SUPPORT);
+if ($ENCRYPTION_SUPPORT) {
+	$FEATURES{GPGEZMLM} = (0==0)
+		if (&safely_import_module("Mail::Ezmlm::GpgEzmlm"));
+	$FEATURES{GPGKEYRING} = (0==0)
+		if (&safely_import_module("Mail::Ezmlm::GpgKeyRing"));
+	# did we load any modules?
+	if (scalar keys %FEATURES == 0) {
+		warn "WARNING: all of the supported encryption modules "
+				. "(Mail::Ezmlm::GpgEzmlm and Mail::Ezmlm::GpgKeyRing) failed "
+				. "to load. Encryption support is disabled.";
+		$ENCRYPTION_SUPPORT = 0;
 	}
 }
 
@@ -426,9 +428,9 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
-} elsif ($GPG_SUPPORT && ($action eq 'gpgezmlm_convert_ask')) {
+} elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_ask')) {
 	$pagename = 'gpgezmlm_convert';
-} elsif ($GPG_SUPPORT && ($action eq 'gpgezmlm_convert_enable')) {
+} elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_enable')) {
 	if (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		$pagename = 'gpgezmlm_convert';
 		$warning = 'GpgEzmlmConvertAlreadyEnabled';
@@ -451,7 +453,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 			$warning = 'GpgEzmlmConvertEnable';
 		}
 	}
-} elsif ($GPG_SUPPORT && ($action eq 'gpgezmlm_convert_disable')) {
+} elsif ($FEATURES{GPGEZMLM} && ($action eq 'gpgezmlm_convert_disable')) {
 	if ($list && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		if ($list->convert_to_plaintext()) {
 			$list = $_;
@@ -465,7 +467,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		$pagename = 'gpgezmlm_convert';
 		$warning = 'GpgEzmlmConvertAlreadyDisabled';
 	}
-} elsif ($GPG_SUPPORT && (($action eq 'gnupg_ask') ||
+} elsif ($FEATURES{GPGKEYRING} && (($action eq 'gnupg_ask') ||
 		($action eq 'gnupg_do'))) {
 	# User wants to manage keys (only for encrypted mailing lists)
 	my $subset = $q->param('gnupg_subset');
@@ -487,7 +489,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		$error = 'ParameterMissing';
 		$pagename = 'list_select';
 	}
-} elsif ($GPG_SUPPORT && ($action eq 'gnupg_export')) {
+} elsif ($FEATURES{GPGKEYRING} && ($action eq 'gnupg_export')) {
 	if ($list && is_list_encrypted($list)
 			&& defined($q->param('gnupg_keyid'))) {
 		if (&gnupg_export_key($list, $q->param('gnupg_keyid'))) {
@@ -653,8 +655,9 @@ sub init_hdf {
 		$i++;
 	}
 
-	# support for encrypted mailing lists?
-	$hdf->setValue("Config.Features.GpgEzmlm", 1) if ($GPG_SUPPORT);
+	# support for encryption?
+	$hdf->setValue("Config.Features.GpgEzmlm", 1) if ($FEATURES{GPGEZMLM});
+	$hdf->setValue("Config.Features.GpgKeyRing", 1) if ($FEATURES{GPGKEYRING});
 
 	# enable some features that are only available for specific versions
 	# of ezmlm-idx
@@ -720,15 +723,14 @@ sub get_list_object {
 	my $listname = shift;
 	my ($list, @module_order, $one_module);
 
-	if ($GPG_SUPPORT) {
-		# TODO: add more encryption modules here
-		@module_order = (
-			"Mail::Ezmlm::GpgEzmlm",
-			"Mail::Ezmlm",
-		);
-	} else {
-		@module_order = ("Mail::Ezmlm",);
-	}
+	@module_order = ();
+
+	# gpg-ezmlm
+	push(@module_order, "Mail::Ezmlm::GpgEzmlm")
+		if ($FEATURES{GPGEZMLM});
+
+	# default
+	push(@module_order, "Mail::Ezmlm");
 
 	for $one_module (@module_order) {
 		$list = $one_module->new("$LIST_DIR/$listname");
@@ -962,7 +964,7 @@ sub set_pagedata4list {
 	&set_pagedata_options_blacklist($list);
 
 	# do we support encryption? Show a possible keyring ...
-	&set_pagedata_keyring($list) if ($GPG_SUPPORT);
+	&set_pagedata_keyring($list) if ($FEATURES{GPGKEYRING});
 
 	# is this a moderation/administration list?
 	&set_pagedata4part_list($list, $part_type) if ($part_type ne '');
@@ -1405,8 +1407,6 @@ sub get_list_part {
 
 sub is_list_encrypted {
 	my $list = shift;
-
-	return (1==0) unless ($GPG_SUPPORT);
 
 	if ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		return (0==0);
