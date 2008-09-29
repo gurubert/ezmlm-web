@@ -943,7 +943,7 @@ sub set_pagedata {
 
 	# list specific configuration - use defaults if no list is selected
 	if ($list) {
-		&set_pagedata4options($list, $list->getconfig);   
+		&set_pagedata4options($list, $list->getconfig());   
 		&set_pagedata4list($list, &get_list_part());
 	} else {
 		&set_pagedata4options($list, $DEFAULT_OPTIONS);
@@ -1073,7 +1073,7 @@ sub set_pagedata_gpgezmlm {
 	$pagedata->setValue("Data.List.Features.GpgEzmlm", 1);
 	
 	# read the configuration
-	%config = $list->getconfig();
+	%config = $list->getconfig_special();
 	foreach $item (keys %config) {
 		$pagedata->setValue("Data.List.Options.gpgezmlm_" . lc($item), $config{$item});
 	}
@@ -2366,8 +2366,9 @@ sub update_config_common {
 			$q->param('msgsize_min_value') : 0;
 		$list->setpart('msgsize', "$maxsize:$minsize");
 	} else {
-		# restore the original value, as ezmlm-make always overrides these values :(((
-		$list->setpart('msgsize', "$old_msgsize");
+		# restore the original value, as ezmlm-make always overrides these
+		# values :(((
+		$list->setpart('msgsize', "$old_msgsize") if (defined($old_msgsize));
 	}
 
 	# update charset
