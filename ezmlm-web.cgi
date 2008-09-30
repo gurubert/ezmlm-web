@@ -2570,11 +2570,15 @@ sub save_text {
 sub webauth {
 	my $listname = shift;
    
-	# Check if webusers file exists - if not, then access is granted
-	return (1==0) if (! -e "$WEBUSERS_FILE");
-
 	# if there was no user authentication, then everything is allowed
 	return (0==0) if (!$LOGIN_NAME);
+
+	# Check if webusers file exists - if not, then access is granted
+	if (! -e "$WEBUSERS_FILE") {
+		warn "[ezmlm-web] no 'webusers' file found ('$WEBUSERS_FILE'): "
+				. "access denied.";
+		return (1==0);
+	}
 
 	# Read authentication level from webusers file. Format of this file is
 	# somewhat similar to the unix groups file
@@ -2619,7 +2623,11 @@ sub webauth_create_allowed {
 	return (0==0) if (!$LOGIN_NAME);
 
 	# Check if webusers file exists - if not, then access is granted
-	return (1==0) if (! -e "$WEBUSERS_FILE");
+	if (! -e "$WEBUSERS_FILE") {
+		warn "[ezmlm-web] no 'webusers' file found ('$WEBUSERS_FILE'): "
+				. "access denied.";
+		return (1==0);
+	}
 
 	# Read create-permission from webusers file.
 	# the special listname "ALLOW_CREATE" controls, who is allowed to do it
