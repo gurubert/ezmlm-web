@@ -243,6 +243,12 @@ $DEFAULT_INTERFACE_TYPE = 'normal' unless defined($DEFAULT_INTERFACE_TYPE);
 $GPG_KEYRING_DEFAULT_LOCATION = ".gnupg"
 	unless defined($GPG_KEYRING_DEFAULT_LOCATION);
 
+# undef CURRENT_DOMAIN if it is invalid
+if (%DOMAINS) {
+	undef $CURRENT_DOMAIN
+		if (defined($CURRENT_DOMAIN) && ($CURRENT_DOMAIN eq ''));
+}
+
 # determine MAIL_DOMAIN
 unless (defined($MAIL_DOMAIN) && ($MAIL_DOMAIN ne '')) {
 	if ((-e "$QMAIL_BASE/virtualdomains")
@@ -308,8 +314,8 @@ if (defined($q->param('list'))) {
 if (defined($action) && ($action eq 'show_mime_examples')) {
 	&output_mime_examples();
 	exit 0;
-} elsif (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')
-		|| ($action eq 'domain_select'))) {
+} elsif (%DOMAINS
+		&& (!defined($CURRENT_DOMAIN) || ($action eq 'domain_select'))) {
 	# domain support is enabled, but no domain is selected
 	$pagename = 'domain_select';
 	# undef the currently selected domain
@@ -317,7 +323,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 } elsif (!&check_permission_for_action()) {
 	$pagename = 'list_select';
 	$error = 'Forbidden';
-} elsif ($action eq '' || $action eq 'list_select') {
+} elsif (defined($action) && ($action eq '' || $action eq 'list_select')) {
 	# Default action. Present a list of available lists to the user ...
 	$pagename = 'list_select';
 } elsif ($action eq 'show_page') {
@@ -596,9 +602,8 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 # set default action, if there is no list available and the user is
 # allowed to create a new one
 if (((!defined($action)) || ($action eq ''))
-		&& ((%DOMAINS && defined($CURRENT_DOMAIN) and
-				($CURRENT_DOMAIN ne '')) || (!%DOMAINS))
-		&& (&webauth_create_allowed())
+		&& ((%DOMAINS && defined($CURRENT_DOMAIN)) || (!%DOMAINS))
+		&& &webauth_create_allowed($WEBUSERS_FILE)
 		&& ($pagedata->getValue('Data.Lists.0','') eq '')) {
 	$pagename = 'list_create';
 }
@@ -746,7 +751,7 @@ sub get_list_object {
 	for $one_module (@module_order) {
 		$list = $one_module->new("$LIST_DIR/$listname");
 		# invalid lists are undef
-		return $list if defined($list);
+		return $list if (defined($list) && (defined($list->thislist())));
 	}
 
 	return undef;
@@ -873,8 +878,7 @@ sub set_pagedata_list_of_lists {
 
 	# for a multi-domain setup there are no lists available if no domain
 	# is selected
-	return (0==0) if (%DOMAINS && 
-			(!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')));
+	return (0==0) if (%DOMAINS && !defined($CURRENT_DOMAIN));
 	
 	# undefined $LIST_DIR?
 	return (0==0) if (!defined($LIST_DIR) || ($LIST_DIR eq ''));
@@ -888,7 +892,8 @@ sub set_pagedata_list_of_lists {
 	$num = 0;
 	# Check that they actually are lists and add good ones to pagedata ...
 	foreach $i (0 .. $#files) {
-		if ((-e "$LIST_DIR/$files[$i]/lock") && (&webauth($files[$i]))) {
+		if ((-e "$LIST_DIR/$files[$i]/lock") &&
+				(&webauth_access_allowed($files[$i], $WEBUSERS_FILE))) {
 			$pagedata->setValue("Data.Lists." . $num, "$files[$i]");
 			$num++;
 		}
@@ -916,9 +921,18 @@ sub set_pagedata {
 			($Mail::Ezmlm::MYSQL_BASE)? 1 : 0);
    
 
-	# permissions
-	$pagedata->setValue("Data.Permissions.Create",
-			(&webauth_create_allowed)? 1 : 0 );
+	# permission for list creation
+	my $create_allowed;
+	# for a multi-domain setup we disallow list creation until a domain
+	# is selected
+	if (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq ''))) {
+		$create_allowed = (0==1);
+	} else {
+		$create_allowed = &webauth_create_allowed($WEBUSERS_FILE);
+	}
+	$pagedata->setValue("Data.Permissions.Create", $create_allowed ? 1 : 0);
+
+	# file upload permission
 	$pagedata->setValue("Data.Permissions.FileUpload", ($FILE_UPLOAD)? 1 : 0);
 
 
@@ -1645,9 +1659,9 @@ sub check_permission_for_action {
 	my $ret;
 	if (defined($action) &&
 			(($action eq 'list_create_ask' || $action eq 'list_create_do'))) {
-		$ret = &webauth_create_allowed();
+		$ret = &webauth_create_allowed($WEBUSERS_FILE);
 	} elsif (defined($q->param('list'))) {
-		$ret = &webauth($q->param('list'));
+		$ret = &webauth_access_allowed($q->param('list'), $WEBUSERS_FILE);
 	} else {
 		$ret = (0==0);
 	}
@@ -2567,23 +2581,25 @@ sub save_text {
 
 # ------------------------------------------------------------------------
 
-sub webauth {
+# check if the currently logged in user is allowed to access a list
+sub webauth_access_allowed {
 	my $listname = shift;
-   
+	my $webusers_file = shift;
+
 	# if there was no user authentication, then everything is allowed
 	return (0==0) if (!$LOGIN_NAME);
 
 	# Check if webusers file exists - if not, then access is granted
-	if (! -e "$WEBUSERS_FILE") {
-		warn "[ezmlm-web] no 'webusers' file found ('$WEBUSERS_FILE'): "
+	unless (-e "$webusers_file") {
+		warn "[ezmlm-web] no 'webusers' file found ('$webusers_file'): "
 				. "access denied.";
 		return (1==0);
 	}
 
 	# Read authentication level from webusers file. Format of this file is
 	# somewhat similar to the unix groups file
-	unless (open (USERS, "<$WEBUSERS_FILE")) {
-		warn "Unable to read webusers file ($WEBUSERS_FILE): $!";
+	unless (open (USERS, "<$webusers_file")) {
+		warn "Unable to read webusers file ($webusers_file): $!";
 		$warning = 'WebUsersRead';
 		return (1==0);
 	}
@@ -2609,11 +2625,8 @@ sub webauth {
 # ---------------------------------------------------------------------------
 
 sub webauth_create_allowed {
+	my $webusers_file = shift;
 
-	# for a multi-domain setup we disallow list creation until a domain
-	# is selected
-	return (1==0) if (%DOMAINS && 
-			(!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq '')));
 
 	# Check if we were called with the deprecated
 	# argument "-c" (allow to create lists)
@@ -2623,16 +2636,16 @@ sub webauth_create_allowed {
 	return (0==0) if (!$LOGIN_NAME);
 
 	# Check if webusers file exists - if not, then access is granted
-	if (! -e "$WEBUSERS_FILE") {
-		warn "[ezmlm-web] no 'webusers' file found ('$WEBUSERS_FILE'): "
+	if (! -e "$webusers_file") {
+		warn "[ezmlm-web] no 'webusers' file found ('$webusers_file'): "
 				. "access denied.";
 		return (1==0);
 	}
 
 	# Read create-permission from webusers file.
 	# the special listname "ALLOW_CREATE" controls, who is allowed to do it
-	unless (open (USERS, "<$WEBUSERS_FILE")) {
-		warn "Unable to read webusers file ($WEBUSERS_FILE): $!";
+	unless (open (USERS, "<$webusers_file")) {
+		warn "Unable to read webusers file ($webusers_file): $!";
 		$warning = 'WebUsersRead';
 		return (1==0);
 	}
