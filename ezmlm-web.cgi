@@ -603,7 +603,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 # allowed to create a new one
 if (((!defined($action)) || ($action eq ''))
 		&& ((%DOMAINS && defined($CURRENT_DOMAIN)) || (!%DOMAINS))
-		&& &webauth_create_allowed($WEBUSERS_FILE)
+		&& &webauth_create_list($WEBUSERS_FILE)
 		&& ($pagedata->getValue('Data.Lists.0','') eq '')) {
 	$pagename = 'list_create';
 }
@@ -854,10 +854,10 @@ sub get_browser_language {
 
 sub set_pagedata_domains {
 
-	my ($domain_name);
+	my $domain_name;
 
 	# multi-domain setup?
-	if (defined($CURRENT_DOMAIN) && ($CURRENT_DOMAIN ne '')) {
+	if (defined($CURRENT_DOMAIN)) {
 		$pagedata->setValue("Config.UI.LinkAttrs.domain", $CURRENT_DOMAIN);
 		$pagedata->setValue("Data.CurrentDomain", $CURRENT_DOMAIN);
 		$pagedata->setValue("Data.CurrentDomain.Description",
@@ -865,8 +865,10 @@ sub set_pagedata_domains {
 	}
 	
 	foreach $domain_name (keys %DOMAINS) {
-		$pagedata->setValue("Data.Domains.$domain_name",
-				$DOMAINS{$domain_name}{'name'});
+		if (&webauth_visible_domain($domain_name)) {
+			$pagedata->setValue("Data.Domains.$domain_name",
+					$DOMAINS{$domain_name}{'name'});
+		}
 	}
 }
 
@@ -893,7 +895,7 @@ sub set_pagedata_list_of_lists {
 	# Check that they actually are lists and add good ones to pagedata ...
 	foreach $i (0 .. $#files) {
 		if ((-e "$LIST_DIR/$files[$i]/lock") &&
-				(&webauth_access_allowed($files[$i], $WEBUSERS_FILE))) {
+				(&webauth_access_list($files[$i], $WEBUSERS_FILE))) {
 			$pagedata->setValue("Data.Lists." . $num, "$files[$i]");
 			$num++;
 		}
@@ -928,7 +930,7 @@ sub set_pagedata {
 	if (%DOMAINS && (!defined($CURRENT_DOMAIN) || ($CURRENT_DOMAIN eq ''))) {
 		$create_allowed = (0==1);
 	} else {
-		$create_allowed = &webauth_create_allowed($WEBUSERS_FILE);
+		$create_allowed = &webauth_create_list($WEBUSERS_FILE);
 	}
 	$pagedata->setValue("Data.Permissions.Create", $create_allowed ? 1 : 0);
 
@@ -1659,9 +1661,9 @@ sub check_permission_for_action {
 	my $ret;
 	if (defined($action) &&
 			(($action eq 'list_create_ask' || $action eq 'list_create_do'))) {
-		$ret = &webauth_create_allowed($WEBUSERS_FILE);
+		$ret = &webauth_create_list($WEBUSERS_FILE);
 	} elsif (defined($q->param('list'))) {
-		$ret = &webauth_access_allowed($q->param('list'), $WEBUSERS_FILE);
+		$ret = &webauth_access_list($q->param('list'), $WEBUSERS_FILE);
 	} else {
 		$ret = (0==0);
 	}
@@ -2581,8 +2583,51 @@ sub save_text {
 
 # ------------------------------------------------------------------------
 
+# check if the given domain contains configurable lists for the current login
+# in case of doubt: return True
+# The %DOMAINS hash needs to contain a 'webusers_file' item for each domain
+# or an item 'list_dir' which points to a directory containing the file
+# 'webusers'. The example multidomain.conf is configured accordingly.
+sub webauth_visible_domain {
+	my $domain_name = shift;
+
+	my $webusers_file;
+	
+	if (defined($DOMAINS{$domain_name})) {
+		if (defined($DOMAINS{$domain_name}{webusers_file})
+				&& (-e $DOMAINS{$domain_name}{webusers_file})) {
+			$webusers_file = "$DOMAINS{$domain_name}{webusers_file}";
+		} elsif (defined($DOMAINS{$domain_name}{list_dir})
+				&& (-e $DOMAINS{$domain_name}{list_dir} . '/webusers')) {
+			$webusers_file = "$DOMAINS{$domain_name}{list_dir}/webusers";
+		} else {
+			# no webusers file is configured as it should be
+			# Grant access to this domain, since there seems to be no way to
+			# figure out its permission settings.
+			warn "[ezmlm-web] Warning: can't check visibility of domain '"
+					. "$domain_name' due to a missing hash key 'webusers_file' "
+					. "or due to a missing 'webusers' file.";
+			return (0==0);
+		}
+		if (&webauth_access_list('', $webusers_file)
+				|| &webauth_create_list($webusers_file)) {
+			# the user has access or create permissions within this domain
+			return (0==0);
+		} else {
+			# no accessible lists available
+			return (0==1);
+		}
+	} else {
+		warn "[ezmlm-web] invalid domain: $domain_name";
+		return (1==0);
+	}
+}
+
+# ------------------------------------------------------------------------
+
 # check if the currently logged in user is allowed to access a list
-sub webauth_access_allowed {
+# an empty listname ('') is interpreted as "is _any_ list accessible?"
+sub webauth_access_list {
 	my $listname = shift;
 	my $webusers_file = shift;
 
@@ -2604,14 +2649,17 @@ sub webauth_access_allowed {
 		return (1==0);
 	}
 
+	# just check if _any_ list can be accessed, if $listname is ''
+	$listname = "[^:]+" if ($listname eq '');
+
 	# TODO: check, why "directly after creating a new list" this does not
 	# work without the "m" switch for the regexp - very weird!
-	# the same goes for webauth_create_allowed
+	# the same goes for webauth_create_list
 	# maybe the creating action changed some file access defaults?
 	while(<USERS>) {
 		if (/^($listname|ALL):/im) {
 			# the following line should be synchronized with the
-			# webauth_create_allowed sub
+			# webauth_create_list sub
 			if (/^[^:]*:(|.*[\s,])($LOGIN_NAME|ALL)(,|\s|$)/m) {
 				close USERS;
 				return (0==0);
@@ -2624,7 +2672,7 @@ sub webauth_access_allowed {
 
 # ---------------------------------------------------------------------------
 
-sub webauth_create_allowed {
+sub webauth_create_list {
 	my $webusers_file = shift;
 
 
