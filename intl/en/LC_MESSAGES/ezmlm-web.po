@@ -613,6 +613,26 @@ msgstr ""
 msgid "Sign outgoing messages with the list's key"
 msgstr "Sign outgoing messages with the list's key"
 
+#: Lang.Options.gpgezmlm_requiresigs
+msgid "Accept only incoming messages with signatures"
+msgstr "Accept only incoming messages with signatures"
+
+#: Lang.Options.gpgezmlm_allowkeysubmission
+msgid "Allow submitting a key in the subscription confirmation mail"
+msgstr "Allow submitting a key in the subscription confirmation mail"
+
+#: Lang.Options.gpgezmlm_encrypttoall
+msgid ""
+"Encrypt the message to all subscribers within one mail instead of sending a "
+"single mail for each subscriber"
+msgstr ""
+"Encrypt the message to all subscribers within one mail instead of sending a "
+"single mail for each subscriber"
+
+#: Lang.Options.gpgezmlm_verifiedkeyreq
+msgid "Use only trusted keys"
+msgstr "Use only trusted keys"
+
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
 msgstr "Access to the archive is granted for"

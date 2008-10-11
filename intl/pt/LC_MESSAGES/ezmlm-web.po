@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-09-28 01:09+0200\n"
+"POT-Creation-Date: 2008-10-12 01:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -774,6 +774,24 @@ msgstr ""
 #, fuzzy
 msgid "Sign outgoing messages with the list's key"
 msgstr "Assinar mensagens enviadas com a chave da lista"
+
+#: Lang.Options.gpgezmlm_requiresigs
+msgid "Accept only incoming messages with signatures"
+msgstr ""
+
+#: Lang.Options.gpgezmlm_allowkeysubmission
+msgid "Allow submitting a key in the subscription confirmation mail"
+msgstr ""
+
+#: Lang.Options.gpgezmlm_encrypttoall
+msgid ""
+"Encrypt the message to all subscribers within one mail instead of sending a "
+"single mail for each subscriber"
+msgstr ""
+
+#: Lang.Options.gpgezmlm_verifiedkeyreq
+msgid "Use only trusted keys"
+msgstr ""
 
 #: Lang.Selections.archive
 #, fuzzy
