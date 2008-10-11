@@ -136,6 +136,7 @@ UI	{
 				PlainWithoutKey	= gpgezmlm_plainwithoutkey
 				RequireSigs	= gpgezmlm_requiresigs
 				AllowKeySubmission	= gpgezmlm_allowkeysubmission
+				EncryptToAll	= gpgezmlm_encrypttoall
 			  }
 
 			Processing {
