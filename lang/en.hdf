@@ -184,6 +184,7 @@ Lang {
 		gpgezmlm_requiresigs	= Accept only incoming messages with signatures
 		gpgezmlm_allowkeysubmission	= Allow submitting a key in the subscription confirmation mail
 		gpgezmlm_encrypttoall	= Encrypt the message to all subscribers within one mail instead of sending a single mail for each subscriber
+		gpgezmlm_verifiedkeyreq = Use only trusted keys
 	  }
 	
 
