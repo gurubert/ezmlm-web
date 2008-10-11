@@ -134,6 +134,7 @@ UI	{
 			GpgEzmlmOptions {
 				SignMessages	= gpgezmlm_signmessages
 				PlainWithoutKey	= gpgezmlm_plainwithoutkey
+				RequireSigs	= gpgezmlm_requiresigs
 			  }
 
 			Processing {
