@@ -121,6 +121,7 @@ UI	{
 				SignMessages	= gpgezmlm_signmessages
 				PlainWithoutKey	= gpgezmlm_nokeynocrypt
 				RequireSigs	= gpgezmlm_requiresigs
+				AllowKeySubmission	= gpgezmlm_allowkeysubmission
 			  }
 
 			Processing {

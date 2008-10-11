@@ -182,6 +182,7 @@ Lang {
 		gpgezmlm_nokeynocrypt	= Send a warning instead of the original content to subscribers without a key
 		gpgezmlm_signmessages	= Sign outgoing messages with the list's key
 		gpgezmlm_requiresigs	= Accept only incoming messages with signatures
+		gpgezmlm_allowkeysubmission	= Allow submitting a key in the subscription confirmation mail
 	  }
 	
 

@@ -94,6 +94,7 @@ template/config_options/gnupg_keycomment.cs -text
 template/config_options/gnupg_keyexpires.cs -text
 template/config_options/gnupg_keyname.cs -text
 template/config_options/gnupg_keysize.cs -text
+template/config_options/gpgezmlm_allowkeysubmission.cs -text
 template/config_options/gpgezmlm_nokeynocrypt.cs -text
 template/config_options/gpgezmlm_requiresigs.cs -text
 template/config_options/gpgezmlm_signmessages.cs -text
