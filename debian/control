@@ -3,7 +3,8 @@ Section: admin
 Priority: extra
 Maintainer: Lars Kruse <devel@sumpfralle.de>
 Build-Depends: debhelper (>>3.0.0), gcc (>= 2.95), dpatch
-Standards-Version: 3.7.2
+Standards-Version: 3.8.0
+Homepage: https://systemausfall.org/toolforge/ezmlm-web
 
 Package: ezmlm-web
 Architecture: any
@@ -18,7 +19,6 @@ Description: Web interface for ezmlm-idx mailing list administration
  debian distribution:
   * qmail - http://cr.yp.to/qmail.html
   * ezmlm-idx - http://ezmlm.org/
-  * clearsilver for perl (>= 0.10.2) - http://www.clearsilver.net/downloads/
   * Mail::Ezmlm perl module via cpan or as a debian package from
     https://systemausfall.org/toolforge/debian
 

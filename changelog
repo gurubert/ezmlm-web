@@ -1,8 +1,7 @@
-Version 3.3rc1 - 09/30/02008
+Version 3.3 - 10/12/02008
  * add gnupg keyring management
  * add gpg-ezmlm support - experimental (Closes: #42)
  * fix bug for installations without 'webusers' file (Closes: #51)
- * added Spanish translation contributed by CAPSiDE
  * improve parsing of subscription log (Closes: #43)
  * add posting model for moderated subscriber-only lists (Closes: #49)
  * fix a bug in the authorization code regarding lower/uppercase (Closes: #53)
@@ -10,6 +9,9 @@ Version 3.3rc1 - 09/30/02008
  * hide domains without accessible lists for improved privacy (Closes: #46)
  * fixed ambiguity of MAIL_ADDRESS_PREFIX for virtualdomain (Closes: #45)
  * relax possible characters in a list path (Closes: #48)
+ * added Spanish translation contributed by CAPSiDE
+ * added Russian translation contributed by Anton Ponkratov
+ * added Japanese translation contributed by kinneko
 
 Version 3.2 - 08/15/02007
  * support for multi-domain setups (multiple list directories)

@@ -13,14 +13,15 @@ Contents
   II.   Requirements
  III.   Multi-level list access
   IV.   Multilingual interface
-   V.   Bugs && Bug Reports
-  VI.   Acknowledgements
- VII.   Availability
+   V.   Encryption support
+  VI.   Bugs && Bug Reports
+ VII.   Acknowledgements
+VIII.   Availability
 
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
 ==================
-ezmlm-web - version 3.2 - 04/14/02006
+ezmlm-web - version 3.3 - 12/10/02008
 
 Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
 Copyright (C) 02005-02007, Lars Kruse, All Rights Reserved.
@@ -131,7 +132,7 @@ manpage.
 
 
 IV. Multilingual interface
-=======================
+==========================
 One of the great new features since version 2.0 is that it is essentially
 language independant. All of the fixed strings, help, etc is defined in the
 files of the lang directory. Of course you can change them or create a new
@@ -152,8 +153,15 @@ Please visit the translation center at http://translate.systemausfall.org
 to contribute some translations for your native language. Thanks!
 
 
-V. Bugs && Bug Reports
-======================
+V. Encryption support
+=====================
+
+ezmlm-web supports encrypted mailinglists since v3.3.
+See README.crypto for details.
+
+
+VI. Bugs && Bug Reports
+=======================
 I don't know of any bugs ...
 Ezmlm-web has been tested reasonably well, but not exhaustively. I know it
 works on FreeBSD 4.0-STABLE, FreeBSD 3.4-RELEASE, RedHat 5.1, Redhat 6.0 and
@@ -168,8 +176,8 @@ Or subscribe to the ezmlm-web mailinglist:
 	ezmlm-web-subscribe@lists.systemausfall.org
 
 
-VI. Acknowledgements
-====================
+VII. Acknowledgements
+=====================
 *  Guy Antony Halse (guy-ezmlm@rucus.ru.ac.za) - he created ezmlm-web
    and maintained it till 02005 
 *  Keith Burdis (keith@rucus.ru.ac.za) - For constantly bugging me (Guy) and
@@ -197,9 +205,10 @@ VI. Acknowledgements
 *  Hans F. Nordhaug - fixed MANIFEST file and reported typos
 *  Jose Luis Martinez - various code improvements; added the Spanish translation
 *  Anton Ponkratov - added the Russian translation
+*  kinnko - added the Japanese translation
 
 
-VII. Availability
+VIII. Availability
 =================
 More information on ezmlm-web and developments to ezmlm-web can be found at:
 https://systemausfall.org/toolforge/ezmlm-web/
@@ -209,6 +218,9 @@ https://svn.systemausfall.org/svn/ezmlm-web/
 
 The (inofficial) debian repository containing ezmlm-web is at:
 http://systemausfall.org/toolforge/debian/
+
+The translation web interface (powered by Pootle) is at:
+http://translate.systemausfall.org
 
 The website of Guy Antony Halse (the original author of ezmlm-web) is still at:
 http://rucus.ru.ac.za/~guy/ezmlm/

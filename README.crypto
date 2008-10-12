@@ -12,13 +12,12 @@ Content:
 
 1) Requirements
 	To use encrypted mailing lists, you need to install gpg-ezmlm (see
-	http://www.synacklabs.net/projects/crypt-ml/). It is essential to use
-	at least version 0.3.4.
+	http://www.synacklabs.net/projects/crypt-ml/).
 	gpg-ezmlm will handle your incoming and outgoing mails. It does not
 	support all the features of ezmlm-idx, but it should suffice for the
 	specialized needs of encrypted communication for small groups.
 
-	Install the perl module Mail::Ezmlm::Gpg to access gpg-ezmlm. You can
+	Install the perl module Mail::Ezmlm (>=0.08) to access gpg-ezmlm. You can
 	downloaded it from 
 	https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm-Gpg.
 
@@ -33,30 +32,16 @@ Content:
 		make test
 		make install
 
-	See INSTALL in the Mail::Ezmlm::Gpg module
-	(https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm-Gpg)
+	See INSTALL in the Mail::Ezmlm module
+	(https://systemausfall.org/toolforge/ezmlm-web/download/Ezmlm)
 	for details on how to install it.
 
 
 3) Setup of ezmlm-web
-	Support for encrypted mailing lists can be turned on by copying the
-	template configuration file (examples/ezmlmwebrc.gnupg.dist) to
-	the directory, where you did put your ezmlmwebrc file (omit the ".dist"
-	suffix).
-	ezmlm-web will just check, if a file suffixed with ".gnupg" exists
-	besides ezmlmwebrc.
-
-	To support encrypted mailing lists, the following lines in your
-	ezmlmwebrc.gnupg file are necessary:
-		use Mail::Ezmlm::Gpg;
-		GPG_SUPPRT = yes;
-	
-	The documented example of the ezmlmwebrc.gnupg file in the examples
-	directory is helpful.
-
+	Support for encrypted mailing lists can be enabled by setting the
+	ENCRYPTION_SUPPORT configuration setting in ezmlmwebrc to "1".
 
 4) Notes
-	As soon as you installed all the necessary programs and after you did put
-	the ezmlmwebrc.gnupg to the right location, you will find a new link in the
-	navigation bar of ezmlm-web named "Encryption".
+	As soon as you installed all the necessary programs you will find a new
+	link in the navigation bar of ezmlm-web named "Encryption".
 
