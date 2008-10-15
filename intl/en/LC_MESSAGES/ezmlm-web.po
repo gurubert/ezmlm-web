@@ -498,6 +498,16 @@ msgstr ""
 msgid "The key was successfully imported."
 msgstr "The key was successfully imported."
 
+#: Lang.SuccessMessage.GnupgGenerateKey
+msgid "The key was created successfully."
+msgstr "The key was created successfully."
+
+#: Lang.SuccessMessage.GnupgGenerateKeyInBackground
+msgid ""
+"The key is created in the background. It will be visible in a few minutes."
+msgstr ""
+"The key is created in the background. It will be visible in a few minutes."
+
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
 msgstr "Encryption is now enabled for this list."

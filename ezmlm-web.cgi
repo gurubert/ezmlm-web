@@ -33,6 +33,7 @@ use MIME::QuotedPrint;
 
 # optional modules - they will be loaded later if they are available
 #Encode
+#POSIX
 #Mail::Ezmlm::GpgEzmlm
 #Mail::Ezmlm::GpgKeyRing
 #Mail::Address OR Email::Address
@@ -70,7 +71,7 @@ $UID = $EUID;
 $GID = $EGID;
 
 my $VERSION;
-$VERSION = '3.3~rc1';
+$VERSION = '3.3.1';
 
 my $q = new CGI;
 $q->import_names('Q');
@@ -106,22 +107,11 @@ use vars qw[$DEFAULT_INTERFACE_TYPE];
 use vars qw[$ENCRYPTION_SUPPORT $GPG_KEYRING_DEFAULT_LOCATION];
 # settings for multi-domain setups
 use vars qw[%DOMAINS $CURRENT_DOMAIN];
-# cached data
-use vars qw[%CACHED_DATA];
-# available features
-use vars qw[%FEATURES];
 
 # some deprecated configuration settings - they have to be registered
 # otherwise old configuration files would break
 use vars qw[$HTML_CSS_FILE];	# replaced by HTML_CSS_COMMON since v3.2
 
-
-# "pagedata" contains the hdf tree for clearsilver
-# "pagename" refers to the template file that should be used
-# "ui_template" is one of "basic", "normal" and "expert"
-use vars qw[$pagedata $pagename];
-use vars qw[$error $customError $warning $customWarning $success];
-use vars qw[$ui_template $LOGIN_NAME];
 
 # Get user configuration stuff
 my $config_file;
@@ -146,6 +136,22 @@ unless (my $return = do $config_file) {
 		# the last statement of the config file return False -> this is ok
 	}
 }
+
+
+# define some more variables, that may not be manipulated via the config
+# file
+# "pagedata" contains the hdf tree for clearsilver
+# "pagename" refers to the template file that should be used
+# "ui_template" is one of "basic", "normal" and "expert"
+use vars qw[$pagedata $pagename];
+use vars qw[$error $customError $warning $customWarning $success];
+use vars qw[$ui_template $LOGIN_NAME];
+use vars qw[$posix_enabled $child_return];
+
+# cached data
+use vars qw[%CACHED_DATA];
+# available features
+use vars qw[%FEATURES];
 
 
 ####### validate configuration and apply some default settings ##########
@@ -286,6 +292,9 @@ unless (defined($MAIL_ADDRESS_PREFIX)) {
 
 # get the current login name advertised to the webserver (if it is defined)
 $LOGIN_NAME = lc($ENV{'REMOTE_USER'});
+
+# check if the POSIX module is available
+$posix_enabled = &safely_import_module("POSIX");
 
 
 ###################### process a request ########################
@@ -493,7 +502,10 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 		if (($subset =~ /^[\w]*$/)
 				&& (-e "$TEMPLATE_DIR/gnupg_$subset" . ".cs")) {
 			if ($action eq 'gnupg_do') {
-				$success = 'UpdateGnupg' if (&manage_gnupg_keys($list));
+				if (&manage_gnupg_keys($list)) {
+					# some functions may set 'success' on their own
+					$success = 'UpdateGnupg' unless $success;
+				}
 			} else {
 				# warnings are defined in the respective subs
 				$pagename = 'gnupg_' . $subset;
@@ -2104,10 +2116,21 @@ sub gnupg_import_key {
 
 # ------------------------------------------------------------------------
 
+# cleanup child processes, that are finished
+sub reap_child {
+	# we may not overwrite the current error setting
+	local $!;
+	wait();
+	$child_return = $?;
+}
+
+# ------------------------------------------------------------------------
+
 sub gnupg_generate_key {
 
 	my $list = shift;
 	my ($keyring, $key_name, $key_comment, $key_size, $key_expires);
+	my ($child_pid);
 
 	$keyring = get_keyring($list);
 
@@ -2150,13 +2173,68 @@ sub gnupg_generate_key {
 		return (1==0);
 	}
 
-	if ($keyring->generate_private_key($key_name, $key_comment,
-			&get_listaddress($list), $key_size, $key_expires)) {
-		$pagename = 'gnupg_secret';
-		return (0==0);
+	# do the key generation - preferably in the background
+	if ($posix_enabled) {
+		# we can try to put the key generation into the background
+		$child_return = 0;
+		# we need to cleanup zombie processes
+		local $SIG{CHLD} = \&reap_child;
+		$child_pid = POSIX::fork();
+		if (!defined($child_pid)) {
+			# forking failed
+			warn "[ezmlm-web] failed to fork process for key generation: $!";
+			$error = 'GnupgGenerateKey';
+			return (0==1);
+		} elsif ($child_pid == 0) {
+			# this is the child process
+			# we will disconnect from the parent process and call gpg
+			# the following code is taken from "man perlipc"
+			chdir('/') or die "Can't chdir to /: $!";
+			open(STDIN, '/dev/null') or die "Can't read /dev/null: $!";
+			open(STDOUT, '>/dev/null') or die "Can't write to /dev/null: $!";
+			# the child continues ...
+			POSIX::setsid() or die "Can't start a new session: $!";
+			open(STDERR, '>&STDOUT') or die "Can't dup stdout: $!";
+			# now we are completely disconnected from the parent process
+			if ($keyring->generate_private_key($key_name, $key_comment,
+					&get_listaddress($list), $key_size, $key_expires)) {
+				# the child process finished its job
+				# avoid to call destructors and so on - just use "_exit" instead
+				# of "exit".
+				POSIX::_exit(0);
+			} else {
+				# report an eror back
+				POSIX::_exit(1);
+			}
+		} else {
+			# this is the parent process - we will wait for the child for about
+			# five seconds. If it still did not return an error, then the key
+			# generation seems to be running without problems.
+			sleep 5;
+			# check if the child process is still alive
+			if ($child_return == 0) {
+				# the child did return an error - it seems to run successfully
+				$pagename = 'gnupg_secret';
+				$success = 'GnupgGenerateKeyInBackground';
+				return (0==0);
+			} else {
+				# the child died with an error
+				$error = 'GnupgGenerateKey';
+				return (0==1);
+			}
+		}
 	} else {
-		$error = 'GnupgGenerateKey';
-		return (0==1);
+		# no POSIX module available - thus we will run the key generation
+		# directly. This will most likely block the web interface for some time.
+		if ($keyring->generate_private_key($key_name, $key_comment,
+				&get_listaddress($list), $key_size, $key_expires)) {
+			$pagename = 'gnupg_secret';
+			$success = 'GnupgGenerateKey';
+			return (0==0);
+		} else {
+			$error = 'GnupgGenerateKey';
+			return (0==1);
+		}
 	}
 }
 

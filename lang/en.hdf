@@ -150,6 +150,8 @@ Lang {
 		SaveFile	= The file was saved.
 		ResetFile	= The customized text file was successfully removed. From now on, the system-wide default text file will be used instead of it.
 		GnupgKeyImport	= The key was successfully imported.
+		GnupgGenerateKey	= The key was created successfully.
+		GnupgGenerateKeyInBackground	= The key is created in the background. It will be visible in a few minutes.
 		GpgEzmlmConvertEnable	= Encryption is now enabled for this list.
 		GpgEzmlmConvertDisable	= Encryption is now disabled for this list.
 	  }

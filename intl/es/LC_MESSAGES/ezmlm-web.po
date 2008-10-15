@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-12 01:24+0200\n"
+"POT-Creation-Date: 2008-10-14 02:34+0200\n"
 "PO-Revision-Date: 2008-09-13 19:51+0200\n"
 "Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: <>\n"
@@ -509,6 +509,15 @@ msgstr ""
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
 msgstr "La clave se importó con éxito."
+
+#: Lang.SuccessMessage.GnupgGenerateKey
+msgid "The key was created successfully."
+msgstr ""
+
+#: Lang.SuccessMessage.GnupgGenerateKeyInBackground
+msgid ""
+"The key is created in the background. It will be visible in a few minutes."
+msgstr ""
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
