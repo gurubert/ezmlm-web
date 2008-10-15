@@ -33,7 +33,12 @@ OVERVIEW:
 
 1b)	debian package
 	This is the (by far) most convenient way to install ezmlm-web.
-	Read debian/README.Debian for details.
+	Add the following line to your /etc/apt/sources.list file:
+		deb http://systemausfall.org/toolforge/debian/ testing main contrib
+	Now you can install it:
+		aptitude update
+		aptitude install ezmlm-web
+
 	(debian users may stop reading here)
 
 
