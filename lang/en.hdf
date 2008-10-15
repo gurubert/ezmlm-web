@@ -175,7 +175,7 @@ Lang {
 		q	= Process mailman-style requests (to local-request@domain)
 		r	= Enable remote administration of the list (for moderators)
 		s	= Subscriptions to the main list and the digest list will be moderated
-		t	= Add a trailing text to every message
+		t	= Add a trailing text to every (plaintext) message
 		u	= Only subscribed users may post messages (for moderated lists: always accept subscribers' postings)
 		w	= Remove the ezmlm-warn invocations from the list setup (rarely useful)
 		x	= Reset the list of to be stripped mime types to its default value

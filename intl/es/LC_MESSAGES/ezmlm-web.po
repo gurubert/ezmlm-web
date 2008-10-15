@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web 3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-14 02:34+0200\n"
+"POT-Creation-Date: 2008-10-15 23:09+0200\n"
 "PO-Revision-Date: 2008-09-13 19:51+0200\n"
 "Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
 "Language-Team: <>\n"
@@ -602,7 +602,8 @@ msgstr ""
 "Suscripciones a la lista principal y a la lista resumida serán moderados"
 
 #: Lang.Options.t
-msgid "Add a trailing text to every message"
+#, fuzzy
+msgid "Add a trailing text to every (plaintext) message"
 msgstr "Añadir un texto al final de cada mensaje"
 
 #: Lang.Options.u

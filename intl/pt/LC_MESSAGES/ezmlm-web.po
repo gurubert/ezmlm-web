@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-14 02:35+0200\n"
+"POT-Creation-Date: 2008-10-15 23:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -742,7 +742,7 @@ msgstr "Inscrições para a lista principal e lista em modo coleção são moder
 
 #: Lang.Options.t
 #, fuzzy
-msgid "Add a trailing text to every message"
+msgid "Add a trailing text to every (plaintext) message"
 msgstr "Adicionar um rodapé de informações em todas as mensagens"
 
 #: Lang.Options.u

@@ -586,8 +586,9 @@ msgid "Subscriptions to the main list and the digest list will be moderated"
 msgstr "Subscriptions to the main list and the digest list will be moderated"
 
 #: Lang.Options.t
-msgid "Add a trailing text to every message"
-msgstr "Add a trailing text to every message"
+#, fuzzy
+msgid "Add a trailing text to every (plaintext) message"
+msgstr "Add a trailing text to every (plaintext) message"
 
 #: Lang.Options.u
 msgid ""
