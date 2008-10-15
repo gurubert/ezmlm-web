@@ -1,6 +1,6 @@
 #!/usr/bin/perl 
 #===========================================================================
-# ezmlm-web.cgi - version 3.3
+# ezmlm-web.cgi - version 3.3.1
 # $Id$
 # 
 # This file is part of ezmlm-web.

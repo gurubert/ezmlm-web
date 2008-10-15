@@ -1,7 +1,7 @@
 ezmlm-web is distributed under the following BSD-style license:
 
 Copyright (C) 1999/2000, Guy Antony Halse
-Copyright (C) 2005-2007, Lars Kruse
+Copyright (C) 2005-2008, Lars Kruse
 All Rights Reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -15,7 +15,7 @@ Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.
 
-Neither name Guy Antony Halse nor the names of any contributors
+Neither name Guy Antony Halse, Lars Kruse nor the names of any contributors
 may be used to endorse or promote products derived from this software
 without specific prior written permission.
 

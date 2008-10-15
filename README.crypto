@@ -18,7 +18,7 @@ Content:
 	specialized needs of encrypted communication for small groups.
 
 	Install the perl module Mail::Ezmlm (>=0.08) to access gpg-ezmlm. You can
-	downloaded it from 
+	download it from 
 	https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm-Gpg.
 
 	Of course, you also need gnupg (it is required by gpg-ezmlm, too).

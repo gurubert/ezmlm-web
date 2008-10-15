@@ -1,6 +1,6 @@
-=================
-| ezmlm-web-3.3 |
-=================
+===================
+| ezmlm-web-3.3.1 |
+===================
 
 $Id$
 
@@ -21,10 +21,10 @@ VIII.   Availability
 
 I. Copyright Stuff - essentially the FreeBSD licence ...
 ==================
-ezmlm-web - version 3.3 - 12/10/02008
+ezmlm-web - version 3.3.1 - 14/10/02008
 
 Copyright (C) 1998, Guy Antony Halse, All Rights Reserved.
-Copyright (C) 02005-02007, Lars Kruse, All Rights Reserved.
+Copyright (C) 02005-02008, Lars Kruse, All Rights Reserved.
 
 Please send bug reports and comments to ezmlm-web@sumpfralle.de
 
@@ -205,7 +205,7 @@ VII. Acknowledgements
 *  Hans F. Nordhaug - fixed MANIFEST file and reported typos
 *  Jose Luis Martinez - various code improvements; added the Spanish translation
 *  Anton Ponkratov - added the Russian translation
-*  kinnko - added the Japanese translation
+*  kinneko - added the Japanese translation
 
 
 VIII. Availability
