@@ -1617,6 +1617,10 @@ sub delete_list {
 		}
 		warn "List '" . $list->thislist() . "' deleted";
 	}
+
+	# remove the authorization line from the webusers file
+	webauth_remove_list($listname);
+
 	return (0==0);
 }
 
@@ -2532,6 +2536,7 @@ sub is_option_in_selections {
 
 sub update_webusers {
 	# replace existing webusers-line or add a new one
+	# empty "webusers_input" results in the removal of the line
 	my $listname = shift;
 	my $webusers_input = shift;
 
@@ -2578,9 +2583,13 @@ sub update_webusers {
 	}
 	while(<TMP>) {
 		if ($_ =~ m/^$listname\s*:/i) {
-			print WU $listname . ': ' . $webusers_input . "\n"
-					if ($matched == 0);
-			$matched = 1;
+			if ($matched == 0) {
+				# print the new permission only if it is non-empty
+				# this allows to reuse the code for list removal
+				print WU $listname . ': ' . $webusers_input . "\n"
+					if ($webusers_input);
+				$matched = 1;
+			}
 		} else {
 			print WU $_;
 		}
@@ -2787,6 +2796,15 @@ sub webauth_create_list {
 	}
 	close USERS;
 	return (1==0);
+}
+
+# ---------------------------------------------------------------------------
+
+sub webauth_remove_list {
+	my $listname = shift;
+
+	# call "update_webusers" with an empty string -> removal
+	return (update_webusers($listname, ''));
 }
 
 # ---------------------------------------------------------------------------
