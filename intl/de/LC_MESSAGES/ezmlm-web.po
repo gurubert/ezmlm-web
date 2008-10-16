@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:09+0200\n"
-"PO-Revision-Date: 2008-10-12 01:40+0200\n"
+"PO-Revision-Date: 2008-10-16 02:58+0200\n"
 "Last-Translator: Lars Kruse <lars@systemausfall.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -514,12 +514,14 @@ msgstr "Der Schlüssel wurde importiert."
 
 #: Lang.SuccessMessage.GnupgGenerateKey
 msgid "The key was created successfully."
-msgstr ""
+msgstr "Der Schlüssel wurde erfolgreich erstellt."
 
 #: Lang.SuccessMessage.GnupgGenerateKeyInBackground
 msgid ""
 "The key is created in the background. It will be visible in a few minutes."
 msgstr ""
+"Der Schlüssel wird im Hintergrund generiert. Er wird in wenigen Minuten "
+"sichtbar werden."
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
@@ -607,9 +609,8 @@ msgstr ""
 "Die Einschreibung in die Liste und für die Zusammenfassungen wird moderiert"
 
 #: Lang.Options.t
-#, fuzzy
 msgid "Add a trailing text to every (plaintext) message"
-msgstr "Hänge eine Signatur an jede versandte Nachricht"
+msgstr "Hänge eine Signatur an jede versandte (einfache Text-) Nachricht"
 
 #: Lang.Options.u
 msgid ""

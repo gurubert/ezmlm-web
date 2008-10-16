@@ -1,17 +1,18 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2008-10-16 00:17+0200\n"
+"Last-Translator: clavdia  <clavdia@systemausfall.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3);\n"
+"X-Generator: Pootle 1.2.0-rc1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -150,9 +151,8 @@ msgid "Message processing"
 msgstr "Obdelava sporočil"
 
 #: Lang.Title.ConfigAll
-#, fuzzy
 msgid "Complete configuration"
-msgstr "Ažuriraj konfiguracijo"
+msgstr "Popolna konfiguracija"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
@@ -248,7 +248,7 @@ msgstr "Odstrani prikrojene datoteke"
 
 #: Lang.Buttons.InterfaceSet
 msgid "Apply"
-msgstr ""
+msgstr "Potrdi"
 
 #: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
@@ -513,12 +513,12 @@ msgstr "Ključ je bil uspešno uvožen"
 
 #: Lang.SuccessMessage.GnupgGenerateKey
 msgid "The key was created successfully."
-msgstr ""
+msgstr "Ključ je bil uspešno narejen"
 
 #: Lang.SuccessMessage.GnupgGenerateKeyInBackground
 msgid ""
 "The key is created in the background. It will be visible in a few minutes."
-msgstr ""
+msgstr "Ključ je ustvarjen v ozadju in bo viden v nekaj minutah "
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
@@ -538,7 +538,7 @@ msgstr "Samo moderatorji imajo dostop do arhiva"
 
 #: Lang.Options.d
 msgid "Activate the digest list"
-msgstr "Aktiviraj _____ seznam "
+msgstr "Aktiviraj vhodni  seznam "
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
@@ -591,7 +591,7 @@ msgstr "Dovoli prijavo in arhiv vzpostavitev - za vse "
 
 #: Lang.Options.q
 msgid "Process mailman-style requests (to local-request@domain)"
-msgstr ""
+msgstr "procesiranje mailman-style zahteve (lokalno-request@domain)"
 
 #: Lang.Options.r
 msgid "Enable remote administration of the list (for moderators)"
@@ -602,9 +602,8 @@ msgid "Subscriptions to the main list and the digest list will be moderated"
 msgstr "Prijava v glavni seznam in povzeti seznam bosta moderirana."
 
 #: Lang.Options.t
-#, fuzzy
 msgid "Add a trailing text to every (plaintext) message"
-msgstr "Dodaj trailing tekst vsakemu sporočilu"
+msgstr "Dodaj  podtekst  vsakemu tekstovnemu sporočilu"
 
 #: Lang.Options.u
 msgid ""
@@ -621,7 +620,7 @@ msgstr ""
 
 #: Lang.Options.x
 msgid "Reset the list of to be stripped mime types to its default value"
-msgstr ""
+msgstr "ponastavi seznam: odstrani MIME types na privzete vrednosti"
 
 #: Lang.Options.y
 msgid "Request a confirmation mail for every posted message"
@@ -634,7 +633,7 @@ msgstr "Preusmeri odgovore na seznam"
 #: Lang.Options.gpgezmlm_nokeynocrypt
 msgid ""
 "Send a warning instead of the original content to subscribers without a key"
-msgstr ""
+msgstr "pošlji opozorilol namesto prvotnega sporočila naročnikom brez ključa"
 
 #: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
@@ -642,30 +641,31 @@ msgstr "Podpiši izhodna sporočila s ključem seznama"
 
 #: Lang.Options.gpgezmlm_requiresigs
 msgid "Accept only incoming messages with signatures"
-msgstr ""
+msgstr "Sprejmi le podpisana vhodna sporočila"
 
 #: Lang.Options.gpgezmlm_allowkeysubmission
 msgid "Allow submitting a key in the subscription confirmation mail"
-msgstr ""
+msgstr "Dovoli predložitev ključa ob pošiljanju potrditvene pošte naročniku"
 
 #: Lang.Options.gpgezmlm_encrypttoall
 msgid ""
 "Encrypt the message to all subscribers within one mail instead of sending a "
 "single mail for each subscriber"
 msgstr ""
+"Kodiraj sporočilo s pošiljanjem pisma vsem naročnikom hkrati, namesto "
+"pošiljanja pisma vsakemu naročniku posebej"
 
 #: Lang.Options.gpgezmlm_verifiedkeyreq
 msgid "Use only trusted keys"
-msgstr ""
+msgstr "Uporabi le zaupanja vredne ključe"
 
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
-msgstr "Dostop do arhiva je prepovedan za"
+msgstr "Dostop do arhiva je odobren za"
 
 #: Lang.Selections.archive.bg
-#, fuzzy
 msgid "administrators"
-msgstr "administracija"
+msgstr "administratorje"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -705,7 +705,7 @@ msgstr "je moderirana za vse"
 
 #: Lang.Selections.posting.mou
 msgid "moderated for subscribers; others are rejected"
-msgstr ""
+msgstr "je moderirana le za naročnike; ostali so zavrnjeni"
 
 #: Lang.Selections.posting.mOu
 msgid "allowed for subscribers and moderated for others"
@@ -724,9 +724,8 @@ msgid "Confirmation mails are required for"
 msgstr "Potrditveno sporočilo je zahtevano za"
 
 #: Lang.Selections.confirmation.J
-#, fuzzy
 msgid "unsubscription"
-msgstr "podpististe, ki niso prijavljeni"
+msgstr "odjavo"
 
 #: Lang.Settings.0
 msgid "Make the list a sublist of another list"
@@ -762,17 +761,15 @@ msgstr "Določi običajno pot podatkovni bazi za skrbnike na daljavo"
 
 #: Lang.Misc.HelpLink
 msgid "The manual page of ezmlm-idx"
-msgstr ""
+msgstr "Stran Uporabniškega priročnika za ezmlm-idx"
 
 #: Lang.Misc.Subscription
-#, fuzzy
 msgid "Subscription"
-msgstr "Podpis"
+msgstr "Prijava"
 
 #: Lang.Misc.Subscribers
-#, fuzzy
 msgid "subscribers"
-msgstr "naročniki"
+msgstr "Naročniki"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
@@ -800,11 +797,11 @@ msgstr "Filtriranje glave"
 
 #: Lang.Misc.HeaderRemove
 msgid "strip these header lines"
-msgstr ""
+msgstr "Odstrani vrstico za glavo"
 
 #: Lang.Misc.HeaderKeep
 msgid "keep only these header lines"
-msgstr ""
+msgstr "Obsrzi le to vrstico za glavo"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
@@ -840,9 +837,8 @@ msgid "The local part of the list name"
 msgstr "Lokalni del imena seznama"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
-#, fuzzy
 msgid "The host name of the list name"
-msgstr "Lokalni del imena seznama"
+msgstr "Ime gostitelja seznama imen"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
@@ -952,7 +948,7 @@ msgstr "Ni razpoložljivih javnih ključev"
 
 #: Lang.Misc.GnupgNoSecretKeys
 msgid "There are no secret keys available."
-msgstr "Edit Ni razpoložljivih skrivnih ključev"
+msgstr "Ni razpoložljivih skrivnih ključev"
 
 #: Lang.Misc.GnupgImportKey
 msgid "Import a new key from a file:"
@@ -1024,15 +1020,15 @@ msgstr "dodano"
 
 #: Lang.Misc.SubscribeActions.manual
 msgid "by admin"
-msgstr ""
+msgstr "s strani administratorja"
 
 #: Lang.Misc.SubscribeActions.probe
 msgid "delivery failed"
-msgstr ""
+msgstr "Dostava ni uspela"
 
 #: Lang.Misc.SubscribeActions.auto
 msgid "via mail"
-msgstr ""
+msgstr "po posti"
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
@@ -1246,9 +1242,8 @@ msgid "Posting rules"
 msgstr "Pravila objavljanja"
 
 #: Lang.Legend.ConfigSub
-#, fuzzy
 msgid "Subscription details"
-msgstr "Naročnikove možnosti"
+msgstr "Naročnikove podrobnosti"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
@@ -1288,7 +1283,7 @@ msgstr "Upravljanje \"blokiranih\" uporabnikov"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
-msgstr ""
+msgstr "Upravljanje povzetkov naročnikov"
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
@@ -1304,7 +1299,7 @@ msgstr "Uredi vsebino besedilne datoteke"
 
 #: Lang.Legend.TextFileReset
 msgid "Discard customized text"
-msgstr "Zavzi prikrojene tekste"
+msgstr "Zavrzi prikrojene tekste"
 
 #: Lang.Legend.TextFileInfo
 msgid "Useful placeholders"
@@ -1315,9 +1310,8 @@ msgid "Available lists"
 msgstr "Dostopni seznami"
 
 #: Lang.Legend.SubscribeLog
-#, fuzzy
 msgid "Events"
-msgstr "Dogodek"
+msgstr "Dogodki"
 
 #: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
@@ -1332,7 +1326,6 @@ msgid "Secret keys of this list"
 msgstr "Skriti ključi tega seznama"
 
 #: Lang.Legend.GnupgKeyImport
-#, fuzzy
 msgid "Import a key"
 msgstr "Uvozi ključ"
 
