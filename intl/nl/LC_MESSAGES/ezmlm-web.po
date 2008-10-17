@@ -1,16 +1,17 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2008-10-17 20:18+0200\n"
+"Last-Translator: albi nootje <albinootje@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.2-beta1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.0-rc1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -22,7 +23,7 @@ msgstr "Verwijder lijst"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Leden"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
@@ -38,7 +39,7 @@ msgstr ""
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "beheerders"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
@@ -54,7 +55,7 @@ msgstr ""
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "beheer"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
@@ -131,7 +132,7 @@ msgstr "Complete configuratie"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Lidmaatschap opties"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
@@ -155,7 +156,7 @@ msgstr "Complete configuratie"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Leden van deze lijst"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
@@ -171,7 +172,7 @@ msgstr ""
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Moderators van de mailinglijst"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
@@ -203,7 +204,7 @@ msgstr "Maak een nieuw sleutelpaar"
 
 #: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Versleutel instellingen"
 
 #: Lang.Buttons.Create
 msgid "Create list"
@@ -223,7 +224,7 @@ msgstr ""
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Toevoegen adres(sen)"
 
 #: Lang.Buttons.UpdateConfiguration
 #, fuzzy
@@ -232,7 +233,7 @@ msgstr "Complete configuratie"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Sleutelbos bijwerken"
 
 #: Lang.Buttons.EditFile
 #, fuzzy
@@ -241,7 +242,7 @@ msgstr "Bewerken bestand"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Bewaar bestand"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
@@ -253,27 +254,27 @@ msgstr ""
 
 #: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Omschakelen naar versleutelde mailinglijst"
 
 #: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Omschakelen naar een platte tekst mailinglijst"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Verwijder publieke sleutel(s)"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Verwijder geheime sleutel(s)"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Importeer sleutel"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Genereer sleutel paar"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
@@ -289,19 +290,19 @@ msgstr ""
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Fout: je hebt geen toestemming om dit te doen!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "De naam van dit bestand is ongeldig!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "De gekozen configuratie pagina is ongeldig!"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "De gekozen gnupg pagina is ongeldig!"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
@@ -309,27 +310,27 @@ msgstr ""
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "Verwijdering van de sleutel(s) is mislukt!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
-msgstr ""
+msgstr "Het genereren van een nieuwe sleutel is mislukt!"
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "Toevoegen van minstens een mail adres is mislukt!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Verwijdering van minstens een mail adres is mislukt!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "Aanmaken van nieuwe mailing lijst is mislukt!"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "Verwijdering van mailing lijst mislukt!"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
@@ -337,23 +338,23 @@ msgstr ""
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "Het bestand kon niet worden bewaard!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Er bestaat al een lijst met deze naam!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Er bestaat al een lijst met dit adres!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Een lijst met deze naam bestaat nog niet!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "Geen toestemming om de mailinglijst-folder te openen"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
@@ -369,51 +370,53 @@ msgstr ""
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "Verplaatsen .qmail bestanden niet mogelijk"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "Verwijdering lijst niet mogelijk"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "Verwijdering .qmail bestanden niet mogelijk"
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
-msgstr ""
+msgstr "Het up te loaden bestand moet een tekst bestand zijn"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
-msgstr ""
+msgstr "Kon webusers bestand niet bijwerken"
 
 #: Lang.WarningMessage.WebUsersRead
 msgid "Could not read the webusers file"
-msgstr ""
+msgstr "Kon webusers bestand niet lezen"
 
 #: Lang.WarningMessage.InvalidListName
 msgid "The name of the list contains invalid characters"
-msgstr ""
+msgstr "De naam van de lijst bevat ongeldige tekens"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
 msgstr ""
+"Deze lijstnaam mag niet gebruikt worden want het is gereserveerd voor intern "
+"gebruik"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
-msgstr ""
+msgstr "De naam van de lijst kan niet uit nul tekens bestaan"
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr ""
+msgstr "Deze lijst heeft geen leden"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
-msgstr ""
+msgstr "Het lokale deel van het adres van deze lijst is ongeldig"
 
 #: Lang.WarningMessage.RequiresIDX5
 msgid "This action requires ezmlm-idx v5.0 or higher."
-msgstr ""
+msgstr "Deze bewerking heeft ezmlm-idx v5.0 of hoger nodig"
 
 #: Lang.WarningMessage.ResetFileIsDefault
 msgid "There is no customized text file, that can be removed."
@@ -425,15 +428,15 @@ msgstr ""
 
 #: Lang.WarningMessage.LogFile
 msgid "Reading of log file failed."
-msgstr ""
+msgstr "Lezen log bestand mislukt."
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
-msgstr ""
+msgstr "Er was geen sleutel bestand geselecteerd om up te loaden!"
 
 #: Lang.WarningMessage.GnupgDelKey
 msgid "Removal of (at least) one key failed!"
-msgstr ""
+msgstr "Verwijdering van (ten minste) een sleutel mislukt!"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
@@ -441,7 +444,7 @@ msgstr ""
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "De naam van de sleutel mag niet uit nul tekens bestaan!"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
@@ -449,55 +452,55 @@ msgstr ""
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "De lengte van de sleutel is ongeldig!"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "Exporteren sleutel mislukt!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "Omzetten naar versleutelde lijst mislukt!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "Omzetten naar platte tekst lijst mislukt!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "Versleutelen van deze lijst was al in gebruik."
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "Versleutelen van deze lijst was al niet in gebruik."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "Adres toegevoegd aan de lijst."
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "Adres verwijderd van de lijst."
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "Aanmaken nieuwe mailing lijst is gelukt."
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "De mailing lijst is succesvol verwijderd."
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
-msgstr ""
+msgstr "Aanpassing configuratie van de mailing lijst was succesvol."
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
-msgstr ""
+msgstr "Verandering sleutelbos is gelukt."
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
-msgstr ""
+msgstr "Het bestand is bewaard."
 
 #: Lang.SuccessMessage.ResetFile
 msgid ""
@@ -507,11 +510,11 @@ msgstr ""
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
-msgstr ""
+msgstr "De sleutel was correct geimporteerd."
 
 #: Lang.SuccessMessage.GnupgGenerateKey
 msgid "The key was created successfully."
-msgstr ""
+msgstr "Aanmaken van de sleutel is gelukt."
 
 #: Lang.SuccessMessage.GnupgGenerateKeyInBackground
 msgid ""
@@ -520,11 +523,11 @@ msgstr ""
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
-msgstr ""
+msgstr "Versleutelen van deze lijst is nu geactiveerd."
 
 #: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
-msgstr ""
+msgstr "Versleutelen is nu buiten gebruik voor deze lijst."
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
@@ -536,7 +539,7 @@ msgstr ""
 
 #: Lang.Options.d
 msgid "Activate the digest list"
-msgstr ""
+msgstr "Activeer de digest lijst"
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
@@ -556,7 +559,7 @@ msgstr ""
 
 #: Lang.Options.j
 msgid "Unsubscribe does not require confirmation"
-msgstr ""
+msgstr "Bevestiging voor afmelden is niet nodig."
 
 #: Lang.Options.k
 msgid "Use deny list to prevent some users from posting"
@@ -645,7 +648,7 @@ msgstr ""
 
 #: Lang.Options.gpgezmlm_verifiedkeyreq
 msgid "Use only trusted keys"
-msgstr ""
+msgstr "Gebruik alleen vertrouwde sleutels"
 
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
@@ -661,7 +664,7 @@ msgstr ""
 
 #: Lang.Selections.archive.BG
 msgid "everyone"
-msgstr ""
+msgstr "iedereen"
 
 #: Lang.Selections.subscribe
 msgid "Public subscription is"
@@ -669,7 +672,7 @@ msgstr ""
 
 #: Lang.Selections.subscribe.pS
 msgid "open"
-msgstr ""
+msgstr "open"
 
 #: Lang.Selections.subscribe.ps
 msgid "moderated"
@@ -677,7 +680,7 @@ msgstr ""
 
 #: Lang.Selections.subscribe.P
 msgid "not allowed"
-msgstr ""
+msgstr "niet toegestaan"
 
 #: Lang.Selections.posting
 msgid "Posting is"
@@ -685,7 +688,7 @@ msgstr ""
 
 #: Lang.Selections.posting.MOU
 msgid "allowed for everyone"
-msgstr ""
+msgstr "toegestaan voor iedereen"
 
 #: Lang.Selections.posting.mOU
 msgid "moderated for everyone"
@@ -701,7 +704,7 @@ msgstr ""
 
 #: Lang.Selections.posting.MOu
 msgid "allowed for subscribers"
-msgstr ""
+msgstr "toegang voor leden"
 
 #: Lang.Selections.posting.moU
 msgid "allowed only for moderators"
@@ -759,7 +762,7 @@ msgstr "abonnement"
 
 #: Lang.Misc.Subscribers
 msgid "subscribers"
-msgstr ""
+msgstr "leden"
 
 #: Lang.Misc.RemoteAdmin
 msgid "Remote Admin"
@@ -767,11 +770,11 @@ msgstr ""
 
 #: Lang.Misc.ListName
 msgid "List Name"
-msgstr ""
+msgstr "Lijst Naam"
 
 #: Lang.Misc.ListAddress
 msgid "List Address"
-msgstr ""
+msgstr "Lijst Adres"
 
 #: Lang.Misc.ListOptions
 msgid "Basic List Options"
@@ -779,7 +782,7 @@ msgstr ""
 
 #: Lang.Misc.AllowedToEdit
 msgid "Users allowed to edit this list via web interface"
-msgstr ""
+msgstr "Gebruikers die via de web interface deze lijst mogen bewerken"
 
 #: Lang.Misc.HeaderFiltering
 msgid "Header filtering"
@@ -791,15 +794,15 @@ msgstr ""
 
 #: Lang.Misc.HeaderKeep
 msgid "keep only these header lines"
-msgstr ""
+msgstr "alleen deze header regels behouden"
 
 #: Lang.Misc.HeaderAdd
 msgid "Headers to add to all outgoing mail"
-msgstr ""
+msgstr "headers die aan alle uitgaande mail worden toegevoegd"
 
 #: Lang.Misc.MimeTypeExamples
 msgid "Show some example mime types"
-msgstr ""
+msgstr "Laat enkele mime types voorbeelden zien"
 
 #: Lang.Misc.MimeFiltering
 msgid "Mime type filtering (for multipart mails)"
@@ -811,23 +814,25 @@ msgstr ""
 
 #: Lang.Misc.MimeKeep
 msgid "keep only these in messages"
-msgstr ""
+msgstr "alleen deze behouden in berichten"
 
 #: Lang.Misc.MimeReject
 msgid "Messages containing any of these mime type will be rejected"
 msgstr ""
+"Berichten die welke dan ook van deze mime types bevatten worden niet "
+"geaccepteerd"
 
 #: Lang.Misc.EditFileInfo.CommonTags
 msgid "common tags"
-msgstr ""
+msgstr "gebruikelijke tags"
 
 #: Lang.Misc.EditFileInfo.ListNameLocal
 msgid "The local part of the list name"
-msgstr ""
+msgstr "Het lokale deel van deze lijst naam"
 
 #: Lang.Misc.EditFileInfo.ListNameHost
 msgid "The host name of the list name"
-msgstr ""
+msgstr "Het host naam deel van deze lijst naam"
 
 #: Lang.Misc.EditFileInfo.MessageNumber
 msgid "Number of the respective message"
@@ -835,7 +840,7 @@ msgstr ""
 
 #: Lang.Misc.EditFileInfo.SubAddress
 msgid "The subscription address"
-msgstr ""
+msgstr "Het abonneer adres"
 
 #: Lang.Misc.EditFileInfo.SubReplyAddress
 msgid "The address a subscriber must reply to"
@@ -843,7 +848,7 @@ msgstr ""
 
 #: Lang.Misc.EditFileInfo.AcceptanceAddress
 msgid "The acceptance address"
-msgstr ""
+msgstr "Het acceptatie adres"
 
 #: Lang.Misc.EditFileInfo.RejectionAddress
 msgid "The rejection address"
@@ -885,7 +890,7 @@ msgstr ""
 
 #: Lang.Misc.AddSubscriberAddress
 msgid "Add a new mail address:"
-msgstr ""
+msgstr "Voeg een nieuw mail adres toe:"
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"
@@ -893,7 +898,7 @@ msgstr ""
 
 #: Lang.Misc.FooterText
 msgid "a web interface for"
-msgstr ""
+msgstr "Een web interface voor"
 
 #: Lang.Misc.NoListsAvailable
 msgid "I could not find any accessible list for you."
@@ -901,19 +906,19 @@ msgstr ""
 
 #: Lang.Misc.ConfirmDelete
 msgid "Do you really want to remove this list completely?"
-msgstr ""
+msgstr "Weet je zeker dat je deze lijst compleet wilt verwijderen?"
 
 #: Lang.Misc.CustomizedFiles
 msgid "customized files"
-msgstr ""
+msgstr "Aangepaste bestanden"
 
 #: Lang.Misc.DefaultFiles
 msgid "default files"
-msgstr ""
+msgstr "standaard bestanden"
 
 #: Lang.Misc.ListLanguage
 msgid "Language of the list"
-msgstr ""
+msgstr "Taalkeuze voor de lijst"
 
 #: Lang.Misc.ListCharset
 msgid "Charset of the list"
@@ -928,27 +933,27 @@ msgstr ""
 
 #: Lang.Misc.GnupgNoPublicKeys
 msgid "There are no public keys available."
-msgstr ""
+msgstr "Er zijn geen publieke sleutels aanwezig."
 
 #: Lang.Misc.GnupgNoSecretKeys
 msgid "There are no secret keys available."
-msgstr ""
+msgstr "Er zijn geen geheime sleutels aanwezig."
 
 #: Lang.Misc.GnupgImportKey
 msgid "Import a new key from a file:"
-msgstr ""
+msgstr "Importeer een nieuwe sleutel uit een bestand:"
 
 #: Lang.Misc.GnupgKeyName
 msgid "Name of the key"
-msgstr ""
+msgstr "Naam van de sleutel"
 
 #: Lang.Misc.GnupgKeyComment
 msgid "Comment (optional)"
-msgstr ""
+msgstr "Commentaar (optioneel)"
 
 #: Lang.Misc.GnupgKeySize
 msgid "Length of the key (bytes)"
-msgstr ""
+msgstr "Lengte van de sleutel (bytes)"
 
 #: Lang.Misc.GnupgKeyExpires
 msgid "Expiration time (years)"
@@ -956,11 +961,11 @@ msgstr ""
 
 #: Lang.Misc.Never
 msgid "never"
-msgstr ""
+msgstr "nooit"
 
 #: Lang.Misc.NoDomainsAvailable
 msgid "No domains are available."
-msgstr ""
+msgstr "Er zijn geen domeinen beschikbaar."
 
 #: Lang.Misc.CopyLinesEnabled
 msgid "Add some lines of every original message to automatic replies"
@@ -968,7 +973,7 @@ msgstr ""
 
 #: Lang.Misc.CopyLinesNumber
 msgid "number of lines"
-msgstr ""
+msgstr "aantal regels"
 
 #: Lang.Misc.Interfaces.easy
 msgid "basic"
@@ -976,7 +981,7 @@ msgstr ""
 
 #: Lang.Misc.Interfaces.normal
 msgid "default"
-msgstr ""
+msgstr "standaard"
 
 #: Lang.Misc.Interfaces.expert
 msgid "expert"
@@ -984,7 +989,7 @@ msgstr ""
 
 #: Lang.Misc.MailAddress
 msgid "Mail address"
-msgstr ""
+msgstr "Mail adres"
 
 #: Lang.Misc.SubscribeAction
 msgid "Event"
@@ -992,15 +997,15 @@ msgstr ""
 
 #: Lang.Misc.SubscribeActionDetails
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: Lang.Misc.SubscribeActions.remove
 msgid "removed"
-msgstr ""
+msgstr "verwijderd"
 
 #: Lang.Misc.SubscribeActions.add
 msgid "added"
-msgstr ""
+msgstr "toegevoegd"
 
 #: Lang.Misc.SubscribeActions.manual
 msgid "by admin"
@@ -1016,11 +1021,11 @@ msgstr ""
 
 #: Lang.Misc.SubscribeActions.unknown
 msgid "unknown"
-msgstr ""
+msgstr "onbekend"
 
 #: Lang.Misc.Date
 msgid "Date"
-msgstr ""
+msgstr "Datum"
 
 #: Lang.Introduction.ConfigAdmin
 msgid ""
@@ -1178,7 +1183,7 @@ msgstr ""
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"
-msgstr ""
+msgstr "Algemene lijst instellingen"
 
 #: Lang.Legend.ConfigProcess
 msgid "Processing rules"
@@ -1190,27 +1195,27 @@ msgstr ""
 
 #: Lang.Legend.ListCreate
 msgid "Properties of the new list"
-msgstr ""
+msgstr "Overzicht van de nieuwe lijst"
 
 #: Lang.Legend.ListDelete
 msgid "Remove this mailinglist"
-msgstr ""
+msgstr "Verwijder deze mailinglijst"
 
 #: Lang.Legend.RelevantOptions
 msgid "Useful settings"
-msgstr ""
+msgstr "Nuttige instellingen"
 
 #: Lang.Legend.MembersList
 msgid "Manage subscribers"
-msgstr ""
+msgstr "Beheer ledenlijst"
 
 #: Lang.Legend.MembersAllow
 msgid "Manage allowed users"
-msgstr ""
+msgstr "Beheer toegestane gebruikers"
 
 #: Lang.Legend.MembersDeny
 msgid "Manage blocked users"
-msgstr ""
+msgstr "Beheer geblokkeerde gebruikers"
 
 #: Lang.Legend.MembersDigest
 msgid "Manage digest subscribers"
@@ -1218,7 +1223,7 @@ msgstr ""
 
 #: Lang.Legend.MembersMod
 msgid "Manage moderators and administrators"
-msgstr ""
+msgstr "Beheer moderators en beheerders"
 
 #: Lang.Legend.TextFiles
 msgid "Available text files"
@@ -1246,24 +1251,24 @@ msgstr ""
 
 #: Lang.Legend.GpgEzmlmConvert
 msgid "Encryption support"
-msgstr ""
+msgstr "Ondersteuning voor versleutelen."
 
 #: Lang.Legend.GnupgPublicKeys
 msgid "Public keys of this list"
-msgstr ""
+msgstr "Publieke sleutels van deze lijst"
 
 #: Lang.Legend.GnupgSecretKeys
 msgid "Secret keys of this list"
-msgstr ""
+msgstr "Geheime sleutels van deze lijst"
 
 #: Lang.Legend.GnupgKeyImport
 msgid "Import a key"
-msgstr ""
+msgstr "Sleutel invoeren"
 
 #: Lang.Legend.GnupgGenerateKey
 msgid "Generate the key for this list"
-msgstr ""
+msgstr "Maak een sleutel aan voor deze lijst"
 
 #: Lang.Legend.AvailableDomains
 msgid "Available domains"
-msgstr ""
+msgstr "Domeinen die gebruikt kunnen worden"
