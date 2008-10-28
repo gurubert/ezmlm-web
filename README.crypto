@@ -19,27 +19,30 @@ Content:
 
 	Install the perl module Mail::Ezmlm (>=0.08) to access gpg-ezmlm. You can
 	download it from 
-	https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm-Gpg.
+	https://systemausfall.org/toolforge/ezmlm-web/downloads/Ezmlm.
 
 	Of course, you also need gnupg (it is required by gpg-ezmlm, too).
 
 
 2) Installation
+
+
+	Grab gpg-ezmlm:
+
+		http://www.synacklabs.net/projects/crypt-ml/
+
+
 	Follow the instructions in the README file of gpg-ezmlm.
-	Usually it should boil down to the following commands:
+	It boils down to the following commands:
 		perl Makefile.PL
 		make
-		make test
 		make install
-
-	See INSTALL in the Mail::Ezmlm module
-	(https://systemausfall.org/toolforge/ezmlm-web/download/Ezmlm)
-	for details on how to install it.
 
 
 3) Setup of ezmlm-web
 	Support for encrypted mailing lists can be enabled by setting the
 	ENCRYPTION_SUPPORT configuration setting in ezmlmwebrc to "1".
+
 
 4) Notes
 	As soon as you installed all the necessary programs you will find a new
