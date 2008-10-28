@@ -16,6 +16,10 @@ Content:
 	gpg-ezmlm will handle your incoming and outgoing mails. It does not
 	support all the features of ezmlm-idx, but it should suffice for the
 	specialized needs of encrypted communication for small groups.
+	gpg-ezmlm additionally requires at least the following modules:
+		Digest::MD5     http://search.cpan.org/search?module=Digest::MD5
+		File::Sync      http://search.cpan.org/search?module=File::Sync
+
 
 	Install the perl module Mail::Ezmlm (>=0.08) to access gpg-ezmlm. You can
 	download it from 
@@ -25,7 +29,6 @@ Content:
 
 
 2) Installation
-
 
 	Grab gpg-ezmlm:
 
@@ -37,6 +40,24 @@ Content:
 		perl Makefile.PL
 		make
 		make install
+
+	Check if gpg-ezmlm works by executing the following:
+		perl -mGpgEzmlm </dev/null
+	
+
+	For users of the debian package for Mail::Ezmlm:
+	By default gpg-ezmlm installs its script to /usr/bin. Since the debian
+	package of Mail::Ezmlm (libemail-ezmlm-perl) does not check the
+	location of gpg-ezmlm, you may need to symlink them to /usr/local/bin.
+
+		ln -s /usr/bin/gpg-ezmlm-send.pl /usr/local/bin/
+		ln -s /usr/bin/gpg-ezmlm-manage.pl /usr/local/bin/
+	
+
+	Check if Mail::Ezmlm is installed properly by running the following:
+		perl -mMail::Ezmlm </dev/null
+		perl -mMail::Ezmlm::GpgKeyRing </dev/null
+		perl -mMail::Ezmlm::GpgEzmlm </dev/null
 
 
 3) Setup of ezmlm-web
