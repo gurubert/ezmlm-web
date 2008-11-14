@@ -1841,7 +1841,7 @@ sub create_list {
 	}
 
 	# Some taint checking ...
-	$qmail = $1 if $q->param('inlocal') =~ /(?:$MAIL_ADDRESS_PREFIX-)?([^\<\>\\\/\s]+)$/;
+	$qmail = $1 if $q->param('inlocal') =~ /(?:$MAIL_ADDRESS_PREFIX)?([^\<\>\\\/\s]+)$/;
 	# dots have to be turned into colons
 	# see http://www.qmail.org/man/man5/dot-qmail.html
 	$qmail =~ s/\./:/g;
