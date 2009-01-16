@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:10+0200\n"
-"PO-Revision-Date: 2008-12-30 03:18+0200\n"
-"Last-Translator: rike <rike@busyreadywhat.net>\n"
+"PO-Revision-Date: 2009-01-14 13:57+0200\n"
+"Last-Translator: BARBIER Jean-Matthieu <jm.barbier@solidev.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -439,110 +439,115 @@ msgstr "La suppression d'(au moins) une clef a échoué !"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
-msgstr ""
+msgstr "Il n'y a pas de clef sélectionnée pour la suppression!"
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "Le nom de la clef ne doit pas être vide!"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
-msgstr ""
+msgstr "La date d'expiration n'est pas valide!"
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "La longueur de la clef n'est pas valide!"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "L'exportation de la clef a échoué!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "La conversion vers une mailing list cryptée a échoué!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "La conversion vers une mailing list \"texte\" a échoué!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "Le cryptage est déjà activé pour cette liste."
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "Le cryptage a déjà été désactivé pour cette liste."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "L'adresse a été ajoutée à la liste."
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "L'adresse a été supprimée de la liste."
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "La nouvelle mailing list a été créée avec succès."
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "La mailing list a été supprimée avec succès."
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
-msgstr ""
+msgstr "La configuration de la mailing list a été modifiée avec succès."
 
 #: Lang.SuccessMessage.UpdateGnupg
 msgid "The keyring has been changed successfully."
-msgstr ""
+msgstr "Le jeu de clefs a été changé avec succès."
 
 #: Lang.SuccessMessage.SaveFile
 msgid "The file was saved."
-msgstr ""
+msgstr "Le fichier a été enregistré."
 
 #: Lang.SuccessMessage.ResetFile
 msgid ""
 "The customized text file was successfully removed. From now on, the system-"
 "wide default text file will be used instead of it."
 msgstr ""
+"Le fichier de texte personnalisé a été supprimé avec succès. A partir de "
+"maintenant, le fichier de texte par défaut du système sera utilisé à sa "
+"place."
 
 #: Lang.SuccessMessage.GnupgKeyImport
 msgid "The key was successfully imported."
-msgstr ""
+msgstr "La clef a été importée avec succès."
 
 #: Lang.SuccessMessage.GnupgGenerateKey
 msgid "The key was created successfully."
-msgstr ""
+msgstr "La clef a été créée avec succès."
 
 #: Lang.SuccessMessage.GnupgGenerateKeyInBackground
 msgid ""
 "The key is created in the background. It will be visible in a few minutes."
 msgstr ""
+"La clef est créée en tâche de fond. Elle sera visible dans quelques minutes."
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
-msgstr ""
+msgstr "Le cryptage est désormais activé pour cette liste."
 
 #: Lang.SuccessMessage.GpgEzmlmConvertDisable
 msgid "Encryption is now disabled for this list."
-msgstr ""
+msgstr "Le cryptage est désormais désactivé pour cette liste."
 
 #: Lang.Options.a
 msgid "Archive mailing list messages"
-msgstr ""
+msgstr "Archiver les messages de la mailing list."
 
 #: Lang.Options.b
 msgid "Only moderators are allowed to access the archive"
-msgstr ""
+msgstr "Seuls les modérateurs sont autorisés à accéder à l'archive."
 
 #: Lang.Options.d
+#, fuzzy
 msgid "Activate the digest list"
-msgstr ""
+msgstr "Activer la liste \"digest\""
 
 #: Lang.Options.f
 msgid "Add a prefix to the subject line of outgoing messages"
-msgstr ""
+msgstr "Ajouter un préfixe au sujet des messages sortants."
 
 #: Lang.Options.g
 msgid "Archive requests from unrecognised senders are denied"
