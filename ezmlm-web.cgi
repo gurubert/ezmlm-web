@@ -1292,6 +1292,10 @@ sub set_pagedata4options {
 	my $list = shift;
 	my $options = shift;
 
+	# useful e.g. for lists with a missing config file (e.g. an gpg-ezmlm
+	# mailing list, that was converted outside of ezmlm-web)
+	$options = $DEFAULT_OPTIONS unless defined($options);
+
 	my($i, $key, $state, $value, $list_dir);
 
 	$i = 0;
@@ -1931,6 +1935,7 @@ sub extract_options_from_params {
 		# the list does already exist
 		my $list = get_list_object($listname);
 		$old_options = $list->getconfig();
+		$old_options = $DEFAULT_OPTIONS unless defined($old_options);
 	} else {
 		# creating a new list
 		$old_options = $DEFAULT_OPTIONS;
