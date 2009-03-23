@@ -480,7 +480,7 @@ if (defined($action) && ($action eq 'show_mime_examples')) {
 	if (!defined($list)) {
 		$pagename = 'list_select';
 		$error = 'ParameterMissing';
-	} elsif ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
+	} elsif (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		my $plain_list = $list->convert_to_plaintext();
 		if ($plain_list) {
 			$list = $plain_list;
@@ -979,7 +979,7 @@ sub set_pagedata {
 
 	# add module-specific pagedata
 	if ($list) {
-		if ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
+		if (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 			set_pagedata_gpgezmlm($list);
 		}
 	}
@@ -2335,7 +2335,7 @@ sub update_config {
 	my $error = (1==0);
 
 	$error = (0==0) unless (update_config_common($list));
-	if ($list->isa("Mail::Ezmlm::GpgEzmlm")) {
+	if (ref($list) && $list->isa("Mail::Ezmlm::GpgEzmlm")) {
 		$error = (0==0) unless (update_config_gpgezmlm($list));
 	}
 	return (!$error);
