@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:09+0200\n"
-"PO-Revision-Date: 2008-10-16 02:58+0200\n"
+"PO-Revision-Date: 2009-03-24 00:31+0200\n"
 "Last-Translator: Lars Kruse <lars@systemausfall.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
@@ -458,11 +458,12 @@ msgstr "Fehler beim Exportieren des Schlüssels!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr "Beim Umwandeln trat ein Fehler auf!"
+msgstr "Beim Aktivieren der Verschlüsselung für die Liste trat ein Fehler auf!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr "Beim Aktivieren der Verschlüsselung für die Liste trat ein Fehler auf!"
+msgstr ""
+"Beim Deaktivieren der Verschlüsselung für die Liste trat ein Fehler auf!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
