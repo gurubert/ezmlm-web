@@ -3,14 +3,15 @@ msgstr ""
 "Project-Id-Version: ezmlm-web 3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2008-10-15 23:09+0200\n"
-"PO-Revision-Date: 2008-09-13 19:51+0200\n"
-"Last-Translator: Jose Luis Martinez <jlmartinez@capside.com>\n"
+"PO-Revision-Date: 2009-06-26 09:07+0200\n"
+"Last-Translator: Normando Hall <nhall@unixlan.com.ar>\n"
 "Language-Team: <>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Pootle 1.1.0\n"
+"X-Generator: Pootle 1.2.0-rc1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -246,7 +247,7 @@ msgstr "Eliminar fichero personalizado"
 
 #: Lang.Buttons.InterfaceSet
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
@@ -512,12 +513,13 @@ msgstr "La clave se importó con éxito."
 
 #: Lang.SuccessMessage.GnupgGenerateKey
 msgid "The key was created successfully."
-msgstr ""
+msgstr "La clave fue creada correctamente."
 
 #: Lang.SuccessMessage.GnupgGenerateKeyInBackground
 msgid ""
 "The key is created in the background. It will be visible in a few minutes."
 msgstr ""
+"La clave es creada en segundo plano. Ésta será visible en algunos minutos."
 
 #: Lang.SuccessMessage.GpgEzmlmConvertEnable
 msgid "Encryption is now enabled for this list."
@@ -602,9 +604,8 @@ msgstr ""
 "Suscripciones a la lista principal y a la lista resumida serán moderados"
 
 #: Lang.Options.t
-#, fuzzy
 msgid "Add a trailing text to every (plaintext) message"
-msgstr "Añadir un texto al final de cada mensaje"
+msgstr "Añadir un texto al final de cada mensaje (en texto plano)"
 
 #: Lang.Options.u
 msgid ""
@@ -637,6 +638,8 @@ msgstr "Redireccionar respuestas a la lista"
 msgid ""
 "Send a warning instead of the original content to subscribers without a key"
 msgstr ""
+"Enviar una advertencia en lugar del contenido original a los suscriptores "
+"que no posean una clave."
 
 #: Lang.Options.gpgezmlm_signmessages
 msgid "Sign outgoing messages with the list's key"
@@ -644,21 +647,25 @@ msgstr "Firmar mensajes salientes con las claves de la lista"
 
 #: Lang.Options.gpgezmlm_requiresigs
 msgid "Accept only incoming messages with signatures"
-msgstr ""
+msgstr "Aceptar sólo mensajes entrantes con firmas"
 
 #: Lang.Options.gpgezmlm_allowkeysubmission
 msgid "Allow submitting a key in the subscription confirmation mail"
 msgstr ""
+"Permitir el envío de una clave en el correo de confirmación de la "
+"suscripción."
 
 #: Lang.Options.gpgezmlm_encrypttoall
 msgid ""
 "Encrypt the message to all subscribers within one mail instead of sending a "
 "single mail for each subscriber"
 msgstr ""
+"Encriptar el mensaje a todos los suscriptores dentro de un correo en lugar "
+"de enviar un correo único por cada suscriptor."
 
 #: Lang.Options.gpgezmlm_verifiedkeyreq
 msgid "Use only trusted keys"
-msgstr ""
+msgstr "Usar sólo claves confiables."
 
 #: Lang.Selections.archive
 msgid "Access to the archive is granted for"
