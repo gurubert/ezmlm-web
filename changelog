@@ -1,3 +1,6 @@
+Version 3.3.2 - ?
+ * fixed editing of multi-line text files (Closes: #62)
+
 Version 3.3.1 - 10/14/02008
  * generate gnupg keys in the background to avoid timeouts
  * remove authorization info during list deletion (Closes: #54)

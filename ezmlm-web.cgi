@@ -2656,8 +2656,8 @@ sub save_text {
 	$content = $q->param('content');
 	$charset = split(':',$list->get_charset());
 	$charset = 'us-ascii' if ($charset eq '');
-	# untaint 'content' unconditionally
-	$content =~ m/^(.*)$/;
+	# untaint 'content' unconditionally (treating the whole string as a single line)
+	$content =~ m/^(.*)$/s;
 	$content = $1;
 	my $content_encoded;
 	eval { $content_encoded = Encode::encode($charset, $content); };
