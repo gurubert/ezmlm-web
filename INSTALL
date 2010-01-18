@@ -146,10 +146,10 @@ OVERVIEW:
 	Direct links to a specifc domain use the following format:
 		http://BASE_URL/ezmlm-web?domain=foo
 	
-	Note that since version 3.3 webusers file has to explictly let users create 
-	and manage lists. If you are relying on the user beeing able to create lists 
-	if no webusers file exists, then you will have to explicitly create one with
-	the appropiate permissions.
+	Note that since version 3.3 webusers file has to explicitly allow certain
+	users to create and manage lists. If you are relying on the user beeing able
+	to create lists if no webusers file exists, then you will have to explicitly
+	create one with the appropiate permissions.
 
 7.	Copy the stylesheet files (/usr/local/share/ezmlm-web/www-data/*.css)
 	to a location of your choice. It has to be accessible by an URL - maybe

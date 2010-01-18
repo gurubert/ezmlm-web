@@ -91,9 +91,8 @@ You can download clearsilver (a templating engine) from http://clearsilver.net.
 III. Multi-Level Access
 =======================
 Ezmlm-web has a multi-level access system. This depends on a file called
-webusers being present in $LIST_DIR. If the file is not present, then ANY
-valid user has access to all lists.  If, however, this file exists a number
-of constraints come into place.
+webusers being present in $LIST_DIR. If the file is not present, then NO
+user has access to any list. In other words: this file is mandatory.
 
 - The webusers file is scanned for either the list name (case insensitive) or
   an ALL (case sensitive) entry.
@@ -108,9 +107,9 @@ through the web interface, as this depends on your authentication system.
 
 The format of a webusers file is as follows:
 
-list1: user1 user2 user3
-ALL: user1 user2
-list2: ALL
+    list1: user1 user2 user3
+    ALL: user1 user2
+    list2: ALL
 
 Once this file exists, the ezmlm-web script will allow the list users to
 configure their access lists along with any other options.
@@ -118,7 +117,7 @@ configure their access lists along with any other options.
 You can permit some users to create lists by adding a line similar to the 
 following to your webusers file:
 
-ALLOW_CREATE: user2 user3
+    ALLOW_CREATE: user2 user3
 
 If there is no line starting with "ALLOW_CREATE:" in the webusers file, then
 no one will be allowed to create lists. This behaviour is new for ezmlm-web
@@ -129,6 +128,12 @@ the same effect in a cleaner way.
 
 You find the details of the format of webusers (5) file in the respective
 manpage.
+
+If you just want to have the most simply (and most dangerous) access settings,
+then you could just use the following as a starter:
+
+    ALL: ALL
+    ALLOW_CREATE: ALL
 
 
 IV. Multilingual interface
