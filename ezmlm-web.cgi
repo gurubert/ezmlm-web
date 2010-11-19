@@ -292,6 +292,11 @@ unless (defined($MAIL_ADDRESS_PREFIX)) {
 
 # get the current login name advertised to the webserver (if it is defined)
 $LOGIN_NAME = lc($ENV{'REMOTE_USER'});
+# Remove leading and trailing whitespace (they are ignored by http-auth).
+# Otherwise the webauth check does not work properly.
+$LOGIN_NAME =~ s/^\s+//;
+$LOGIN_NAME =~ s/\s+$//;
+
 
 # check if the POSIX module is available
 $posix_enabled = &safely_import_module("POSIX");
