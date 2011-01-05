@@ -884,8 +884,9 @@ msgid "There are no files in the text directory of the mailinglist."
 msgstr "There are no files in the text directory of the mailinglist."
 
 #: Lang.Misc.AddSubscriberAddress
-msgid "Add a new mail address:"
-msgstr "Add a new mail address:"
+#, fuzzy
+msgid "Add new mail address(es):"
+msgstr "Add new mail address(es):"
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"

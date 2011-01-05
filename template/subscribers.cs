@@ -118,7 +118,7 @@
 		<fieldset>
 			<ul>
 				<li><?cs var:html_escape(Lang.Misc.AddSubscriberAddress) ?>
-					<ul><li><input type="text" name="mailaddress_add" size="40" /></li>
+					<ul><li><textarea name="mailaddress_add" cols="45" rows="4"></textarea></li>
 					</ul></li>
 				<?cs if:Data.Permissions.FileUpload ?>
 					<li><?cs var:html_escape(Lang.Misc.AddSubscriberFile) ?>

@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-15 23:10+0200\n"
+"POT-Creation-Date: 2011-01-01 18:06+0200\n"
 "PO-Revision-Date: 2008-10-17 20:18+0200\n"
 "Last-Translator: albi nootje <albinootje@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.2.0-rc1\n"
+"Language: nl\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -187,8 +187,9 @@ msgid "Editing file"
 msgstr "Bewerken bestand"
 
 #: Lang.Title.SubscribeLog
+#, fuzzy
 msgid "Subscription events"
-msgstr ""
+msgstr "Lidmaatschap opties"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
@@ -655,8 +656,9 @@ msgid "Access to the archive is granted for"
 msgstr ""
 
 #: Lang.Selections.archive.bg
+#, fuzzy
 msgid "administrators"
-msgstr ""
+msgstr "beheer"
 
 #: Lang.Selections.archive.Bg
 msgid "subscribers and administrators"
@@ -889,7 +891,8 @@ msgid "There are no files in the text directory of the mailinglist."
 msgstr ""
 
 #: Lang.Misc.AddSubscriberAddress
-msgid "Add a new mail address:"
+#, fuzzy
+msgid "Add new mail address(es):"
 msgstr "Voeg een nieuw mail adres toe:"
 
 #: Lang.Misc.AddSubscriberFile
@@ -1178,8 +1181,9 @@ msgid "Posting rules"
 msgstr ""
 
 #: Lang.Legend.ConfigSub
+#, fuzzy
 msgid "Subscription details"
-msgstr ""
+msgstr "Lidmaatschap opties"
 
 #: Lang.Legend.ConfigMain
 msgid "General list configuration"

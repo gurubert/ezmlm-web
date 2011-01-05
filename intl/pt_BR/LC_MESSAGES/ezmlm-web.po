@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-15 23:10+0200\n"
+"POT-Creation-Date: 2011-01-01 18:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -893,7 +893,8 @@ msgid "There are no files in the text directory of the mailinglist."
 msgstr "Não há arquivos no diretório de texto da lista."
 
 #: Lang.Misc.AddSubscriberAddress
-msgid "Add a new mail address:"
+#, fuzzy
+msgid "Add new mail address(es):"
 msgstr "Acrescentar novo endereço de e-mail"
 
 #: Lang.Misc.AddSubscriberFile

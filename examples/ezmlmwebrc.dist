@@ -131,4 +131,10 @@ $HTML_LANGUAGE = "en";
 # (".gnupg") is usable.
 #$GPG_KEYRING_DEFAULT_LOCATION = ".gnupg";
 
+# Prints Error/Warning messages instead of "Internal Server Error" page.
+# It's recommend to disable (set to 0) in production mode. 
+# 0 = disabled
+# 1 = enabled
+# defaults to 0
+#$DEBUG = 0;
 

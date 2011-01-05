@@ -101,6 +101,7 @@ use vars qw[$TEMPLATE_DIR $LANGUAGE_DIR $HTML_LANGUAGE];
 use vars qw[$HTML_CSS_COMMON $HTML_CSS_COLOR];
 use vars qw[$MAIL_ADDRESS_PREFIX @HTML_LINKS];
 use vars qw[@INTERFACE_OPTIONS_BLACKLIST];
+use vars qw[$DEBUG];
 # default interface template (basic/normal/expert)
 use vars qw[$DEFAULT_INTERFACE_TYPE];
 # some settings for encrypted mailing lists
@@ -118,6 +119,8 @@ my $config_file;
 if (defined($opt_C)) {
    $opt_C =~ /^([-\w.\/]+)$/;	# security check by ooyama
    $config_file = $1; # Command Line
+} elsif (defined($ENV{EZMLM_WEB_RC}) && $ENV{EZMLM_WEB_RC} =~ /^(\/[^\`]+)$/) {
+	$config_file = $1;
 } elsif (-e "$HOME_DIR/.ezmlmwebrc") {
    $config_file = "$HOME_DIR/.ezmlmwebrc"; # User
 } elsif (-e "/etc/ezmlm-web/ezmlmwebrc") {
@@ -288,6 +291,14 @@ unless (defined($MAIL_ADDRESS_PREFIX)) {
 	} else {
 		$MAIL_ADDRESS_PREFIX = "$USER-"
 	}
+}
+
+# check DEBUG - enable debug messages if set > 0
+$DEBUG = 0 unless defined($DEBUG);
+if ( $DEBUG > 0 ) {
+   eval "use warnings";
+   eval "use CGI::Carp qw(fatalsToBrowser warningsToBrowser)";
+   eval "use CGI qw(:standard)";
 }
 
 # get the current login name advertised to the webserver (if it is defined)
@@ -881,7 +892,7 @@ sub set_pagedata_domains {
 				$DOMAINS{$CURRENT_DOMAIN}{name});
 	}
 	
-	foreach $domain_name (keys %DOMAINS) {
+	foreach $domain_name (sort keys %DOMAINS) {
 		if (&webauth_visible_domain($domain_name)) {
 			$pagedata->setValue("Data.Domains.$domain_name",
 					$DOMAINS{$domain_name}{'name'});
@@ -1163,8 +1174,25 @@ sub set_pagedata_misc_configfiles {
 	$item = '' unless defined($item);
 	$pagedata->setValue("Data.List.MimeReject", "$item");
 	$item = $list->get_text_content('trailer');
-	$item = '' unless defined($item);
-	$pagedata->setValue("Data.List.TrailingText", "$item");
+	my $content_webencoded = '';
+	if ( defined($item) ) {
+		my( @_charset, $charset);
+		@_charset = split(':',$list->get_charset());
+		if ( $_charset[0] eq '' ) {
+			$charset = 'us-ascii';
+			warn "Charset not set. Using default \"us-ascii\" ";
+		} else {
+			$charset = $_charset[0];
+		}
+		# first decode from web (usually utf8), then encode to charset of the list
+		eval { $content_webencoded = Encode::encode("utf8", Encode::decode($charset, $item)); };
+		if ($@) {
+			$content_webencoded = $item;
+			# no warning, if the encoding support is not available
+			warn "Conversion failed for charset '$charset'" if ($ENCODE_SUPPORT);
+		}
+	}
+	$pagedata->setValue("Data.List.TrailingText", "$content_webencoded");
 	
 	# read message size limits
 	$item = $list->getpart('msgsize');
@@ -1219,14 +1247,19 @@ sub set_pagedata_textfiles {
 	# text file specified?
 	if (defined($q->param('file')) && ($q->param('file') ne '')
 			&& ($q->param('file') =~ m/^[\w-]*$/)) {
-		my ($content);
+		my ($content, $charset, @_charset);
 		$content = $list->get_text_content($q->param('file'));
 		# get character set of current list (ignore ":Q" prefix)
-		my ($charset) = split(':',$list->get_charset());
-		# use default for ezmlm-idx<5.0
-		$charset = 'us-ascii' if ($charset eq '');
+		@_charset = split(':',$list->get_charset());
+		if ( $_charset[0] eq '' ) {
+			# use default for ezmlm-idx<5.0
+			$charset = 'us-ascii';
+			warn "Charset not set. Using default \"us-ascii\" ";
+		} else {
+		$charset = $_charset[0];
+		}
 		my $content_utf8;
-		eval { $content_utf8 = Encode::decode($charset, $content); };
+		eval { $content_utf8 = Encode::encode ("utf8", Encode::decode($charset, $content)); };
 		# use $content if conversion failed somehow
 		if ($@) {
 			$content_utf8 = $content;
@@ -1734,20 +1767,40 @@ sub add_address {
 	# User typed in an address
 	if ($q->param('mailaddress_add') ne '') {
 
-		$address = $q->param('mailaddress_add');
-		$address .= $MAIL_DOMAIN if ($q->param('mailaddress_add') =~ /\@$/);
+      my ($_address_string, @_addresses);
 
-		# untaint
-		if ($address =~ m/(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)/) {
-			push @addresses, "$address";
-		  } else {
-			warn "invalid address to add: $address to $part";
-			$warning = 'AddAddress';
-			return (1==0);
-		  }
+      $_address_string = $q->param('mailaddress_add');
 
+      # line breaks
+      $_address_string =~ s/[\r]?\n/#/g;
+      # delimeter
+      $_address_string =~ s/[,;]/#/g;
+      # email comments at the beginning
+      $_address_string =~ s/^[^@]+\s+//;
+      # email coments
+      $_address_string =~ s/[#\s][^@]+[#\s]/#/g;
+      # "<local@domain> --> local@domain"
+      $_address_string =~ s/[\s#]+<([^\s^<^#]+@[^\s^>^#]+)>/#$1/g;
+      # white spaces
+      $_address_string =~ s/\s+/#/g;
+      # multiple delimeter
+      $_address_string =~ s/#+/#/g;
+      # don't start with delimeter
+      $_address_string =~ s/^#+//g;
+
+      @_addresses = split(/#/ , $_address_string);
+
+      foreach $address (@_addresses) {
+         $address .= $MAIL_DOMAIN if ($address =~ /\@$/);
+         if ($address =~ m/(\w[\w\.\!\#\$\%\&\'\`\*\+\-\/\=\?\^\{\|\}\~]*)@(\w[\-\w_\.]+)/) {
+            push @addresses, "$address";
+         } else {
+            warn "invalid address to add: $address to $part";
+            $warning = 'AddAddress';
+         }
+      }
 	}
-   
+
 	my %pretty;
 	my $add;
 	tie %pretty, "DB_File", $list->thislist() . "/webnames" if ($PRETTY_NAMES);
@@ -1901,8 +1954,7 @@ sub create_list {
 		return undef;
 	}
 
-	if (defined($q->param('list_language'))
-			&& ($q->param('list_language') ne 'default')) {
+	if (defined($q->param('list_language'))) {
 		if (&check_list_language($list, $q->param('list_language'))) {
 			$list->set_lang($q->param('list_language'));
 		} else {
@@ -2368,14 +2420,16 @@ sub update_config_common {
 	}
 
 	# update trailing text
-	if (defined($q->param('trailing_text'))) {
+	#if (defined($q->param('trailing_text'))) {
 		if (defined($q->param('option_t'))) {
 			# TODO: the trailer _must_ be followed by a newline
-			$list->set_text_content('trailer', $q->param('trailing_text'));
+			#$list->set_text_content('trailer', $q->param('trailing_text'));
+			$list->set_text_content('trailer', $list->get_text_default_content('trailer'))
+            unless (-e "$list->{'LIST_NAME'}/text/trailer");
 		} else {
 			# ezmlm-make automatically removes this file
 		}
-	}
+	#}
 
 	# update prefix text
 	if (defined($q->param('prefix'))) {
@@ -2656,16 +2710,22 @@ sub save_text {
 	# Save new text in DIR/text ...
 	my $list = shift;
 
-	my ($content, $charset);
+	my ($content, $charset, @_charset);
 
 	$content = $q->param('content');
-	$charset = split(':',$list->get_charset());
-	$charset = 'us-ascii' if ($charset eq '');
+	@_charset = split(':',$list->get_charset());
+	if ( $_charset[0] eq '' ) {
+		$charset = 'us-ascii';
+		warn "Charset not set. Using default \"us-ascii\" ";
+	} else {
+		$charset = $_charset[0];
+	}
 	# untaint 'content' unconditionally (treating the whole string as a single line)
 	$content =~ m/^(.*)$/s;
 	$content = $1;
 	my $content_encoded;
-	eval { $content_encoded = Encode::encode($charset, $content); };
+	# first decode from web ( utf8), then encode to charset of the list
+	eval { $content_encoded = Encode::encode($charset, Encode::decode("utf8", $content)); };
 	if ($@) {
 		$content_encoded = $content;
 		# no warning, if the encoding support is not available

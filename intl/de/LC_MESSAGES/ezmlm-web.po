@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-15 23:09+0200\n"
+"POT-Creation-Date: 2011-01-01 18:06+0200\n"
 "PO-Revision-Date: 2009-03-24 00:31+0200\n"
 "Last-Translator: Lars Kruse <lars@systemausfall.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.2.0-rc1\n"
+"Language: de\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -925,8 +925,8 @@ msgid "There are no files in the text directory of the mailinglist."
 msgstr "Es befinden sich keine Dateien im Text-Verzeichnis der Mailingliste."
 
 #: Lang.Misc.AddSubscriberAddress
-msgid "Add a new mail address:"
-msgstr "Füge eine neue Mailadresse hinzu:"
+msgid "Add new mail address(es):"
+msgstr "Füge neue Mailadresse(n) hinzu:"
 
 #: Lang.Misc.AddSubscriberFile
 msgid "Upload a text file containing mail addresses to be added:"

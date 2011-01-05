@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
-"POT-Creation-Date: 2008-10-15 23:10+0200\n"
+"POT-Creation-Date: 2011-01-01 18:06+0200\n"
 "PO-Revision-Date: 2009-01-14 13:57+0200\n"
 "Last-Translator: BARBIER Jean-Matthieu <jm.barbier@solidev.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Pootle 1.2.0-rc1\n"
+"Language: fr\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
@@ -893,7 +893,7 @@ msgid "There are no files in the text directory of the mailinglist."
 msgstr ""
 
 #: Lang.Misc.AddSubscriberAddress
-msgid "Add a new mail address:"
+msgid "Add new mail address(es):"
 msgstr ""
 
 #: Lang.Misc.AddSubscriberFile
@@ -996,8 +996,9 @@ msgid "Mail address"
 msgstr ""
 
 #: Lang.Misc.SubscribeAction
+#, fuzzy
 msgid "Event"
-msgstr ""
+msgstr "Evènements"
 
 #: Lang.Misc.SubscribeActionDetails
 msgid "Details"
