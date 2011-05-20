@@ -1,37 +1,37 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: ezmlm-web v3.3\n"
 "Report-Msgid-Bugs-To: devel@sumpfralle.de\n"
 "POT-Creation-Date: 2011-01-01 18:06+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2009-11-10 22:59+0200\n"
+"Last-Translator: Mikael Tuneskog <mike@swedsun.se>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Translate Toolkit 1.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Pootle 1.2.0-rc1\n"
 
 #: Lang.Menue.ListCreate
 msgid "Create new list"
-msgstr ""
+msgstr "Skapa ny lista"
 
 #: Lang.Menue.ListDelete
 msgid "Delete list"
-msgstr ""
+msgstr "Radera lista"
 
 #: Lang.Menue.Subscribers
 msgid "Subscribers"
-msgstr ""
+msgstr "Prenumeranter"
 
 #: Lang.Menue.AllowList
 msgid "allow list"
-msgstr ""
+msgstr "Lista över tillåtna"
 
 #: Lang.Menue.DenyList
 msgid "deny list"
-msgstr ""
+msgstr "Lista över ej tillåtna"
 
 #: Lang.Menue.DigestList
 msgid "digest list"
@@ -39,15 +39,15 @@ msgstr ""
 
 #: Lang.Menue.ModList
 msgid "moderators"
-msgstr ""
+msgstr "moderatorer"
 
 #: Lang.Menue.ConfigMain
 msgid "Options"
-msgstr ""
+msgstr "Möjligheter"
 
 #: Lang.Menue.ConfigSub
 msgid "subscription"
-msgstr ""
+msgstr "prenumeration"
 
 #: Lang.Menue.ConfigPost
 msgid "posting"
@@ -55,115 +55,115 @@ msgstr ""
 
 #: Lang.Menue.ConfigAdmin
 msgid "administration"
-msgstr ""
+msgstr "administration"
 
 #: Lang.Menue.ConfigArchive
 msgid "archive"
-msgstr ""
+msgstr "arkivera"
 
 #: Lang.Menue.ConfigProcess
 msgid "processing"
-msgstr ""
+msgstr "processar"
 
 #: Lang.Menue.ConfigAll
 msgid "overview"
-msgstr ""
+msgstr "översikt"
 
 #: Lang.Menue.Gnupg
 msgid "Key management"
-msgstr ""
+msgstr "Nyckel hantering"
 
 #: Lang.Menue.GnupgPublicKeys
 msgid "public keys"
-msgstr ""
+msgstr "Publika nycklar"
 
 #: Lang.Menue.GnupgSecretKeys
 msgid "secret keys"
-msgstr ""
+msgstr "hemliga nycklar"
 
 #: Lang.Menue.GnupgGenerateKey
 msgid "generate key"
-msgstr ""
+msgstr "generera nyckel"
 
 #: Lang.Menue.GpgEzmlmConvert
 msgid "Encryption"
-msgstr ""
+msgstr "Kryptering"
 
 #: Lang.Menue.GpgEzmlmOptions
 msgid "encryption"
-msgstr ""
+msgstr "kryptering"
 
 #: Lang.Menue.TextFiles
 msgid "Text files"
-msgstr ""
+msgstr "Textfiler"
 
 #: Lang.Menue.ListSelect
 msgid "Choose a list"
-msgstr ""
+msgstr "Välj en lista"
 
 #: Lang.Menue.Properties
 msgid "Properties of"
-msgstr ""
+msgstr "Tillhör"
 
 #: Lang.Menue.Language
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: Lang.Menue.Interface
 msgid "Interface"
-msgstr ""
+msgstr "Interface"
 
 #: Lang.Menue.Help
 msgid "Help (external)"
-msgstr ""
+msgstr "Hjälp (extern)"
 
 #: Lang.Menue.SubscribeLog
 msgid "Subscriber's log"
-msgstr ""
+msgstr "Prenumerantens logg"
 
 #: Lang.Menue.DomainSelect
 msgid "Choose a domain"
-msgstr ""
+msgstr "Välj en domän"
 
 #: Lang.Title.ConfigMain
 msgid "List configuration"
-msgstr ""
+msgstr "Lista konfiguration"
 
 #: Lang.Title.ConfigSub
 msgid "Subscription options"
-msgstr ""
+msgstr "Prenumerations val"
 
 #: Lang.Title.ConfigPosting
 msgid "Posting options"
-msgstr ""
+msgstr "Sändnings val"
 
 #: Lang.Title.ConfigAdmin
 msgid "Remote administration"
-msgstr ""
+msgstr "Fjärradministration"
 
 #: Lang.Title.ConfigArchive
 msgid "Archive options"
-msgstr ""
+msgstr "Arkiveringsval"
 
 #: Lang.Title.ConfigProcess
 msgid "Message processing"
-msgstr ""
+msgstr "Meddelande processar"
 
 #: Lang.Title.ConfigAll
 msgid "Complete configuration"
-msgstr ""
+msgstr "Komplett konfiguration"
 
 #: Lang.Title.SubscriberList
 msgid "Subscribers of the list"
-msgstr ""
+msgstr "Prenumeranter på listan"
 
 #: Lang.Title.AllowList
 msgid "Allowed users"
-msgstr ""
+msgstr "Tillåtna användare"
 
 #: Lang.Title.DenyList
 msgid "Blocked users"
-msgstr ""
+msgstr "Blockerade användare"
 
 #: Lang.Title.DigestList
 msgid "Digest subscribers"
@@ -171,143 +171,143 @@ msgstr ""
 
 #: Lang.Title.ModList
 msgid "Moderators of the mailinglist"
-msgstr ""
+msgstr "Moderatorer av mailinglistan"
 
 #: Lang.Title.ListCreate
 msgid "Create a new list"
-msgstr ""
+msgstr "Skapa en ny lista"
 
 #: Lang.Title.FileSelect
 msgid "Choose a file for editing"
-msgstr ""
+msgstr "Välj fil att editera"
 
 #: Lang.Title.FileEdit
 msgid "Editing file"
-msgstr ""
+msgstr "Editerar fil"
 
 #: Lang.Title.SubscribeLog
 msgid "Subscription events"
-msgstr ""
+msgstr "Prenumerations aktiviteter"
 
 #: Lang.Title.GnupgPublic
 msgid "Public keys"
-msgstr ""
+msgstr "Publika nycklar"
 
 #: Lang.Title.GnupgSecret
 msgid "Secret keys"
-msgstr ""
+msgstr "Hemliga nycklar"
 
 #: Lang.Title.GnupgGenerateKey
 msgid "Generate a new keypair"
-msgstr ""
+msgstr "Generera ett nytt nyckelpar"
 
 #: Lang.Title.GpgEzmlmOptions
 msgid "Encryption settings"
-msgstr ""
+msgstr "Krypteringsinställningar"
 
 #: Lang.Buttons.Create
 msgid "Create list"
-msgstr ""
+msgstr "Skapa lista"
 
 #: Lang.Buttons.ConfirmDeletion
 msgid "Delete the list"
-msgstr ""
+msgstr "Radera lista"
 
 #: Lang.Buttons.DeleteAddress
 msgid "Delete address(es)"
-msgstr ""
+msgstr "Radera adress(-er)"
 
 #: Lang.Buttons.DownloadSubscribersList
 msgid "Download subscribers"
-msgstr ""
+msgstr "Ladda ned prenumeranter"
 
 #: Lang.Buttons.AddAddress
 msgid "Add address(es)"
-msgstr ""
+msgstr "Lägg till adress(-er)"
 
 #: Lang.Buttons.UpdateConfiguration
 msgid "Update configuration"
-msgstr ""
+msgstr "Uppdatera konfiguration"
 
 #: Lang.Buttons.UpdateGnupg
 msgid "Update keyring"
-msgstr ""
+msgstr "Uppdatera nyckelring"
 
 #: Lang.Buttons.EditFile
 msgid "Edit file"
-msgstr ""
+msgstr "Editera fil"
 
 #: Lang.Buttons.SaveFile
 msgid "Save file"
-msgstr ""
+msgstr "Spara fil"
 
 #: Lang.Buttons.ResetFile
 msgid "Remove customized file"
-msgstr ""
+msgstr "Ta bort personligt ändrad fil"
 
 #: Lang.Buttons.InterfaceSet
 msgid "Apply"
-msgstr ""
+msgstr "Lägg till"
 
 #: Lang.Buttons.GpgEzmlmConvertToEncrypted
 msgid "Convert to an encrypted mailinglist"
-msgstr ""
+msgstr "Konvertera till en krypterad mailinglista"
 
 #: Lang.Buttons.GpgEzmlmConvertToPlain
 msgid "Convert to a plaintext mainlinglist"
-msgstr ""
+msgstr "Konvertera till en mailinglista i klartext"
 
 #: Lang.Buttons.DeletePublicKey
 msgid "Delete public key(s)"
-msgstr ""
+msgstr "Radera publik nyckel/nycklar"
 
 #: Lang.Buttons.DeleteSecretKey
 msgid "Delete secret key(s)"
-msgstr ""
+msgstr "Radera hemlig nyckel/nycklar"
 
 #: Lang.Buttons.GnupgImportKey
 msgid "Import key"
-msgstr ""
+msgstr "Importera nyckel"
 
 #: Lang.Buttons.GnupgGenerateKey
 msgid "Generate key pair"
-msgstr ""
+msgstr "Generera nyckelpar"
 
 #: Lang.Buttons.GnupgExportKey
 msgid "download"
-msgstr ""
+msgstr "download"
 
 #: Lang.ErrorMessage.UnknownAction
 msgid "this action is undefined"
-msgstr ""
+msgstr "detta val är inte definierat"
 
 #: Lang.ErrorMessage.ParameterMissing
 msgid "this action needs one or more parameters"
-msgstr ""
+msgstr "detta val kräver en eller flera parametrar"
 
 #: Lang.ErrorMessage.Forbidden
 msgid "Error: you are not allowed to do this!"
-msgstr ""
+msgstr "Error: du är inte behörig att göra detta!"
 
 #: Lang.ErrorMessage.InvalidFileName
 msgid "The name of the file is invalid!"
-msgstr ""
+msgstr "Filnamnet är ogiltigt!"
 
 #: Lang.ErrorMessage.UnknownConfigPage
 msgid "The chosen config page is invalid!"
-msgstr ""
+msgstr "Den valda konfigureringssidan är ogiltig"
 
 #: Lang.ErrorMessage.UnknownGnupgPage
 msgid "The chosen gnupg page is invalid!"
-msgstr ""
+msgstr "Den valda gnupg sidan är ogiltig!"
 
 #: Lang.ErrorMessage.GnupgKeyImport
 msgid "Failed to import the uploaded key!"
-msgstr ""
+msgstr "Misslyckades med att importera uppladdad nyckel!"
 
 #: Lang.ErrorMessage.GnupgDelKey
 msgid "Failed to remove the key(s)!"
-msgstr ""
+msgstr "Misslyckades med att radera nyckel/nycklar!"
 
 #: Lang.ErrorMessage.GnupgGenerateKey
 msgid "Failed generate a new key!"
@@ -315,175 +315,175 @@ msgstr ""
 
 #: Lang.WarningMessage.AddAddress
 msgid "Adding of at least one mail address failed!"
-msgstr ""
+msgstr "Misslyckades med att lägga till minst en emailadress!"
 
 #: Lang.WarningMessage.DeleteAddress
 msgid "Removal of at least one mail address failed!"
-msgstr ""
+msgstr "Misslyckades med att radera minst en emailadress!"
 
 #: Lang.WarningMessage.CreateList
 msgid "Creation of new mailing list failed!"
-msgstr ""
+msgstr "Misslyckades med att skapa ny mailing-lista"
 
 #: Lang.WarningMessage.DeleteList
 msgid "Removal of mailing list failed!"
-msgstr ""
+msgstr "Misslyckades med att radera mailing-lista"
 
 #: Lang.WarningMessage.UpdateConfig
 msgid "Update of configuration failed!"
-msgstr ""
+msgstr "Misslyckades med att uppdatera konfigurationen!"
 
 #: Lang.WarningMessage.SaveFile
 msgid "The file could not be saved!"
-msgstr ""
+msgstr "Denna fil kunde inte sparas!"
 
 #: Lang.WarningMessage.ListNameAlreadyExists
 msgid "There is already a list with this name!"
-msgstr ""
+msgstr "Det finns redan en lista med detta namn!"
 
 #: Lang.WarningMessage.ListAddressAlreadyExists
 msgid "There is already a list with this address!"
-msgstr ""
+msgstr "Det finns redan en lista med denna adress!"
 
 #: Lang.WarningMessage.ListDoesNotExist
 msgid "A list with this name does not exist!"
-msgstr ""
+msgstr "Det existerar ingen lista med detta namn!"
 
 #: Lang.WarningMessage.ListDirAccessDenied
 msgid "Unable to access the list's directory"
-msgstr ""
+msgstr "Kan inte komma åt listans register"
 
 #: Lang.WarningMessage.TextDirAccessDenied
 msgid "Unable to access the list's directory of text files"
-msgstr ""
+msgstr "Kan inte komma åt listans register av textfiler"
 
 #: Lang.WarningMessage.SafeRemoveRenameDirFailed
 msgid "Unable to rename list for safe removal"
-msgstr ""
+msgstr "Kan inte döpa om listan för säker borttagning"
 
 #: Lang.WarningMessage.DotQmailDirAccessDenied
 msgid "Unable to read the mail user's home directory for .qmail files"
-msgstr ""
+msgstr "Kan inte läsa mailets register efter .qmail filer"
 
 #: Lang.WarningMessage.SafeRemoveMoveDotQmailFailed
 msgid "Unable to move .qmail files"
-msgstr ""
+msgstr "Kan inte flytta .qmail filer"
 
 #: Lang.WarningMessage.UnsafeRemoveListDirFailed
 msgid "Unable to delete list"
-msgstr ""
+msgstr "Kan inte radera listan"
 
 #: Lang.WarningMessage.UnsafeRemoveDotQmailFailed
 msgid "Unable to delete .qmail files"
-msgstr ""
+msgstr "Kan inte radera .qmail filer"
 
 #: Lang.WarningMessage.InvalidFileFormat
 msgid "The uploaded file must be a text file"
-msgstr ""
+msgstr "Den uppladdade filen måste vara en textfil"
 
 #: Lang.WarningMessage.WebUsersUpdate
 msgid "Could not update the webusers file"
-msgstr ""
+msgstr "Kunde inte uppdatera webanvändarens fil"
 
 #: Lang.WarningMessage.WebUsersRead
 msgid "Could not read the webusers file"
-msgstr ""
+msgstr "Kunde inte läsa webanvändarens fil"
 
 #: Lang.WarningMessage.InvalidListName
 msgid "The name of the list contains invalid characters"
-msgstr ""
+msgstr "Namnet på listan innehåller otillåtna tecken"
 
 #: Lang.WarningMessage.ReservedListName
 msgid "This listname may not be used as it is reserved for internal purposes"
-msgstr ""
+msgstr "Detta listnamn kan ej användas då det är reserverat för internt bruk"
 
 #: Lang.WarningMessage.EmptyListName
 msgid "The name of the list may not be empty"
-msgstr ""
+msgstr "Namnet på listan kanske inte är tomt"
 
 #: Lang.WarningMessage.EmptyList
 msgid "This list has no subscribers."
-msgstr ""
+msgstr "Listan har inga prenumeranter"
 
 #: Lang.WarningMessage.InvalidLocalPart
 msgid "The local part of the list address is not valid"
-msgstr ""
+msgstr "Lokala delar av adresslistan är inte giltig"
 
 #: Lang.WarningMessage.RequiresIDX5
 msgid "This action requires ezmlm-idx v5.0 or higher."
-msgstr ""
+msgstr "Denna aktivitet kräver ezmlm-idx v5.0 eller högre"
 
 #: Lang.WarningMessage.ResetFileIsDefault
 msgid "There is no customized text file, that can be removed."
-msgstr ""
+msgstr "Det finns ingen custom-fil som kan raderas"
 
 #: Lang.WarningMessage.ResetFile
 msgid "Removal of custimized text file failed."
-msgstr ""
+msgstr "Borttagning av custom-fil misslyckades"
 
 #: Lang.WarningMessage.LogFile
 msgid "Reading of log file failed."
-msgstr ""
+msgstr "Fel vid läsning av log-fil."
 
 #: Lang.WarningMessage.GnupgNoKeyFile
 msgid "There was no key file selected for upload!"
-msgstr ""
+msgstr "Det var ingen vald nyckel för att ladda upp!"
 
 #: Lang.WarningMessage.GnupgDelKey
 msgid "Removal of (at least) one key failed!"
-msgstr ""
+msgstr "Borttagning av minst en nyckel misslyckades!"
 
 #: Lang.WarningMessage.GnupgNoKeySelected
 msgid "There was no key selected to be removed!"
-msgstr ""
+msgstr "Det fanns ingen markerad nyckel att radera"
 
 #: Lang.WarningMessage.GnupgNoName
 msgid "The name of the key may not be empty!"
-msgstr ""
+msgstr "Namnet på nyckeln kanske inte är tom!"
 
 #: Lang.WarningMessage.GnupgInvalidExpiration
 msgid "The expiration time is invalid!"
-msgstr ""
+msgstr "Tiden för utgången är ogiltig"
 
 #: Lang.WarningMessage.GnupgInvalidKeySize
 msgid "The length of the key is invalid!"
-msgstr ""
+msgstr "Längden på nyckeln är ogiltig!"
 
 #: Lang.WarningMessage.GnupgExportKey
 msgid "Export of key failed!"
-msgstr ""
+msgstr "Export av nyckel misslyckades!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertEnable
 msgid "Conversion to encrypted mailing list failed!"
-msgstr ""
+msgstr "Konvertering till krypterad mailing-lista misslyckades!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertDisable
 msgid "Conversion to plaintext mailing list failed!"
-msgstr ""
+msgstr "Konvertering till klartext-lista misslyckades!"
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyEnabled
 msgid "Encryption was already enabled for this mailing list."
-msgstr ""
+msgstr "Kryptering var redan vald för denna mailing-lista."
 
 #: Lang.WarningMessage.GpgEzmlmConvertAlreadyDisabled
 msgid "Encryption was already disabled for this mailing list."
-msgstr ""
+msgstr "Kryptering var redan avstängd för denna mailing-lista."
 
 #: Lang.SuccessMessage.AddAddress
 msgid "The address was added to the list."
-msgstr ""
+msgstr "Adressen lades till i listan"
 
 #: Lang.SuccessMessage.DeleteAddress
 msgid "The address was removed from the list."
-msgstr ""
+msgstr "Adressen togs bort från listan."
 
 #: Lang.SuccessMessage.CreateList
 msgid "The new mailing list was successfully created."
-msgstr ""
+msgstr "Den nya mailing-listan skapades utan problem."
 
 #: Lang.SuccessMessage.DeleteList
 msgid "The mailing list was successfully removed."
-msgstr ""
+msgstr "Mailing-listan raderades utan problem."
 
 #: Lang.SuccessMessage.UpdateConfig
 msgid "The mailing list's configuration was successfully changed."
